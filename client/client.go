@@ -12,7 +12,6 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/aws/retry"
 	"github.com/aws/aws-sdk-go-v2/config"
-	"github.com/aws/aws-sdk-go-v2/credentials/stscreds"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
 	"github.com/aws/aws-sdk-go-v2/service/ec2/types"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
@@ -253,48 +252,48 @@ func configureAwsClient(ctx context.Context, logger zerolog.Logger, spec *Spec, 
 		configFns = append(configFns, config.WithSharedConfigProfile(account.LocalProfile))
 	}
 
-	if spec.AWSConfig == nil {
-		*spec.AWSConfig, err = config.LoadDefaultConfig(ctx, configFns...)
+	//if spec.AWSConfig == nil {
+	//	*spec.AWSConfig, err = config.LoadDefaultConfig(ctx, configFns...)
 
-		if err != nil {
-			logger.Error().Err(err).Msg("error loading default config")
-			return *spec.AWSConfig, err
-		}
+	//	if err != nil {
+	//		logger.Error().Err(err).Msg("error loading default config")
+	//		return *spec.AWSConfig, err
+	//	}
 
-		if account.RoleARN != "" {
-			opts := make([]func(*stscreds.AssumeRoleOptions), 0, 1)
-			if account.ExternalID != "" {
-				opts = append(opts, func(opts *stscreds.AssumeRoleOptions) {
-					opts.ExternalID = &account.ExternalID
-				})
-			}
-			if account.RoleSessionName != "" {
-				opts = append(opts, func(opts *stscreds.AssumeRoleOptions) {
-					opts.RoleSessionName = account.RoleSessionName
-				})
-			}
+	//	if account.RoleARN != "" {
+	//		opts := make([]func(*stscreds.AssumeRoleOptions), 0, 1)
+	//		if account.ExternalID != "" {
+	//			opts = append(opts, func(opts *stscreds.AssumeRoleOptions) {
+	//				opts.ExternalID = &account.ExternalID
+	//			})
+	//		}
+	//		if account.RoleSessionName != "" {
+	//			opts = append(opts, func(opts *stscreds.AssumeRoleOptions) {
+	//				opts.RoleSessionName = account.RoleSessionName
+	//			})
+	//		}
 
-			if stsClient == nil {
-				stsClient = sts.NewFromConfig(*spec.AWSConfig)
-			}
-			provider := stscreds.NewAssumeRoleProvider(stsClient, account.RoleARN, opts...)
+	//		if stsClient == nil {
+	//			stsClient = sts.NewFromConfig(*spec.AWSConfig)
+	//		}
+	//		provider := stscreds.NewAssumeRoleProvider(stsClient, account.RoleARN, opts...)
 
-			spec.AWSConfig.Credentials = aws.NewCredentialsCache(provider, func(options *aws.CredentialsCacheOptions) {
-				// ExpiryWindow will allow the credentials to trigger refreshing prior to
-				// the credentials actually expiring. This is beneficial so race conditions
-				// with expiring credentials do not cause requests to fail unexpectedly
-				// due to ExpiredToken exceptions.
-				//
-				// An ExpiryWindow of 5 minute would cause calls to IsExpired() to return true
-				// 5 minutes before the credentials are actually expired. This can cause an
-				// increased number of requests to refresh the credentials to occur. We balance this with jitter.
-				options.ExpiryWindow = 5 * time.Minute
-				// Jitter is added to avoid the thundering herd problem of many refresh requests
-				// happening all at once.
-				options.ExpiryWindowJitterFrac = 0.5
-			})
-		}
-	}
+	//		spec.AWSConfig.Credentials = aws.NewCredentialsCache(provider, func(options *aws.CredentialsCacheOptions) {
+	//			// ExpiryWindow will allow the credentials to trigger refreshing prior to
+	//			// the credentials actually expiring. This is beneficial so race conditions
+	//			// with expiring credentials do not cause requests to fail unexpectedly
+	//			// due to ExpiredToken exceptions.
+	//			//
+	//			// An ExpiryWindow of 5 minute would cause calls to IsExpired() to return true
+	//			// 5 minutes before the credentials are actually expired. This can cause an
+	//			// increased number of requests to refresh the credentials to occur. We balance this with jitter.
+	//			options.ExpiryWindow = 5 * time.Minute
+	//			// Jitter is added to avoid the thundering herd problem of many refresh requests
+	//			// happening all at once.
+	//			options.ExpiryWindowJitterFrac = 0.5
+	//		})
+	//	}
+	//}
 
 	if spec.AWSDebug {
 		spec.AWSConfig.ClientLogMode = aws.LogRequestWithBody | aws.LogResponseWithBody | aws.LogRetries
