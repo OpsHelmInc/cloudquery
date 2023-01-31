@@ -220,17 +220,16 @@ func getAccountId(ctx context.Context, awsCfg aws.Config) (*sts.GetCallerIdentit
 	return svc.GetCallerIdentity(ctx, &sts.GetCallerIdentityInput{})
 }
 
-func configureAwsClient(ctx context.Context, logger zerolog.Logger, awsConfig *Spec, account Account, stsClient AssumeRoleAPIClient) (aws.Config, error) {
+func configureAwsClient(ctx context.Context, logger zerolog.Logger, spec *Spec, account Account, stsClient AssumeRoleAPIClient) (aws.Config, error) {
 	var err error
-	var awsCfg aws.Config
 
 	maxAttempts := 10
-	if awsConfig.MaxRetries != nil {
-		maxAttempts = *awsConfig.MaxRetries
+	if spec.MaxRetries != nil {
+		maxAttempts = *spec.MaxRetries
 	}
 	maxBackoff := 30
-	if awsConfig.MaxBackoff != nil {
-		maxBackoff = *awsConfig.MaxBackoff
+	if spec.MaxBackoff != nil {
+		maxBackoff = *spec.MaxBackoff
 	}
 
 	configFns := []func(*config.LoadOptions) error{
@@ -254,59 +253,61 @@ func configureAwsClient(ctx context.Context, logger zerolog.Logger, awsConfig *S
 		configFns = append(configFns, config.WithSharedConfigProfile(account.LocalProfile))
 	}
 
-	awsCfg, err = config.LoadDefaultConfig(ctx, configFns...)
+	if spec.AWSConfig == nil {
+		*spec.AWSConfig, err = config.LoadDefaultConfig(ctx, configFns...)
 
-	if err != nil {
-		logger.Error().Err(err).Msg("error loading default config")
-		return awsCfg, err
-	}
+		if err != nil {
+			logger.Error().Err(err).Msg("error loading default config")
+			return *spec.AWSConfig, err
+		}
 
-	if account.RoleARN != "" {
-		opts := make([]func(*stscreds.AssumeRoleOptions), 0, 1)
-		if account.ExternalID != "" {
-			opts = append(opts, func(opts *stscreds.AssumeRoleOptions) {
-				opts.ExternalID = &account.ExternalID
+		if account.RoleARN != "" {
+			opts := make([]func(*stscreds.AssumeRoleOptions), 0, 1)
+			if account.ExternalID != "" {
+				opts = append(opts, func(opts *stscreds.AssumeRoleOptions) {
+					opts.ExternalID = &account.ExternalID
+				})
+			}
+			if account.RoleSessionName != "" {
+				opts = append(opts, func(opts *stscreds.AssumeRoleOptions) {
+					opts.RoleSessionName = account.RoleSessionName
+				})
+			}
+
+			if stsClient == nil {
+				stsClient = sts.NewFromConfig(*spec.AWSConfig)
+			}
+			provider := stscreds.NewAssumeRoleProvider(stsClient, account.RoleARN, opts...)
+
+			spec.AWSConfig.Credentials = aws.NewCredentialsCache(provider, func(options *aws.CredentialsCacheOptions) {
+				// ExpiryWindow will allow the credentials to trigger refreshing prior to
+				// the credentials actually expiring. This is beneficial so race conditions
+				// with expiring credentials do not cause requests to fail unexpectedly
+				// due to ExpiredToken exceptions.
+				//
+				// An ExpiryWindow of 5 minute would cause calls to IsExpired() to return true
+				// 5 minutes before the credentials are actually expired. This can cause an
+				// increased number of requests to refresh the credentials to occur. We balance this with jitter.
+				options.ExpiryWindow = 5 * time.Minute
+				// Jitter is added to avoid the thundering herd problem of many refresh requests
+				// happening all at once.
+				options.ExpiryWindowJitterFrac = 0.5
 			})
 		}
-		if account.RoleSessionName != "" {
-			opts = append(opts, func(opts *stscreds.AssumeRoleOptions) {
-				opts.RoleSessionName = account.RoleSessionName
-			})
-		}
-
-		if stsClient == nil {
-			stsClient = sts.NewFromConfig(awsCfg)
-		}
-		provider := stscreds.NewAssumeRoleProvider(stsClient, account.RoleARN, opts...)
-
-		awsCfg.Credentials = aws.NewCredentialsCache(provider, func(options *aws.CredentialsCacheOptions) {
-			// ExpiryWindow will allow the credentials to trigger refreshing prior to
-			// the credentials actually expiring. This is beneficial so race conditions
-			// with expiring credentials do not cause requests to fail unexpectedly
-			// due to ExpiredToken exceptions.
-			//
-			// An ExpiryWindow of 5 minute would cause calls to IsExpired() to return true
-			// 5 minutes before the credentials are actually expired. This can cause an
-			// increased number of requests to refresh the credentials to occur. We balance this with jitter.
-			options.ExpiryWindow = 5 * time.Minute
-			// Jitter is added to avoid the thundering herd problem of many refresh requests
-			// happening all at once.
-			options.ExpiryWindowJitterFrac = 0.5
-		})
 	}
 
-	if awsConfig.AWSDebug {
-		awsCfg.ClientLogMode = aws.LogRequestWithBody | aws.LogResponseWithBody | aws.LogRetries
-		awsCfg.Logger = AwsLogger{logger.With().Str("accountName", account.AccountName).Logger()}
+	if spec.AWSDebug {
+		spec.AWSConfig.ClientLogMode = aws.LogRequestWithBody | aws.LogResponseWithBody | aws.LogRetries
+		spec.AWSConfig.Logger = AwsLogger{logger.With().Str("accountName", account.AccountName).Logger()}
 	}
 
 	// Test out retrieving credentials
-	if _, err := awsCfg.Credentials.Retrieve(ctx); err != nil {
+	if _, err := spec.AWSConfig.Credentials.Retrieve(ctx); err != nil {
 		logger.Error().Err(err).Msg("error retrieving credentials")
-		return awsCfg, errRetrievingCredentials
+		return *spec.AWSConfig, errRetrievingCredentials
 	}
 
-	return awsCfg, err
+	return *spec.AWSConfig, err
 }
 
 func Configure(ctx context.Context, logger zerolog.Logger, spec specs.Source) (schema.ClientMeta, error) {
