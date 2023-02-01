@@ -15,6 +15,7 @@ import (
 	wafv2types "github.com/aws/aws-sdk-go-v2/service/wafv2/types"
 	"github.com/aws/smithy-go"
 	"github.com/aws/smithy-go/logging"
+	"github.com/cloudquery/plugin-sdk/plugins"
 	"github.com/cloudquery/plugin-sdk/schema"
 	"github.com/cloudquery/plugin-sdk/specs"
 	"github.com/rs/zerolog"
@@ -304,6 +305,61 @@ func configureAwsClient(ctx context.Context, logger zerolog.Logger, spec *Spec, 
 	}
 
 	return spec.AWSConfig, err
+}
+
+func CustomConfig(config aws.Config) plugins.SourceNewExecutionClientFunc {
+	return func(ctx context.Context, logger zerolog.Logger, spec specs.Source) (schema.ClientMeta, error) {
+		var awsConfig Spec
+		err := spec.UnmarshalSpec(&awsConfig)
+		if err != nil {
+			return nil, fmt.Errorf("failed to unmarshal spec: %w", err)
+		}
+		awsClient := NewAwsClient(logger)
+		if len(awsConfig.Accounts) != 1 {
+			return nil, errors.New("expected a single account to be configured")
+		}
+		account := awsConfig.Accounts[0]
+
+		if account.AccountName == "" {
+			account.AccountName = account.ID
+		}
+
+		localRegions := account.Regions
+		if len(localRegions) == 0 {
+			localRegions = awsConfig.Regions
+		}
+
+		if err := verifyRegions(localRegions); err != nil {
+			return nil, err
+		}
+
+		if isAllRegions(localRegions) {
+			logger.Info().Msg("All regions specified in `cloudquery.yml`. Assuming all regions")
+		}
+
+		account.Regions = findEnabledRegions(ctx, logger, account.AccountName, ec2.NewFromConfig(config), localRegions, account.DefaultRegion)
+		if len(account.Regions) == 0 {
+			return nil, errors.New("no enabled regions provided in config for account")
+		}
+
+		config.Region = account.Regions[0]
+
+		output, err := getAccountId(ctx, config)
+		if err != nil {
+			return nil, err
+		}
+		iamArn, err := arn.Parse(*output.Arn)
+		if err != nil {
+			return nil, err
+		}
+
+		for _, region := range account.Regions {
+			awsClient.ServicesManager.InitServicesForPartitionAccountAndRegion(iamArn.Partition, *output.Account, region, initServices(region, config))
+		}
+		awsClient.ServicesManager.InitServicesForPartitionAccountAndScope(iamArn.Partition, *output.Account, initServices(cloudfrontScopeRegion, config))
+
+		return &awsClient, nil
+	}
 }
 
 func Configure(ctx context.Context, logger zerolog.Logger, spec specs.Source) (schema.ClientMeta, error) {
