@@ -287,7 +287,7 @@ func Configure(ctx context.Context, logger zerolog.Logger, spec specs.Source, aw
 	}
 	if awsConfig.Organization != nil {
 		var err error
-		awsConfig.Accounts, adminAccountSts, err = loadOrgAccounts(ctx, logger, &awsConfig)
+		awsConfig.Accounts, adminAccountSts, err = loadOrgAccounts(ctx, logger, &awsConfig, awsConfig2)
 		if err != nil {
 			logger.Error().Err(err).Msg("error getting child accounts")
 			return nil, err
