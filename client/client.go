@@ -219,7 +219,7 @@ func getAccountId(ctx context.Context, awsCfg aws.Config) (*sts.GetCallerIdentit
 	return svc.GetCallerIdentity(ctx, &sts.GetCallerIdentityInput{})
 }
 
-func configureAwsClient(ctx context.Context, logger zerolog.Logger, spec *Spec, awsConfig aws.Config, account Account, stsClient AssumeRoleAPIClient) (aws.Config, error) {
+func configureAwsClient(ctx context.Context, logger zerolog.Logger, spec *Spec, baseAwsConfig aws.Config, account Account, stsClient AssumeRoleAPIClient) (aws.Config, error) {
 	var err error
 
 	maxAttempts := 10
@@ -231,8 +231,8 @@ func configureAwsClient(ctx context.Context, logger zerolog.Logger, spec *Spec, 
 		maxBackoff = *spec.MaxBackoff
 	}
 
-	if awsConfig.Retryer == nil {
-		awsConfig.Retryer = func() aws.Retryer {
+	if baseAwsConfig.Retryer == nil {
+		baseAwsConfig.Retryer = func() aws.Retryer {
 			return retry.NewStandard(func(so *retry.StandardOptions) {
 				so.MaxAttempts = maxAttempts
 				so.MaxBackoff = time.Duration(maxBackoff) * time.Second
@@ -241,8 +241,8 @@ func configureAwsClient(ctx context.Context, logger zerolog.Logger, spec *Spec, 
 		}
 	}
 
-	if awsConfig.Credentials == nil {
-		awsConfig.Credentials = aws.NewCredentialsCache(awsConfig.Credentials, func(options *aws.CredentialsCacheOptions) {
+	if baseAwsConfig.Credentials == nil {
+		baseAwsConfig.Credentials = aws.NewCredentialsCache(baseAwsConfig.Credentials, func(options *aws.CredentialsCacheOptions) {
 			// ExpiryWindow will allow the credentials to trigger refreshing prior to
 			// the credentials actually expiring. This is beneficial so race conditions
 			// with expiring credentials do not cause requests to fail unexpectedly
@@ -259,12 +259,12 @@ func configureAwsClient(ctx context.Context, logger zerolog.Logger, spec *Spec, 
 	}
 
 	// Test out retrieving credentials
-	if _, err := awsConfig.Credentials.Retrieve(ctx); err != nil {
+	if _, err := baseAwsConfig.Credentials.Retrieve(ctx); err != nil {
 		logger.Error().Err(err).Msg("error retrieving credentials")
-		return awsConfig, errRetrievingCredentials
+		return baseAwsConfig, errRetrievingCredentials
 	}
 
-	return awsConfig, err
+	return baseAwsConfig, err
 }
 
 func CustomConfig(config aws.Config) plugins.SourceNewExecutionClientFunc {
@@ -273,40 +273,29 @@ func CustomConfig(config aws.Config) plugins.SourceNewExecutionClientFunc {
 	}
 }
 
-func Configure(ctx context.Context, logger zerolog.Logger, spec specs.Source, awsConfig2 aws.Config) (schema.ClientMeta, error) {
-	var awsConfig Spec
-	err := spec.UnmarshalSpec(&awsConfig)
+func Configure(ctx context.Context, logger zerolog.Logger, spec specs.Source, baseAwsConfig aws.Config) (schema.ClientMeta, error) {
+	var specConfig Spec
+	err := spec.UnmarshalSpec(&specConfig)
 	if err != nil {
 		return nil, fmt.Errorf("failed to unmarshal spec: %w", err)
 	}
 
 	client := NewAwsClient(logger)
 	var adminAccountSts AssumeRoleAPIClient
-	if awsConfig.Organization != nil && len(awsConfig.Accounts) > 0 {
-		return nil, errors.New("specifying accounts via both the Accounts and Org properties is not supported. To achieve both, use multiple source configurations")
-	}
-	if awsConfig.Organization != nil {
-		var err error
-		awsConfig.Accounts, adminAccountSts, err = loadOrgAccounts(ctx, logger, &awsConfig, awsConfig2)
-		if err != nil {
-			logger.Error().Err(err).Msg("error getting child accounts")
-			return nil, err
-		}
-	}
-	if len(awsConfig.Accounts) == 0 {
-		awsConfig.Accounts = append(awsConfig.Accounts, Account{
+	if len(specConfig.Accounts) == 0 {
+		specConfig.Accounts = append(specConfig.Accounts, Account{
 			ID: defaultVar,
 		})
 	}
 
-	for _, account := range awsConfig.Accounts {
+	for _, account := range specConfig.Accounts {
 		if account.AccountName == "" {
 			account.AccountName = account.ID
 		}
 
 		localRegions := account.Regions
 		if len(localRegions) == 0 {
-			localRegions = awsConfig.Regions
+			localRegions = specConfig.Regions
 		}
 
 		if err := verifyRegions(localRegions); err != nil {
@@ -317,12 +306,8 @@ func Configure(ctx context.Context, logger zerolog.Logger, spec specs.Source, aw
 			logger.Info().Msg("All regions specified in `cloudquery.yml`. Assuming all regions")
 		}
 
-		awsCfg, err := configureAwsClient(ctx, logger, &awsConfig, awsConfig2, account, adminAccountSts)
+		awsCfg, err := configureAwsClient(ctx, logger, &specConfig, baseAwsConfig, account, adminAccountSts)
 		if err != nil {
-			if account.source == "org" {
-				logger.Warn().Msg("Unable to assume role in account")
-				continue
-			}
 			var ae smithy.APIError
 			if errors.As(err, &ae) {
 				if strings.Contains(ae.ErrorCode(), "AccessDenied") {
