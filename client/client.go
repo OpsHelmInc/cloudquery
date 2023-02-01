@@ -313,6 +313,7 @@ func Configure(ctx context.Context, logger zerolog.Logger, spec specs.Source) (s
 	if !ok {
 		return nil, fmt.Errorf("failed to cast spec to aws Spec")
 	}
+	fmt.Println(awsConfig)
 
 	client := NewAwsClient(logger)
 	var adminAccountSts AssumeRoleAPIClient
