@@ -5,13 +5,10 @@ import (
 	"errors"
 	"fmt"
 	"strings"
-	"time"
 
 	"github.com/OpsHelmInc/cloudquery/client/services"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
-	"github.com/aws/aws-sdk-go-v2/aws/retry"
-	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
 	"github.com/aws/aws-sdk-go-v2/service/ec2/types"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
@@ -222,35 +219,35 @@ func getAccountId(ctx context.Context, awsCfg aws.Config) (*sts.GetCallerIdentit
 func configureAwsClient(ctx context.Context, logger zerolog.Logger, spec *Spec, account Account, stsClient AssumeRoleAPIClient) (aws.Config, error) {
 	var err error
 
-	maxAttempts := 10
-	if spec.MaxRetries != nil {
-		maxAttempts = *spec.MaxRetries
-	}
-	maxBackoff := 30
-	if spec.MaxBackoff != nil {
-		maxBackoff = *spec.MaxBackoff
-	}
+	//maxAttempts := 10
+	//if spec.MaxRetries != nil {
+	//	maxAttempts = *spec.MaxRetries
+	//}
+	//maxBackoff := 30
+	//if spec.MaxBackoff != nil {
+	//	maxBackoff = *spec.MaxBackoff
+	//}
 
-	configFns := []func(*config.LoadOptions) error{
-		config.WithDefaultRegion(defaultRegion),
-		// https://aws.github.io/aws-sdk-go-v2/docs/configuring-sdk/retries-timeouts/
-		config.WithRetryer(func() aws.Retryer {
-			return retry.NewStandard(func(so *retry.StandardOptions) {
-				so.MaxAttempts = maxAttempts
-				so.MaxBackoff = time.Duration(maxBackoff) * time.Second
-				so.RateLimiter = &NoRateLimiter{}
-			})
-		}),
-	}
+	//configFns := []func(*config.LoadOptions) error{
+	//	config.WithDefaultRegion(defaultRegion),
+	//	// https://aws.github.io/aws-sdk-go-v2/docs/configuring-sdk/retries-timeouts/
+	//	config.WithRetryer(func() aws.Retryer {
+	//		return retry.NewStandard(func(so *retry.StandardOptions) {
+	//			so.MaxAttempts = maxAttempts
+	//			so.MaxBackoff = time.Duration(maxBackoff) * time.Second
+	//			so.RateLimiter = &NoRateLimiter{}
+	//		})
+	//	}),
+	//}
 
-	if account.DefaultRegion != "" {
-		// According to the docs: If multiple WithDefaultRegion calls are made, the last call overrides the previous call values
-		configFns = append(configFns, config.WithDefaultRegion(account.DefaultRegion))
-	}
+	//if account.DefaultRegion != "" {
+	//	// According to the docs: If multiple WithDefaultRegion calls are made, the last call overrides the previous call values
+	//	configFns = append(configFns, config.WithDefaultRegion(account.DefaultRegion))
+	//}
 
-	if account.LocalProfile != "" {
-		configFns = append(configFns, config.WithSharedConfigProfile(account.LocalProfile))
-	}
+	//if account.LocalProfile != "" {
+	//	configFns = append(configFns, config.WithSharedConfigProfile(account.LocalProfile))
+	//}
 
 	//if spec.AWSConfig == nil {
 	//	*spec.AWSConfig, err = config.LoadDefaultConfig(ctx, configFns...)
@@ -310,10 +307,11 @@ func configureAwsClient(ctx context.Context, logger zerolog.Logger, spec *Spec, 
 }
 
 func Configure(ctx context.Context, logger zerolog.Logger, spec specs.Source) (schema.ClientMeta, error) {
-	var awsConfig Spec
-	err := spec.UnmarshalSpec(&awsConfig)
-	if err != nil {
-		return nil, fmt.Errorf("failed to unmarshal spec: %w", err)
+	//var awsConfig Spec
+	//err := spec.UnmarshalSpec(&awsConfig)
+	awsConfig, ok := spec.Spec.(Spec)
+	if !ok {
+		return nil, fmt.Errorf("failed to cast spec to aws Spec")
 	}
 
 	client := NewAwsClient(logger)
