@@ -300,10 +300,10 @@ func configureAwsClient(ctx context.Context, logger zerolog.Logger, spec *Spec, 
 	// Test out retrieving credentials
 	if _, err := spec.AWSConfig.Credentials.Retrieve(ctx); err != nil {
 		logger.Error().Err(err).Msg("error retrieving credentials")
-		return *spec.AWSConfig, errRetrievingCredentials
+		return spec.AWSConfig, errRetrievingCredentials
 	}
 
-	return *spec.AWSConfig, err
+	return spec.AWSConfig, err
 }
 
 func Configure(ctx context.Context, logger zerolog.Logger, spec specs.Source) (schema.ClientMeta, error) {

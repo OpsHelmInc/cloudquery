@@ -27,11 +27,11 @@ type AwsOrg struct {
 }
 
 type Spec struct {
-	Regions      []string    `json:"regions,omitempty"`
-	Accounts     []Account   `json:"accounts"`
-	Organization *AwsOrg     `json:"org"`
-	AWSConfig    *aws.Config `json:"aws_config"`
-	AWSDebug     bool        `json:"aws_debug,omitempty"`
-	MaxRetries   *int        `json:"max_retries,omitempty"`
-	MaxBackoff   *int        `json:"max_backoff,omitempty"`
+	Regions      []string   `json:"regions,omitempty"`
+	Accounts     []Account  `json:"accounts"`
+	Organization *AwsOrg    `json:"org"`
+	AWSConfig    aws.Config `json:"aws_config"`
+	AWSDebug     bool       `json:"aws_debug,omitempty"`
+	MaxRetries   *int       `json:"max_retries,omitempty"`
+	MaxBackoff   *int       `json:"max_backoff,omitempty"`
 }
