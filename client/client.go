@@ -11,8 +11,6 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/aws/retry"
-	"github.com/aws/aws-sdk-go-v2/config"
-	"github.com/aws/aws-sdk-go-v2/credentials/stscreds"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
 	"github.com/aws/aws-sdk-go-v2/service/ec2/types"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
@@ -221,151 +219,30 @@ func getAccountId(ctx context.Context, awsCfg aws.Config) (*sts.GetCallerIdentit
 	return svc.GetCallerIdentity(ctx, &sts.GetCallerIdentityInput{})
 }
 
-func configureAwsClient(ctx context.Context, logger zerolog.Logger, awsConfig *Spec, account Account, stsClient AssumeRoleAPIClient) (aws.Config, error) {
-	//var err error
-
-	//maxAttempts := 10
-	//if spec.MaxRetries != nil {
-	//	maxAttempts = *spec.MaxRetries
-	//}
-	//maxBackoff := 30
-	//if spec.MaxBackoff != nil {
-	//	maxBackoff = *spec.MaxBackoff
-	//}
-
-	//configFns := []func(*config.LoadOptions) error{
-	//	config.WithDefaultRegion(defaultRegion),
-	//	// https://aws.github.io/aws-sdk-go-v2/docs/configuring-sdk/retries-timeouts/
-	//	config.WithRetryer(func() aws.Retryer {
-	//		return retry.NewStandard(func(so *retry.StandardOptions) {
-	//			so.MaxAttempts = maxAttempts
-	//			so.MaxBackoff = time.Duration(maxBackoff) * time.Second
-	//			so.RateLimiter = &NoRateLimiter{}
-	//		})
-	//	}),
-	//}
-
-	//if account.DefaultRegion != "" {
-	//	// According to the docs: If multiple WithDefaultRegion calls are made, the last call overrides the previous call values
-	//	configFns = append(configFns, config.WithDefaultRegion(account.DefaultRegion))
-	//}
-
-	//if account.LocalProfile != "" {
-	//	configFns = append(configFns, config.WithSharedConfigProfile(account.LocalProfile))
-	//}
-
-	//if spec.AWSConfig == nil {
-	//	*spec.AWSConfig, err = config.LoadDefaultConfig(ctx, configFns...)
-
-	//	if err != nil {
-	//		logger.Error().Err(err).Msg("error loading default config")
-	//		return *spec.AWSConfig, err
-	//	}
-
-	//	if account.RoleARN != "" {
-	//		opts := make([]func(*stscreds.AssumeRoleOptions), 0, 1)
-	//		if account.ExternalID != "" {
-	//			opts = append(opts, func(opts *stscreds.AssumeRoleOptions) {
-	//				opts.ExternalID = &account.ExternalID
-	//			})
-	//		}
-	//		if account.RoleSessionName != "" {
-	//			opts = append(opts, func(opts *stscreds.AssumeRoleOptions) {
-	//				opts.RoleSessionName = account.RoleSessionName
-	//			})
-	//		}
-
-	//		if stsClient == nil {
-	//			stsClient = sts.NewFromConfig(*spec.AWSConfig)
-	//		}
-	//		provider := stscreds.NewAssumeRoleProvider(stsClient, account.RoleARN, opts...)
-
-	//		spec.AWSConfig.Credentials = aws.NewCredentialsCache(provider, func(options *aws.CredentialsCacheOptions) {
-	//			// ExpiryWindow will allow the credentials to trigger refreshing prior to
-	//			// the credentials actually expiring. This is beneficial so race conditions
-	//			// with expiring credentials do not cause requests to fail unexpectedly
-	//			// due to ExpiredToken exceptions.
-	//			//
-	//			// An ExpiryWindow of 5 minute would cause calls to IsExpired() to return true
-	//			// 5 minutes before the credentials are actually expired. This can cause an
-	//			// increased number of requests to refresh the credentials to occur. We balance this with jitter.
-	//			options.ExpiryWindow = 5 * time.Minute
-	//			// Jitter is added to avoid the thundering herd problem of many refresh requests
-	//			// happening all at once.
-	//			options.ExpiryWindowJitterFrac = 0.5
-	//		})
-	//	}
-	//}
-
-	//if spec.AWSDebug {
-	//	spec.AWSConfig.ClientLogMode = aws.LogRequestWithBody | aws.LogResponseWithBody | aws.LogRetries
-	//	spec.AWSConfig.Logger = AwsLogger{logger.With().Str("accountName", account.AccountName).Logger()}
-	//}
-
-	//// Test out retrieving credentials
-	//if _, err := spec.AWSConfig.Credentials.Retrieve(ctx); err != nil {
-	//	logger.Error().Err(err).Msg("error retrieving credentials")
-	//	return spec.AWSConfig, errRetrievingCredentials
-	//}
+func configureAwsClient(ctx context.Context, logger zerolog.Logger, spec *Spec, awsConfig aws.Config, account Account, stsClient AssumeRoleAPIClient) (aws.Config, error) {
 	var err error
-	var awsCfg aws.Config
 
 	maxAttempts := 10
-	if awsConfig.MaxRetries != nil {
-		maxAttempts = *awsConfig.MaxRetries
+	if spec.MaxRetries != nil {
+		maxAttempts = *spec.MaxRetries
 	}
 	maxBackoff := 30
-	if awsConfig.MaxBackoff != nil {
-		maxBackoff = *awsConfig.MaxBackoff
+	if spec.MaxBackoff != nil {
+		maxBackoff = *spec.MaxBackoff
 	}
 
-	configFns := []func(*config.LoadOptions) error{
-		config.WithDefaultRegion(defaultRegion),
-		// https://aws.github.io/aws-sdk-go-v2/docs/configuring-sdk/retries-timeouts/
-		config.WithRetryer(func() aws.Retryer {
+	if awsConfig.Retryer == nil {
+		awsConfig.Retryer = func() aws.Retryer {
 			return retry.NewStandard(func(so *retry.StandardOptions) {
 				so.MaxAttempts = maxAttempts
 				so.MaxBackoff = time.Duration(maxBackoff) * time.Second
 				so.RateLimiter = &NoRateLimiter{}
 			})
-		}),
-	}
-
-	if account.DefaultRegion != "" {
-		// According to the docs: If multiple WithDefaultRegion calls are made, the last call overrides the previous call values
-		configFns = append(configFns, config.WithDefaultRegion(account.DefaultRegion))
-	}
-
-	if account.LocalProfile != "" {
-		configFns = append(configFns, config.WithSharedConfigProfile(account.LocalProfile))
-	}
-
-	awsCfg, err = config.LoadDefaultConfig(ctx, configFns...)
-
-	if err != nil {
-		logger.Error().Err(err).Msg("error loading default config")
-		return awsCfg, err
-	}
-
-	if account.RoleARN != "" {
-		opts := make([]func(*stscreds.AssumeRoleOptions), 0, 1)
-		if account.ExternalID != "" {
-			opts = append(opts, func(opts *stscreds.AssumeRoleOptions) {
-				opts.ExternalID = &account.ExternalID
-			})
 		}
-		if account.RoleSessionName != "" {
-			opts = append(opts, func(opts *stscreds.AssumeRoleOptions) {
-				opts.RoleSessionName = account.RoleSessionName
-			})
-		}
+	}
 
-		if stsClient == nil {
-			stsClient = sts.NewFromConfig(awsCfg)
-		}
-		provider := stscreds.NewAssumeRoleProvider(stsClient, account.RoleARN, opts...)
-
-		awsCfg.Credentials = aws.NewCredentialsCache(provider, func(options *aws.CredentialsCacheOptions) {
+	if awsConfig.Credentials == nil {
+		awsConfig.Credentials = aws.NewCredentialsCache(awsConfig.Credentials, func(options *aws.CredentialsCacheOptions) {
 			// ExpiryWindow will allow the credentials to trigger refreshing prior to
 			// the credentials actually expiring. This is beneficial so race conditions
 			// with expiring credentials do not cause requests to fail unexpectedly
@@ -381,85 +258,27 @@ func configureAwsClient(ctx context.Context, logger zerolog.Logger, awsConfig *S
 		})
 	}
 
-	if awsConfig.AWSDebug {
-		awsCfg.ClientLogMode = aws.LogRequestWithBody | aws.LogResponseWithBody | aws.LogRetries
-		awsCfg.Logger = AwsLogger{logger.With().Str("accountName", account.AccountName).Logger()}
-	}
-
 	// Test out retrieving credentials
-	if _, err := awsCfg.Credentials.Retrieve(ctx); err != nil {
+	if _, err := awsConfig.Credentials.Retrieve(ctx); err != nil {
 		logger.Error().Err(err).Msg("error retrieving credentials")
-		return awsCfg, errRetrievingCredentials
+		return awsConfig, errRetrievingCredentials
 	}
 
-	return awsCfg, err
-
-	//return spec.AWSConfig, err
+	return awsConfig, err
 }
 
 func CustomConfig(config aws.Config) plugins.SourceNewExecutionClientFunc {
 	return func(ctx context.Context, logger zerolog.Logger, spec specs.Source) (schema.ClientMeta, error) {
-		var awsConfig Spec
-		err := spec.UnmarshalSpec(&awsConfig)
-		if err != nil {
-			return nil, fmt.Errorf("failed to unmarshal spec: %w", err)
-		}
-		awsClient := NewAwsClient(logger)
-		if len(awsConfig.Accounts) != 1 {
-			return nil, errors.New("expected a single account to be configured")
-		}
-		account := awsConfig.Accounts[0]
-
-		if account.AccountName == "" {
-			account.AccountName = account.ID
-		}
-
-		localRegions := account.Regions
-		if len(localRegions) == 0 {
-			localRegions = awsConfig.Regions
-		}
-
-		if err := verifyRegions(localRegions); err != nil {
-			return nil, err
-		}
-
-		if isAllRegions(localRegions) {
-			logger.Info().Msg("All regions specified in `cloudquery.yml`. Assuming all regions")
-		}
-
-		account.Regions = findEnabledRegions(ctx, logger, account.AccountName, ec2.NewFromConfig(config), localRegions, account.DefaultRegion)
-		if len(account.Regions) == 0 {
-			return nil, errors.New("no enabled regions provided in config for account")
-		}
-
-		config.Region = account.Regions[0]
-
-		output, err := getAccountId(ctx, config)
-		if err != nil {
-			return nil, err
-		}
-		iamArn, err := arn.Parse(*output.Arn)
-		if err != nil {
-			return nil, err
-		}
-
-		for _, region := range account.Regions {
-			awsClient.ServicesManager.InitServicesForPartitionAccountAndRegion(iamArn.Partition, *output.Account, region, initServices(region, config))
-		}
-		awsClient.ServicesManager.InitServicesForPartitionAccountAndScope(iamArn.Partition, *output.Account, initServices(cloudfrontScopeRegion, config))
-
-		return &awsClient, nil
+		return Configure(ctx, logger, spec, config)
 	}
 }
 
-func Configure(ctx context.Context, logger zerolog.Logger, spec specs.Source) (schema.ClientMeta, error) {
-	//var awsConfig Spec
-	//err := spec.UnmarshalSpec(&awsConfig)
-	awsConfig, ok := spec.Spec.(Spec)
-	if !ok {
-		return nil, fmt.Errorf("failed to cast spec to aws Spec")
+func Configure(ctx context.Context, logger zerolog.Logger, spec specs.Source, awsConfig2 aws.Config) (schema.ClientMeta, error) {
+	var awsConfig Spec
+	err := spec.UnmarshalSpec(&awsConfig)
+	if err != nil {
+		return nil, fmt.Errorf("failed to unmarshal spec: %w", err)
 	}
-	fmt.Println(awsConfig)
 
 	client := NewAwsClient(logger)
 	var adminAccountSts AssumeRoleAPIClient
@@ -498,7 +317,7 @@ func Configure(ctx context.Context, logger zerolog.Logger, spec specs.Source) (s
 			logger.Info().Msg("All regions specified in `cloudquery.yml`. Assuming all regions")
 		}
 
-		awsCfg, err := configureAwsClient(ctx, logger, &awsConfig, account, adminAccountSts)
+		awsCfg, err := configureAwsClient(ctx, logger, &awsConfig, awsConfig2, account, adminAccountSts)
 		if err != nil {
 			if account.source == "org" {
 				logger.Warn().Msg("Unable to assume role in account")

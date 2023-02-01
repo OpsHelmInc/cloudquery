@@ -14,7 +14,7 @@ import (
 )
 
 // Parses org configuration and grabs the appropriate accounts
-func loadOrgAccounts(ctx context.Context, logger zerolog.Logger, awsConfig *Spec) ([]Account, AssumeRoleAPIClient, error) {
+func loadOrgAccounts(ctx context.Context, logger zerolog.Logger, awsConfig *Spec, awsConfig2 aws.Config) ([]Account, AssumeRoleAPIClient, error) {
 	// If user doesn't specify any configs for admin account instantiate default values
 	if awsConfig.Organization.AdminAccount == nil {
 		awsConfig.Organization.AdminAccount = &Account{
@@ -22,7 +22,7 @@ func loadOrgAccounts(ctx context.Context, logger zerolog.Logger, awsConfig *Spec
 			LocalProfile: "",
 		}
 	}
-	awsCfg, err := configureAwsClient(ctx, logger, awsConfig, *awsConfig.Organization.AdminAccount, nil)
+	awsCfg, err := configureAwsClient(ctx, logger, awsConfig, awsConfig2, *awsConfig.Organization.AdminAccount, nil)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -32,7 +32,7 @@ func loadOrgAccounts(ctx context.Context, logger zerolog.Logger, awsConfig *Spec
 		return nil, nil, err
 	}
 	if awsConfig.Organization.MemberCredentials != nil {
-		awsCfg, err = configureAwsClient(ctx, logger, awsConfig, *awsConfig.Organization.MemberCredentials, nil)
+		awsCfg, err = configureAwsClient(ctx, logger, awsConfig, awsConfig2, *awsConfig.Organization.MemberCredentials, nil)
 		if err != nil {
 			return nil, nil, err
 		}
