@@ -5,7 +5,6 @@ go 1.19
 require (
 	github.com/aws/aws-sdk-go-v2 v1.17.2
 	github.com/aws/aws-sdk-go-v2/config v1.18.4
-	github.com/aws/aws-sdk-go-v2/credentials v1.13.4
 	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.11.43
 	github.com/aws/aws-sdk-go-v2/service/accessanalyzer v1.18.1
 	github.com/aws/aws-sdk-go-v2/service/account v1.7.12
@@ -107,6 +106,7 @@ require (
 )
 
 require (
+	github.com/aws/aws-sdk-go-v2/credentials v1.13.4 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/v4a v1.0.17 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/checksum v1.1.21 // indirect
 	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.13.9 // indirect
