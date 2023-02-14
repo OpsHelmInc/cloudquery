@@ -39,6 +39,6 @@ type WrappedBucket struct {
 	OwnershipControls     []string
 
 	// <-- Below here are additional fields added for OpsHelm, not part of OG CloudQuery -->
-	IsPublic       bool
-	EncryptionType string
+	IsPublic     bool
+	SSEAlgorithm string
 }
