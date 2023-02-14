@@ -34,6 +34,11 @@ func buildS3Buckets(t *testing.T, ctrl *gomock.Controller) client.Services {
 	if err != nil {
 		t.Fatal(err)
 	}
+	bpols := s3.GetBucketPolicyStatusOutput{}
+	err = faker.FakeObject(&bpols.ResultMetadata)
+	if err != nil {
+		t.Fatal(err)
+	}
 	jsonDoc := `{"stuff": 3}`
 	bpol.Policy = &jsonDoc
 	bver := s3.GetBucketVersioningOutput{}
@@ -81,6 +86,8 @@ func buildS3Buckets(t *testing.T, ctrl *gomock.Controller) client.Services {
 		&blog, nil)
 	m.EXPECT().GetBucketPolicy(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&bpol, nil)
+	m.EXPECT().GetBucketPolicyStatus(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+		&bpols, nil)
 	m.EXPECT().GetBucketVersioning(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&bver, nil)
 	m.EXPECT().GetBucketAcl(gomock.Any(), gomock.Any(), gomock.Any()).Return(

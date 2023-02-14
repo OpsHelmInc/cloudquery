@@ -40,5 +40,5 @@ type WrappedBucket struct {
 
 	// <-- Below here are additional fields added for OpsHelm, not part of OG CloudQuery -->
 	IsPublic     bool
-	SSEAlgorithm string
+	SSEAlgorithm types.ServerSideEncryption
 }

@@ -227,6 +227,7 @@ func fetchS3BucketLifecycles(ctx context.Context, meta schema.ClientMeta, parent
 
 func resolveBucketEncryptionRules(ctx context.Context, meta schema.ClientMeta, resource *models.WrappedBucket, bucketRegion string) error {
 	svc := meta.(*client.Client).Services().S3
+
 	encryptionOutput, err := svc.GetBucketEncryption(ctx, &s3.GetBucketEncryptionInput{Bucket: resource.Name}, func(options *s3.Options) {
 		options.Region = bucketRegion
 	})
@@ -239,11 +240,8 @@ func resolveBucketEncryptionRules(ctx context.Context, meta schema.ClientMeta, r
 	if encryptionOutput.ServerSideEncryptionConfiguration != nil {
 		for _, rule := range encryptionOutput.ServerSideEncryptionConfiguration.Rules {
 			if rule.ApplyServerSideEncryptionByDefault != nil {
-				for _, z := range rule.ApplyServerSideEncryptionByDefault.SSEAlgorithm.Values() {
-					// z is type.ServerSideEncryption, but this is just 'type
-					// ServerSideEncryption string' in the SDK (and an actual
-					// string in JSON)
-					resource.SSEAlgorithm = string(z)
+				for _, anAlgo := range rule.ApplyServerSideEncryptionByDefault.SSEAlgorithm.Values() {
+					resource.SSEAlgorithm = anAlgo
 				}
 			}
 		}
@@ -320,7 +318,9 @@ func resolveBucketPolicyStatus(ctx context.Context, meta schema.ClientMeta, reso
 	if policyStatusOutput == nil {
 		return nil
 	}
-	resource.IsPublic = policyStatusOutput.PolicyStatus.IsPublic
+	if policyStatusOutput.PolicyStatus != nil {
+		resource.IsPublic = policyStatusOutput.PolicyStatus.IsPublic
+	}
 	return nil
 }
 
