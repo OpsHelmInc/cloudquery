@@ -106,6 +106,16 @@ func Buckets() *schema.Table {
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("OwnershipControls"),
 			},
+			{
+				Name:     "is_public",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("IsPublic"),
+			},
+			{
+				Name:     "sse_algorithm",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("SSEAlgorithm"),
+			},
 		},
 
 		Relations: []*schema.Table{
