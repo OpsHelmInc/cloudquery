@@ -60,11 +60,6 @@ func S3Resources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.ParentColumnResolver("arn")`,
 					},
-					{
-						Name:     "is_public",
-						Type:     schema.TypeString,
-						Resolver: `schema.ParentColumnResolver("is_public")`,
-					},
 				}...),
 		},
 		{
