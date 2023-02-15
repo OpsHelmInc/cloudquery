@@ -200,7 +200,7 @@ func fetchS3BucketEncryptionRules(ctx context.Context, meta schema.ClientMeta, p
 	if aclOutput.ServerSideEncryptionConfiguration != nil {
 		for _, rule := range aclOutput.ServerSideEncryptionConfiguration.Rules {
 			if rule.ApplyServerSideEncryptionByDefault != nil {
-				res <- rule.ApplyServerSideEncryptionByDefault.SSEAlgorithm
+				res <- rule
 			}
 		}
 	}
