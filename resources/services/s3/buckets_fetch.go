@@ -111,6 +111,10 @@ func resolveS3BucketsAttributes(ctx context.Context, meta schema.ClientMeta, res
 		return err
 	}
 
+	//if err = resolveBucketEncryptionRules(ctx, meta, resource, resource.Region); err != nil {
+	//	return err
+	//}
+
 	if err = resolveBucketPolicy(ctx, meta, resource, resource.Region); err != nil {
 		return err
 	}
@@ -157,6 +161,7 @@ func fetchS3BucketGrants(ctx context.Context, meta schema.ClientMeta, parent *sc
 	res <- aclOutput.Grants
 	return nil
 }
+
 func fetchS3BucketCorsRules(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
 	r := parent.Item.(*models.WrappedBucket)
 	c := meta.(*client.Client)
@@ -179,6 +184,7 @@ func fetchS3BucketCorsRules(ctx context.Context, meta schema.ClientMeta, parent 
 	}
 	return nil
 }
+
 func fetchS3BucketEncryptionRules(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
 	r := parent.Item.(*models.WrappedBucket)
 	c := meta.(*client.Client)
@@ -197,13 +203,7 @@ func fetchS3BucketEncryptionRules(ctx context.Context, meta schema.ClientMeta, p
 		return err
 	}
 
-	if aclOutput.ServerSideEncryptionConfiguration != nil {
-		for _, rule := range aclOutput.ServerSideEncryptionConfiguration.Rules {
-			if rule.ApplyServerSideEncryptionByDefault != nil {
-				res <- rule
-			}
-		}
-	}
+	res <- aclOutput.ServerSideEncryptionConfiguration.Rules
 
 	return nil
 }
@@ -228,6 +228,30 @@ func fetchS3BucketLifecycles(ctx context.Context, meta schema.ClientMeta, parent
 	res <- lifecycleOutput.Rules
 	return nil
 }
+
+/*
+func resolveBucketEncryptionRules(ctx context.Context, meta schema.ClientMeta, resource *models.WrappedBucket, bucketRegion string) error {
+	svc := meta.(*client.Client).Services().S3
+	bucketEncryptionOutput, err := svc.GetBucketEncryption(ctx, &s3.GetBucketEncryptionInput{Bucket: resource.Name}, func(options *s3.Options) {
+		options.Region = bucketRegion
+	})
+	if err != nil {
+		if client.IgnoreAccessDeniedServiceDisabled(err) {
+			return nil
+		}
+		return err
+	}
+	if bucketEncryptionOutput.ServerSideEncryptionConfiguration != nil {
+		for _, rule := range bucketEncryptionOutput.ServerSideEncryptionConfiguration.Rules {
+			if rule.ApplyServerSideEncryptionByDefault != nil {
+				resource.SSEAlgorithm = rule.ApplyServerSideEncryptionByDefault.SSEAlgorithm
+			}
+		}
+	}
+
+	return nil
+}
+*/
 
 func resolveBucketLogging(ctx context.Context, meta schema.ClientMeta, resource *models.WrappedBucket, bucketRegion string) error {
 	svc := meta.(*client.Client).Services().S3
