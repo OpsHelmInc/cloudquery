@@ -149,9 +149,9 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	golang.org/x/mod v0.6.0 // indirect
-	golang.org/x/net v0.2.0 // indirect
-	golang.org/x/sys v0.2.0 // indirect
-	golang.org/x/text v0.4.0 // indirect
+	golang.org/x/net v0.7.0 // indirect
+	golang.org/x/sys v0.5.0 // indirect
+	golang.org/x/text v0.7.0 // indirect
 	golang.org/x/tools v0.2.0 // indirect
 	google.golang.org/genproto v0.0.0-20221111202108-142d8a6fa32e // indirect
 	google.golang.org/grpc v1.51.0 // indirect
