@@ -26,9 +26,18 @@ func buildEc2LaunchTemplates(t *testing.T, ctrl *gomock.Controller) client.Servi
 	if err != nil {
 		t.Fatal(err)
 	}
-	m.EXPECT().GetLaunchTemplateData(gomock.Any(), gomock.Any()).Return(&launchTemplate, nil)
+	m.EXPECT().GetLaunchTemplateData(gomock.Any(), gomock.Any()).Return(launchTemplate, nil)
 
 	return client.Services{
 		Ec2: m,
 	}
+}
+
+func TestEc2LaunchTemplates(t *testing.T) {
+	client.AwsMockTestHelper(
+		t,
+		LaunchTemplates(),
+		buildEc2LaunchTemplates,
+		client.TestOptions{},
+	)
 }

@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/resources/services/ec2/models"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
 	"github.com/aws/aws-sdk-go-v2/service/ec2/types"
@@ -41,7 +42,9 @@ func getLaunchTemplate(ctx context.Context, meta schema.ClientMeta, resource *sc
 		return err
 	}
 
-	resource.Item = output.LaunchTemplateData
-
+	resource.Item = models.LaunchTemplateWrapper{
+		LaunchTemplateId:   launchTemplate.LaunchTemplateId,
+		LaunchTemplateData: output.LaunchTemplateData,
+	}
 	return nil
 }

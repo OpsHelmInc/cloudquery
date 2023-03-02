@@ -220,6 +220,22 @@ func EC2Resources() []*Resource {
 				}...),
 		},
 		{
+			SubService:          "launch_templates",
+			Struct:              &models.LaunchTemplateWrapper{},
+			Description:         "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ResponseLaunchTemplateData.html",
+			SkipFields:          []string{"LaunchTemplateId"},
+			PreResourceResolver: "getLaunchTemplate",
+			ExtraColumns: append(defaultRegionalColumns,
+				[]codegen.ColumnDefinition{
+					{
+						Name:     "launch_template_id",
+						Type:     schema.TypeString,
+						Resolver: `schema.PathResolver("LaunchTemplateId")`,
+						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+				}...),
+		},
+		{
 			SubService:  "nat_gateways",
 			Struct:      &types.NatGateway{},
 			Description: "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NatGateway.html",

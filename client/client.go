@@ -219,7 +219,7 @@ func getAccountId(ctx context.Context, awsCfg aws.Config) (*sts.GetCallerIdentit
 	return svc.GetCallerIdentity(ctx, &sts.GetCallerIdentityInput{})
 }
 
-func configureAwsClient(ctx context.Context, logger zerolog.Logger, spec *Spec, baseAwsConfig aws.Config, account Account, stsClient AssumeRoleAPIClient) (aws.Config, error) {
+func configureAwsClient(ctx context.Context, logger zerolog.Logger, spec *Spec, baseAwsConfig aws.Config) (aws.Config, error) {
 	var err error
 
 	maxAttempts := 10
@@ -281,7 +281,6 @@ func Configure(ctx context.Context, logger zerolog.Logger, spec specs.Source, ba
 	}
 
 	client := NewAwsClient(logger)
-	var adminAccountSts AssumeRoleAPIClient
 	if len(specConfig.Accounts) == 0 {
 		specConfig.Accounts = append(specConfig.Accounts, Account{
 			ID: defaultVar,
@@ -306,7 +305,7 @@ func Configure(ctx context.Context, logger zerolog.Logger, spec specs.Source, ba
 			logger.Info().Msg("All regions specified in `cloudquery.yml`. Assuming all regions")
 		}
 
-		awsCfg, err := configureAwsClient(ctx, logger, &specConfig, baseAwsConfig, account, adminAccountSts)
+		awsCfg, err := configureAwsClient(ctx, logger, &specConfig, baseAwsConfig)
 		if err != nil {
 			var ae smithy.APIError
 			if errors.As(err, &ae) {
