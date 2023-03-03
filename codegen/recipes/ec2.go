@@ -220,17 +220,22 @@ func EC2Resources() []*Resource {
 				}...),
 		},
 		{
-			SubService:          "launch_templates",
-			Struct:              &models.LaunchTemplateWrapper{},
-			Description:         "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ResponseLaunchTemplateData.html",
-			SkipFields:          []string{"LaunchTemplateId"},
-			PreResourceResolver: "getLaunchTemplate",
+			SubService:  "launch_template_versions",
+			Struct:      &types.LaunchTemplateVersion{},
+			Description: "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateVersion.html",
+			SkipFields:  []string{"LaunchTemplateId", "VersionNumber"},
 			ExtraColumns: append(defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
 					{
 						Name:     "launch_template_id",
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("LaunchTemplateId")`,
+						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     "version_number",
+						Type:     schema.TypeInt,
+						Resolver: `schema.PathResolver("VersionNumber")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
 				}...),

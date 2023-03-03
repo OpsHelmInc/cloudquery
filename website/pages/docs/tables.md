@@ -138,7 +138,7 @@
 - [aws_ec2_instance_types](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_ec2_instance_types.md)
 - [aws_ec2_internet_gateways](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_ec2_internet_gateways.md)
 - [aws_ec2_key_pairs](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_ec2_key_pairs.md)
-- [aws_ec2_launch_templates](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_ec2_launch_templates.md)
+- [aws_ec2_launch_template_versions](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_ec2_launch_template_versions.md)
 - [aws_ec2_nat_gateways](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_ec2_nat_gateways.md)
 - [aws_ec2_network_acls](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_ec2_network_acls.md)
 - [aws_ec2_network_interfaces](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_ec2_network_interfaces.md)
