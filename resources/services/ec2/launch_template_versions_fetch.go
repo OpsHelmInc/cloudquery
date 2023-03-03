@@ -30,20 +30,3 @@ func fetchEc2LaunchTemplateVersions(ctx context.Context, meta schema.ClientMeta,
 	}
 	return nil
 }
-
-//func getLaunchTemplate(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
-//	c := meta.(*client.Client)
-//	svc := c.Services().Ec2
-//	launchTemplate := resource.Item.(types.LaunchTemplate)
-//
-//	output, err := svc.GetLaunchTemplateData(ctx, &ec2.GetLaunchTemplateDataInput{InstanceId: launchTemplate.LaunchTemplateId})
-//	if err != nil {
-//		return err
-//	}
-//
-//	resource.Item = models.LaunchTemplateWrapper{
-//		LaunchTemplateId:   launchTemplate.LaunchTemplateId,
-//		LaunchTemplateData: output.LaunchTemplateData,
-//	}
-//	return nil
-//}
