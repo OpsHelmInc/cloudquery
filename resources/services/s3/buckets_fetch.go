@@ -103,6 +103,7 @@ func resolveS3BucketsAttributes(ctx context.Context, meta schema.ClientMeta, res
 	if output != "" {
 		resource.Region = output
 	}
+
 	if err = resolveBucketLogging(ctx, meta, resource, resource.Region); err != nil {
 		if isBucketNotFoundError(c, err) {
 			return nil
@@ -111,6 +112,10 @@ func resolveS3BucketsAttributes(ctx context.Context, meta schema.ClientMeta, res
 	}
 
 	if err = resolveBucketPolicy(ctx, meta, resource, resource.Region); err != nil {
+		return err
+	}
+
+	if err = resolveBucketPolicyStatus(ctx, meta, resource, resource.Region); err != nil {
 		return err
 	}
 
@@ -152,6 +157,7 @@ func fetchS3BucketGrants(ctx context.Context, meta schema.ClientMeta, parent *sc
 	res <- aclOutput.Grants
 	return nil
 }
+
 func fetchS3BucketCorsRules(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
 	r := parent.Item.(*models.WrappedBucket)
 	c := meta.(*client.Client)
@@ -174,6 +180,7 @@ func fetchS3BucketCorsRules(ctx context.Context, meta schema.ClientMeta, parent 
 	}
 	return nil
 }
+
 func fetchS3BucketEncryptionRules(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
 	r := parent.Item.(*models.WrappedBucket)
 	c := meta.(*client.Client)
@@ -191,7 +198,9 @@ func fetchS3BucketEncryptionRules(ctx context.Context, meta schema.ClientMeta, p
 		}
 		return err
 	}
+
 	res <- aclOutput.ServerSideEncryptionConfiguration.Rules
+
 	return nil
 }
 
@@ -261,6 +270,32 @@ func resolveBucketPolicy(ctx context.Context, meta schema.ClientMeta, resource *
 		return fmt.Errorf("failed to unmarshal JSON policy: %v", err)
 	}
 	resource.Policy = p
+	return nil
+}
+
+func resolveBucketPolicyStatus(ctx context.Context, meta schema.ClientMeta, resource *models.WrappedBucket, bucketRegion string) error {
+	c := meta.(*client.Client)
+	svc := c.Services().S3
+	policyStatusOutput, err := svc.GetBucketPolicyStatus(ctx, &s3.GetBucketPolicyStatusInput{Bucket: resource.Name}, func(options *s3.Options) {
+		options.Region = bucketRegion
+	})
+	// check if we got an error but its access denied we can continue
+	if err != nil {
+		// if we got an error, and it's not a NoSuchBucketError, return err
+		if client.IsAWSError(err, "NoSuchBucketPolicy") {
+			return nil
+		}
+		if client.IgnoreAccessDeniedServiceDisabled(err) {
+			return nil
+		}
+		return err
+	}
+	if policyStatusOutput == nil {
+		return nil
+	}
+	if policyStatusOutput.PolicyStatus != nil {
+		resource.IsPublic = policyStatusOutput.PolicyStatus.IsPublic
+	}
 	return nil
 }
 

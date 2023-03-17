@@ -60,6 +60,11 @@ func S3Resources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.ParentColumnResolver("arn")`,
 					},
+					{
+						Name:     "sse_algorithm",
+						Type:     schema.TypeString,
+						Resolver: `schema.PathResolver("ApplyServerSideEncryptionByDefault.SSEAlgorithm")`,
+					},
 				}...),
 		},
 		{

@@ -37,4 +37,8 @@ type WrappedBucket struct {
 	RestrictPublicBuckets bool
 	Tags                  map[string]*string
 	OwnershipControls     []string
+
+	// <-- Below here are additional fields added for OpsHelm, not part of OG CloudQuery -->
+	IsPublic     bool
+	SSEAlgorithm types.ServerSideEncryption
 }
