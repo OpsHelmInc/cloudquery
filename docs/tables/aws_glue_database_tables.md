@@ -26,6 +26,7 @@ The following tables depend on aws_glue_database_tables:
 |created_by|String|
 |database_name|String|
 |description|String|
+|federated_table|JSON|
 |is_registered_with_lake_formation|Bool|
 |last_access_time|Timestamp|
 |last_analyzed_time|Timestamp|

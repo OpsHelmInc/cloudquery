@@ -153,6 +153,11 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("EngineVersion"),
 			},
 			{
+				Name:     "global_cluster_identifier",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("GlobalClusterIdentifier"),
+			},
+			{
 				Name:     "hosted_zone_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("HostedZoneId"),
@@ -181,6 +186,11 @@ func Clusters() *schema.Table {
 				Name:     "multi_az",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("MultiAZ"),
+			},
+			{
+				Name:     "pending_modified_values",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("PendingModifiedValues"),
 			},
 			{
 				Name:     "percent_progress",

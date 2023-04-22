@@ -50,6 +50,11 @@ func FunctionEventSourceMappings() *schema.Table {
 				Resolver: schema.PathResolver("DestinationConfig"),
 			},
 			{
+				Name:     "document_db_event_source_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("DocumentDBEventSourceConfig"),
+			},
+			{
 				Name:     "event_source_arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("EventSourceArn"),
@@ -98,6 +103,11 @@ func FunctionEventSourceMappings() *schema.Table {
 				Name:     "queues",
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("Queues"),
+			},
+			{
+				Name:     "scaling_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ScalingConfig"),
 			},
 			{
 				Name:     "self_managed_event_source",

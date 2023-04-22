@@ -52,6 +52,11 @@ func Disks() *schema.Table {
 				Resolver: schema.PathResolver("AttachmentState"),
 			},
 			{
+				Name:     "auto_mount_status",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("AutoMountStatus"),
+			},
+			{
 				Name:     "created_at",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreatedAt"),

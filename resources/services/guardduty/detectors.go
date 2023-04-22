@@ -64,6 +64,11 @@ func Detectors() *schema.Table {
 				Resolver: schema.PathResolver("DataSources"),
 			},
 			{
+				Name:     "features",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Features"),
+			},
+			{
 				Name:     "finding_publishing_frequency",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("FindingPublishingFrequency"),

@@ -155,6 +155,26 @@ func (mr *MockSagemakerClientMockRecorder) DescribeAutoMLJob(arg0, arg1 interfac
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeAutoMLJob", reflect.TypeOf((*MockSagemakerClient)(nil).DescribeAutoMLJob), varargs...)
 }
 
+// DescribeAutoMLJobV2 mocks base method.
+func (m *MockSagemakerClient) DescribeAutoMLJobV2(arg0 context.Context, arg1 *sagemaker.DescribeAutoMLJobV2Input, arg2 ...func(*sagemaker.Options)) (*sagemaker.DescribeAutoMLJobV2Output, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeAutoMLJobV2", varargs...)
+	ret0, _ := ret[0].(*sagemaker.DescribeAutoMLJobV2Output)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeAutoMLJobV2 indicates an expected call of DescribeAutoMLJobV2.
+func (mr *MockSagemakerClientMockRecorder) DescribeAutoMLJobV2(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeAutoMLJobV2", reflect.TypeOf((*MockSagemakerClient)(nil).DescribeAutoMLJobV2), varargs...)
+}
+
 // DescribeCodeRepository mocks base method.
 func (m *MockSagemakerClient) DescribeCodeRepository(arg0 context.Context, arg1 *sagemaker.DescribeCodeRepositoryInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.DescribeCodeRepositoryOutput, error) {
 	m.ctrl.T.Helper()
@@ -1313,6 +1333,26 @@ func (mr *MockSagemakerClientMockRecorder) ListAlgorithms(arg0, arg1 interface{}
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAlgorithms", reflect.TypeOf((*MockSagemakerClient)(nil).ListAlgorithms), varargs...)
+}
+
+// ListAliases mocks base method.
+func (m *MockSagemakerClient) ListAliases(arg0 context.Context, arg1 *sagemaker.ListAliasesInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.ListAliasesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListAliases", varargs...)
+	ret0, _ := ret[0].(*sagemaker.ListAliasesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListAliases indicates an expected call of ListAliases.
+func (mr *MockSagemakerClientMockRecorder) ListAliases(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAliases", reflect.TypeOf((*MockSagemakerClient)(nil).ListAliases), varargs...)
 }
 
 // ListAppImageConfigs mocks base method.

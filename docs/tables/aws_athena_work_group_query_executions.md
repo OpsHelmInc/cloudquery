@@ -28,4 +28,5 @@ This table depends on [aws_athena_work_groups](aws_athena_work_groups.md).
 |statement_type|String|
 |statistics|JSON|
 |status|JSON|
+|substatement_type|String|
 |work_group|String|

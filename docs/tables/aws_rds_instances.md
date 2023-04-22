@@ -34,6 +34,7 @@ The primary key for this table is **arn**.
 |backup_retention_period|Int|
 |backup_target|String|
 |ca_certificate_identifier|String|
+|certificate_details|JSON|
 |character_set_name|String|
 |copy_tags_to_snapshot|Bool|
 |custom_iam_instance_profile|String|
@@ -64,6 +65,7 @@ The primary key for this table is **arn**.
 |latest_restorable_time|Timestamp|
 |license_model|String|
 |listener_endpoint|JSON|
+|master_user_secret|JSON|
 |master_username|String|
 |max_allocated_storage|Int|
 |monitoring_interval|Int|
@@ -82,6 +84,7 @@ The primary key for this table is **arn**.
 |publicly_accessible|Bool|
 |read_replica_db_cluster_identifiers|StringArray|
 |read_replica_db_instance_identifiers|StringArray|
+|read_replica_source_db_cluster_identifier|String|
 |read_replica_source_db_instance_identifier|String|
 |replica_mode|String|
 |resume_full_automation_mode_time|Timestamp|

@@ -17,5 +17,6 @@ This table depends on [aws_s3_buckets](aws_s3_buckets.md).
 |_cq_parent_id|UUID|
 |account_id|String|
 |bucket_arn|String|
+|sse_algorithm|String|
 |apply_server_side_encryption_by_default|JSON|
 |bucket_key_enabled|Bool|

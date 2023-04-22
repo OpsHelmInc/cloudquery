@@ -123,6 +123,11 @@ func Instances() *schema.Table {
 				Resolver: schema.PathResolver("CACertificateIdentifier"),
 			},
 			{
+				Name:     "certificate_details",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("CertificateDetails"),
+			},
+			{
 				Name:     "character_set_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("CharacterSetName"),
@@ -273,6 +278,11 @@ func Instances() *schema.Table {
 				Resolver: schema.PathResolver("ListenerEndpoint"),
 			},
 			{
+				Name:     "master_user_secret",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("MasterUserSecret"),
+			},
+			{
 				Name:     "master_username",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("MasterUsername"),
@@ -361,6 +371,11 @@ func Instances() *schema.Table {
 				Name:     "read_replica_db_instance_identifiers",
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("ReadReplicaDBInstanceIdentifiers"),
+			},
+			{
+				Name:     "read_replica_source_db_cluster_identifier",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ReadReplicaSourceDBClusterIdentifier"),
 			},
 			{
 				Name:     "read_replica_source_db_instance_identifier",

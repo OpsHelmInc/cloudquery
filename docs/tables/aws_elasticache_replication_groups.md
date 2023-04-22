@@ -43,4 +43,5 @@ The primary key for this table is **arn**.
 |snapshotting_cluster_id|String|
 |status|String|
 |transit_encryption_enabled|Bool|
+|transit_encryption_mode|String|
 |user_group_ids|StringArray|

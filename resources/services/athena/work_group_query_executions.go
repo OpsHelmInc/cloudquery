@@ -81,6 +81,11 @@ func WorkGroupQueryExecutions() *schema.Table {
 				Resolver: schema.PathResolver("Status"),
 			},
 			{
+				Name:     "substatement_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("SubstatementType"),
+			},
+			{
 				Name:     "work_group",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("WorkGroup"),

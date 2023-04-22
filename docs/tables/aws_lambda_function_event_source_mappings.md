@@ -22,6 +22,7 @@ This table depends on [aws_lambda_functions](aws_lambda_functions.md).
 |batch_size|Int|
 |bisect_batch_on_function_error|Bool|
 |destination_config|JSON|
+|document_db_event_source_config|JSON|
 |event_source_arn|String|
 |filter_criteria|JSON|
 |function_response_types|StringArray|
@@ -32,6 +33,7 @@ This table depends on [aws_lambda_functions](aws_lambda_functions.md).
 |maximum_retry_attempts|Int|
 |parallelization_factor|Int|
 |queues|StringArray|
+|scaling_config|JSON|
 |self_managed_event_source|JSON|
 |self_managed_kafka_event_source_config|JSON|
 |source_access_configurations|JSON|

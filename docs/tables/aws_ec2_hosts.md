@@ -24,6 +24,7 @@ The primary key for this table is **arn**.
 |available_capacity|JSON|
 |client_token|String|
 |host_id|String|
+|host_maintenance|String|
 |host_properties|JSON|
 |host_recovery|String|
 |host_reservation_id|String|

@@ -73,6 +73,11 @@ func Hosts() *schema.Table {
 				Resolver: schema.PathResolver("HostId"),
 			},
 			{
+				Name:     "host_maintenance",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("HostMaintenance"),
+			},
+			{
 				Name:     "host_properties",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("HostProperties"),

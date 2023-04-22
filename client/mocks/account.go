@@ -74,3 +74,43 @@ func (mr *MockAccountClientMockRecorder) GetContactInformation(arg0, arg1 interf
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetContactInformation", reflect.TypeOf((*MockAccountClient)(nil).GetContactInformation), varargs...)
 }
+
+// GetRegionOptStatus mocks base method.
+func (m *MockAccountClient) GetRegionOptStatus(arg0 context.Context, arg1 *account.GetRegionOptStatusInput, arg2 ...func(*account.Options)) (*account.GetRegionOptStatusOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetRegionOptStatus", varargs...)
+	ret0, _ := ret[0].(*account.GetRegionOptStatusOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetRegionOptStatus indicates an expected call of GetRegionOptStatus.
+func (mr *MockAccountClientMockRecorder) GetRegionOptStatus(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetRegionOptStatus", reflect.TypeOf((*MockAccountClient)(nil).GetRegionOptStatus), varargs...)
+}
+
+// ListRegions mocks base method.
+func (m *MockAccountClient) ListRegions(arg0 context.Context, arg1 *account.ListRegionsInput, arg2 ...func(*account.Options)) (*account.ListRegionsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListRegions", varargs...)
+	ret0, _ := ret[0].(*account.ListRegionsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListRegions indicates an expected call of ListRegions.
+func (mr *MockAccountClientMockRecorder) ListRegions(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListRegions", reflect.TypeOf((*MockAccountClient)(nil).ListRegions), varargs...)
+}

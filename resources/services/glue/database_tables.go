@@ -65,6 +65,11 @@ func DatabaseTables() *schema.Table {
 				Resolver: schema.PathResolver("Description"),
 			},
 			{
+				Name:     "federated_table",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("FederatedTable"),
+			},
+			{
 				Name:     "is_registered_with_lake_formation",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("IsRegisteredWithLakeFormation"),
