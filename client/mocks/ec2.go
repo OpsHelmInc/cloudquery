@@ -1115,6 +1115,46 @@ func (mr *MockEc2ClientMockRecorder) DescribeIpamPools(arg0, arg1 interface{}, a
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeIpamPools", reflect.TypeOf((*MockEc2Client)(nil).DescribeIpamPools), varargs...)
 }
 
+// DescribeIpamResourceDiscoveries mocks base method.
+func (m *MockEc2Client) DescribeIpamResourceDiscoveries(arg0 context.Context, arg1 *ec2.DescribeIpamResourceDiscoveriesInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeIpamResourceDiscoveriesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeIpamResourceDiscoveries", varargs...)
+	ret0, _ := ret[0].(*ec2.DescribeIpamResourceDiscoveriesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeIpamResourceDiscoveries indicates an expected call of DescribeIpamResourceDiscoveries.
+func (mr *MockEc2ClientMockRecorder) DescribeIpamResourceDiscoveries(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeIpamResourceDiscoveries", reflect.TypeOf((*MockEc2Client)(nil).DescribeIpamResourceDiscoveries), varargs...)
+}
+
+// DescribeIpamResourceDiscoveryAssociations mocks base method.
+func (m *MockEc2Client) DescribeIpamResourceDiscoveryAssociations(arg0 context.Context, arg1 *ec2.DescribeIpamResourceDiscoveryAssociationsInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeIpamResourceDiscoveryAssociationsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeIpamResourceDiscoveryAssociations", varargs...)
+	ret0, _ := ret[0].(*ec2.DescribeIpamResourceDiscoveryAssociationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeIpamResourceDiscoveryAssociations indicates an expected call of DescribeIpamResourceDiscoveryAssociations.
+func (mr *MockEc2ClientMockRecorder) DescribeIpamResourceDiscoveryAssociations(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeIpamResourceDiscoveryAssociations", reflect.TypeOf((*MockEc2Client)(nil).DescribeIpamResourceDiscoveryAssociations), varargs...)
+}
+
 // DescribeIpamScopes mocks base method.
 func (m *MockEc2Client) DescribeIpamScopes(arg0 context.Context, arg1 *ec2.DescribeIpamScopesInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeIpamScopesOutput, error) {
 	m.ctrl.T.Helper()
@@ -3193,6 +3233,46 @@ func (mr *MockEc2ClientMockRecorder) GetIpamAddressHistory(arg0, arg1 interface{
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetIpamAddressHistory", reflect.TypeOf((*MockEc2Client)(nil).GetIpamAddressHistory), varargs...)
+}
+
+// GetIpamDiscoveredAccounts mocks base method.
+func (m *MockEc2Client) GetIpamDiscoveredAccounts(arg0 context.Context, arg1 *ec2.GetIpamDiscoveredAccountsInput, arg2 ...func(*ec2.Options)) (*ec2.GetIpamDiscoveredAccountsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetIpamDiscoveredAccounts", varargs...)
+	ret0, _ := ret[0].(*ec2.GetIpamDiscoveredAccountsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetIpamDiscoveredAccounts indicates an expected call of GetIpamDiscoveredAccounts.
+func (mr *MockEc2ClientMockRecorder) GetIpamDiscoveredAccounts(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetIpamDiscoveredAccounts", reflect.TypeOf((*MockEc2Client)(nil).GetIpamDiscoveredAccounts), varargs...)
+}
+
+// GetIpamDiscoveredResourceCidrs mocks base method.
+func (m *MockEc2Client) GetIpamDiscoveredResourceCidrs(arg0 context.Context, arg1 *ec2.GetIpamDiscoveredResourceCidrsInput, arg2 ...func(*ec2.Options)) (*ec2.GetIpamDiscoveredResourceCidrsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetIpamDiscoveredResourceCidrs", varargs...)
+	ret0, _ := ret[0].(*ec2.GetIpamDiscoveredResourceCidrsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetIpamDiscoveredResourceCidrs indicates an expected call of GetIpamDiscoveredResourceCidrs.
+func (mr *MockEc2ClientMockRecorder) GetIpamDiscoveredResourceCidrs(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetIpamDiscoveredResourceCidrs", reflect.TypeOf((*MockEc2Client)(nil).GetIpamDiscoveredResourceCidrs), varargs...)
 }
 
 // GetIpamPoolAllocations mocks base method.

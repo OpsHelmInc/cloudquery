@@ -62,6 +62,11 @@ func EngineVersions() *schema.Table {
 				Resolver: schema.PathResolver("DBEngineDescription"),
 			},
 			{
+				Name:     "db_engine_media_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("DBEngineMediaType"),
+			},
+			{
 				Name:     "db_engine_version_arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("DBEngineVersionArn"),
@@ -97,6 +102,11 @@ func EngineVersions() *schema.Table {
 				Resolver: schema.PathResolver("ExportableLogTypes"),
 			},
 			{
+				Name:     "image",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Image"),
+			},
+			{
 				Name:     "kms_key_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("KMSKeyId"),
@@ -110,6 +120,11 @@ func EngineVersions() *schema.Table {
 				Name:     "status",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Status"),
+			},
+			{
+				Name:     "supported_ca_certificate_identifiers",
+				Type:     schema.TypeStringArray,
+				Resolver: schema.PathResolver("SupportedCACertificateIdentifiers"),
 			},
 			{
 				Name:     "supported_character_sets",
@@ -140,6 +155,11 @@ func EngineVersions() *schema.Table {
 				Name:     "supports_babelfish",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("SupportsBabelfish"),
+			},
+			{
+				Name:     "supports_certificate_rotation_without_restart",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("SupportsCertificateRotationWithoutRestart"),
 			},
 			{
 				Name:     "supports_global_databases",

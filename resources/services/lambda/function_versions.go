@@ -145,6 +145,11 @@ func FunctionVersions() *schema.Table {
 				Resolver: schema.PathResolver("Runtime"),
 			},
 			{
+				Name:     "runtime_version_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("RuntimeVersionConfig"),
+			},
+			{
 				Name:     "signing_job_arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("SigningJobArn"),

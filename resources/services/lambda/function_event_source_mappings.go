@@ -100,6 +100,11 @@ func FunctionEventSourceMappings() *schema.Table {
 				Resolver: schema.PathResolver("Queues"),
 			},
 			{
+				Name:     "scaling_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ScalingConfig"),
+			},
+			{
 				Name:     "self_managed_event_source",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("SelfManagedEventSource"),

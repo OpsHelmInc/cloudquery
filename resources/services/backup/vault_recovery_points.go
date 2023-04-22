@@ -123,6 +123,11 @@ func VaultRecoveryPoints() *schema.Table {
 				Resolver: schema.PathResolver("ResourceArn"),
 			},
 			{
+				Name:     "resource_name",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ResourceName"),
+			},
+			{
 				Name:     "resource_type",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ResourceType"),
