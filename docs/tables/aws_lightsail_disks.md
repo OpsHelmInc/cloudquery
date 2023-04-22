@@ -23,6 +23,7 @@ The following tables depend on aws_lightsail_disks:
 |add_ons|JSON|
 |attached_to|String|
 |attachment_state|String|
+|auto_mount_status|String|
 |created_at|Timestamp|
 |gb_in_use|Int|
 |iops|Int|

@@ -84,6 +84,7 @@ The primary key for this table is **arn**.
 |publicly_accessible|Bool|
 |read_replica_db_cluster_identifiers|StringArray|
 |read_replica_db_instance_identifiers|StringArray|
+|read_replica_source_db_cluster_identifier|String|
 |read_replica_source_db_instance_identifier|String|
 |replica_mode|String|
 |resume_full_automation_mode_time|Timestamp|

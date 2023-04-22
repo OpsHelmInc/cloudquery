@@ -63,6 +63,11 @@ func WebAcls() *schema.Table {
 				Resolver: schema.PathResolver("VisibilityConfig"),
 			},
 			{
+				Name:     "association_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("AssociationConfig"),
+			},
+			{
 				Name:     "capacity",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("Capacity"),

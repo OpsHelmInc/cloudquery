@@ -40,12 +40,14 @@ The primary key for this table is **arn**.
 |endpoint|String|
 |engine|String|
 |engine_version|String|
+|global_cluster_identifier|String|
 |hosted_zone_id|String|
 |iam_database_authentication_enabled|Bool|
 |kms_key_id|String|
 |latest_restorable_time|Timestamp|
 |master_username|String|
 |multi_az|Bool|
+|pending_modified_values|JSON|
 |percent_progress|String|
 |port|Int|
 |preferred_backup_window|String|

@@ -24,6 +24,7 @@ The following tables depend on aws_guardduty_detectors:
 |status|String|
 |created_at|String|
 |data_sources|JSON|
+|features|JSON|
 |finding_publishing_frequency|String|
 |tags|JSON|
 |updated_at|String|

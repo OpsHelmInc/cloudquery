@@ -47,6 +47,11 @@ func ResourceSharePermissions() *schema.Table {
 				Resolver: schema.PathResolver("DefaultVersion"),
 			},
 			{
+				Name:     "feature_set",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("FeatureSet"),
+			},
+			{
 				Name:     "is_resource_type_default",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("IsResourceTypeDefault"),
@@ -62,6 +67,11 @@ func ResourceSharePermissions() *schema.Table {
 				Resolver: schema.PathResolver("Name"),
 			},
 			{
+				Name:     "permission_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("PermissionType"),
+			},
+			{
 				Name:     "resource_type",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ResourceType"),
@@ -70,6 +80,11 @@ func ResourceSharePermissions() *schema.Table {
 				Name:     "status",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Status"),
+			},
+			{
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: client.ResolveTags,
 			},
 			{
 				Name:     "version",

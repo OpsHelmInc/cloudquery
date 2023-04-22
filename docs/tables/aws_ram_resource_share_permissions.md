@@ -21,9 +21,12 @@ This table depends on [aws_ram_resource_shares](aws_ram_resource_shares.md).
 |arn (PK)|String|
 |creation_time|Timestamp|
 |default_version|Bool|
+|feature_set|String|
 |is_resource_type_default|Bool|
 |last_updated_time|Timestamp|
 |name|String|
+|permission_type|String|
 |resource_type|String|
 |status|String|
+|tags|JSON|
 |version|String|

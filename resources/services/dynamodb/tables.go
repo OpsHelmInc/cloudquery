@@ -59,6 +59,11 @@ func Tables() *schema.Table {
 				Resolver: schema.PathResolver("CreationDateTime"),
 			},
 			{
+				Name:     "deletion_protection_enabled",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("DeletionProtectionEnabled"),
+			},
+			{
 				Name:     "global_secondary_indexes",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("GlobalSecondaryIndexes"),

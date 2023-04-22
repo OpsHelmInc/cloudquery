@@ -155,6 +155,26 @@ func (mr *MockRamClientMockRecorder) ListPendingInvitationResources(arg0, arg1 i
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListPendingInvitationResources", reflect.TypeOf((*MockRamClient)(nil).ListPendingInvitationResources), varargs...)
 }
 
+// ListPermissionAssociations mocks base method.
+func (m *MockRamClient) ListPermissionAssociations(arg0 context.Context, arg1 *ram.ListPermissionAssociationsInput, arg2 ...func(*ram.Options)) (*ram.ListPermissionAssociationsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListPermissionAssociations", varargs...)
+	ret0, _ := ret[0].(*ram.ListPermissionAssociationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListPermissionAssociations indicates an expected call of ListPermissionAssociations.
+func (mr *MockRamClientMockRecorder) ListPermissionAssociations(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListPermissionAssociations", reflect.TypeOf((*MockRamClient)(nil).ListPermissionAssociations), varargs...)
+}
+
 // ListPermissionVersions mocks base method.
 func (m *MockRamClient) ListPermissionVersions(arg0 context.Context, arg1 *ram.ListPermissionVersionsInput, arg2 ...func(*ram.Options)) (*ram.ListPermissionVersionsOutput, error) {
 	m.ctrl.T.Helper()
@@ -213,6 +233,26 @@ func (mr *MockRamClientMockRecorder) ListPrincipals(arg0, arg1 interface{}, arg2
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListPrincipals", reflect.TypeOf((*MockRamClient)(nil).ListPrincipals), varargs...)
+}
+
+// ListReplacePermissionAssociationsWork mocks base method.
+func (m *MockRamClient) ListReplacePermissionAssociationsWork(arg0 context.Context, arg1 *ram.ListReplacePermissionAssociationsWorkInput, arg2 ...func(*ram.Options)) (*ram.ListReplacePermissionAssociationsWorkOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListReplacePermissionAssociationsWork", varargs...)
+	ret0, _ := ret[0].(*ram.ListReplacePermissionAssociationsWorkOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListReplacePermissionAssociationsWork indicates an expected call of ListReplacePermissionAssociationsWork.
+func (mr *MockRamClientMockRecorder) ListReplacePermissionAssociationsWork(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListReplacePermissionAssociationsWork", reflect.TypeOf((*MockRamClient)(nil).ListReplacePermissionAssociationsWork), varargs...)
 }
 
 // ListResourceSharePermissions mocks base method.

@@ -134,6 +134,16 @@ func Environments() *schema.Table {
 				Resolver: schema.PathResolver("SourceBucketArn"),
 			},
 			{
+				Name:     "startup_script_s3_object_version",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("StartupScriptS3ObjectVersion"),
+			},
+			{
+				Name:     "startup_script_s3_path",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("StartupScriptS3Path"),
+			},
+			{
 				Name:     "status",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Status"),

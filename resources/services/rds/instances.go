@@ -373,6 +373,11 @@ func Instances() *schema.Table {
 				Resolver: schema.PathResolver("ReadReplicaDBInstanceIdentifiers"),
 			},
 			{
+				Name:     "read_replica_source_db_cluster_identifier",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ReadReplicaSourceDBClusterIdentifier"),
+			},
+			{
 				Name:     "read_replica_source_db_instance_identifier",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ReadReplicaSourceDBInstanceIdentifier"),

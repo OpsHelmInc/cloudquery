@@ -123,6 +123,11 @@ func Jobs() *schema.Table {
 				Resolver: schema.PathResolver("ReasonCode"),
 			},
 			{
+				Name:     "scheduled_job_rollouts",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ScheduledJobRollouts"),
+			},
+			{
 				Name:     "scheduling_config",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("SchedulingConfig"),

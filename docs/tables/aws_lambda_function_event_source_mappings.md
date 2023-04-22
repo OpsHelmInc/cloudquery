@@ -22,6 +22,7 @@ This table depends on [aws_lambda_functions](aws_lambda_functions.md).
 |batch_size|Int|
 |bisect_batch_on_function_error|Bool|
 |destination_config|JSON|
+|document_db_event_source_config|JSON|
 |event_source_arn|String|
 |filter_criteria|JSON|
 |function_response_types|StringArray|

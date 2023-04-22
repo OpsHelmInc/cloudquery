@@ -79,6 +79,11 @@ func Instances() *schema.Table {
 				Resolver: schema.PathResolver("CpuOptions"),
 			},
 			{
+				Name:     "current_instance_boot_mode",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("CurrentInstanceBootMode"),
+			},
+			{
 				Name:     "ebs_optimized",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("EbsOptimized"),

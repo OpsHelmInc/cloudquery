@@ -114,3 +114,23 @@ func (mr *MockApplicationautoscalingClientMockRecorder) DescribeScheduledActions
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeScheduledActions", reflect.TypeOf((*MockApplicationautoscalingClient)(nil).DescribeScheduledActions), varargs...)
 }
+
+// ListTagsForResource mocks base method.
+func (m *MockApplicationautoscalingClient) ListTagsForResource(arg0 context.Context, arg1 *applicationautoscaling.ListTagsForResourceInput, arg2 ...func(*applicationautoscaling.Options)) (*applicationautoscaling.ListTagsForResourceOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListTagsForResource", varargs...)
+	ret0, _ := ret[0].(*applicationautoscaling.ListTagsForResourceOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListTagsForResource indicates an expected call of ListTagsForResource.
+func (mr *MockApplicationautoscalingClientMockRecorder) ListTagsForResource(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListTagsForResource", reflect.TypeOf((*MockApplicationautoscalingClient)(nil).ListTagsForResource), varargs...)
+}

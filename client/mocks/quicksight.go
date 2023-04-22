@@ -255,6 +255,26 @@ func (mr *MockQuicksightClientMockRecorder) DescribeDataSetPermissions(arg0, arg
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeDataSetPermissions", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeDataSetPermissions), varargs...)
 }
 
+// DescribeDataSetRefreshProperties mocks base method.
+func (m *MockQuicksightClient) DescribeDataSetRefreshProperties(arg0 context.Context, arg1 *quicksight.DescribeDataSetRefreshPropertiesInput, arg2 ...func(*quicksight.Options)) (*quicksight.DescribeDataSetRefreshPropertiesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeDataSetRefreshProperties", varargs...)
+	ret0, _ := ret[0].(*quicksight.DescribeDataSetRefreshPropertiesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeDataSetRefreshProperties indicates an expected call of DescribeDataSetRefreshProperties.
+func (mr *MockQuicksightClientMockRecorder) DescribeDataSetRefreshProperties(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeDataSetRefreshProperties", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeDataSetRefreshProperties), varargs...)
+}
+
 // DescribeDataSource mocks base method.
 func (m *MockQuicksightClient) DescribeDataSource(arg0 context.Context, arg1 *quicksight.DescribeDataSourceInput, arg2 ...func(*quicksight.Options)) (*quicksight.DescribeDataSourceOutput, error) {
 	m.ctrl.T.Helper()
@@ -473,6 +493,26 @@ func (mr *MockQuicksightClientMockRecorder) DescribeNamespace(arg0, arg1 interfa
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeNamespace", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeNamespace), varargs...)
+}
+
+// DescribeRefreshSchedule mocks base method.
+func (m *MockQuicksightClient) DescribeRefreshSchedule(arg0 context.Context, arg1 *quicksight.DescribeRefreshScheduleInput, arg2 ...func(*quicksight.Options)) (*quicksight.DescribeRefreshScheduleOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeRefreshSchedule", varargs...)
+	ret0, _ := ret[0].(*quicksight.DescribeRefreshScheduleOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeRefreshSchedule indicates an expected call of DescribeRefreshSchedule.
+func (mr *MockQuicksightClientMockRecorder) DescribeRefreshSchedule(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeRefreshSchedule", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeRefreshSchedule), varargs...)
 }
 
 // DescribeTemplate mocks base method.
@@ -933,6 +973,26 @@ func (mr *MockQuicksightClientMockRecorder) ListNamespaces(arg0, arg1 interface{
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListNamespaces", reflect.TypeOf((*MockQuicksightClient)(nil).ListNamespaces), varargs...)
+}
+
+// ListRefreshSchedules mocks base method.
+func (m *MockQuicksightClient) ListRefreshSchedules(arg0 context.Context, arg1 *quicksight.ListRefreshSchedulesInput, arg2 ...func(*quicksight.Options)) (*quicksight.ListRefreshSchedulesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListRefreshSchedules", varargs...)
+	ret0, _ := ret[0].(*quicksight.ListRefreshSchedulesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListRefreshSchedules indicates an expected call of ListRefreshSchedules.
+func (mr *MockQuicksightClientMockRecorder) ListRefreshSchedules(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListRefreshSchedules", reflect.TypeOf((*MockQuicksightClient)(nil).ListRefreshSchedules), varargs...)
 }
 
 // ListTagsForResource mocks base method.

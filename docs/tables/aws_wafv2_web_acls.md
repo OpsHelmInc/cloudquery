@@ -22,6 +22,7 @@ The primary key for this table is **arn**.
 |id|String|
 |name|String|
 |visibility_config|JSON|
+|association_config|JSON|
 |capacity|Int|
 |captcha_config|JSON|
 |challenge_config|JSON|

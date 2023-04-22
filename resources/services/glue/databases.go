@@ -62,6 +62,11 @@ func Databases() *schema.Table {
 				Resolver: schema.PathResolver("Description"),
 			},
 			{
+				Name:     "federated_database",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("FederatedDatabase"),
+			},
+			{
 				Name:     "location_uri",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("LocationUri"),

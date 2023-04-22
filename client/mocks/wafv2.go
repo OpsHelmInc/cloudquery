@@ -55,6 +55,26 @@ func (mr *MockWafv2ClientMockRecorder) DescribeManagedRuleGroup(arg0, arg1 inter
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeManagedRuleGroup", reflect.TypeOf((*MockWafv2Client)(nil).DescribeManagedRuleGroup), varargs...)
 }
 
+// GetDecryptedAPIKey mocks base method.
+func (m *MockWafv2Client) GetDecryptedAPIKey(arg0 context.Context, arg1 *wafv2.GetDecryptedAPIKeyInput, arg2 ...func(*wafv2.Options)) (*wafv2.GetDecryptedAPIKeyOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetDecryptedAPIKey", varargs...)
+	ret0, _ := ret[0].(*wafv2.GetDecryptedAPIKeyOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetDecryptedAPIKey indicates an expected call of GetDecryptedAPIKey.
+func (mr *MockWafv2ClientMockRecorder) GetDecryptedAPIKey(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDecryptedAPIKey", reflect.TypeOf((*MockWafv2Client)(nil).GetDecryptedAPIKey), varargs...)
+}
+
 // GetIPSet mocks base method.
 func (m *MockWafv2Client) GetIPSet(arg0 context.Context, arg1 *wafv2.GetIPSetInput, arg2 ...func(*wafv2.Options)) (*wafv2.GetIPSetOutput, error) {
 	m.ctrl.T.Helper()
@@ -273,6 +293,26 @@ func (mr *MockWafv2ClientMockRecorder) GetWebACLForResource(arg0, arg1 interface
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetWebACLForResource", reflect.TypeOf((*MockWafv2Client)(nil).GetWebACLForResource), varargs...)
+}
+
+// ListAPIKeys mocks base method.
+func (m *MockWafv2Client) ListAPIKeys(arg0 context.Context, arg1 *wafv2.ListAPIKeysInput, arg2 ...func(*wafv2.Options)) (*wafv2.ListAPIKeysOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListAPIKeys", varargs...)
+	ret0, _ := ret[0].(*wafv2.ListAPIKeysOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListAPIKeys indicates an expected call of ListAPIKeys.
+func (mr *MockWafv2ClientMockRecorder) ListAPIKeys(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAPIKeys", reflect.TypeOf((*MockWafv2Client)(nil).ListAPIKeys), varargs...)
 }
 
 // ListAvailableManagedRuleGroupVersions mocks base method.

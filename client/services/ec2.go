@@ -194,6 +194,7 @@ type Ec2Client interface {
 	GetVerifiedAccessGroupPolicy(context.Context, *ec2.GetVerifiedAccessGroupPolicyInput, ...func(*ec2.Options)) (*ec2.GetVerifiedAccessGroupPolicyOutput, error)
 	GetVpnConnectionDeviceSampleConfiguration(context.Context, *ec2.GetVpnConnectionDeviceSampleConfigurationInput, ...func(*ec2.Options)) (*ec2.GetVpnConnectionDeviceSampleConfigurationOutput, error)
 	GetVpnConnectionDeviceTypes(context.Context, *ec2.GetVpnConnectionDeviceTypesInput, ...func(*ec2.Options)) (*ec2.GetVpnConnectionDeviceTypesOutput, error)
+	GetVpnTunnelReplacementStatus(context.Context, *ec2.GetVpnTunnelReplacementStatusInput, ...func(*ec2.Options)) (*ec2.GetVpnTunnelReplacementStatusOutput, error)
 	ListImagesInRecycleBin(context.Context, *ec2.ListImagesInRecycleBinInput, ...func(*ec2.Options)) (*ec2.ListImagesInRecycleBinOutput, error)
 	ListSnapshotsInRecycleBin(context.Context, *ec2.ListSnapshotsInRecycleBinInput, ...func(*ec2.Options)) (*ec2.ListSnapshotsInRecycleBinOutput, error)
 	SearchLocalGatewayRoutes(context.Context, *ec2.SearchLocalGatewayRoutesInput, ...func(*ec2.Options)) (*ec2.SearchLocalGatewayRoutesOutput, error)

@@ -34,6 +34,7 @@ The primary key for this table is **arn**.
 |namespace_id|String|
 |presigned_url_config|JSON|
 |reason_code|String|
+|scheduled_job_rollouts|JSON|
 |scheduling_config|JSON|
 |status|String|
 |target_selection|String|

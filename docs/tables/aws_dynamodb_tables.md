@@ -25,6 +25,7 @@ The following tables depend on aws_dynamodb_tables:
 |attribute_definitions|JSON|
 |billing_mode_summary|JSON|
 |creation_date_time|Timestamp|
+|deletion_protection_enabled|Bool|
 |global_secondary_indexes|JSON|
 |global_table_version|String|
 |item_count|Int|

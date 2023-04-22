@@ -9,6 +9,7 @@ import (
 //go:generate mockgen -package=mocks -destination=../mocks/wafv2.go -source=wafv2.go Wafv2Client
 type Wafv2Client interface {
 	DescribeManagedRuleGroup(context.Context, *wafv2.DescribeManagedRuleGroupInput, ...func(*wafv2.Options)) (*wafv2.DescribeManagedRuleGroupOutput, error)
+	GetDecryptedAPIKey(context.Context, *wafv2.GetDecryptedAPIKeyInput, ...func(*wafv2.Options)) (*wafv2.GetDecryptedAPIKeyOutput, error)
 	GetIPSet(context.Context, *wafv2.GetIPSetInput, ...func(*wafv2.Options)) (*wafv2.GetIPSetOutput, error)
 	GetLoggingConfiguration(context.Context, *wafv2.GetLoggingConfigurationInput, ...func(*wafv2.Options)) (*wafv2.GetLoggingConfigurationOutput, error)
 	GetManagedRuleSet(context.Context, *wafv2.GetManagedRuleSetInput, ...func(*wafv2.Options)) (*wafv2.GetManagedRuleSetOutput, error)
@@ -20,6 +21,7 @@ type Wafv2Client interface {
 	GetSampledRequests(context.Context, *wafv2.GetSampledRequestsInput, ...func(*wafv2.Options)) (*wafv2.GetSampledRequestsOutput, error)
 	GetWebACL(context.Context, *wafv2.GetWebACLInput, ...func(*wafv2.Options)) (*wafv2.GetWebACLOutput, error)
 	GetWebACLForResource(context.Context, *wafv2.GetWebACLForResourceInput, ...func(*wafv2.Options)) (*wafv2.GetWebACLForResourceOutput, error)
+	ListAPIKeys(context.Context, *wafv2.ListAPIKeysInput, ...func(*wafv2.Options)) (*wafv2.ListAPIKeysOutput, error)
 	ListAvailableManagedRuleGroupVersions(context.Context, *wafv2.ListAvailableManagedRuleGroupVersionsInput, ...func(*wafv2.Options)) (*wafv2.ListAvailableManagedRuleGroupVersionsOutput, error)
 	ListAvailableManagedRuleGroups(context.Context, *wafv2.ListAvailableManagedRuleGroupsInput, ...func(*wafv2.Options)) (*wafv2.ListAvailableManagedRuleGroupsOutput, error)
 	ListIPSets(context.Context, *wafv2.ListIPSetsInput, ...func(*wafv2.Options)) (*wafv2.ListIPSetsOutput, error)
