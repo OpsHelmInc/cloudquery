@@ -3,7 +3,7 @@ module github.com/OpsHelmInc/cloudquery
 go 1.19
 
 require (
-	github.com/aws/aws-sdk-go-v2 v1.17.2
+	github.com/aws/aws-sdk-go-v2 v1.17.8
 	github.com/aws/aws-sdk-go-v2/config v1.18.4
 	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.11.43
 	github.com/aws/aws-sdk-go-v2/service/accessanalyzer v1.18.1
@@ -15,7 +15,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/apprunner v1.15.1
 	github.com/aws/aws-sdk-go-v2/service/appstream v1.18.1
 	github.com/aws/aws-sdk-go-v2/service/appsync v1.17.0
-	github.com/aws/aws-sdk-go-v2/service/autoscaling v1.24.4
+	github.com/aws/aws-sdk-go-v2/service/autoscaling v1.28.4
 	github.com/aws/aws-sdk-go-v2/service/cloudformation v1.24.2
 	github.com/aws/aws-sdk-go-v2/service/cloudfront v1.22.0
 	github.com/aws/aws-sdk-go-v2/service/cloudhsmv2 v1.13.22
@@ -32,7 +32,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/directconnect v1.17.24
 	github.com/aws/aws-sdk-go-v2/service/docdb v1.19.17
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.17.8
-	github.com/aws/aws-sdk-go-v2/service/ec2 v1.75.0
+	github.com/aws/aws-sdk-go-v2/service/ec2 v1.93.2
 	github.com/aws/aws-sdk-go-v2/service/ecr v1.17.24
 	github.com/aws/aws-sdk-go-v2/service/ecrpublic v1.13.21
 	github.com/aws/aws-sdk-go-v2/service/ecs v1.20.1
@@ -124,15 +124,15 @@ require (
 require (
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.4.10 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.12.20 // indirect
-	github.com/aws/aws-sdk-go-v2/internal/configsources v1.1.26 // indirect
-	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.4.20 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/configsources v1.1.32 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.4.26 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/ini v1.3.27 // indirect
 	github.com/aws/aws-sdk-go-v2/service/athena v1.20.1
 	github.com/aws/aws-sdk-go-v2/service/backup v1.18.1
 	github.com/aws/aws-sdk-go-v2/service/glue v1.37.1
 	github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.9.11 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/endpoint-discovery v1.7.20 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.9.20 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.9.26 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.13.20 // indirect
 	github.com/aws/aws-sdk-go-v2/service/shield v1.17.12
 	github.com/aws/aws-sdk-go-v2/service/sso v1.11.26 // indirect
