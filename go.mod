@@ -107,7 +107,7 @@ require (
 )
 
 require (
-	github.com/OpsHelmInc/ohaws v0.0.0-20230428163343-c63e530ad9f3 // indirect
+	github.com/OpsHelmInc/ohaws v0.0.0-20230504190927-06644e78783a // indirect
 	github.com/aws/aws-sdk-go-v2/credentials v1.13.21 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/v4a v1.0.25 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/checksum v1.1.28 // indirect

@@ -35,6 +35,8 @@ github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/OpsHelmInc/ohaws v0.0.0-20230428163343-c63e530ad9f3 h1:3rk1EZ//RErGrW6K1FvH76Qwl1ykYxbMbJXNbocTbOc=
 github.com/OpsHelmInc/ohaws v0.0.0-20230428163343-c63e530ad9f3/go.mod h1:0SnF8ZzolXqEoA+cP3rYhPMwASEsT7WWYIkqFm+MTJI=
+github.com/OpsHelmInc/ohaws v0.0.0-20230504190927-06644e78783a h1:UUh50Xr7LcqsI6EBz0c/Li6elhRcqC5ZUpSL81Vp4Cw=
+github.com/OpsHelmInc/ohaws v0.0.0-20230504190927-06644e78783a/go.mod h1:Y0mrzEwyKX+HvuO6PCBYK1Qd0TAbO+YBiCOQomITde0=
 github.com/OpsHelmInc/pkg v0.0.0-20230501175116-22123a9a10d4 h1:6G+6NnEBou80aYQbtQxQcKd3uRq8/PkJV445eRH+NAQ=
 github.com/OpsHelmInc/pkg v0.0.0-20230501175116-22123a9a10d4/go.mod h1:jGtDdyPGgOlGu6fgjMyHfX2ipwJ/uoRS8RgZyq3RY/M=
 github.com/avast/retry-go/v4 v4.3.1 h1:Mtg11F9PdAIMkMiio2RKcYauoVHjl2aB3zQJJlzD4cE=
