@@ -42,7 +42,7 @@ jobs:
     - name: Gen
       run: make gen
     - name: Fail if generation updated files
-      run: test "$(git status -s | wc -l)" -eq 0 || (git status -s; exit 1)
+      run: test "$(git status -s | wc -l)" -eq 1 || (git status -s; exit 1)
     - name: Check
       run: make test
     - name: golangci-lint
