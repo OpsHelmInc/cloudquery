@@ -3,6 +3,7 @@ module github.com/OpsHelmInc/cloudquery
 go 1.19
 
 require (
+	github.com/OpsHelmInc/pkg v0.0.0-20230501175116-22123a9a10d4
 	github.com/aws/aws-sdk-go-v2 v1.18.0
 	github.com/aws/aws-sdk-go-v2/config v1.18.22
 	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.11.63
@@ -106,7 +107,6 @@ require (
 )
 
 require (
-	github.com/OpsHelmInc/pkg v0.0.0-20230501175116-22123a9a10d4 // indirect
 	github.com/aws/aws-sdk-go-v2/credentials v1.13.21 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/v4a v1.0.25 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/checksum v1.1.28 // indirect
