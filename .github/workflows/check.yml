@@ -1,6 +1,8 @@
 on: pull_request
 name: Check Commit
-
+env:
+  GOPRIVATE: github.com/OpsHelmInc/*
+  SSH_AUTH_SOCK: /tmp/ssh_agent.sock
 jobs:
   check_commit:
     name: Check Commit
@@ -25,6 +27,16 @@ jobs:
         key: ${{ runner.os }}-golang-${{ hashFiles('**/go.sum') }}
         restore-keys: |
           ${{ runner.os }}-golang-
+    - name: Setup SSH Keys and known_hosts
+      run: |
+        ssh-agent -a $SSH_AUTH_SOCK
+        echo '${{ secrets.OH_DEPLOY_KEY }}' | base64 --decode > deploy-key
+        chmod 600 deploy-key
+        ssh-add deploy-key
+        ssh-add -l
+        git config --global url."ssh://git@github.com/OpsHelmInc".insteadOf "https://github.com/OpsHelmInc"
+      env:
+        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
     - name: Install Tools
       run: make install-tools
     - name: Gen
