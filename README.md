@@ -15,7 +15,6 @@ $ go build
 $ ./codegen
 ```
 
-
 ## Links
 
 - [User Guide](https://cloudquery.io/docs/plugins/sources/aws/overview)
