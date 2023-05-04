@@ -3,6 +3,7 @@ package models
 import (
 	"time"
 
+	"github.com/OpsHelmInc/pkg/aws/iamx"
 	"github.com/aws/aws-sdk-go-v2/service/s3/types"
 	s3controlTypes "github.com/aws/aws-sdk-go-v2/service/s3control/types"
 )
@@ -28,7 +29,7 @@ type WrappedBucket struct {
 	Region                string
 	LoggingTargetBucket   *string
 	LoggingTargetPrefix   *string
-	Policy                map[string]interface{}
+	Policy                *iamx.PolicyDocument
 	VersioningStatus      types.BucketVersioningStatus
 	VersioningMfaDelete   types.MFADeleteStatus
 	BlockPublicAcls       bool

@@ -8,6 +8,7 @@ import (
 
 	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/OpsHelmInc/cloudquery/resources/services/s3/models"
+	"github.com/OpsHelmInc/pkg/aws/iamx"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/aws/aws-sdk-go-v2/service/s3/types"
 	"github.com/cloudquery/plugin-sdk/schema"
@@ -264,12 +265,12 @@ func resolveBucketPolicy(ctx context.Context, meta schema.ClientMeta, resource *
 	if policyOutput == nil || policyOutput.Policy == nil {
 		return nil
 	}
-	var p map[string]interface{}
+	var p iamx.PolicyDocument
 	err = json.Unmarshal([]byte(*policyOutput.Policy), &p)
 	if err != nil {
 		return fmt.Errorf("failed to unmarshal JSON policy: %v", err)
 	}
-	resource.Policy = p
+	resource.Policy = &p
 	return nil
 }
 
