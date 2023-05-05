@@ -7,7 +7,7 @@ import (
 	"sync"
 
 	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/resources/services/s3/models"
+	"github.com/OpsHelmInc/ohaws"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/aws/aws-sdk-go-v2/service/s3/types"
 	"github.com/cloudquery/plugin-sdk/schema"
@@ -75,7 +75,7 @@ func fetchS3BucketsWorker(ctx context.Context, meta schema.ClientMeta, buckets <
 	defer wg.Done()
 	cl := meta.(*client.Client)
 	for bucket := range buckets {
-		wb := &models.WrappedBucket{Name: bucket.Name, CreationDate: bucket.CreationDate}
+		wb := &ohaws.WrappedBucket{Name: bucket.Name, CreationDate: bucket.CreationDate}
 		err := resolveS3BucketsAttributes(ctx, meta, wb)
 		if err != nil {
 			if !isBucketNotFoundError(cl, err) {
@@ -87,7 +87,7 @@ func fetchS3BucketsWorker(ctx context.Context, meta schema.ClientMeta, buckets <
 	}
 }
 
-func resolveS3BucketsAttributes(ctx context.Context, meta schema.ClientMeta, resource *models.WrappedBucket) error {
+func resolveS3BucketsAttributes(ctx context.Context, meta schema.ClientMeta, resource *ohaws.WrappedBucket) error {
 	c := meta.(*client.Client)
 	mgr := c.Services().S3manager
 
@@ -139,7 +139,7 @@ func resolveS3BucketsAttributes(ctx context.Context, meta schema.ClientMeta, res
 }
 
 func fetchS3BucketGrants(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
-	r := parent.Item.(*models.WrappedBucket)
+	r := parent.Item.(*ohaws.WrappedBucket)
 	svc := meta.(*client.Client).Services().S3
 	region := parent.Get("region").(*schema.Text)
 	if region == nil {
@@ -159,7 +159,7 @@ func fetchS3BucketGrants(ctx context.Context, meta schema.ClientMeta, parent *sc
 }
 
 func fetchS3BucketCorsRules(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
-	r := parent.Item.(*models.WrappedBucket)
+	r := parent.Item.(*ohaws.WrappedBucket)
 	c := meta.(*client.Client)
 	svc := c.Services().S3
 	region := parent.Get("region").(*schema.Text)
@@ -182,7 +182,7 @@ func fetchS3BucketCorsRules(ctx context.Context, meta schema.ClientMeta, parent 
 }
 
 func fetchS3BucketEncryptionRules(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
-	r := parent.Item.(*models.WrappedBucket)
+	r := parent.Item.(*ohaws.WrappedBucket)
 	c := meta.(*client.Client)
 	svc := c.Services().S3
 	region := parent.Get("region").(*schema.Text)
@@ -205,7 +205,7 @@ func fetchS3BucketEncryptionRules(ctx context.Context, meta schema.ClientMeta, p
 }
 
 func fetchS3BucketLifecycles(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
-	r := parent.Item.(*models.WrappedBucket)
+	r := parent.Item.(*ohaws.WrappedBucket)
 	c := meta.(*client.Client)
 	svc := c.Services().S3
 	region := parent.Get("region").(*schema.Text)
@@ -225,7 +225,7 @@ func fetchS3BucketLifecycles(ctx context.Context, meta schema.ClientMeta, parent
 	return nil
 }
 
-func resolveBucketLogging(ctx context.Context, meta schema.ClientMeta, resource *models.WrappedBucket, bucketRegion string) error {
+func resolveBucketLogging(ctx context.Context, meta schema.ClientMeta, resource *ohaws.WrappedBucket, bucketRegion string) error {
 	svc := meta.(*client.Client).Services().S3
 	loggingOutput, err := svc.GetBucketLogging(ctx, &s3.GetBucketLoggingInput{Bucket: resource.Name}, func(options *s3.Options) {
 		options.Region = bucketRegion
@@ -244,7 +244,7 @@ func resolveBucketLogging(ctx context.Context, meta schema.ClientMeta, resource 
 	return nil
 }
 
-func resolveBucketPolicy(ctx context.Context, meta schema.ClientMeta, resource *models.WrappedBucket, bucketRegion string) error {
+func resolveBucketPolicy(ctx context.Context, meta schema.ClientMeta, resource *ohaws.WrappedBucket, bucketRegion string) error {
 	c := meta.(*client.Client)
 	svc := c.Services().S3
 	policyOutput, err := svc.GetBucketPolicy(ctx, &s3.GetBucketPolicyInput{Bucket: resource.Name}, func(options *s3.Options) {
@@ -264,16 +264,16 @@ func resolveBucketPolicy(ctx context.Context, meta schema.ClientMeta, resource *
 	if policyOutput == nil || policyOutput.Policy == nil {
 		return nil
 	}
-	var p map[string]interface{}
+	var p ohaws.PolicyDocument
 	err = json.Unmarshal([]byte(*policyOutput.Policy), &p)
 	if err != nil {
 		return fmt.Errorf("failed to unmarshal JSON policy: %v", err)
 	}
-	resource.Policy = p
+	resource.Policy = &p
 	return nil
 }
 
-func resolveBucketPolicyStatus(ctx context.Context, meta schema.ClientMeta, resource *models.WrappedBucket, bucketRegion string) error {
+func resolveBucketPolicyStatus(ctx context.Context, meta schema.ClientMeta, resource *ohaws.WrappedBucket, bucketRegion string) error {
 	c := meta.(*client.Client)
 	svc := c.Services().S3
 	policyStatusOutput, err := svc.GetBucketPolicyStatus(ctx, &s3.GetBucketPolicyStatusInput{Bucket: resource.Name}, func(options *s3.Options) {
@@ -299,7 +299,7 @@ func resolveBucketPolicyStatus(ctx context.Context, meta schema.ClientMeta, reso
 	return nil
 }
 
-func resolveBucketVersioning(ctx context.Context, meta schema.ClientMeta, resource *models.WrappedBucket, bucketRegion string) error {
+func resolveBucketVersioning(ctx context.Context, meta schema.ClientMeta, resource *ohaws.WrappedBucket, bucketRegion string) error {
 	c := meta.(*client.Client)
 	svc := c.Services().S3
 	versioningOutput, err := svc.GetBucketVersioning(ctx, &s3.GetBucketVersioningInput{Bucket: resource.Name}, func(options *s3.Options) {
@@ -316,7 +316,7 @@ func resolveBucketVersioning(ctx context.Context, meta schema.ClientMeta, resour
 	return nil
 }
 
-func resolveBucketPublicAccessBlock(ctx context.Context, meta schema.ClientMeta, resource *models.WrappedBucket, bucketRegion string) error {
+func resolveBucketPublicAccessBlock(ctx context.Context, meta schema.ClientMeta, resource *ohaws.WrappedBucket, bucketRegion string) error {
 	c := meta.(*client.Client)
 	svc := c.Services().S3
 	publicAccessOutput, err := svc.GetPublicAccessBlock(ctx, &s3.GetPublicAccessBlockInput{Bucket: resource.Name}, func(options *s3.Options) {
@@ -339,7 +339,7 @@ func resolveBucketPublicAccessBlock(ctx context.Context, meta schema.ClientMeta,
 	return nil
 }
 
-func resolveBucketReplication(ctx context.Context, meta schema.ClientMeta, resource *models.WrappedBucket, bucketRegion string) error {
+func resolveBucketReplication(ctx context.Context, meta schema.ClientMeta, resource *ohaws.WrappedBucket, bucketRegion string) error {
 	c := meta.(*client.Client)
 	svc := c.Services().S3
 	replicationOutput, err := svc.GetBucketReplication(ctx, &s3.GetBucketReplicationInput{Bucket: resource.Name}, func(options *s3.Options) {
@@ -364,7 +364,7 @@ func resolveBucketReplication(ctx context.Context, meta schema.ClientMeta, resou
 	return nil
 }
 
-func resolveBucketTagging(ctx context.Context, meta schema.ClientMeta, resource *models.WrappedBucket, bucketRegion string) error {
+func resolveBucketTagging(ctx context.Context, meta schema.ClientMeta, resource *ohaws.WrappedBucket, bucketRegion string) error {
 	c := meta.(*client.Client)
 	svc := c.Services().S3
 	taggingOutput, err := svc.GetBucketTagging(ctx, &s3.GetBucketTaggingInput{Bucket: resource.Name}, func(options *s3.Options) {
@@ -391,7 +391,7 @@ func resolveBucketTagging(ctx context.Context, meta schema.ClientMeta, resource 
 	return nil
 }
 
-func resolveBucketOwnershipControls(ctx context.Context, meta schema.ClientMeta, resource *models.WrappedBucket, bucketRegion string) error {
+func resolveBucketOwnershipControls(ctx context.Context, meta schema.ClientMeta, resource *ohaws.WrappedBucket, bucketRegion string) error {
 	c := meta.(*client.Client)
 	svc := c.Services().S3
 
@@ -444,6 +444,6 @@ func isBucketNotFoundError(cl *client.Client, err error) bool {
 
 func resolveBucketARN() schema.ColumnResolver {
 	return client.ResolveARNGlobal(client.S3Service, func(resource *schema.Resource) ([]string, error) {
-		return []string{*resource.Item.(*models.WrappedBucket).Name}, nil
+		return []string{*resource.Item.(*ohaws.WrappedBucket).Name}, nil
 	})
 }

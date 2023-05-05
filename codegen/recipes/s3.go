@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/OpsHelmInc/cloudquery/resources/services/s3/models"
+	"github.com/OpsHelmInc/ohaws"
 	"github.com/aws/aws-sdk-go-v2/service/s3/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
@@ -15,7 +15,7 @@ func S3Resources() []*Resource {
 
 		{
 			SubService: "accounts",
-			Struct:     &models.PublicAccessBlockConfigurationWrapper{},
+			Struct:     &ohaws.PublicAccessBlockConfigurationWrapper{},
 			SkipFields: []string{"ARN"},
 			ExtraColumns: []codegen.ColumnDefinition{
 				{
@@ -28,7 +28,7 @@ func S3Resources() []*Resource {
 		},
 		{
 			SubService: "buckets",
-			Struct:     &models.WrappedBucket{},
+			Struct:     &ohaws.WrappedBucket{},
 			SkipFields: []string{},
 			ExtraColumns: append(
 				defaultAccountColumns,
