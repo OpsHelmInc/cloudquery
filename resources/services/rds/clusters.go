@@ -248,6 +248,11 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("IAMDatabaseAuthenticationEnabled"),
 			},
 			{
+				Name:     "io_optimized_next_allowed_modification_time",
+				Type:     schema.TypeTimestamp,
+				Resolver: schema.PathResolver("IOOptimizedNextAllowedModificationTime"),
+			},
+			{
 				Name:     "iops",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("Iops"),
