@@ -53,13 +53,16 @@ func resolveRepositoryPolicy(ctx context.Context, meta schema.ClientMeta, resour
 	cl := meta.(*client.Client)
 	svc := cl.Services().Ecr
 	repo := resource.Item.(types.Repository)
-
-	input := ecr.GetRepositoryPolicyInput{
+	output, err := svc.GetRepositoryPolicy(ctx, &ecr.GetRepositoryPolicyInput{
 		RepositoryName: repo.RepositoryName,
 		RegistryId:     repo.RegistryId,
-	}
-	output, err := svc.GetRepositoryPolicy(ctx, &input)
+	}, func(options *ecr.Options) {
+		options.Region = cl.Region
+	})
 	if err != nil {
+		if client.IsAWSError(err, "RepositoryPolicyNotFoundException") {
+			return nil
+		}
 		return err
 	}
 	return resource.Set(c.Name, output.PolicyText)
