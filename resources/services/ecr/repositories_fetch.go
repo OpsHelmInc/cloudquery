@@ -3,13 +3,14 @@ package ecr
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/resources/services/ecr/models"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/ecr"
 	"github.com/aws/aws-sdk-go-v2/service/ecr/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/resources/services/ecr/models"
 )
 
 func fetchEcrRepositories(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
@@ -81,6 +82,7 @@ func fetchEcrRepositoryImages(ctx context.Context, meta schema.ClientMeta, paren
 }
 
 func fetchEcrRepositoryImageScanFindings(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
+	c := meta.(*client.Client)
 	image := parent.Item.(types.ImageDetail)
 	repo := parent.Parent.Item.(types.Repository)
 	for _, tag := range image.ImageTags {
@@ -95,8 +97,13 @@ func fetchEcrRepositoryImageScanFindings(ctx context.Context, meta schema.Client
 
 		paginator := ecr.NewDescribeImageScanFindingsPaginator(meta.(*client.Client).Services().Ecr, &config)
 		for paginator.HasMorePages() {
-			output, err := paginator.NextPage(ctx)
+			output, err := paginator.NextPage(ctx, func(options *ecr.Options) {
+				options.Region = c.Region
+			})
 			if err != nil {
+				if client.IsAWSError(err, "ScanNotFoundException") {
+					return nil
+				}
 				return err
 			}
 			res <- models.ImageScanWrapper{
