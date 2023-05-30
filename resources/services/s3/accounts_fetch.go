@@ -26,9 +26,9 @@ func fetchS3Accounts(ctx context.Context, meta schema.ClientMeta, _ *schema.Reso
 		if !errors.As(err, &nspabc) {
 			return err
 		}
-		res <- ohaws.PublicAccessBlockConfigurationWrapper{ConfigExists: false}
+		res <- ohaws.AccountPublicAccessBlockConfigurationWrapper{ConfigExists: false}
 	} else {
-		res <- ohaws.PublicAccessBlockConfigurationWrapper{PublicAccessBlockConfiguration: *resp.PublicAccessBlockConfiguration, ConfigExists: true}
+		res <- ohaws.AccountPublicAccessBlockConfigurationWrapper{PublicAccessBlockConfiguration: *resp.PublicAccessBlockConfiguration, ConfigExists: true}
 	}
 
 	return nil

@@ -59,6 +59,7 @@ The primary key for this table is **arn**.
 |hosted_zone_id|String|
 |http_endpoint_enabled|Bool|
 |iam_database_authentication_enabled|Bool|
+|io_optimized_next_allowed_modification_time|Timestamp|
 |iops|Int|
 |kms_key_id|String|
 |latest_restorable_time|Timestamp|
