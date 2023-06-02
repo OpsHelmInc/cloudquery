@@ -8,7 +8,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/config v1.18.25
 	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.11.63
 	github.com/aws/aws-sdk-go-v2/service/accessanalyzer v1.19.10
-	github.com/aws/aws-sdk-go-v2/service/account v1.10.4
+	github.com/aws/aws-sdk-go-v2/service/account v1.10.6
 	github.com/aws/aws-sdk-go-v2/service/acm v1.17.9
 	github.com/aws/aws-sdk-go-v2/service/apigateway v1.16.9
 	github.com/aws/aws-sdk-go-v2/service/apigatewayv2 v1.13.9
