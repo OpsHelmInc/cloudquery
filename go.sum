@@ -201,8 +201,8 @@ github.com/aws/aws-sdk-go-v2/service/networkfirewall v1.28.0 h1:895oEuuc0Lg1CeEK
 github.com/aws/aws-sdk-go-v2/service/networkfirewall v1.28.0/go.mod h1:SQ649cvNNUbbf/kxj5jV0XGZGhl6kLjFEPeBFPguGG8=
 github.com/aws/aws-sdk-go-v2/service/organizations v1.19.6 h1:wHV9iUDPdluHAkeJBP9exp4IO9KN+T7/UHgltB8Udsg=
 github.com/aws/aws-sdk-go-v2/service/organizations v1.19.6/go.mod h1:zw4Ac19gtzc4cdtfBCTZa7FlrXYh8tbUl3Jr7movexs=
-github.com/aws/aws-sdk-go-v2/service/qldb v1.15.8 h1:ASih3ryCYjA4vj8bB1i5fL8VTQy3lb7LvCFRgO/DACM=
-github.com/aws/aws-sdk-go-v2/service/qldb v1.15.8/go.mod h1:Sq+4mrCPzhRlY2TIR8ilf1Gb6qHXeSMK6Mj876XOX2k=
+github.com/aws/aws-sdk-go-v2/service/qldb v1.15.11 h1:piPJwW14iCr8LwS8H/FMhHxzEA2cRl6dg7QYcPGf/dk=
+github.com/aws/aws-sdk-go-v2/service/qldb v1.15.11/go.mod h1:pgO+sEJ1pWUJIHbuJr7kRCkvZMoR9rJrtHkVJI1AzdA=
 github.com/aws/aws-sdk-go-v2/service/quicksight v1.34.1 h1:z5/tWP5Dny8vgzNU7ZMynqqzAXnWeb+V0yeE1Lepdfg=
 github.com/aws/aws-sdk-go-v2/service/quicksight v1.34.1/go.mod h1:ycmCAH4CvJauTl8EFuI2veKSuYDl8rQRf0CNFPgnhvM=
 github.com/aws/aws-sdk-go-v2/service/ram v1.18.0 h1:qdo+4jXO4jdOPoTcr7WqS7X9Q+PIVI4+pMwkxz/sgxg=
