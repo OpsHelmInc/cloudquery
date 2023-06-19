@@ -37,8 +37,9 @@ github.com/OpsHelmInc/ohaws v0.0.0-20230526181655-062369d4f0a8 h1:Qwag225Z4WgK81
 github.com/OpsHelmInc/ohaws v0.0.0-20230526181655-062369d4f0a8/go.mod h1:5V94mnz7yd6+6hj9abcYqSdXFHtBsP9+lbRAi2dhjnM=
 github.com/avast/retry-go/v4 v4.3.1 h1:Mtg11F9PdAIMkMiio2RKcYauoVHjl2aB3zQJJlzD4cE=
 github.com/aws/aws-sdk-go-v2 v1.17.8/go.mod h1:uzbQtefpm44goOPmdKyAlXSNcwlRgF3ePWVW6EtJvvw=
-github.com/aws/aws-sdk-go-v2 v1.18.0 h1:882kkTpSFhdgYRKVZ/VCgf7sd0ru57p2JCxz4/oN5RY=
 github.com/aws/aws-sdk-go-v2 v1.18.0/go.mod h1:uzbQtefpm44goOPmdKyAlXSNcwlRgF3ePWVW6EtJvvw=
+github.com/aws/aws-sdk-go-v2 v1.18.1 h1:+tefE750oAb7ZQGzla6bLkOwfcQCEtC5y2RqoqCeqKo=
+github.com/aws/aws-sdk-go-v2 v1.18.1/go.mod h1:uzbQtefpm44goOPmdKyAlXSNcwlRgF3ePWVW6EtJvvw=
 github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.4.10 h1:dK82zF6kkPeCo8J1e+tGx4JdvDIQzj7ygIoLg8WMuGs=
 github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.4.10/go.mod h1:VeTZetY5KRJLuD/7fkQXMU6Mw7H5m/KP2J5Iy9osMno=
 github.com/aws/aws-sdk-go-v2/config v1.18.21/go.mod h1:+jPQiVPz1diRnjj6VGqWcLK6EzNmQ42l7J3OqGTLsSY=
@@ -53,11 +54,13 @@ github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.13.3/go.mod h1:4Q0UFP0YJf0NrsEu
 github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.11.63 h1:3TZm9tzOXOX/aPAxBh3+LtMZtjHMzNO/wQ41+HFUzIA=
 github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.11.63/go.mod h1:M1piIHmVL5lJ6OomRJdZtemge4TeGw6sPPsQzIIjHWw=
 github.com/aws/aws-sdk-go-v2/internal/configsources v1.1.32/go.mod h1:RudqOgadTWdcS3t/erPQo24pcVEoYyqj/kKW5Vya21I=
-github.com/aws/aws-sdk-go-v2/internal/configsources v1.1.33 h1:kG5eQilShqmJbv11XL1VpyDbaEJzWxd4zRiCG30GSn4=
 github.com/aws/aws-sdk-go-v2/internal/configsources v1.1.33/go.mod h1:7i0PF1ME/2eUPFcjkVIwq+DOygHEoK92t5cDqNgYbIw=
+github.com/aws/aws-sdk-go-v2/internal/configsources v1.1.34 h1:A5UqQEmPaCFpedKouS4v+dHCTUo2sKqhoKO9U5kxyWo=
+github.com/aws/aws-sdk-go-v2/internal/configsources v1.1.34/go.mod h1:wZpTEecJe0Btj3IYnDx/VlUzor9wm3fJHyvLpQF0VwY=
 github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.4.26/go.mod h1:vq86l7956VgFr0/FWQ2BWnK07QC3WYsepKzy33qqY5U=
-github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.4.27 h1:vFQlirhuM8lLlpI7imKOMsjdQLuN9CPi+k44F/OFVsk=
 github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.4.27/go.mod h1:UrHnn3QV/d0pBZ6QBAEQcqFLf8FAzLmoUfPVIueOvoM=
+github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.4.28 h1:srIVS45eQuewqz6fKKu6ZGXaq6FuFg5NzgQBAM6g8Y4=
+github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.4.28/go.mod h1:7VRpKQQedkfIEXb4k52I7swUnZP0wohVajJMRn3vsUw=
 github.com/aws/aws-sdk-go-v2/internal/ini v1.3.33/go.mod h1:zG2FcwjQarWaqXSCGpgcr3RSjZ6dHGguZSppUL0XR7Q=
 github.com/aws/aws-sdk-go-v2/internal/ini v1.3.34 h1:gGLG7yKaXG02/jBlg210R7VgQIotiQntNhsCFejawx8=
 github.com/aws/aws-sdk-go-v2/internal/ini v1.3.34/go.mod h1:Etz2dj6UHYuw+Xw830KfzCfWGMzqvUTCjUj5b76GVDc=
@@ -106,8 +109,8 @@ github.com/aws/aws-sdk-go-v2/service/codepipeline v1.14.9 h1:N0L3R7UNePCBUKwjXUR
 github.com/aws/aws-sdk-go-v2/service/codepipeline v1.14.9/go.mod h1:XVtIkbSKPUfNXrPRecSNxrYEwELBvTF8nd7Zptr3fSw=
 github.com/aws/aws-sdk-go-v2/service/cognitoidentity v1.15.8 h1:Gg/xRqrMHsPReo8TJ6i1elu+oAhJZtCeQmHdDBsvccE=
 github.com/aws/aws-sdk-go-v2/service/cognitoidentity v1.15.8/go.mod h1:Q2V7AhAVeakJguXF9bVYxbU2PqBXbBzZPeKf/cMQ3y8=
-github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.22.8 h1:GeEvThzZ6AwUpb9GAJFYYyDhn34DlzbofbOw7gIw4jw=
-github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.22.8/go.mod h1:euaNP81TKBtUkJWXk07ol4jAYkjh6EGYBM7EuYsSf9o=
+github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.22.12 h1:i1oP53k35gC9uZhl0u8eE3UOTsjYm+DGKsdhczje/Y8=
+github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.22.12/go.mod h1:dDhcdDt2jrZOIqeZxhum4xsH6Tauyt4yiclYXkC9WP8=
 github.com/aws/aws-sdk-go-v2/service/configservice v1.31.2 h1:4XoqTAo+ulsdsfDHZ4dvRp5yWZ8tWGzMXZQHp4LbFnY=
 github.com/aws/aws-sdk-go-v2/service/configservice v1.31.2/go.mod h1:GXNnhXnFSRCcLY/dZhZPMZ6cmpa5ljbN1iuG2TSXGdw=
 github.com/aws/aws-sdk-go-v2/service/databasemigrationservice v1.25.5 h1:FMk/VaYynrPymyXgUTuglVO6rLKjOzcnPUCvvjoHPbY=
