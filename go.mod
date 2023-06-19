@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/OpsHelmInc/ohaws v0.0.0-20230526181655-062369d4f0a8
-	github.com/aws/aws-sdk-go-v2 v1.18.0
+	github.com/aws/aws-sdk-go-v2 v1.18.1
 	github.com/aws/aws-sdk-go-v2/config v1.18.25
 	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.11.63
 	github.com/aws/aws-sdk-go-v2/service/accessanalyzer v1.19.10
@@ -26,7 +26,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/codebuild v1.20.10
 	github.com/aws/aws-sdk-go-v2/service/codepipeline v1.14.9
 	github.com/aws/aws-sdk-go-v2/service/cognitoidentity v1.15.8
-	github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.22.8
+	github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.22.12
 	github.com/aws/aws-sdk-go-v2/service/configservice v1.31.2
 	github.com/aws/aws-sdk-go-v2/service/databasemigrationservice v1.25.5
 	github.com/aws/aws-sdk-go-v2/service/dax v1.12.10
@@ -129,8 +129,8 @@ require (
 require (
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.4.10 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.13.3 // indirect
-	github.com/aws/aws-sdk-go-v2/internal/configsources v1.1.33 // indirect
-	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.4.27 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/configsources v1.1.34 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.4.28 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/ini v1.3.34 // indirect
 	github.com/aws/aws-sdk-go-v2/service/athena v1.25.2
 	github.com/aws/aws-sdk-go-v2/service/backup v1.20.9
