@@ -83,7 +83,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/servicequotas v1.14.10
 	github.com/aws/aws-sdk-go-v2/service/sesv2 v1.17.4
 	github.com/aws/aws-sdk-go-v2/service/sfn v1.17.9
-	github.com/aws/aws-sdk-go-v2/service/sns v1.20.8
+	github.com/aws/aws-sdk-go-v2/service/sns v1.20.13
 	github.com/aws/aws-sdk-go-v2/service/sqs v1.22.0
 	github.com/aws/aws-sdk-go-v2/service/ssm v1.36.2
 	github.com/aws/aws-sdk-go-v2/service/ssoadmin v1.16.12
