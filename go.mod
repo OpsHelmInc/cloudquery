@@ -16,7 +16,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/apprunner v1.17.9
 	github.com/aws/aws-sdk-go-v2/service/appstream v1.20.11
 	github.com/aws/aws-sdk-go-v2/service/appsync v1.19.9
-	github.com/aws/aws-sdk-go-v2/service/autoscaling v1.28.4
+	github.com/aws/aws-sdk-go-v2/service/autoscaling v1.28.9
 	github.com/aws/aws-sdk-go-v2/service/cloudformation v1.27.2
 	github.com/aws/aws-sdk-go-v2/service/cloudfront v1.26.4
 	github.com/aws/aws-sdk-go-v2/service/cloudhsmv2 v1.14.8
