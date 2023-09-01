@@ -4,11 +4,12 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/OpsHelmInc/cloudquery/resources/services/iam/models"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	"github.com/aws/aws-sdk-go-v2/service/iam/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/resources/services/iam/models"
 )
 
 func IAMResources() []*Resource {
@@ -132,6 +133,11 @@ func IAMResources() []*Resource {
 					Resolver: `schema.PathResolver("GroupId")`,
 					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::IAM::Group")`,
+				},
 			},
 			Relations: []string{"GroupPolicies()"},
 		},
@@ -186,6 +192,11 @@ func IAMResources() []*Resource {
 					Resolver: `client.ResolveAWSAccount`,
 					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::IAM::AccountPasswordPolicy")`,
+				},
 			},
 		},
 		{
@@ -215,6 +226,11 @@ func IAMResources() []*Resource {
 					Name:     "policy_version_list",
 					Type:     schema.TypeJSON,
 					Resolver: `resolveIamPolicyVersionList`,
+				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::IAM::Policy")`,
 				},
 			},
 		},
@@ -246,6 +262,11 @@ func IAMResources() []*Resource {
 					Name:     "assume_role_policy_document",
 					Type:     schema.TypeJSON,
 					Resolver: `resolveRolesAssumeRolePolicyDocument`,
+				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::IAM::Role")`,
 				},
 			},
 			Relations: []string{
@@ -332,6 +353,11 @@ func IAMResources() []*Resource {
 					Resolver: `client.ResolveAWSAccount`,
 					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::IAM::User")`,
+				},
 			},
 			Relations: []string{
 				"UserAccessKeys()",
@@ -365,6 +391,11 @@ func IAMResources() []*Resource {
 					{
 						Name: "last_used_service_name",
 						Type: schema.TypeString,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::IAM::AccessKey")`,
 					},
 				}...),
 		},

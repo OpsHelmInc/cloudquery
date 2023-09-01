@@ -1,14 +1,14 @@
 package recipes
 
 import (
-	"github.com/OpsHelmInc/cloudquery/resources/services/sns/models"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/resources/services/sns/models"
 )
 
 func SNSResources() []*Resource {
 	resources := []*Resource{
-
 		{
 			SubService:          "subscriptions",
 			Struct:              &models.Subscription{},
@@ -42,6 +42,11 @@ func SNSResources() []*Resource {
 						Name:     "redrive_policy",
 						Type:     schema.TypeJSON,
 						Resolver: `schema.PathResolver("RedrivePolicy")`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::SNS::Subscription")`,
 					},
 				}...),
 		},
@@ -79,6 +84,11 @@ func SNSResources() []*Resource {
 						Name:     "effective_delivery_policy",
 						Type:     schema.TypeJSON,
 						Resolver: `schema.PathResolver("EffectiveDeliveryPolicy")`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::SNS::Topic")`,
 					},
 				}...),
 		},

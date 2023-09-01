@@ -28,6 +28,11 @@ func ECRPublicResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveRepositoryTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ECR::PublicRepository")`,
+					},
 				}...),
 			Relations: []string{"RepositoryImages()"},
 		},

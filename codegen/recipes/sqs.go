@@ -1,9 +1,10 @@
 package recipes
 
 import (
-	"github.com/OpsHelmInc/cloudquery/resources/services/sqs/models"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/resources/services/sqs/models"
 )
 
 func SQSResources() []*Resource {
@@ -41,6 +42,11 @@ func SQSResources() []*Resource {
 						Name:     "redrive_allow_policy",
 						Type:     schema.TypeJSON,
 						Resolver: `schema.PathResolver("RedriveAllowPolicy")`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::SQS::Queue")`,
 					},
 				}...),
 		},

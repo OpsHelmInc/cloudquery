@@ -54,3 +54,9 @@ func ResolveTagField(fieldName string) func(context.Context, schema.ClientMeta, 
 		return errors.WithStack(r.Set(c.Name, data))
 	}
 }
+
+func StaticValueResolver(value any) schema.ColumnResolver {
+	return func(_ context.Context, meta schema.ClientMeta, r *schema.Resource, c schema.Column) error {
+		return r.Set(c.Name, value)
+	}
+}

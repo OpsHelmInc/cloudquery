@@ -1,10 +1,11 @@
 package recipes
 
 import (
-	"github.com/OpsHelmInc/cloudquery/resources/services/ec2/models"
 	"github.com/aws/aws-sdk-go-v2/service/ec2/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/resources/services/ec2/models"
 )
 
 func EC2Resources() []*Resource {
@@ -46,6 +47,11 @@ func EC2Resources() []*Resource {
 						Resolver: "resolveCustomerGatewayArn",
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::CustomerGateway")`,
+					},
 				}...),
 		},
 		{
@@ -65,6 +71,11 @@ func EC2Resources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: "resolveEbsSnapshotAttribute",
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::Snapshot")`,
+					},
 				}...),
 		},
 		{
@@ -78,6 +89,11 @@ func EC2Resources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: "resolveEbsVolumeArn",
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::Volume")`,
 					},
 				}...),
 		},
@@ -93,13 +109,25 @@ func EC2Resources() []*Resource {
 						Resolver: "resolveEgressOnlyInternetGatewaysArn",
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::EgressOnlyInternetGateway")`,
+					},
 				}...),
 		},
 		{
-			SubService:   "eips",
-			Struct:       &types.Address{},
-			Description:  "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Address.html",
-			ExtraColumns: defaultRegionalColumns,
+			SubService:  "eips",
+			Struct:      &types.Address{},
+			Description: "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Address.html",
+			ExtraColumns: append(defaultRegionalColumns,
+				[]codegen.ColumnDefinition{
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::EIP")`,
+					},
+				}...),
 		},
 		{
 			SubService:  "flow_logs",
@@ -141,6 +169,11 @@ func EC2Resources() []*Resource {
 						Resolver: "resolveImageArn",
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::AMI")`,
+					},
 				}...),
 		},
 		{
@@ -175,6 +208,11 @@ func EC2Resources() []*Resource {
 						Resolver:      "resolveEc2InstanceStateTransitionReasonTime",
 						IgnoreInTests: true,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::Instance")`,
+					},
 				}...),
 		},
 		{
@@ -203,6 +241,11 @@ func EC2Resources() []*Resource {
 						Resolver: "resolveInternetGatewayArn",
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::InternetGateway")`,
+					},
 				}...),
 		},
 		{
@@ -216,6 +259,11 @@ func EC2Resources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: "resolveKeyPairArn",
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::KeyPair")`,
 					},
 				}...),
 		},
@@ -238,6 +286,11 @@ func EC2Resources() []*Resource {
 						Resolver: `schema.PathResolver("VersionNumber")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::LaunchTemplate")`,
+					},
 				}...),
 		},
 		{
@@ -252,6 +305,11 @@ func EC2Resources() []*Resource {
 						Resolver: "resolveNatGatewayArn",
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::NatGateway")`,
+					},
 				}...),
 		},
 		{
@@ -265,6 +323,11 @@ func EC2Resources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: "resolveNetworkAclArn",
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::NetworkAcl")`,
 					},
 				}...),
 		},
@@ -285,6 +348,11 @@ func EC2Resources() []*Resource {
 						Name:     "tags",
 						Type:     schema.TypeJSON,
 						Resolver: `client.ResolveTagField("TagSet")`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::NetworkInterface")`,
 					},
 				}...),
 		},
@@ -316,6 +384,11 @@ func EC2Resources() []*Resource {
 					Name:     "region",
 					Type:     schema.TypeString,
 					Resolver: `schema.PathResolver("RegionName")`,
+				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::EC2::Region")`,
 				},
 			},
 		},
@@ -363,6 +436,11 @@ func EC2Resources() []*Resource {
 						Resolver: "resolveRouteTableArn",
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::RouteTable")`,
+					},
 				}...),
 		},
 		{
@@ -377,6 +455,11 @@ func EC2Resources() []*Resource {
 						Resolver: "resolveSecurityGroupArn",
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::SecurityGroup")`,
+					},
 				}...),
 		},
 		{
@@ -390,6 +473,11 @@ func EC2Resources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("SubnetArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::Subnet")`,
 					},
 				}...),
 		},
@@ -410,6 +498,11 @@ func EC2Resources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("TransitGatewayArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::TransitGateway")`,
 					},
 				}...),
 			Relations: []string{
@@ -557,6 +650,11 @@ func EC2Resources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveVpcArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::VPC")`,
 					},
 				}...),
 		},

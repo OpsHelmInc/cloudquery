@@ -135,6 +135,11 @@ func RDSResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveRdsClusterTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::RDS::DBCluster")`,
+					},
 				}...),
 		},
 		{
@@ -265,6 +270,11 @@ func RDSResources() []*Resource {
 						Name:     "tags",
 						Type:     schema.TypeJSON,
 						Resolver: `resolveRdsInstanceTags`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::RDS::DBInstance")`,
 					},
 				}...),
 		},

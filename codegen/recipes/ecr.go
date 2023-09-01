@@ -1,11 +1,12 @@
 package recipes
 
 import (
-	"github.com/OpsHelmInc/cloudquery/resources/services/ecr/models"
 	"github.com/aws/aws-sdk-go-v2/service/ecr"
 	"github.com/aws/aws-sdk-go-v2/service/ecr/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/resources/services/ecr/models"
 )
 
 func ECRResources() []*Resource {
@@ -23,6 +24,11 @@ func ECRResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("RegistryId")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ECR::Registry")`,
 					},
 				}...),
 		},
@@ -72,6 +78,11 @@ func ECRResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveRepositoryPolicy`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ECR::Repository")`,
+					},
 				}...),
 			Relations: []string{
 				"RepositoryImages()",
@@ -89,6 +100,11 @@ func ECRResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveImageArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ECR::Image")`,
 					},
 				}...),
 			Relations: []string{"RepositoryImageScanFindings()"},

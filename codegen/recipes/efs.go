@@ -26,6 +26,11 @@ var efsResources = []*Resource{
 					Type:     schema.TypeString,
 					Resolver: `ResolveEfsFilesystemBackupPolicyStatus`,
 				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::EFS::FileSystem")`,
+				},
 			}...),
 	},
 }
