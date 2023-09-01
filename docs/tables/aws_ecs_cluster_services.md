@@ -18,6 +18,7 @@ This table depends on [aws_ecs_clusters](aws_ecs_clusters.md).
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |capacity_provider_strategy|JSON|
 |cluster_arn|String|
 |created_at|Timestamp|

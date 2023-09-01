@@ -20,6 +20,7 @@ The following tables depend on aws_elbv2_target_groups:
 |region|String|
 |tags|JSON|
 |arn (PK)|String|
+|oh_resource_type|String|
 |health_check_enabled|Bool|
 |health_check_interval_seconds|Int|
 |health_check_path|String|

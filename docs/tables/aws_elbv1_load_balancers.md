@@ -19,6 +19,7 @@ The following tables depend on aws_elbv1_load_balancers:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |availability_zones|StringArray|
 |backend_server_descriptions|JSON|
 |canonical_hosted_zone_name|String|

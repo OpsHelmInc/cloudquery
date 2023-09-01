@@ -22,6 +22,11 @@ func PasswordPolicies() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::IAM::AccountPasswordPolicy"),
+			},
+			{
 				Name:     "allow_users_to_change_password",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("AllowUsersToChangePassword"),

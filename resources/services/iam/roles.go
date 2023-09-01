@@ -42,6 +42,11 @@ func Roles() *schema.Table {
 				Resolver: resolveRolesAssumeRolePolicyDocument,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::IAM::Role"),
+			},
+			{
 				Name:     "arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Arn"),

@@ -20,6 +20,7 @@ This table depends on [aws_iam_users](aws_iam_users.md).
 |user_id|String|
 |last_used|Timestamp|
 |last_used_service_name|String|
+|oh_resource_type|String|
 |access_key_id|String|
 |create_date|Timestamp|
 |status|String|

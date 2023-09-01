@@ -39,6 +39,11 @@ func TaskDefinitions() *schema.Table {
 				Resolver: resolveEcsTaskDefinitionTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ECS::TaskDefinition"),
+			},
+			{
 				Name:     "compatibilities",
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("Compatibilities"),

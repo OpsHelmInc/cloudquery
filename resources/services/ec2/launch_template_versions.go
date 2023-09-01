@@ -41,6 +41,11 @@ func LaunchTemplateVersions() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::EC2::LaunchTemplate"),
+			},
+			{
 				Name:     "create_time",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreateTime"),

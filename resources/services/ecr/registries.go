@@ -38,6 +38,11 @@ func Registries() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ECR::Registry"),
+			},
+			{
 				Name:     "replication_configuration",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ReplicationConfiguration"),

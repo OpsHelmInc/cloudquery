@@ -14,6 +14,7 @@ The primary key for this table is **account_id**.
 |_cq_id|UUID|
 |_cq_parent_id|UUID|
 |account_id (PK)|String|
+|oh_resource_type|String|
 |allow_users_to_change_password|Bool|
 |expire_passwords|Bool|
 |hard_expiry|Bool|

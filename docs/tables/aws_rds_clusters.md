@@ -17,6 +17,7 @@ The primary key for this table is **arn**.
 |region|String|
 |arn (PK)|String|
 |tags|JSON|
+|oh_resource_type|String|
 |activity_stream_kinesis_stream_name|String|
 |activity_stream_kms_key_id|String|
 |activity_stream_mode|String|

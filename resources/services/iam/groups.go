@@ -36,6 +36,11 @@ func Groups() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::IAM::Group"),
+			},
+			{
 				Name:     "arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Arn"),

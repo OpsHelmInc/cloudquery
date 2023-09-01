@@ -16,4 +16,5 @@ The composite primary key for this table is (**account_id**, **region**, **regis
 |account_id (PK)|String|
 |region (PK)|String|
 |registry_id (PK)|String|
+|oh_resource_type|String|
 |replication_configuration|JSON|

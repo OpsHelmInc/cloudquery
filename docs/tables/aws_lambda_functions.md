@@ -27,6 +27,7 @@ The following tables depend on aws_lambda_functions:
 |policy_document|JSON|
 |code_signing_config|JSON|
 |code_repository_type|String|
+|oh_resource_type|String|
 |code|JSON|
 |concurrency|JSON|
 |configuration|JSON|

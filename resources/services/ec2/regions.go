@@ -35,6 +35,11 @@ func Regions() *schema.Table {
 				Resolver: schema.PathResolver("RegionName"),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::EC2::Region"),
+			},
+			{
 				Name:     "endpoint",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Endpoint"),

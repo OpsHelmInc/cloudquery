@@ -17,6 +17,7 @@ The composite primary key for this table is (**launch_template_id**, **version_n
 |region|String|
 |launch_template_id (PK)|String|
 |version_number (PK)|Int|
+|oh_resource_type|String|
 |create_time|Timestamp|
 |created_by|String|
 |default_version|Bool|

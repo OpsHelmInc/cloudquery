@@ -39,6 +39,11 @@ func Instances() *schema.Table {
 				IgnoreInTests: true,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::EC2::Instance"),
+			},
+			{
 				Name:     "ami_launch_index",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("AmiLaunchIndex"),

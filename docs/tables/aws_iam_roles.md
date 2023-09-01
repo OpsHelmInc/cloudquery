@@ -20,6 +20,7 @@ The following tables depend on aws_iam_roles:
 |policies|JSON|
 |id (PK)|String|
 |assume_role_policy_document|JSON|
+|oh_resource_type|String|
 |arn|String|
 |create_date|Timestamp|
 |path|String|

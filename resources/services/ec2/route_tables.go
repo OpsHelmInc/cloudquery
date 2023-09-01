@@ -33,6 +33,11 @@ func RouteTables() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::EC2::RouteTable"),
+			},
+			{
 				Name:     "associations",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Associations"),

@@ -33,6 +33,11 @@ func ClusterServices() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ECS::Service"),
+			},
+			{
 				Name:     "capacity_provider_strategy",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("CapacityProviderStrategy"),

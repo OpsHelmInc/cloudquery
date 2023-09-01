@@ -38,6 +38,11 @@ func UserAccessKeys() *schema.Table {
 				Type: schema.TypeString,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::IAM::AccessKey"),
+			},
+			{
 				Name:     "access_key_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("AccessKeyId"),

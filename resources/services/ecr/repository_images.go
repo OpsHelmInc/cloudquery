@@ -32,6 +32,11 @@ func RepositoryImages() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ECR::Image"),
+			},
+			{
 				Name:     "artifact_media_type",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ArtifactMediaType"),
