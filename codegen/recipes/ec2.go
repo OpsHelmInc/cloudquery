@@ -123,6 +123,11 @@ func EC2Resources() []*Resource {
 			ExtraColumns: append(defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
 					{
+						Name:     "arn",
+						Type:     schema.TypeString,
+						Resolver: "resolveEipArn",
+					},
+					{
 						Name:     ohResourceTypeColumn,
 						Type:     schema.TypeString,
 						Resolver: `client.StaticValueResolver("AWS::EC2::EIP")`,

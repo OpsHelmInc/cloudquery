@@ -3,11 +3,13 @@ package ec2
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
 	"github.com/aws/aws-sdk-go-v2/service/ec2/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func fetchEc2Eips(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
@@ -21,4 +23,17 @@ func fetchEc2Eips(ctx context.Context, meta schema.ClientMeta, parent *schema.Re
 	}
 	res <- output.Addresses
 	return nil
+}
+
+func resolveEipArn(_ context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
+	cl := meta.(*client.Client)
+	eip := resource.Item.(types.Address)
+	a := arn.ARN{
+		Partition: cl.Partition,
+		Service:   "ec2",
+		Region:    cl.Region,
+		AccountID: cl.AccountID,
+		Resource:  "elastic-ip/" + aws.ToString(eip.AllocationId),
+	}
+	return resource.Set(c.Name, a.String())
 }
