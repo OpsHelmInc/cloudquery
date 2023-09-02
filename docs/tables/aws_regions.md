@@ -17,6 +17,5 @@ The primary key for this table is **_cq_id**.
 |enabled|Bool|
 |partition|String|
 |region|String|
-|oh_resource_type|String|
 |endpoint|String|
 |opt_in_status|String|

@@ -25,6 +25,14 @@ func LaunchTemplateVersions() *schema.Table {
 				Resolver: client.ResolveAWSRegion,
 			},
 			{
+				Name:     "arn",
+				Type:     schema.TypeString,
+				Resolver: resolveLaunchTemplateArn,
+				CreationOptions: schema.ColumnCreationOptions{
+					PrimaryKey: true,
+				},
+			},
+			{
 				Name:     "launch_template_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("LaunchTemplateId"),

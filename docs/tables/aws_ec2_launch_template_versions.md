@@ -2,7 +2,7 @@
 
 https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateVersion.html
 
-The composite primary key for this table is (**launch_template_id**, **version_number**).
+The composite primary key for this table is (**arn**, **launch_template_id**, **version_number**).
 
 
 
@@ -15,6 +15,7 @@ The composite primary key for this table is (**launch_template_id**, **version_n
 |_cq_parent_id|UUID|
 |account_id|String|
 |region|String|
+|arn (PK)|String|
 |launch_template_id (PK)|String|
 |version_number (PK)|Int|
 |oh_resource_type|String|

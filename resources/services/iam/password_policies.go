@@ -14,6 +14,11 @@ func PasswordPolicies() *schema.Table {
 		Multiplex: client.AccountMultiplex,
 		Columns: []schema.Column{
 			{
+				Name:     "arn",
+				Type:     schema.TypeString,
+				Resolver: resolvePasswordPolicyArn,
+			},
+			{
 				Name:     "account_id",
 				Type:     schema.TypeString,
 				Resolver: client.ResolveAWSAccount,

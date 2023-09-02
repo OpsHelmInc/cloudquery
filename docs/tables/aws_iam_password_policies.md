@@ -13,6 +13,7 @@ The primary key for this table is **account_id**.
 |_cq_sync_time|Timestamp|
 |_cq_id|UUID|
 |_cq_parent_id|UUID|
+|arn|String|
 |account_id (PK)|String|
 |oh_resource_type|String|
 |allow_users_to_change_password|Bool|

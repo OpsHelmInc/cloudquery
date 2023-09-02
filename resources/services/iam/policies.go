@@ -43,7 +43,7 @@ func Policies() *schema.Table {
 			{
 				Name:     "oh_resource_type",
 				Type:     schema.TypeString,
-				Resolver: client.StaticValueResolver("AWS::IAM::Policy"),
+				Resolver: client.StaticValueResolver("AWS::IAM::ManagedPolicy"),
 			},
 			{
 				Name:     "arn",
