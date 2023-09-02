@@ -49,6 +49,11 @@ func ECRPublicResources() []*Resource {
 						Resolver: `resolveImageArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ECR::Image")`,
+					},
 				}...),
 		},
 	}

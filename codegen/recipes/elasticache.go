@@ -22,6 +22,11 @@ func ElastiCacheResources() []*Resource {
 						Resolver: `schema.PathResolver("ARN")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ElastiCache::CacheCluster")`,
+					},
 				}...),
 		},
 		{
@@ -200,7 +205,8 @@ func ElastiCacheResources() []*Resource {
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
 				}...),
-		}, {
+		},
+		{
 			SubService:  "subnet_groups",
 			Struct:      &types.CacheSubnetGroup{},
 			Description: "https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CacheSubnetGroup.html",

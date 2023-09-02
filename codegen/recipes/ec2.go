@@ -280,6 +280,12 @@ func EC2Resources() []*Resource {
 			ExtraColumns: append(defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
 					{
+						Name:     "arn",
+						Type:     schema.TypeString,
+						Resolver: "resolveLaunchTemplateArn",
+						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
 						Name:     "launch_template_id",
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("LaunchTemplateId")`,
@@ -390,11 +396,11 @@ func EC2Resources() []*Resource {
 					Type:     schema.TypeString,
 					Resolver: `schema.PathResolver("RegionName")`,
 				},
-				{
-					Name:     ohResourceTypeColumn,
-					Type:     schema.TypeString,
-					Resolver: `client.StaticValueResolver("AWS::EC2::Region")`,
-				},
+				//{
+				//	Name:     ohResourceTypeColumn,
+				//	Type:     schema.TypeString,
+				//	Resolver: `client.StaticValueResolver("AWS::EC2::Region")`,
+				//},
 			},
 		},
 		{

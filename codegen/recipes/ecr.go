@@ -25,11 +25,6 @@ func ECRResources() []*Resource {
 						Resolver: `schema.PathResolver("RegistryId")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
-					{
-						Name:     ohResourceTypeColumn,
-						Type:     schema.TypeString,
-						Resolver: `client.StaticValueResolver("AWS::ECR::Registry")`,
-					},
 				}...),
 		},
 		{

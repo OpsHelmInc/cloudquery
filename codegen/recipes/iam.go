@@ -187,6 +187,11 @@ func IAMResources() []*Resource {
 			SkipFields: []string{},
 			ExtraColumns: []codegen.ColumnDefinition{
 				{
+					Name:     "arn",
+					Type:     schema.TypeString,
+					Resolver: `resolvePasswordPolicyArn`,
+				},
+				{
 					Name:     "account_id",
 					Type:     schema.TypeString,
 					Resolver: `client.ResolveAWSAccount`,
@@ -230,7 +235,7 @@ func IAMResources() []*Resource {
 				{
 					Name:     ohResourceTypeColumn,
 					Type:     schema.TypeString,
-					Resolver: `client.StaticValueResolver("AWS::IAM::Policy")`,
+					Resolver: `client.StaticValueResolver("AWS::IAM::ManagedPolicy")`,
 				},
 			},
 		},
@@ -374,6 +379,11 @@ func IAMResources() []*Resource {
 			ExtraColumns: append(
 				defaultAccountColumns,
 				[]codegen.ColumnDefinition{
+					{
+						Name:     "arn",
+						Type:     schema.TypeString,
+						Resolver: `resolveAccessKeyArn`,
+					},
 					{
 						Name:     "user_arn",
 						Type:     schema.TypeString,
