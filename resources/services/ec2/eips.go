@@ -25,6 +25,11 @@ func Eips() *schema.Table {
 				Resolver: client.ResolveAWSRegion,
 			},
 			{
+				Name:     "arn",
+				Type:     schema.TypeString,
+				Resolver: resolveEipArn,
+			},
+			{
 				Name:     "oh_resource_type",
 				Type:     schema.TypeString,
 				Resolver: client.StaticValueResolver("AWS::EC2::EIP"),
