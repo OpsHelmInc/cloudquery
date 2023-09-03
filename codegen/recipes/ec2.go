@@ -370,11 +370,16 @@ func EC2Resources() []*Resource {
 		{
 			Name:        "aws_regions", // rename table for backwards-compatibility
 			SubService:  "regions",
-			Struct:      &types.Region{},
+			Struct:      &models.Region{},
 			Description: "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Region.html",
-			SkipFields:  []string{"RegionName"},
+			SkipFields:  []string{"RegionName", "Region", "EC2Config"},
 			Multiplex:   `client.AccountMultiplex`,
 			ExtraColumns: []codegen.ColumnDefinition{
+				{
+					Name:     "arn",
+					Type:     schema.TypeString,
+					Resolver: `resolveRegionArn`,
+				},
 				{
 					Name:     "account_id",
 					Type:     schema.TypeString,
@@ -396,11 +401,16 @@ func EC2Resources() []*Resource {
 					Type:     schema.TypeString,
 					Resolver: `schema.PathResolver("RegionName")`,
 				},
-				//{
-				//	Name:     ohResourceTypeColumn,
-				//	Type:     schema.TypeString,
-				//	Resolver: `client.StaticValueResolver("AWS::EC2::Region")`,
-				//},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::EC2::Region")`,
+				},
+				{
+					Name:     `ec2_config`,
+					Type:     schema.TypeJSON,
+					Resolver: `resolveEc2RegionConfig`,
+				},
 			},
 		},
 		{

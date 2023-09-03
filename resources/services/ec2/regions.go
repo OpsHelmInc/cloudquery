@@ -15,6 +15,11 @@ func Regions() *schema.Table {
 		Multiplex:   client.AccountMultiplex,
 		Columns: []schema.Column{
 			{
+				Name:     "arn",
+				Type:     schema.TypeString,
+				Resolver: resolveRegionArn,
+			},
+			{
 				Name:     "account_id",
 				Type:     schema.TypeString,
 				Resolver: client.ResolveAWSAccount,
@@ -35,14 +40,14 @@ func Regions() *schema.Table {
 				Resolver: schema.PathResolver("RegionName"),
 			},
 			{
-				Name:     "endpoint",
+				Name:     "oh_resource_type",
 				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Endpoint"),
+				Resolver: client.StaticValueResolver("AWS::EC2::Region"),
 			},
 			{
-				Name:     "opt_in_status",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("OptInStatus"),
+				Name:     "ec2_config",
+				Type:     schema.TypeJSON,
+				Resolver: resolveEc2RegionConfig,
 			},
 		},
 	}
