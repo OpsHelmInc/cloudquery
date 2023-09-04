@@ -53,6 +53,11 @@ func Subscriptions() *schema.Table {
 				Resolver: schema.PathResolver("RedrivePolicy"),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::SNS::Subscription"),
+			},
+			{
 				Name:     "endpoint",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Endpoint"),

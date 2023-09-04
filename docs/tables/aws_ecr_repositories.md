@@ -21,6 +21,7 @@ The following tables depend on aws_ecr_repositories:
 |arn (PK)|String|
 |tags|JSON|
 |policy_text|JSON|
+|oh_resource_type|String|
 |created_at|Timestamp|
 |encryption_configuration|JSON|
 |image_scanning_configuration|JSON|

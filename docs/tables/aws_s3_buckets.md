@@ -21,6 +21,7 @@ The following tables depend on aws_s3_buckets:
 |_cq_parent_id|UUID|
 |account_id|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |creation_date|Timestamp|
 |name|String|
 |replication_role|String|

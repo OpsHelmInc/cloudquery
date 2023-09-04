@@ -17,6 +17,7 @@ The primary key for this table is **arn**.
 |region|String|
 |arn (PK)|String|
 |backup_policy_status|String|
+|oh_resource_type|String|
 |creation_time|Timestamp|
 |creation_token|String|
 |file_system_id|String|

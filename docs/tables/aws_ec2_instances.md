@@ -17,6 +17,7 @@ The primary key for this table is **arn**.
 |region|String|
 |arn (PK)|String|
 |state_transition_reason_time|Timestamp|
+|oh_resource_type|String|
 |ami_launch_index|Int|
 |architecture|String|
 |block_device_mappings|JSON|

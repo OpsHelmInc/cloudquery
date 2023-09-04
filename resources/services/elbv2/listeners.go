@@ -38,6 +38,11 @@ func Listeners() *schema.Table {
 				Resolver: resolveElbv2listenerTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ElasticLoadBalancingV2::Listener"),
+			},
+			{
 				Name:     "alpn_policy",
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("AlpnPolicy"),

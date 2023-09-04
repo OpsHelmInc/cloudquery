@@ -14,14 +14,17 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/codegen/recipes/discover"
 	"github.com/aws/aws-sdk-go-v2/service/autoscaling/types"
 	"github.com/cloudquery/plugin-sdk/caser"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
 	"github.com/iancoleman/strcase"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/codegen/recipes/discover"
 )
+
+const ohResourceTypeColumn = "oh_resource_type"
 
 type Resource struct {
 	// Name overrides the table name: used only in rare cases for backwards-compatibility.
@@ -235,7 +238,7 @@ func (r *Resource) generateSchema(dir string) error {
 	} else {
 		content = formattedContent
 	}
-	if err := os.WriteFile(filePath, content, 0644); err != nil {
+	if err := os.WriteFile(filePath, content, 0o644); err != nil {
 		return fmt.Errorf("failed to write file %s: %w", filePath, err)
 	}
 
@@ -266,7 +269,7 @@ func (r *Resource) generateResolver(dir string) error {
 		content = formattedContent
 	}
 
-	if err := os.WriteFile(filePath, content, 0644); err != nil {
+	if err := os.WriteFile(filePath, content, 0o644); err != nil {
 		return fmt.Errorf("failed to write file %s: %w", filePath, err)
 	}
 
@@ -297,7 +300,7 @@ func (r *Resource) generateMockTest(dir string) error {
 		content = formattedContent
 	}
 
-	if err := os.WriteFile(filePath, content, 0644); err != nil {
+	if err := os.WriteFile(filePath, content, 0o644); err != nil {
 		return fmt.Errorf("failed to write file %s: %w", filePath, err)
 	}
 

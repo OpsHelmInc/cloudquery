@@ -27,6 +27,11 @@ func Buckets() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::S3::Bucket"),
+			},
+			{
 				Name:     "creation_date",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreationDate"),

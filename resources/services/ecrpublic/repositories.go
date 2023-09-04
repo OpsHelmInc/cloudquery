@@ -38,6 +38,11 @@ func Repositories() *schema.Table {
 				Resolver: resolveRepositoryTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ECR::PublicRepository"),
+			},
+			{
 				Name:     "created_at",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreatedAt"),

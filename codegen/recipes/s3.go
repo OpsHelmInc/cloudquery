@@ -4,15 +4,15 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/OpsHelmInc/ohaws"
 	"github.com/aws/aws-sdk-go-v2/service/s3/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func S3Resources() []*Resource {
 	resources := []*Resource{
-
 		{
 			SubService: "accounts",
 			Struct:     &ohaws.PublicAccessBlockConfigurationWrapper{},
@@ -38,6 +38,11 @@ func S3Resources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveBucketARN()`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::S3::Bucket")`,
 					},
 				}...),
 			Relations: []string{

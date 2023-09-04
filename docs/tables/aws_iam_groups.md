@@ -19,6 +19,7 @@ The following tables depend on aws_iam_groups:
 |account_id (PK)|String|
 |policies|JSON|
 |id (PK)|String|
+|oh_resource_type|String|
 |arn|String|
 |create_date|Timestamp|
 |group_name|String|

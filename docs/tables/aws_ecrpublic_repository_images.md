@@ -18,6 +18,7 @@ This table depends on [aws_ecrpublic_repositories](aws_ecrpublic_repositories.md
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |artifact_media_type|String|
 |image_digest|String|
 |image_manifest_media_type|String|

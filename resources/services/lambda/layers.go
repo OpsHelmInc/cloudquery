@@ -33,6 +33,11 @@ func Layers() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Lambda::LayerVersion"),
+			},
+			{
 				Name:     "latest_matching_version",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("LatestMatchingVersion"),

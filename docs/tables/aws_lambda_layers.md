@@ -19,6 +19,7 @@ The following tables depend on aws_lambda_layers:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |latest_matching_version|JSON|
 |layer_arn|String|
 |layer_name|String|

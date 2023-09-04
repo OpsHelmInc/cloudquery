@@ -16,10 +16,12 @@ This table depends on [aws_iam_users](aws_iam_users.md).
 |_cq_id (PK)|UUID|
 |_cq_parent_id|UUID|
 |account_id|String|
+|arn|String|
 |user_arn|String|
 |user_id|String|
 |last_used|Timestamp|
 |last_used_service_name|String|
+|oh_resource_type|String|
 |access_key_id|String|
 |create_date|Timestamp|
 |status|String|

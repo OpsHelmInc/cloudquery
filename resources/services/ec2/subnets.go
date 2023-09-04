@@ -33,6 +33,11 @@ func Subnets() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::EC2::Subnet"),
+			},
+			{
 				Name:     "assign_ipv6_address_on_creation",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("AssignIpv6AddressOnCreation"),

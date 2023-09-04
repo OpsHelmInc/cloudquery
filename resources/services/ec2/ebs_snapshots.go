@@ -38,6 +38,11 @@ func EbsSnapshots() *schema.Table {
 				Resolver: resolveEbsSnapshotAttribute,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::EC2::Snapshot"),
+			},
+			{
 				Name:     "data_encryption_key_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("DataEncryptionKeyId"),

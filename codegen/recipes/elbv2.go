@@ -36,6 +36,11 @@ func ELBv2Resources() []*Resource {
 						Resolver: `schema.PathResolver("LoadBalancerArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ElasticLoadBalancingV2::LoadBalancer")`,
+					},
 				}...),
 			Relations: []string{
 				"Listeners()",
@@ -60,6 +65,11 @@ func ELBv2Resources() []*Resource {
 						Name:     "tags",
 						Type:     schema.TypeJSON,
 						Resolver: `resolveElbv2listenerTags`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ElasticLoadBalancingV2::Listener")`,
 					},
 				}...),
 			Relations: []string{
@@ -114,6 +124,11 @@ func ELBv2Resources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("TargetGroupArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ElasticLoadBalancingV2::TargetGroup")`,
 					},
 				}...),
 			Relations: []string{

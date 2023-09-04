@@ -4,10 +4,11 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/OpsHelmInc/cloudquery/resources/services/elbv1/models"
 	"github.com/aws/aws-sdk-go-v2/service/elasticloadbalancing/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/resources/services/elbv1/models"
 )
 
 func ELBv1Resources() []*Resource {
@@ -25,6 +26,11 @@ func ELBv1Resources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveLoadBalancerARN()`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ElasticLoadBalancing::LoadBalancer")`,
 					},
 				}...,
 			),

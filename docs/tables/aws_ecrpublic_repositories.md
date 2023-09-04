@@ -20,6 +20,7 @@ The following tables depend on aws_ecrpublic_repositories:
 |region|String|
 |arn (PK)|String|
 |tags|JSON|
+|oh_resource_type|String|
 |created_at|Timestamp|
 |registry_id|String|
 |repository_name|String|

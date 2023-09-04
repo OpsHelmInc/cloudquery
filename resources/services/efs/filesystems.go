@@ -38,6 +38,11 @@ func Filesystems() *schema.Table {
 				Resolver: ResolveEfsFilesystemBackupPolicyStatus,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::EFS::FileSystem"),
+			},
+			{
 				Name:     "creation_time",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreationTime"),

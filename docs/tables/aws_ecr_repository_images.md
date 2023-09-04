@@ -20,6 +20,7 @@ The following tables depend on aws_ecr_repository_images:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |artifact_media_type|String|
 |image_digest|String|
 |image_manifest_media_type|String|

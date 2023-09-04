@@ -37,6 +37,11 @@ func Users() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::IAM::User"),
+			},
+			{
 				Name:     "create_date",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreateDate"),

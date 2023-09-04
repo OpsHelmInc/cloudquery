@@ -43,6 +43,11 @@ func Instances() *schema.Table {
 				Resolver: resolveRdsInstanceTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::RDS::DBInstance"),
+			},
+			{
 				Name:     "activity_stream_engine_native_audit_fields_included",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("ActivityStreamEngineNativeAuditFieldsIncluded"),

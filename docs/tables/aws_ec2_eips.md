@@ -15,6 +15,8 @@ The primary key for this table is **_cq_id**.
 |_cq_parent_id|UUID|
 |account_id|String|
 |region|String|
+|arn|String|
+|oh_resource_type|String|
 |allocation_id|String|
 |association_id|String|
 |carrier_ip|String|

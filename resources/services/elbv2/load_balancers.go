@@ -44,6 +44,11 @@ func LoadBalancers() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ElasticLoadBalancingV2::LoadBalancer"),
+			},
+			{
 				Name:     "availability_zones",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("AvailabilityZones"),

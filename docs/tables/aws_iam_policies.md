@@ -17,6 +17,7 @@ The composite primary key for this table is (**account_id**, **id**).
 |id (PK)|String|
 |tags|JSON|
 |policy_version_list|JSON|
+|oh_resource_type|String|
 |arn|String|
 |attachment_count|Int|
 |create_date|Timestamp|

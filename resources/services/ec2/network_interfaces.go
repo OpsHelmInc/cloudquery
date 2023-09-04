@@ -38,6 +38,11 @@ func NetworkInterfaces() *schema.Table {
 				Resolver: client.ResolveTagField("TagSet"),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::EC2::NetworkInterface"),
+			},
+			{
 				Name:     "association",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Association"),

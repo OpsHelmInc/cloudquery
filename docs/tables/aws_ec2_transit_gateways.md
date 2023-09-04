@@ -24,6 +24,7 @@ The following tables depend on aws_ec2_transit_gateways:
 |region|String|
 |id|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |creation_time|Timestamp|
 |description|String|
 |options|JSON|

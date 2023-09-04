@@ -38,6 +38,11 @@ func Clusters() *schema.Table {
 				Resolver: resolveRdsClusterTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::RDS::DBCluster"),
+			},
+			{
 				Name:     "activity_stream_kinesis_stream_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ActivityStreamKinesisStreamName"),

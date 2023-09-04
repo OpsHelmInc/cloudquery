@@ -3,12 +3,14 @@ package iam
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/resources/services/iam/models"
 	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	"github.com/aws/aws-sdk-go-v2/service/iam/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/resources/services/iam/models"
 )
 
 func fetchIamUsers(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
@@ -127,4 +129,18 @@ func fetchIamUserAttachedPolicies(ctx context.Context, meta schema.ClientMeta, p
 		config.Marker = output.Marker
 	}
 	return nil
+}
+
+func resolveAccessKeyArn(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
+	cl := meta.(*client.Client)
+	key := resource.Item.(models.AccessKeyWrapper)
+
+	a := arn.ARN{
+		Partition: cl.Partition,
+		Service:   "iam",
+		Region:    "",
+		AccountID: cl.AccountID,
+		Resource:  "access-key/" + aws.ToString(key.UserName) + "/" + aws.ToString(key.AccessKeyId),
+	}
+	return resource.Set(c.Name, a.String())
 }

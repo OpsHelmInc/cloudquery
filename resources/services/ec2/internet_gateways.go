@@ -33,6 +33,11 @@ func InternetGateways() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::EC2::InternetGateway"),
+			},
+			{
 				Name:     "attachments",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Attachments"),

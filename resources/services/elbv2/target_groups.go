@@ -38,6 +38,11 @@ func TargetGroups() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ElasticLoadBalancingV2::TargetGroup"),
+			},
+			{
 				Name:     "health_check_enabled",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("HealthCheckEnabled"),

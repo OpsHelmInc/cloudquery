@@ -48,6 +48,11 @@ func Functions() *schema.Table {
 				Resolver: schema.PathResolver("Code.RepositoryType"),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Lambda::Function"),
+			},
+			{
 				Name:     "code",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Code"),

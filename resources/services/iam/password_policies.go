@@ -14,12 +14,22 @@ func PasswordPolicies() *schema.Table {
 		Multiplex: client.AccountMultiplex,
 		Columns: []schema.Column{
 			{
+				Name:     "arn",
+				Type:     schema.TypeString,
+				Resolver: resolvePasswordPolicyArn,
+			},
+			{
 				Name:     "account_id",
 				Type:     schema.TypeString,
 				Resolver: client.ResolveAWSAccount,
 				CreationOptions: schema.ColumnCreationOptions{
 					PrimaryKey: true,
 				},
+			},
+			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::IAM::AccountPasswordPolicy"),
 			},
 			{
 				Name:     "allow_users_to_change_password",

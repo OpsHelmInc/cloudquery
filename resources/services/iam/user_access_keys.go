@@ -20,6 +20,11 @@ func UserAccessKeys() *schema.Table {
 				Resolver: client.ResolveAWSAccount,
 			},
 			{
+				Name:     "arn",
+				Type:     schema.TypeString,
+				Resolver: resolveAccessKeyArn,
+			},
+			{
 				Name:     "user_arn",
 				Type:     schema.TypeString,
 				Resolver: schema.ParentColumnResolver("arn"),
@@ -36,6 +41,11 @@ func UserAccessKeys() *schema.Table {
 			{
 				Name: "last_used_service_name",
 				Type: schema.TypeString,
+			},
+			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::IAM::AccessKey"),
 			},
 			{
 				Name:     "access_key_id",

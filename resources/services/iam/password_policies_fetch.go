@@ -3,10 +3,12 @@ package iam
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/resources/services/iam/models"
+	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/resources/services/iam/models"
 )
 
 func fetchIamPasswordPolicies(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
@@ -23,4 +25,17 @@ func fetchIamPasswordPolicies(ctx context.Context, meta schema.ClientMeta, paren
 	}
 	res <- models.PasswordPolicyWrapper{PasswordPolicy: *response.PasswordPolicy, PolicyExists: true}
 	return nil
+}
+
+func resolvePasswordPolicyArn(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
+	cl := meta.(*client.Client)
+
+	a := arn.ARN{
+		Partition: cl.Partition,
+		Service:   "iam",
+		Region:    "",
+		AccountID: cl.AccountID,
+		Resource:  "password-policy",
+	}
+	return resource.Set(c.Name, a.String())
 }

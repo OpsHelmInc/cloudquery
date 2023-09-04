@@ -4,11 +4,12 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/OpsHelmInc/cloudquery/resources/services/lambda/models"
 	"github.com/aws/aws-sdk-go-v2/service/lambda"
 	"github.com/aws/aws-sdk-go-v2/service/lambda/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/resources/services/lambda/models"
 )
 
 func LambdaResources() []*Resource {
@@ -42,6 +43,11 @@ func LambdaResources() []*Resource {
 						Name:     "code_repository_type",
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("Code.RepositoryType")`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Lambda::Function")`,
 					},
 				}...),
 			PostResourceResolver: `resolvePolicyCodeSigningConfig`,
@@ -147,6 +153,11 @@ func LambdaResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("LayerArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Lambda::LayerVersion")`,
 					},
 				}...),
 			Relations: []string{

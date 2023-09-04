@@ -16,6 +16,7 @@ The primary key for this table is **arn**.
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |assign_ipv6_address_on_creation|Bool|
 |availability_zone|String|
 |availability_zone_id|String|

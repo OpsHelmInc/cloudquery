@@ -20,6 +20,7 @@ The primary key for this table is **arn**.
 |effective_delivery_policy|JSON|
 |filter_policy|JSON|
 |redrive_policy|JSON|
+|oh_resource_type|String|
 |endpoint|String|
 |owner|String|
 |protocol|String|

@@ -33,6 +33,11 @@ func Clusters() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ElastiCache::CacheCluster"),
+			},
+			{
 				Name:     "at_rest_encryption_enabled",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("AtRestEncryptionEnabled"),

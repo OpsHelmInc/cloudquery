@@ -22,6 +22,7 @@ The following tables depend on aws_elbv2_load_balancers:
 |web_acl_arn|String|
 |tags|JSON|
 |arn (PK)|String|
+|oh_resource_type|String|
 |availability_zones|JSON|
 |canonical_hosted_zone_id|String|
 |created_time|Timestamp|

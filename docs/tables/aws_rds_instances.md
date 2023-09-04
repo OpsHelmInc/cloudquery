@@ -18,6 +18,7 @@ The primary key for this table is **arn**.
 |arn (PK)|String|
 |processor_features|JSON|
 |tags|JSON|
+|oh_resource_type|String|
 |activity_stream_engine_native_audit_fields_included|Bool|
 |activity_stream_kinesis_stream_name|String|
 |activity_stream_kms_key_id|String|

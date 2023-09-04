@@ -33,6 +33,11 @@ func Clusters() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ECS::Cluster"),
+			},
+			{
 				Name:     "active_services_count",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("ActiveServicesCount"),

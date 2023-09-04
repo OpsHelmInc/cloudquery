@@ -33,6 +33,11 @@ func SecurityGroups() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::EC2::SecurityGroup"),
+			},
+			{
 				Name:     "description",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Description"),

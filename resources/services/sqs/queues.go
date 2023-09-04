@@ -53,6 +53,11 @@ func Queues() *schema.Table {
 				Resolver: schema.PathResolver("RedriveAllowPolicy"),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::SQS::Queue"),
+			},
+			{
 				Name:     "url",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("URL"),

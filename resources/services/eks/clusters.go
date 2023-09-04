@@ -34,6 +34,11 @@ func Clusters() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::EKS::Cluster"),
+			},
+			{
 				Name:     "certificate_authority",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("CertificateAuthority"),

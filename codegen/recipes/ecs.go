@@ -4,10 +4,11 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/OpsHelmInc/cloudquery/resources/services/ecs/models"
 	"github.com/aws/aws-sdk-go-v2/service/ecs/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/resources/services/ecs/models"
 )
 
 func ECSResources() []*Resource {
@@ -25,6 +26,11 @@ func ECSResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("ClusterArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ECS::Cluster")`,
 					},
 				}...),
 			Relations: []string{
@@ -74,6 +80,11 @@ func ECSResources() []*Resource {
 						Resolver: `schema.PathResolver("ServiceArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ECS::Service")`,
+					},
 				}...),
 			Relations: []string{},
 		},
@@ -111,6 +122,11 @@ func ECSResources() []*Resource {
 						Name:     "tags",
 						Type:     schema.TypeJSON,
 						Resolver: `resolveEcsTaskDefinitionTags`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ECS::TaskDefinition")`,
 					},
 				}...),
 			Relations: []string{},

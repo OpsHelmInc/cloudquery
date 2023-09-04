@@ -20,6 +20,7 @@ The primary key for this table is **arn**.
 |policy|JSON|
 |redrive_policy|JSON|
 |redrive_allow_policy|JSON|
+|oh_resource_type|String|
 |url|String|
 |approximate_number_of_messages|Int|
 |approximate_number_of_messages_delayed|Int|

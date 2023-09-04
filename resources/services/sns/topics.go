@@ -53,6 +53,11 @@ func Topics() *schema.Table {
 				Resolver: schema.PathResolver("EffectiveDeliveryPolicy"),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::SNS::Topic"),
+			},
+			{
 				Name:     "display_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("DisplayName"),
