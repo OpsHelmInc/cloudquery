@@ -7,7 +7,6 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
-	"github.com/aws/aws-sdk-go-v2/service/ec2/types"
 	"github.com/cloudquery/plugin-sdk/schema"
 
 	"github.com/OpsHelmInc/cloudquery/client"
@@ -28,7 +27,7 @@ func fetchEc2Regions(ctx context.Context, meta schema.ClientMeta, parent *schema
 }
 
 func resolveRegionEnabled(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	region := resource.Item.(types.Region)
+	region := resource.Item.(*models.Region)
 	switch *region.OptInStatus {
 	case "opt-in-not-required", "opted-in":
 		return resource.Set(c.Name, true)
@@ -84,6 +83,8 @@ func resolveEc2RegionConfig(ctx context.Context, meta schema.ClientMeta, resourc
 
 	conf := resource.Item.(*models.Region)
 	conf.EC2Config = regionalConfig
+
+	resource.Set(c.Name, regionalConfig)
 
 	return errs
 }

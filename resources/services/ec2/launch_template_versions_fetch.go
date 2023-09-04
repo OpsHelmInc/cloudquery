@@ -36,7 +36,7 @@ func fetchEc2LaunchTemplateVersions(ctx context.Context, meta schema.ClientMeta,
 
 func resolveLaunchTemplateArn(_ context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	cl := meta.(*client.Client)
-	item := resource.Item.(types.LaunchTemplate)
+	item := resource.Item.(types.LaunchTemplateVersion)
 	a := arn.ARN{
 		Partition: cl.Partition,
 		Service:   "ec2",
