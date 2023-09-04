@@ -84,7 +84,8 @@ func resolveEc2RegionConfig(ctx context.Context, meta schema.ClientMeta, resourc
 	conf := resource.Item.(*models.Region)
 	conf.EC2Config = regionalConfig
 
-	resource.Set(c.Name, regionalConfig)
+	err = resource.Set(c.Name, regionalConfig)
+	errs = errors.Join(errs, err)
 
 	return errs
 }
