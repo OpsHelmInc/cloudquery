@@ -273,8 +273,8 @@ func EC2Resources() []*Resource {
 				}...),
 		},
 		{
-			SubService:  "launch_template_versions",
-			Struct:      &types.LaunchTemplateVersion{},
+			SubService:  "launch_templates",
+			Struct:      &types.LaunchTemplate{},
 			Description: "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateVersion.html",
 			SkipFields:  []string{"LaunchTemplateId", "VersionNumber"},
 			ExtraColumns: append(defaultRegionalColumns,
@@ -292,6 +292,32 @@ func EC2Resources() []*Resource {
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
 					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EC2::LaunchTemplate")`,
+					},
+				}...),
+		},
+		{
+			SubService:  "launch_template_versions",
+			Struct:      &types.LaunchTemplateVersion{},
+			Description: "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateVersion.html",
+			SkipFields:  []string{"LaunchTemplateId", "VersionNumber"},
+			ExtraColumns: append(defaultRegionalColumns,
+				[]codegen.ColumnDefinition{
+					{
+						Name:     "arn",
+						Type:     schema.TypeString,
+						Resolver: "resolveLaunchTemplateVersionArn",
+						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     "launch_template_id",
+						Type:     schema.TypeString,
+						Resolver: `schema.PathResolver("LaunchTemplateId")`,
+						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
 						Name:     "version_number",
 						Type:     schema.TypeInt,
 						Resolver: `schema.PathResolver("VersionNumber")`,
@@ -300,7 +326,7 @@ func EC2Resources() []*Resource {
 					{
 						Name:     ohResourceTypeColumn,
 						Type:     schema.TypeString,
-						Resolver: `client.StaticValueResolver("AWS::EC2::LaunchTemplate")`,
+						Resolver: `client.StaticValueResolver("AWS::EC2::LaunchTemplateVersion")`,
 					},
 				}...),
 		},
