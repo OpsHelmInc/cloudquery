@@ -2,6 +2,7 @@ package ec2
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
@@ -34,7 +35,7 @@ func fetchEc2LaunchTemplateVersions(ctx context.Context, meta schema.ClientMeta,
 	return nil
 }
 
-func resolveLaunchTemplateArn(_ context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
+func resolveLaunchTemplateVersionArn(_ context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	cl := meta.(*client.Client)
 	item := resource.Item.(types.LaunchTemplateVersion)
 	a := arn.ARN{
@@ -42,7 +43,7 @@ func resolveLaunchTemplateArn(_ context.Context, meta schema.ClientMeta, resourc
 		Service:   "ec2",
 		Region:    cl.Region,
 		AccountID: cl.AccountID,
-		Resource:  "launch-template/" + aws.ToString(item.LaunchTemplateId),
+		Resource:  fmt.Sprintf("launch-template/%s:%d", aws.ToString(item.LaunchTemplateId), aws.ToInt64(item.VersionNumber)),
 	}
 	return resource.Set(c.Name, a.String())
 }

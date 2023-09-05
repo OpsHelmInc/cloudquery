@@ -7,11 +7,11 @@ import (
 	"github.com/cloudquery/plugin-sdk/schema"
 )
 
-func LaunchTemplateVersions() *schema.Table {
+func LaunchTemplates() *schema.Table {
 	return &schema.Table{
-		Name:        "aws_ec2_launch_template_versions",
+		Name:        "aws_ec2_launch_templates",
 		Description: `https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateVersion.html`,
-		Resolver:    fetchEc2LaunchTemplateVersions,
+		Resolver:    fetchEc2LaunchTemplates,
 		Multiplex:   client.ServiceAccountRegionMultiplexer("ec2"),
 		Columns: []schema.Column{
 			{
@@ -27,7 +27,7 @@ func LaunchTemplateVersions() *schema.Table {
 			{
 				Name:     "arn",
 				Type:     schema.TypeString,
-				Resolver: resolveLaunchTemplateVersionArn,
+				Resolver: resolveLaunchTemplateArn,
 				CreationOptions: schema.ColumnCreationOptions{
 					PrimaryKey: true,
 				},
@@ -41,17 +41,9 @@ func LaunchTemplateVersions() *schema.Table {
 				},
 			},
 			{
-				Name:     "version_number",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("VersionNumber"),
-				CreationOptions: schema.ColumnCreationOptions{
-					PrimaryKey: true,
-				},
-			},
-			{
 				Name:     "oh_resource_type",
 				Type:     schema.TypeString,
-				Resolver: client.StaticValueResolver("AWS::EC2::LaunchTemplateVersion"),
+				Resolver: client.StaticValueResolver("AWS::EC2::LaunchTemplate"),
 			},
 			{
 				Name:     "create_time",
@@ -64,14 +56,14 @@ func LaunchTemplateVersions() *schema.Table {
 				Resolver: schema.PathResolver("CreatedBy"),
 			},
 			{
-				Name:     "default_version",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("DefaultVersion"),
+				Name:     "default_version_number",
+				Type:     schema.TypeInt,
+				Resolver: schema.PathResolver("DefaultVersionNumber"),
 			},
 			{
-				Name:     "launch_template_data",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("LaunchTemplateData"),
+				Name:     "latest_version_number",
+				Type:     schema.TypeInt,
+				Resolver: schema.PathResolver("LatestVersionNumber"),
 			},
 			{
 				Name:     "launch_template_name",
@@ -79,9 +71,9 @@ func LaunchTemplateVersions() *schema.Table {
 				Resolver: schema.PathResolver("LaunchTemplateName"),
 			},
 			{
-				Name:     "version_description",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("VersionDescription"),
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: client.ResolveTags,
 			},
 		},
 	}
