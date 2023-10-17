@@ -121,6 +121,7 @@ func getUser(ctx context.Context, meta schema.ClientMeta, resource *schema.Resou
 	// operation error IAM: GetLoginProfile, https response error StatusCode: 404, RequestID: 6158eccc-0d91-4e1c-a243-8cf8562e8e1f, NoSuchEntity: Login Profile for User test-user cannot be found.
 	// Therefore, we know the user exists from above, so at this point, we will know if a user has their password set
 	profileOutput, err := svc.GetLoginProfile(ctx, &iam.GetLoginProfileInput{UserName: userName})
+	// nolint: gocritic
 	if errors.As(err, &noUserError) {
 		ohUser.SetLoginProfile(nil)
 	} else if err != nil {
