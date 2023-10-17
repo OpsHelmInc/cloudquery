@@ -167,6 +167,11 @@ func EngineVersions() *schema.Table {
 				Resolver: schema.PathResolver("SupportsGlobalDatabases"),
 			},
 			{
+				Name:     "supports_local_write_forwarding",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("SupportsLocalWriteForwarding"),
+			},
+			{
 				Name:     "supports_log_exports_to_cloudwatch_logs",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("SupportsLogExportsToCloudwatchLogs"),

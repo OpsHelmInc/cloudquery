@@ -63,6 +63,11 @@ func DbSnapshots() *schema.Table {
 				Resolver: schema.PathResolver("DBSnapshotIdentifier"),
 			},
 			{
+				Name:     "db_system_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("DBSystemId"),
+			},
+			{
 				Name:     "dbi_resource_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("DbiResourceId"),

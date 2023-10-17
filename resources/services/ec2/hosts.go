@@ -43,6 +43,11 @@ func Hosts() *schema.Table {
 				Resolver: schema.PathResolver("AllowsMultipleInstanceTypes"),
 			},
 			{
+				Name:     "asset_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("AssetId"),
+			},
+			{
 				Name:     "auto_placement",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("AutoPlacement"),
