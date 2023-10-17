@@ -22,6 +22,7 @@ The primary key for this table is **arn**.
 |availability_zone|String|
 |db_instance_identifier|String|
 |db_snapshot_identifier|String|
+|db_system_id|String|
 |dbi_resource_id|String|
 |encrypted|Bool|
 |engine|String|

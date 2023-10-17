@@ -76,6 +76,7 @@ The primary key for this table is **arn**.
 |network_type|String|
 |option_group_memberships|JSON|
 |pending_modified_values|JSON|
+|percent_progress|String|
 |performance_insights_enabled|Bool|
 |performance_insights_kms_key_id|String|
 |performance_insights_retention_period|Int|

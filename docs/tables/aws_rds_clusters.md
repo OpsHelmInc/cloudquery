@@ -27,6 +27,7 @@ The primary key for this table is **arn**.
 |auto_minor_version_upgrade|Bool|
 |automatic_restart_time|Timestamp|
 |availability_zones|StringArray|
+|aws_backup_recovery_point_arn|String|
 |backtrack_consumed_change_records|Int|
 |backtrack_window|Int|
 |backup_retention_period|Int|
@@ -64,6 +65,7 @@ The primary key for this table is **arn**.
 |iops|Int|
 |kms_key_id|String|
 |latest_restorable_time|Timestamp|
+|local_write_forwarding_status|String|
 |master_user_secret|JSON|
 |master_username|String|
 |monitoring_interval|Int|

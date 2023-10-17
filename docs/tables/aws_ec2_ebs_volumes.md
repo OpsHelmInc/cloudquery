@@ -28,6 +28,7 @@ The primary key for this table is **arn**.
 |outpost_arn|String|
 |size|Int|
 |snapshot_id|String|
+|sse_type|String|
 |state|String|
 |tags|JSON|
 |throughput|Int|

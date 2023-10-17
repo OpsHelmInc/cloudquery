@@ -112,16 +112,6 @@ func Buckets() *schema.Table {
 				Resolver: schema.PathResolver("OwnershipControls"),
 			},
 			{
-				Name:     "lifecycle_rules",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("LifecycleRules"),
-			},
-			{
-				Name:     "intelligent_tiering_configurations",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("IntelligentTieringConfigurations"),
-			},
-			{
 				Name:     "is_public",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("IsPublic"),

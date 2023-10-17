@@ -33,6 +33,9 @@ The primary key for this table is **arn**.
 |instance_type|String|
 |memory_info|JSON|
 |network_info|JSON|
+|nitro_enclaves_support|String|
+|nitro_tpm_info|JSON|
+|nitro_tpm_support|String|
 |placement_group_info|JSON|
 |processor_info|JSON|
 |supported_boot_modes|StringArray|

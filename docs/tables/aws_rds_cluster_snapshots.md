@@ -24,6 +24,7 @@ The primary key for this table is **arn**.
 |db_cluster_identifier|String|
 |db_cluster_snapshot_identifier|String|
 |db_system_id|String|
+|db_cluster_resource_id|String|
 |engine|String|
 |engine_mode|String|
 |engine_version|String|

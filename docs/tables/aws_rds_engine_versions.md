@@ -44,6 +44,7 @@ The following tables depend on aws_rds_engine_versions:
 |supports_babelfish|Bool|
 |supports_certificate_rotation_without_restart|Bool|
 |supports_global_databases|Bool|
+|supports_local_write_forwarding|Bool|
 |supports_log_exports_to_cloudwatch_logs|Bool|
 |supports_parallel_query|Bool|
 |supports_read_replica|Bool|
