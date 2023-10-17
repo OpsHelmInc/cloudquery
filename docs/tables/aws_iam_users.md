@@ -29,3 +29,11 @@ The following tables depend on aws_iam_users:
 |password_last_used|Timestamp|
 |permissions_boundary|JSON|
 |tags|JSON|
+|inline_policies|JSON|
+|attached_policies|JSON|
+|groups|JSON|
+|mfa_devices|JSON|
+|login_profile|JSON|
+|password_set|Bool|
+|mfa_active|Bool|
+|access_keys|JSON|
