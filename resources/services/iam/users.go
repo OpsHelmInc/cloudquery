@@ -71,6 +71,46 @@ func Users() *schema.Table {
 				Type:     schema.TypeJSON,
 				Resolver: client.ResolveTags,
 			},
+			{
+				Name:     "inline_policies",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("InlinePolicies"),
+			},
+			{
+				Name:     "attached_policies",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("AttachedPolicies"),
+			},
+			{
+				Name:     "groups",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Groups"),
+			},
+			{
+				Name:     "mfa_devices",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("MFADevices"),
+			},
+			{
+				Name:     "login_profile",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("LoginProfile"),
+			},
+			{
+				Name:     "password_set",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("PasswordSet"),
+			},
+			{
+				Name:     "mfa_active",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("MFAActive"),
+			},
+			{
+				Name:     "access_keys",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("AccessKeys"),
+			},
 		},
 
 		Relations: []*schema.Table{

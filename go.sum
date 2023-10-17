@@ -35,6 +35,8 @@ github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/OpsHelmInc/ohaws v0.0.0-20230526181655-062369d4f0a8 h1:Qwag225Z4WgK81dHPQqT3QvhglHowTy51w+EEQpTiAk=
 github.com/OpsHelmInc/ohaws v0.0.0-20230526181655-062369d4f0a8/go.mod h1:5V94mnz7yd6+6hj9abcYqSdXFHtBsP9+lbRAi2dhjnM=
+github.com/OpsHelmInc/ohaws v0.0.0-20231017145524-6fb437c2756a h1:j88b/ezMDmdNG+Ge7v7yUxEUTB/gyUqALoxFYmW0vFY=
+github.com/OpsHelmInc/ohaws v0.0.0-20231017145524-6fb437c2756a/go.mod h1:sqB4U6ZQCrp+66/bj+Q3IaGpV7TIV2wBQPpgNCATgQY=
 github.com/avast/retry-go/v4 v4.3.1 h1:Mtg11F9PdAIMkMiio2RKcYauoVHjl2aB3zQJJlzD4cE=
 github.com/aws/aws-sdk-go-v2 v1.17.8/go.mod h1:uzbQtefpm44goOPmdKyAlXSNcwlRgF3ePWVW6EtJvvw=
 github.com/aws/aws-sdk-go-v2 v1.18.0/go.mod h1:uzbQtefpm44goOPmdKyAlXSNcwlRgF3ePWVW6EtJvvw=

@@ -10,6 +10,7 @@ import (
 	"github.com/cloudquery/plugin-sdk/schema"
 
 	"github.com/OpsHelmInc/cloudquery/resources/services/iam/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func IAMResources() []*Resource {
@@ -336,7 +337,7 @@ func IAMResources() []*Resource {
 		},
 		{
 			SubService:          "users",
-			Struct:              &types.User{},
+			Struct:              &ohaws.WrappedUser{},
 			Description:         "https://docs.aws.amazon.com/IAM/latest/APIReference/API_User.html",
 			SkipFields:          []string{"Arn", "AccountId", "UserId"},
 			PreResourceResolver: "getUser",
