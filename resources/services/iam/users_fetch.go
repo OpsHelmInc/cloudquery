@@ -37,9 +37,6 @@ func fetchIamUsers(ctx context.Context, meta schema.ClientMeta, parent *schema.R
 				Path:                user.Path,
 				UserId:              user.UserId,
 				UserName:            user.UserName,
-				PasswordLastUsed:    user.PasswordLastUsed,
-				PermissionsBoundary: user.PermissionsBoundary,
-				Tags:                user.Tags,
 			}
 		}
 		res <- wrappedUsers
