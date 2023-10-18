@@ -30,8 +30,7 @@ func fetchIamUsers(ctx context.Context, meta schema.ClientMeta, parent *schema.R
 			return err
 		}
 		wrappedUsers := make([]*ohaws.WrappedUser, len(response.Users))
-		for i := range response.Users {
-			user := response.Users[i]
+		for i, user := range response.Users {
 			wrappedUsers[i] = &ohaws.WrappedUser{
 				Arn:                 user.Arn,
 				CreateDate:          user.CreateDate,
@@ -92,11 +91,11 @@ func getUser(ctx context.Context, meta schema.ClientMeta, resource *schema.Resou
 		}
 		ohUser.AddInlinePolicy(policyName, thisPolicy)
 	}
-	attchedPolicies, err := svc.ListAttachedUserPolicies(ctx, &iam.ListAttachedUserPoliciesInput{UserName: userName})
+	attachedPolicies, err := svc.ListAttachedUserPolicies(ctx, &iam.ListAttachedUserPoliciesInput{UserName: userName})
 	if err != nil {
 		return err
 	}
-	ohUser.AttachedPolicies = attchedPolicies.AttachedPolicies
+	ohUser.AttachedPolicies = attachedPolicies.AttachedPolicies
 
 	groups, err := svc.ListGroupsForUser(ctx, &iam.ListGroupsForUserInput{UserName: userName})
 	if err != nil {
