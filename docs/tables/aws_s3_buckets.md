@@ -38,5 +38,7 @@ The following tables depend on aws_s3_buckets:
 |restrict_public_buckets|Bool|
 |tags|JSON|
 |ownership_controls|StringArray|
+|lifecycle_rules|JSON|
+|intelligent_tiering_configurations|JSON|
 |is_public|Bool|
 |sse_algorithm|String|

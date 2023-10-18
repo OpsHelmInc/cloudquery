@@ -9,10 +9,11 @@ import (
 
 func Groups() *schema.Table {
 	return &schema.Table{
-		Name:        "aws_iam_groups",
-		Description: `https://docs.aws.amazon.com/IAM/latest/APIReference/API_Group.html`,
-		Resolver:    fetchIamGroups,
-		Multiplex:   client.AccountMultiplex,
+		Name:                "aws_iam_groups",
+		Description:         `https://docs.aws.amazon.com/IAM/latest/APIReference/API_Group.html`,
+		Resolver:            fetchIamGroups,
+		PreResourceResolver: getGroup,
+		Multiplex:           client.AccountMultiplex,
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -21,11 +22,6 @@ func Groups() *schema.Table {
 				CreationOptions: schema.ColumnCreationOptions{
 					PrimaryKey: true,
 				},
-			},
-			{
-				Name:     "policies",
-				Type:     schema.TypeJSON,
-				Resolver: resolveIamGroupPolicies,
 			},
 			{
 				Name:     "id",
@@ -59,6 +55,16 @@ func Groups() *schema.Table {
 				Name:     "path",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Path"),
+			},
+			{
+				Name:     "users",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Users"),
+			},
+			{
+				Name:     "policies",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Policies"),
 			},
 		},
 

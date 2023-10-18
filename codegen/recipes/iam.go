@@ -10,6 +10,7 @@ import (
 	"github.com/cloudquery/plugin-sdk/schema"
 
 	"github.com/OpsHelmInc/cloudquery/resources/services/iam/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func IAMResources() []*Resource {
@@ -112,20 +113,16 @@ func IAMResources() []*Resource {
 		},
 		{
 			SubService:  "groups",
-			Struct:      &types.Group{},
+			Struct:      &ohaws.WrappedGroup{},
 			Description: "https://docs.aws.amazon.com/IAM/latest/APIReference/API_Group.html",
 			SkipFields:  []string{"GroupId"},
+			PreResourceResolver: "getGroup",
 			ExtraColumns: []codegen.ColumnDefinition{
 				{
 					Name:     "account_id",
 					Type:     schema.TypeString,
 					Resolver: `client.ResolveAWSAccount`,
 					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-				},
-				{
-					Name:     "policies",
-					Type:     schema.TypeJSON,
-					Resolver: `resolveIamGroupPolicies`,
 				},
 				{
 					Name:     "id",

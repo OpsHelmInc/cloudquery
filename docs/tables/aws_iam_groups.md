@@ -17,10 +17,11 @@ The following tables depend on aws_iam_groups:
 |_cq_id|UUID|
 |_cq_parent_id|UUID|
 |account_id (PK)|String|
-|policies|JSON|
 |id (PK)|String|
 |oh_resource_type|String|
 |arn|String|
 |create_date|Timestamp|
 |group_name|String|
 |path|String|
+|users|JSON|
+|policies|JSON|
