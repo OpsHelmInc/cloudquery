@@ -28,6 +28,7 @@ The primary key for this table is **arn**.
 |progress|String|
 |restore_expiry_time|Timestamp|
 |snapshot_id|String|
+|sse_type|String|
 |start_time|Timestamp|
 |state|String|
 |state_message|String|

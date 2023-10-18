@@ -118,6 +118,21 @@ func InstanceTypes() *schema.Table {
 				Resolver: schema.PathResolver("NetworkInfo"),
 			},
 			{
+				Name:     "nitro_enclaves_support",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("NitroEnclavesSupport"),
+			},
+			{
+				Name:     "nitro_tpm_info",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("NitroTpmInfo"),
+			},
+			{
+				Name:     "nitro_tpm_support",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("NitroTpmSupport"),
+			},
+			{
 				Name:     "placement_group_info",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("PlacementGroupInfo"),

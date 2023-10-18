@@ -93,6 +93,11 @@ func EbsVolumes() *schema.Table {
 				Resolver: schema.PathResolver("SnapshotId"),
 			},
 			{
+				Name:     "sse_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("SseType"),
+			},
+			{
 				Name:     "state",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("State"),

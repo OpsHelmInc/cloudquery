@@ -88,6 +88,11 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("AvailabilityZones"),
 			},
 			{
+				Name:     "aws_backup_recovery_point_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("AwsBackupRecoveryPointArn"),
+			},
+			{
 				Name:     "backtrack_consumed_change_records",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("BacktrackConsumedChangeRecords"),
@@ -271,6 +276,11 @@ func Clusters() *schema.Table {
 				Name:     "latest_restorable_time",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("LatestRestorableTime"),
+			},
+			{
+				Name:     "local_write_forwarding_status",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("LocalWriteForwardingStatus"),
 			},
 			{
 				Name:     "master_user_secret",

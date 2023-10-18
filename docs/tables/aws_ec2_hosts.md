@@ -18,6 +18,7 @@ The primary key for this table is **arn**.
 |arn (PK)|String|
 |allocation_time|Timestamp|
 |allows_multiple_instance_types|String|
+|asset_id|String|
 |auto_placement|String|
 |availability_zone|String|
 |availability_zone_id|String|

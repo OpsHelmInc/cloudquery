@@ -333,6 +333,11 @@ func Instances() *schema.Table {
 				Resolver: schema.PathResolver("PendingModifiedValues"),
 			},
 			{
+				Name:     "percent_progress",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("PercentProgress"),
+			},
+			{
 				Name:     "performance_insights_enabled",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("PerformanceInsightsEnabled"),

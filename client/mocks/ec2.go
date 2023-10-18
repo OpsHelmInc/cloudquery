@@ -935,6 +935,26 @@ func (mr *MockEc2ClientMockRecorder) DescribeInstanceAttribute(arg0, arg1 interf
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeInstanceAttribute", reflect.TypeOf((*MockEc2Client)(nil).DescribeInstanceAttribute), varargs...)
 }
 
+// DescribeInstanceConnectEndpoints mocks base method.
+func (m *MockEc2Client) DescribeInstanceConnectEndpoints(arg0 context.Context, arg1 *ec2.DescribeInstanceConnectEndpointsInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeInstanceConnectEndpointsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeInstanceConnectEndpoints", varargs...)
+	ret0, _ := ret[0].(*ec2.DescribeInstanceConnectEndpointsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeInstanceConnectEndpoints indicates an expected call of DescribeInstanceConnectEndpoints.
+func (mr *MockEc2ClientMockRecorder) DescribeInstanceConnectEndpoints(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeInstanceConnectEndpoints", reflect.TypeOf((*MockEc2Client)(nil).DescribeInstanceConnectEndpoints), varargs...)
+}
+
 // DescribeInstanceCreditSpecifications mocks base method.
 func (m *MockEc2Client) DescribeInstanceCreditSpecifications(arg0 context.Context, arg1 *ec2.DescribeInstanceCreditSpecificationsInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeInstanceCreditSpecificationsOutput, error) {
 	m.ctrl.T.Helper()
@@ -3173,6 +3193,26 @@ func (mr *MockEc2ClientMockRecorder) GetHostReservationPurchasePreview(arg0, arg
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetHostReservationPurchasePreview", reflect.TypeOf((*MockEc2Client)(nil).GetHostReservationPurchasePreview), varargs...)
+}
+
+// GetImageBlockPublicAccessState mocks base method.
+func (m *MockEc2Client) GetImageBlockPublicAccessState(arg0 context.Context, arg1 *ec2.GetImageBlockPublicAccessStateInput, arg2 ...func(*ec2.Options)) (*ec2.GetImageBlockPublicAccessStateOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetImageBlockPublicAccessState", varargs...)
+	ret0, _ := ret[0].(*ec2.GetImageBlockPublicAccessStateOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetImageBlockPublicAccessState indicates an expected call of GetImageBlockPublicAccessState.
+func (mr *MockEc2ClientMockRecorder) GetImageBlockPublicAccessState(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetImageBlockPublicAccessState", reflect.TypeOf((*MockEc2Client)(nil).GetImageBlockPublicAccessState), varargs...)
 }
 
 // GetInstanceTypesFromInstanceRequirements mocks base method.

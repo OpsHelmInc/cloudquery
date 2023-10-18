@@ -93,6 +93,11 @@ func EbsSnapshots() *schema.Table {
 				Resolver: schema.PathResolver("SnapshotId"),
 			},
 			{
+				Name:     "sse_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("SseType"),
+			},
+			{
 				Name:     "start_time",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("StartTime"),

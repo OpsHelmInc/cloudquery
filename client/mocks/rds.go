@@ -95,6 +95,26 @@ func (mr *MockRdsClientMockRecorder) DescribeCertificates(arg0, arg1 interface{}
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeCertificates", reflect.TypeOf((*MockRdsClient)(nil).DescribeCertificates), varargs...)
 }
 
+// DescribeDBClusterAutomatedBackups mocks base method.
+func (m *MockRdsClient) DescribeDBClusterAutomatedBackups(arg0 context.Context, arg1 *rds.DescribeDBClusterAutomatedBackupsInput, arg2 ...func(*rds.Options)) (*rds.DescribeDBClusterAutomatedBackupsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeDBClusterAutomatedBackups", varargs...)
+	ret0, _ := ret[0].(*rds.DescribeDBClusterAutomatedBackupsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeDBClusterAutomatedBackups indicates an expected call of DescribeDBClusterAutomatedBackups.
+func (mr *MockRdsClientMockRecorder) DescribeDBClusterAutomatedBackups(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeDBClusterAutomatedBackups", reflect.TypeOf((*MockRdsClient)(nil).DescribeDBClusterAutomatedBackups), varargs...)
+}
+
 // DescribeDBClusterBacktracks mocks base method.
 func (m *MockRdsClient) DescribeDBClusterBacktracks(arg0 context.Context, arg1 *rds.DescribeDBClusterBacktracksInput, arg2 ...func(*rds.Options)) (*rds.DescribeDBClusterBacktracksOutput, error) {
 	m.ctrl.T.Helper()
