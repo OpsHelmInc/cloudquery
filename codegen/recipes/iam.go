@@ -10,6 +10,8 @@ import (
 	"github.com/cloudquery/plugin-sdk/schema"
 
 	"github.com/OpsHelmInc/cloudquery/resources/services/iam/models"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func IAMResources() []*Resource {
@@ -241,7 +243,7 @@ func IAMResources() []*Resource {
 		},
 		{
 			SubService:          "roles",
-			Struct:              &types.Role{},
+			Struct:              &ohaws.WrappedRole{},
 			Description:         "https://docs.aws.amazon.com/IAM/latest/APIReference/API_Role.html",
 			SkipFields:          []string{"RoleId", "AssumeRolePolicyDocument"},
 			PreResourceResolver: "getRole",
@@ -251,11 +253,6 @@ func IAMResources() []*Resource {
 					Type:     schema.TypeString,
 					Resolver: `client.ResolveAWSAccount`,
 					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-				},
-				{
-					Name:     "policies",
-					Type:     schema.TypeJSON,
-					Resolver: `resolveIamRolePolicies`,
 				},
 				{
 					Name:     "id",

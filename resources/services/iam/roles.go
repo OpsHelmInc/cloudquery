@@ -24,11 +24,6 @@ func Roles() *schema.Table {
 				},
 			},
 			{
-				Name:     "policies",
-				Type:     schema.TypeJSON,
-				Resolver: resolveIamRolePolicies,
-			},
-			{
 				Name:     "id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("RoleId"),
@@ -90,6 +85,11 @@ func Roles() *schema.Table {
 				Name:     "tags",
 				Type:     schema.TypeJSON,
 				Resolver: client.ResolveTags,
+			},
+			{
+				Name:     "policies",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Policies"),
 			},
 		},
 
