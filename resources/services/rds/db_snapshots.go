@@ -73,6 +73,11 @@ func DbSnapshots() *schema.Table {
 				Resolver: schema.PathResolver("DbiResourceId"),
 			},
 			{
+				Name:     "dedicated_log_volume",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("DedicatedLogVolume"),
+			},
+			{
 				Name:     "encrypted",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("Encrypted"),

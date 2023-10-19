@@ -213,6 +213,11 @@ func Instances() *schema.Table {
 				Resolver: schema.PathResolver("DbiResourceId"),
 			},
 			{
+				Name:     "dedicated_log_volume",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("DedicatedLogVolume"),
+			},
+			{
 				Name:     "deletion_protection",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("DeletionProtection"),

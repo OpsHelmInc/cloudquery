@@ -17,7 +17,6 @@ The following tables depend on aws_iam_roles:
 |_cq_id|UUID|
 |_cq_parent_id|UUID|
 |account_id (PK)|String|
-|policies|JSON|
 |id (PK)|String|
 |assume_role_policy_document|JSON|
 |oh_resource_type|String|
@@ -30,3 +29,4 @@ The following tables depend on aws_iam_roles:
 |permissions_boundary|JSON|
 |role_last_used|JSON|
 |tags|JSON|
+|policies|JSON|

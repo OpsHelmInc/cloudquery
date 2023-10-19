@@ -40,6 +40,7 @@ The primary key for this table is **arn**.
 |ramdisk_id|String|
 |root_device_name|String|
 |root_device_type|String|
+|source_instance_id|String|
 |sriov_net_support|String|
 |state|String|
 |state_reason|JSON|

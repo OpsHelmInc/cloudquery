@@ -52,6 +52,7 @@ The primary key for this table is **arn**.
 |db_system_id|String|
 |db_instance_port|Int|
 |dbi_resource_id|String|
+|dedicated_log_volume|Bool|
 |deletion_protection|Bool|
 |domain_memberships|JSON|
 |enabled_cloudwatch_logs_exports|StringArray|
