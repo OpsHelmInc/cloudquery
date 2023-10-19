@@ -2,6 +2,7 @@ package iam
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/OpsHelmInc/ohaws"
@@ -29,7 +30,7 @@ func fetchIamGroups(ctx context.Context, meta schema.ClientMeta, parent *schema.
 				Path:       group.Path,
 			}
 		}
-		res <- response.Groups
+		res <- wrappedGroups
 		if aws.ToString(response.Marker) == "" {
 			break
 		}
@@ -41,7 +42,7 @@ func fetchIamGroups(ctx context.Context, meta schema.ClientMeta, parent *schema.
 func getGroup(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
 	group := resource.Item.(*ohaws.WrappedGroup)
 	svc := meta.(*client.Client).Services().Iam
-	userDetail, err := svc.GetGroup(ctx, &iam.GetGroupInput{
+	groupDetail, err := svc.GetGroup(ctx, &iam.GetGroupInput{
 		GroupName: aws.String(*group.GroupName),
 	})
 	if err != nil {
@@ -57,10 +58,10 @@ func getGroup(ctx context.Context, meta schema.ClientMeta, resource *schema.Reso
 	}
 
 	userARNs := []arn.ARN{}
-	for _, u := range userDetail.Users {
+	for _, u := range groupDetail.Users {
 		userARN, err := arn.Parse(*u.Arn)
 		if err != nil {
-			return err
+			return fmt.Errorf("failed to parse user ARN: %w, %v", err, *u.Arn)
 		}
 		userARNs = append(userARNs, userARN)
 	}
