@@ -112,10 +112,10 @@ func IAMResources() []*Resource {
 			Relations: []string{},
 		},
 		{
-			SubService:  "groups",
-			Struct:      &ohaws.WrappedGroup{},
-			Description: "https://docs.aws.amazon.com/IAM/latest/APIReference/API_Group.html",
-			SkipFields:  []string{"GroupId"},
+			SubService:          "groups",
+			Struct:              &ohaws.WrappedGroup{},
+			Description:         "https://docs.aws.amazon.com/IAM/latest/APIReference/API_Group.html",
+			SkipFields:          []string{"GroupId"},
 			PreResourceResolver: "getGroup",
 			ExtraColumns: []codegen.ColumnDefinition{
 				{

@@ -83,20 +83,3 @@ func getGroup(ctx context.Context, meta schema.ClientMeta, resource *schema.Reso
 	resource.Item = wrappedGroup
 	return nil
 }
-
-func resolveIamGroupPolicies(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	r := resource.Item.(*ohaws.WrappedGroup)
-	svc := meta.(*client.Client).Services().Iam
-	config := iam.ListAttachedGroupPoliciesInput{
-		GroupName: r.GroupName,
-	}
-	response, err := svc.ListAttachedGroupPolicies(ctx, &config)
-	if err != nil {
-		return err
-	}
-	policyMap := map[string]*string{}
-	for _, p := range response.AttachedPolicies {
-		policyMap[*p.PolicyArn] = p.PolicyName
-	}
-	return resource.Set(c.Name, policyMap)
-}

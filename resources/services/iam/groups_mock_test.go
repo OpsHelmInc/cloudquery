@@ -59,8 +59,8 @@ func buildIamGroups(t *testing.T, ctrl *gomock.Controller) client.Services {
 		&gp, nil)
 
 	// get group
-	user := iamTypes.User{ Arn: aws.String("arn:aws:iam::123456789012:user/test") }
-	gg := iam.GetGroupOutput{ Group: &g, Users: []iamTypes.User{user} }
+	user := iamTypes.User{Arn: aws.String("arn:aws:iam::123456789012:user/test")}
+	gg := iam.GetGroupOutput{Group: &g, Users: []iamTypes.User{user}}
 	if err != nil {
 		t.Fatal(err)
 	}
