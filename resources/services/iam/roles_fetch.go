@@ -21,21 +21,9 @@ func fetchIamRoles(ctx context.Context, meta schema.ClientMeta, parent *schema.R
 		if err != nil {
 			return err
 		}
-		wrappedRoles := make([]*ohaws.WrappedRole, len(response.Roles))
+		wrappedRoles := make([]*ohaws.Role, len(response.Roles))
 		for i, role := range response.Roles {
-			wrappedRoles[i] = &ohaws.WrappedRole{
-				Arn:                      role.Arn,
-				CreateDate:               role.CreateDate,
-				Path:                     role.Path,
-				RoleId:                   role.RoleId,
-				RoleName:                 role.RoleName,
-				AssumeRolePolicyDocument: role.AssumeRolePolicyDocument,
-				Description:              role.Description,
-				MaxSessionDuration:       role.MaxSessionDuration,
-				PermissionsBoundary:      role.PermissionsBoundary,
-				RoleLastUsed:             role.RoleLastUsed,
-				Tags:                     role.Tags,
-			}
+			wrappedRoles[i] = &ohaws.Role{Role: role}
 		}
 		res <- wrappedRoles
 		if aws.ToString(response.Marker) == "" {
@@ -47,7 +35,7 @@ func fetchIamRoles(ctx context.Context, meta schema.ClientMeta, parent *schema.R
 }
 
 func getRole(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
-	role := resource.Item.(*ohaws.WrappedRole)
+	role := resource.Item.(*ohaws.Role)
 	svc := meta.(*client.Client).Services().Iam
 	cl := meta.(*client.Client)
 	roleDetails, err := svc.GetRole(ctx, &iam.GetRoleInput{
@@ -57,19 +45,7 @@ func getRole(ctx context.Context, meta schema.ClientMeta, resource *schema.Resou
 		return err
 	}
 
-	wrappedRole := &ohaws.WrappedRole{
-		Arn:                      roleDetails.Role.Arn,
-		CreateDate:               roleDetails.Role.CreateDate,
-		Path:                     roleDetails.Role.Path,
-		RoleId:                   roleDetails.Role.RoleId,
-		RoleName:                 roleDetails.Role.RoleName,
-		AssumeRolePolicyDocument: roleDetails.Role.AssumeRolePolicyDocument,
-		Description:              roleDetails.Role.Description,
-		MaxSessionDuration:       roleDetails.Role.MaxSessionDuration,
-		PermissionsBoundary:      roleDetails.Role.PermissionsBoundary,
-		RoleLastUsed:             roleDetails.Role.RoleLastUsed,
-		Tags:                     roleDetails.Role.Tags,
-	}
+	wrappedRole := &ohaws.Role{Role: *roleDetails.Role}
 
 	input := iam.ListAttachedRolePoliciesInput{
 		RoleName: role.RoleName,
@@ -99,7 +75,7 @@ func getRole(ctx context.Context, meta schema.ClientMeta, resource *schema.Resou
 }
 
 func resolveRolesAssumeRolePolicyDocument(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	r := resource.Item.(*ohaws.WrappedRole)
+	r := resource.Item.(*ohaws.Role)
 	if r.AssumeRolePolicyDocument == nil {
 		return nil
 	}
@@ -118,7 +94,7 @@ func resolveRolesAssumeRolePolicyDocument(ctx context.Context, meta schema.Clien
 func fetchIamRolePolicies(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
 	c := meta.(*client.Client)
 	svc := c.Services().Iam
-	role := parent.Item.(*ohaws.WrappedRole)
+	role := parent.Item.(*ohaws.Role)
 	config := iam.ListRolePoliciesInput{
 		RoleName: role.RoleName,
 	}
@@ -144,7 +120,7 @@ func getRolePolicy(ctx context.Context, meta schema.ClientMeta, resource *schema
 	c := meta.(*client.Client)
 	svc := c.Services().Iam
 	p := resource.Item.(string)
-	role := resource.Parent.Item.(*ohaws.WrappedRole)
+	role := resource.Parent.Item.(*ohaws.Role)
 
 	policyResult, err := svc.GetRolePolicy(ctx, &iam.GetRolePolicyInput{PolicyName: &p, RoleName: role.RoleName})
 	if err != nil {

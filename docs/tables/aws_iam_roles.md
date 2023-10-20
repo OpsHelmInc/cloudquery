@@ -16,17 +16,10 @@ The following tables depend on aws_iam_roles:
 |_cq_sync_time|Timestamp|
 |_cq_id|UUID|
 |_cq_parent_id|UUID|
+|arn|String|
 |account_id (PK)|String|
 |id (PK)|String|
 |assume_role_policy_document|JSON|
 |oh_resource_type|String|
-|arn|String|
-|create_date|Timestamp|
-|path|String|
-|role_name|String|
-|description|String|
-|max_session_duration|Int|
-|permissions_boundary|JSON|
-|role_last_used|JSON|
-|tags|JSON|
+|role|JSON|
 |policies|JSON|
