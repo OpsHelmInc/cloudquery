@@ -31,7 +31,7 @@ func fetchIamUsers(ctx context.Context, meta schema.ClientMeta, parent *schema.R
 		}
 		wrappedUsers := make([]*ohaws.User, len(response.Users))
 		for i, user := range response.Users {
-			wrappedUsers[i] = &ohaws.User{User:                user}
+			wrappedUsers[i] = &ohaws.User{User: user}
 		}
 		res <- wrappedUsers
 	}
@@ -47,7 +47,7 @@ func getUser(ctx context.Context, meta schema.ClientMeta, resource *schema.Resou
 	if err != nil {
 		return err
 	}
-	ohUser := &ohaws.User{User: 			  *userDetail.User}
+	ohUser := &ohaws.User{User: *userDetail.User}
 	userName := userDetail.User.UserName
 
 	// Modifies the given user to include all user metadata used in an OH user (policies, groups, tags, and MFA devices)
