@@ -3,7 +3,7 @@ module github.com/OpsHelmInc/cloudquery
 go 1.19
 
 require (
-	github.com/OpsHelmInc/ohaws v0.0.0-20231019180045-4cdc6f4cb8e0
+	github.com/OpsHelmInc/ohaws v0.0.0-20231020185422-21f49ef7550e
 	github.com/aws/aws-sdk-go-v2 v1.21.2
 	github.com/aws/aws-sdk-go-v2/config v1.19.0
 	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.11.63
@@ -33,7 +33,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/directconnect v1.18.17
 	github.com/aws/aws-sdk-go-v2/service/docdb v1.21.1
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.19.5
-	github.com/aws/aws-sdk-go-v2/service/ec2 v1.125.0
+	github.com/aws/aws-sdk-go-v2/service/ec2 v1.126.0
 	github.com/aws/aws-sdk-go-v2/service/ecr v1.18.9
 	github.com/aws/aws-sdk-go-v2/service/ecrpublic v1.16.0
 	github.com/aws/aws-sdk-go-v2/service/ecs v1.27.1
@@ -68,7 +68,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/qldb v1.15.11
 	github.com/aws/aws-sdk-go-v2/service/quicksight v1.34.1
 	github.com/aws/aws-sdk-go-v2/service/ram v1.18.4
-	github.com/aws/aws-sdk-go-v2/service/rds v1.56.0
+	github.com/aws/aws-sdk-go-v2/service/rds v1.57.0
 	github.com/aws/aws-sdk-go-v2/service/redshift v1.27.9
 	github.com/aws/aws-sdk-go-v2/service/resourcegroups v1.14.9
 	github.com/aws/aws-sdk-go-v2/service/route53 v1.27.7

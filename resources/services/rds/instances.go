@@ -268,6 +268,11 @@ func Instances() *schema.Table {
 				Resolver: schema.PathResolver("Iops"),
 			},
 			{
+				Name:     "is_storage_config_upgrade_available",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("IsStorageConfigUpgradeAvailable"),
+			},
+			{
 				Name:     "kms_key_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("KmsKeyId"),

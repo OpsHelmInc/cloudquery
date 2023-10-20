@@ -10,7 +10,6 @@ import (
 	"github.com/cloudquery/plugin-sdk/schema"
 
 	"github.com/OpsHelmInc/cloudquery/resources/services/iam/models"
-
 	"github.com/OpsHelmInc/ohaws"
 )
 
@@ -113,21 +112,22 @@ func IAMResources() []*Resource {
 			Relations: []string{},
 		},
 		{
-			SubService:  "groups",
-			Struct:      &types.Group{},
-			Description: "https://docs.aws.amazon.com/IAM/latest/APIReference/API_Group.html",
-			SkipFields:  []string{"GroupId"},
+			SubService:          "groups",
+			Struct:              &ohaws.Group{},
+			Description:         "https://docs.aws.amazon.com/IAM/latest/APIReference/API_Group.html",
+			SkipFields:          []string{"GroupId"},
+			PreResourceResolver: "getGroup",
 			ExtraColumns: []codegen.ColumnDefinition{
+				{
+					Name:     "arn",
+					Type:     schema.TypeString,
+					Resolver: `schema.PathResolver("Arn")`,
+				},
 				{
 					Name:     "account_id",
 					Type:     schema.TypeString,
 					Resolver: `client.ResolveAWSAccount`,
 					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-				},
-				{
-					Name:     "policies",
-					Type:     schema.TypeJSON,
-					Resolver: `resolveIamGroupPolicies`,
 				},
 				{
 					Name:     "id",
@@ -333,7 +333,7 @@ func IAMResources() []*Resource {
 		},
 		{
 			SubService:          "users",
-			Struct:              &types.User{},
+			Struct:              &ohaws.User{},
 			Description:         "https://docs.aws.amazon.com/IAM/latest/APIReference/API_User.html",
 			SkipFields:          []string{"Arn", "AccountId", "UserId"},
 			PreResourceResolver: "getUser",
