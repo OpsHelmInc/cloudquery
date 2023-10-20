@@ -52,6 +52,7 @@ The primary key for this table is **arn**.
 |db_system_id|String|
 |db_instance_port|Int|
 |dbi_resource_id|String|
+|dedicated_log_volume|Bool|
 |deletion_protection|Bool|
 |domain_memberships|JSON|
 |enabled_cloudwatch_logs_exports|StringArray|
@@ -62,6 +63,7 @@ The primary key for this table is **arn**.
 |iam_database_authentication_enabled|Bool|
 |instance_create_time|Timestamp|
 |iops|Int|
+|is_storage_config_upgrade_available|Bool|
 |kms_key_id|String|
 |latest_restorable_time|Timestamp|
 |license_model|String|

@@ -38,6 +38,21 @@ func buildIamUsers(t *testing.T, ctrl *gomock.Controller) client.Services {
 	if err != nil {
 		t.Fatal(err)
 	}
+	ut := iam.ListUserTagsOutput{}
+	err = faker.FakeObject(&ut)
+	if err != nil {
+		t.Fatal(err)
+	}
+	mfa := iam.ListMFADevicesOutput{}
+	err = faker.FakeObject(&mfa)
+	if err != nil {
+		t.Fatal(err)
+	}
+	log := iam.GetLoginProfileOutput{}
+	err = faker.FakeObject(&log)
+	if err != nil {
+		t.Fatal(err)
+	}
 
 	var tags []iamTypes.Tag
 	err = faker.FakeObject(&tags)
@@ -53,20 +68,27 @@ func buildIamUsers(t *testing.T, ctrl *gomock.Controller) client.Services {
 		&iam.GetUserOutput{
 			User: &u,
 		}, nil)
-	m.EXPECT().ListGroupsForUser(gomock.Any(), gomock.Any()).Return(
+	m.EXPECT().ListGroupsForUser(gomock.Any(), gomock.Any()).AnyTimes().Return(
 		&iam.ListGroupsForUserOutput{
 			Groups: []iamTypes.Group{g},
 		}, nil)
-	m.EXPECT().ListAccessKeys(gomock.Any(), gomock.Any()).Return(
+	m.EXPECT().ListAccessKeys(gomock.Any(), gomock.Any()).AnyTimes().Return(
 		&iam.ListAccessKeysOutput{
 			AccessKeyMetadata: []iamTypes.AccessKeyMetadata{km},
 		}, nil)
-	m.EXPECT().ListAttachedUserPolicies(gomock.Any(), gomock.Any()).Return(
+	m.EXPECT().ListAttachedUserPolicies(gomock.Any(), gomock.Any()).AnyTimes().Return(
 		&iam.ListAttachedUserPoliciesOutput{
 			AttachedPolicies: []iamTypes.AttachedPolicy{aup},
 		}, nil)
-	m.EXPECT().GetAccessKeyLastUsed(gomock.Any(), gomock.Any()).Return(
+	m.EXPECT().GetAccessKeyLastUsed(gomock.Any(), gomock.Any()).AnyTimes().Return(
 		&akl, nil)
+
+	m.EXPECT().ListUserTags(gomock.Any(), gomock.Any()).Return(
+		&ut, nil)
+	m.EXPECT().ListMFADevices(gomock.Any(), gomock.Any()).Return(
+		&mfa, nil)
+	m.EXPECT().GetLoginProfile(gomock.Any(), gomock.Any()).Return(
+		&log, nil)
 
 	//list user inline policies
 	var l []string
@@ -74,7 +96,7 @@ func buildIamUsers(t *testing.T, ctrl *gomock.Controller) client.Services {
 	if err != nil {
 		t.Fatal(err)
 	}
-	m.EXPECT().ListUserPolicies(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+	m.EXPECT().ListUserPolicies(gomock.Any(), gomock.Any(), gomock.Any()).AnyTimes().Return(
 		&iam.ListUserPoliciesOutput{
 			PolicyNames: l,
 		}, nil)
@@ -87,7 +109,7 @@ func buildIamUsers(t *testing.T, ctrl *gomock.Controller) client.Services {
 	}
 	document := "{\"test\": {\"t1\":1}}"
 	p.PolicyDocument = &document
-	m.EXPECT().GetUserPolicy(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+	m.EXPECT().GetUserPolicy(gomock.Any(), gomock.Any(), gomock.Any()).AnyTimes().Return(
 		&p, nil)
 
 	return client.Services{

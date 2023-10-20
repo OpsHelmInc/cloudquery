@@ -6,16 +6,16 @@ import (
 	"net/url"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
-	"github.com/aws/aws-sdk-go-v2/service/iam/types"
 	"github.com/cloudquery/plugin-sdk/schema"
 )
 
 func fetchIamUserPolicies(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
 	c := meta.(*client.Client)
 	svc := c.Services().Iam
-	user := parent.Item.(*types.User)
+	user := parent.Item.(*ohaws.User)
 	config := iam.ListUserPoliciesInput{UserName: user.UserName}
 	for {
 		output, err := svc.ListUserPolicies(ctx, &config)
@@ -38,7 +38,7 @@ func fetchIamUserPolicies(ctx context.Context, meta schema.ClientMeta, parent *s
 func getUserPolicy(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
 	svc := meta.(*client.Client).Services().Iam
 	p := resource.Item.(string)
-	user := resource.Parent.Item.(*types.User)
+	user := resource.Parent.Item.(*ohaws.User)
 
 	policyResult, err := svc.GetUserPolicy(ctx, &iam.GetUserPolicyInput{PolicyName: &p, UserName: user.UserName})
 	if err != nil {
