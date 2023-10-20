@@ -20,15 +20,9 @@ func fetchIamGroups(ctx context.Context, meta schema.ClientMeta, parent *schema.
 		if err != nil {
 			return err
 		}
-		wrappedGroups := make([]*ohaws.WrappedGroup, len(response.Groups))
+		wrappedGroups := make([]*ohaws.Group, len(response.Groups))
 		for i, group := range response.Groups {
-			wrappedGroups[i] = &ohaws.WrappedGroup{
-				Arn:        group.Arn,
-				CreateDate: group.CreateDate,
-				GroupId:    group.GroupId,
-				GroupName:  group.GroupName,
-				Path:       group.Path,
-			}
+			wrappedGroups[i] = &ohaws.Group{Group: group}
 		}
 		res <- wrappedGroups
 		if aws.ToString(response.Marker) == "" {
@@ -40,7 +34,7 @@ func fetchIamGroups(ctx context.Context, meta schema.ClientMeta, parent *schema.
 }
 
 func getGroup(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
-	group := resource.Item.(*ohaws.WrappedGroup)
+	group := resource.Item.(*ohaws.Group)
 	svc := meta.(*client.Client).Services().Iam
 	groupDetail, err := svc.GetGroup(ctx, &iam.GetGroupInput{
 		GroupName: aws.String(*group.GroupName),
@@ -49,13 +43,7 @@ func getGroup(ctx context.Context, meta schema.ClientMeta, resource *schema.Reso
 		return err
 	}
 
-	wrappedGroup := &ohaws.WrappedGroup{
-		Arn:        group.Arn,
-		CreateDate: group.CreateDate,
-		GroupId:    group.GroupId,
-		GroupName:  group.GroupName,
-		Path:       group.Path,
-	}
+	wrappedGroup := &ohaws.Group{Group: *groupDetail.Group}
 
 	userARNs := []arn.ARN{}
 	for _, u := range groupDetail.Users {

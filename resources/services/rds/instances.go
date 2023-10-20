@@ -213,6 +213,11 @@ func Instances() *schema.Table {
 				Resolver: schema.PathResolver("DbiResourceId"),
 			},
 			{
+				Name:     "dedicated_log_volume",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("DedicatedLogVolume"),
+			},
+			{
 				Name:     "deletion_protection",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("DeletionProtection"),
@@ -261,6 +266,11 @@ func Instances() *schema.Table {
 				Name:     "iops",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("Iops"),
+			},
+			{
+				Name:     "is_storage_config_upgrade_available",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("IsStorageConfigUpgradeAvailable"),
 			},
 			{
 				Name:     "kms_key_id",

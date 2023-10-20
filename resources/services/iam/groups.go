@@ -16,6 +16,11 @@ func Groups() *schema.Table {
 		Multiplex:           client.AccountMultiplex,
 		Columns: []schema.Column{
 			{
+				Name:     "arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("Arn"),
+			},
+			{
 				Name:     "account_id",
 				Type:     schema.TypeString,
 				Resolver: client.ResolveAWSAccount,
@@ -37,24 +42,9 @@ func Groups() *schema.Table {
 				Resolver: client.StaticValueResolver("AWS::IAM::Group"),
 			},
 			{
-				Name:     "arn",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Arn"),
-			},
-			{
-				Name:     "create_date",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("CreateDate"),
-			},
-			{
-				Name:     "group_name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("GroupName"),
-			},
-			{
-				Name:     "path",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Path"),
+				Name:     "group",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Group"),
 			},
 			{
 				Name:     "users",
