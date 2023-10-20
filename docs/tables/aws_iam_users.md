@@ -23,12 +23,7 @@ The following tables depend on aws_iam_users:
 |id (PK)|String|
 |account_id (PK)|String|
 |oh_resource_type|String|
-|create_date|Timestamp|
-|path|String|
-|user_name|String|
-|password_last_used|Timestamp|
-|permissions_boundary|JSON|
-|tags|JSON|
+|user|JSON|
 |inline_policies|JSON|
 |attached_policies|JSON|
 |groups|JSON|

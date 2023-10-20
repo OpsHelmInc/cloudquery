@@ -42,34 +42,9 @@ func Users() *schema.Table {
 				Resolver: client.StaticValueResolver("AWS::IAM::User"),
 			},
 			{
-				Name:     "create_date",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("CreateDate"),
-			},
-			{
-				Name:     "path",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Path"),
-			},
-			{
-				Name:     "user_name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("UserName"),
-			},
-			{
-				Name:     "password_last_used",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("PasswordLastUsed"),
-			},
-			{
-				Name:     "permissions_boundary",
+				Name:     "user",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("PermissionsBoundary"),
-			},
-			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: client.ResolveTags,
+				Resolver: schema.PathResolver("User"),
 			},
 			{
 				Name:     "inline_policies",

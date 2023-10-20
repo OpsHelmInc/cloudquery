@@ -337,7 +337,7 @@ func IAMResources() []*Resource {
 		},
 		{
 			SubService:          "users",
-			Struct:              &ohaws.WrappedUser{},
+			Struct:              &ohaws.User{},
 			Description:         "https://docs.aws.amazon.com/IAM/latest/APIReference/API_User.html",
 			SkipFields:          []string{"Arn", "AccountId", "UserId"},
 			PreResourceResolver: "getUser",

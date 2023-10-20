@@ -29,15 +29,9 @@ func fetchIamUsers(ctx context.Context, meta schema.ClientMeta, parent *schema.R
 		if err != nil {
 			return err
 		}
-		wrappedUsers := make([]*ohaws.WrappedUser, len(response.Users))
+		wrappedUsers := make([]*ohaws.User, len(response.Users))
 		for i, user := range response.Users {
-			wrappedUsers[i] = &ohaws.WrappedUser{
-				Arn:                 user.Arn,
-				CreateDate:          user.CreateDate,
-				Path:                user.Path,
-				UserId:              user.UserId,
-				UserName:            user.UserName,
-			}
+			wrappedUsers[i] = &ohaws.User{User:                user}
 		}
 		res <- wrappedUsers
 	}
@@ -45,7 +39,7 @@ func fetchIamUsers(ctx context.Context, meta schema.ClientMeta, parent *schema.R
 }
 
 func getUser(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
-	listUser := resource.Item.(*ohaws.WrappedUser)
+	listUser := resource.Item.(*ohaws.User)
 	svc := meta.(*client.Client).Services().Iam
 	userDetail, err := svc.GetUser(ctx, &iam.GetUserInput{
 		UserName: aws.String(*listUser.UserName),
@@ -53,16 +47,7 @@ func getUser(ctx context.Context, meta schema.ClientMeta, resource *schema.Resou
 	if err != nil {
 		return err
 	}
-	ohUser := &ohaws.WrappedUser{
-		Arn:                 userDetail.User.Arn,
-		CreateDate:          userDetail.User.CreateDate,
-		Path:                userDetail.User.Path,
-		UserId:              userDetail.User.UserId,
-		UserName:            userDetail.User.UserName,
-		PasswordLastUsed:    userDetail.User.PasswordLastUsed,
-		PermissionsBoundary: userDetail.User.PermissionsBoundary,
-		Tags:                userDetail.User.Tags,
-	}
+	ohUser := &ohaws.User{User: 			  *userDetail.User}
 	userName := userDetail.User.UserName
 
 	// Modifies the given user to include all user metadata used in an OH user (policies, groups, tags, and MFA devices)
@@ -149,7 +134,7 @@ func getUser(ctx context.Context, meta schema.ClientMeta, resource *schema.Resou
 
 func fetchIamUserGroups(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
 	var config iam.ListGroupsForUserInput
-	p := parent.Item.(*ohaws.WrappedUser)
+	p := parent.Item.(*ohaws.User)
 	svc := meta.(*client.Client).Services().Iam
 	config.UserName = p.UserName
 	for {
@@ -168,7 +153,7 @@ func fetchIamUserGroups(ctx context.Context, meta schema.ClientMeta, parent *sch
 
 func fetchIamUserAccessKeys(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
 	var config iam.ListAccessKeysInput
-	p := parent.Item.(*ohaws.WrappedUser)
+	p := parent.Item.(*ohaws.User)
 	svc := meta.(*client.Client).Services().Iam
 	config.UserName = p.UserName
 	for {
@@ -220,7 +205,7 @@ func postIamUserAccessKeyResolver(ctx context.Context, meta schema.ClientMeta, r
 
 func fetchIamUserAttachedPolicies(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
 	var config iam.ListAttachedUserPoliciesInput
-	p := parent.Item.(*ohaws.WrappedUser)
+	p := parent.Item.(*ohaws.User)
 	svc := meta.(*client.Client).Services().Iam
 	config.UserName = p.UserName
 	for {

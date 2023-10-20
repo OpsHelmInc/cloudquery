@@ -153,6 +153,11 @@ func Images() *schema.Table {
 				Resolver: schema.PathResolver("RootDeviceType"),
 			},
 			{
+				Name:     "source_instance_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("SourceInstanceId"),
+			},
+			{
 				Name:     "sriov_net_support",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("SriovNetSupport"),
