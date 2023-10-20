@@ -42,34 +42,49 @@ func Users() *schema.Table {
 				Resolver: client.StaticValueResolver("AWS::IAM::User"),
 			},
 			{
-				Name:     "create_date",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("CreateDate"),
-			},
-			{
-				Name:     "path",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Path"),
-			},
-			{
-				Name:     "user_name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("UserName"),
-			},
-			{
-				Name:     "password_last_used",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("PasswordLastUsed"),
-			},
-			{
-				Name:     "permissions_boundary",
+				Name:     "user",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("PermissionsBoundary"),
+				Resolver: schema.PathResolver("User"),
 			},
 			{
-				Name:     "tags",
+				Name:     "inline_policies",
 				Type:     schema.TypeJSON,
-				Resolver: client.ResolveTags,
+				Resolver: schema.PathResolver("InlinePolicies"),
+			},
+			{
+				Name:     "attached_policies",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("AttachedPolicies"),
+			},
+			{
+				Name:     "groups",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Groups"),
+			},
+			{
+				Name:     "mfa_devices",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("MFADevices"),
+			},
+			{
+				Name:     "login_profile",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("LoginProfile"),
+			},
+			{
+				Name:     "password_set",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("PasswordSet"),
+			},
+			{
+				Name:     "mfa_active",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("MFAActive"),
+			},
+			{
+				Name:     "access_keys",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("AccessKeys"),
 			},
 		},
 
