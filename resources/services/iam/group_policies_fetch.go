@@ -6,16 +6,16 @@ import (
 	"net/url"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
-	"github.com/aws/aws-sdk-go-v2/service/iam/types"
 	"github.com/cloudquery/plugin-sdk/schema"
 )
 
 func fetchIamGroupPolicies(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
 	c := meta.(*client.Client)
 	svc := c.Services().Iam
-	group := parent.Item.(types.Group)
+	group := parent.Item.(*ohaws.Group)
 	config := iam.ListGroupPoliciesInput{
 		GroupName: group.GroupName,
 	}
@@ -42,7 +42,7 @@ func getGroupPolicy(ctx context.Context, meta schema.ClientMeta, resource *schem
 	c := meta.(*client.Client)
 	svc := c.Services().Iam
 	p := resource.Item.(string)
-	group := resource.Parent.Item.(types.Group)
+	group := resource.Parent.Item.(*ohaws.Group)
 
 	policyResult, err := svc.GetGroupPolicy(ctx, &iam.GetGroupPolicyInput{PolicyName: &p, GroupName: group.GroupName})
 	if err != nil {
