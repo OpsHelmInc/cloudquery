@@ -16,17 +16,17 @@ func Roles() *schema.Table {
 		Multiplex:           client.AccountMultiplex,
 		Columns: []schema.Column{
 			{
+				Name:     "arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("Arn"),
+			},
+			{
 				Name:     "account_id",
 				Type:     schema.TypeString,
 				Resolver: client.ResolveAWSAccount,
 				CreationOptions: schema.ColumnCreationOptions{
 					PrimaryKey: true,
 				},
-			},
-			{
-				Name:     "policies",
-				Type:     schema.TypeJSON,
-				Resolver: resolveIamRolePolicies,
 			},
 			{
 				Name:     "id",
@@ -47,49 +47,14 @@ func Roles() *schema.Table {
 				Resolver: client.StaticValueResolver("AWS::IAM::Role"),
 			},
 			{
-				Name:     "arn",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Arn"),
-			},
-			{
-				Name:     "create_date",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("CreateDate"),
-			},
-			{
-				Name:     "path",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Path"),
-			},
-			{
-				Name:     "role_name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("RoleName"),
-			},
-			{
-				Name:     "description",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Description"),
-			},
-			{
-				Name:     "max_session_duration",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("MaxSessionDuration"),
-			},
-			{
-				Name:     "permissions_boundary",
+				Name:     "role",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("PermissionsBoundary"),
+				Resolver: schema.PathResolver("Role"),
 			},
 			{
-				Name:     "role_last_used",
+				Name:     "policies",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("RoleLastUsed"),
-			},
-			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: client.ResolveTags,
+				Resolver: schema.PathResolver("Policies"),
 			},
 		},
 
