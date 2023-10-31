@@ -7,6 +7,8 @@ version: 2
 updates:
   - package-ecosystem: "gomod" # See documentation for possible values
     directory: "/" # Location of package manifests
+    registries:
+      - github-opshelm
     schedule:
       interval: "daily"
     groups:
@@ -22,7 +24,7 @@ updates:
     schedule:
       interval: "daily"
 registries:
-  github:
+  github-opshelm:
     type: git
     url: https://github.com
     username: x-access-token
