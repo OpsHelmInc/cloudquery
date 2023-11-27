@@ -25,8 +25,8 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs v1.20.9
 	github.com/aws/aws-sdk-go-v2/service/codebuild v1.20.10
 	github.com/aws/aws-sdk-go-v2/service/codepipeline v1.14.9
-	github.com/aws/aws-sdk-go-v2/service/cognitoidentity v1.15.13
-	github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.22.12
+	github.com/aws/aws-sdk-go-v2/service/cognitoidentity v1.20.3
+	github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.30.3
 	github.com/aws/aws-sdk-go-v2/service/configservice v1.31.2
 	github.com/aws/aws-sdk-go-v2/service/databasemigrationservice v1.25.5
 	github.com/aws/aws-sdk-go-v2/service/dax v1.12.10
@@ -56,12 +56,12 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/inspector v1.13.8
 	github.com/aws/aws-sdk-go-v2/service/inspector2 v1.11.9
 	github.com/aws/aws-sdk-go-v2/service/iot v1.36.0
-	github.com/aws/aws-sdk-go-v2/service/kafka v1.19.10
+	github.com/aws/aws-sdk-go-v2/service/kafka v1.27.1
 	github.com/aws/aws-sdk-go-v2/service/kinesis v1.17.10
 	github.com/aws/aws-sdk-go-v2/service/kms v1.20.11
-	github.com/aws/aws-sdk-go-v2/service/lambda v1.33.0
+	github.com/aws/aws-sdk-go-v2/service/lambda v1.48.1
 	github.com/aws/aws-sdk-go-v2/service/lightsail v1.26.4
-	github.com/aws/aws-sdk-go-v2/service/mq v1.14.8
+	github.com/aws/aws-sdk-go-v2/service/mq v1.19.3
 	github.com/aws/aws-sdk-go-v2/service/mwaa v1.15.2
 	github.com/aws/aws-sdk-go-v2/service/neptune v1.20.3
 	github.com/aws/aws-sdk-go-v2/service/organizations v1.19.6

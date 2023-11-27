@@ -35,6 +35,7 @@ This table depends on [aws_lambda_functions](aws_lambda_functions.md).
 |last_update_status_reason|String|
 |last_update_status_reason_code|String|
 |layers|JSON|
+|logging_config|JSON|
 |master_arn|String|
 |memory_size|Int|
 |package_type|String|

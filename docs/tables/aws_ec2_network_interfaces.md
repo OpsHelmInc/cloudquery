@@ -21,6 +21,7 @@ The primary key for this table is **arn**.
 |association|JSON|
 |attachment|JSON|
 |availability_zone|String|
+|connection_tracking_configuration|JSON|
 |deny_all_igw_traffic|Bool|
 |description|String|
 |groups|JSON|

@@ -123,6 +123,11 @@ func DbSnapshots() *schema.Table {
 				Resolver: schema.PathResolver("MasterUsername"),
 			},
 			{
+				Name:     "multi_tenant",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("MultiTenant"),
+			},
+			{
 				Name:     "option_group_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("OptionGroupName"),

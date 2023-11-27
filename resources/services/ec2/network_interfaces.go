@@ -58,6 +58,11 @@ func NetworkInterfaces() *schema.Table {
 				Resolver: schema.PathResolver("AvailabilityZone"),
 			},
 			{
+				Name:     "connection_tracking_configuration",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ConnectionTrackingConfiguration"),
+			},
+			{
 				Name:     "deny_all_igw_traffic",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("DenyAllIgwTraffic"),

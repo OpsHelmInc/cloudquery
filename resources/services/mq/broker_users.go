@@ -49,6 +49,11 @@ func BrokerUsers() *schema.Table {
 				Resolver: schema.PathResolver("Pending"),
 			},
 			{
+				Name:     "replication_user",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("ReplicationUser"),
+			},
+			{
 				Name:     "username",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Username"),

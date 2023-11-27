@@ -82,6 +82,11 @@ func ClusterOperations() *schema.Table {
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("TargetClusterInfo"),
 			},
+			{
+				Name:     "vpc_connection_info",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("VpcConnectionInfo"),
+			},
 		},
 	}
 }

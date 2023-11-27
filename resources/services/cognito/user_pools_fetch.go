@@ -15,7 +15,7 @@ func fetchCognitoUserPools(ctx context.Context, meta schema.ClientMeta, parent *
 	svc := c.Services().Cognitoidentityprovider
 	params := cognitoidentityprovider.ListUserPoolsInput{
 		// we want max results to reduce List calls as much as possible, services limited to less than or equal to 60"
-		MaxResults: 60,
+		MaxResults: aws.Int32(60),
 	}
 	for {
 		out, err := svc.ListUserPools(ctx, &params)

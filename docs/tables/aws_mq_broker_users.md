@@ -22,5 +22,6 @@ This table depends on [aws_mq_brokers](aws_mq_brokers.md).
 |console_access|Bool|
 |groups|StringArray|
 |pending|JSON|
+|replication_user|Bool|
 |username|String|
 |result_metadata|JSON|
