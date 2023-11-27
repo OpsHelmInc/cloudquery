@@ -74,6 +74,7 @@ The primary key for this table is **arn**.
 |monitoring_interval|Int|
 |monitoring_role_arn|String|
 |multi_az|Bool|
+|multi_tenant|Bool|
 |nchar_character_set_name|String|
 |network_type|String|
 |option_group_memberships|JSON|

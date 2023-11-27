@@ -5,6 +5,7 @@ import (
 
 	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/OpsHelmInc/cloudquery/client/mocks"
+	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider"
 	"github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider/types"
 	"github.com/cloudquery/plugin-sdk/faker"
@@ -20,7 +21,7 @@ func buildCognitoUserPools(t *testing.T, ctrl *gomock.Controller) client.Service
 	}
 	m.EXPECT().ListUserPools(
 		gomock.Any(),
-		&cognitoidentityprovider.ListUserPoolsInput{MaxResults: 60},
+		&cognitoidentityprovider.ListUserPoolsInput{MaxResults: aws.Int32(60)},
 		gomock.Any(),
 	).Return(
 		&cognitoidentityprovider.ListUserPoolsOutput{UserPools: []types.UserPoolDescriptionType{desc}},

@@ -34,6 +34,7 @@ The primary key for this table is **arn**.
 |kms_key_id|String|
 |license_model|String|
 |master_username|String|
+|multi_tenant|Bool|
 |option_group_name|String|
 |original_snapshot_create_time|Timestamp|
 |percent_progress|Int|

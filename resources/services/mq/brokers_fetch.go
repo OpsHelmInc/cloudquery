@@ -113,7 +113,7 @@ func getMqBrokerConfigurationRevision(ctx context.Context, meta schema.ClientMet
 	rev := resource.Item.(types.ConfigurationRevision)
 	cfg := resource.Parent.Item.(mq.DescribeConfigurationOutput)
 
-	revId := strconv.Itoa(int(rev.Revision))
+	revId := strconv.Itoa(int(*rev.Revision))
 	output, err := svc.DescribeConfigurationRevision(ctx, &mq.DescribeConfigurationRevisionInput{ConfigurationId: cfg.Id, ConfigurationRevision: &revId})
 	if err != nil {
 		return err

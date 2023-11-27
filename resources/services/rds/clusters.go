@@ -358,6 +358,11 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("PubliclyAccessible"),
 			},
 			{
+				Name:     "rds_custom_cluster_configuration",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("RdsCustomClusterConfiguration"),
+			},
+			{
 				Name:     "read_replica_identifiers",
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("ReadReplicaIdentifiers"),
@@ -386,6 +391,11 @@ func Clusters() *schema.Table {
 				Name:     "status",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Status"),
+			},
+			{
+				Name:     "status_infos",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("StatusInfos"),
 			},
 			{
 				Name:     "storage_encrypted",

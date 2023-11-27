@@ -294,7 +294,7 @@ func resolveBucketPolicyStatus(ctx context.Context, meta schema.ClientMeta, reso
 		return nil
 	}
 	if policyStatusOutput.PolicyStatus != nil {
-		resource.IsPublic = policyStatusOutput.PolicyStatus.IsPublic
+		resource.IsPublic = *policyStatusOutput.PolicyStatus.IsPublic
 	}
 	return nil
 }
@@ -332,10 +332,10 @@ func resolveBucketPublicAccessBlock(ctx context.Context, meta schema.ClientMeta,
 		}
 		return err
 	}
-	resource.BlockPublicAcls = publicAccessOutput.PublicAccessBlockConfiguration.BlockPublicAcls
-	resource.BlockPublicPolicy = publicAccessOutput.PublicAccessBlockConfiguration.BlockPublicPolicy
-	resource.IgnorePublicAcls = publicAccessOutput.PublicAccessBlockConfiguration.IgnorePublicAcls
-	resource.RestrictPublicBuckets = publicAccessOutput.PublicAccessBlockConfiguration.RestrictPublicBuckets
+	resource.BlockPublicAcls = *publicAccessOutput.PublicAccessBlockConfiguration.BlockPublicAcls
+	resource.BlockPublicPolicy = *publicAccessOutput.PublicAccessBlockConfiguration.BlockPublicPolicy
+	resource.IgnorePublicAcls = *publicAccessOutput.PublicAccessBlockConfiguration.IgnorePublicAcls
+	resource.RestrictPublicBuckets = *publicAccessOutput.PublicAccessBlockConfiguration.RestrictPublicBuckets
 	return nil
 }
 

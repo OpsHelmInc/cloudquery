@@ -1,1 +1,5 @@
 deploy-key
+/.idea/.gitignore
+/.idea/cloudquery.iml
+/.idea/modules.xml
+/.idea/vcs.xml

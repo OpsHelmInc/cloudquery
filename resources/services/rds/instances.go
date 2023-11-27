@@ -323,6 +323,11 @@ func Instances() *schema.Table {
 				Resolver: schema.PathResolver("MultiAZ"),
 			},
 			{
+				Name:     "multi_tenant",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("MultiTenant"),
+			},
+			{
 				Name:     "nchar_character_set_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("NcharCharacterSetName"),

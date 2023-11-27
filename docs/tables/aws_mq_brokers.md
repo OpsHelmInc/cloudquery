@@ -29,6 +29,8 @@ The following tables depend on aws_mq_brokers:
 |broker_state|String|
 |configurations|JSON|
 |created|Timestamp|
+|data_replication_metadata|JSON|
+|data_replication_mode|String|
 |deployment_mode|String|
 |encryption_options|JSON|
 |engine_type|String|
@@ -38,6 +40,8 @@ The following tables depend on aws_mq_brokers:
 |logs|JSON|
 |maintenance_window_start_time|JSON|
 |pending_authentication_strategy|String|
+|pending_data_replication_metadata|JSON|
+|pending_data_replication_mode|String|
 |pending_engine_version|String|
 |pending_host_instance_type|String|
 |pending_ldap_server_metadata|JSON|

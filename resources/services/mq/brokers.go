@@ -79,6 +79,16 @@ func Brokers() *schema.Table {
 				Resolver: schema.PathResolver("Created"),
 			},
 			{
+				Name:     "data_replication_metadata",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("DataReplicationMetadata"),
+			},
+			{
+				Name:     "data_replication_mode",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("DataReplicationMode"),
+			},
+			{
 				Name:     "deployment_mode",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("DeploymentMode"),
@@ -122,6 +132,16 @@ func Brokers() *schema.Table {
 				Name:     "pending_authentication_strategy",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("PendingAuthenticationStrategy"),
+			},
+			{
+				Name:     "pending_data_replication_metadata",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("PendingDataReplicationMetadata"),
+			},
+			{
+				Name:     "pending_data_replication_mode",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("PendingDataReplicationMode"),
 			},
 			{
 				Name:     "pending_engine_version",

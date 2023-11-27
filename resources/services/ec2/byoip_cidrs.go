@@ -38,6 +38,11 @@ func ByoipCidrs() *schema.Table {
 				},
 			},
 			{
+				Name:     "asn_associations",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("AsnAssociations"),
+			},
+			{
 				Name:     "description",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Description"),

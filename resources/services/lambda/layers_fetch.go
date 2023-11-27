@@ -58,7 +58,7 @@ func fetchLambdaLayerVersionPolicies(ctx context.Context, meta schema.ClientMeta
 
 	config := lambda.GetLayerVersionPolicyInput{
 		LayerName:     pp.LayerName,
-		VersionNumber: p.Version,
+		VersionNumber: aws.Int64(p.Version),
 	}
 
 	output, err := svc.GetLayerVersionPolicy(ctx, &config)

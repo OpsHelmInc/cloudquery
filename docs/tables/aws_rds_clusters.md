@@ -81,12 +81,14 @@ The primary key for this table is **arn**.
 |preferred_backup_window|String|
 |preferred_maintenance_window|String|
 |publicly_accessible|Bool|
+|rds_custom_cluster_configuration|JSON|
 |read_replica_identifiers|StringArray|
 |reader_endpoint|String|
 |replication_source_identifier|String|
 |scaling_configuration_info|JSON|
 |serverless_v2_scaling_configuration|JSON|
 |status|String|
+|status_infos|JSON|
 |storage_encrypted|Bool|
 |storage_type|String|
 |vpc_security_groups|JSON|

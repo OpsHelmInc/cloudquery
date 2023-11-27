@@ -115,6 +115,11 @@ func FunctionVersions() *schema.Table {
 				Resolver: schema.PathResolver("Layers"),
 			},
 			{
+				Name:     "logging_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("LoggingConfig"),
+			},
+			{
 				Name:     "master_arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("MasterArn"),
