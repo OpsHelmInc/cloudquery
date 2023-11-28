@@ -59,6 +59,11 @@ func Models() *schema.Table {
 				Resolver: schema.PathResolver("Containers"),
 			},
 			{
+				Name:     "deployment_recommendation",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("DeploymentRecommendation"),
+			},
+			{
 				Name:     "enable_network_isolation",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("EnableNetworkIsolation"),

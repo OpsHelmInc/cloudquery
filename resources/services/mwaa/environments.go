@@ -44,6 +44,11 @@ func Environments() *schema.Table {
 				Resolver: schema.PathResolver("AirflowVersion"),
 			},
 			{
+				Name:     "celery_executor_queue",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("CeleryExecutorQueue"),
+			},
+			{
 				Name:     "created_at",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreatedAt"),
@@ -52,6 +57,16 @@ func Environments() *schema.Table {
 				Name:     "dag_s3_path",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("DagS3Path"),
+			},
+			{
+				Name:     "database_vpc_endpoint_service",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("DatabaseVpcEndpointService"),
+			},
+			{
+				Name:     "endpoint_management",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("EndpointManagement"),
 			},
 			{
 				Name:     "environment_class",
@@ -162,6 +177,11 @@ func Environments() *schema.Table {
 				Name:     "webserver_url",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("WebserverUrl"),
+			},
+			{
+				Name:     "webserver_vpc_endpoint_service",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("WebserverVpcEndpointService"),
 			},
 			{
 				Name:     "weekly_maintenance_window_start",

@@ -24,6 +24,7 @@ The primary key for this table is **arn**.
 |behaviors|JSON|
 |creation_date|Timestamp|
 |last_modified_date|Timestamp|
+|metrics_export_config|JSON|
 |security_profile_description|String|
 |security_profile_name|String|
 |version|Int|

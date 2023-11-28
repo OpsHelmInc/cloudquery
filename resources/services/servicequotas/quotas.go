@@ -52,9 +52,19 @@ func Quotas() *schema.Table {
 				Resolver: schema.PathResolver("Period"),
 			},
 			{
+				Name:     "quota_applied_at_level",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("QuotaAppliedAtLevel"),
+			},
+			{
 				Name:     "quota_code",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("QuotaCode"),
+			},
+			{
+				Name:     "quota_context",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("QuotaContext"),
 			},
 			{
 				Name:     "quota_name",

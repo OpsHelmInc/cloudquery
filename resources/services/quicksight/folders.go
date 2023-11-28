@@ -67,6 +67,11 @@ func Folders() *schema.Table {
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Name"),
 			},
+			{
+				Name:     "sharing_model",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("SharingModel"),
+			},
 		},
 	}
 }

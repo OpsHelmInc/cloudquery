@@ -30,6 +30,11 @@ func TargetGroupTargetHealthDescriptions() *schema.Table {
 				Resolver: schema.ParentColumnResolver("arn"),
 			},
 			{
+				Name:     "anomaly_detection",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("AnomalyDetection"),
+			},
+			{
 				Name:     "health_check_port",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("HealthCheckPort"),

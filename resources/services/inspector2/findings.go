@@ -78,6 +78,16 @@ func Findings() *schema.Table {
 				Resolver: schema.PathResolver("Type"),
 			},
 			{
+				Name:     "code_vulnerability_details",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("CodeVulnerabilityDetails"),
+			},
+			{
+				Name:     "epss",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Epss"),
+			},
+			{
 				Name:     "exploit_available",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ExploitAvailable"),

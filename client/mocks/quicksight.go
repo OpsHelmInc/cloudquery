@@ -155,6 +155,46 @@ func (mr *MockQuicksightClientMockRecorder) DescribeAnalysisPermissions(arg0, ar
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeAnalysisPermissions", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeAnalysisPermissions), varargs...)
 }
 
+// DescribeAssetBundleExportJob mocks base method.
+func (m *MockQuicksightClient) DescribeAssetBundleExportJob(arg0 context.Context, arg1 *quicksight.DescribeAssetBundleExportJobInput, arg2 ...func(*quicksight.Options)) (*quicksight.DescribeAssetBundleExportJobOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeAssetBundleExportJob", varargs...)
+	ret0, _ := ret[0].(*quicksight.DescribeAssetBundleExportJobOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeAssetBundleExportJob indicates an expected call of DescribeAssetBundleExportJob.
+func (mr *MockQuicksightClientMockRecorder) DescribeAssetBundleExportJob(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeAssetBundleExportJob", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeAssetBundleExportJob), varargs...)
+}
+
+// DescribeAssetBundleImportJob mocks base method.
+func (m *MockQuicksightClient) DescribeAssetBundleImportJob(arg0 context.Context, arg1 *quicksight.DescribeAssetBundleImportJobInput, arg2 ...func(*quicksight.Options)) (*quicksight.DescribeAssetBundleImportJobOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeAssetBundleImportJob", varargs...)
+	ret0, _ := ret[0].(*quicksight.DescribeAssetBundleImportJobOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeAssetBundleImportJob indicates an expected call of DescribeAssetBundleImportJob.
+func (mr *MockQuicksightClientMockRecorder) DescribeAssetBundleImportJob(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeAssetBundleImportJob", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeAssetBundleImportJob), varargs...)
+}
+
 // DescribeDashboard mocks base method.
 func (m *MockQuicksightClient) DescribeDashboard(arg0 context.Context, arg1 *quicksight.DescribeDashboardInput, arg2 ...func(*quicksight.Options)) (*quicksight.DescribeDashboardOutput, error) {
 	m.ctrl.T.Helper()
@@ -213,6 +253,46 @@ func (mr *MockQuicksightClientMockRecorder) DescribeDashboardPermissions(arg0, a
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeDashboardPermissions", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeDashboardPermissions), varargs...)
+}
+
+// DescribeDashboardSnapshotJob mocks base method.
+func (m *MockQuicksightClient) DescribeDashboardSnapshotJob(arg0 context.Context, arg1 *quicksight.DescribeDashboardSnapshotJobInput, arg2 ...func(*quicksight.Options)) (*quicksight.DescribeDashboardSnapshotJobOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeDashboardSnapshotJob", varargs...)
+	ret0, _ := ret[0].(*quicksight.DescribeDashboardSnapshotJobOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeDashboardSnapshotJob indicates an expected call of DescribeDashboardSnapshotJob.
+func (mr *MockQuicksightClientMockRecorder) DescribeDashboardSnapshotJob(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeDashboardSnapshotJob", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeDashboardSnapshotJob), varargs...)
+}
+
+// DescribeDashboardSnapshotJobResult mocks base method.
+func (m *MockQuicksightClient) DescribeDashboardSnapshotJobResult(arg0 context.Context, arg1 *quicksight.DescribeDashboardSnapshotJobResultInput, arg2 ...func(*quicksight.Options)) (*quicksight.DescribeDashboardSnapshotJobResultOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeDashboardSnapshotJobResult", varargs...)
+	ret0, _ := ret[0].(*quicksight.DescribeDashboardSnapshotJobResultOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeDashboardSnapshotJobResult indicates an expected call of DescribeDashboardSnapshotJobResult.
+func (mr *MockQuicksightClientMockRecorder) DescribeDashboardSnapshotJobResult(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeDashboardSnapshotJobResult", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeDashboardSnapshotJobResult), varargs...)
 }
 
 // DescribeDataSet mocks base method.
@@ -515,6 +595,26 @@ func (mr *MockQuicksightClientMockRecorder) DescribeRefreshSchedule(arg0, arg1 i
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeRefreshSchedule", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeRefreshSchedule), varargs...)
 }
 
+// DescribeRoleCustomPermission mocks base method.
+func (m *MockQuicksightClient) DescribeRoleCustomPermission(arg0 context.Context, arg1 *quicksight.DescribeRoleCustomPermissionInput, arg2 ...func(*quicksight.Options)) (*quicksight.DescribeRoleCustomPermissionOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeRoleCustomPermission", varargs...)
+	ret0, _ := ret[0].(*quicksight.DescribeRoleCustomPermissionOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeRoleCustomPermission indicates an expected call of DescribeRoleCustomPermission.
+func (mr *MockQuicksightClientMockRecorder) DescribeRoleCustomPermission(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeRoleCustomPermission", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeRoleCustomPermission), varargs...)
+}
+
 // DescribeTemplate mocks base method.
 func (m *MockQuicksightClient) DescribeTemplate(arg0 context.Context, arg1 *quicksight.DescribeTemplateInput, arg2 ...func(*quicksight.Options)) (*quicksight.DescribeTemplateOutput, error) {
 	m.ctrl.T.Helper()
@@ -655,6 +755,86 @@ func (mr *MockQuicksightClientMockRecorder) DescribeThemePermissions(arg0, arg1 
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeThemePermissions", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeThemePermissions), varargs...)
 }
 
+// DescribeTopic mocks base method.
+func (m *MockQuicksightClient) DescribeTopic(arg0 context.Context, arg1 *quicksight.DescribeTopicInput, arg2 ...func(*quicksight.Options)) (*quicksight.DescribeTopicOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeTopic", varargs...)
+	ret0, _ := ret[0].(*quicksight.DescribeTopicOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeTopic indicates an expected call of DescribeTopic.
+func (mr *MockQuicksightClientMockRecorder) DescribeTopic(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeTopic", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeTopic), varargs...)
+}
+
+// DescribeTopicPermissions mocks base method.
+func (m *MockQuicksightClient) DescribeTopicPermissions(arg0 context.Context, arg1 *quicksight.DescribeTopicPermissionsInput, arg2 ...func(*quicksight.Options)) (*quicksight.DescribeTopicPermissionsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeTopicPermissions", varargs...)
+	ret0, _ := ret[0].(*quicksight.DescribeTopicPermissionsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeTopicPermissions indicates an expected call of DescribeTopicPermissions.
+func (mr *MockQuicksightClientMockRecorder) DescribeTopicPermissions(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeTopicPermissions", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeTopicPermissions), varargs...)
+}
+
+// DescribeTopicRefresh mocks base method.
+func (m *MockQuicksightClient) DescribeTopicRefresh(arg0 context.Context, arg1 *quicksight.DescribeTopicRefreshInput, arg2 ...func(*quicksight.Options)) (*quicksight.DescribeTopicRefreshOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeTopicRefresh", varargs...)
+	ret0, _ := ret[0].(*quicksight.DescribeTopicRefreshOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeTopicRefresh indicates an expected call of DescribeTopicRefresh.
+func (mr *MockQuicksightClientMockRecorder) DescribeTopicRefresh(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeTopicRefresh", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeTopicRefresh), varargs...)
+}
+
+// DescribeTopicRefreshSchedule mocks base method.
+func (m *MockQuicksightClient) DescribeTopicRefreshSchedule(arg0 context.Context, arg1 *quicksight.DescribeTopicRefreshScheduleInput, arg2 ...func(*quicksight.Options)) (*quicksight.DescribeTopicRefreshScheduleOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeTopicRefreshSchedule", varargs...)
+	ret0, _ := ret[0].(*quicksight.DescribeTopicRefreshScheduleOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeTopicRefreshSchedule indicates an expected call of DescribeTopicRefreshSchedule.
+func (mr *MockQuicksightClientMockRecorder) DescribeTopicRefreshSchedule(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeTopicRefreshSchedule", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeTopicRefreshSchedule), varargs...)
+}
+
 // DescribeUser mocks base method.
 func (m *MockQuicksightClient) DescribeUser(arg0 context.Context, arg1 *quicksight.DescribeUserInput, arg2 ...func(*quicksight.Options)) (*quicksight.DescribeUserOutput, error) {
 	m.ctrl.T.Helper()
@@ -673,6 +853,26 @@ func (mr *MockQuicksightClientMockRecorder) DescribeUser(arg0, arg1 interface{},
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeUser", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeUser), varargs...)
+}
+
+// DescribeVPCConnection mocks base method.
+func (m *MockQuicksightClient) DescribeVPCConnection(arg0 context.Context, arg1 *quicksight.DescribeVPCConnectionInput, arg2 ...func(*quicksight.Options)) (*quicksight.DescribeVPCConnectionOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeVPCConnection", varargs...)
+	ret0, _ := ret[0].(*quicksight.DescribeVPCConnectionOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeVPCConnection indicates an expected call of DescribeVPCConnection.
+func (mr *MockQuicksightClientMockRecorder) DescribeVPCConnection(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeVPCConnection", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeVPCConnection), varargs...)
 }
 
 // GetDashboardEmbedUrl mocks base method.
@@ -733,6 +933,46 @@ func (mr *MockQuicksightClientMockRecorder) ListAnalyses(arg0, arg1 interface{},
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAnalyses", reflect.TypeOf((*MockQuicksightClient)(nil).ListAnalyses), varargs...)
+}
+
+// ListAssetBundleExportJobs mocks base method.
+func (m *MockQuicksightClient) ListAssetBundleExportJobs(arg0 context.Context, arg1 *quicksight.ListAssetBundleExportJobsInput, arg2 ...func(*quicksight.Options)) (*quicksight.ListAssetBundleExportJobsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListAssetBundleExportJobs", varargs...)
+	ret0, _ := ret[0].(*quicksight.ListAssetBundleExportJobsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListAssetBundleExportJobs indicates an expected call of ListAssetBundleExportJobs.
+func (mr *MockQuicksightClientMockRecorder) ListAssetBundleExportJobs(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAssetBundleExportJobs", reflect.TypeOf((*MockQuicksightClient)(nil).ListAssetBundleExportJobs), varargs...)
+}
+
+// ListAssetBundleImportJobs mocks base method.
+func (m *MockQuicksightClient) ListAssetBundleImportJobs(arg0 context.Context, arg1 *quicksight.ListAssetBundleImportJobsInput, arg2 ...func(*quicksight.Options)) (*quicksight.ListAssetBundleImportJobsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListAssetBundleImportJobs", varargs...)
+	ret0, _ := ret[0].(*quicksight.ListAssetBundleImportJobsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListAssetBundleImportJobs indicates an expected call of ListAssetBundleImportJobs.
+func (mr *MockQuicksightClientMockRecorder) ListAssetBundleImportJobs(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAssetBundleImportJobs", reflect.TypeOf((*MockQuicksightClient)(nil).ListAssetBundleImportJobs), varargs...)
 }
 
 // ListDashboardVersions mocks base method.
@@ -935,6 +1175,26 @@ func (mr *MockQuicksightClientMockRecorder) ListIAMPolicyAssignmentsForUser(arg0
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListIAMPolicyAssignmentsForUser", reflect.TypeOf((*MockQuicksightClient)(nil).ListIAMPolicyAssignmentsForUser), varargs...)
 }
 
+// ListIdentityPropagationConfigs mocks base method.
+func (m *MockQuicksightClient) ListIdentityPropagationConfigs(arg0 context.Context, arg1 *quicksight.ListIdentityPropagationConfigsInput, arg2 ...func(*quicksight.Options)) (*quicksight.ListIdentityPropagationConfigsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListIdentityPropagationConfigs", varargs...)
+	ret0, _ := ret[0].(*quicksight.ListIdentityPropagationConfigsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListIdentityPropagationConfigs indicates an expected call of ListIdentityPropagationConfigs.
+func (mr *MockQuicksightClientMockRecorder) ListIdentityPropagationConfigs(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListIdentityPropagationConfigs", reflect.TypeOf((*MockQuicksightClient)(nil).ListIdentityPropagationConfigs), varargs...)
+}
+
 // ListIngestions mocks base method.
 func (m *MockQuicksightClient) ListIngestions(arg0 context.Context, arg1 *quicksight.ListIngestionsInput, arg2 ...func(*quicksight.Options)) (*quicksight.ListIngestionsOutput, error) {
 	m.ctrl.T.Helper()
@@ -993,6 +1253,26 @@ func (mr *MockQuicksightClientMockRecorder) ListRefreshSchedules(arg0, arg1 inte
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListRefreshSchedules", reflect.TypeOf((*MockQuicksightClient)(nil).ListRefreshSchedules), varargs...)
+}
+
+// ListRoleMemberships mocks base method.
+func (m *MockQuicksightClient) ListRoleMemberships(arg0 context.Context, arg1 *quicksight.ListRoleMembershipsInput, arg2 ...func(*quicksight.Options)) (*quicksight.ListRoleMembershipsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListRoleMemberships", varargs...)
+	ret0, _ := ret[0].(*quicksight.ListRoleMembershipsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListRoleMemberships indicates an expected call of ListRoleMemberships.
+func (mr *MockQuicksightClientMockRecorder) ListRoleMemberships(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListRoleMemberships", reflect.TypeOf((*MockQuicksightClient)(nil).ListRoleMemberships), varargs...)
 }
 
 // ListTagsForResource mocks base method.
@@ -1135,6 +1415,46 @@ func (mr *MockQuicksightClientMockRecorder) ListThemes(arg0, arg1 interface{}, a
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListThemes", reflect.TypeOf((*MockQuicksightClient)(nil).ListThemes), varargs...)
 }
 
+// ListTopicRefreshSchedules mocks base method.
+func (m *MockQuicksightClient) ListTopicRefreshSchedules(arg0 context.Context, arg1 *quicksight.ListTopicRefreshSchedulesInput, arg2 ...func(*quicksight.Options)) (*quicksight.ListTopicRefreshSchedulesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListTopicRefreshSchedules", varargs...)
+	ret0, _ := ret[0].(*quicksight.ListTopicRefreshSchedulesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListTopicRefreshSchedules indicates an expected call of ListTopicRefreshSchedules.
+func (mr *MockQuicksightClientMockRecorder) ListTopicRefreshSchedules(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListTopicRefreshSchedules", reflect.TypeOf((*MockQuicksightClient)(nil).ListTopicRefreshSchedules), varargs...)
+}
+
+// ListTopics mocks base method.
+func (m *MockQuicksightClient) ListTopics(arg0 context.Context, arg1 *quicksight.ListTopicsInput, arg2 ...func(*quicksight.Options)) (*quicksight.ListTopicsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListTopics", varargs...)
+	ret0, _ := ret[0].(*quicksight.ListTopicsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListTopics indicates an expected call of ListTopics.
+func (mr *MockQuicksightClientMockRecorder) ListTopics(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListTopics", reflect.TypeOf((*MockQuicksightClient)(nil).ListTopics), varargs...)
+}
+
 // ListUserGroups mocks base method.
 func (m *MockQuicksightClient) ListUserGroups(arg0 context.Context, arg1 *quicksight.ListUserGroupsInput, arg2 ...func(*quicksight.Options)) (*quicksight.ListUserGroupsOutput, error) {
 	m.ctrl.T.Helper()
@@ -1173,6 +1493,26 @@ func (mr *MockQuicksightClientMockRecorder) ListUsers(arg0, arg1 interface{}, ar
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListUsers", reflect.TypeOf((*MockQuicksightClient)(nil).ListUsers), varargs...)
+}
+
+// ListVPCConnections mocks base method.
+func (m *MockQuicksightClient) ListVPCConnections(arg0 context.Context, arg1 *quicksight.ListVPCConnectionsInput, arg2 ...func(*quicksight.Options)) (*quicksight.ListVPCConnectionsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListVPCConnections", varargs...)
+	ret0, _ := ret[0].(*quicksight.ListVPCConnectionsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListVPCConnections indicates an expected call of ListVPCConnections.
+func (mr *MockQuicksightClientMockRecorder) ListVPCConnections(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListVPCConnections", reflect.TypeOf((*MockQuicksightClient)(nil).ListVPCConnections), varargs...)
 }
 
 // SearchAnalyses mocks base method.

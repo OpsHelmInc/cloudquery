@@ -18,6 +18,7 @@ This table depends on [aws_elbv2_target_groups](aws_elbv2_target_groups.md).
 |account_id|String|
 |region|String|
 |target_group_arn|String|
+|anomaly_detection|JSON|
 |health_check_port|String|
 |target|JSON|
 |target_health|JSON|

@@ -38,6 +38,11 @@ func Workspaces() *schema.Table {
 				Resolver: schema.PathResolver("ComputerName"),
 			},
 			{
+				Name:     "data_replication_settings",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("DataReplicationSettings"),
+			},
+			{
 				Name:     "directory_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("DirectoryId"),
@@ -71,6 +76,11 @@ func Workspaces() *schema.Table {
 				Name:     "root_volume_encryption_enabled",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("RootVolumeEncryptionEnabled"),
+			},
+			{
+				Name:     "standby_workspaces_properties",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("StandbyWorkspacesProperties"),
 			},
 			{
 				Name:     "state",

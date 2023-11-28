@@ -63,6 +63,11 @@ func Jobs() *schema.Table {
 				Resolver: schema.PathResolver("Description"),
 			},
 			{
+				Name:     "destination_package_versions",
+				Type:     schema.TypeStringArray,
+				Resolver: schema.PathResolver("DestinationPackageVersions"),
+			},
+			{
 				Name:     "document_parameters",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("DocumentParameters"),

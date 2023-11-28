@@ -115,6 +115,26 @@ func (mr *MockSfnClientMockRecorder) DescribeStateMachine(arg0, arg1 interface{}
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeStateMachine", reflect.TypeOf((*MockSfnClient)(nil).DescribeStateMachine), varargs...)
 }
 
+// DescribeStateMachineAlias mocks base method.
+func (m *MockSfnClient) DescribeStateMachineAlias(arg0 context.Context, arg1 *sfn.DescribeStateMachineAliasInput, arg2 ...func(*sfn.Options)) (*sfn.DescribeStateMachineAliasOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeStateMachineAlias", varargs...)
+	ret0, _ := ret[0].(*sfn.DescribeStateMachineAliasOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeStateMachineAlias indicates an expected call of DescribeStateMachineAlias.
+func (mr *MockSfnClientMockRecorder) DescribeStateMachineAlias(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeStateMachineAlias", reflect.TypeOf((*MockSfnClient)(nil).DescribeStateMachineAlias), varargs...)
+}
+
 // DescribeStateMachineForExecution mocks base method.
 func (m *MockSfnClient) DescribeStateMachineForExecution(arg0 context.Context, arg1 *sfn.DescribeStateMachineForExecutionInput, arg2 ...func(*sfn.Options)) (*sfn.DescribeStateMachineForExecutionOutput, error) {
 	m.ctrl.T.Helper()
@@ -233,6 +253,46 @@ func (mr *MockSfnClientMockRecorder) ListMapRuns(arg0, arg1 interface{}, arg2 ..
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListMapRuns", reflect.TypeOf((*MockSfnClient)(nil).ListMapRuns), varargs...)
+}
+
+// ListStateMachineAliases mocks base method.
+func (m *MockSfnClient) ListStateMachineAliases(arg0 context.Context, arg1 *sfn.ListStateMachineAliasesInput, arg2 ...func(*sfn.Options)) (*sfn.ListStateMachineAliasesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListStateMachineAliases", varargs...)
+	ret0, _ := ret[0].(*sfn.ListStateMachineAliasesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListStateMachineAliases indicates an expected call of ListStateMachineAliases.
+func (mr *MockSfnClientMockRecorder) ListStateMachineAliases(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListStateMachineAliases", reflect.TypeOf((*MockSfnClient)(nil).ListStateMachineAliases), varargs...)
+}
+
+// ListStateMachineVersions mocks base method.
+func (m *MockSfnClient) ListStateMachineVersions(arg0 context.Context, arg1 *sfn.ListStateMachineVersionsInput, arg2 ...func(*sfn.Options)) (*sfn.ListStateMachineVersionsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListStateMachineVersions", varargs...)
+	ret0, _ := ret[0].(*sfn.ListStateMachineVersionsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListStateMachineVersions indicates an expected call of ListStateMachineVersions.
+func (mr *MockSfnClientMockRecorder) ListStateMachineVersions(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListStateMachineVersions", reflect.TypeOf((*MockSfnClient)(nil).ListStateMachineVersions), varargs...)
 }
 
 // ListStateMachines mocks base method.

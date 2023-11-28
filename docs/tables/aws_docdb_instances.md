@@ -23,6 +23,7 @@ This table depends on [aws_docdb_clusters](aws_docdb_clusters.md).
 |availability_zone|String|
 |backup_retention_period|Int|
 |ca_certificate_identifier|String|
+|certificate_details|JSON|
 |copy_tags_to_snapshot|Bool|
 |db_cluster_identifier|String|
 |db_instance_class|String|

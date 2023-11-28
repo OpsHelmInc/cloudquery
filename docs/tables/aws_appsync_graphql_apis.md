@@ -18,13 +18,19 @@ The primary key for this table is **arn**.
 |arn (PK)|String|
 |additional_authentication_providers|JSON|
 |api_id|String|
+|api_type|String|
 |authentication_type|String|
+|dns|JSON|
 |lambda_authorizer_config|JSON|
 |log_config|JSON|
+|merged_api_execution_role_arn|String|
 |name|String|
 |open_id_connect_config|JSON|
+|owner|String|
+|owner_contact|String|
 |tags|JSON|
 |uris|JSON|
 |user_pool_config|JSON|
+|visibility|String|
 |waf_web_acl_arn|String|
 |xray_enabled|Bool|

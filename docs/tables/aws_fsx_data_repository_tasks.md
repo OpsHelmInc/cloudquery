@@ -26,6 +26,7 @@ The primary key for this table is **arn**.
 |file_cache_id|String|
 |file_system_id|String|
 |paths|StringArray|
+|release_configuration|JSON|
 |report|JSON|
 |start_time|Timestamp|
 |status|JSON|

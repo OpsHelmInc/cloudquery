@@ -40,6 +40,11 @@ func OrderableDbInstanceOptions() *schema.Table {
 				Resolver: schema.PathResolver("LicenseModel"),
 			},
 			{
+				Name:     "storage_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("StorageType"),
+			},
+			{
 				Name:     "vpc",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("Vpc"),

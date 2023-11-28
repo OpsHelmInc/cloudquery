@@ -113,6 +113,11 @@ func Groups() *schema.Table {
 				Resolver: schema.PathResolver("HealthCheckGracePeriod"),
 			},
 			{
+				Name:     "instance_maintenance_policy",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("InstanceMaintenancePolicy"),
+			},
+			{
 				Name:     "instances",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Instances"),

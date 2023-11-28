@@ -118,6 +118,11 @@ func Fleets() *schema.Table {
 				Resolver: schema.PathResolver("MaxConcurrentSessions"),
 			},
 			{
+				Name:     "max_sessions_per_instance",
+				Type:     schema.TypeInt,
+				Resolver: schema.PathResolver("MaxSessionsPerInstance"),
+			},
+			{
 				Name:     "max_user_duration_in_seconds",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("MaxUserDurationInSeconds"),

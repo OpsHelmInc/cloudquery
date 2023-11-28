@@ -23,5 +23,6 @@ This table depends on [aws_timestream_databases](aws_timestream_databases.md).
 |last_updated_time|Timestamp|
 |magnetic_store_write_properties|JSON|
 |retention_properties|JSON|
+|schema|JSON|
 |table_name|String|
 |table_status|String|

@@ -83,6 +83,11 @@ func DataRepositoryTasks() *schema.Table {
 				Resolver: schema.PathResolver("Paths"),
 			},
 			{
+				Name:     "release_configuration",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ReleaseConfiguration"),
+			},
+			{
 				Name:     "report",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Report"),

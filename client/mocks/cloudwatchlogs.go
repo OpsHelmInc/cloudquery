@@ -35,6 +35,86 @@ func (m *MockCloudwatchlogsClient) EXPECT() *MockCloudwatchlogsClientMockRecorde
 	return m.recorder
 }
 
+// DescribeAccountPolicies mocks base method.
+func (m *MockCloudwatchlogsClient) DescribeAccountPolicies(arg0 context.Context, arg1 *cloudwatchlogs.DescribeAccountPoliciesInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.DescribeAccountPoliciesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeAccountPolicies", varargs...)
+	ret0, _ := ret[0].(*cloudwatchlogs.DescribeAccountPoliciesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeAccountPolicies indicates an expected call of DescribeAccountPolicies.
+func (mr *MockCloudwatchlogsClientMockRecorder) DescribeAccountPolicies(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeAccountPolicies", reflect.TypeOf((*MockCloudwatchlogsClient)(nil).DescribeAccountPolicies), varargs...)
+}
+
+// DescribeDeliveries mocks base method.
+func (m *MockCloudwatchlogsClient) DescribeDeliveries(arg0 context.Context, arg1 *cloudwatchlogs.DescribeDeliveriesInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.DescribeDeliveriesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeDeliveries", varargs...)
+	ret0, _ := ret[0].(*cloudwatchlogs.DescribeDeliveriesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeDeliveries indicates an expected call of DescribeDeliveries.
+func (mr *MockCloudwatchlogsClientMockRecorder) DescribeDeliveries(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeDeliveries", reflect.TypeOf((*MockCloudwatchlogsClient)(nil).DescribeDeliveries), varargs...)
+}
+
+// DescribeDeliveryDestinations mocks base method.
+func (m *MockCloudwatchlogsClient) DescribeDeliveryDestinations(arg0 context.Context, arg1 *cloudwatchlogs.DescribeDeliveryDestinationsInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.DescribeDeliveryDestinationsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeDeliveryDestinations", varargs...)
+	ret0, _ := ret[0].(*cloudwatchlogs.DescribeDeliveryDestinationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeDeliveryDestinations indicates an expected call of DescribeDeliveryDestinations.
+func (mr *MockCloudwatchlogsClientMockRecorder) DescribeDeliveryDestinations(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeDeliveryDestinations", reflect.TypeOf((*MockCloudwatchlogsClient)(nil).DescribeDeliveryDestinations), varargs...)
+}
+
+// DescribeDeliverySources mocks base method.
+func (m *MockCloudwatchlogsClient) DescribeDeliverySources(arg0 context.Context, arg1 *cloudwatchlogs.DescribeDeliverySourcesInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.DescribeDeliverySourcesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeDeliverySources", varargs...)
+	ret0, _ := ret[0].(*cloudwatchlogs.DescribeDeliverySourcesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeDeliverySources indicates an expected call of DescribeDeliverySources.
+func (mr *MockCloudwatchlogsClientMockRecorder) DescribeDeliverySources(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeDeliverySources", reflect.TypeOf((*MockCloudwatchlogsClient)(nil).DescribeDeliverySources), varargs...)
+}
+
 // DescribeDestinations mocks base method.
 func (m *MockCloudwatchlogsClient) DescribeDestinations(arg0 context.Context, arg1 *cloudwatchlogs.DescribeDestinationsInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.DescribeDestinationsOutput, error) {
 	m.ctrl.T.Helper()
@@ -235,6 +315,106 @@ func (mr *MockCloudwatchlogsClientMockRecorder) GetDataProtectionPolicy(arg0, ar
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDataProtectionPolicy", reflect.TypeOf((*MockCloudwatchlogsClient)(nil).GetDataProtectionPolicy), varargs...)
 }
 
+// GetDelivery mocks base method.
+func (m *MockCloudwatchlogsClient) GetDelivery(arg0 context.Context, arg1 *cloudwatchlogs.GetDeliveryInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.GetDeliveryOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetDelivery", varargs...)
+	ret0, _ := ret[0].(*cloudwatchlogs.GetDeliveryOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetDelivery indicates an expected call of GetDelivery.
+func (mr *MockCloudwatchlogsClientMockRecorder) GetDelivery(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDelivery", reflect.TypeOf((*MockCloudwatchlogsClient)(nil).GetDelivery), varargs...)
+}
+
+// GetDeliveryDestination mocks base method.
+func (m *MockCloudwatchlogsClient) GetDeliveryDestination(arg0 context.Context, arg1 *cloudwatchlogs.GetDeliveryDestinationInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.GetDeliveryDestinationOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetDeliveryDestination", varargs...)
+	ret0, _ := ret[0].(*cloudwatchlogs.GetDeliveryDestinationOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetDeliveryDestination indicates an expected call of GetDeliveryDestination.
+func (mr *MockCloudwatchlogsClientMockRecorder) GetDeliveryDestination(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDeliveryDestination", reflect.TypeOf((*MockCloudwatchlogsClient)(nil).GetDeliveryDestination), varargs...)
+}
+
+// GetDeliveryDestinationPolicy mocks base method.
+func (m *MockCloudwatchlogsClient) GetDeliveryDestinationPolicy(arg0 context.Context, arg1 *cloudwatchlogs.GetDeliveryDestinationPolicyInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.GetDeliveryDestinationPolicyOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetDeliveryDestinationPolicy", varargs...)
+	ret0, _ := ret[0].(*cloudwatchlogs.GetDeliveryDestinationPolicyOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetDeliveryDestinationPolicy indicates an expected call of GetDeliveryDestinationPolicy.
+func (mr *MockCloudwatchlogsClientMockRecorder) GetDeliveryDestinationPolicy(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDeliveryDestinationPolicy", reflect.TypeOf((*MockCloudwatchlogsClient)(nil).GetDeliveryDestinationPolicy), varargs...)
+}
+
+// GetDeliverySource mocks base method.
+func (m *MockCloudwatchlogsClient) GetDeliverySource(arg0 context.Context, arg1 *cloudwatchlogs.GetDeliverySourceInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.GetDeliverySourceOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetDeliverySource", varargs...)
+	ret0, _ := ret[0].(*cloudwatchlogs.GetDeliverySourceOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetDeliverySource indicates an expected call of GetDeliverySource.
+func (mr *MockCloudwatchlogsClientMockRecorder) GetDeliverySource(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDeliverySource", reflect.TypeOf((*MockCloudwatchlogsClient)(nil).GetDeliverySource), varargs...)
+}
+
+// GetLogAnomalyDetector mocks base method.
+func (m *MockCloudwatchlogsClient) GetLogAnomalyDetector(arg0 context.Context, arg1 *cloudwatchlogs.GetLogAnomalyDetectorInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.GetLogAnomalyDetectorOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetLogAnomalyDetector", varargs...)
+	ret0, _ := ret[0].(*cloudwatchlogs.GetLogAnomalyDetectorOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetLogAnomalyDetector indicates an expected call of GetLogAnomalyDetector.
+func (mr *MockCloudwatchlogsClientMockRecorder) GetLogAnomalyDetector(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetLogAnomalyDetector", reflect.TypeOf((*MockCloudwatchlogsClient)(nil).GetLogAnomalyDetector), varargs...)
+}
+
 // GetLogEvents mocks base method.
 func (m *MockCloudwatchlogsClient) GetLogEvents(arg0 context.Context, arg1 *cloudwatchlogs.GetLogEventsInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.GetLogEventsOutput, error) {
 	m.ctrl.T.Helper()
@@ -313,6 +493,46 @@ func (mr *MockCloudwatchlogsClientMockRecorder) GetQueryResults(arg0, arg1 inter
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetQueryResults", reflect.TypeOf((*MockCloudwatchlogsClient)(nil).GetQueryResults), varargs...)
+}
+
+// ListAnomalies mocks base method.
+func (m *MockCloudwatchlogsClient) ListAnomalies(arg0 context.Context, arg1 *cloudwatchlogs.ListAnomaliesInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.ListAnomaliesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListAnomalies", varargs...)
+	ret0, _ := ret[0].(*cloudwatchlogs.ListAnomaliesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListAnomalies indicates an expected call of ListAnomalies.
+func (mr *MockCloudwatchlogsClientMockRecorder) ListAnomalies(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAnomalies", reflect.TypeOf((*MockCloudwatchlogsClient)(nil).ListAnomalies), varargs...)
+}
+
+// ListLogAnomalyDetectors mocks base method.
+func (m *MockCloudwatchlogsClient) ListLogAnomalyDetectors(arg0 context.Context, arg1 *cloudwatchlogs.ListLogAnomalyDetectorsInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.ListLogAnomalyDetectorsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListLogAnomalyDetectors", varargs...)
+	ret0, _ := ret[0].(*cloudwatchlogs.ListLogAnomalyDetectorsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListLogAnomalyDetectors indicates an expected call of ListLogAnomalyDetectors.
+func (mr *MockCloudwatchlogsClientMockRecorder) ListLogAnomalyDetectors(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListLogAnomalyDetectors", reflect.TypeOf((*MockCloudwatchlogsClient)(nil).ListLogAnomalyDetectors), varargs...)
 }
 
 // ListTagsForResource mocks base method.

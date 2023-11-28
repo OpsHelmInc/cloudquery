@@ -42,6 +42,11 @@ func ConfigurationRecorders() *schema.Table {
 				Resolver: schema.PathResolver("RecordingGroup"),
 			},
 			{
+				Name:     "recording_mode",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("RecordingMode"),
+			},
+			{
 				Name:     "role_arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("RoleARN"),

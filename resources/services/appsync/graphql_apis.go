@@ -43,9 +43,19 @@ func GraphqlApis() *schema.Table {
 				Resolver: schema.PathResolver("ApiId"),
 			},
 			{
+				Name:     "api_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ApiType"),
+			},
+			{
 				Name:     "authentication_type",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("AuthenticationType"),
+			},
+			{
+				Name:     "dns",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Dns"),
 			},
 			{
 				Name:     "lambda_authorizer_config",
@@ -58,6 +68,11 @@ func GraphqlApis() *schema.Table {
 				Resolver: schema.PathResolver("LogConfig"),
 			},
 			{
+				Name:     "merged_api_execution_role_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("MergedApiExecutionRoleArn"),
+			},
+			{
 				Name:     "name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Name"),
@@ -66,6 +81,16 @@ func GraphqlApis() *schema.Table {
 				Name:     "open_id_connect_config",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("OpenIDConnectConfig"),
+			},
+			{
+				Name:     "owner",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("Owner"),
+			},
+			{
+				Name:     "owner_contact",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("OwnerContact"),
 			},
 			{
 				Name:     "tags",
@@ -81,6 +106,11 @@ func GraphqlApis() *schema.Table {
 				Name:     "user_pool_config",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("UserPoolConfig"),
+			},
+			{
+				Name:     "visibility",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("Visibility"),
 			},
 			{
 				Name:     "waf_web_acl_arn",

@@ -20,5 +20,6 @@ The primary key for this table is **arn**.
 |description|String|
 |subnet_group_status|String|
 |subnets|JSON|
+|supported_cluster_ip_address_types|StringArray|
 |tags|JSON|
 |vpc_id|String|

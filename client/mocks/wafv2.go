@@ -35,6 +35,46 @@ func (m *MockWafv2Client) EXPECT() *MockWafv2ClientMockRecorder {
 	return m.recorder
 }
 
+// DescribeAllManagedProducts mocks base method.
+func (m *MockWafv2Client) DescribeAllManagedProducts(arg0 context.Context, arg1 *wafv2.DescribeAllManagedProductsInput, arg2 ...func(*wafv2.Options)) (*wafv2.DescribeAllManagedProductsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeAllManagedProducts", varargs...)
+	ret0, _ := ret[0].(*wafv2.DescribeAllManagedProductsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeAllManagedProducts indicates an expected call of DescribeAllManagedProducts.
+func (mr *MockWafv2ClientMockRecorder) DescribeAllManagedProducts(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeAllManagedProducts", reflect.TypeOf((*MockWafv2Client)(nil).DescribeAllManagedProducts), varargs...)
+}
+
+// DescribeManagedProductsByVendor mocks base method.
+func (m *MockWafv2Client) DescribeManagedProductsByVendor(arg0 context.Context, arg1 *wafv2.DescribeManagedProductsByVendorInput, arg2 ...func(*wafv2.Options)) (*wafv2.DescribeManagedProductsByVendorOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeManagedProductsByVendor", varargs...)
+	ret0, _ := ret[0].(*wafv2.DescribeManagedProductsByVendorOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeManagedProductsByVendor indicates an expected call of DescribeManagedProductsByVendor.
+func (mr *MockWafv2ClientMockRecorder) DescribeManagedProductsByVendor(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeManagedProductsByVendor", reflect.TypeOf((*MockWafv2Client)(nil).DescribeManagedProductsByVendor), varargs...)
+}
+
 // DescribeManagedRuleGroup mocks base method.
 func (m *MockWafv2Client) DescribeManagedRuleGroup(arg0 context.Context, arg1 *wafv2.DescribeManagedRuleGroupInput, arg2 ...func(*wafv2.Options)) (*wafv2.DescribeManagedRuleGroupOutput, error) {
 	m.ctrl.T.Helper()

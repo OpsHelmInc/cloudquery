@@ -38,9 +38,9 @@ func AppBlocks() *schema.Table {
 				Resolver: schema.PathResolver("Name"),
 			},
 			{
-				Name:     "setup_script_details",
+				Name:     "app_block_errors",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("SetupScriptDetails"),
+				Resolver: schema.PathResolver("AppBlockErrors"),
 			},
 			{
 				Name:     "created_time",
@@ -58,9 +58,29 @@ func AppBlocks() *schema.Table {
 				Resolver: schema.PathResolver("DisplayName"),
 			},
 			{
+				Name:     "packaging_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("PackagingType"),
+			},
+			{
+				Name:     "post_setup_script_details",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("PostSetupScriptDetails"),
+			},
+			{
+				Name:     "setup_script_details",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("SetupScriptDetails"),
+			},
+			{
 				Name:     "source_s3_location",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("SourceS3Location"),
+			},
+			{
+				Name:     "state",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("State"),
 			},
 		},
 	}

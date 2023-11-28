@@ -37,6 +37,7 @@ The following tables depend on aws_apigateway_rest_apis:
 |minimum_compression_size|Int|
 |name|String|
 |policy|String|
+|root_resource_id|String|
 |tags|JSON|
 |version|String|
 |warnings|StringArray|

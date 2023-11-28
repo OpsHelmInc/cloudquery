@@ -24,5 +24,7 @@ The following tables depend on aws_docdb_engine_versions:
 |db_engine_version_description|String|
 |db_parameter_group_family|String|
 |exportable_log_types|StringArray|
+|supported_ca_certificate_identifiers|StringArray|
+|supports_certificate_rotation_without_restart|Bool|
 |supports_log_exports_to_cloudwatch_logs|Bool|
 |valid_upgrade_target|JSON|

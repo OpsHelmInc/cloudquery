@@ -103,6 +103,11 @@ func Filesystems() *schema.Table {
 				Resolver: schema.PathResolver("Encrypted"),
 			},
 			{
+				Name:     "file_system_protection",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("FileSystemProtection"),
+			},
+			{
 				Name:     "kms_key_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("KmsKeyId"),

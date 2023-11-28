@@ -31,6 +31,11 @@ func Schedules() *schema.Table {
 				Resolver: resolveSchedulerScheduleTags(),
 			},
 			{
+				Name:     "action_after_completion",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ActionAfterCompletion"),
+			},
+			{
 				Name:     "arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Arn"),

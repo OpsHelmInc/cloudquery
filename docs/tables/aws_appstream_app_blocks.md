@@ -17,8 +17,12 @@ The primary key for this table is **arn**.
 |region|String|
 |arn (PK)|String|
 |name|String|
-|setup_script_details|JSON|
+|app_block_errors|JSON|
 |created_time|Timestamp|
 |description|String|
 |display_name|String|
+|packaging_type|String|
+|post_setup_script_details|JSON|
+|setup_script_details|JSON|
 |source_s3_location|JSON|
+|state|String|

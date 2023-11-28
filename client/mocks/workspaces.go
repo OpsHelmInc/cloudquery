@@ -75,6 +75,66 @@ func (mr *MockWorkspacesClientMockRecorder) DescribeAccountModifications(arg0, a
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeAccountModifications", reflect.TypeOf((*MockWorkspacesClient)(nil).DescribeAccountModifications), varargs...)
 }
 
+// DescribeApplicationAssociations mocks base method.
+func (m *MockWorkspacesClient) DescribeApplicationAssociations(arg0 context.Context, arg1 *workspaces.DescribeApplicationAssociationsInput, arg2 ...func(*workspaces.Options)) (*workspaces.DescribeApplicationAssociationsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeApplicationAssociations", varargs...)
+	ret0, _ := ret[0].(*workspaces.DescribeApplicationAssociationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeApplicationAssociations indicates an expected call of DescribeApplicationAssociations.
+func (mr *MockWorkspacesClientMockRecorder) DescribeApplicationAssociations(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeApplicationAssociations", reflect.TypeOf((*MockWorkspacesClient)(nil).DescribeApplicationAssociations), varargs...)
+}
+
+// DescribeApplications mocks base method.
+func (m *MockWorkspacesClient) DescribeApplications(arg0 context.Context, arg1 *workspaces.DescribeApplicationsInput, arg2 ...func(*workspaces.Options)) (*workspaces.DescribeApplicationsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeApplications", varargs...)
+	ret0, _ := ret[0].(*workspaces.DescribeApplicationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeApplications indicates an expected call of DescribeApplications.
+func (mr *MockWorkspacesClientMockRecorder) DescribeApplications(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeApplications", reflect.TypeOf((*MockWorkspacesClient)(nil).DescribeApplications), varargs...)
+}
+
+// DescribeBundleAssociations mocks base method.
+func (m *MockWorkspacesClient) DescribeBundleAssociations(arg0 context.Context, arg1 *workspaces.DescribeBundleAssociationsInput, arg2 ...func(*workspaces.Options)) (*workspaces.DescribeBundleAssociationsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeBundleAssociations", varargs...)
+	ret0, _ := ret[0].(*workspaces.DescribeBundleAssociationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeBundleAssociations indicates an expected call of DescribeBundleAssociations.
+func (mr *MockWorkspacesClientMockRecorder) DescribeBundleAssociations(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeBundleAssociations", reflect.TypeOf((*MockWorkspacesClient)(nil).DescribeBundleAssociations), varargs...)
+}
+
 // DescribeClientBranding mocks base method.
 func (m *MockWorkspacesClient) DescribeClientBranding(arg0 context.Context, arg1 *workspaces.DescribeClientBrandingInput, arg2 ...func(*workspaces.Options)) (*workspaces.DescribeClientBrandingOutput, error) {
 	m.ctrl.T.Helper()
@@ -175,6 +235,26 @@ func (mr *MockWorkspacesClientMockRecorder) DescribeConnectionAliases(arg0, arg1
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeConnectionAliases", reflect.TypeOf((*MockWorkspacesClient)(nil).DescribeConnectionAliases), varargs...)
 }
 
+// DescribeImageAssociations mocks base method.
+func (m *MockWorkspacesClient) DescribeImageAssociations(arg0 context.Context, arg1 *workspaces.DescribeImageAssociationsInput, arg2 ...func(*workspaces.Options)) (*workspaces.DescribeImageAssociationsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeImageAssociations", varargs...)
+	ret0, _ := ret[0].(*workspaces.DescribeImageAssociationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeImageAssociations indicates an expected call of DescribeImageAssociations.
+func (mr *MockWorkspacesClientMockRecorder) DescribeImageAssociations(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeImageAssociations", reflect.TypeOf((*MockWorkspacesClient)(nil).DescribeImageAssociations), varargs...)
+}
+
 // DescribeIpGroups mocks base method.
 func (m *MockWorkspacesClient) DescribeIpGroups(arg0 context.Context, arg1 *workspaces.DescribeIpGroupsInput, arg2 ...func(*workspaces.Options)) (*workspaces.DescribeIpGroupsOutput, error) {
 	m.ctrl.T.Helper()
@@ -213,6 +293,26 @@ func (mr *MockWorkspacesClientMockRecorder) DescribeTags(arg0, arg1 interface{},
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeTags", reflect.TypeOf((*MockWorkspacesClient)(nil).DescribeTags), varargs...)
+}
+
+// DescribeWorkspaceAssociations mocks base method.
+func (m *MockWorkspacesClient) DescribeWorkspaceAssociations(arg0 context.Context, arg1 *workspaces.DescribeWorkspaceAssociationsInput, arg2 ...func(*workspaces.Options)) (*workspaces.DescribeWorkspaceAssociationsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeWorkspaceAssociations", varargs...)
+	ret0, _ := ret[0].(*workspaces.DescribeWorkspaceAssociationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeWorkspaceAssociations indicates an expected call of DescribeWorkspaceAssociations.
+func (mr *MockWorkspacesClientMockRecorder) DescribeWorkspaceAssociations(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeWorkspaceAssociations", reflect.TypeOf((*MockWorkspacesClient)(nil).DescribeWorkspaceAssociations), varargs...)
 }
 
 // DescribeWorkspaceBundles mocks base method.

@@ -22,7 +22,9 @@ The primary key for this table is **arn**.
 |name|String|
 |role_arn|String|
 |type|String|
+|description|String|
 |label|String|
 |logging_configuration|JSON|
+|revision_id|String|
 |status|String|
 |tracing_configuration|JSON|

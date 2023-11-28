@@ -25,6 +25,8 @@ The primary key for this table is **arn**.
 |severity|String|
 |status|String|
 |type|String|
+|code_vulnerability_details|JSON|
+|epss|JSON|
 |exploit_available|String|
 |exploitability_details|JSON|
 |fix_available|String|

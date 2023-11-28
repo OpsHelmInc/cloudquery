@@ -79,6 +79,11 @@ func Identities() *schema.Table {
 				Resolver: client.ResolveTags,
 			},
 			{
+				Name:     "verification_info",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("VerificationInfo"),
+			},
+			{
 				Name:     "verification_status",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("VerificationStatus"),

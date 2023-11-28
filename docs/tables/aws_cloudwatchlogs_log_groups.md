@@ -19,7 +19,9 @@ The primary key for this table is **arn**.
 |tags|JSON|
 |creation_time|Int|
 |data_protection_status|String|
+|inherited_properties|StringArray|
 |kms_key_id|String|
+|log_group_class|String|
 |log_group_name|String|
 |metric_filter_count|Int|
 |retention_in_days|Int|

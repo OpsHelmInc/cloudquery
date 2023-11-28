@@ -21,6 +21,7 @@ The primary key for this table is **arn**.
 |execution_role_arn|String|
 |model_name|String|
 |containers|JSON|
+|deployment_recommendation|JSON|
 |enable_network_isolation|Bool|
 |inference_execution_config|JSON|
 |primary_container|JSON|

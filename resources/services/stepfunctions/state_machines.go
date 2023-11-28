@@ -64,6 +64,11 @@ func StateMachines() *schema.Table {
 				Resolver: schema.PathResolver("Type"),
 			},
 			{
+				Name:     "description",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("Description"),
+			},
+			{
 				Name:     "label",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Label"),
@@ -72,6 +77,11 @@ func StateMachines() *schema.Table {
 				Name:     "logging_configuration",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("LoggingConfiguration"),
+			},
+			{
+				Name:     "revision_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("RevisionId"),
 			},
 			{
 				Name:     "status",

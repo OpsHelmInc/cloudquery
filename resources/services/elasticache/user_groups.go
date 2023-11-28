@@ -53,6 +53,11 @@ func UserGroups() *schema.Table {
 				Resolver: schema.PathResolver("ReplicationGroups"),
 			},
 			{
+				Name:     "serverless_caches",
+				Type:     schema.TypeStringArray,
+				Resolver: schema.PathResolver("ServerlessCaches"),
+			},
+			{
 				Name:     "status",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Status"),

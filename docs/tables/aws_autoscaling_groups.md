@@ -36,6 +36,7 @@ The following tables depend on aws_autoscaling_groups:
 |desired_capacity_type|String|
 |enabled_metrics|JSON|
 |health_check_grace_period|Int|
+|instance_maintenance_policy|JSON|
 |instances|JSON|
 |launch_configuration_name|String|
 |launch_template|JSON|
