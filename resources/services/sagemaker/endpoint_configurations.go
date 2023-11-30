@@ -64,6 +64,16 @@ func EndpointConfigurations() *schema.Table {
 				Resolver: schema.PathResolver("DataCaptureConfig"),
 			},
 			{
+				Name:     "enable_network_isolation",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("EnableNetworkIsolation"),
+			},
+			{
+				Name:     "execution_role_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ExecutionRoleArn"),
+			},
+			{
 				Name:     "explainer_config",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ExplainerConfig"),
@@ -77,6 +87,11 @@ func EndpointConfigurations() *schema.Table {
 				Name:     "shadow_production_variants",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ShadowProductionVariants"),
+			},
+			{
+				Name:     "vpc_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("VpcConfig"),
 			},
 			{
 				Name:     "result_metadata",

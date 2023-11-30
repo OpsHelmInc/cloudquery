@@ -58,6 +58,11 @@ func Instances() *schema.Table {
 				Resolver: schema.PathResolver("CACertificateIdentifier"),
 			},
 			{
+				Name:     "certificate_details",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("CertificateDetails"),
+			},
+			{
 				Name:     "copy_tags_to_snapshot",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("CopyTagsToSnapshot"),

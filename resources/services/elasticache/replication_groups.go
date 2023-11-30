@@ -68,6 +68,11 @@ func ReplicationGroups() *schema.Table {
 				Resolver: schema.PathResolver("ClusterEnabled"),
 			},
 			{
+				Name:     "cluster_mode",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ClusterMode"),
+			},
+			{
 				Name:     "configuration_endpoint",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ConfigurationEndpoint"),

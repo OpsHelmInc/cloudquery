@@ -135,6 +135,16 @@ func Snapshots() *schema.Table {
 				Resolver: schema.PathResolver("ManualSnapshotRetentionPeriod"),
 			},
 			{
+				Name:     "master_password_secret_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("MasterPasswordSecretArn"),
+			},
+			{
+				Name:     "master_password_secret_kms_key_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("MasterPasswordSecretKmsKeyId"),
+			},
+			{
 				Name:     "master_username",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("MasterUsername"),

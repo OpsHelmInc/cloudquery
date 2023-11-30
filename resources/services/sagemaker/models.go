@@ -44,11 +44,6 @@ func Models() *schema.Table {
 				Resolver: schema.PathResolver("CreationTime"),
 			},
 			{
-				Name:     "execution_role_arn",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("ExecutionRoleArn"),
-			},
-			{
 				Name:     "model_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ModelName"),
@@ -59,9 +54,19 @@ func Models() *schema.Table {
 				Resolver: schema.PathResolver("Containers"),
 			},
 			{
+				Name:     "deployment_recommendation",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("DeploymentRecommendation"),
+			},
+			{
 				Name:     "enable_network_isolation",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("EnableNetworkIsolation"),
+			},
+			{
+				Name:     "execution_role_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ExecutionRoleArn"),
 			},
 			{
 				Name:     "inference_execution_config",

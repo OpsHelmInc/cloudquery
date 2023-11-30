@@ -18,8 +18,11 @@ The primary key for this table is **arn**.
 |arn (PK)|String|
 |airflow_configuration_options|JSON|
 |airflow_version|String|
+|celery_executor_queue|String|
 |created_at|Timestamp|
 |dag_s3_path|String|
+|database_vpc_endpoint_service|String|
+|endpoint_management|String|
 |environment_class|String|
 |execution_role_arn|String|
 |kms_key|String|
@@ -42,4 +45,5 @@ The primary key for this table is **arn**.
 |tags|JSON|
 |webserver_access_mode|String|
 |webserver_url|String|
+|webserver_vpc_endpoint_service|String|
 |weekly_maintenance_window_start|String|

@@ -59,9 +59,19 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("CustomAmiId"),
 			},
 			{
+				Name:     "ebs_root_volume_iops",
+				Type:     schema.TypeInt,
+				Resolver: schema.PathResolver("EbsRootVolumeIops"),
+			},
+			{
 				Name:     "ebs_root_volume_size",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("EbsRootVolumeSize"),
+			},
+			{
+				Name:     "ebs_root_volume_throughput",
+				Type:     schema.TypeInt,
+				Resolver: schema.PathResolver("EbsRootVolumeThroughput"),
 			},
 			{
 				Name:     "ec2_instance_attributes",

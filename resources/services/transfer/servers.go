@@ -100,6 +100,11 @@ func Servers() *schema.Table {
 				Resolver: schema.PathResolver("Protocols"),
 			},
 			{
+				Name:     "s3_storage_options",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("S3StorageOptions"),
+			},
+			{
 				Name:     "security_policy_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("SecurityPolicyName"),
@@ -113,6 +118,11 @@ func Servers() *schema.Table {
 				Name:     "state",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("State"),
+			},
+			{
+				Name:     "structured_log_destinations",
+				Type:     schema.TypeStringArray,
+				Resolver: schema.PathResolver("StructuredLogDestinations"),
 			},
 			{
 				Name:     "user_count",

@@ -22,7 +22,9 @@ This table depends on [aws_servicequotas_services](aws_servicequotas_services.md
 |error_reason|JSON|
 |global_quota|Bool|
 |period|JSON|
+|quota_applied_at_level|String|
 |quota_code|String|
+|quota_context|JSON|
 |quota_name|String|
 |service_code|String|
 |service_name|String|

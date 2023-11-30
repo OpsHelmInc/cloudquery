@@ -26,6 +26,7 @@ The following tables depend on aws_elbv2_listeners:
 |certificates|JSON|
 |default_actions|JSON|
 |load_balancer_arn|String|
+|mutual_authentication|JSON|
 |port|Int|
 |protocol|String|
 |ssl_policy|String|

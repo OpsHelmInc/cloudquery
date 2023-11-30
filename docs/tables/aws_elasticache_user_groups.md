@@ -20,6 +20,7 @@ The primary key for this table is **arn**.
 |minimum_engine_version|String|
 |pending_changes|JSON|
 |replication_groups|StringArray|
+|serverless_caches|StringArray|
 |status|String|
 |user_group_id|String|
 |user_ids|StringArray|

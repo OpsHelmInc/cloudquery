@@ -113,6 +113,11 @@ func Stacks() *schema.Table {
 				Resolver: schema.PathResolver("ParentId"),
 			},
 			{
+				Name:     "retain_except_on_create",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("RetainExceptOnCreate"),
+			},
+			{
 				Name:     "role_arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("RoleARN"),

@@ -149,6 +149,11 @@ func TrainingJobs() *schema.Table {
 				Resolver: schema.PathResolver("HyperParameters"),
 			},
 			{
+				Name:     "infra_check_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("InfraCheckConfig"),
+			},
+			{
 				Name:     "input_data_config",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("InputDataConfig"),

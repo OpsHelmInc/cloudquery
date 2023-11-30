@@ -25,5 +25,6 @@ The primary key for this table is **arn**.
 |mail_from_attributes|JSON|
 |policies|JSON|
 |tags|JSON|
+|verification_info|JSON|
 |verification_status|String|
 |verified_for_sending_status|Bool|

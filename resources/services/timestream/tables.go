@@ -56,6 +56,11 @@ func Tables() *schema.Table {
 				Resolver: schema.PathResolver("RetentionProperties"),
 			},
 			{
+				Name:     "schema",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Schema"),
+			},
+			{
 				Name:     "table_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("TableName"),

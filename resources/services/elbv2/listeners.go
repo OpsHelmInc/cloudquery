@@ -63,6 +63,11 @@ func Listeners() *schema.Table {
 				Resolver: schema.PathResolver("LoadBalancerArn"),
 			},
 			{
+				Name:     "mutual_authentication",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("MutualAuthentication"),
+			},
+			{
 				Name:     "port",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("Port"),

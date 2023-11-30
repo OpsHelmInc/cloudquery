@@ -58,6 +58,11 @@ func EventTypes() *schema.Table {
 				Resolver: schema.PathResolver("EventIngestion"),
 			},
 			{
+				Name:     "event_orchestration",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("EventOrchestration"),
+			},
+			{
 				Name:     "event_variables",
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("EventVariables"),

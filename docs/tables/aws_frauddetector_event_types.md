@@ -21,6 +21,7 @@ The primary key for this table is **arn**.
 |description|String|
 |entity_types|StringArray|
 |event_ingestion|String|
+|event_orchestration|JSON|
 |event_variables|StringArray|
 |ingested_event_statistics|JSON|
 |labels|StringArray|

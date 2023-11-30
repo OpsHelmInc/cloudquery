@@ -51,4 +51,5 @@ The following tables depend on aws_docdb_clusters:
 |replication_source_identifier|String|
 |status|String|
 |storage_encrypted|Bool|
+|storage_type|String|
 |vpc_security_groups|JSON|

@@ -23,3 +23,4 @@ The primary key for this table is **arn**.
 |folder_type|String|
 |last_updated_time|Timestamp|
 |name|String|
+|sharing_model|String|

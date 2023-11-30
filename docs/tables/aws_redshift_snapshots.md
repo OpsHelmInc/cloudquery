@@ -38,6 +38,8 @@ This table depends on [aws_redshift_clusters](aws_redshift_clusters.md).
 |maintenance_track_name|String|
 |manual_snapshot_remaining_days|Int|
 |manual_snapshot_retention_period|Int|
+|master_password_secret_arn|String|
+|master_password_secret_kms_key_id|String|
 |master_username|String|
 |node_type|String|
 |number_of_nodes|Int|

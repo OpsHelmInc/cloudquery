@@ -15,6 +15,11 @@ func Instances() *schema.Table {
 		Multiplex:   client.ServiceAccountRegionMultiplexer("identitystore"),
 		Columns: []schema.Column{
 			{
+				Name:     "created_date",
+				Type:     schema.TypeTimestamp,
+				Resolver: schema.PathResolver("CreatedDate"),
+			},
+			{
 				Name:     "identity_store_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("IdentityStoreId"),
@@ -23,6 +28,21 @@ func Instances() *schema.Table {
 				Name:     "instance_arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("InstanceArn"),
+			},
+			{
+				Name:     "name",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("Name"),
+			},
+			{
+				Name:     "owner_account_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("OwnerAccountId"),
+			},
+			{
+				Name:     "status",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("Status"),
 			},
 		},
 

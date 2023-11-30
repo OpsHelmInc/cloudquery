@@ -20,4 +20,5 @@ This table depends on [aws_docdb_engine_versions](aws_docdb_engine_versions.md).
 |engine|String|
 |engine_version|String|
 |license_model|String|
+|storage_type|String|
 |vpc|Bool|

@@ -35,4 +35,5 @@ This table depends on [aws_docdb_clusters](aws_docdb_clusters.md).
 |source_db_cluster_snapshot_arn|String|
 |status|String|
 |storage_encrypted|Bool|
+|storage_type|String|
 |vpc_id|String|

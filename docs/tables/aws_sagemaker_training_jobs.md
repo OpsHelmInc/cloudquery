@@ -39,6 +39,7 @@ The primary key for this table is **arn**.
 |failure_reason|String|
 |final_metric_data_list|JSON|
 |hyper_parameters|JSON|
+|infra_check_config|JSON|
 |input_data_config|JSON|
 |labeling_job_arn|String|
 |last_modified_time|Timestamp|

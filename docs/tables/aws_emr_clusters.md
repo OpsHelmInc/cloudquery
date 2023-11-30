@@ -21,7 +21,9 @@ The primary key for this table is **arn**.
 |auto_terminate|Bool|
 |configurations|JSON|
 |custom_ami_id|String|
+|ebs_root_volume_iops|Int|
 |ebs_root_volume_size|Int|
+|ebs_root_volume_throughput|Int|
 |ec2_instance_attributes|JSON|
 |id|String|
 |instance_collection_type|String|

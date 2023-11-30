@@ -21,6 +21,8 @@ The primary key for this table is **arn**.
 |auto_scaling_configuration_revision|Int|
 |created_at|Timestamp|
 |deleted_at|Timestamp|
+|has_associated_service|Bool|
+|is_default|Bool|
 |latest|Bool|
 |max_concurrency|Int|
 |max_size|Int|

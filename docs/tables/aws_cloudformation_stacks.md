@@ -35,6 +35,7 @@ The following tables depend on aws_cloudformation_stacks:
 |outputs|JSON|
 |parameters|JSON|
 |parent_id|String|
+|retain_except_on_create|Bool|
 |role_arn|String|
 |rollback_configuration|JSON|
 |root_id|String|

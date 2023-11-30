@@ -95,6 +95,26 @@ func (mr *MockAppsyncClientMockRecorder) GetDataSource(arg0, arg1 interface{}, a
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDataSource", reflect.TypeOf((*MockAppsyncClient)(nil).GetDataSource), varargs...)
 }
 
+// GetDataSourceIntrospection mocks base method.
+func (m *MockAppsyncClient) GetDataSourceIntrospection(arg0 context.Context, arg1 *appsync.GetDataSourceIntrospectionInput, arg2 ...func(*appsync.Options)) (*appsync.GetDataSourceIntrospectionOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetDataSourceIntrospection", varargs...)
+	ret0, _ := ret[0].(*appsync.GetDataSourceIntrospectionOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetDataSourceIntrospection indicates an expected call of GetDataSourceIntrospection.
+func (mr *MockAppsyncClientMockRecorder) GetDataSourceIntrospection(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDataSourceIntrospection", reflect.TypeOf((*MockAppsyncClient)(nil).GetDataSourceIntrospection), varargs...)
+}
+
 // GetDomainName mocks base method.
 func (m *MockAppsyncClient) GetDomainName(arg0 context.Context, arg1 *appsync.GetDomainNameInput, arg2 ...func(*appsync.Options)) (*appsync.GetDomainNameOutput, error) {
 	m.ctrl.T.Helper()
@@ -213,6 +233,26 @@ func (mr *MockAppsyncClientMockRecorder) GetSchemaCreationStatus(arg0, arg1 inte
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSchemaCreationStatus", reflect.TypeOf((*MockAppsyncClient)(nil).GetSchemaCreationStatus), varargs...)
+}
+
+// GetSourceApiAssociation mocks base method.
+func (m *MockAppsyncClient) GetSourceApiAssociation(arg0 context.Context, arg1 *appsync.GetSourceApiAssociationInput, arg2 ...func(*appsync.Options)) (*appsync.GetSourceApiAssociationOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetSourceApiAssociation", varargs...)
+	ret0, _ := ret[0].(*appsync.GetSourceApiAssociationOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetSourceApiAssociation indicates an expected call of GetSourceApiAssociation.
+func (mr *MockAppsyncClientMockRecorder) GetSourceApiAssociation(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSourceApiAssociation", reflect.TypeOf((*MockAppsyncClient)(nil).GetSourceApiAssociation), varargs...)
 }
 
 // GetType mocks base method.
@@ -375,6 +415,26 @@ func (mr *MockAppsyncClientMockRecorder) ListResolversByFunction(arg0, arg1 inte
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListResolversByFunction", reflect.TypeOf((*MockAppsyncClient)(nil).ListResolversByFunction), varargs...)
 }
 
+// ListSourceApiAssociations mocks base method.
+func (m *MockAppsyncClient) ListSourceApiAssociations(arg0 context.Context, arg1 *appsync.ListSourceApiAssociationsInput, arg2 ...func(*appsync.Options)) (*appsync.ListSourceApiAssociationsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListSourceApiAssociations", varargs...)
+	ret0, _ := ret[0].(*appsync.ListSourceApiAssociationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListSourceApiAssociations indicates an expected call of ListSourceApiAssociations.
+func (mr *MockAppsyncClientMockRecorder) ListSourceApiAssociations(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListSourceApiAssociations", reflect.TypeOf((*MockAppsyncClient)(nil).ListSourceApiAssociations), varargs...)
+}
+
 // ListTagsForResource mocks base method.
 func (m *MockAppsyncClient) ListTagsForResource(arg0 context.Context, arg1 *appsync.ListTagsForResourceInput, arg2 ...func(*appsync.Options)) (*appsync.ListTagsForResourceOutput, error) {
 	m.ctrl.T.Helper()
@@ -413,4 +473,24 @@ func (mr *MockAppsyncClientMockRecorder) ListTypes(arg0, arg1 interface{}, arg2 
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListTypes", reflect.TypeOf((*MockAppsyncClient)(nil).ListTypes), varargs...)
+}
+
+// ListTypesByAssociation mocks base method.
+func (m *MockAppsyncClient) ListTypesByAssociation(arg0 context.Context, arg1 *appsync.ListTypesByAssociationInput, arg2 ...func(*appsync.Options)) (*appsync.ListTypesByAssociationOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListTypesByAssociation", varargs...)
+	ret0, _ := ret[0].(*appsync.ListTypesByAssociationOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListTypesByAssociation indicates an expected call of ListTypesByAssociation.
+func (mr *MockAppsyncClientMockRecorder) ListTypesByAssociation(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListTypesByAssociation", reflect.TypeOf((*MockAppsyncClient)(nil).ListTypesByAssociation), varargs...)
 }

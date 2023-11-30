@@ -125,6 +125,21 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("ClusterVersion"),
 			},
 			{
+				Name:     "custom_domain_certificate_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("CustomDomainCertificateArn"),
+			},
+			{
+				Name:     "custom_domain_certificate_expiry_date",
+				Type:     schema.TypeTimestamp,
+				Resolver: schema.PathResolver("CustomDomainCertificateExpiryDate"),
+			},
+			{
+				Name:     "custom_domain_name",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("CustomDomainName"),
+			},
+			{
 				Name:     "db_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("DBName"),
@@ -190,6 +205,11 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("IamRoles"),
 			},
 			{
+				Name:     "ip_address_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("IpAddressType"),
+			},
+			{
 				Name:     "kms_key_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("KmsKeyId"),
@@ -205,6 +225,16 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("ManualSnapshotRetentionPeriod"),
 			},
 			{
+				Name:     "master_password_secret_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("MasterPasswordSecretArn"),
+			},
+			{
+				Name:     "master_password_secret_kms_key_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("MasterPasswordSecretKmsKeyId"),
+			},
+			{
 				Name:     "master_username",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("MasterUsername"),
@@ -213,6 +243,16 @@ func Clusters() *schema.Table {
 				Name:     "modify_status",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ModifyStatus"),
+			},
+			{
+				Name:     "multi_az",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("MultiAZ"),
+			},
+			{
+				Name:     "multi_az_secondary",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("MultiAZSecondary"),
 			},
 			{
 				Name:     "next_maintenance_window_start_time",

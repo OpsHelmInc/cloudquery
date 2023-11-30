@@ -54,6 +54,11 @@ func SubnetGroups() *schema.Table {
 				Resolver: schema.PathResolver("Subnets"),
 			},
 			{
+				Name:     "supported_cluster_ip_address_types",
+				Type:     schema.TypeStringArray,
+				Resolver: schema.PathResolver("SupportedClusterIpAddressTypes"),
+			},
+			{
 				Name:     "tags",
 				Type:     schema.TypeJSON,
 				Resolver: client.ResolveTags,

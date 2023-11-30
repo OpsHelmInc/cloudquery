@@ -22,7 +22,10 @@ The primary key for this table is **arn**.
 |production_variants|JSON|
 |async_inference_config|JSON|
 |data_capture_config|JSON|
+|enable_network_isolation|Bool|
+|execution_role_arn|String|
 |explainer_config|JSON|
 |kms_key_id|String|
 |shadow_production_variants|JSON|
+|vpc_config|JSON|
 |result_metadata|JSON|

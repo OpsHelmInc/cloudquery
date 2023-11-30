@@ -48,9 +48,19 @@ func LogGroups() *schema.Table {
 				Resolver: schema.PathResolver("DataProtectionStatus"),
 			},
 			{
+				Name:     "inherited_properties",
+				Type:     schema.TypeStringArray,
+				Resolver: schema.PathResolver("InheritedProperties"),
+			},
+			{
 				Name:     "kms_key_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("KmsKeyId"),
+			},
+			{
+				Name:     "log_group_class",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("LogGroupClass"),
 			},
 			{
 				Name:     "log_group_name",

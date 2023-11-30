@@ -16,5 +16,9 @@ The following tables depend on aws_ssoadmin_instances:
 |_cq_sync_time|Timestamp|
 |_cq_id (PK)|UUID|
 |_cq_parent_id|UUID|
+|created_date|Timestamp|
 |identity_store_id|String|
 |instance_arn|String|
+|name|String|
+|owner_account_id|String|
+|status|String|

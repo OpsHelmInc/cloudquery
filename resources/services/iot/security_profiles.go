@@ -72,6 +72,11 @@ func SecurityProfiles() *schema.Table {
 				Resolver: schema.PathResolver("LastModifiedDate"),
 			},
 			{
+				Name:     "metrics_export_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("MetricsExportConfig"),
+			},
+			{
 				Name:     "security_profile_description",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("SecurityProfileDescription"),

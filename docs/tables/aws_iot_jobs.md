@@ -22,6 +22,7 @@ The primary key for this table is **arn**.
 |completed_at|Timestamp|
 |created_at|Timestamp|
 |description|String|
+|destination_package_versions|StringArray|
 |document_parameters|JSON|
 |force_canceled|Bool|
 |is_concurrent|Bool|

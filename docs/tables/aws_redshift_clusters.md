@@ -38,6 +38,9 @@ The following tables depend on aws_redshift_clusters:
 |cluster_status|String|
 |cluster_subnet_group_name|String|
 |cluster_version|String|
+|custom_domain_certificate_arn|String|
+|custom_domain_certificate_expiry_date|Timestamp|
+|custom_domain_name|String|
 |db_name|String|
 |data_transfer_progress|JSON|
 |default_iam_role_arn|String|
@@ -51,11 +54,16 @@ The following tables depend on aws_redshift_clusters:
 |expected_next_snapshot_schedule_time_status|String|
 |hsm_status|JSON|
 |iam_roles|JSON|
+|ip_address_type|String|
 |kms_key_id|String|
 |maintenance_track_name|String|
 |manual_snapshot_retention_period|Int|
+|master_password_secret_arn|String|
+|master_password_secret_kms_key_id|String|
 |master_username|String|
 |modify_status|String|
+|multi_az|String|
+|multi_az_secondary|JSON|
 |next_maintenance_window_start_time|Timestamp|
 |node_type|String|
 |number_of_nodes|Int|

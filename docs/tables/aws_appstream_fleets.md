@@ -33,6 +33,7 @@ The primary key for this table is **arn**.
 |image_arn|String|
 |image_name|String|
 |max_concurrent_sessions|Int|
+|max_sessions_per_instance|Int|
 |max_user_duration_in_seconds|Int|
 |platform|String|
 |session_script_s3_location|JSON|

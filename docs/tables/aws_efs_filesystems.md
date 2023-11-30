@@ -30,6 +30,7 @@ The primary key for this table is **arn**.
 |availability_zone_id|String|
 |availability_zone_name|String|
 |encrypted|Bool|
+|file_system_protection|JSON|
 |kms_key_id|String|
 |name|String|
 |provisioned_throughput_in_mibps|Float|

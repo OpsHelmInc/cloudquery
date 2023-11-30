@@ -83,6 +83,11 @@ func RestApis() *schema.Table {
 				Resolver: schema.PathResolver("Policy"),
 			},
 			{
+				Name:     "root_resource_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("RootResourceId"),
+			},
+			{
 				Name:     "tags",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Tags"),

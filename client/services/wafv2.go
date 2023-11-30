@@ -8,6 +8,8 @@ import (
 
 //go:generate mockgen -package=mocks -destination=../mocks/wafv2.go -source=wafv2.go Wafv2Client
 type Wafv2Client interface {
+	DescribeAllManagedProducts(context.Context, *wafv2.DescribeAllManagedProductsInput, ...func(*wafv2.Options)) (*wafv2.DescribeAllManagedProductsOutput, error)
+	DescribeManagedProductsByVendor(context.Context, *wafv2.DescribeManagedProductsByVendorInput, ...func(*wafv2.Options)) (*wafv2.DescribeManagedProductsByVendorOutput, error)
 	DescribeManagedRuleGroup(context.Context, *wafv2.DescribeManagedRuleGroupInput, ...func(*wafv2.Options)) (*wafv2.DescribeManagedRuleGroupOutput, error)
 	GetDecryptedAPIKey(context.Context, *wafv2.GetDecryptedAPIKeyInput, ...func(*wafv2.Options)) (*wafv2.GetDecryptedAPIKeyOutput, error)
 	GetIPSet(context.Context, *wafv2.GetIPSetInput, ...func(*wafv2.Options)) (*wafv2.GetIPSetOutput, error)

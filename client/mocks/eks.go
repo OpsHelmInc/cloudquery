@@ -115,6 +115,26 @@ func (mr *MockEksClientMockRecorder) DescribeCluster(arg0, arg1 interface{}, arg
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeCluster", reflect.TypeOf((*MockEksClient)(nil).DescribeCluster), varargs...)
 }
 
+// DescribeEksAnywhereSubscription mocks base method.
+func (m *MockEksClient) DescribeEksAnywhereSubscription(arg0 context.Context, arg1 *eks.DescribeEksAnywhereSubscriptionInput, arg2 ...func(*eks.Options)) (*eks.DescribeEksAnywhereSubscriptionOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeEksAnywhereSubscription", varargs...)
+	ret0, _ := ret[0].(*eks.DescribeEksAnywhereSubscriptionOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeEksAnywhereSubscription indicates an expected call of DescribeEksAnywhereSubscription.
+func (mr *MockEksClientMockRecorder) DescribeEksAnywhereSubscription(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeEksAnywhereSubscription", reflect.TypeOf((*MockEksClient)(nil).DescribeEksAnywhereSubscription), varargs...)
+}
+
 // DescribeFargateProfile mocks base method.
 func (m *MockEksClient) DescribeFargateProfile(arg0 context.Context, arg1 *eks.DescribeFargateProfileInput, arg2 ...func(*eks.Options)) (*eks.DescribeFargateProfileOutput, error) {
 	m.ctrl.T.Helper()
@@ -173,6 +193,26 @@ func (mr *MockEksClientMockRecorder) DescribeNodegroup(arg0, arg1 interface{}, a
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeNodegroup", reflect.TypeOf((*MockEksClient)(nil).DescribeNodegroup), varargs...)
+}
+
+// DescribePodIdentityAssociation mocks base method.
+func (m *MockEksClient) DescribePodIdentityAssociation(arg0 context.Context, arg1 *eks.DescribePodIdentityAssociationInput, arg2 ...func(*eks.Options)) (*eks.DescribePodIdentityAssociationOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribePodIdentityAssociation", varargs...)
+	ret0, _ := ret[0].(*eks.DescribePodIdentityAssociationOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribePodIdentityAssociation indicates an expected call of DescribePodIdentityAssociation.
+func (mr *MockEksClientMockRecorder) DescribePodIdentityAssociation(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribePodIdentityAssociation", reflect.TypeOf((*MockEksClient)(nil).DescribePodIdentityAssociation), varargs...)
 }
 
 // DescribeUpdate mocks base method.
@@ -235,6 +275,26 @@ func (mr *MockEksClientMockRecorder) ListClusters(arg0, arg1 interface{}, arg2 .
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListClusters", reflect.TypeOf((*MockEksClient)(nil).ListClusters), varargs...)
 }
 
+// ListEksAnywhereSubscriptions mocks base method.
+func (m *MockEksClient) ListEksAnywhereSubscriptions(arg0 context.Context, arg1 *eks.ListEksAnywhereSubscriptionsInput, arg2 ...func(*eks.Options)) (*eks.ListEksAnywhereSubscriptionsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListEksAnywhereSubscriptions", varargs...)
+	ret0, _ := ret[0].(*eks.ListEksAnywhereSubscriptionsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListEksAnywhereSubscriptions indicates an expected call of ListEksAnywhereSubscriptions.
+func (mr *MockEksClientMockRecorder) ListEksAnywhereSubscriptions(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListEksAnywhereSubscriptions", reflect.TypeOf((*MockEksClient)(nil).ListEksAnywhereSubscriptions), varargs...)
+}
+
 // ListFargateProfiles mocks base method.
 func (m *MockEksClient) ListFargateProfiles(arg0 context.Context, arg1 *eks.ListFargateProfilesInput, arg2 ...func(*eks.Options)) (*eks.ListFargateProfilesOutput, error) {
 	m.ctrl.T.Helper()
@@ -293,6 +353,26 @@ func (mr *MockEksClientMockRecorder) ListNodegroups(arg0, arg1 interface{}, arg2
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListNodegroups", reflect.TypeOf((*MockEksClient)(nil).ListNodegroups), varargs...)
+}
+
+// ListPodIdentityAssociations mocks base method.
+func (m *MockEksClient) ListPodIdentityAssociations(arg0 context.Context, arg1 *eks.ListPodIdentityAssociationsInput, arg2 ...func(*eks.Options)) (*eks.ListPodIdentityAssociationsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListPodIdentityAssociations", varargs...)
+	ret0, _ := ret[0].(*eks.ListPodIdentityAssociationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListPodIdentityAssociations indicates an expected call of ListPodIdentityAssociations.
+func (mr *MockEksClientMockRecorder) ListPodIdentityAssociations(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListPodIdentityAssociations", reflect.TypeOf((*MockEksClient)(nil).ListPodIdentityAssociations), varargs...)
 }
 
 // ListTagsForResource mocks base method.

@@ -188,6 +188,11 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("StorageEncrypted"),
 			},
 			{
+				Name:     "storage_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("StorageType"),
+			},
+			{
 				Name:     "vpc_security_groups",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("VpcSecurityGroups"),

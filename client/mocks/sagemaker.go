@@ -175,6 +175,46 @@ func (mr *MockSagemakerClientMockRecorder) DescribeAutoMLJobV2(arg0, arg1 interf
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeAutoMLJobV2", reflect.TypeOf((*MockSagemakerClient)(nil).DescribeAutoMLJobV2), varargs...)
 }
 
+// DescribeCluster mocks base method.
+func (m *MockSagemakerClient) DescribeCluster(arg0 context.Context, arg1 *sagemaker.DescribeClusterInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.DescribeClusterOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeCluster", varargs...)
+	ret0, _ := ret[0].(*sagemaker.DescribeClusterOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeCluster indicates an expected call of DescribeCluster.
+func (mr *MockSagemakerClientMockRecorder) DescribeCluster(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeCluster", reflect.TypeOf((*MockSagemakerClient)(nil).DescribeCluster), varargs...)
+}
+
+// DescribeClusterNode mocks base method.
+func (m *MockSagemakerClient) DescribeClusterNode(arg0 context.Context, arg1 *sagemaker.DescribeClusterNodeInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.DescribeClusterNodeOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeClusterNode", varargs...)
+	ret0, _ := ret[0].(*sagemaker.DescribeClusterNodeOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeClusterNode indicates an expected call of DescribeClusterNode.
+func (mr *MockSagemakerClientMockRecorder) DescribeClusterNode(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeClusterNode", reflect.TypeOf((*MockSagemakerClient)(nil).DescribeClusterNode), varargs...)
+}
+
 // DescribeCodeRepository mocks base method.
 func (m *MockSagemakerClient) DescribeCodeRepository(arg0 context.Context, arg1 *sagemaker.DescribeCodeRepositoryInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.DescribeCodeRepositoryOutput, error) {
 	m.ctrl.T.Helper()
@@ -593,6 +633,26 @@ func (mr *MockSagemakerClientMockRecorder) DescribeImageVersion(arg0, arg1 inter
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeImageVersion", reflect.TypeOf((*MockSagemakerClient)(nil).DescribeImageVersion), varargs...)
+}
+
+// DescribeInferenceComponent mocks base method.
+func (m *MockSagemakerClient) DescribeInferenceComponent(arg0 context.Context, arg1 *sagemaker.DescribeInferenceComponentInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.DescribeInferenceComponentOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeInferenceComponent", varargs...)
+	ret0, _ := ret[0].(*sagemaker.DescribeInferenceComponentOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeInferenceComponent indicates an expected call of DescribeInferenceComponent.
+func (mr *MockSagemakerClientMockRecorder) DescribeInferenceComponent(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeInferenceComponent", reflect.TypeOf((*MockSagemakerClient)(nil).DescribeInferenceComponent), varargs...)
 }
 
 // DescribeInferenceExperiment mocks base method.
@@ -1275,6 +1335,26 @@ func (mr *MockSagemakerClientMockRecorder) GetSagemakerServicecatalogPortfolioSt
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSagemakerServicecatalogPortfolioStatus", reflect.TypeOf((*MockSagemakerClient)(nil).GetSagemakerServicecatalogPortfolioStatus), varargs...)
 }
 
+// GetScalingConfigurationRecommendation mocks base method.
+func (m *MockSagemakerClient) GetScalingConfigurationRecommendation(arg0 context.Context, arg1 *sagemaker.GetScalingConfigurationRecommendationInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.GetScalingConfigurationRecommendationOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetScalingConfigurationRecommendation", varargs...)
+	ret0, _ := ret[0].(*sagemaker.GetScalingConfigurationRecommendationOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetScalingConfigurationRecommendation indicates an expected call of GetScalingConfigurationRecommendation.
+func (mr *MockSagemakerClientMockRecorder) GetScalingConfigurationRecommendation(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetScalingConfigurationRecommendation", reflect.TypeOf((*MockSagemakerClient)(nil).GetScalingConfigurationRecommendation), varargs...)
+}
+
 // GetSearchSuggestions mocks base method.
 func (m *MockSagemakerClient) GetSearchSuggestions(arg0 context.Context, arg1 *sagemaker.GetSearchSuggestionsInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.GetSearchSuggestionsOutput, error) {
 	m.ctrl.T.Helper()
@@ -1473,6 +1553,46 @@ func (mr *MockSagemakerClientMockRecorder) ListCandidatesForAutoMLJob(arg0, arg1
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListCandidatesForAutoMLJob", reflect.TypeOf((*MockSagemakerClient)(nil).ListCandidatesForAutoMLJob), varargs...)
+}
+
+// ListClusterNodes mocks base method.
+func (m *MockSagemakerClient) ListClusterNodes(arg0 context.Context, arg1 *sagemaker.ListClusterNodesInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.ListClusterNodesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListClusterNodes", varargs...)
+	ret0, _ := ret[0].(*sagemaker.ListClusterNodesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListClusterNodes indicates an expected call of ListClusterNodes.
+func (mr *MockSagemakerClientMockRecorder) ListClusterNodes(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListClusterNodes", reflect.TypeOf((*MockSagemakerClient)(nil).ListClusterNodes), varargs...)
+}
+
+// ListClusters mocks base method.
+func (m *MockSagemakerClient) ListClusters(arg0 context.Context, arg1 *sagemaker.ListClustersInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.ListClustersOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListClusters", varargs...)
+	ret0, _ := ret[0].(*sagemaker.ListClustersOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListClusters indicates an expected call of ListClusters.
+func (mr *MockSagemakerClientMockRecorder) ListClusters(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListClusters", reflect.TypeOf((*MockSagemakerClient)(nil).ListClusters), varargs...)
 }
 
 // ListCodeRepositories mocks base method.
@@ -1893,6 +2013,26 @@ func (mr *MockSagemakerClientMockRecorder) ListImages(arg0, arg1 interface{}, ar
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListImages", reflect.TypeOf((*MockSagemakerClient)(nil).ListImages), varargs...)
+}
+
+// ListInferenceComponents mocks base method.
+func (m *MockSagemakerClient) ListInferenceComponents(arg0 context.Context, arg1 *sagemaker.ListInferenceComponentsInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.ListInferenceComponentsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListInferenceComponents", varargs...)
+	ret0, _ := ret[0].(*sagemaker.ListInferenceComponentsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListInferenceComponents indicates an expected call of ListInferenceComponents.
+func (mr *MockSagemakerClientMockRecorder) ListInferenceComponents(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListInferenceComponents", reflect.TypeOf((*MockSagemakerClient)(nil).ListInferenceComponents), varargs...)
 }
 
 // ListInferenceExperiments mocks base method.
@@ -2453,6 +2593,26 @@ func (mr *MockSagemakerClientMockRecorder) ListProjects(arg0, arg1 interface{}, 
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListProjects", reflect.TypeOf((*MockSagemakerClient)(nil).ListProjects), varargs...)
+}
+
+// ListResourceCatalogs mocks base method.
+func (m *MockSagemakerClient) ListResourceCatalogs(arg0 context.Context, arg1 *sagemaker.ListResourceCatalogsInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.ListResourceCatalogsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListResourceCatalogs", varargs...)
+	ret0, _ := ret[0].(*sagemaker.ListResourceCatalogsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListResourceCatalogs indicates an expected call of ListResourceCatalogs.
+func (mr *MockSagemakerClientMockRecorder) ListResourceCatalogs(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListResourceCatalogs", reflect.TypeOf((*MockSagemakerClient)(nil).ListResourceCatalogs), varargs...)
 }
 
 // ListSpaces mocks base method.

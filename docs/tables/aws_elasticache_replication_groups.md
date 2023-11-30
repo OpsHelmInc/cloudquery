@@ -23,6 +23,7 @@ The primary key for this table is **arn**.
 |automatic_failover|String|
 |cache_node_type|String|
 |cluster_enabled|Bool|
+|cluster_mode|String|
 |configuration_endpoint|JSON|
 |data_tiering|String|
 |description|String|

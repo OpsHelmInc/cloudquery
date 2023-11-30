@@ -29,8 +29,10 @@ The primary key for this table is **arn**.
 |pre_authentication_login_banner|String|
 |protocol_details|JSON|
 |protocols|StringArray|
+|s3_storage_options|JSON|
 |security_policy_name|String|
 |server_id|String|
 |state|String|
+|structured_log_destinations|StringArray|
 |user_count|Int|
 |workflow_details|JSON|

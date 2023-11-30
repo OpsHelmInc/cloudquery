@@ -74,6 +74,11 @@ func LoadBalancers() *schema.Table {
 				Resolver: schema.PathResolver("DNSName"),
 			},
 			{
+				Name:     "enforce_security_group_inbound_rules_on_private_link_traffic",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic"),
+			},
+			{
 				Name:     "ip_address_type",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("IpAddressType"),

@@ -59,6 +59,16 @@ func AutoScalingConfigurations() *schema.Table {
 				Resolver: schema.PathResolver("DeletedAt"),
 			},
 			{
+				Name:     "has_associated_service",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("HasAssociatedService"),
+			},
+			{
+				Name:     "is_default",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("IsDefault"),
+			},
+			{
 				Name:     "latest",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("Latest"),
