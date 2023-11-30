@@ -18,11 +18,11 @@ The primary key for this table is **arn**.
 |arn (PK)|String|
 |tags|JSON|
 |creation_time|Timestamp|
-|execution_role_arn|String|
 |model_name|String|
 |containers|JSON|
 |deployment_recommendation|JSON|
 |enable_network_isolation|Bool|
+|execution_role_arn|String|
 |inference_execution_config|JSON|
 |primary_container|JSON|
 |vpc_config|JSON|
