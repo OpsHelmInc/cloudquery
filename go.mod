@@ -1,10 +1,12 @@
 module github.com/OpsHelmInc/cloudquery
 
-go 1.19
+go 1.21
+
+toolchain go1.21.4
 
 require (
 	github.com/OpsHelmInc/ohaws v0.0.0-20231127135300-5f0443d71131
-	github.com/aws/aws-sdk-go-v2 v1.23.3
+	github.com/aws/aws-sdk-go-v2 v1.23.5
 	github.com/aws/aws-sdk-go-v2/config v1.25.9
 	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.15.2
 	github.com/aws/aws-sdk-go-v2/service/accessanalyzer v1.26.0
@@ -93,7 +95,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/wafv2 v1.43.0
 	github.com/aws/aws-sdk-go-v2/service/workspaces v1.35.0
 	github.com/aws/aws-sdk-go-v2/service/xray v1.23.0
-	github.com/aws/smithy-go v1.18.0
+	github.com/aws/smithy-go v1.18.1
 	github.com/basgys/goxml2json v1.1.0
 	github.com/cloudquery/plugin-sdk v1.11.2
 	github.com/gocarina/gocsv v0.0.0-20231116093920-b87c2d0e983a
