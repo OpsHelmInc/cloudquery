@@ -5,9 +5,9 @@ go 1.21
 toolchain go1.21.4
 
 require (
-	github.com/OpsHelmInc/ohaws v0.0.0-20231127135300-5f0443d71131
+	github.com/OpsHelmInc/ohaws v0.0.0-20231207154428-62152669f769
 	github.com/aws/aws-sdk-go-v2 v1.23.5
-	github.com/aws/aws-sdk-go-v2/config v1.25.9
+	github.com/aws/aws-sdk-go-v2/config v1.25.12
 	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.15.2
 	github.com/aws/aws-sdk-go-v2/service/accessanalyzer v1.26.0
 	github.com/aws/aws-sdk-go-v2/service/account v1.14.0
@@ -35,7 +35,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/directconnect v1.22.0
 	github.com/aws/aws-sdk-go-v2/service/docdb v1.29.0
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.26.0
-	github.com/aws/aws-sdk-go-v2/service/ec2 v1.138.0
+	github.com/aws/aws-sdk-go-v2/service/ec2 v1.140.0
 	github.com/aws/aws-sdk-go-v2/service/ecr v1.24.0
 	github.com/aws/aws-sdk-go-v2/service/ecrpublic v1.21.0
 	github.com/aws/aws-sdk-go-v2/service/ecs v1.35.0
@@ -53,7 +53,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/fsx v1.39.0
 	github.com/aws/aws-sdk-go-v2/service/glacier v1.19.0
 	github.com/aws/aws-sdk-go-v2/service/guardduty v1.35.0
-	github.com/aws/aws-sdk-go-v2/service/iam v1.28.0
+	github.com/aws/aws-sdk-go-v2/service/iam v1.28.3
 	github.com/aws/aws-sdk-go-v2/service/identitystore v1.21.0
 	github.com/aws/aws-sdk-go-v2/service/inspector v1.19.0
 	github.com/aws/aws-sdk-go-v2/service/inspector2 v1.20.0
@@ -70,13 +70,13 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/qldb v1.19.0
 	github.com/aws/aws-sdk-go-v2/service/quicksight v1.53.0
 	github.com/aws/aws-sdk-go-v2/service/ram v1.23.0
-	github.com/aws/aws-sdk-go-v2/service/rds v1.64.0
+	github.com/aws/aws-sdk-go-v2/service/rds v1.64.3
 	github.com/aws/aws-sdk-go-v2/service/redshift v1.39.0
 	github.com/aws/aws-sdk-go-v2/service/resourcegroups v1.19.0
 	github.com/aws/aws-sdk-go-v2/service/route53 v1.35.0
 	github.com/aws/aws-sdk-go-v2/service/route53domains v1.20.0
-	github.com/aws/aws-sdk-go-v2/service/s3 v1.47.0
-	github.com/aws/aws-sdk-go-v2/service/s3control v1.41.0
+	github.com/aws/aws-sdk-go-v2/service/s3 v1.47.3
+	github.com/aws/aws-sdk-go-v2/service/s3control v1.41.3
 	github.com/aws/aws-sdk-go-v2/service/sagemaker v1.119.0
 	github.com/aws/aws-sdk-go-v2/service/scheduler v1.6.0
 	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.25.0
@@ -89,7 +89,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/sqs v1.29.0
 	github.com/aws/aws-sdk-go-v2/service/ssm v1.44.0
 	github.com/aws/aws-sdk-go-v2/service/ssoadmin v1.23.0
-	github.com/aws/aws-sdk-go-v2/service/sts v1.26.0
+	github.com/aws/aws-sdk-go-v2/service/sts v1.26.3
 	github.com/aws/aws-sdk-go-v2/service/timestreamwrite v1.23.0
 	github.com/aws/aws-sdk-go-v2/service/waf v1.18.0
 	github.com/aws/aws-sdk-go-v2/service/wafv2 v1.43.0
@@ -109,11 +109,11 @@ require (
 )
 
 require (
-	github.com/aws/aws-sdk-go-v2/credentials v1.16.7 // indirect
-	github.com/aws/aws-sdk-go-v2/internal/v4a v1.2.6 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/checksum v1.2.6 // indirect
-	github.com/aws/aws-sdk-go-v2/service/networkfirewall v1.36.0 // indirect
-	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.21.0 // indirect
+	github.com/aws/aws-sdk-go-v2/credentials v1.16.10 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/v4a v1.2.8 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/checksum v1.2.8 // indirect
+	github.com/aws/aws-sdk-go-v2/service/networkfirewall v1.36.3 // indirect
+	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.21.3 // indirect
 	github.com/bitly/go-simplejson v0.5.0 // indirect
 	github.com/getsentry/sentry-go v0.25.0 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware/providers/zerolog/v2 v2.0.0-rc.3 // indirect
@@ -130,20 +130,20 @@ require (
 )
 
 require (
-	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.5.2 // indirect
-	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.14.7 // indirect
-	github.com/aws/aws-sdk-go-v2/internal/configsources v1.2.6 // indirect
-	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.5.6 // indirect
+	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.5.3 // indirect
+	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.14.9 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/configsources v1.2.8 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.5.8 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/ini v1.7.1 // indirect
 	github.com/aws/aws-sdk-go-v2/service/athena v1.36.0
 	github.com/aws/aws-sdk-go-v2/service/backup v1.30.0
 	github.com/aws/aws-sdk-go-v2/service/glue v1.71.0
-	github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.10.2 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.10.3 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/endpoint-discovery v1.8.6 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.10.6 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.16.6 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.10.8 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.16.8 // indirect
 	github.com/aws/aws-sdk-go-v2/service/shield v1.23.0
-	github.com/aws/aws-sdk-go-v2/service/sso v1.18.0 // indirect
+	github.com/aws/aws-sdk-go-v2/service/sso v1.18.3 // indirect
 	github.com/aws/aws-sdk-go-v2/service/transfer v1.39.0
 	github.com/aws/aws-sdk-go-v2/service/wafregional v1.19.0
 	github.com/davecgh/go-spew v1.1.1 // indirect
