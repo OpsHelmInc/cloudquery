@@ -3,6 +3,7 @@
 package plugin
 
 import (
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 	"github.com/OpsHelmInc/cloudquery/resources/services/accessanalyzer"
 	"github.com/OpsHelmInc/cloudquery/resources/services/account"
 	"github.com/OpsHelmInc/cloudquery/resources/services/acm"
@@ -90,7 +91,6 @@ import (
 	"github.com/OpsHelmInc/cloudquery/resources/services/wafv2"
 	"github.com/OpsHelmInc/cloudquery/resources/services/workspaces"
 	"github.com/OpsHelmInc/cloudquery/resources/services/xray"
-	"github.com/cloudquery/plugin-sdk/schema"
 )
 
 func tables() []*schema.Table {

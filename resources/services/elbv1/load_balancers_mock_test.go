@@ -5,9 +5,9 @@ import (
 
 	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/OpsHelmInc/cloudquery/client/mocks"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/faker"
 	"github.com/aws/aws-sdk-go-v2/service/elasticloadbalancing"
 	elbv1Types "github.com/aws/aws-sdk-go-v2/service/elasticloadbalancing/types"
-	"github.com/cloudquery/plugin-sdk/faker"
 	"github.com/golang/mock/gomock"
 )
 

@@ -3,10 +3,10 @@ package ec2
 import (
 	"testing"
 
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/faker"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
 	"github.com/aws/aws-sdk-go-v2/service/ec2/types"
-	"github.com/cloudquery/plugin-sdk/faker"
 	"github.com/golang/mock/gomock"
 
 	"github.com/OpsHelmInc/cloudquery/client"

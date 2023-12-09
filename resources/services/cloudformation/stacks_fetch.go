@@ -4,10 +4,10 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/cloudformation"
 	"github.com/aws/aws-sdk-go-v2/service/cloudformation/types"
-	"github.com/cloudquery/plugin-sdk/schema"
 )
 
 func fetchCloudformationStacks(ctx context.Context, meta schema.ClientMeta, _ *schema.Resource, res chan<- interface{}) error {

@@ -5,11 +5,11 @@ import (
 
 	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/OpsHelmInc/cloudquery/client/mocks"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/faker"
 	"github.com/aws/aws-sdk-go-v2/service/identitystore"
 	iTypes "github.com/aws/aws-sdk-go-v2/service/identitystore/types"
 	"github.com/aws/aws-sdk-go-v2/service/ssoadmin"
 	"github.com/aws/aws-sdk-go-v2/service/ssoadmin/types"
-	"github.com/cloudquery/plugin-sdk/faker"
 	"github.com/golang/mock/gomock"
 )
 

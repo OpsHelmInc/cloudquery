@@ -4,7 +4,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/cloudquery/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 	"github.com/pkg/errors"
 )
 

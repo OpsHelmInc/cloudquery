@@ -3,7 +3,7 @@
 package {{.Service}}
 
 import (
-	"github.com/cloudquery/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 	"github.com/OpsHelmInc/cloudquery/client"
 )
 

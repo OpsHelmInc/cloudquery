@@ -5,10 +5,10 @@ import (
 	"errors"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/quicksight"
 	"github.com/aws/smithy-go"
-	"github.com/cloudquery/plugin-sdk/schema"
 )
 
 func fetchQuicksightTemplates(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {

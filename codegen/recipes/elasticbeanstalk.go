@@ -6,8 +6,8 @@ import (
 
 	"github.com/OpsHelmInc/cloudquery/resources/services/elasticbeanstalk/models"
 	"github.com/aws/aws-sdk-go-v2/service/elasticbeanstalk/types"
-	"github.com/cloudquery/plugin-sdk/codegen"
-	"github.com/cloudquery/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/codegen"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 )
 
 func ElasticbeanstalkResources() []*Resource {

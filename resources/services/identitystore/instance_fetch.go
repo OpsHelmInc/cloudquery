@@ -4,9 +4,9 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 	"github.com/aws/aws-sdk-go-v2/service/ssoadmin"
 	types "github.com/aws/aws-sdk-go-v2/service/ssoadmin/types"
-	"github.com/cloudquery/plugin-sdk/schema"
 )
 
 func getIamInstance(ctx context.Context, meta schema.ClientMeta) (types.InstanceMetadata, error) {

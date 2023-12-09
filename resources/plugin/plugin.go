@@ -2,8 +2,8 @@ package plugin
 
 import (
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/plugins"
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/cloudquery/plugin-sdk/plugins"
 )
 
 var (

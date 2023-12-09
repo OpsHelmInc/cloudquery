@@ -4,13 +4,13 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	awsmiddleware "github.com/aws/aws-sdk-go-v2/aws/middleware"
 	"github.com/aws/aws-sdk-go-v2/service/accessanalyzer"
 	"github.com/aws/aws-sdk-go-v2/service/accessanalyzer/types"
 	"github.com/aws/smithy-go/middleware"
-	"github.com/cloudquery/plugin-sdk/schema"
 )
 
 func fetchAccessanalyzerAnalyzers(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {

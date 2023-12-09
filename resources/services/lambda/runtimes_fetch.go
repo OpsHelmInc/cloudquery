@@ -3,9 +3,9 @@ package lambda
 import (
 	"context"
 
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 	"github.com/OpsHelmInc/cloudquery/resources/services/lambda/models"
 	"github.com/aws/aws-sdk-go-v2/service/lambda/types"
-	"github.com/cloudquery/plugin-sdk/schema"
 )
 
 func fetchLambdaRuntimes(_ context.Context, _ schema.ClientMeta, _ *schema.Resource, res chan<- interface{}) error {

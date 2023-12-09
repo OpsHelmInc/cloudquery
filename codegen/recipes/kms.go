@@ -2,8 +2,8 @@ package recipes
 
 import (
 	"github.com/aws/aws-sdk-go-v2/service/kms/types"
-	"github.com/cloudquery/plugin-sdk/codegen"
-	"github.com/cloudquery/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/codegen"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 )
 
 func KMSResources() []*Resource {

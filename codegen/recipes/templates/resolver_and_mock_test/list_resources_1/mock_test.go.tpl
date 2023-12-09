@@ -11,7 +11,7 @@ import (
 	"github.com/OpsHelmInc/cloudquery/client"
 	{{- end }}
 	"github.com/OpsHelmInc/cloudquery/client/mocks"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/faker"
 	"github.com/golang/mock/gomock"
 )
 

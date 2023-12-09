@@ -4,9 +4,9 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 	"github.com/aws/aws-sdk-go-v2/service/servicequotas"
 	"github.com/aws/aws-sdk-go-v2/service/servicequotas/types"
-	"github.com/cloudquery/plugin-sdk/schema"
 )
 
 func fetchServicequotasQuotas(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {

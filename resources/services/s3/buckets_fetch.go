@@ -7,10 +7,10 @@ import (
 	"sync"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 	"github.com/OpsHelmInc/ohaws"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/aws/aws-sdk-go-v2/service/s3/types"
-	"github.com/cloudquery/plugin-sdk/schema"
 )
 
 // fetchS3BucketsPoolSize describes the amount of go routines that resolve the S3 buckets

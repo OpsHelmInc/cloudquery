@@ -5,8 +5,8 @@ import (
 	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/service/elasticloadbalancing/types"
-	"github.com/cloudquery/plugin-sdk/codegen"
-	"github.com/cloudquery/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/codegen"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 
 	"github.com/OpsHelmInc/cloudquery/resources/services/elbv1/models"
 )

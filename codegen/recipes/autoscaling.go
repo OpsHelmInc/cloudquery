@@ -6,8 +6,8 @@ import (
 
 	"github.com/OpsHelmInc/cloudquery/resources/services/autoscaling/models"
 	"github.com/aws/aws-sdk-go-v2/service/autoscaling/types"
-	"github.com/cloudquery/plugin-sdk/codegen"
-	"github.com/cloudquery/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/codegen"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 )
 
 func AutoscalingResources() []*Resource {

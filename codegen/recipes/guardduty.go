@@ -6,8 +6,8 @@ import (
 
 	"github.com/OpsHelmInc/cloudquery/resources/services/guardduty/models"
 	"github.com/aws/aws-sdk-go-v2/service/guardduty/types"
-	"github.com/cloudquery/plugin-sdk/codegen"
-	"github.com/cloudquery/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/codegen"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 )
 
 func GuarddutyResources() []*Resource {

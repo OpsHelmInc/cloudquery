@@ -7,8 +7,8 @@ import (
 	"path"
 	"testing"
 
-	"github.com/bradleyjkemp/cupaloy/v2"
 	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
+	"github.com/bradleyjkemp/cupaloy/v2"
 	"github.com/stretchr/testify/require"
 )
 

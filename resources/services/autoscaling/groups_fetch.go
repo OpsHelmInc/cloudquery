@@ -6,12 +6,12 @@ import (
 	"regexp"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 	"github.com/OpsHelmInc/cloudquery/resources/services/autoscaling/models"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/autoscaling"
 	"github.com/aws/aws-sdk-go-v2/service/autoscaling/types"
 	"github.com/aws/smithy-go"
-	"github.com/cloudquery/plugin-sdk/schema"
 )
 
 var groupNotFoundRegex = regexp.MustCompile(`AutoScalingGroup name not found|Group .* not found`)
