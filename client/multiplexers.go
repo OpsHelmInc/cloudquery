@@ -3,8 +3,8 @@ package client
 import (
 	"math/rand"
 
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 	wafv2types "github.com/aws/aws-sdk-go-v2/service/wafv2/types"
-	"github.com/cloudquery/plugin-sdk/schema"
 )
 
 var AllNamespaces = []string{ // this is only used in applicationautoscaling

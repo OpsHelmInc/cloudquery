@@ -11,9 +11,9 @@ import (
 	"sync"
 	"time"
 
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/smithy-go"
-	"github.com/cloudquery/plugin-sdk/schema"
 )
 
 type AWSService string

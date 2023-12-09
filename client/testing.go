@@ -7,9 +7,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cloudquery/plugin-sdk/plugins"
-	"github.com/cloudquery/plugin-sdk/schema"
-	"github.com/cloudquery/plugin-sdk/specs"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/plugins"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/specs"
 	"github.com/golang/mock/gomock"
 	"github.com/rs/zerolog"
 )

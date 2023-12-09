@@ -4,11 +4,11 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 	"github.com/OpsHelmInc/ohaws"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/s3control"
 	s3controlTypes "github.com/aws/aws-sdk-go-v2/service/s3control/types"
-	"github.com/cloudquery/plugin-sdk/schema"
 	"github.com/pkg/errors"
 )
 

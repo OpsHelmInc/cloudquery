@@ -6,9 +6,9 @@ import (
 
 	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/OpsHelmInc/cloudquery/client/services"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 	"github.com/aws/aws-sdk-go-v2/service/docdb"
 	"github.com/aws/aws-sdk-go-v2/service/docdb/types"
-	"github.com/cloudquery/plugin-sdk/schema"
 )
 
 func fetchDocdbClusterParameters(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {

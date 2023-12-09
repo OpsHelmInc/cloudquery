@@ -4,10 +4,10 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 	"github.com/OpsHelmInc/cloudquery/resources/services/iam/models"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
-	"github.com/cloudquery/plugin-sdk/schema"
 	"github.com/mitchellh/mapstructure"
 )
 

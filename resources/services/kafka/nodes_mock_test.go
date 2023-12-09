@@ -4,9 +4,9 @@ import (
 	"testing"
 
 	"github.com/OpsHelmInc/cloudquery/client/mocks"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/faker"
 	"github.com/aws/aws-sdk-go-v2/service/kafka"
 	"github.com/aws/aws-sdk-go-v2/service/kafka/types"
-	"github.com/cloudquery/plugin-sdk/faker"
 	"github.com/golang/mock/gomock"
 )
 

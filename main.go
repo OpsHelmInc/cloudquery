@@ -3,9 +3,9 @@ package main
 import (
 	"context"
 
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/serve"
 	"github.com/OpsHelmInc/cloudquery/resources/plugin"
 	"github.com/aws/aws-sdk-go-v2/config"
-	"github.com/cloudquery/plugin-sdk/serve"
 	"github.com/rs/zerolog/log"
 )
 

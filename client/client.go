@@ -8,6 +8,9 @@ import (
 	"time"
 
 	"github.com/OpsHelmInc/cloudquery/client/services"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/plugins"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/specs"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/aws/retry"
@@ -17,9 +20,6 @@ import (
 	wafv2types "github.com/aws/aws-sdk-go-v2/service/wafv2/types"
 	"github.com/aws/smithy-go"
 	"github.com/aws/smithy-go/logging"
-	"github.com/cloudquery/plugin-sdk/plugins"
-	"github.com/cloudquery/plugin-sdk/schema"
-	"github.com/cloudquery/plugin-sdk/specs"
 	"github.com/rs/zerolog"
 )
 

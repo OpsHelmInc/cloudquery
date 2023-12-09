@@ -3,7 +3,7 @@
 package plugin
 
 import (
-	"github.com/cloudquery/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 {{- range $resource := . }}
 	"github.com/OpsHelmInc/cloudquery/resources/services/{{ $resource.Service }}"
 {{- end }}

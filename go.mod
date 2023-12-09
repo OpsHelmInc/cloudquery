@@ -6,6 +6,7 @@ toolchain go1.21.4
 
 require (
 	github.com/OpsHelmInc/ohaws v0.0.0-20231127135300-5f0443d71131
+	github.com/avast/retry-go/v4 v4.3.1
 	github.com/aws/aws-sdk-go-v2 v1.23.5
 	github.com/aws/aws-sdk-go-v2/config v1.25.9
 	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.15.2
@@ -97,14 +98,21 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/xray v1.23.0
 	github.com/aws/smithy-go v1.18.1
 	github.com/basgys/goxml2json v1.1.0
-	github.com/cloudquery/plugin-sdk v1.11.2
+	github.com/bradleyjkemp/cupaloy/v2 v2.8.0
+	github.com/getsentry/sentry-go v0.25.0
 	github.com/gocarina/gocsv v0.0.0-20231116093920-b87c2d0e983a
 	github.com/golang/mock v1.6.0
 	github.com/google/go-cmp v0.6.0
+	github.com/grpc-ecosystem/go-grpc-middleware/providers/zerolog/v2 v2.0.0-rc.3
+	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.0.0-rc.3
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/rs/zerolog v1.31.0
+	github.com/schollz/progressbar/v3 v3.12.1
+	github.com/spf13/cast v1.6.0
+	github.com/spf13/cobra v1.8.0
 	github.com/stretchr/testify v1.8.4
 	github.com/thoas/go-funk v0.9.3
+	golang.org/x/exp v0.0.0-20231127185646-65229373498e
 	golang.org/x/sync v0.5.0
 )
 
@@ -115,17 +123,15 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/networkfirewall v1.36.0 // indirect
 	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.21.0 // indirect
 	github.com/bitly/go-simplejson v0.5.0 // indirect
-	github.com/getsentry/sentry-go v0.25.0 // indirect
-	github.com/grpc-ecosystem/go-grpc-middleware/providers/zerolog/v2 v2.0.0-rc.3 // indirect
-	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.0.0-rc.3 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
-	github.com/spf13/cast v1.6.0 // indirect
-	github.com/spf13/cobra v1.8.0 // indirect
+	github.com/mattn/go-runewidth v0.0.14 // indirect
+	github.com/mitchellh/colorstring v0.0.0-20190213212951-d06e56a500db // indirect
+	github.com/rivo/uniseg v0.4.2 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/tidwall/gjson v1.17.0 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
 	github.com/tidwall/pretty v1.2.1 // indirect
-	golang.org/x/exp v0.0.0-20231127185646-65229373498e // indirect
+	golang.org/x/term v0.15.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20231127180814-3a041ad873d4 // indirect
 )
 
@@ -147,9 +153,9 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/transfer v1.39.0
 	github.com/aws/aws-sdk-go-v2/service/wafregional v1.19.0
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/ghodss/yaml v1.0.0 // indirect
+	github.com/ghodss/yaml v1.0.0
 	github.com/golang/protobuf v1.5.3 // indirect
-	github.com/google/uuid v1.4.0 // indirect
+	github.com/google/uuid v1.4.0
 	github.com/iancoleman/strcase v0.2.0
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
@@ -157,12 +163,12 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	golang.org/x/mod v0.14.0 // indirect
-	golang.org/x/net v0.19.0 // indirect
+	golang.org/x/net v0.19.0
 	golang.org/x/sys v0.15.0 // indirect
-	golang.org/x/text v0.14.0 // indirect
+	golang.org/x/text v0.14.0
 	golang.org/x/tools v0.16.0 // indirect
-	google.golang.org/grpc v1.59.0 // indirect
-	google.golang.org/protobuf v1.31.0 // indirect
+	google.golang.org/grpc v1.59.0
+	google.golang.org/protobuf v1.31.0
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
+	gopkg.in/yaml.v3 v3.0.1
 )

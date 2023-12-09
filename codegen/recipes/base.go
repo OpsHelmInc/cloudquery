@@ -15,9 +15,9 @@ import (
 	"text/template"
 
 	"github.com/aws/aws-sdk-go-v2/service/autoscaling/types"
-	"github.com/cloudquery/plugin-sdk/caser"
-	"github.com/cloudquery/plugin-sdk/codegen"
-	"github.com/cloudquery/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/caser"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/codegen"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 	"github.com/iancoleman/strcase"
 
 	"github.com/OpsHelmInc/cloudquery/client"

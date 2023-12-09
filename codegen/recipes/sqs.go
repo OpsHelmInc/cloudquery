@@ -1,8 +1,8 @@
 package recipes
 
 import (
-	"github.com/cloudquery/plugin-sdk/codegen"
-	"github.com/cloudquery/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/codegen"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 
 	"github.com/OpsHelmInc/cloudquery/resources/services/sqs/models"
 )

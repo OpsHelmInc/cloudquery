@@ -5,8 +5,8 @@ import (
 	"strings"
 
 	"github.com/OpsHelmInc/cloudquery/resources/services/resourcegroups/models"
-	"github.com/cloudquery/plugin-sdk/codegen"
-	"github.com/cloudquery/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/codegen"
+	"github.com/OpsHelmInc/cloudquery/plugin-sdk/schema"
 )
 
 func ResourceGroupsResources() []*Resource {
