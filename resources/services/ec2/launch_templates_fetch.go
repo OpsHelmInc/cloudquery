@@ -12,7 +12,7 @@ import (
 	"github.com/OpsHelmInc/cloudquery/client"
 )
 
-func fetchEc2LaunchTemplates(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
+func fetchEc2LaunchTemplates(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	req := ec2.DescribeLaunchTemplatesInput{
 		MaxResults: aws.Int32(200),
 	}

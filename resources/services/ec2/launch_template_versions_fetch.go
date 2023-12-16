@@ -13,7 +13,7 @@ import (
 	"github.com/OpsHelmInc/cloudquery/client"
 )
 
-func fetchEc2LaunchTemplateVersions(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
+func fetchEc2LaunchTemplateVersions(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	config := ec2.DescribeLaunchTemplateVersionsInput{
 		Versions:   []string{"$Latest", "$Default"},
 		MaxResults: aws.Int32(200),
