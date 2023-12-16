@@ -3,29 +3,30 @@ package ec2
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
 	"github.com/aws/aws-sdk-go-v2/service/ec2/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func fetchEc2EbsSnapshots(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
-	var config ec2.DescribeSnapshotsInput
 	c := meta.(*client.Client)
 	svc := c.Services().Ec2
-	config.OwnerIds = []string{c.AccountID}
-	for {
-		output, err := svc.DescribeSnapshots(ctx, &config)
+	paginator := ec2.NewDescribeSnapshotsPaginator(svc, &ec2.DescribeSnapshotsInput{
+		OwnerIds:   []string{c.AccountID},
+		MaxResults: aws.Int32(1000),
+	})
+	for paginator.HasMorePages() {
+		page, err := paginator.NextPage(ctx, func(options *ec2.Options) {
+			options.Region = c.Region
+		})
 		if err != nil {
 			return err
 		}
-		res <- output.Snapshots
-		if aws.ToString(output.NextToken) == "" {
-			break
-		}
-		config.NextToken = output.NextToken
+		res <- page.Snapshots
 	}
 	return nil
 }
@@ -38,7 +39,6 @@ func resolveEbsSnapshotAttribute(ctx context.Context, meta schema.ClientMeta, re
 		Attribute:  types.SnapshotAttributeNameCreateVolumePermission,
 		SnapshotId: r.SnapshotId,
 	})
-
 	if err != nil {
 		return err
 	}
