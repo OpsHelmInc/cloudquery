@@ -12,7 +12,7 @@ import (
 	"github.com/OpsHelmInc/cloudquery/resources/services/ec2/models"
 )
 
-func fetchEc2RegionalConfigs(ctx context.Context, meta schema.ClientMeta, _ *schema.Resource, res chan<- interface{}) error {
+func fetchEc2RegionalConfigs(ctx context.Context, meta schema.ClientMeta, _ *schema.Resource, res chan<- any) error {
 	c := meta.(*client.Client)
 
 	var errs error

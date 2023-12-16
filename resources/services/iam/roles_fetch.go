@@ -13,7 +13,7 @@ import (
 	"github.com/OpsHelmInc/ohaws"
 )
 
-func fetchIamRoles(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
+func fetchIamRoles(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	var config iam.ListRolesInput
 	svc := meta.(*client.Client).Services().Iam
 	for {
@@ -83,7 +83,7 @@ func resolveRolesAssumeRolePolicyDocument(ctx context.Context, meta schema.Clien
 	if err != nil {
 		return err
 	}
-	var d map[string]interface{}
+	var d map[string]any
 	err = json.Unmarshal([]byte(decodedDocument), &d)
 	if err != nil {
 		return err
@@ -91,7 +91,7 @@ func resolveRolesAssumeRolePolicyDocument(ctx context.Context, meta schema.Clien
 	return resource.Set("assume_role_policy_document", d)
 }
 
-func fetchIamRolePolicies(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
+func fetchIamRolePolicies(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	c := meta.(*client.Client)
 	svc := c.Services().Iam
 	role := parent.Item.(*ohaws.Role)
@@ -138,7 +138,7 @@ func resolveRolePoliciesPolicyDocument(ctx context.Context, meta schema.ClientMe
 		return err
 	}
 
-	var document map[string]interface{}
+	var document map[string]any
 	err = json.Unmarshal([]byte(decodedDocument), &document)
 	if err != nil {
 		return err

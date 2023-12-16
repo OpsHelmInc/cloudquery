@@ -11,6 +11,10 @@ run:
     - all
 
 linters-settings:
+  gofmt:
+    rewrite-rules:
+      - pattern: 'interface{}'
+        replacement: 'any'
   errcheck:
     check-blank: false
     ignore: fmt:.*,[rR]ead|[wW]rite|[cC]lose,io:Copy
@@ -64,12 +68,15 @@ linters-settings:
         disabled: true
       - name: nested-structs
         disabled: true
+      - name: unchecked-type-assertion
+        disabled: true
+      - name: import-alias-naming
+        disabled: true
 
 linters:
   enable:
     - asciicheck
     - bodyclose
-    - depguard
     - dupl
     - errcheck
     - gocritic
@@ -94,6 +101,7 @@ issues:
       linters:
         - dupl
         - gocritic
+        - revive
       # Exclude some linters from running on resource files.
     - path: resources(\\|\/).*\.go
       linters:
