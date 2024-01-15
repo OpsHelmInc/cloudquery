@@ -16,6 +16,7 @@ The primary key for this table is **arn**.
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |cust_subscription_id|String|
 |customer_aws_id|String|
 |enabled|Bool|

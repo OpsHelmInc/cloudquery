@@ -27,6 +27,11 @@ func ServiceCatalogResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolvePortfolioTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ServiceCatalog::Portfolio")`,
+					},
 				}...),
 		},
 		{

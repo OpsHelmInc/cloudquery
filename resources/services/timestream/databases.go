@@ -29,6 +29,11 @@ func Databases() *schema.Table {
 				Resolver: fetchDatabaseTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Timestream::Database"),
+			},
+			{
 				Name:     "arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Arn"),

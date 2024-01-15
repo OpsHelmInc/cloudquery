@@ -15,6 +15,7 @@ This table depends on [aws_ssoadmin_permission_sets](aws_ssoadmin_permission_set
 |_cq_sync_time|Timestamp|
 |_cq_id (PK)|UUID|
 |_cq_parent_id|UUID|
+|oh_resource_type|String|
 |account_id|String|
 |permission_set_arn|String|
 |principal_id|String|

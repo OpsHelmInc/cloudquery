@@ -18,6 +18,7 @@ The primary key for this table is **arn**.
 |tags|JSON|
 |arn (PK)|String|
 |dimensions|JSON|
+|oh_resource_type|String|
 |actions_enabled|Bool|
 |alarm_actions|StringArray|
 |alarm_configuration_updated_timestamp|Timestamp|

@@ -19,6 +19,7 @@ The following tables depend on aws_config_conformance_packs:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |conformance_pack_id|String|
 |conformance_pack_name|String|
 |created_by|String|

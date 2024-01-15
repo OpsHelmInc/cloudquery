@@ -37,6 +37,11 @@ func Dashboards() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::QuickSight::Dashboard"),
+			},
+			{
 				Name:     "created_time",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreatedTime"),

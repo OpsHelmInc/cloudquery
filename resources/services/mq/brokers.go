@@ -34,6 +34,11 @@ func Brokers() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::AmazonMQ::Broker"),
+			},
+			{
 				Name:     "actions_required",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ActionsRequired"),

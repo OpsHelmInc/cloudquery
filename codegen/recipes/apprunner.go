@@ -29,6 +29,11 @@ func ApprunnerResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveApprunnerTags("AutoScalingConfigurationArn")`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::AppRunner::AutoScalingConfiguration")`,
+					},
 				}...),
 		}, {
 			SubService:   "custom_domains",
@@ -77,6 +82,11 @@ func ApprunnerResources() []*Resource {
 						Name:     "tags",
 						Type:     schema.TypeJSON,
 						Resolver: `resolveApprunnerTags("ObservabilityConfigurationArn")`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::AppRunner::ObservabilityConfiguration")`,
 					},
 				}...),
 		}, {
@@ -131,6 +141,11 @@ func ApprunnerResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveApprunnerTags("VpcConnectorArn")`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::AppRunner::VpcConnector")`,
+					},
 				}...),
 		}, {
 			SubService: "vpc_ingress_connections",
@@ -160,6 +175,11 @@ Notes:
 						Name:     "tags",
 						Type:     schema.TypeJSON,
 						Resolver: `resolveApprunnerTags("VpcIngressConnectionArn")`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::AppRunner::VpcIngressConnection")`,
 					},
 				}...),
 		},

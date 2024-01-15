@@ -45,6 +45,11 @@ func WAFv2Resources() []*Resource {
 					Resolver: `schema.PathResolver("ARN")`,
 					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::WAFv2::IPSet")`,
+				},
 			},
 		},
 		{
@@ -106,6 +111,11 @@ func WAFv2Resources() []*Resource {
 					Resolver: `schema.PathResolver("ARN")`,
 					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::WAFv2::RegexPatternSet")`,
+				},
 			},
 		},
 		{
@@ -141,6 +151,11 @@ func WAFv2Resources() []*Resource {
 					Type:     schema.TypeJSON,
 					Resolver: `resolveWafv2ruleGroupPolicy`,
 				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::WAFv2::RuleGroup")`,
+				},
 			},
 		},
 		{
@@ -174,6 +189,11 @@ func WAFv2Resources() []*Resource {
 					Type:     schema.TypeString,
 					Resolver: `schema.PathResolver("ARN")`,
 					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::WAFv2::WebACL")`,
 				},
 			},
 		},

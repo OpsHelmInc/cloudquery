@@ -39,6 +39,11 @@ func Associations() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::SSM::Association"),
+			},
+			{
 				Name:     "association_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("AssociationName"),

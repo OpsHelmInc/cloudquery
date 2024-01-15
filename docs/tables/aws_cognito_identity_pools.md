@@ -17,6 +17,7 @@ The composite primary key for this table is (**account_id**, **region**, **id**)
 |region (PK)|String|
 |arn|String|
 |id (PK)|String|
+|oh_resource_type|String|
 |allow_unauthenticated_identities|Bool|
 |identity_pool_name|String|
 |allow_classic_flow|Bool|

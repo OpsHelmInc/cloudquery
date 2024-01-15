@@ -14,22 +14,33 @@ func TimestreamResources() []*Resource {
 			Struct:     new(types.Database),
 			Multiplex:  `client.ServiceAccountRegionMultiplexer("ingest.timestream")`,
 			PKColumns:  []string{"arn"},
-			ExtraColumns: append(defaultRegionalColumns,
-				codegen.ColumnDefinition{
+			ExtraColumns: append(defaultRegionalColumns, []codegen.ColumnDefinition{
+				{
 					Name:     "tags",
 					Type:     schema.TypeJSON,
 					Resolver: "fetchDatabaseTags",
 				},
-			),
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::Timestream::Database")`,
+				},
+			}...),
 			Relations: []string{"Tables()"},
 		},
 		{
-			Service:      "timestream",
-			SubService:   "tables",
-			Struct:       new(types.Table),
-			Multiplex:    "", // skip multiplexing as it's a relation for databases
-			PKColumns:    []string{"arn"},
-			ExtraColumns: defaultRegionalColumns,
+			Service:    "timestream",
+			SubService: "tables",
+			Struct:     new(types.Table),
+			Multiplex:  "", // skip multiplexing as it's a relation for databases
+			PKColumns:  []string{"arn"},
+			ExtraColumns: append(defaultRegionalColumns, []codegen.ColumnDefinition{
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::Timestream::Table")`,
+				},
+			}...),
 		},
 	}
 }

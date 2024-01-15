@@ -33,6 +33,11 @@ func Connections() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Events::Connection"),
+			},
+			{
 				Name:     "authorization_type",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("AuthorizationType"),

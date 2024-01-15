@@ -20,6 +20,7 @@ This table depends on [aws_apigatewayv2_api_integrations](aws_apigatewayv2_api_i
 |api_integration_arn|String|
 |integration_id|String|
 |arn|String|
+|oh_resource_type|String|
 |integration_response_key|String|
 |content_handling_strategy|String|
 |integration_response_id|String|

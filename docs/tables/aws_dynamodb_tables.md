@@ -21,6 +21,7 @@ The following tables depend on aws_dynamodb_tables:
 |region|String|
 |tags|JSON|
 |arn (PK)|String|
+|oh_resource_type|String|
 |archival_summary|JSON|
 |attribute_definitions|JSON|
 |billing_mode_summary|JSON|

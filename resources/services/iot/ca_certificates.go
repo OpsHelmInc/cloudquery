@@ -38,6 +38,11 @@ func CaCertificates() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::IoT::CACertificate"),
+			},
+			{
 				Name:     "auto_registration_status",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("AutoRegistrationStatus"),

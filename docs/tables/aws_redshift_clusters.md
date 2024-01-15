@@ -21,6 +21,7 @@ The following tables depend on aws_redshift_clusters:
 |region|String|
 |arn (PK)|String|
 |logging_status|JSON|
+|oh_resource_type|String|
 |allow_version_upgrade|Bool|
 |aqua_configuration|JSON|
 |automated_snapshot_retention_period|Int|

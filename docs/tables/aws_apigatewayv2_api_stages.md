@@ -20,6 +20,7 @@ This table depends on [aws_apigatewayv2_apis](aws_apigatewayv2_apis.md).
 |api_arn|String|
 |api_id|String|
 |arn|String|
+|oh_resource_type|String|
 |stage_name|String|
 |access_log_settings|JSON|
 |api_gateway_managed|Bool|

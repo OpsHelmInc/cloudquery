@@ -43,6 +43,11 @@ func Trails() *schema.Table {
 				Resolver: resolveCloudTrailStatus,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::CloudTrail::Trail"),
+			},
+			{
 				Name:     "cloud_watch_logs_log_group_arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("CloudWatchLogsLogGroupArn"),

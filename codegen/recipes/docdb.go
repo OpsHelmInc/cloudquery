@@ -27,6 +27,11 @@ func DocumentDBResources() []*Resource {
 						Resolver: `schema.PathResolver("DBClusterArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::DocDB::DBCluster")`,
+					},
 				}...),
 			Relations: []string{
 				"ClusterSnapshots()",
@@ -89,6 +94,11 @@ func DocumentDBResources() []*Resource {
 						Name:     "parameters",
 						Type:     schema.TypeJSON,
 						Resolver: `resolveDocdbClusterParameterGroupParameters`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::DocDB::DBClusterParameterGroup")`,
 					},
 				}...),
 		},
@@ -159,6 +169,11 @@ func DocumentDBResources() []*Resource {
 						Resolver: `schema.PathResolver("DBInstanceArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::DocDB::DBInstance")`,
+					},
 				}...),
 		},
 		{
@@ -179,6 +194,11 @@ func DocumentDBResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("DBSubnetGroupArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::DocDB::DBSubnetGroup")`,
 					},
 				}...),
 		},
@@ -205,10 +225,16 @@ func DocumentDBResources() []*Resource {
 			ExtraColumns: defaultRegionalColumns,
 		},
 		{
-			SubService:   "event_subscriptions",
-			Struct:       &types.EventSubscription{},
-			Description:  "https://docs.aws.amazon.com/documentdb/latest/developerguide/API_EventSubscription.html",
-			ExtraColumns: defaultRegionalColumns,
+			SubService:  "event_subscriptions",
+			Struct:      &types.EventSubscription{},
+			Description: "https://docs.aws.amazon.com/documentdb/latest/developerguide/API_EventSubscription.html",
+			ExtraColumns: append(defaultRegionalColumns, []codegen.ColumnDefinition{
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::DocDB::EventSubscription")`,
+				},
+			}...),
 		},
 		{
 			SubService:   "event_categories",

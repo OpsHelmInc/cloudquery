@@ -16,6 +16,7 @@ The composite primary key for this table is (**account_id**, **region**, **direc
 |account_id (PK)|String|
 |region (PK)|String|
 |directory_name (PK)|String|
+|oh_resource_type|String|
 |certificate_based_auth_properties|JSON|
 |created_time|Timestamp|
 |organizational_unit_distinguished_names|StringArray|

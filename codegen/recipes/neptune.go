@@ -27,6 +27,11 @@ func NeptuneResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveNeptuneClusterParameterGroupTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Neptune::DBClusterParameterGroup")`,
+					},
 				}...),
 			Relations: []string{"ClusterParameterGroupParameters()"},
 		},
@@ -90,6 +95,11 @@ func NeptuneResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveNeptuneClusterTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Neptune::DBCluster")`,
+					},
 				}...),
 		},
 		{
@@ -110,6 +120,11 @@ func NeptuneResources() []*Resource {
 						Name:     "tags",
 						Type:     schema.TypeJSON,
 						Resolver: `resolveNeptuneDbParameterGroupTags`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Neptune::DBParameterGroup")`,
 					},
 				}...),
 			Relations: []string{"DbParameterGroupDbParameters()"},
@@ -190,6 +205,11 @@ func NeptuneResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveNeptuneInstanceTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Neptune::DBInstance")`,
+					},
 				}...),
 		},
 		{
@@ -210,6 +230,11 @@ func NeptuneResources() []*Resource {
 						Name:     "tags",
 						Type:     schema.TypeJSON,
 						Resolver: `resolveNeptuneSubnetGroupTags`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Neptune::DBSubnetGroup")`,
 					},
 				}...),
 		},

@@ -30,6 +30,11 @@ func UsagePlans() *schema.Table {
 				Resolver: resolveApigatewayUsagePlanArn,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGateway::UsagePlan"),
+			},
+			{
 				Name:     "api_stages",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ApiStages"),

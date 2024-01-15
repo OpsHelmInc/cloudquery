@@ -22,6 +22,7 @@ The following tables depend on aws_backup_vaults:
 |access_policy|JSON|
 |notifications|JSON|
 |tags|JSON|
+|oh_resource_type|String|
 |backup_vault_name|String|
 |creation_date|Timestamp|
 |creator_request_id|String|

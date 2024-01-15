@@ -21,5 +21,6 @@ The following tables depend on aws_redshift_cluster_parameter_groups:
 |region|String|
 |cluster_arn (PK)|String|
 |parameter_group_name (PK)|String|
+|oh_resource_type|String|
 |cluster_parameter_status_list|JSON|
 |parameter_apply_status|String|

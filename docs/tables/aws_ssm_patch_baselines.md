@@ -16,6 +16,7 @@ The composite primary key for this table is (**account_id**, **region**, **basel
 |account_id (PK)|String|
 |region (PK)|String|
 |baseline_id (PK)|String|
+|oh_resource_type|String|
 |baseline_description|String|
 |baseline_name|String|
 |default_baseline|Bool|

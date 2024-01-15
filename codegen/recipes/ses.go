@@ -25,6 +25,11 @@ func SESResources() []*Resource {
 						Resolver: `resolveSesTemplateArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::SES::Template")`,
+					},
 				}...),
 		},
 		{
@@ -41,6 +46,11 @@ func SESResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("ConfigurationSetName")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::SES::ConfigurationSet")`,
 					},
 				}...),
 			Relations: []string{"ConfigurationSetEventDestinations()"},
@@ -82,6 +92,11 @@ func SESResources() []*Resource {
 						Resolver: `schema.PathResolver("ContactListName")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::SES::ContactList")`,
+					},
 				}...),
 		},
 		{
@@ -99,6 +114,11 @@ func SESResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: "resolveEmailIdentityArn",
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::SES::EmailIdentity")`,
 					},
 				}...),
 		},

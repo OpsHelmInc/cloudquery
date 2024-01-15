@@ -20,6 +20,7 @@ This table depends on [aws_apigatewayv2_apis](aws_apigatewayv2_apis.md).
 |api_arn|String|
 |api_id|String|
 |arn|String|
+|oh_resource_type|String|
 |name|String|
 |authorizer_credentials_arn|String|
 |authorizer_id|String|

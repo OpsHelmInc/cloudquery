@@ -21,6 +21,7 @@ The following tables depend on aws_docdb_clusters:
 |region|String|
 |tags|JSON|
 |arn (PK)|String|
+|oh_resource_type|String|
 |associated_roles|JSON|
 |availability_zones|StringArray|
 |backup_retention_period|Int|

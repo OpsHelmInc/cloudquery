@@ -38,6 +38,11 @@ func LogGroups() *schema.Table {
 				Resolver: resolveLogGroupTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Logs::LogGroup"),
+			},
+			{
 				Name:     "creation_time",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("CreationTime"),

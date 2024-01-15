@@ -20,6 +20,7 @@ The following tables depend on aws_backup_plans:
 |region|String|
 |arn (PK)|String|
 |tags|JSON|
+|oh_resource_type|String|
 |advanced_backup_settings|JSON|
 |backup_plan|JSON|
 |backup_plan_id|String|

@@ -47,6 +47,11 @@ func ShieldResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveShieldProtectionGroupTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Shield::ProtectionGroup")`,
+					},
 				}...),
 		},
 
@@ -68,6 +73,11 @@ func ShieldResources() []*Resource {
 						Name:     "tags",
 						Type:     schema.TypeJSON,
 						Resolver: `resolveShieldProtectionTags`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Shield::Protection")`,
 					},
 				}...),
 		},

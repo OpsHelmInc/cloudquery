@@ -38,6 +38,11 @@ func Analyses() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::QuickSight::Analysis"),
+			},
+			{
 				Name:     "analysis_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("AnalysisId"),

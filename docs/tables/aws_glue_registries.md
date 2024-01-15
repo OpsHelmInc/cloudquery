@@ -20,6 +20,7 @@ The following tables depend on aws_glue_registries:
 |region|String|
 |tags|JSON|
 |arn (PK)|String|
+|oh_resource_type|String|
 |created_time|String|
 |description|String|
 |registry_name|String|

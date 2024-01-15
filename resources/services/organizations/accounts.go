@@ -33,6 +33,11 @@ func Accounts() *schema.Table {
 				Resolver: resolveAccountTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Organizations::Account"),
+			},
+			{
 				Name:     "email",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Email"),

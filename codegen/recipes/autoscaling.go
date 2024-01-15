@@ -52,6 +52,11 @@ func AutoscalingResources() []*Resource {
 						Resolver: `schema.PathResolver("AutoScalingGroupARN")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::AutoScaling::AutoScalingGroup")`,
+					},
 				}...),
 			Relations: []string{
 				"GroupScalingPolicies()",

@@ -38,6 +38,11 @@ func HealthChecks() *schema.Table {
 				Resolver: resolveRoute53healthCheckCloudWatchAlarmConfigurationDimensions,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Route53::HealthCheck"),
+			},
+			{
 				Name:     "caller_reference",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("CallerReference"),

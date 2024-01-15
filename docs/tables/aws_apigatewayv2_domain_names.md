@@ -19,6 +19,7 @@ The following tables depend on aws_apigatewayv2_domain_names:
 |account_id|String|
 |region|String|
 |arn|String|
+|oh_resource_type|String|
 |domain_name|String|
 |api_mapping_selection_expression|String|
 |domain_name_configurations|JSON|

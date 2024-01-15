@@ -20,6 +20,7 @@ The following tables depend on aws_appstream_stacks:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |name|String|
 |access_endpoints|JSON|
 |application_settings|JSON|

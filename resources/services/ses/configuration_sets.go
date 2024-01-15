@@ -40,6 +40,11 @@ func ConfigurationSets() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::SES::ConfigurationSet"),
+			},
+			{
 				Name:     "delivery_options",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("DeliveryOptions"),

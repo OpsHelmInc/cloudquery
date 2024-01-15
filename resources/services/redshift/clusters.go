@@ -40,6 +40,11 @@ func Clusters() *schema.Table {
 				Description: `Describes the status of logging for a cluster.`,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Redshift::Cluster"),
+			},
+			{
 				Name:     "allow_version_upgrade",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("AllowVersionUpgrade"),

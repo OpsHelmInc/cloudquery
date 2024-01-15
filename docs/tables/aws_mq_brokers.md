@@ -20,6 +20,7 @@ The following tables depend on aws_mq_brokers:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |actions_required|JSON|
 |authentication_strategy|String|
 |auto_minor_version_upgrade|Bool|

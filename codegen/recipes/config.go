@@ -25,6 +25,11 @@ func ConfigResources() []*Resource {
 						Resolver: `generateConfigRecorderArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Config::ConfigurationRecorder")`,
+					},
 				}...),
 		},
 		{
@@ -40,6 +45,11 @@ func ConfigResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("ConformancePackArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Config::ConformancePack")`,
 					},
 				}...),
 			Relations: []string{
@@ -71,6 +81,11 @@ func ConfigResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("ConfigRuleArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Config::ConfigRule")`,
 					},
 				}...),
 			Relations: []string{"ConfigRuleCompliances()"},

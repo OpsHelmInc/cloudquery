@@ -38,6 +38,11 @@ func ResourceGroups() *schema.Table {
 				Resolver: resolveResourcegroupsResourceGroupTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ResourceGroups::Group"),
+			},
+			{
 				Name:     "group_arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("GroupArn"),

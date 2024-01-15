@@ -33,6 +33,11 @@ func ReplicationInstances() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::DMS::ReplicationInstance"),
+			},
+			{
 				Name:     "allocated_storage",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("AllocatedStorage"),

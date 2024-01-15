@@ -19,6 +19,7 @@ This table depends on [aws_apigateway_domain_names](aws_apigateway_domain_names.
 |region|String|
 |domain_name_arn|String|
 |arn|String|
+|oh_resource_type|String|
 |base_path|String|
 |rest_api_id|String|
 |stage|String|

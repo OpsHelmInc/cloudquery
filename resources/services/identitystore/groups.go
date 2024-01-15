@@ -14,6 +14,21 @@ func Groups() *schema.Table {
 		Multiplex: client.ServiceAccountRegionMultiplexer("identitystore"),
 		Columns: []schema.Column{
 			{
+				Name:     "account_id",
+				Type:     schema.TypeString,
+				Resolver: client.ResolveAWSAccount,
+			},
+			{
+				Name:     "region",
+				Type:     schema.TypeString,
+				Resolver: client.ResolveAWSRegion,
+			},
+			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::IdentityStore::Group"),
+			},
+			{
 				Name:     "group_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("GroupId"),

@@ -17,6 +17,7 @@ The composite primary key for this table is (**account_id**, **region**, **id**)
 |region (PK)|String|
 |tags|JSON|
 |id (PK)|String|
+|oh_resource_type|String|
 |arn|String|
 |domain_name|String|
 |elasticsearch_cluster_config|JSON|

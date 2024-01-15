@@ -34,6 +34,11 @@ func SubnetGroups() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Redshift::ClusterSubnetGroup"),
+			},
+			{
 				Name:     "cluster_subnet_group_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ClusterSubnetGroupName"),

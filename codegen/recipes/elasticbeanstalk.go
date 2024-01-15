@@ -47,6 +47,11 @@ func ElasticbeanstalkResources() []*Resource {
 						Type:    schema.TypeTimestamp,
 						Options: schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ElasticBeanstalk::Application")`,
+					},
 				}...),
 		},
 		{
@@ -86,6 +91,11 @@ func ElasticbeanstalkResources() []*Resource {
 					Name:     "listeners",
 					Type:     schema.TypeJSON,
 					Resolver: `resolveElasticbeanstalkEnvironmentListeners`,
+				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::ElasticBeanstalk::Environment")`,
 				},
 			},
 			Relations: []string{

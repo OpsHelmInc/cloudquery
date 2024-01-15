@@ -22,6 +22,7 @@ The following tables depend on aws_autoscaling_groups:
 |load_balancers|JSON|
 |load_balancer_target_groups|JSON|
 |arn (PK)|String|
+|oh_resource_type|String|
 |auto_scaling_group_name|String|
 |availability_zones|StringArray|
 |created_time|Timestamp|

@@ -25,6 +25,11 @@ func DMSResources() []*Resource {
 						Resolver: `schema.PathResolver("ReplicationInstanceArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::DMS::ReplicationInstance")`,
+					},
 				}...),
 		},
 	}

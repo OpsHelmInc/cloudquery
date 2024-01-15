@@ -28,6 +28,11 @@ func QLDBResources() []*Resource {
 						Type:    schema.TypeString,
 						Options: schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::QLDB::Ledger")`,
+					},
 				}...),
 			Relations: []string{
 				"LedgerJournalKinesisStreams()",

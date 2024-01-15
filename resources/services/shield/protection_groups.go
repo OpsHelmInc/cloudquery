@@ -33,6 +33,11 @@ func ProtectionGroups() *schema.Table {
 				Resolver: resolveShieldProtectionGroupTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Shield::ProtectionGroup"),
+			},
+			{
 				Name:     "aggregation",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Aggregation"),

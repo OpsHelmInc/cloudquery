@@ -35,6 +35,11 @@ func RestApiDocumentationVersions() *schema.Table {
 				Resolver: resolveApigatewayRestAPIDocumentationVersionArn,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGateway::DocumentationVersion"),
+			},
+			{
 				Name:     "created_date",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreatedDate"),

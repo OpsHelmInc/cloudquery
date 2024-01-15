@@ -15,6 +15,11 @@ func AccountAssignments() *schema.Table {
 		Multiplex:   client.ServiceAccountRegionMultiplexer("identitystore"),
 		Columns: []schema.Column{
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::SSO::Assignment"),
+			},
+			{
 				Name:     "account_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("AccountId"),

@@ -32,6 +32,11 @@ func LoadBalancers() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Lightsail::LoadBalancer"),
+			},
+			{
 				Name:     "configuration_options",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ConfigurationOptions"),

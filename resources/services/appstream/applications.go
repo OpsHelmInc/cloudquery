@@ -33,6 +33,11 @@ func Applications() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::AppStream::Application"),
+			},
+			{
 				Name:     "app_block_arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("AppBlockArn"),

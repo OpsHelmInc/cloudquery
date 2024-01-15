@@ -40,6 +40,11 @@ func Servers() *schema.Table {
 				Description: `Specifies the key-value pairs that you can use to search for and group servers that were assigned to the server that was described`,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Transfer::Server"),
+			},
+			{
 				Name:     "certificate",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Certificate"),

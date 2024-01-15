@@ -19,6 +19,7 @@ This table depends on [aws_glue_registry_schemas](aws_glue_registry_schemas.md).
 |region|String|
 |registry_schema_arn|String|
 |metadata|JSON|
+|oh_resource_type|String|
 |created_time|String|
 |data_format|String|
 |schema_arn|String|

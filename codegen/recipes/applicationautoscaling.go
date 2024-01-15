@@ -22,6 +22,11 @@ func ApplicationAutoScalingResources() []*Resource {
 						Resolver: `schema.PathResolver("PolicyARN")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ApplicationAutoScaling::ScalingPolicy")`,
+					},
 				}...),
 		},
 	}

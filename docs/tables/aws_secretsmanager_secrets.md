@@ -17,6 +17,7 @@ The primary key for this table is **arn**.
 |region|String|
 |arn (PK)|String|
 |policy|JSON|
+|oh_resource_type|String|
 |created_date|Timestamp|
 |deleted_date|Timestamp|
 |description|String|

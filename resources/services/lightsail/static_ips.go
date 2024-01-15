@@ -32,6 +32,11 @@ func StaticIps() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Lightsail::StaticIp"),
+			},
+			{
 				Name:     "attached_to",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("AttachedTo"),

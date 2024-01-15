@@ -30,6 +30,11 @@ func StepFunctionResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveStepFunctionTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::StepFunctions::StateMachine")`,
+					},
 				}...),
 		},
 	}

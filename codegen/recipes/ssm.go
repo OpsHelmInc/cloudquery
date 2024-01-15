@@ -27,6 +27,11 @@ func SSMResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveDocumentPermission`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::SSM::Document")`,
+					},
 				}...),
 		},
 		{
@@ -82,6 +87,11 @@ func SSMResources() []*Resource {
 					Type:        schema.TypeString,
 					Options:     schema.ColumnCreationOptions{PrimaryKey: true},
 				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::SSM::Parameter")`,
+				},
 			}...),
 		},
 		{
@@ -110,6 +120,11 @@ func SSMResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("AssociationId")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::SSM::Association")`,
 					},
 				}...),
 		},
@@ -164,6 +179,11 @@ func SSMResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("BaselineId")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::SSM::PatchBaseline")`,
 					},
 				}...),
 		},

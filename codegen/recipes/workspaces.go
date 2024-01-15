@@ -21,6 +21,11 @@ func WorkspacesResources() []*Resource {
 						Resolver: `resolveWorkspaceArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::WorkSpaces::Workspace")`,
+					},
 				}...),
 		},
 		{

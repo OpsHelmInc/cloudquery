@@ -28,6 +28,11 @@ func AthenaResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveAthenaDataCatalogTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Athena::DataCatalog")`,
+					},
 				}...),
 			Relations: []string{
 				"DataCatalogDatabases()",
@@ -105,6 +110,11 @@ func AthenaResources() []*Resource {
 						Name:     "tags",
 						Type:     schema.TypeJSON,
 						Resolver: `resolveAthenaWorkGroupTags`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Athena::WorkGroup")`,
 					},
 				}...),
 			Relations: []string{

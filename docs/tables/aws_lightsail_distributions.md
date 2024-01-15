@@ -17,6 +17,7 @@ The primary key for this table is **arn**.
 |region|String|
 |arn (PK)|String|
 |tags|JSON|
+|oh_resource_type|String|
 |able_to_update_bundle|Bool|
 |alternative_domain_names|StringArray|
 |bundle_id|String|

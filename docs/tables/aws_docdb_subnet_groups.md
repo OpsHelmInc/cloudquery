@@ -17,6 +17,7 @@ The primary key for this table is **arn**.
 |region|String|
 |tags|JSON|
 |arn (PK)|String|
+|oh_resource_type|String|
 |db_subnet_group_description|String|
 |db_subnet_group_name|String|
 |subnet_group_status|String|

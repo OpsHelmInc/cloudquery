@@ -39,6 +39,11 @@ func ObservabilityConfigurations() *schema.Table {
 				Resolver: resolveApprunnerTags("ObservabilityConfigurationArn"),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::AppRunner::ObservabilityConfiguration"),
+			},
+			{
 				Name:     "created_at",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreatedAt"),

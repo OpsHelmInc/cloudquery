@@ -20,6 +20,7 @@ The following tables depend on aws_glue_jobs:
 |region|String|
 |arn (PK)|String|
 |tags|JSON|
+|oh_resource_type|String|
 |allocated_capacity|Int|
 |code_gen_configuration_nodes|JSON|
 |command|JSON|

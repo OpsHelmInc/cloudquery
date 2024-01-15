@@ -35,6 +35,11 @@ func RestApiDocumentationParts() *schema.Table {
 				Resolver: resolveApigatewayRestAPIDocumentationPartArn,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGateway::DocumentationPart"),
+			},
+			{
 				Name:     "id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Id"),

@@ -29,6 +29,11 @@ func ACMResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveCertificateTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::CertificateManager::Certificate")`,
+					},
 				}...),
 		},
 	}

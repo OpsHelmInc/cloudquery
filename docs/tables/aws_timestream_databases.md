@@ -19,6 +19,7 @@ The following tables depend on aws_timestream_databases:
 |account_id|String|
 |region|String|
 |tags|JSON|
+|oh_resource_type|String|
 |arn (PK)|String|
 |creation_time|Timestamp|
 |database_name|String|

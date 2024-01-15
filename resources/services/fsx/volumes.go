@@ -39,6 +39,11 @@ func Volumes() *schema.Table {
 				IgnoreInTests: true,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::FSx::Volume"),
+			},
+			{
 				Name:     "creation_time",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreationTime"),

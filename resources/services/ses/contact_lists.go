@@ -40,6 +40,11 @@ func ContactLists() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::SES::ContactList"),
+			},
+			{
 				Name:     "created_timestamp",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreatedTimestamp"),

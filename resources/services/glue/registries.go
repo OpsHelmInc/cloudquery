@@ -37,6 +37,11 @@ func Registries() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Glue::Registry"),
+			},
+			{
 				Name:     "created_time",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("CreatedTime"),

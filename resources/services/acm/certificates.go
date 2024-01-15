@@ -39,6 +39,11 @@ func Certificates() *schema.Table {
 				Resolver: resolveCertificateTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::CertificateManager::Certificate"),
+			},
+			{
 				Name:     "certificate_authority_arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("CertificateAuthorityArn"),

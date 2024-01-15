@@ -35,6 +35,11 @@ func UsagePlanKeys() *schema.Table {
 				Resolver: resolveApigatewayUsagePlanKeyArn,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGateway::UsagePlanKey"),
+			},
+			{
 				Name:     "id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Id"),

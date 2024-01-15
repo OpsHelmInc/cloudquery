@@ -16,6 +16,7 @@ The primary key for this table is **arn**.
 |account_id|String|
 |tags|JSON|
 |arn (PK)|String|
+|oh_resource_type|String|
 |distribution_config|JSON|
 |domain_name|String|
 |id|String|

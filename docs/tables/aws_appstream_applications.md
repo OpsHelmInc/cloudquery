@@ -19,6 +19,7 @@ The following tables depend on aws_appstream_applications:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |app_block_arn|String|
 |created_time|Timestamp|
 |description|String|

@@ -19,6 +19,7 @@ The following tables depend on aws_cognito_user_pools:
 |account_id (PK)|String|
 |region (PK)|String|
 |id (PK)|String|
+|oh_resource_type|String|
 |account_recovery_setting|JSON|
 |admin_create_user_config|JSON|
 |alias_attributes|StringArray|

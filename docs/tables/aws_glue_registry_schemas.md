@@ -21,6 +21,7 @@ The following tables depend on aws_glue_registry_schemas:
 |region|String|
 |arn|String|
 |tags|JSON|
+|oh_resource_type|String|
 |compatibility|String|
 |created_time|String|
 |data_format|String|

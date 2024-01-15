@@ -35,6 +35,11 @@ func DomainNameRestApiMappings() *schema.Table {
 				Resolver: resolveDomainNameRestApiMappingArn(),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGatewayV2::ApiMapping"),
+			},
+			{
 				Name:     "api_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ApiId"),

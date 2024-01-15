@@ -38,6 +38,11 @@ func RateBasedRules() *schema.Table {
 				Resolver: resolveWafregionalRateBasedRuleTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::WAFRegional::RateBasedRule"),
+			},
+			{
 				Name:     "match_predicates",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("MatchPredicates"),

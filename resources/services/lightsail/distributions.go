@@ -37,6 +37,11 @@ func Distributions() *schema.Table {
 				Resolver: client.ResolveTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Lightsail::Distribution"),
+			},
+			{
 				Name:     "able_to_update_bundle",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("AbleToUpdateBundle"),

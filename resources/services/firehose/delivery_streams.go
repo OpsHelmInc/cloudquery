@@ -39,6 +39,11 @@ func DeliveryStreams() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::KinesisFirehose::DeliveryStream"),
+			},
+			{
 				Name:     "delivery_stream_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("DeliveryStreamName"),

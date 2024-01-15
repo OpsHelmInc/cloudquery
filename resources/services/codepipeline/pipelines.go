@@ -38,6 +38,11 @@ func Pipelines() *schema.Table {
 				Resolver: resolvePipelineTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Pipeline::Pipeline"),
+			},
+			{
 				Name:     "metadata",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Metadata"),

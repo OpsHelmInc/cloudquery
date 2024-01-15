@@ -24,6 +24,11 @@ func MQResources() []*Resource {
 						Resolver: `schema.PathResolver("BrokerArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::AmazonMQ::Broker")`,
+					},
 				}...),
 			Relations: []string{
 				"BrokerConfigurations()",
@@ -42,6 +47,11 @@ func MQResources() []*Resource {
 						Name:     "broker_arn",
 						Type:     schema.TypeString,
 						Resolver: `schema.ParentColumnResolver("arn")`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::AmazonMQ::Configuration")`,
 					},
 				}...),
 			Relations: []string{

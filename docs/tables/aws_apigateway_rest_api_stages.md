@@ -19,6 +19,7 @@ This table depends on [aws_apigateway_rest_apis](aws_apigateway_rest_apis.md).
 |region|String|
 |rest_api_arn|String|
 |arn|String|
+|oh_resource_type|String|
 |access_log_settings|JSON|
 |cache_cluster_enabled|Bool|
 |cache_cluster_size|String|

@@ -39,6 +39,11 @@ func DataCatalogs() *schema.Table {
 				Resolver: resolveAthenaDataCatalogTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Athena::DataCatalog"),
+			},
+			{
 				Name:     "name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Name"),

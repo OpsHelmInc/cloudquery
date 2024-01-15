@@ -37,6 +37,11 @@ func DevEndpoints() *schema.Table {
 				Resolver: resolveGlueDevEndpointTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Glue::DevEndpoint"),
+			},
+			{
 				Name:     "arguments",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Arguments"),

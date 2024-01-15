@@ -19,6 +19,7 @@ This table depends on [aws_appstream_stacks](aws_appstream_stacks.md).
 |region (PK)|String|
 |stack_name (PK)|String|
 |name (PK)|String|
+|oh_resource_type|String|
 |app_visibility|String|
 |attributes|JSON|
 |created_time|Timestamp|

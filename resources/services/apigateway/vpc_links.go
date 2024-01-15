@@ -30,6 +30,11 @@ func VpcLinks() *schema.Table {
 				Resolver: resolveApigatewayVpcLinkArn,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGateway::VpcLink"),
+			},
+			{
 				Name:     "description",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Description"),

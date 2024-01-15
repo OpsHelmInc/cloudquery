@@ -27,6 +27,11 @@ func SSOAdminResources() []*Resource {
 					Type:     schema.TypeJSON,
 					Resolver: "getSsoadminPermissionSetInlinePolicy",
 				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::SSO::PermissionSet")`,
+				},
 			},
 			Relations: []string{
 				"AccountAssignments()",
@@ -36,6 +41,13 @@ func SSOAdminResources() []*Resource {
 			SubService:  "account_assignments",
 			Struct:      &types.AccountAssignment{},
 			Description: "https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AccountAssignment.html",
+			ExtraColumns: []codegen.ColumnDefinition{
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::SSO::Assignment")`,
+				},
+			},
 		},
 	}
 

@@ -20,6 +20,7 @@ The following tables depend on aws_lightsail_instances:
 |region|String|
 |access_details|JSON|
 |arn (PK)|String|
+|oh_resource_type|String|
 |add_ons|JSON|
 |blueprint_id|String|
 |blueprint_name|String|

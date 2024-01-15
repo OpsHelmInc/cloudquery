@@ -20,6 +20,7 @@ The following tables depend on aws_neptune_db_parameter_groups:
 |region|String|
 |arn (PK)|String|
 |tags|JSON|
+|oh_resource_type|String|
 |db_parameter_group_family|String|
 |db_parameter_group_name|String|
 |description|String|

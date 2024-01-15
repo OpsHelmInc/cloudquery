@@ -27,6 +27,11 @@ func EventbridgeResources() []*Resource {
 						Type:    schema.TypeString,
 						Options: schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Events::EventBus")`,
+					},
 				}...),
 			Relations: []string{
 				"EventBusRules()",
@@ -65,6 +70,11 @@ func EventbridgeResources() []*Resource {
 				Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 				Resolver: `schema.PathResolver("ApiDestinationArn")`,
 			},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::Events::ApiDestination")`,
+				},
 			}...),
 			ShouldGenerateResolverAndMockTest: true,
 		},
@@ -77,7 +87,13 @@ func EventbridgeResources() []*Resource {
 				Type:     schema.TypeString,
 				Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 				Resolver: `resolveArchiveArn`,
-			}}...),
+			},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::Events::Archive")`,
+				},
+			}...),
 			ShouldGenerateResolverAndMockTest: true,
 		},
 		{
@@ -91,6 +107,11 @@ func EventbridgeResources() []*Resource {
 				Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 				Resolver: `schema.PathResolver("ConnectionArn")`,
 			},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::Events::Connection")`,
+				},
 			}...),
 			ShouldGenerateResolverAndMockTest: true,
 		},
@@ -135,6 +156,11 @@ func EventbridgeResources() []*Resource {
 				Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 				Resolver: `schema.PathResolver("Arn")`,
 			},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::Events::Endpoint")`,
+				},
 			}...),
 			ShouldGenerateResolverAndMockTest: true,
 		},

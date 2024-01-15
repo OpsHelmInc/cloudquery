@@ -18,6 +18,7 @@ The primary key for this table is **arn**.
 |things_in_group|StringArray|
 |tags|JSON|
 |arn (PK)|String|
+|oh_resource_type|String|
 |billing_group_id|String|
 |billing_group_metadata|JSON|
 |billing_group_name|String|

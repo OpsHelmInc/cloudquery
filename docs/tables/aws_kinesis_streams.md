@@ -17,6 +17,7 @@ The primary key for this table is **arn**.
 |region|String|
 |arn (PK)|String|
 |tags|JSON|
+|oh_resource_type|String|
 |enhanced_monitoring|JSON|
 |open_shard_count|Int|
 |retention_period_hours|Int|

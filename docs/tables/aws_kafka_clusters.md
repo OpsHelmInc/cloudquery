@@ -19,6 +19,7 @@ The following tables depend on aws_kafka_clusters:
 |_cq_parent_id|UUID|
 |account_id|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |active_operation_arn|String|
 |cluster_name|String|
 |cluster_type|String|

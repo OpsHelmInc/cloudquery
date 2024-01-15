@@ -30,6 +30,11 @@ func RedshiftResources() []*Resource {
 						Type:        schema.TypeJSON,
 						Resolver:    `resolveRedshiftClusterLoggingStatus`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Redshift::Cluster")`,
+					},
 				}...),
 			Relations: []string{
 				"Snapshots()",
@@ -56,6 +61,11 @@ func RedshiftResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("ParameterGroupName")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Redshift::ClusterParameterGroup")`,
 					},
 				}...),
 			Relations: []string{
@@ -100,6 +110,11 @@ func RedshiftResources() []*Resource {
 						Resolver:    `resolveEventSubscriptionARN`,
 						Options:     schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Redshift::EventSubscription")`,
+					},
 				}...),
 		},
 
@@ -140,6 +155,11 @@ func RedshiftResources() []*Resource {
 						Type:        schema.TypeString,
 						Resolver:    `resolveSubnetGroupArn()`,
 						Options:     schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Redshift::ClusterSubnetGroup")`,
 					},
 				}...),
 		},

@@ -39,6 +39,11 @@ func StateMachines() *schema.Table {
 				Resolver: resolveStepFunctionTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::StepFunctions::StateMachine"),
+			},
+			{
 				Name:     "creation_date",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreationDate"),

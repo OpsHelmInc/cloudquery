@@ -26,6 +26,11 @@ func CloudfrontResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveCachePolicyARN()`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::CloudFront::CachePolicy")`,
+					},
 				}...),
 		},
 		{
@@ -47,6 +52,11 @@ func CloudfrontResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("ARN")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::CloudFront::Distribution")`,
 					},
 				}...),
 		},

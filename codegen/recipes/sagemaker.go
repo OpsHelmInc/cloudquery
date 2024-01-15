@@ -29,6 +29,11 @@ func SagemakerResources() []*Resource {
 						Type:        schema.TypeJSON,
 						Resolver:    `resolveSagemakerEndpointConfigurationTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::SageMaker::EndpointConfig")`,
+					},
 				}...),
 		},
 
@@ -52,6 +57,11 @@ func SagemakerResources() []*Resource {
 						Type:        schema.TypeJSON,
 						Resolver:    `resolveSagemakerModelTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::SageMaker::Model")`,
+					},
 				}...),
 		},
 
@@ -74,6 +84,11 @@ func SagemakerResources() []*Resource {
 						Description: "The tags associated with the notebook instance.",
 						Type:        schema.TypeJSON,
 						Resolver:    `resolveSagemakerNotebookInstanceTags`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::SageMaker::NotebookInstance")`,
 					},
 				}...),
 		},

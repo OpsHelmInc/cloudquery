@@ -28,6 +28,11 @@ func DynamoDBResources() []*Resource {
 						Resolver: `schema.PathResolver("TableArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::DynamoDB::Table")`,
+					},
 				}...),
 			Relations: []string{
 				"TableReplicaAutoScalings()",

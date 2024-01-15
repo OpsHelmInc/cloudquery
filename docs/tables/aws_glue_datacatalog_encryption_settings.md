@@ -15,5 +15,6 @@ The primary key for this table is **account_id**.
 |_cq_parent_id|UUID|
 |account_id (PK)|String|
 |region|String|
+|oh_resource_type|String|
 |connection_password_encryption|JSON|
 |encryption_at_rest|JSON|

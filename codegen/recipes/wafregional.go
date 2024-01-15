@@ -28,6 +28,11 @@ func WAFRegionalResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveWafregionalRateBasedRuleTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::WAFRegional::RateBasedRule")`,
+					},
 				}...),
 		},
 		{
@@ -50,6 +55,11 @@ func WAFRegionalResources() []*Resource {
 						Type:        schema.TypeJSON,
 						Resolver:    `resolveWafregionalRuleGroupTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::WAFRegional::RuleGroup")`,
+					},
 				}...),
 		},
 		{
@@ -71,6 +81,11 @@ func WAFRegionalResources() []*Resource {
 						Description: "Rule tags.",
 						Type:        schema.TypeJSON,
 						Resolver:    `resolveWafregionalRuleTags`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::WAFRegional::Rule")`,
 					},
 				}...),
 		},
@@ -98,6 +113,11 @@ func WAFRegionalResources() []*Resource {
 						Name:     "resources_for_web_acl",
 						Type:     schema.TypeStringArray,
 						Resolver: `resolveWafregionalWebACLResourcesForWebACL`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::WAFRegional::WebACL")`,
 					},
 				}...),
 		},

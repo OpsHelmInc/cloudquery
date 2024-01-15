@@ -38,6 +38,11 @@ func SubnetGroups() *schema.Table {
 				Resolver: resolveNeptuneSubnetGroupTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Neptune::DBSubnetGroup"),
+			},
+			{
 				Name:     "db_subnet_group_description",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("DBSubnetGroupDescription"),

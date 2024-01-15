@@ -18,6 +18,7 @@ This table depends on [aws_ram_resource_shares](aws_ram_resource_shares.md).
 |account_id|String|
 |region|String|
 |permission|JSON|
+|oh_resource_type|String|
 |arn (PK)|String|
 |creation_time|Timestamp|
 |default_version|Bool|

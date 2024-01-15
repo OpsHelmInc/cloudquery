@@ -20,6 +20,7 @@ The following tables depend on aws_route53_hosted_zones:
 |_cq_parent_id|UUID|
 |account_id|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |caller_reference|String|
 |id|String|
 |name|String|

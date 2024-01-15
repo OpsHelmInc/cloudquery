@@ -39,6 +39,11 @@ func Parameters() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::SSM::Parameter"),
+			},
+			{
 				Name:     "allowed_pattern",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("AllowedPattern"),

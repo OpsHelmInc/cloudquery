@@ -44,6 +44,11 @@ func IdentityPools() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Cognito::IdentityPool"),
+			},
+			{
 				Name:     "allow_unauthenticated_identities",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("AllowUnauthenticatedIdentities"),

@@ -22,6 +22,7 @@ The following tables depend on aws_apigatewayv2_api_integrations:
 |api_arn|String|
 |api_id|String|
 |arn|String|
+|oh_resource_type|String|
 |api_gateway_managed|Bool|
 |connection_id|String|
 |connection_type|String|

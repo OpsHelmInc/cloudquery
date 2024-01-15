@@ -25,11 +25,19 @@ func RAMResources() []*Resource {
 			ExtraColumns: defaultRegionalColumns,
 		},
 		{
-			SubService:   "resource_shares",
-			Struct:       new(types.ResourceShare),
-			Multiplex:    mx,
-			PKColumns:    []string{"arn"},
-			ExtraColumns: defaultRegionalColumns,
+			SubService: "resource_shares",
+			Struct:     new(types.ResourceShare),
+			Multiplex:  mx,
+			PKColumns:  []string{"arn"},
+			ExtraColumns: append(
+				defaultRegionalColumns,
+				[]codegen.ColumnDefinition{
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::RAM::ResourceShare")`,
+					},
+				}...),
 			Relations: []string{
 				"ResourceSharePermissions()",
 			},
@@ -58,13 +66,19 @@ func RAMResources() []*Resource {
 			Multiplex:  "", // it's a relation for resource_shares
 			PKColumns:  []string{"arn"},
 			ExtraColumns: append(defaultRegionalColumns,
-				codegen.ColumnDefinition{
-					// grabbed from types.ResourceSharePermissionDetail
-					Name:     "permission",
-					Type:     schema.TypeJSON,
-					Resolver: `resolveResourceSharePermissionDetailPermission`,
-				},
-			),
+				[]codegen.ColumnDefinition{
+					{
+						// grabbed from types.ResourceSharePermissionDetail
+						Name:     "permission",
+						Type:     schema.TypeJSON,
+						Resolver: `resolveResourceSharePermissionDetailPermission`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::RAM::ResourceShare")`,
+					},
+				}...),
 			CustomListInput: `listResourceSharePermissionsInput()`,
 		},
 		{

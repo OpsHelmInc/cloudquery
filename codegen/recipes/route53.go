@@ -82,6 +82,11 @@ func Route53Resources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveRoute53healthCheckCloudWatchAlarmConfigurationDimensions`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Route53::HealthCheck")`,
+					},
 				}...),
 		},
 
@@ -97,6 +102,11 @@ func Route53Resources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveRoute53HostedZoneArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Route53::HostedZone")`,
 					},
 				}...),
 			Relations: []string{

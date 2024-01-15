@@ -20,6 +20,7 @@ The following tables depend on aws_mq_broker_configurations:
 |account_id|String|
 |region|String|
 |broker_arn|String|
+|oh_resource_type|String|
 |arn|String|
 |authentication_strategy|String|
 |created|Timestamp|

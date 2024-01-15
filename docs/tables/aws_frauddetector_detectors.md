@@ -20,6 +20,7 @@ The following tables depend on aws_frauddetector_detectors:
 |region|String|
 |arn (PK)|String|
 |tags|JSON|
+|oh_resource_type|String|
 |created_time|String|
 |description|String|
 |detector_id|String|

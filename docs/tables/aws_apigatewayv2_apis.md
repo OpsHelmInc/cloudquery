@@ -25,6 +25,7 @@ The following tables depend on aws_apigatewayv2_apis:
 |region|String|
 |arn|String|
 |id|String|
+|oh_resource_type|String|
 |name|String|
 |protocol_type|String|
 |route_selection_expression|String|

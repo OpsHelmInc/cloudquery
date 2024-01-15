@@ -19,6 +19,7 @@ The primary key for this table is **arn**.
 |policies|StringArray|
 |tags|JSON|
 |arn (PK)|String|
+|oh_resource_type|String|
 |index_name|String|
 |query_string|String|
 |query_version|String|

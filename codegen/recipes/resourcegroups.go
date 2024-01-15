@@ -31,6 +31,11 @@ func ResourceGroupsResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveResourcegroupsResourceGroupTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ResourceGroups::Group")`,
+					},
 				}...),
 		},
 	}

@@ -17,6 +17,7 @@ The primary key for this table is **arn**.
 |arn (PK)|String|
 |tags|JSON|
 |cloud_watch_alarm_configuration_dimensions|JSON|
+|oh_resource_type|String|
 |caller_reference|String|
 |health_check_config|JSON|
 |health_check_version|Int|

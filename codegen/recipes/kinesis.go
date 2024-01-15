@@ -28,6 +28,11 @@ func KinesisResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveKinesisStreamTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Kinesis::Stream")`,
+					},
 				}...),
 		},
 	}

@@ -40,6 +40,11 @@ func ApiDeployments() *schema.Table {
 				Resolver: resolveApiDeploymentArn(),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGatewayV2::Deployment"),
+			},
+			{
 				Name:     "auto_deployed",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("AutoDeployed"),

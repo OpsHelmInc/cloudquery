@@ -19,6 +19,7 @@ This table depends on [aws_apigateway_rest_apis](aws_apigateway_rest_apis.md).
 |region|String|
 |rest_api_arn|String|
 |arn|String|
+|oh_resource_type|String|
 |auth_type|String|
 |authorizer_credentials|String|
 |authorizer_result_ttl_in_seconds|Int|

@@ -38,6 +38,11 @@ func Instances() *schema.Table {
 				Resolver: resolveNeptuneInstanceTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Neptune::DBInstance"),
+			},
+			{
 				Name:     "allocated_storage",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("AllocatedStorage"),

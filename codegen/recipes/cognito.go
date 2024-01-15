@@ -38,6 +38,11 @@ func CognitoResources() []*Resource {
 					Resolver: `schema.PathResolver("IdentityPoolId")`,
 					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::Cognito::IdentityPool")`,
+				},
 			},
 		},
 		{
@@ -65,6 +70,11 @@ func CognitoResources() []*Resource {
 					Resolver: `schema.PathResolver("Id")`,
 					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::Cognito::UserPool")`,
+				},
 			},
 			Relations: []string{
 				"UserPoolIdentityProviders()",
@@ -83,6 +93,11 @@ func CognitoResources() []*Resource {
 						Name:     "user_pool_arn",
 						Type:     schema.TypeString,
 						Resolver: `schema.ParentColumnResolver("arn")`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Cognito::UserPoolIdentityProvider")`,
 					},
 				}...),
 		},

@@ -39,6 +39,11 @@ func RuleGroups() *schema.Table {
 				Description: `Rule group tags.`,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::WAFRegional::RuleGroup"),
+			},
+			{
 				Name:     "rule_group_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("RuleGroupId"),

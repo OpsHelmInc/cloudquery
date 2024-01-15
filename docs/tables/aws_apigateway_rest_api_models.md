@@ -20,6 +20,7 @@ This table depends on [aws_apigateway_rest_apis](aws_apigateway_rest_apis.md).
 |rest_api_arn|String|
 |arn|String|
 |model_template|String|
+|oh_resource_type|String|
 |content_type|String|
 |description|String|
 |id|String|

@@ -39,6 +39,11 @@ func PatchBaselines() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::SSM::PatchBaseline"),
+			},
+			{
 				Name:     "baseline_description",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("BaselineDescription"),

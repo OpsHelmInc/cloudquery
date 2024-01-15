@@ -21,6 +21,11 @@ func PermissionSets() *schema.Table {
 				Resolver: getSsoadminPermissionSetInlinePolicy,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::SSO::PermissionSet"),
+			},
+			{
 				Name:     "created_date",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreatedDate"),

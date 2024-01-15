@@ -23,6 +23,7 @@ The following tables depend on aws_elasticbeanstalk_environments:
 |tags|JSON|
 |id (PK)|String|
 |listeners|JSON|
+|oh_resource_type|String|
 |abortable_operation_in_progress|Bool|
 |application_name|String|
 |cname|String|

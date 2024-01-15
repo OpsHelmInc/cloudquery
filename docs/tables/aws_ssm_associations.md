@@ -16,6 +16,7 @@ The composite primary key for this table is (**account_id**, **region**, **assoc
 |account_id (PK)|String|
 |region (PK)|String|
 |association_id (PK)|String|
+|oh_resource_type|String|
 |association_name|String|
 |association_version|String|
 |document_version|String|

@@ -20,6 +20,7 @@ The following tables depend on aws_cloudformation_stacks:
 |region|String|
 |id|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |creation_time|Timestamp|
 |stack_name|String|
 |stack_status|String|

@@ -38,6 +38,11 @@ func Jobs() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::IoT::JobTemplate"),
+			},
+			{
 				Name:     "abort_config",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("AbortConfig"),

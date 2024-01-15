@@ -16,6 +16,9 @@ The following tables depend on aws_identitystore_groups:
 |_cq_sync_time|Timestamp|
 |_cq_id (PK)|UUID|
 |_cq_parent_id|UUID|
+|account_id|String|
+|region|String|
+|oh_resource_type|String|
 |group_id|String|
 |identity_store_id|String|
 |description|String|

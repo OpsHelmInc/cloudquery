@@ -42,6 +42,11 @@ func ClusterParameterGroups() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Redshift::ClusterParameterGroup"),
+			},
+			{
 				Name:     "cluster_parameter_status_list",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ClusterParameterStatusList"),

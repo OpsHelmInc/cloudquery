@@ -39,6 +39,11 @@ func Tables() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::DynamoDB::Table"),
+			},
+			{
 				Name:     "archival_summary",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ArchivalSummary"),

@@ -18,6 +18,7 @@ The primary key for this table is **arn**.
 |tags|JSON|
 |arn (PK)|String|
 |policy|JSON|
+|oh_resource_type|String|
 |capacity|Int|
 |id|String|
 |name|String|

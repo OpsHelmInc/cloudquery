@@ -33,6 +33,11 @@ func GraphqlApis() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::AppSync::GraphQLApi"),
+			},
+			{
 				Name:     "additional_authentication_providers",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("AdditionalAuthenticationProviders"),

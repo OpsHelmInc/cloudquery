@@ -34,6 +34,11 @@ func Distributions() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::CloudFront::Distribution"),
+			},
+			{
 				Name:     "distribution_config",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("DistributionConfig"),

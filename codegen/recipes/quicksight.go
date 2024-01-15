@@ -27,6 +27,11 @@ func QuickSightResources() []*Resource {
 						Resolver: `schema.PathResolver("Arn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::QuickSight::Analysis")`,
+					},
 				}...),
 		},
 		{
@@ -47,6 +52,11 @@ func QuickSightResources() []*Resource {
 						Resolver: `schema.PathResolver("Arn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::QuickSight::Dashboard")`,
+					},
 				}...),
 		},
 		{
@@ -66,6 +76,11 @@ func QuickSightResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("Arn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::QuickSight::DataSet")`,
 					},
 				}...),
 			Relations: []string{
@@ -96,6 +111,11 @@ func QuickSightResources() []*Resource {
 					//	Resolver:      `schema.PathResolver("AlternateDataSourceParameters")`,
 					//	IgnoreInTests: true,
 					//},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::QuickSight::DataSource")`,
+					},
 				}...),
 		},
 		{
@@ -206,6 +226,11 @@ func QuickSightResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("Arn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::QuickSight::Template")`,
 					},
 				}...),
 		},

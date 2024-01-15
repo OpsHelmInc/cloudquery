@@ -16,6 +16,7 @@ The primary key for this table is **_cq_id**.
 |account_id|String|
 |region|String|
 |tags|JSON|
+|oh_resource_type|String|
 |arn|String|
 |created_at|Timestamp|
 |domain_name|String|

@@ -30,6 +30,11 @@ func CachePolicies() *schema.Table {
 				Resolver: resolveCachePolicyARN(),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::CloudFront::CachePolicy"),
+			},
+			{
 				Name:     "cache_policy",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("CachePolicy"),

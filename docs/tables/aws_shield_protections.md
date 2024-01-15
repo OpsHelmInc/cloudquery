@@ -16,6 +16,7 @@ The primary key for this table is **arn**.
 |account_id|String|
 |arn (PK)|String|
 |tags|JSON|
+|oh_resource_type|String|
 |application_layer_automatic_response_configuration|JSON|
 |health_check_ids|StringArray|
 |id|String|

@@ -27,6 +27,11 @@ func HostedZones() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Route53::HostedZone"),
+			},
+			{
 				Name:     "caller_reference",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("CallerReference"),

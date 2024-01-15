@@ -37,6 +37,11 @@ func DataSets() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::QuickSight::DataSet"),
+			},
+			{
 				Name:     "column_level_permission_rules_applied",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("ColumnLevelPermissionRulesApplied"),

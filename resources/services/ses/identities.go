@@ -34,6 +34,11 @@ func Identities() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::SES::EmailIdentity"),
+			},
+			{
 				Name:     "identity_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("IdentityName"),

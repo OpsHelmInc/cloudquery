@@ -32,6 +32,11 @@ func IOTResources() []*Resource {
 						Resolver: `schema.PathResolver("BillingGroupArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::IoT::BillingGroup")`,
+					},
 				}...),
 		},
 		{
@@ -52,6 +57,11 @@ func IOTResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("CertificateArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::IoT::CACertificate")`,
 					},
 				}...),
 		},
@@ -74,6 +84,11 @@ func IOTResources() []*Resource {
 						Resolver: `schema.PathResolver("CertificateArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::IoT::Certificate")`,
+					},
 				}...),
 		},
 		{
@@ -95,6 +110,11 @@ func IOTResources() []*Resource {
 						Resolver: `schema.PathResolver("JobArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::IoT::JobTemplate")`,
+					},
 				}...),
 		},
 		{
@@ -115,6 +135,11 @@ func IOTResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("PolicyArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::IoT::Policy")`,
 					},
 				}...),
 		},
@@ -140,6 +165,11 @@ func IOTResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("SecurityProfileArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::IoT::SecurityProfile")`,
 					},
 				}...),
 		},
@@ -188,6 +218,11 @@ func IOTResources() []*Resource {
 						Resolver: `schema.PathResolver("ThingGroupArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::IoT::ThingGroup")`,
+					},
 				}...),
 		},
 		{
@@ -208,6 +243,11 @@ func IOTResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("ThingTypeArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::IoT::ThingType")`,
 					},
 				}...),
 		},
@@ -231,6 +271,11 @@ func IOTResources() []*Resource {
 						Resolver: `schema.PathResolver("ThingArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::IoT::Thing")`,
+					},
 				}...),
 		},
 		{
@@ -250,6 +295,11 @@ func IOTResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("RuleArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::IoT::TopicRule")`,
 					},
 				}...),
 		},

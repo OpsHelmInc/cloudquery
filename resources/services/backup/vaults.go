@@ -50,6 +50,11 @@ func Vaults() *schema.Table {
 				Resolver: resolveVaultTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Backup::BackupVault"),
+			},
+			{
 				Name:     "backup_vault_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("BackupVaultName"),

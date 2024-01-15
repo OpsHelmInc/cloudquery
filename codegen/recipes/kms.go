@@ -22,6 +22,11 @@ func KMSResources() []*Resource {
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 						Resolver: `schema.PathResolver("AliasArn")`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::KMS::Alias")`,
+					},
 				}...),
 		}, {
 			SubService:          "keys",
@@ -52,6 +57,11 @@ func KMSResources() []*Resource {
 						Type:          schema.TypeJSON,
 						Resolver:      `resolveKeysReplicaKeys`,
 						IgnoreInTests: true,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::KMS::Key")`,
 					},
 				}...),
 			Relations: []string{"KeyGrants()"},

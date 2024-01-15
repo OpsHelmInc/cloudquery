@@ -18,6 +18,7 @@ The primary key for this table is **arn**.
 |arn (PK)|String|
 |tags|JSON|
 |administrative_actions|JSON|
+|oh_resource_type|String|
 |creation_time|Timestamp|
 |dns_name|String|
 |failure_details|JSON|

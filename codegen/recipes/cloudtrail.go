@@ -34,6 +34,11 @@ func CloudtrailResources() []*Resource {
 					Type:     schema.TypeJSON,
 					Resolver: `resolveCloudTrailStatus`,
 				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::CloudTrail::Trail")`,
+				},
 			}...),
 			Relations: []string{
 				"TrailEventSelectors()",

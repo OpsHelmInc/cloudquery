@@ -20,6 +20,7 @@ The following tables depend on aws_lightsail_databases:
 |_cq_parent_id|UUID|
 |account_id|String|
 |region|String|
+|oh_resource_type|String|
 |arn|String|
 |backup_retention_enabled|Bool|
 |ca_certificate_identifier|String|

@@ -30,6 +30,11 @@ func CloudformationResources() []*Resource {
 						Resolver: `schema.PathResolver("StackId")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::CloudFormation::Stack")`,
+					},
 				}...),
 			Relations: []string{
 				"StackResources()",

@@ -20,6 +20,7 @@ The following tables depend on aws_lightsail_container_services:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |container_service_name|String|
 |created_at|Timestamp|
 |current_deployment|JSON|

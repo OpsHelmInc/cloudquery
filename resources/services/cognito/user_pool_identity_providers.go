@@ -31,6 +31,11 @@ func UserPoolIdentityProviders() *schema.Table {
 				Resolver: schema.ParentColumnResolver("arn"),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Cognito::UserPoolIdentityProvider"),
+			},
+			{
 				Name:     "attribute_mapping",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("AttributeMapping"),

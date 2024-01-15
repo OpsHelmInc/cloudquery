@@ -37,6 +37,11 @@ func Databases() *schema.Table {
 				Resolver: resolveGlueDatabaseTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Glue::Database"),
+			},
+			{
 				Name:     "name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Name"),

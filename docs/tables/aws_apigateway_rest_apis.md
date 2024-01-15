@@ -27,6 +27,7 @@ The following tables depend on aws_apigateway_rest_apis:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |api_key_source|String|
 |binary_media_types|StringArray|
 |created_date|Timestamp|

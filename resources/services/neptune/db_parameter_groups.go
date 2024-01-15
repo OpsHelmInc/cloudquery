@@ -38,6 +38,11 @@ func DbParameterGroups() *schema.Table {
 				Resolver: resolveNeptuneDbParameterGroupTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Neptune::DBParameterGroup"),
+			},
+			{
 				Name:     "db_parameter_group_family",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("DBParameterGroupFamily"),

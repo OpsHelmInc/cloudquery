@@ -30,6 +30,11 @@ func ScheduleGroups() *schema.Table {
 				Resolver: resolveSchedulerScheduleTags(),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Scheduler::ScheduleGroup"),
+			},
+			{
 				Name:     "arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Arn"),

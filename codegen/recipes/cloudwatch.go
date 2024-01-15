@@ -32,6 +32,11 @@ func CloudwatchResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveCloudwatchAlarmDimensions`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::CloudWatch::Alarm")`,
+					},
 				}...),
 		},
 	}

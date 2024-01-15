@@ -42,6 +42,11 @@ func MlTransforms() *schema.Table {
 				Resolver: resolveMlTransformsSchema,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Glue::MLTransform"),
+			},
+			{
 				Name:     "created_on",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreatedOn"),

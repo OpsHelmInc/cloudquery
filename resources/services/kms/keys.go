@@ -49,6 +49,11 @@ func Keys() *schema.Table {
 				IgnoreInTests: true,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::KMS::Key"),
+			},
+			{
 				Name:     "key_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("KeyId"),

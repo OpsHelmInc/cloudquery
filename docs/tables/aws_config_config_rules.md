@@ -19,6 +19,7 @@ The following tables depend on aws_config_config_rules:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |source|JSON|
 |config_rule_id|String|
 |config_rule_name|String|

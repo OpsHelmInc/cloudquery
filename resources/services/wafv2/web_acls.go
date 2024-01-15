@@ -43,6 +43,11 @@ func WebAcls() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::WAFv2::WebACL"),
+			},
+			{
 				Name:     "default_action",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("DefaultAction"),

@@ -32,6 +32,11 @@ func GlueResources() []*Resource {
 					Resolver: `resolveGlueClassifierName`,
 					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::Glue::Classifier")`,
+				},
 			},
 		},
 		{
@@ -46,6 +51,11 @@ func GlueResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveGlueConnectionArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Glue::Connection")`,
 					},
 				}...),
 		},
@@ -67,6 +77,11 @@ func GlueResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveGlueCrawlerTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Glue::Crawler")`,
+					},
 				}...),
 		},
 		{
@@ -86,6 +101,11 @@ func GlueResources() []*Resource {
 						Name:     "tags",
 						Type:     schema.TypeJSON,
 						Resolver: `resolveGlueDatabaseTags`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Glue::Database")`,
 					},
 				}...),
 			Relations: []string{
@@ -159,6 +179,11 @@ func GlueResources() []*Resource {
 					Type:     schema.TypeString,
 					Resolver: "client.ResolveAWSRegion",
 				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::Glue::DataCatalogEncryptionSettings")`,
+				},
 			},
 		},
 		{
@@ -179,6 +204,11 @@ func GlueResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveGlueDevEndpointTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Glue::DevEndpoint")`,
+					},
 				}...),
 		},
 		{
@@ -198,6 +228,11 @@ func GlueResources() []*Resource {
 						Name:     "tags",
 						Type:     schema.TypeJSON,
 						Resolver: `resolveGlueJobTags`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Glue::Job")`,
 					},
 				}...),
 			Relations: []string{
@@ -241,6 +276,11 @@ func GlueResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveMlTransformsSchema`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Glue::MLTransform")`,
+					},
 				}...),
 			Relations: []string{
 				"MlTransformTaskRuns()",
@@ -278,6 +318,11 @@ func GlueResources() []*Resource {
 						Resolver: `schema.PathResolver("RegistryArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Glue::Registry")`,
+					},
 				}...),
 			Relations: []string{
 				"RegistrySchemas()",
@@ -301,6 +346,11 @@ func GlueResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveGlueRegistrySchemaTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Glue::Schema")`,
+					},
 				}...),
 			Relations: []string{
 				"RegistrySchemaVersions()",
@@ -323,6 +373,11 @@ func GlueResources() []*Resource {
 						Name:     "metadata",
 						Type:     schema.TypeJSON,
 						Resolver: `resolveGlueRegistrySchemaVersionMetadata`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Glue::SchemaVersion")`,
 					},
 				}...),
 		},
@@ -348,6 +403,11 @@ func GlueResources() []*Resource {
 					Type:    schema.TypeString,
 					Options: schema.ColumnCreationOptions{PrimaryKey: true},
 				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::Glue::SecurityConfiguration")`,
+				},
 			},
 		},
 		{
@@ -369,6 +429,11 @@ func GlueResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveGlueTriggerTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Glue::Trigger")`,
+					},
 				}...),
 		},
 		{
@@ -389,6 +454,11 @@ func GlueResources() []*Resource {
 						Name:     "tags",
 						Type:     schema.TypeJSON,
 						Resolver: `resolveGlueWorkflowTags`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Glue::Workflow")`,
 					},
 				}...),
 		},

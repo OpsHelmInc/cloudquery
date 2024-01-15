@@ -22,6 +22,11 @@ func APIGatewayResources() []*Resource {
 						Resolver: `resolveApigatewayAPIKeyArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ApiGateway::ApiKey")`,
+					},
 				}...),
 		},
 		{
@@ -38,6 +43,11 @@ func APIGatewayResources() []*Resource {
 						Resolver: `resolveApigatewayClientCertificateArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ApiGateway::ClientCertificate")`,
+					},
 				}...),
 		},
 		{
@@ -53,6 +63,11 @@ func APIGatewayResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveApigatewayDomainNameArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ApiGateway::DomainName")`,
 					},
 				}...),
 			Relations: []string{
@@ -77,6 +92,11 @@ func APIGatewayResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveApigatewayDomainNameBasePathMappingArn`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ApiGateway::BasePathMapping")`,
+					},
 				}...),
 		},
 		{
@@ -92,6 +112,11 @@ func APIGatewayResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveApigatewayRestAPIArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ApiGateway::RestApi")`,
 					},
 				}...),
 			Relations: []string{
@@ -124,6 +149,11 @@ func APIGatewayResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveApigatewayRestAPIAuthorizerArn`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ApiGateway::Authorizer")`,
+					},
 				}...),
 		},
 		{
@@ -143,6 +173,11 @@ func APIGatewayResources() []*Resource {
 						Name:     "arn",
 						Type:     schema.TypeString,
 						Resolver: `resolveApigatewayRestAPIDeploymentArn`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ApiGateway::Deployment")`,
 					},
 				}...),
 		},
@@ -164,6 +199,11 @@ func APIGatewayResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveApigatewayRestAPIDocumentationPartArn`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ApiGateway::DocumentationPart")`,
+					},
 				}...),
 		},
 		{
@@ -184,6 +224,11 @@ func APIGatewayResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveApigatewayRestAPIDocumentationVersionArn`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ApiGateway::DocumentationVersion")`,
+					},
 				}...),
 		},
 		{
@@ -203,6 +248,11 @@ func APIGatewayResources() []*Resource {
 						Name:     "arn",
 						Type:     schema.TypeString,
 						Resolver: `resolveApigatewayRestAPIGatewayResponseArn`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ApiGateway::GatewayResponse")`,
 					},
 				}...),
 		},
@@ -229,6 +279,11 @@ func APIGatewayResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveApigatewayRestAPIModelModelTemplate`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ApiGateway::Model")`,
+					},
 				}...),
 		},
 		{
@@ -248,6 +303,11 @@ func APIGatewayResources() []*Resource {
 						Name:     "arn",
 						Type:     schema.TypeString,
 						Resolver: `resolveApigatewayRestAPIRequestValidatorArn`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ApiGateway::RequestValidator")`,
 					},
 				}...),
 		},
@@ -269,6 +329,11 @@ func APIGatewayResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveApigatewayRestAPIResourceArn`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ApiGateway::Resource")`,
+					},
 				}...),
 		},
 		{
@@ -289,6 +354,11 @@ func APIGatewayResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveApigatewayRestAPIStageArn`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ApiGateway::Stage")`,
+					},
 				}...),
 		},
 		{
@@ -303,6 +373,11 @@ func APIGatewayResources() []*Resource {
 						Name:     "arn",
 						Type:     schema.TypeString,
 						Resolver: `resolveApigatewayUsagePlanArn`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ApiGateway::UsagePlan")`,
 					},
 				}...),
 			Relations: []string{
@@ -327,6 +402,11 @@ func APIGatewayResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveApigatewayUsagePlanKeyArn`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ApiGateway::UsagePlanKey")`,
+					},
 				}...),
 		},
 		{
@@ -341,6 +421,11 @@ func APIGatewayResources() []*Resource {
 						Name:     "arn",
 						Type:     schema.TypeString,
 						Resolver: `resolveApigatewayVpcLinkArn`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::ApiGateway::VpcLink")`,
 					},
 				}...),
 		},

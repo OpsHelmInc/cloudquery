@@ -17,6 +17,7 @@ This table depends on [aws_timestream_databases](aws_timestream_databases.md).
 |_cq_parent_id|UUID|
 |account_id|String|
 |region|String|
+|oh_resource_type|String|
 |arn (PK)|String|
 |creation_time|Timestamp|
 |database_name|String|

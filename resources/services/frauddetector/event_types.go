@@ -38,6 +38,11 @@ func EventTypes() *schema.Table {
 				Resolver: resolveResourceTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::FraudDetector::EventType"),
+			},
+			{
 				Name:     "created_time",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("CreatedTime"),

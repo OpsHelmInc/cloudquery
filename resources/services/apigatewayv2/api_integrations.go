@@ -40,6 +40,11 @@ func ApiIntegrations() *schema.Table {
 				Resolver: resolveApiIntegrationArn(),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGatewayV2::Integration"),
+			},
+			{
 				Name:     "api_gateway_managed",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("ApiGatewayManaged"),

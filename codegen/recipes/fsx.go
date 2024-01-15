@@ -48,6 +48,11 @@ func FSXResources() []*Resource {
 						Resolver: `schema.PathResolver("ResourceARN")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::FSx::DataRepositoryAssociation")`,
+					},
 				}...),
 		},
 		{
@@ -112,6 +117,11 @@ func FSXResources() []*Resource {
 						Resolver:      `schema.PathResolver("AdministrativeActions")`,
 						IgnoreInTests: true,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::FSx::FileSystem")`,
+					},
 				}...),
 		},
 		{
@@ -134,6 +144,11 @@ func FSXResources() []*Resource {
 						Resolver:      `schema.PathResolver("AdministrativeActions")`,
 						IgnoreInTests: true,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::FSx::Snapshot")`,
+					},
 				}...),
 		},
 		{
@@ -149,6 +164,11 @@ func FSXResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("ResourceARN")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::FSx::StorageVirtualMachine")`,
 					},
 				}...),
 		},
@@ -171,6 +191,11 @@ func FSXResources() []*Resource {
 						Type:          schema.TypeJSON,
 						Resolver:      `schema.PathResolver("AdministrativeActions")`,
 						IgnoreInTests: true,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::FSx::Volume")`,
 					},
 				}...),
 		},

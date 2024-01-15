@@ -33,6 +33,11 @@ func Users() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::AppStream::User"),
+			},
+			{
 				Name:     "authentication_type",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("AuthenticationType"),

@@ -24,6 +24,11 @@ func SchedulerResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveSchedulerScheduleTags()`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Scheduler::ScheduleGroup")`,
+					},
 				}...),
 		},
 		{
@@ -40,6 +45,11 @@ func SchedulerResources() []*Resource {
 						Name:     "tags",
 						Type:     schema.TypeJSON,
 						Resolver: `resolveSchedulerScheduleTags()`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Scheduler::Schedule")`,
 					},
 				}...),
 			PreResourceResolver: "getSchedule",

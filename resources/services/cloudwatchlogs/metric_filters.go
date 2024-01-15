@@ -33,6 +33,11 @@ func MetricFilters() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Logs::MetricFilter"),
+			},
+			{
 				Name:     "creation_time",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("CreationTime"),

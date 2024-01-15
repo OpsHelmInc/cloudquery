@@ -39,6 +39,11 @@ func NotebookInstances() *schema.Table {
 				Description: `The tags associated with the notebook instance.`,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::SageMaker::NotebookInstance"),
+			},
+			{
 				Name:     "accelerator_types",
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("AcceleratorTypes"),

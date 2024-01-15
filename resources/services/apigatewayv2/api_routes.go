@@ -40,6 +40,11 @@ func ApiRoutes() *schema.Table {
 				Resolver: resolveApiRouteArn(),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGatewayV2::Route"),
+			},
+			{
 				Name:     "route_key",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("RouteKey"),

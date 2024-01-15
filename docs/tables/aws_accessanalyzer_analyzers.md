@@ -20,6 +20,7 @@ The following tables depend on aws_accessanalyzer_analyzers:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |created_at|Timestamp|
 |name|String|
 |status|String|

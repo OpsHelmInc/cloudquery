@@ -39,6 +39,11 @@ func Documents() *schema.Table {
 				Resolver: resolveDocumentPermission,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::SSM::Document"),
+			},
+			{
 				Name:     "approved_version",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ApprovedVersion"),

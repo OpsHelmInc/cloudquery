@@ -28,6 +28,11 @@ func Workspaces() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::WorkSpaces::Workspace"),
+			},
+			{
 				Name:     "bundle_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("BundleId"),

@@ -32,6 +32,11 @@ func Alarms() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Lightsail::Alarm"),
+			},
+			{
 				Name:     "comparison_operator",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ComparisonOperator"),

@@ -29,6 +29,11 @@ func SecretsManagerResources() []*Resource {
 						Type:        schema.TypeJSON,
 						Resolver:    `fetchSecretsmanagerSecretPolicy`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::SecretsManager::Secret")`,
+					},
 				}...),
 		},
 	}

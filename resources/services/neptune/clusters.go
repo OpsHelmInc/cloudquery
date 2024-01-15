@@ -38,6 +38,11 @@ func Clusters() *schema.Table {
 				Resolver: resolveNeptuneClusterTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Neptune::DBCluster"),
+			},
+			{
 				Name:     "allocated_storage",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("AllocatedStorage"),

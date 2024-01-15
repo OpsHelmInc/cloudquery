@@ -18,6 +18,7 @@ The primary key for this table is **arn**.
 |addresses|InetArray|
 |tags|JSON|
 |arn (PK)|String|
+|oh_resource_type|String|
 |ip_address_version|String|
 |id|String|
 |name|String|

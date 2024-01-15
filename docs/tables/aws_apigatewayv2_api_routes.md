@@ -22,6 +22,7 @@ The following tables depend on aws_apigatewayv2_api_routes:
 |api_arn|String|
 |api_id|String|
 |arn|String|
+|oh_resource_type|String|
 |route_key|String|
 |api_gateway_managed|Bool|
 |api_key_required|Bool|

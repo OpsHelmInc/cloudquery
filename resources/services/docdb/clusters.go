@@ -38,6 +38,11 @@ func Clusters() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::DocDB::DBCluster"),
+			},
+			{
 				Name:     "associated_roles",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("AssociatedRoles"),

@@ -39,6 +39,11 @@ func Streams() *schema.Table {
 				Resolver: resolveKinesisStreamTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Kinesis::Stream"),
+			},
+			{
 				Name:     "enhanced_monitoring",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("EnhancedMonitoring"),

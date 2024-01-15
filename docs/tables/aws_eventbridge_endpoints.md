@@ -15,6 +15,7 @@ The primary key for this table is **arn**.
 |_cq_parent_id|UUID|
 |account_id|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |creation_time|Timestamp|
 |description|String|
 |endpoint_id|String|

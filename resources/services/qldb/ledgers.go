@@ -38,6 +38,11 @@ func Ledgers() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::QLDB::Ledger"),
+			},
+			{
 				Name:     "creation_date_time",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreationDateTime"),

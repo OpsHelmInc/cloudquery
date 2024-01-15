@@ -21,6 +21,7 @@ The following tables depend on aws_qldb_ledgers:
 |region|String|
 |tags|JSON|
 |arn (PK)|String|
+|oh_resource_type|String|
 |creation_date_time|Timestamp|
 |deletion_protection|Bool|
 |encryption_description|JSON|

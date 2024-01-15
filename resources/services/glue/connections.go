@@ -32,6 +32,11 @@ func Connections() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Glue::Connection"),
+			},
+			{
 				Name:     "connection_properties",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ConnectionProperties"),

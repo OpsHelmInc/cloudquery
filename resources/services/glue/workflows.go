@@ -38,6 +38,11 @@ func Workflows() *schema.Table {
 				Resolver: resolveGlueWorkflowTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Glue::Workflow"),
+			},
+			{
 				Name:     "blueprint_details",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("BlueprintDetails"),

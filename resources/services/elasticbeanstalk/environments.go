@@ -51,6 +51,11 @@ func Environments() *schema.Table {
 				Resolver: resolveElasticbeanstalkEnvironmentListeners,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ElasticBeanstalk::Environment"),
+			},
+			{
 				Name:     "abortable_operation_in_progress",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("AbortableOperationInProgress"),

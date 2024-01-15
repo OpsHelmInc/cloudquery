@@ -33,6 +33,11 @@ func ApiKeys() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGateway::ApiKey"),
+			},
+			{
 				Name:     "created_date",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreatedDate"),

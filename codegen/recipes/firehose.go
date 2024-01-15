@@ -28,6 +28,11 @@ func FirehoseResources() []*Resource {
 						Resolver: `schema.PathResolver("DeliveryStreamARN")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::KinesisFirehose::DeliveryStream")`,
+					},
 				}...),
 		},
 	}

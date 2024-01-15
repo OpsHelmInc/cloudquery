@@ -40,6 +40,11 @@ func Secrets() *schema.Table {
 				Description: `A JSON-formatted string that describes the permissions that are associated with the attached secret.`,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::SecretsManager::Secret"),
+			},
+			{
 				Name:     "created_date",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreatedDate"),

@@ -34,6 +34,11 @@ func Environments() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::MWAA::Environment"),
+			},
+			{
 				Name:     "airflow_configuration_options",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("AirflowConfigurationOptions"),

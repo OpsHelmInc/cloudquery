@@ -40,6 +40,11 @@ func ApiStages() *schema.Table {
 				Resolver: resolveApiStageArn(),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGatewayV2::Stage"),
+			},
+			{
 				Name:     "stage_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("StageName"),

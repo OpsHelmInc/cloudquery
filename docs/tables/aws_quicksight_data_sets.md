@@ -20,6 +20,7 @@ The following tables depend on aws_quicksight_data_sets:
 |region|String|
 |tags|JSON|
 |arn (PK)|String|
+|oh_resource_type|String|
 |column_level_permission_rules_applied|Bool|
 |created_time|Timestamp|
 |data_set_id|String|

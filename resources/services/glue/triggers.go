@@ -38,6 +38,11 @@ func Triggers() *schema.Table {
 				Resolver: resolveGlueTriggerTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Glue::Trigger"),
+			},
+			{
 				Name:     "actions",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Actions"),

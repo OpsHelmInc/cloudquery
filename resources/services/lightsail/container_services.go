@@ -32,6 +32,11 @@ func ContainerServices() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Lightsail::Container"),
+			},
+			{
 				Name:     "container_service_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ContainerServiceName"),

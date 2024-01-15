@@ -20,5 +20,6 @@ The following tables depend on aws_eventbridge_event_buses:
 |region|String|
 |tags|JSON|
 |arn (PK)|String|
+|oh_resource_type|String|
 |name|String|
 |policy|String|

@@ -28,6 +28,11 @@ func OrganizationsResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolveAccountTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Organizations::Account")`,
+					},
 				}...),
 		},
 	}

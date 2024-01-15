@@ -43,6 +43,11 @@ func BackupResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `resolvePlanTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Backup::BackupPlan")`,
+					},
 				}...),
 			Relations: []string{
 				"PlanSelections()",
@@ -60,6 +65,11 @@ func BackupResources() []*Resource {
 						Name:     "plan_arn",
 						Type:     schema.TypeString,
 						Resolver: `schema.ParentColumnResolver("arn")`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Backup::BackupSelection")`,
 					},
 				}...),
 		},
@@ -113,6 +123,11 @@ func BackupResources() []*Resource {
 						Name:     "tags",
 						Type:     schema.TypeJSON,
 						Resolver: `resolveVaultTags`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Backup::BackupVault")`,
 					},
 				}...),
 			Relations: []string{

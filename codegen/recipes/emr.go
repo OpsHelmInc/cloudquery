@@ -43,6 +43,11 @@ func EMRResources() []*Resource {
 						Resolver: `schema.PathResolver("ClusterArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::EMR::Cluster")`,
+					},
 				}...),
 		},
 	}

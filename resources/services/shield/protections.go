@@ -33,6 +33,11 @@ func Protections() *schema.Table {
 				Resolver: resolveShieldProtectionTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Shield::Protection"),
+			},
+			{
 				Name:     "application_layer_automatic_response_configuration",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ApplicationLayerAutomaticResponseConfiguration"),

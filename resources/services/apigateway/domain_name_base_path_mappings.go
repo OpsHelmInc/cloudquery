@@ -35,6 +35,11 @@ func DomainNameBasePathMappings() *schema.Table {
 				Resolver: resolveApigatewayDomainNameBasePathMappingArn,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGateway::BasePathMapping"),
+			},
+			{
 				Name:     "base_path",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("BasePath"),

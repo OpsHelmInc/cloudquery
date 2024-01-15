@@ -32,6 +32,11 @@ func ConfigRules() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Config::ConfigRule"),
+			},
+			{
 				Name:     "source",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Source"),

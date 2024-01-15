@@ -39,6 +39,11 @@ func Rules() *schema.Table {
 				Description: `Rule tags.`,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::WAFRegional::Rule"),
+			},
+			{
 				Name:     "predicates",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Predicates"),

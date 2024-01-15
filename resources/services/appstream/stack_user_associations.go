@@ -55,6 +55,11 @@ func StackUserAssociations() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::AppStream::StackUserAssociation"),
+			},
+			{
 				Name:     "send_email_notification",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("SendEmailNotification"),

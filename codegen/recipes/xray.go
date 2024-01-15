@@ -30,6 +30,11 @@ func XRayResources() []*Resource {
 					Type:     schema.TypeJSON,
 					Resolver: `resolveXrayGroupTags`,
 				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::XRay::Group")`,
+				},
 			},
 		},
 		{
@@ -47,6 +52,11 @@ func XRayResources() []*Resource {
 					Name:     "tags",
 					Type:     schema.TypeJSON,
 					Resolver: `resolveXraySamplingRuleTags`,
+				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::XRay::SamplingRule")`,
 				},
 			},
 		},

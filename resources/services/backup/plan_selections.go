@@ -30,6 +30,11 @@ func PlanSelections() *schema.Table {
 				Resolver: schema.ParentColumnResolver("arn"),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Backup::BackupSelection"),
+			},
+			{
 				Name:     "backup_plan_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("BackupPlanId"),

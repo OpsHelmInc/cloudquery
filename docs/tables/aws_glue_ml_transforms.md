@@ -21,6 +21,7 @@ The following tables depend on aws_glue_ml_transforms:
 |arn (PK)|String|
 |tags|JSON|
 |schema|JSON|
+|oh_resource_type|String|
 |created_on|Timestamp|
 |description|String|
 |evaluation_metrics|JSON|

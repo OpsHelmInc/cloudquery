@@ -22,6 +22,11 @@ func KafkaResources() []*Resource {
 					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					Resolver: `schema.PathResolver("ClusterArn")`,
 				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::MSK::Cluster")`,
+				},
 			}...),
 			Relations: []string{
 				"Nodes()",
@@ -87,6 +92,11 @@ func KafkaResources() []*Resource {
 					Type:     schema.TypeString,
 					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					Resolver: `schema.PathResolver("Arn")`,
+				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::MSK::Configuration")`,
 				},
 			}...),
 			ShouldGenerateResolverAndMockTest: true,

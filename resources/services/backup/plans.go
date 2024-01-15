@@ -39,6 +39,11 @@ func Plans() *schema.Table {
 				Resolver: resolvePlanTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Backup::BackupPlan"),
+			},
+			{
 				Name:     "advanced_backup_settings",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("AdvancedBackupSettings"),

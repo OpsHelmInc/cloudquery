@@ -33,6 +33,11 @@ func ApiDestinations() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Events::ApiDestination"),
+			},
+			{
 				Name:     "api_destination_state",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ApiDestinationState"),

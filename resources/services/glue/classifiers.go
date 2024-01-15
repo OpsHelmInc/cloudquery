@@ -38,6 +38,11 @@ func Classifiers() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Glue::Classifier"),
+			},
+			{
 				Name:     "csv_classifier",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("CsvClassifier"),

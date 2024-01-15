@@ -36,6 +36,11 @@ func ResourcePolicies() *schema.Table {
 				Resolver: schema.PathResolver("PolicyDocument"),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Logs::ResourcePolicy"),
+			},
+			{
 				Name:     "last_updated_time",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("LastUpdatedTime"),

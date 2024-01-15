@@ -33,6 +33,11 @@ func ClientCertificates() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGateway::ClientCertificate"),
+			},
+			{
 				Name:     "client_certificate_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ClientCertificateId"),

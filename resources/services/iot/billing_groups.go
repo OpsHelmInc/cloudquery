@@ -42,6 +42,11 @@ func BillingGroups() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::IoT::BillingGroup"),
+			},
+			{
 				Name:     "billing_group_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("BillingGroupId"),

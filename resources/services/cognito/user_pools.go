@@ -40,6 +40,11 @@ func UserPools() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Cognito::UserPool"),
+			},
+			{
 				Name:     "account_recovery_setting",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("AccountRecoverySetting"),

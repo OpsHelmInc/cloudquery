@@ -37,6 +37,11 @@ func Crawlers() *schema.Table {
 				Resolver: resolveGlueCrawlerTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Glue::Crawler"),
+			},
+			{
 				Name:     "classifiers",
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("Classifiers"),

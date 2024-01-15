@@ -35,6 +35,11 @@ func RestApiDeployments() *schema.Table {
 				Resolver: resolveApigatewayRestAPIDeploymentArn,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGateway::Deployment"),
+			},
+			{
 				Name:     "api_summary",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ApiSummary"),

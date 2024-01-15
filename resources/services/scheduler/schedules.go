@@ -31,6 +31,11 @@ func Schedules() *schema.Table {
 				Resolver: resolveSchedulerScheduleTags(),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Scheduler::Schedule"),
+			},
+			{
 				Name:     "action_after_completion",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ActionAfterCompletion"),

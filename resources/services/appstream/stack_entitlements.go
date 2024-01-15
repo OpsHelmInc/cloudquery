@@ -47,6 +47,11 @@ func StackEntitlements() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::AppStream::Entitlement"),
+			},
+			{
 				Name:     "app_visibility",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("AppVisibility"),

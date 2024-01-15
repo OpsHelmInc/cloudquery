@@ -43,6 +43,11 @@ func ClusterParameterGroups() *schema.Table {
 				Resolver: resolveDocdbClusterParameterGroupParameters,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::DocDB::DBClusterParameterGroup"),
+			},
+			{
 				Name:     "db_cluster_parameter_group_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("DBClusterParameterGroupName"),

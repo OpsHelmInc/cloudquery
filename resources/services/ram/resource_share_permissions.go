@@ -29,6 +29,11 @@ func ResourceSharePermissions() *schema.Table {
 				Resolver: resolveResourceSharePermissionDetailPermission,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::RAM::ResourceShare"),
+			},
+			{
 				Name:     "arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Arn"),

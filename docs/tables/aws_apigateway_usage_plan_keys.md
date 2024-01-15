@@ -19,6 +19,7 @@ This table depends on [aws_apigateway_usage_plans](aws_apigateway_usage_plans.md
 |region|String|
 |usage_plan_arn|String|
 |arn|String|
+|oh_resource_type|String|
 |id|String|
 |name|String|
 |type|String|

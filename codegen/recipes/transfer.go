@@ -30,6 +30,11 @@ func TransferResources() []*Resource {
 						Type:        schema.TypeJSON,
 						Resolver:    `resolveServersTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Transfer::Server")`,
+					},
 				}...),
 		},
 	}

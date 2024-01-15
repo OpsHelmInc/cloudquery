@@ -22,6 +22,7 @@ The following tables depend on aws_athena_work_groups:
 |region|String|
 |arn (PK)|String|
 |tags|JSON|
+|oh_resource_type|String|
 |name|String|
 |configuration|JSON|
 |creation_time|Timestamp|

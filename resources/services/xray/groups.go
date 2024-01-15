@@ -38,6 +38,11 @@ func Groups() *schema.Table {
 				Resolver: resolveXrayGroupTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::XRay::Group"),
+			},
+			{
 				Name:     "filter_expression",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("FilterExpression"),

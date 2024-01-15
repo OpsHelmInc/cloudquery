@@ -23,6 +23,11 @@ func MWAAResources() []*Resource {
 						Resolver: `schema.PathResolver("Arn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::MWAA::Environment")`,
+					},
 				}...),
 		},
 	}

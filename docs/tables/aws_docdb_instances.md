@@ -19,6 +19,7 @@ This table depends on [aws_docdb_clusters](aws_docdb_clusters.md).
 |region|String|
 |tags|JSON|
 |arn (PK)|String|
+|oh_resource_type|String|
 |auto_minor_version_upgrade|Bool|
 |availability_zone|String|
 |backup_retention_period|Int|

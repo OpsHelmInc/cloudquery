@@ -40,6 +40,11 @@ func ApiIntegrationResponses() *schema.Table {
 				Resolver: resolveApiIntegrationResponseArn(),
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGatewayV2::IntegrationResponse"),
+			},
+			{
 				Name:     "integration_response_key",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("IntegrationResponseKey"),

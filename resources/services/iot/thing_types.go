@@ -38,6 +38,11 @@ func ThingTypes() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::IoT::ThingType"),
+			},
+			{
 				Name:     "thing_type_metadata",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ThingTypeMetadata"),

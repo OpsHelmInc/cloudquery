@@ -33,6 +33,11 @@ func DomainNames() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGateway::DomainName"),
+			},
+			{
 				Name:     "certificate_arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("CertificateArn"),

@@ -33,6 +33,11 @@ func Fleets() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::AppStream::Fleet"),
+			},
+			{
 				Name:     "compute_capacity_status",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ComputeCapacityStatus"),

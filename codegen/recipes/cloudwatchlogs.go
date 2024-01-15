@@ -20,6 +20,11 @@ func CloudWatchLogsResources() []*Resource {
 					Type:     schema.TypeJSON,
 					Resolver: `schema.PathResolver("PolicyDocument")`,
 				},
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::Logs::ResourcePolicy")`,
+				},
 			}...),
 		},
 		{
@@ -35,6 +40,11 @@ func CloudWatchLogsResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveMetricFilterArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Logs::MetricFilter")`,
 					},
 				}...),
 		},
@@ -56,6 +66,11 @@ func CloudWatchLogsResources() []*Resource {
 						Name:     "tags",
 						Type:     schema.TypeJSON,
 						Resolver: `resolveLogGroupTags`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Logs::LogGroup")`,
 					},
 				}...),
 		},

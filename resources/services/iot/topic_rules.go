@@ -37,6 +37,11 @@ func TopicRules() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::IoT::TopicRule"),
+			},
+			{
 				Name:     "rule",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Rule"),

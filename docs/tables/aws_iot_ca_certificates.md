@@ -17,6 +17,7 @@ The primary key for this table is **arn**.
 |region|String|
 |certificates|StringArray|
 |arn (PK)|String|
+|oh_resource_type|String|
 |auto_registration_status|String|
 |certificate_id|String|
 |certificate_mode|String|

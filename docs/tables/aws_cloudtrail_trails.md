@@ -21,6 +21,7 @@ The following tables depend on aws_cloudtrail_trails:
 |cloudwatch_logs_log_group_name|String|
 |arn (PK)|String|
 |status|JSON|
+|oh_resource_type|String|
 |cloud_watch_logs_log_group_arn|String|
 |cloud_watch_logs_role_arn|String|
 |has_custom_event_selectors|Bool|

@@ -16,6 +16,7 @@ The primary key for this table is **arn**.
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |association_id|String|
 |batch_import_meta_data_on_create|Bool|
 |creation_time|Timestamp|

@@ -27,6 +27,11 @@ func DatacatalogEncryptionSettings() *schema.Table {
 				Resolver: client.ResolveAWSRegion,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Glue::DataCatalogEncryptionSettings"),
+			},
+			{
 				Name:     "connection_password_encryption",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ConnectionPasswordEncryption"),

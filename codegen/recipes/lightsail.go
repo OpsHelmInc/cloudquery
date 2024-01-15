@@ -22,13 +22,24 @@ func LightsailResources() []*Resource {
 						Type:    schema.TypeString,
 						Options: schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Lightsail::Alarm")`,
+					},
 				}...),
 		},
 		{
-			SubService:   "buckets",
-			Struct:       &types.Bucket{},
-			Description:  "https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_Bucket.html",
-			ExtraColumns: defaultRegionalColumns,
+			SubService:  "buckets",
+			Struct:      &types.Bucket{},
+			Description: "https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_Bucket.html",
+			ExtraColumns: append(defaultRegionalColumns, []codegen.ColumnDefinition{
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::Lightsail::Bucket")`,
+				},
+			}...),
 			Relations: []string{
 				"BucketAccessKeys()",
 			},
@@ -61,6 +72,11 @@ func LightsailResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `client.ResolveTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Lightsail::Certificate")`,
+					},
 				}...),
 		},
 		{
@@ -75,6 +91,11 @@ func LightsailResources() []*Resource {
 						Name:    "arn",
 						Type:    schema.TypeString,
 						Options: schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Lightsail::Container")`,
 					},
 				}...),
 			Relations: []string{
@@ -128,10 +149,16 @@ func LightsailResources() []*Resource {
 				}...),
 		},
 		{
-			SubService:   "databases",
-			Struct:       &types.RelationalDatabase{},
-			Description:  "https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_RelationalDatabase.html",
-			ExtraColumns: defaultRegionalColumns,
+			SubService:  "databases",
+			Struct:      &types.RelationalDatabase{},
+			Description: "https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_RelationalDatabase.html",
+			ExtraColumns: append(defaultRegionalColumns, []codegen.ColumnDefinition{
+				{
+					Name:     ohResourceTypeColumn,
+					Type:     schema.TypeString,
+					Resolver: `client.StaticValueResolver("AWS::Lightsail::Database")`,
+				},
+			}...),
 			Relations: []string{
 				"DatabaseParameters()",
 				"DatabaseEvents()",
@@ -200,6 +227,11 @@ func LightsailResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `client.ResolveTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Lightsail::Disk")`,
+					},
 				}...),
 			Relations: []string{
 				"DiskSnapshots()",
@@ -237,6 +269,11 @@ func LightsailResources() []*Resource {
 						Type:     schema.TypeJSON,
 						Resolver: `client.ResolveTags`,
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Lightsail::Distribution")`,
+					},
 				}...),
 		},
 		{
@@ -272,6 +309,11 @@ func LightsailResources() []*Resource {
 						Type:    schema.TypeString,
 						Options: schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Lightsail::Instance")`,
+					},
 				}...),
 			Relations: []string{
 				"InstancePortStates()",
@@ -305,6 +347,11 @@ func LightsailResources() []*Resource {
 						Type:    schema.TypeString,
 						Options: schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Lightsail::LoadBalancer")`,
+					},
 				}...),
 			Relations: []string{
 				"LoadBalancerTlsCertificates()",
@@ -336,6 +383,11 @@ func LightsailResources() []*Resource {
 						Name:    "arn",
 						Type:    schema.TypeString,
 						Options: schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Lightsail::StaticIp")`,
 					},
 				}...),
 		},

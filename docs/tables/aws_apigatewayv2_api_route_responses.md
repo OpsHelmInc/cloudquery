@@ -20,6 +20,7 @@ This table depends on [aws_apigatewayv2_api_routes](aws_apigatewayv2_api_routes.
 |api_route_arn|String|
 |route_id|String|
 |arn|String|
+|oh_resource_type|String|
 |route_response_key|String|
 |model_selection_expression|String|
 |response_models|JSON|

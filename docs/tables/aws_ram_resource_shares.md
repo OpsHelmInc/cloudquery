@@ -18,6 +18,7 @@ The following tables depend on aws_ram_resource_shares:
 |_cq_parent_id|UUID|
 |account_id|String|
 |region|String|
+|oh_resource_type|String|
 |allow_external_principals|Bool|
 |creation_time|Timestamp|
 |feature_set|String|

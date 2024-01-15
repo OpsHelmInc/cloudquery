@@ -35,6 +35,11 @@ func RestApiResources() *schema.Table {
 				Resolver: resolveApigatewayRestAPIResourceArn,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGateway::Resource"),
+			},
+			{
 				Name:     "id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Id"),

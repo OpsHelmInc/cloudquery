@@ -33,6 +33,11 @@ func Portfolios() *schema.Table {
 				Resolver: resolvePortfolioTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ServiceCatalog::Portfolio"),
+			},
+			{
 				Name:     "created_time",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreatedTime"),

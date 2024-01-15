@@ -16,6 +16,7 @@ The primary key for this table is **_cq_id**.
 |account_id|String|
 |region|String|
 |arn|String|
+|oh_resource_type|String|
 |description|String|
 |id|String|
 |name|String|

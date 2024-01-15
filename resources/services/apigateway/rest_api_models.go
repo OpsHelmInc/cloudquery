@@ -40,6 +40,11 @@ func RestApiModels() *schema.Table {
 				Resolver: resolveApigatewayRestAPIModelModelTemplate,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGateway::Model"),
+			},
+			{
 				Name:     "content_type",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ContentType"),

@@ -35,6 +35,11 @@ func RestApiStages() *schema.Table {
 				Resolver: resolveApigatewayRestAPIStageArn,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGateway::Stage"),
+			},
+			{
 				Name:     "access_log_settings",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("AccessLogSettings"),

@@ -19,6 +19,7 @@ The following tables depend on aws_apigateway_domain_names:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|oh_resource_type|String|
 |certificate_arn|String|
 |certificate_name|String|
 |certificate_upload_date|Timestamp|

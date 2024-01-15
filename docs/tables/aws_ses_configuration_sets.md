@@ -19,6 +19,7 @@ The following tables depend on aws_ses_configuration_sets:
 |account_id (PK)|String|
 |region (PK)|String|
 |name (PK)|String|
+|oh_resource_type|String|
 |delivery_options|JSON|
 |reputation_options|JSON|
 |sending_options|JSON|

@@ -20,6 +20,7 @@ The following tables depend on aws_glue_databases:
 |region|String|
 |arn (PK)|String|
 |tags|JSON|
+|oh_resource_type|String|
 |name|String|
 |catalog_id|String|
 |create_table_default_permissions|JSON|

@@ -16,5 +16,6 @@ The composite primary key for this table is (**account_id**, **region**, **polic
 |account_id (PK)|String|
 |region (PK)|String|
 |policy_document|JSON|
+|oh_resource_type|String|
 |last_updated_time|Int|
 |policy_name (PK)|String|

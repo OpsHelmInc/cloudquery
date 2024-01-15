@@ -25,6 +25,11 @@ func EventSubscriptions() *schema.Table {
 				Resolver: client.ResolveAWSRegion,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::DocDB::EventSubscription"),
+			},
+			{
 				Name:     "cust_subscription_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("CustSubscriptionId"),

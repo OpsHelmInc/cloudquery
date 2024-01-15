@@ -43,6 +43,11 @@ func Alarms() *schema.Table {
 				Resolver: resolveCloudwatchAlarmDimensions,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::CloudWatch::Alarm"),
+			},
+			{
 				Name:     "actions_enabled",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("ActionsEnabled"),

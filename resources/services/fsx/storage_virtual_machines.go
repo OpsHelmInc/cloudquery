@@ -33,6 +33,11 @@ func StorageVirtualMachines() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::FSx::StorageVirtualMachine"),
+			},
+			{
 				Name:     "active_directory_configuration",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ActiveDirectoryConfiguration"),

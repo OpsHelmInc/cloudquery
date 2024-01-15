@@ -39,6 +39,11 @@ func DirectoryConfigs() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::AppStream::DirectoryConfig"),
+			},
+			{
 				Name:     "certificate_based_auth_properties",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("CertificateBasedAuthProperties"),

@@ -37,6 +37,11 @@ func Jobs() *schema.Table {
 				Resolver: resolveGlueJobTags,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Glue::Job"),
+			},
+			{
 				Name:     "allocated_capacity",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("AllocatedCapacity"),

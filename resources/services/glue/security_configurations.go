@@ -37,6 +37,11 @@ func SecurityConfigurations() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::Glue::SecurityConfiguration"),
+			},
+			{
 				Name:     "created_time_stamp",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreatedTimeStamp"),

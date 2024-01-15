@@ -20,4 +20,5 @@ This table depends on [aws_appstream_stacks](aws_appstream_stacks.md).
 |stack_name (PK)|String|
 |user_name (PK)|String|
 |authentication_type (PK)|String|
+|oh_resource_type|String|
 |send_email_notification|Bool|

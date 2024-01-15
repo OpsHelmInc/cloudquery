@@ -2,6 +2,8 @@ package recipes
 
 import (
 	types "github.com/aws/aws-sdk-go-v2/service/identitystore/types"
+	"github.com/cloudquery/plugin-sdk/codegen"
+	"github.com/cloudquery/plugin-sdk/schema"
 )
 
 func IdentitystoreResources() []*Resource {
@@ -10,6 +12,15 @@ func IdentitystoreResources() []*Resource {
 			SubService: "groups",
 			Struct:     &types.Group{},
 			Relations:  []string{"GroupMemberships()"},
+			ExtraColumns: append(
+				defaultRegionalColumns,
+				[]codegen.ColumnDefinition{
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::IdentityStore::Group")`,
+					},
+				}...),
 		},
 		{
 			SubService: "users",
@@ -18,6 +29,15 @@ func IdentitystoreResources() []*Resource {
 		{
 			SubService: "group_memberships",
 			Struct:     &types.GroupMembership{},
+			ExtraColumns: append(
+				defaultRegionalColumns,
+				[]codegen.ColumnDefinition{
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::IdentityStore::GroupMembership")`,
+					},
+				}...),
 		},
 	}
 

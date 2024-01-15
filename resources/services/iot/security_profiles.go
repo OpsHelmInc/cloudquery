@@ -42,6 +42,11 @@ func SecurityProfiles() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::IoT::SecurityProfile"),
+			},
+			{
 				Name:     "additional_metrics_to_retain",
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("AdditionalMetricsToRetain"),

@@ -18,6 +18,7 @@ This table depends on [aws_backup_plans](aws_backup_plans.md).
 |account_id|String|
 |region|String|
 |plan_arn|String|
+|oh_resource_type|String|
 |backup_plan_id|String|
 |backup_selection|JSON|
 |creation_date|Timestamp|

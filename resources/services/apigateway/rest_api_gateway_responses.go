@@ -35,6 +35,11 @@ func RestApiGatewayResponses() *schema.Table {
 				Resolver: resolveApigatewayRestAPIGatewayResponseArn,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::ApiGateway::GatewayResponse"),
+			},
+			{
 				Name:     "default_response",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("DefaultResponse"),

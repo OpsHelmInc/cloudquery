@@ -18,6 +18,7 @@ This table depends on [aws_cognito_user_pools](aws_cognito_user_pools.md).
 |account_id|String|
 |region|String|
 |user_pool_arn|String|
+|oh_resource_type|String|
 |attribute_mapping|JSON|
 |creation_date|Timestamp|
 |idp_identifiers|StringArray|

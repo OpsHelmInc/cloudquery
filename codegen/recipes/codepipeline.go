@@ -24,6 +24,11 @@ func CodePipelineResources() []*Resource {
 						Resolver: `schema.PathResolver("Arn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::CodePipeline::Webhook")`,
+					},
 				}...),
 		},
 		{
@@ -45,6 +50,11 @@ func CodePipelineResources() []*Resource {
 						Name:     "tags",
 						Type:     schema.TypeJSON,
 						Resolver: `resolvePipelineTags`,
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::Pipeline::Pipeline")`,
 					},
 				}...),
 		},

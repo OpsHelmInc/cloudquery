@@ -19,3 +19,4 @@ This table depends on [aws_appstream_applications](aws_appstream_applications.md
 |region|String|
 |application_arn (PK)|String|
 |fleet_name (PK)|String|
+|oh_resource_type|String|

@@ -44,6 +44,11 @@ func RuleGroups() *schema.Table {
 				Resolver: resolveWafv2ruleGroupPolicy,
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::WAFv2::RuleGroup"),
+			},
+			{
 				Name:     "capacity",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("Capacity"),

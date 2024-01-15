@@ -19,6 +19,7 @@ The following tables depend on aws_apigateway_usage_plans:
 |account_id|String|
 |region|String|
 |arn|String|
+|oh_resource_type|String|
 |api_stages|JSON|
 |description|String|
 |id|String|
