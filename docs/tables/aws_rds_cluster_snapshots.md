@@ -39,5 +39,6 @@ The primary key for this table is **arn**.
 |source_db_cluster_snapshot_arn|String|
 |status|String|
 |storage_encrypted|Bool|
+|storage_throughput|Int|
 |storage_type|String|
 |vpc_id|String|

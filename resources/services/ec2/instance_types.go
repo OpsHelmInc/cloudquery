@@ -108,6 +108,11 @@ func InstanceTypes() *schema.Table {
 				Resolver: schema.PathResolver("InstanceType"),
 			},
 			{
+				Name:     "media_accelerator_info",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("MediaAcceleratorInfo"),
+			},
+			{
 				Name:     "memory_info",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("MemoryInfo"),
@@ -116,6 +121,11 @@ func InstanceTypes() *schema.Table {
 				Name:     "network_info",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("NetworkInfo"),
+			},
+			{
+				Name:     "neuron_info",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("NeuronInfo"),
 			},
 			{
 				Name:     "nitro_enclaves_support",

@@ -22,6 +22,7 @@ The primary key for this table is **arn**.
 |boot_mode|String|
 |creation_date|String|
 |deprecation_time|String|
+|deregistration_protection|String|
 |description|String|
 |ena_support|Bool|
 |hypervisor|String|
@@ -31,6 +32,7 @@ The primary key for this table is **arn**.
 |image_type|String|
 |imds_support|String|
 |kernel_id|String|
+|last_launched_time|String|
 |name|String|
 |owner_id|String|
 |platform|String|

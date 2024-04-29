@@ -18,5 +18,6 @@ The composite primary key for this table is (**account_id**, **region**, **cidr*
 |cidr (PK)|String|
 |asn_associations|JSON|
 |description|String|
+|network_border_group|String|
 |state|String|
 |status_message|String|

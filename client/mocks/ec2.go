@@ -1495,6 +1495,26 @@ func (mr *MockEc2ClientMockRecorder) DescribeLockedSnapshots(arg0, arg1 interfac
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeLockedSnapshots", reflect.TypeOf((*MockEc2Client)(nil).DescribeLockedSnapshots), varargs...)
 }
 
+// DescribeMacHosts mocks base method.
+func (m *MockEc2Client) DescribeMacHosts(arg0 context.Context, arg1 *ec2.DescribeMacHostsInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeMacHostsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeMacHosts", varargs...)
+	ret0, _ := ret[0].(*ec2.DescribeMacHostsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeMacHosts indicates an expected call of DescribeMacHosts.
+func (mr *MockEc2ClientMockRecorder) DescribeMacHosts(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeMacHosts", reflect.TypeOf((*MockEc2Client)(nil).DescribeMacHosts), varargs...)
+}
+
 // DescribeManagedPrefixLists mocks base method.
 func (m *MockEc2Client) DescribeManagedPrefixLists(arg0 context.Context, arg1 *ec2.DescribeManagedPrefixListsInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeManagedPrefixListsOutput, error) {
 	m.ctrl.T.Helper()
@@ -3293,6 +3313,26 @@ func (mr *MockEc2ClientMockRecorder) GetImageBlockPublicAccessState(arg0, arg1 i
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetImageBlockPublicAccessState", reflect.TypeOf((*MockEc2Client)(nil).GetImageBlockPublicAccessState), varargs...)
+}
+
+// GetInstanceMetadataDefaults mocks base method.
+func (m *MockEc2Client) GetInstanceMetadataDefaults(arg0 context.Context, arg1 *ec2.GetInstanceMetadataDefaultsInput, arg2 ...func(*ec2.Options)) (*ec2.GetInstanceMetadataDefaultsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetInstanceMetadataDefaults", varargs...)
+	ret0, _ := ret[0].(*ec2.GetInstanceMetadataDefaultsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetInstanceMetadataDefaults indicates an expected call of GetInstanceMetadataDefaults.
+func (mr *MockEc2ClientMockRecorder) GetInstanceMetadataDefaults(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetInstanceMetadataDefaults", reflect.TypeOf((*MockEc2Client)(nil).GetInstanceMetadataDefaults), varargs...)
 }
 
 // GetInstanceTypesFromInstanceRequirements mocks base method.
