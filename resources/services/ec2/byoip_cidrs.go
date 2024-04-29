@@ -48,6 +48,11 @@ func ByoipCidrs() *schema.Table {
 				Resolver: schema.PathResolver("Description"),
 			},
 			{
+				Name:     "network_border_group",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("NetworkBorderGroup"),
+			},
+			{
 				Name:     "state",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("State"),

@@ -113,6 +113,11 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("Capacity"),
 			},
 			{
+				Name:     "certificate_details",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("CertificateDetails"),
+			},
+			{
 				Name:     "character_set_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("CharacterSetName"),
@@ -278,6 +283,11 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("LatestRestorableTime"),
 			},
 			{
+				Name:     "limitless_database",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("LimitlessDatabase"),
+			},
+			{
 				Name:     "local_write_forwarding_status",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("LocalWriteForwardingStatus"),
@@ -401,6 +411,11 @@ func Clusters() *schema.Table {
 				Name:     "storage_encrypted",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("StorageEncrypted"),
+			},
+			{
+				Name:     "storage_throughput",
+				Type:     schema.TypeInt,
+				Resolver: schema.PathResolver("StorageThroughput"),
 			},
 			{
 				Name:     "storage_type",

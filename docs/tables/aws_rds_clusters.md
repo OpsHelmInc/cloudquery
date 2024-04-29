@@ -32,6 +32,7 @@ The primary key for this table is **arn**.
 |backtrack_window|Int|
 |backup_retention_period|Int|
 |capacity|Int|
+|certificate_details|JSON|
 |character_set_name|String|
 |clone_group_id|String|
 |cluster_create_time|Timestamp|
@@ -65,6 +66,7 @@ The primary key for this table is **arn**.
 |iops|Int|
 |kms_key_id|String|
 |latest_restorable_time|Timestamp|
+|limitless_database|JSON|
 |local_write_forwarding_status|String|
 |master_user_secret|JSON|
 |master_username|String|
@@ -90,5 +92,6 @@ The primary key for this table is **arn**.
 |status|String|
 |status_infos|JSON|
 |storage_encrypted|Bool|
+|storage_throughput|Int|
 |storage_type|String|
 |vpc_security_groups|JSON|

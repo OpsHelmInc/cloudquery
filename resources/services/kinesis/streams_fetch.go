@@ -3,11 +3,16 @@ package kinesis
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/kinesis"
 	"github.com/aws/aws-sdk-go-v2/service/kinesis/types"
+
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/services"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchKinesisStreams(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -38,22 +43,28 @@ func getStream(ctx context.Context, meta schema.ClientMeta, resource *schema.Res
 	if err != nil {
 		return err
 	}
-	resource.Item = streamSummary.StreamDescriptionSummary
+
+	tags, err := getKinesisStreamTags(ctx, svc, streamName)
+	if err != nil {
+		return err
+	}
+
+	resource.Item = &ohaws.KinesisStream{
+		StreamDescriptionSummary: *streamSummary.StreamDescriptionSummary,
+		Tags:                     tags,
+	}
 	return nil
 }
 
-func resolveKinesisStreamTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	cl := meta.(*client.Client)
-	svc := cl.Services().Kinesis
-	summary := resource.Item.(*types.StreamDescriptionSummary)
+func getKinesisStreamTags(ctx context.Context, svc services.KinesisClient, streamName string) ([]types.Tag, error) {
 	input := kinesis.ListTagsForStreamInput{
-		StreamName: summary.StreamName,
+		StreamName: aws.String(streamName),
 	}
 	var tags []types.Tag
 	for {
 		output, err := svc.ListTagsForStream(ctx, &input)
 		if err != nil {
-			return err
+			return nil, err
 		}
 		tags = append(tags, output.Tags...)
 		if !aws.ToBool(output.HasMoreTags) {
@@ -61,5 +72,11 @@ func resolveKinesisStreamTags(ctx context.Context, meta schema.ClientMeta, resou
 		}
 		input.ExclusiveStartTagKey = aws.String(*output.Tags[len(output.Tags)-1].Key)
 	}
-	return resource.Set(c.Name, client.TagsToMap(tags))
+
+	return tags, nil
+}
+
+func resolveKinesisStreamTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
+	r := resource.Item.(*ohaws.KinesisStream)
+	return resource.Set(c.Name, client.TagsToMap(r.Tags))
 }

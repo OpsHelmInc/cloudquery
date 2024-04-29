@@ -31,8 +31,10 @@ The primary key for this table is **arn**.
 |instance_storage_info|JSON|
 |instance_storage_supported|Bool|
 |instance_type|String|
+|media_accelerator_info|JSON|
 |memory_info|JSON|
 |network_info|JSON|
+|neuron_info|JSON|
 |nitro_enclaves_support|String|
 |nitro_tpm_info|JSON|
 |nitro_tpm_support|String|

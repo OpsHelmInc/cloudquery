@@ -63,6 +63,11 @@ func Images() *schema.Table {
 				Resolver: schema.PathResolver("DeprecationTime"),
 			},
 			{
+				Name:     "deregistration_protection",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("DeregistrationProtection"),
+			},
+			{
 				Name:     "description",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Description"),
@@ -106,6 +111,11 @@ func Images() *schema.Table {
 				Name:     "kernel_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("KernelId"),
+			},
+			{
+				Name:     "last_launched_time",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("LastLaunchedTime"),
 			},
 			{
 				Name:     "name",
