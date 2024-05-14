@@ -3,11 +3,12 @@ package kms
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/kms"
 	"github.com/aws/aws-sdk-go-v2/service/kms/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func fetchKmsKeys(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -54,20 +55,21 @@ func resolveKeysTags(ctx context.Context, meta schema.ClientMeta, resource *sche
 	if key.Origin == "EXTERNAL" || key.KeyManager == "AWS" {
 		return nil
 	}
+
 	params := kms.ListResourceTagsInput{KeyId: key.KeyId}
+	paginator := kms.NewListResourceTagsPaginator(svc, &params)
 	tags := make(map[string]string)
-	for {
-		result, err := svc.ListResourceTags(ctx, &params)
+	for paginator.HasMorePages() {
+		page, err := paginator.NextPage(ctx, func(options *kms.Options) {
+			options.Region = cl.Region
+		})
 		if err != nil {
 			return err
 		}
-		for _, v := range result.Tags {
+		// Cannot use client.TagToMap because key/val names are different
+		for _, v := range page.Tags {
 			tags[aws.ToString(v.TagKey)] = aws.ToString(v.TagValue)
 		}
-		if aws.ToString(result.NextMarker) == "" {
-			break
-		}
-		params.Marker = result.NextMarker
 	}
 	return resource.Set(c.Name, tags)
 }

@@ -43,6 +43,11 @@ func Groups() *schema.Table {
 				},
 			},
 			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::AutoScaling::AutoScalingGroup"),
+			},
+			{
 				Name:     "auto_scaling_group_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("AutoScalingGroupName"),

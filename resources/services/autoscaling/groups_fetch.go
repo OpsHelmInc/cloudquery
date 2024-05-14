@@ -5,13 +5,14 @@ import (
 	"errors"
 	"regexp"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/resources/services/autoscaling/models"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/autoscaling"
 	"github.com/aws/aws-sdk-go-v2/service/autoscaling/types"
 	"github.com/aws/smithy-go"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/resources/services/autoscaling/models"
 )
 
 var groupNotFoundRegex = regexp.MustCompile(`AutoScalingGroup name not found|Group .* not found`)
@@ -27,18 +28,15 @@ func fetchAutoscalingGroups(ctx context.Context, meta schema.ClientMeta, parent 
 			input.AutoScalingGroupNames = append(input.AutoScalingGroupNames, *h.AutoScalingGroupName)
 		}
 		var configurations []types.NotificationConfiguration
-		for {
-			output, err := svc.DescribeNotificationConfigurations(ctx, &input, func(o *autoscaling.Options) {
-				o.Region = c.Region
+		paginator := autoscaling.NewDescribeNotificationConfigurationsPaginator(svc, &input)
+		for paginator.HasMorePages() {
+			page, err := paginator.NextPage(ctx, func(options *autoscaling.Options) {
+				options.Region = c.Region
 			})
 			if err != nil {
 				return err
 			}
-			configurations = append(configurations, output.NotificationConfigurations...)
-			if aws.ToString(output.NextToken) == "" {
-				break
-			}
-			input.NextToken = output.NextToken
+			configurations = append(configurations, page.NotificationConfigurations...)
 		}
 		for _, gr := range groups {
 			wrapper := models.AutoScalingGroupWrapper{
@@ -51,12 +49,15 @@ func fetchAutoscalingGroups(ctx context.Context, meta schema.ClientMeta, parent 
 	}
 
 	config := autoscaling.DescribeAutoScalingGroupsInput{}
-	for {
-		output, err := svc.DescribeAutoScalingGroups(ctx, &config)
+	paginator := autoscaling.NewDescribeAutoScalingGroupsPaginator(svc, &config)
+	for paginator.HasMorePages() {
+		page, err := paginator.NextPage(ctx, func(options *autoscaling.Options) {
+			options.Region = c.Region
+		})
 		if err != nil {
 			return err
 		}
-		groups := output.AutoScalingGroups
+		groups := page.AutoScalingGroups
 		for i := 0; i < len(groups); i += 255 {
 			end := i + 255
 
@@ -69,14 +70,10 @@ func fetchAutoscalingGroups(ctx context.Context, meta schema.ClientMeta, parent 
 				return err
 			}
 		}
-
-		if aws.ToString(output.NextToken) == "" {
-			break
-		}
-		config.NextToken = output.NextToken
 	}
 	return nil
 }
+
 func resolveAutoscalingGroupLoadBalancers(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	p := resource.Item.(models.AutoScalingGroupWrapper)
 	cl := meta.(*client.Client)
@@ -102,6 +99,7 @@ func resolveAutoscalingGroupLoadBalancers(ctx context.Context, meta schema.Clien
 	}
 	return resource.Set(c.Name, j)
 }
+
 func resolveAutoscalingGroupLoadBalancerTargetGroups(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	p := resource.Item.(models.AutoScalingGroupWrapper)
 	cl := meta.(*client.Client)
@@ -127,6 +125,7 @@ func resolveAutoscalingGroupLoadBalancerTargetGroups(ctx context.Context, meta s
 	}
 	return resource.Set(c.Name, j)
 }
+
 func fetchAutoscalingGroupScalingPolicies(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	p := parent.Item.(models.AutoScalingGroupWrapper)
 	cl := meta.(*client.Client)
@@ -150,6 +149,7 @@ func fetchAutoscalingGroupScalingPolicies(ctx context.Context, meta schema.Clien
 	}
 	return nil
 }
+
 func fetchAutoscalingGroupLifecycleHooks(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	p := parent.Item.(models.AutoScalingGroupWrapper)
 	cl := meta.(*client.Client)
