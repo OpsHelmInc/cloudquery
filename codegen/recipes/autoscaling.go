@@ -4,10 +4,11 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/OpsHelmInc/cloudquery/resources/services/autoscaling/models"
 	"github.com/aws/aws-sdk-go-v2/service/autoscaling/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/resources/services/autoscaling/models"
 )
 
 func AutoscalingResources() []*Resource {
@@ -51,6 +52,11 @@ func AutoscalingResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("AutoScalingGroupARN")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					},
+					{
+						Name:     ohResourceTypeColumn,
+						Type:     schema.TypeString,
+						Resolver: `client.StaticValueResolver("AWS::AutoScaling::AutoScalingGroup")`,
 					},
 				}...),
 			Relations: []string{
