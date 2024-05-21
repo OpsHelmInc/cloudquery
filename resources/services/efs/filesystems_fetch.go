@@ -3,27 +3,26 @@ package efs
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/efs"
 	"github.com/aws/aws-sdk-go-v2/service/efs/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func fetchEfsFilesystems(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	var config efs.DescribeFileSystemsInput
 	c := meta.(*client.Client)
 	svc := c.Services().Efs
-	for {
-		response, err := svc.DescribeFileSystems(ctx, &config)
+	paginator := efs.NewDescribeFileSystemsPaginator(svc, &config)
+	for paginator.HasMorePages() {
+		page, err := paginator.NextPage(ctx, func(options *efs.Options) {
+			options.Region = c.Region
+		})
 		if err != nil {
 			return err
 		}
-		res <- response.FileSystems
-		if aws.ToString(response.Marker) == "" {
-			break
-		}
-		config.Marker = response.NextMarker
+		res <- page.FileSystems
 	}
 	return nil
 }
