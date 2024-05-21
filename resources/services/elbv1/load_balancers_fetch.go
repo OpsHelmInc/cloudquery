@@ -3,12 +3,11 @@ package elbv1
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/resources/services/elbv1/models"
-	"github.com/aws/aws-sdk-go-v2/aws"
 	elbv1 "github.com/aws/aws-sdk-go-v2/service/elasticloadbalancing"
 	"github.com/aws/aws-sdk-go-v2/service/elasticloadbalancing/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func fetchElbv1LoadBalancers(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -19,12 +18,16 @@ func fetchElbv1LoadBalancers(ctx context.Context, meta schema.ClientMeta, parent
 		for _, lb := range loadBalancers {
 			tagsCfg.LoadBalancerNames = append(tagsCfg.LoadBalancerNames, *lb.LoadBalancerName)
 		}
-		tagsResponse, err := svc.DescribeTags(ctx, tagsCfg)
+		tagsResponse, err := svc.DescribeTags(ctx, tagsCfg, func(options *elbv1.Options) {
+			options.Region = c.Region
+		})
 		if err != nil {
 			return err
 		}
 		for _, lb := range loadBalancers {
-			loadBalancerAttributes, err := svc.DescribeLoadBalancerAttributes(ctx, &elbv1.DescribeLoadBalancerAttributesInput{LoadBalancerName: lb.LoadBalancerName})
+			loadBalancerAttributes, err := svc.DescribeLoadBalancerAttributes(ctx, &elbv1.DescribeLoadBalancerAttributesInput{LoadBalancerName: lb.LoadBalancerName}, func(options *elbv1.Options) {
+				options.Region = c.Region
+			})
 			if err != nil {
 				if c.IsNotFoundError(err) {
 					continue
@@ -32,7 +35,7 @@ func fetchElbv1LoadBalancers(ctx context.Context, meta schema.ClientMeta, parent
 				return err
 			}
 
-			wrapper := models.ELBv1LoadBalancerWrapper{
+			wrapper := ohaws.LoadBalancerV1{
 				LoadBalancerDescription: lb,
 				Tags:                    client.TagsToMap(getTagsByLoadBalancerName(*lb.LoadBalancerName, tagsResponse.TagDescriptions)),
 				Attributes:              loadBalancerAttributes.LoadBalancerAttributes,
@@ -42,37 +45,33 @@ func fetchElbv1LoadBalancers(ctx context.Context, meta schema.ClientMeta, parent
 		}
 		return nil
 	}
-
-	var config elbv1.DescribeLoadBalancersInput
-	for {
-		response, err := svc.DescribeLoadBalancers(ctx, &config)
+	paginator := elbv1.NewDescribeLoadBalancersPaginator(svc, &elbv1.DescribeLoadBalancersInput{})
+	for paginator.HasMorePages() {
+		page, err := paginator.NextPage(ctx, func(options *elbv1.Options) {
+			options.Region = c.Region
+		})
 		if err != nil {
 			return err
 		}
 
-		for i := 0; i < len(response.LoadBalancerDescriptions); i += 20 {
+		for i := 0; i < len(page.LoadBalancerDescriptions); i += 20 {
 			end := i + 20
 
-			if end > len(response.LoadBalancerDescriptions) {
-				end = len(response.LoadBalancerDescriptions)
+			if end > len(page.LoadBalancerDescriptions) {
+				end = len(page.LoadBalancerDescriptions)
 			}
-			loadBalancers := response.LoadBalancerDescriptions[i:end]
+			loadBalancers := page.LoadBalancerDescriptions[i:end]
 			if err := processLoadBalancers(loadBalancers); err != nil {
 				return err
 			}
 		}
-
-		if aws.ToString(response.NextMarker) == "" {
-			break
-		}
-		config.Marker = response.NextMarker
 	}
 
 	return nil
 }
 
 func fetchElbv1LoadBalancerPolicies(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
-	r := parent.Item.(models.ELBv1LoadBalancerWrapper)
+	r := parent.Item.(ohaws.LoadBalancerV1)
 	c := meta.(*client.Client)
 	svc := c.Services().Elasticloadbalancing
 	response, err := svc.DescribeLoadBalancerPolicies(ctx, &elbv1.DescribeLoadBalancerPoliciesInput{LoadBalancerName: r.LoadBalancerName})
@@ -82,6 +81,7 @@ func fetchElbv1LoadBalancerPolicies(ctx context.Context, meta schema.ClientMeta,
 	res <- response.PolicyDescriptions
 	return nil
 }
+
 func resolveElbv1loadBalancerPolicyAttributeDescriptions(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	r := resource.Item.(types.PolicyDescription)
 
@@ -103,6 +103,6 @@ func getTagsByLoadBalancerName(id string, tagsResponse []types.TagDescription) [
 
 func resolveLoadBalancerARN() schema.ColumnResolver {
 	return client.ResolveARN(client.ElasticLoadBalancingService, func(resource *schema.Resource) ([]string, error) {
-		return []string{"loadbalancer", *resource.Item.(models.ELBv1LoadBalancerWrapper).LoadBalancerName}, nil
+		return []string{"loadbalancer", *resource.Item.(ohaws.LoadBalancerV1).LoadBalancerName}, nil
 	})
 }
