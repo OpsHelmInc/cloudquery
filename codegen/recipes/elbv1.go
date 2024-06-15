@@ -8,14 +8,14 @@ import (
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
 
-	"github.com/OpsHelmInc/cloudquery/resources/services/elbv1/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func ELBv1Resources() []*Resource {
 	resources := []*Resource{
 		{
 			SubService:  "load_balancers",
-			Struct:      &models.ELBv1LoadBalancerWrapper{},
+			Struct:      &ohaws.LoadBalancerV1,
 			Description: "https://docs.aws.amazon.com/elasticloadbalancing/2012-06-01/APIReference/API_LoadBalancerDescription.html",
 			SkipFields:  []string{},
 			ExtraColumns: append(

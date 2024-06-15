@@ -8,6 +8,7 @@ import (
 	"github.com/cloudquery/plugin-sdk/schema"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchElbv1LoadBalancers(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
