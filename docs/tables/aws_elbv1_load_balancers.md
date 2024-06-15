@@ -36,5 +36,9 @@ The following tables depend on aws_elbv1_load_balancers:
 |source_security_group|JSON|
 |subnets|StringArray|
 |vpc_id|String|
+|access_log|JSON|
+|additional_attributes|JSON|
+|connection_draining|JSON|
+|connection_settings|JSON|
+|cross_zone_load_balancing|JSON|
 |tags|JSON|
-|attributes|JSON|

@@ -4,14 +4,14 @@ import (
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
 
-	"github.com/OpsHelmInc/cloudquery/resources/services/sqs/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func SQSResources() []*Resource {
 	resources := []*Resource{
 		{
 			SubService:          "queues",
-			Struct:              &models.Queue{},
+			Struct:              &ohaws.Queue{},
 			SkipFields:          []string{"Arn", "Policy", "RedriveAllowPolicy", "RedrivePolicy"},
 			PreResourceResolver: "getQueue",
 			ExtraColumns: append(
@@ -22,11 +22,6 @@ func SQSResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("Arn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveSqsQueueTags`,
 					},
 					{
 						Name:     "policy",

@@ -118,14 +118,34 @@ func LoadBalancers() *schema.Table {
 				Resolver: schema.PathResolver("VPCId"),
 			},
 			{
+				Name:     "access_log",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("AccessLog"),
+			},
+			{
+				Name:     "additional_attributes",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("AdditionalAttributes"),
+			},
+			{
+				Name:     "connection_draining",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ConnectionDraining"),
+			},
+			{
+				Name:     "connection_settings",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ConnectionSettings"),
+			},
+			{
+				Name:     "cross_zone_load_balancing",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("CrossZoneLoadBalancing"),
+			},
+			{
 				Name:     "tags",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Tags"),
-			},
-			{
-				Name:     "attributes",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("Attributes"),
 			},
 		},
 

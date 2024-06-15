@@ -8,6 +8,7 @@ import (
 	"github.com/cloudquery/plugin-sdk/schema"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchElbv1LoadBalancers(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -38,7 +39,7 @@ func fetchElbv1LoadBalancers(ctx context.Context, meta schema.ClientMeta, parent
 			wrapper := ohaws.LoadBalancerV1{
 				LoadBalancerDescription: lb,
 				Tags:                    client.TagsToMap(getTagsByLoadBalancerName(*lb.LoadBalancerName, tagsResponse.TagDescriptions)),
-				Attributes:              loadBalancerAttributes.LoadBalancerAttributes,
+				LoadBalancerAttributes:  loadBalancerAttributes.LoadBalancerAttributes,
 			}
 
 			res <- wrapper

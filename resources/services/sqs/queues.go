@@ -33,11 +33,6 @@ func Queues() *schema.Table {
 				},
 			},
 			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveSqsQueueTags,
-			},
-			{
 				Name:     "policy",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Policy"),
@@ -146,6 +141,11 @@ func Queues() *schema.Table {
 				Name:     "fifo_throughput_limit",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("FifoThroughputLimit"),
+			},
+			{
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Tags"),
 			},
 			{
 				Name:     "unknown_fields",

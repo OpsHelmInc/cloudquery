@@ -63,8 +63,3 @@ func getTopic(ctx context.Context, meta schema.ClientMeta, resource *schema.Reso
 	resource.Item = t
 	return nil
 }
-
-func resolveSnsTopicTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	topic := resource.Item.(*ohaws.Topic)
-	return resource.Set(c.Name, client.TagsToMap(topic.Tags))
-}

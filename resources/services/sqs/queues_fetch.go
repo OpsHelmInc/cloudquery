@@ -64,8 +64,3 @@ func getQueue(ctx context.Context, meta schema.ClientMeta, resource *schema.Reso
 	resource.Item = q
 	return nil
 }
-
-func resolveSqsQueueTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	q := resource.Item.(*ohaws.Queue)
-	return resource.Set(c.Name, q.Tags)
-}
