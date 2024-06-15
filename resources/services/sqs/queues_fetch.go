@@ -3,13 +3,14 @@ package sqs
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/resources/services/sqs/models"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/sqs"
 	"github.com/aws/aws-sdk-go-v2/service/sqs/types"
 	"github.com/cloudquery/plugin-sdk/schema"
 	"github.com/mitchellh/mapstructure"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchSqsQueues(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -45,7 +46,7 @@ func getQueue(ctx context.Context, meta schema.ClientMeta, resource *schema.Reso
 		return err
 	}
 
-	q := &models.Queue{URL: qURL}
+	q := &ohaws.Queue{URL: qURL}
 	d, err := mapstructure.NewDecoder(&mapstructure.DecoderConfig{WeaklyTypedInput: true, Result: q})
 	if err != nil {
 		return err
@@ -54,17 +55,17 @@ func getQueue(ctx context.Context, meta schema.ClientMeta, resource *schema.Reso
 		return err
 	}
 
+	tagsResp, err := svc.ListQueueTags(ctx, &sqs.ListQueueTagsInput{QueueUrl: aws.String(qURL)})
+	if err != nil {
+		return err
+	}
+	q.Tags = tagsResp.Tags
+
 	resource.Item = q
 	return nil
 }
 
 func resolveSqsQueueTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	cl := meta.(*client.Client)
-	svc := cl.Services().Sqs
-	q := resource.Item.(*models.Queue)
-	result, err := svc.ListQueueTags(ctx, &sqs.ListQueueTagsInput{QueueUrl: &q.URL})
-	if err != nil {
-		return err
-	}
-	return resource.Set(c.Name, result.Tags)
+	q := resource.Item.(*ohaws.Queue)
+	return resource.Set(c.Name, q.Tags)
 }
