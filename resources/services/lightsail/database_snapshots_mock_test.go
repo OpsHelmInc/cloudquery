@@ -3,21 +3,19 @@ package lightsail
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/lightsail"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client/mocks"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildDatabaseSnapshotsMock(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m := mocks.NewMockLightsailClient(ctrl)
 
 	s := lightsail.GetRelationalDatabaseSnapshotsOutput{}
-	err := faker.FakeObject(&s)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&s))
 	s.NextPageToken = nil
 	m.EXPECT().GetRelationalDatabaseSnapshots(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&s, nil)

@@ -3,12 +3,13 @@ package applicationautoscaling
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/applicationautoscaling"
 	"github.com/aws/aws-sdk-go-v2/service/applicationautoscaling/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client/mocks"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildApplicationAutoscalingPoliciesMock(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -17,9 +18,8 @@ func buildApplicationAutoscalingPoliciesMock(t *testing.T, ctrl *gomock.Controll
 		Applicationautoscaling: m,
 	}
 	c := types.ScalingPolicy{}
-	if err := faker.FakeObject(&c); err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&c))
+
 	output := &applicationautoscaling.DescribeScalingPoliciesOutput{
 		ScalingPolicies: []types.ScalingPolicy{c},
 	}

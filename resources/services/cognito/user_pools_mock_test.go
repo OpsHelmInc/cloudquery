@@ -3,22 +3,22 @@ package cognito
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider"
 	"github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client/mocks"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildCognitoUserPools(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m := mocks.NewMockCognitoidentityproviderClient(ctrl)
 
 	var desc types.UserPoolDescriptionType
-	if err := faker.FakeObject(&desc); err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&desc))
+
 	m.EXPECT().ListUserPools(
 		gomock.Any(),
 		&cognitoidentityprovider.ListUserPoolsInput{MaxResults: aws.Int32(60)},
@@ -29,9 +29,8 @@ func buildCognitoUserPools(t *testing.T, ctrl *gomock.Controller) client.Service
 	)
 
 	var pool types.UserPoolType
-	if err := faker.FakeObject(&pool); err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&pool))
+
 	pool.Id = desc.Id
 	m.EXPECT().DescribeUserPool(
 		gomock.Any(),
@@ -43,9 +42,8 @@ func buildCognitoUserPools(t *testing.T, ctrl *gomock.Controller) client.Service
 	)
 
 	var providerDesc types.ProviderDescription
-	if err := faker.FakeObject(&providerDesc); err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&providerDesc))
+
 	m.EXPECT().ListIdentityProviders(
 		gomock.Any(),
 		&cognitoidentityprovider.ListIdentityProvidersInput{UserPoolId: pool.Id},
@@ -56,9 +54,8 @@ func buildCognitoUserPools(t *testing.T, ctrl *gomock.Controller) client.Service
 	)
 
 	var provider types.IdentityProviderType
-	if err := faker.FakeObject(&provider); err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&provider))
+
 	provider.ProviderName = providerDesc.ProviderName
 	provider.UserPoolId = pool.Id
 	m.EXPECT().DescribeIdentityProvider(

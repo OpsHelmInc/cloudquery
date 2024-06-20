@@ -4,47 +4,36 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/ram"
 	"github.com/aws/aws-sdk-go-v2/service/ram/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client/mocks"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildRamResourceSharesMock(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m := mocks.NewMockRamClient(ctrl)
 	object := types.ResourceShare{}
-	err := faker.FakeObject(&object)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&object))
 
 	m.EXPECT().GetResourceShares(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&ram.GetResourceSharesOutput{ResourceShares: []types.ResourceShare{object}}, nil).MinTimes(1)
 
 	summary := types.ResourceSharePermissionSummary{}
-	err = faker.FakeObject(&summary)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&summary))
 
 	var version int32
-	err = faker.FakeObject(&version)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&version))
+
 	verStr := fmt.Sprint(version)
 	summary.Version = &verStr
 
 	m.EXPECT().ListResourceSharePermissions(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&ram.ListResourceSharePermissionsOutput{Permissions: []types.ResourceSharePermissionSummary{summary}}, nil).MinTimes(1)
 
-	detail := ""
-	err = faker.FakeObject(&detail)
-	if err != nil {
-		t.Fatal(err)
-	}
+	detail := `{"key":"value"}`
 
 	m.EXPECT().GetPermission(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&ram.GetPermissionOutput{Permission: &types.ResourceSharePermissionDetail{Permission: &detail}}, nil).MinTimes(1)

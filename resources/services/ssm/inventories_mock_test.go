@@ -3,21 +3,21 @@ package ssm
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/ssm"
 	"github.com/aws/aws-sdk-go-v2/service/ssm/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client/mocks"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildInventories(t *testing.T, ctrl *gomock.Controller) client.Services {
 	mock := mocks.NewMockSsmClient(ctrl)
 
 	var i types.InventoryResultEntity
-	if err := faker.FakeObject(&i); err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&i))
+
 	mock.EXPECT().GetInventory(
 		gomock.Any(),
 		gomock.Any(),

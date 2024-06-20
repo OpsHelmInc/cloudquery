@@ -4,22 +4,22 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/wafregional"
 	"github.com/aws/aws-sdk-go-v2/service/wafregional/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client/mocks"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildRulesMock(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m := mocks.NewMockWafregionalClient(ctrl)
 
 	var r types.Rule
-	if err := faker.FakeObject(&r); err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&r))
+
 	m.EXPECT().ListRules(
 		gomock.Any(),
 		&wafregional.ListRulesInput{},
@@ -40,14 +40,19 @@ func buildRulesMock(t *testing.T, ctrl *gomock.Controller) client.Services {
 		nil,
 	)
 
+	arn := aws.String(fmt.Sprintf("arn:aws:waf-regional:us-east-1:testAccount:rule/%v", *r.RuleId))
+
+	tif := types.TagInfoForResource{}
+	require.NoError(t, faker.FakeObject(&tif))
+	tif.ResourceARN = arn
 	m.EXPECT().ListTagsForResource(
 		gomock.Any(),
 		&wafregional.ListTagsForResourceInput{
-			ResourceARN: aws.String(fmt.Sprintf("arn:aws:waf-regional:us-east-1:testAccount:rule/%v", *r.RuleId)),
+			ResourceARN: arn,
 		},
 		gomock.Any(),
 	).Return(
-		&wafregional.ListTagsForResourceOutput{},
+		&wafregional.ListTagsForResourceOutput{TagInfoForResource: &tif},
 		nil,
 	)
 

@@ -3,39 +3,28 @@ package resourcegroups
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/resourcegroups"
 	"github.com/aws/aws-sdk-go-v2/service/resourcegroups/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client/mocks"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildResourceGroupsMock(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m := mocks.NewMockResourcegroupsClient(ctrl)
 	gId := types.GroupIdentifier{}
-	err := faker.FakeObject(&gId)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&gId))
 
 	groupResponse := types.Group{}
-	err = faker.FakeObject(&groupResponse)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&groupResponse))
 
 	tagsResponse := resourcegroups.GetTagsOutput{}
-	err = faker.FakeObject(&tagsResponse)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&tagsResponse))
 
 	query := types.GroupQuery{}
-	err = faker.FakeObject(&query)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&query))
 
 	m.EXPECT().ListGroups(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&resourcegroups.ListGroupsOutput{

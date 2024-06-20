@@ -3,27 +3,27 @@ package fsx
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/fsx"
 	"github.com/aws/aws-sdk-go-v2/service/fsx/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client/mocks"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildSnapshotsMock(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m := mocks.NewMockFsxClient(ctrl)
 
 	var s types.Snapshot
-	err := faker.FakeObject(&s)
-	if err != nil {
-		t.Fatalf("FakeObject returned error: %v", err)
-	}
+	require.NoError(t, faker.FakeObject(&s))
+
 	s.Lifecycle = types.SnapshotLifecycleAvailable
 	m.EXPECT().DescribeSnapshots(
 		gomock.Any(),
 		&fsx.DescribeSnapshotsInput{MaxResults: aws.Int32(1000)},
+		gomock.Any(),
 	).Return(
 		&fsx.DescribeSnapshotsOutput{Snapshots: []types.Snapshot{s}},
 		nil,

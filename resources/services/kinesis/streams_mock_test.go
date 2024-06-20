@@ -4,13 +4,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/kinesis"
 	"github.com/aws/aws-sdk-go-v2/service/kinesis/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client/mocks"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 type customKinesisClient struct {
@@ -31,11 +32,9 @@ func buildKinesisStreams(t *testing.T, ctrl *gomock.Controller) client.Services 
 	k := mocks.NewMockKinesisClient(ctrl)
 
 	streams := kinesis.ListStreamsOutput{}
-	err := faker.FakeObject(&streams)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&streams))
 	streams.HasMoreStreams = aws.Bool(false)
+	streams.NextToken = nil
 	k.EXPECT().ListStreams(gomock.Any(), gomock.Any(), gomock.Any()).Return(&streams, nil)
 
 	stream := kinesis.DescribeStreamSummaryOutput{
@@ -45,10 +44,7 @@ func buildKinesisStreams(t *testing.T, ctrl *gomock.Controller) client.Services 
 			}}},
 	}
 	customKinesisClient := customKinesisClient{}
-	err = faker.FakeObject(&customKinesisClient)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&customKinesisClient))
 
 	stream.StreamDescriptionSummary.ConsumerCount = customKinesisClient.ConsumerCount
 	stream.StreamDescriptionSummary.KeyId = customKinesisClient.KeyId
@@ -62,10 +58,7 @@ func buildKinesisStreams(t *testing.T, ctrl *gomock.Controller) client.Services 
 	k.EXPECT().DescribeStreamSummary(gomock.Any(), gomock.Any(), gomock.Any()).MinTimes(1).Return(&stream, nil)
 
 	tags := kinesis.ListTagsForStreamOutput{}
-	err = faker.FakeObject(&tags)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&tags))
 	tags.HasMoreTags = aws.Bool(false)
 	k.EXPECT().ListTagsForStream(gomock.Any(), gomock.Any(), gomock.Any()).MinTimes(1).Return(&tags, nil)
 

@@ -5,19 +5,25 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/service/ssoadmin"
 	"github.com/aws/aws-sdk-go-v2/service/ssoadmin/types"
-	"github.com/cloudquery/plugin-sdk/schema"
-
-	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/cloudquery/plugin-sdk/v4/schema"
 )
 
-func getIamInstance(ctx context.Context, meta schema.ClientMeta) (types.InstanceMetadata, error) {
-	svc := meta.(*client.Client).Services().Ssoadmin
+func getIamInstances(ctx context.Context, meta schema.ClientMeta) ([]types.InstanceMetadata, error) {
+	cl := meta.(*client.Client)
+	svc := cl.Services(client.AWSServiceSsoadmin).Ssoadmin
 	config := ssoadmin.ListInstancesInput{}
-	response, err := svc.ListInstances(ctx, &config)
-	if err == nil {
-		for _, i := range response.Instances {
-			return i, err
+	paginator := ssoadmin.NewListInstancesPaginator(svc, &config)
+	instances := make([]types.InstanceMetadata, 0)
+	for paginator.HasMorePages() {
+		page, err := paginator.NextPage(ctx, func(options *ssoadmin.Options) {
+			options.Region = cl.Region
+		})
+		if err != nil {
+			return nil, err
 		}
+		instances = append(instances, page.Instances...)
 	}
-	return types.InstanceMetadata{}, err
+
+	return instances, nil
 }

@@ -5,10 +5,10 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
-	"github.com/OpsHelmInc/cloudquery/resources/services/iam/models"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client/mocks"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/resources/services/iam/models"
 	"github.com/golang/mock/gomock"
 	"github.com/rs/zerolog"
 )
@@ -23,7 +23,7 @@ user-readonly,arn:aws:iam::123456789012:user/user-readonly,2022-08-31T11:10:33+0
 
 func buildCredentialReports(_ *testing.T, ctrl *gomock.Controller) client.Services {
 	m := mocks.NewMockIamClient(ctrl)
-	m.EXPECT().GetCredentialReport(gomock.Any(), gomock.Any()).Return(
+	m.EXPECT().GetCredentialReport(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.GetCredentialReportOutput{
 			Content: []byte(exampleReport),
 		}, nil)
@@ -35,7 +35,7 @@ func buildCredentialReports(_ *testing.T, ctrl *gomock.Controller) client.Servic
 
 func buildCredentialReportsWithNilValues(ctrl *gomock.Controller) client.Services {
 	m := mocks.NewMockIamClient(ctrl)
-	m.EXPECT().GetCredentialReport(gomock.Any(), gomock.Any()).Return(
+	m.EXPECT().GetCredentialReport(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.GetCredentialReportOutput{
 			Content: []byte(exampleReportWithNilValues),
 		}, nil)
@@ -54,8 +54,9 @@ func testCredentialReportsWithNilValues(t *testing.T) {
 		ctx := context.Background()
 		ctrl := gomock.NewController(t)
 		services := buildCredentialReportsWithNilValues(ctrl)
-		cl := client.NewAwsClient(zerolog.Logger{})
-		cl.ServicesManager.InitServicesForPartitionAccountAndRegion("aws", "testAccount", "us-east-1", services)
+		services.Regions = []string{"us-east-1"}
+		cl := client.NewAwsClient(zerolog.Logger{}, nil)
+		cl.ServicesManager.InitServicesForPartitionAccount("aws", "testAccount", services)
 		cl.Partition = "aws"
 		cl.Region = "us-east-1"
 		cl.AccountID = "testAccount"

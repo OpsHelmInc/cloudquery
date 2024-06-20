@@ -3,22 +3,22 @@ package backup
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/backup"
 	"github.com/aws/aws-sdk-go-v2/service/backup/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client/mocks"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildBackupVaultsMock(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m := mocks.NewMockBackupClient(ctrl)
 
 	var vault types.BackupVaultListMember
-	if err := faker.FakeObject(&vault); err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&vault))
+
 	m.EXPECT().ListBackupVaults(
 		gomock.Any(),
 		&backup.ListBackupVaultsInput{MaxResults: aws.Int32(1000)},
@@ -64,10 +64,10 @@ func buildBackupVaultsMock(t *testing.T, ctrl *gomock.Controller) client.Service
 	)
 
 	var rp types.RecoveryPointByBackupVault
-	if err := faker.FakeObject(&rp); err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&rp))
+
 	rp.ResourceArn = aws.String("arn:aws:s3:eu-central-1:testAccount:resource/id")
+	rp.RecoveryPointArn = aws.String("arn:aws:backup:eu-central-1:testAccount:resource/id")
 
 	m.EXPECT().ListRecoveryPointsByBackupVault(
 		gomock.Any(),

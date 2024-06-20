@@ -3,12 +3,13 @@ package ecs
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/ecs"
-	ecsTypes "github.com/aws/aws-sdk-go-v2/service/ecs/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/aws/aws-sdk-go-v2/service/ecs/types"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client/mocks"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildEcsClusterMock(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -16,17 +17,14 @@ func buildEcsClusterMock(t *testing.T, ctrl *gomock.Controller) client.Services 
 	services := client.Services{
 		Ecs: m,
 	}
-	c := ecsTypes.Cluster{}
-	err := faker.FakeObject(&c)
-	if err != nil {
-		t.Fatal(err)
-	}
+	c := types.Cluster{}
+	require.NoError(t, faker.FakeObject(&c))
 	ecsOutput := &ecs.DescribeClustersOutput{
-		Clusters: []ecsTypes.Cluster{c},
+		Clusters: []types.Cluster{c},
 	}
 	m.EXPECT().DescribeClusters(gomock.Any(), gomock.Any(), gomock.Any()).Return(ecsOutput, nil)
 	ecsListOutput := &ecs.ListClustersOutput{
-		ClusterArns: []string{"randomClusteArn"},
+		ClusterArns: []string{"randomClusterArn"},
 	}
 	m.EXPECT().ListClusters(gomock.Any(), gomock.Any(), gomock.Any()).Return(ecsListOutput, nil)
 
@@ -36,10 +34,7 @@ func buildEcsClusterMock(t *testing.T, ctrl *gomock.Controller) client.Services 
 	m.EXPECT().ListServices(gomock.Any(), gomock.Any(), gomock.Any()).Return(&servicesList, nil)
 
 	svcs := ecs.DescribeServicesOutput{}
-	err = faker.FakeObject(&svcs)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&svcs))
 	m.EXPECT().DescribeServices(gomock.Any(), gomock.Any(), gomock.Any()).Return(&svcs, nil)
 
 	instancesList := ecs.ListContainerInstancesOutput{
@@ -48,34 +43,29 @@ func buildEcsClusterMock(t *testing.T, ctrl *gomock.Controller) client.Services 
 	m.EXPECT().ListContainerInstances(gomock.Any(), gomock.Any(), gomock.Any()).Return(&instancesList, nil)
 
 	instances := ecs.DescribeContainerInstancesOutput{}
-	err = faker.FakeObject(&instances)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&instances))
 	m.EXPECT().DescribeContainerInstances(gomock.Any(), gomock.Any(), gomock.Any()).Return(&instances, nil)
 
 	listTasks := ecs.ListTasksOutput{}
-	err = faker.FakeObject(&listTasks)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&listTasks))
 	listTasks.NextToken = nil
 	m.EXPECT().ListTasks(gomock.Any(), gomock.Any(), gomock.Any()).Return(&listTasks, nil)
 
 	tasks := ecs.DescribeTasksOutput{}
-	err = faker.FakeObject(&tasks)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&tasks))
 	m.EXPECT().DescribeTasks(gomock.Any(), gomock.Any(), gomock.Any()).Return(&tasks, nil)
 
 	protection := ecs.GetTaskProtectionOutput{}
-	err = faker.FakeObject(&protection)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&protection))
 	protection.Failures = nil
 	m.EXPECT().GetTaskProtection(gomock.Any(), gomock.Any(), gomock.Any()).Return(&protection, nil)
+
+	taskSet := types.TaskSet{}
+	require.NoError(t, faker.FakeObject(&taskSet))
+	m.EXPECT().DescribeTaskSets(gomock.Any(), gomock.Any(), gomock.Any()).Return(&ecs.DescribeTaskSetsOutput{
+		TaskSets: []types.TaskSet{taskSet},
+		Failures: nil,
+	}, nil)
 
 	return services
 }

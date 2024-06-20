@@ -3,11 +3,12 @@ package docdb
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/docdb"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client/mocks"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildEventSubscriptionsMock(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -16,9 +17,8 @@ func buildEventSubscriptionsMock(t *testing.T, ctrl *gomock.Controller) client.S
 		Docdb: m,
 	}
 	var ec docdb.DescribeEventSubscriptionsOutput
-	if err := faker.FakeObject(&ec); err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&ec))
+
 	ec.Marker = nil
 	m.EXPECT().DescribeEventSubscriptions(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&ec,

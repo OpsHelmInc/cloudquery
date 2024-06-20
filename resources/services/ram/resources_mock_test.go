@@ -3,21 +3,19 @@ package ram
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/ram"
 	"github.com/aws/aws-sdk-go-v2/service/ram/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client/mocks"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildRamResourcesMock(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m := mocks.NewMockRamClient(ctrl)
 	object := types.Resource{}
-	err := faker.FakeObject(&object)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&object))
 
 	m.EXPECT().ListResources(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&ram.ListResourcesOutput{

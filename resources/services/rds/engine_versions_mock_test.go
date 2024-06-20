@@ -3,13 +3,14 @@ package rds
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/rds"
 	"github.com/aws/aws-sdk-go-v2/service/rds/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client/mocks"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildEngineVersionsMock(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -18,22 +19,22 @@ func buildEngineVersionsMock(t *testing.T, ctrl *gomock.Controller) client.Servi
 		Rds: m,
 	}
 	var ev rds.DescribeDBEngineVersionsOutput
-	if err := faker.FakeObject(&ev); err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&ev))
+
 	ev.Marker = nil
-	ev.DBEngineVersions = append(ev.DBEngineVersions, types.DBEngineVersion{
-		DBParameterGroupFamily: aws.String("aurora-mysql5.7"),
-	})
+	var aurora types.DBEngineVersion
+	require.NoError(t, faker.FakeObject(&aurora))
+
+	aurora.DBParameterGroupFamily = aws.String("aurora-mysql5.7")
+	ev.DBEngineVersions = append(ev.DBEngineVersions, aurora)
 	m.EXPECT().DescribeDBEngineVersions(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&ev,
 		nil,
 	)
 
 	var parameters rds.DescribeEngineDefaultClusterParametersOutput
-	if err := faker.FakeObject(&parameters); err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&parameters))
+
 	m.EXPECT().DescribeEngineDefaultClusterParameters(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&parameters,
 		nil,

@@ -3,20 +3,20 @@ package backup
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/backup"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/cloudquery/cloudquery/plugins/source/aws/client/mocks"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildBackupRegionSettingsMock(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m := mocks.NewMockBackupClient(ctrl)
 
 	var settings backup.DescribeRegionSettingsOutput
-	if err := faker.FakeObject(&settings); err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&settings))
+
 	m.EXPECT().DescribeRegionSettings(
 		gomock.Any(),
 		gomock.Any(),
