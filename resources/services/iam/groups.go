@@ -2,10 +2,13 @@ package iam
 
 import (
 	"context"
+	"fmt"
 
+	"github.com/OpsHelmInc/ohaws"
 	"github.com/apache/arrow/go/v15/arrow"
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
-	"github.com/aws/aws-sdk-go-v2/service/iam/types"
 	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/cloudquery/plugin-sdk/v4/transformers"
@@ -14,11 +17,12 @@ import (
 func Groups() *schema.Table {
 	tableName := "aws_iam_groups"
 	return &schema.Table{
-		Name:        tableName,
-		Description: `https://docs.aws.amazon.com/IAM/latest/APIReference/API_Group.html`,
-		Resolver:    fetchIamGroups,
-		Transform:   transformers.TransformWithStruct(&types.Group{}),
-		Multiplex:   client.ServiceAccountRegionMultiplexer(tableName, "iam"),
+		Name:                tableName,
+		Description:         `https://docs.aws.amazon.com/IAM/latest/APIReference/API_Group.html`,
+		Resolver:            fetchIamGroups,
+		PreResourceResolver: getGroup,
+		Transform:           transformers.TransformWithStruct(ohaws.Group{}),
+		Multiplex:           client.ServiceAccountRegionMultiplexer(tableName, "iam"),
 		Columns: []schema.Column{
 			client.DefaultAccountIDColumn(true),
 			{
@@ -48,7 +52,52 @@ func fetchIamGroups(ctx context.Context, meta schema.ClientMeta, parent *schema.
 		if err != nil {
 			return err
 		}
-		res <- page.Groups
+
+		wrappedGroups := make([]*ohaws.Group, len(page.Groups))
+		for i, group := range page.Groups {
+			wrappedGroups[i] = &ohaws.Group{Group: group}
+		}
+
+		res <- wrappedGroups
 	}
+	return nil
+}
+
+func getGroup(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
+	group := resource.Item.(*ohaws.Group)
+	svc := meta.(*client.Client).Services().Iam
+	groupDetail, err := svc.GetGroup(ctx, &iam.GetGroupInput{
+		GroupName: aws.String(*group.GroupName),
+	})
+	if err != nil {
+		return err
+	}
+
+	wrappedGroup := &ohaws.Group{Group: *groupDetail.Group}
+
+	userARNs := []arn.ARN{}
+	for _, u := range groupDetail.Users {
+		userARN, err := arn.Parse(*u.Arn)
+		if err != nil {
+			return fmt.Errorf("failed to parse user ARN: %w, %v", err, *u.Arn)
+		}
+		userARNs = append(userARNs, userARN)
+	}
+
+	wrappedGroup.Users = userARNs
+
+	policies, err := svc.ListAttachedGroupPolicies(ctx, &iam.ListAttachedGroupPoliciesInput{GroupName: wrappedGroup.GroupName})
+	if err != nil {
+		return err
+	}
+
+	policyMap := map[string]*string{}
+	for _, p := range policies.AttachedPolicies {
+		policyMap[*p.PolicyArn] = p.PolicyName
+	}
+
+	wrappedGroup.Policies = policyMap
+
+	resource.Item = wrappedGroup
 	return nil
 }

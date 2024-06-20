@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"net/url"
 
+	"github.com/OpsHelmInc/ohaws"
 	"github.com/apache/arrow/go/v15/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
-	"github.com/aws/aws-sdk-go-v2/service/iam/types"
 	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/cloudquery/plugin-sdk/v4/transformers"
@@ -42,7 +42,7 @@ func rolePolicies() *schema.Table {
 func fetchIamRolePolicies(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceIam).Iam
-	role := parent.Item.(*types.Role)
+	role := parent.Item.(*ohaws.Role)
 	paginator := iam.NewListRolePoliciesPaginator(svc, &iam.ListRolePoliciesInput{
 		RoleName: role.RoleName,
 	})
@@ -65,7 +65,7 @@ func getRolePolicy(ctx context.Context, meta schema.ClientMeta, resource *schema
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceIam).Iam
 	p := resource.Item.(string)
-	role := resource.Parent.Item.(*types.Role)
+	role := resource.Parent.Item.(*ohaws.Role)
 
 	policyResult, err := svc.GetRolePolicy(ctx, &iam.GetRolePolicyInput{PolicyName: &p, RoleName: role.RoleName}, func(options *iam.Options) {
 		options.Region = cl.Region

@@ -3,6 +3,7 @@ package iam
 import (
 	"context"
 
+	"github.com/OpsHelmInc/ohaws"
 	"github.com/apache/arrow/go/v15/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	"github.com/aws/aws-sdk-go-v2/service/iam/types"
@@ -36,7 +37,7 @@ func userGroups() *schema.Table {
 }
 func fetchIamUserGroups(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	var config iam.ListGroupsForUserInput
-	p := parent.Item.(*types.User)
+	p := parent.Item.(*ohaws.User)
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceIam).Iam
 	config.UserName = p.UserName

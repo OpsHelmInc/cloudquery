@@ -3,10 +3,10 @@ package s3
 import (
 	"context"
 
+	"github.com/OpsHelmInc/ohaws"
 	"github.com/apache/arrow/go/v15/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
-	"github.com/cloudquery/cloudquery/plugins/source/aws/resources/services/s3/models"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/cloudquery/plugin-sdk/v4/transformers"
 )
@@ -29,7 +29,7 @@ func bucketReplications() *schema.Table {
 	}
 }
 func fetchS3BucketReplications(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
-	r := parent.Item.(*models.WrappedBucket)
+	r := parent.Item.(*ohaws.WrappedBucket)
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceS3).S3
 	replicationOutput, err := svc.GetBucketReplication(ctx, &s3.GetBucketReplicationInput{Bucket: r.Name}, func(o *s3.Options) {
