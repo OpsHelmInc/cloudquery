@@ -3,12 +3,12 @@ package lightsail
 import (
 	"context"
 
+	"github.com/OpsHelmInc/cloudquery/resources/services/lightsail/models"
 	"github.com/apache/arrow/go/v15/arrow"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/lightsail"
 	"github.com/aws/aws-sdk-go-v2/service/lightsail/types"
 	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
-	"github.com/cloudquery/cloudquery/plugins/source/aws/resources/services/lightsail/models"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/cloudquery/plugin-sdk/v4/transformers"
 	sdkTypes "github.com/cloudquery/plugin-sdk/v4/types"

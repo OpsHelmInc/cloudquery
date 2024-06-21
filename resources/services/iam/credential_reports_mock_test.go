@@ -5,10 +5,10 @@ import (
 	"sync"
 	"testing"
 
+	"github.com/OpsHelmInc/cloudquery/resources/services/iam/models"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
 	"github.com/cloudquery/cloudquery/plugins/source/aws/client/mocks"
-	"github.com/cloudquery/cloudquery/plugins/source/aws/resources/services/iam/models"
 	"github.com/golang/mock/gomock"
 	"github.com/rs/zerolog"
 )

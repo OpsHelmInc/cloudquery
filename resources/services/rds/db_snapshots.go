@@ -3,11 +3,11 @@ package rds
 import (
 	"context"
 
+	"github.com/OpsHelmInc/cloudquery/resources/services/rds/models"
 	"github.com/apache/arrow/go/v15/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/rds"
 	"github.com/aws/aws-sdk-go-v2/service/rds/types"
 	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
-	"github.com/cloudquery/cloudquery/plugins/source/aws/resources/services/rds/models"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/cloudquery/plugin-sdk/v4/transformers"
 	sdkTypes "github.com/cloudquery/plugin-sdk/v4/types"
