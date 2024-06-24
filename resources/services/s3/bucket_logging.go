@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/ohaws"
+	"github.com/OpsHelmInc/cloudquery/resources/services/s3/models"
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
@@ -29,7 +29,7 @@ func bucketLogging() *schema.Table {
 	}
 }
 func fetchBucketLogging(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
-	r := parent.Item.(*ohaws.WrappedBucket)
+	r := parent.Item.(*models.WrappedBucket)
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceS3).S3
 	loggingOutput, err := svc.GetBucketLogging(ctx, &s3.GetBucketLoggingInput{Bucket: r.Name}, func(o *s3.Options) {

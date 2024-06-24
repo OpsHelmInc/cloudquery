@@ -37,6 +37,16 @@ func (m *MockCodeartifactClient) EXPECT() *MockCodeartifactClientMockRecorder {
 
 // DescribeDomain mocks base method.
 func (m *MockCodeartifactClient) DescribeDomain(arg0 context.Context, arg1 *codeartifact.DescribeDomainInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.DescribeDomainOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeDomain")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -57,6 +67,16 @@ func (mr *MockCodeartifactClientMockRecorder) DescribeDomain(arg0, arg1 interfac
 
 // DescribePackage mocks base method.
 func (m *MockCodeartifactClient) DescribePackage(arg0 context.Context, arg1 *codeartifact.DescribePackageInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.DescribePackageOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribePackage")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -77,6 +97,16 @@ func (mr *MockCodeartifactClientMockRecorder) DescribePackage(arg0, arg1 interfa
 
 // DescribePackageGroup mocks base method.
 func (m *MockCodeartifactClient) DescribePackageGroup(arg0 context.Context, arg1 *codeartifact.DescribePackageGroupInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.DescribePackageGroupOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribePackageGroup")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -97,6 +127,16 @@ func (mr *MockCodeartifactClientMockRecorder) DescribePackageGroup(arg0, arg1 in
 
 // DescribePackageVersion mocks base method.
 func (m *MockCodeartifactClient) DescribePackageVersion(arg0 context.Context, arg1 *codeartifact.DescribePackageVersionInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.DescribePackageVersionOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribePackageVersion")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -117,6 +157,16 @@ func (mr *MockCodeartifactClientMockRecorder) DescribePackageVersion(arg0, arg1 
 
 // DescribeRepository mocks base method.
 func (m *MockCodeartifactClient) DescribeRepository(arg0 context.Context, arg1 *codeartifact.DescribeRepositoryInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.DescribeRepositoryOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeRepository")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -137,6 +187,16 @@ func (mr *MockCodeartifactClientMockRecorder) DescribeRepository(arg0, arg1 inte
 
 // GetAssociatedPackageGroup mocks base method.
 func (m *MockCodeartifactClient) GetAssociatedPackageGroup(arg0 context.Context, arg1 *codeartifact.GetAssociatedPackageGroupInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.GetAssociatedPackageGroupOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetAssociatedPackageGroup")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -157,6 +217,16 @@ func (mr *MockCodeartifactClientMockRecorder) GetAssociatedPackageGroup(arg0, ar
 
 // GetAuthorizationToken mocks base method.
 func (m *MockCodeartifactClient) GetAuthorizationToken(arg0 context.Context, arg1 *codeartifact.GetAuthorizationTokenInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.GetAuthorizationTokenOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetAuthorizationToken")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -177,6 +247,16 @@ func (mr *MockCodeartifactClientMockRecorder) GetAuthorizationToken(arg0, arg1 i
 
 // GetDomainPermissionsPolicy mocks base method.
 func (m *MockCodeartifactClient) GetDomainPermissionsPolicy(arg0 context.Context, arg1 *codeartifact.GetDomainPermissionsPolicyInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.GetDomainPermissionsPolicyOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetDomainPermissionsPolicy")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -197,6 +277,16 @@ func (mr *MockCodeartifactClientMockRecorder) GetDomainPermissionsPolicy(arg0, a
 
 // GetPackageVersionAsset mocks base method.
 func (m *MockCodeartifactClient) GetPackageVersionAsset(arg0 context.Context, arg1 *codeartifact.GetPackageVersionAssetInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.GetPackageVersionAssetOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetPackageVersionAsset")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -217,6 +307,16 @@ func (mr *MockCodeartifactClientMockRecorder) GetPackageVersionAsset(arg0, arg1 
 
 // GetPackageVersionReadme mocks base method.
 func (m *MockCodeartifactClient) GetPackageVersionReadme(arg0 context.Context, arg1 *codeartifact.GetPackageVersionReadmeInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.GetPackageVersionReadmeOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetPackageVersionReadme")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -237,6 +337,16 @@ func (mr *MockCodeartifactClientMockRecorder) GetPackageVersionReadme(arg0, arg1
 
 // GetRepositoryEndpoint mocks base method.
 func (m *MockCodeartifactClient) GetRepositoryEndpoint(arg0 context.Context, arg1 *codeartifact.GetRepositoryEndpointInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.GetRepositoryEndpointOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetRepositoryEndpoint")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -257,6 +367,16 @@ func (mr *MockCodeartifactClientMockRecorder) GetRepositoryEndpoint(arg0, arg1 i
 
 // GetRepositoryPermissionsPolicy mocks base method.
 func (m *MockCodeartifactClient) GetRepositoryPermissionsPolicy(arg0 context.Context, arg1 *codeartifact.GetRepositoryPermissionsPolicyInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.GetRepositoryPermissionsPolicyOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetRepositoryPermissionsPolicy")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -277,6 +397,16 @@ func (mr *MockCodeartifactClientMockRecorder) GetRepositoryPermissionsPolicy(arg
 
 // ListAllowedRepositoriesForGroup mocks base method.
 func (m *MockCodeartifactClient) ListAllowedRepositoriesForGroup(arg0 context.Context, arg1 *codeartifact.ListAllowedRepositoriesForGroupInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.ListAllowedRepositoriesForGroupOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListAllowedRepositoriesForGroup")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -297,6 +427,16 @@ func (mr *MockCodeartifactClientMockRecorder) ListAllowedRepositoriesForGroup(ar
 
 // ListAssociatedPackages mocks base method.
 func (m *MockCodeartifactClient) ListAssociatedPackages(arg0 context.Context, arg1 *codeartifact.ListAssociatedPackagesInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.ListAssociatedPackagesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListAssociatedPackages")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -317,6 +457,16 @@ func (mr *MockCodeartifactClientMockRecorder) ListAssociatedPackages(arg0, arg1 
 
 // ListDomains mocks base method.
 func (m *MockCodeartifactClient) ListDomains(arg0 context.Context, arg1 *codeartifact.ListDomainsInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.ListDomainsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListDomains")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -337,6 +487,16 @@ func (mr *MockCodeartifactClientMockRecorder) ListDomains(arg0, arg1 interface{}
 
 // ListPackageGroups mocks base method.
 func (m *MockCodeartifactClient) ListPackageGroups(arg0 context.Context, arg1 *codeartifact.ListPackageGroupsInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.ListPackageGroupsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListPackageGroups")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -357,6 +517,16 @@ func (mr *MockCodeartifactClientMockRecorder) ListPackageGroups(arg0, arg1 inter
 
 // ListPackageVersionAssets mocks base method.
 func (m *MockCodeartifactClient) ListPackageVersionAssets(arg0 context.Context, arg1 *codeartifact.ListPackageVersionAssetsInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.ListPackageVersionAssetsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListPackageVersionAssets")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -377,6 +547,16 @@ func (mr *MockCodeartifactClientMockRecorder) ListPackageVersionAssets(arg0, arg
 
 // ListPackageVersionDependencies mocks base method.
 func (m *MockCodeartifactClient) ListPackageVersionDependencies(arg0 context.Context, arg1 *codeartifact.ListPackageVersionDependenciesInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.ListPackageVersionDependenciesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListPackageVersionDependencies")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -397,6 +577,16 @@ func (mr *MockCodeartifactClientMockRecorder) ListPackageVersionDependencies(arg
 
 // ListPackageVersions mocks base method.
 func (m *MockCodeartifactClient) ListPackageVersions(arg0 context.Context, arg1 *codeartifact.ListPackageVersionsInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.ListPackageVersionsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListPackageVersions")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -417,6 +607,16 @@ func (mr *MockCodeartifactClientMockRecorder) ListPackageVersions(arg0, arg1 int
 
 // ListPackages mocks base method.
 func (m *MockCodeartifactClient) ListPackages(arg0 context.Context, arg1 *codeartifact.ListPackagesInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.ListPackagesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListPackages")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -437,6 +637,16 @@ func (mr *MockCodeartifactClientMockRecorder) ListPackages(arg0, arg1 interface{
 
 // ListRepositories mocks base method.
 func (m *MockCodeartifactClient) ListRepositories(arg0 context.Context, arg1 *codeartifact.ListRepositoriesInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.ListRepositoriesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListRepositories")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -457,6 +667,16 @@ func (mr *MockCodeartifactClientMockRecorder) ListRepositories(arg0, arg1 interf
 
 // ListRepositoriesInDomain mocks base method.
 func (m *MockCodeartifactClient) ListRepositoriesInDomain(arg0 context.Context, arg1 *codeartifact.ListRepositoriesInDomainInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.ListRepositoriesInDomainOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListRepositoriesInDomain")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -477,6 +697,16 @@ func (mr *MockCodeartifactClientMockRecorder) ListRepositoriesInDomain(arg0, arg
 
 // ListSubPackageGroups mocks base method.
 func (m *MockCodeartifactClient) ListSubPackageGroups(arg0 context.Context, arg1 *codeartifact.ListSubPackageGroupsInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.ListSubPackageGroupsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListSubPackageGroups")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -497,6 +727,16 @@ func (mr *MockCodeartifactClientMockRecorder) ListSubPackageGroups(arg0, arg1 in
 
 // ListTagsForResource mocks base method.
 func (m *MockCodeartifactClient) ListTagsForResource(arg0 context.Context, arg1 *codeartifact.ListTagsForResourceInput, arg2 ...func(*codeartifact.Options)) (*codeartifact.ListTagsForResourceOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codeartifact.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListTagsForResource")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {

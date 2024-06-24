@@ -7,7 +7,9 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	types1 "github.com/aws/aws-sdk-go-v2/service/codepipeline/types"
 	types2 "github.com/aws/aws-sdk-go-v2/service/redshift/types"
+	"github.com/cloudquery/plugin-sdk/v4/scalar"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
+	sdkTypes "github.com/cloudquery/plugin-sdk/v4/types"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -51,14 +53,14 @@ func TestResolveTags(t *testing.T) {
 			Columns: []schema.Column{
 				{
 					Name: "tags",
-					Type: schema.TypeJSON,
+					Type: sdkTypes.ExtensionTypes.JSON,
 				},
 			},
 		}
 		r := schema.NewResourceData(ta, nil, tc.InputItem)
 		err := ResolveTags(context.Background(), nil, r, ta.Columns[0])
 		assert.NoError(t, err)
-		expectedJson := &schema.JSON{}
+		expectedJson := &scalar.JSON{}
 		_ = expectedJson.Set(tc.ExpectedTags)
 		assert.Equal(t, expectedJson, r.Get(ta.Columns[0].Name))
 	}

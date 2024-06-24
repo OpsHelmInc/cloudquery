@@ -3,10 +3,10 @@ package route53recoverycontrolconfig
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/route53recoverycontrolconfig"
 	"github.com/aws/aws-sdk-go-v2/service/route53recoverycontrolconfig/types"
+	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/cloudquery/plugin-sdk/v4/transformers"
 )

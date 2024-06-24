@@ -37,6 +37,16 @@ func (m *MockWellarchitectedClient) EXPECT() *MockWellarchitectedClientMockRecor
 
 // GetAnswer mocks base method.
 func (m *MockWellarchitectedClient) GetAnswer(arg0 context.Context, arg1 *wellarchitected.GetAnswerInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.GetAnswerOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetAnswer")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -57,6 +67,16 @@ func (mr *MockWellarchitectedClientMockRecorder) GetAnswer(arg0, arg1 interface{
 
 // GetConsolidatedReport mocks base method.
 func (m *MockWellarchitectedClient) GetConsolidatedReport(arg0 context.Context, arg1 *wellarchitected.GetConsolidatedReportInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.GetConsolidatedReportOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetConsolidatedReport")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -77,6 +97,16 @@ func (mr *MockWellarchitectedClientMockRecorder) GetConsolidatedReport(arg0, arg
 
 // GetGlobalSettings mocks base method.
 func (m *MockWellarchitectedClient) GetGlobalSettings(arg0 context.Context, arg1 *wellarchitected.GetGlobalSettingsInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.GetGlobalSettingsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetGlobalSettings")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -97,6 +127,16 @@ func (mr *MockWellarchitectedClientMockRecorder) GetGlobalSettings(arg0, arg1 in
 
 // GetLens mocks base method.
 func (m *MockWellarchitectedClient) GetLens(arg0 context.Context, arg1 *wellarchitected.GetLensInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.GetLensOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetLens")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -117,6 +157,16 @@ func (mr *MockWellarchitectedClientMockRecorder) GetLens(arg0, arg1 interface{},
 
 // GetLensReview mocks base method.
 func (m *MockWellarchitectedClient) GetLensReview(arg0 context.Context, arg1 *wellarchitected.GetLensReviewInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.GetLensReviewOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetLensReview")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -137,6 +187,16 @@ func (mr *MockWellarchitectedClientMockRecorder) GetLensReview(arg0, arg1 interf
 
 // GetLensReviewReport mocks base method.
 func (m *MockWellarchitectedClient) GetLensReviewReport(arg0 context.Context, arg1 *wellarchitected.GetLensReviewReportInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.GetLensReviewReportOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetLensReviewReport")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -157,6 +217,16 @@ func (mr *MockWellarchitectedClientMockRecorder) GetLensReviewReport(arg0, arg1 
 
 // GetLensVersionDifference mocks base method.
 func (m *MockWellarchitectedClient) GetLensVersionDifference(arg0 context.Context, arg1 *wellarchitected.GetLensVersionDifferenceInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.GetLensVersionDifferenceOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetLensVersionDifference")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -177,6 +247,16 @@ func (mr *MockWellarchitectedClientMockRecorder) GetLensVersionDifference(arg0, 
 
 // GetMilestone mocks base method.
 func (m *MockWellarchitectedClient) GetMilestone(arg0 context.Context, arg1 *wellarchitected.GetMilestoneInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.GetMilestoneOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetMilestone")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -197,6 +277,16 @@ func (mr *MockWellarchitectedClientMockRecorder) GetMilestone(arg0, arg1 interfa
 
 // GetProfile mocks base method.
 func (m *MockWellarchitectedClient) GetProfile(arg0 context.Context, arg1 *wellarchitected.GetProfileInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.GetProfileOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetProfile")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -217,6 +307,16 @@ func (mr *MockWellarchitectedClientMockRecorder) GetProfile(arg0, arg1 interface
 
 // GetProfileTemplate mocks base method.
 func (m *MockWellarchitectedClient) GetProfileTemplate(arg0 context.Context, arg1 *wellarchitected.GetProfileTemplateInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.GetProfileTemplateOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetProfileTemplate")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -237,6 +337,16 @@ func (mr *MockWellarchitectedClientMockRecorder) GetProfileTemplate(arg0, arg1 i
 
 // GetReviewTemplate mocks base method.
 func (m *MockWellarchitectedClient) GetReviewTemplate(arg0 context.Context, arg1 *wellarchitected.GetReviewTemplateInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.GetReviewTemplateOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetReviewTemplate")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -257,6 +367,16 @@ func (mr *MockWellarchitectedClientMockRecorder) GetReviewTemplate(arg0, arg1 in
 
 // GetReviewTemplateAnswer mocks base method.
 func (m *MockWellarchitectedClient) GetReviewTemplateAnswer(arg0 context.Context, arg1 *wellarchitected.GetReviewTemplateAnswerInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.GetReviewTemplateAnswerOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetReviewTemplateAnswer")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -277,6 +397,16 @@ func (mr *MockWellarchitectedClientMockRecorder) GetReviewTemplateAnswer(arg0, a
 
 // GetReviewTemplateLensReview mocks base method.
 func (m *MockWellarchitectedClient) GetReviewTemplateLensReview(arg0 context.Context, arg1 *wellarchitected.GetReviewTemplateLensReviewInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.GetReviewTemplateLensReviewOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetReviewTemplateLensReview")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -297,6 +427,16 @@ func (mr *MockWellarchitectedClientMockRecorder) GetReviewTemplateLensReview(arg
 
 // GetWorkload mocks base method.
 func (m *MockWellarchitectedClient) GetWorkload(arg0 context.Context, arg1 *wellarchitected.GetWorkloadInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.GetWorkloadOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetWorkload")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -317,6 +457,16 @@ func (mr *MockWellarchitectedClientMockRecorder) GetWorkload(arg0, arg1 interfac
 
 // ListAnswers mocks base method.
 func (m *MockWellarchitectedClient) ListAnswers(arg0 context.Context, arg1 *wellarchitected.ListAnswersInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListAnswersOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListAnswers")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -337,6 +487,16 @@ func (mr *MockWellarchitectedClientMockRecorder) ListAnswers(arg0, arg1 interfac
 
 // ListCheckDetails mocks base method.
 func (m *MockWellarchitectedClient) ListCheckDetails(arg0 context.Context, arg1 *wellarchitected.ListCheckDetailsInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListCheckDetailsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListCheckDetails")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -357,6 +517,16 @@ func (mr *MockWellarchitectedClientMockRecorder) ListCheckDetails(arg0, arg1 int
 
 // ListCheckSummaries mocks base method.
 func (m *MockWellarchitectedClient) ListCheckSummaries(arg0 context.Context, arg1 *wellarchitected.ListCheckSummariesInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListCheckSummariesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListCheckSummaries")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -377,6 +547,16 @@ func (mr *MockWellarchitectedClientMockRecorder) ListCheckSummaries(arg0, arg1 i
 
 // ListLensReviewImprovements mocks base method.
 func (m *MockWellarchitectedClient) ListLensReviewImprovements(arg0 context.Context, arg1 *wellarchitected.ListLensReviewImprovementsInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListLensReviewImprovementsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListLensReviewImprovements")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -397,6 +577,16 @@ func (mr *MockWellarchitectedClientMockRecorder) ListLensReviewImprovements(arg0
 
 // ListLensReviews mocks base method.
 func (m *MockWellarchitectedClient) ListLensReviews(arg0 context.Context, arg1 *wellarchitected.ListLensReviewsInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListLensReviewsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListLensReviews")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -417,6 +607,16 @@ func (mr *MockWellarchitectedClientMockRecorder) ListLensReviews(arg0, arg1 inte
 
 // ListLensShares mocks base method.
 func (m *MockWellarchitectedClient) ListLensShares(arg0 context.Context, arg1 *wellarchitected.ListLensSharesInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListLensSharesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListLensShares")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -437,6 +637,16 @@ func (mr *MockWellarchitectedClientMockRecorder) ListLensShares(arg0, arg1 inter
 
 // ListLenses mocks base method.
 func (m *MockWellarchitectedClient) ListLenses(arg0 context.Context, arg1 *wellarchitected.ListLensesInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListLensesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListLenses")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -457,6 +667,16 @@ func (mr *MockWellarchitectedClientMockRecorder) ListLenses(arg0, arg1 interface
 
 // ListMilestones mocks base method.
 func (m *MockWellarchitectedClient) ListMilestones(arg0 context.Context, arg1 *wellarchitected.ListMilestonesInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListMilestonesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListMilestones")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -477,6 +697,16 @@ func (mr *MockWellarchitectedClientMockRecorder) ListMilestones(arg0, arg1 inter
 
 // ListNotifications mocks base method.
 func (m *MockWellarchitectedClient) ListNotifications(arg0 context.Context, arg1 *wellarchitected.ListNotificationsInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListNotificationsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListNotifications")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -497,6 +727,16 @@ func (mr *MockWellarchitectedClientMockRecorder) ListNotifications(arg0, arg1 in
 
 // ListProfileNotifications mocks base method.
 func (m *MockWellarchitectedClient) ListProfileNotifications(arg0 context.Context, arg1 *wellarchitected.ListProfileNotificationsInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListProfileNotificationsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListProfileNotifications")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -517,6 +757,16 @@ func (mr *MockWellarchitectedClientMockRecorder) ListProfileNotifications(arg0, 
 
 // ListProfileShares mocks base method.
 func (m *MockWellarchitectedClient) ListProfileShares(arg0 context.Context, arg1 *wellarchitected.ListProfileSharesInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListProfileSharesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListProfileShares")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -537,6 +787,16 @@ func (mr *MockWellarchitectedClientMockRecorder) ListProfileShares(arg0, arg1 in
 
 // ListProfiles mocks base method.
 func (m *MockWellarchitectedClient) ListProfiles(arg0 context.Context, arg1 *wellarchitected.ListProfilesInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListProfilesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListProfiles")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -557,6 +817,16 @@ func (mr *MockWellarchitectedClientMockRecorder) ListProfiles(arg0, arg1 interfa
 
 // ListReviewTemplateAnswers mocks base method.
 func (m *MockWellarchitectedClient) ListReviewTemplateAnswers(arg0 context.Context, arg1 *wellarchitected.ListReviewTemplateAnswersInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListReviewTemplateAnswersOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListReviewTemplateAnswers")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -577,6 +847,16 @@ func (mr *MockWellarchitectedClientMockRecorder) ListReviewTemplateAnswers(arg0,
 
 // ListReviewTemplates mocks base method.
 func (m *MockWellarchitectedClient) ListReviewTemplates(arg0 context.Context, arg1 *wellarchitected.ListReviewTemplatesInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListReviewTemplatesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListReviewTemplates")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -597,6 +877,16 @@ func (mr *MockWellarchitectedClientMockRecorder) ListReviewTemplates(arg0, arg1 
 
 // ListShareInvitations mocks base method.
 func (m *MockWellarchitectedClient) ListShareInvitations(arg0 context.Context, arg1 *wellarchitected.ListShareInvitationsInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListShareInvitationsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListShareInvitations")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -617,6 +907,16 @@ func (mr *MockWellarchitectedClientMockRecorder) ListShareInvitations(arg0, arg1
 
 // ListTagsForResource mocks base method.
 func (m *MockWellarchitectedClient) ListTagsForResource(arg0 context.Context, arg1 *wellarchitected.ListTagsForResourceInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListTagsForResourceOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListTagsForResource")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -637,6 +937,16 @@ func (mr *MockWellarchitectedClientMockRecorder) ListTagsForResource(arg0, arg1 
 
 // ListTemplateShares mocks base method.
 func (m *MockWellarchitectedClient) ListTemplateShares(arg0 context.Context, arg1 *wellarchitected.ListTemplateSharesInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListTemplateSharesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListTemplateShares")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -657,6 +967,16 @@ func (mr *MockWellarchitectedClientMockRecorder) ListTemplateShares(arg0, arg1 i
 
 // ListWorkloadShares mocks base method.
 func (m *MockWellarchitectedClient) ListWorkloadShares(arg0 context.Context, arg1 *wellarchitected.ListWorkloadSharesInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListWorkloadSharesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListWorkloadShares")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -677,6 +997,16 @@ func (mr *MockWellarchitectedClientMockRecorder) ListWorkloadShares(arg0, arg1 i
 
 // ListWorkloads mocks base method.
 func (m *MockWellarchitectedClient) ListWorkloads(arg0 context.Context, arg1 *wellarchitected.ListWorkloadsInput, arg2 ...func(*wellarchitected.Options)) (*wellarchitected.ListWorkloadsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &wellarchitected.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListWorkloads")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {

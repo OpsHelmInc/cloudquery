@@ -11,7 +11,7 @@ import (
 const sentryDSN = "https://6c6b72bc946844cb8471f49eba485cde@o1396617.ingest.sentry.io/6747636"
 
 func main() {
-	if err := serve.Plugin(internalPlugin.AWS(), serve.WithPluginSentryDSN(sentryDSN)).Serve(context.Background()); err != nil {
+	if err := serve.Plugin(internalPlugin.AWS()).Serve(context.Background()); err != nil {
 		log.Fatal(err)
 	}
 }
