@@ -6,7 +6,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/sesv2"
 )
 
-type EmailIdentity struct {
+type EmailIdentityWrapper struct {
+	ARN            *string
 	IdentityName   *string
 	SendingEnabled bool
 

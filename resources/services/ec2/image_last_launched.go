@@ -3,18 +3,18 @@ package ec2
 import (
 	"context"
 
-	"github.com/apache/arrow/go/v15/arrow"
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
 	"github.com/aws/aws-sdk-go-v2/service/ec2/types"
-	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 )
 
 func imageAttributesLastLaunchTime() *schema.Table {
 	return &schema.Table{
 		Name: "aws_ec2_image_last_launched_times",
-		Description: `https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImageAttribute.html. 
+		Description: `https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImageAttribute.html.
 The date and time, in ISO 8601 date-time format, when the AMI was last used to launch an EC2 instance. When the AMI is used to launch an instance, there is a 24-hour delay before that usage is reported.`,
 		Resolver: fetchEc2ImageAttributeLastLaunchTime,
 		Columns: []schema.Column{

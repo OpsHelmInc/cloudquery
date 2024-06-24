@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/aws/aws-sdk-go-v2/service/servicediscovery"
-	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 
 	"github.com/thoas/go-funk"

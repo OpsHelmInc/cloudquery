@@ -3,7 +3,7 @@ package lambda
 import (
 	"testing"
 
-	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/golang/mock/gomock"
 )
 

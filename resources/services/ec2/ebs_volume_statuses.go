@@ -3,11 +3,12 @@ package ec2
 import (
 	"context"
 
-	"github.com/apache/arrow/go/v15/arrow"
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
 	"github.com/aws/aws-sdk-go-v2/service/ec2/types"
-	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/cloudquery/plugin-sdk/v4/transformers"
 )
@@ -53,6 +54,24 @@ func fetchEc2EbsVolumeStatuses(ctx context.Context, meta schema.ClientMeta, _ *s
 func resolveEbsVolumeStatusArn(_ context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	cl := meta.(*client.Client)
 	volume := resource.Item.(types.VolumeStatusItem)
+	a := resolveVolumeARN(cl.Partition, cl.Region, cl.AccountID, aws.ToString(volume.VolumeId))
+	return resource.Set(c.Name, a)
+}
+
+func resolveVolumeARN(partition string, region string, accountID string, volumeId string) string {
+	a := arn.ARN{
+		Partition: partition,
+		Service:   "ec2",
+		Region:    region,
+		AccountID: accountID,
+		Resource:  "volume/" + volumeId,
+	}
+	return a.String()
+}
+
+func resolveEbsVolumeArn(_ context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
+	cl := meta.(*client.Client)
+	volume := resource.Item.(types.Volume)
 	a := resolveVolumeARN(cl.Partition, cl.Region, cl.AccountID, aws.ToString(volume.VolumeId))
 	return resource.Set(c.Name, a)
 }

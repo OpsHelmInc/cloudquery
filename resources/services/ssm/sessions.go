@@ -6,7 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/ssm"
 	"github.com/aws/aws-sdk-go-v2/service/ssm/types"
-	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
+	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/cloudquery/plugin-sdk/v4/transformers"
 )
@@ -15,7 +15,7 @@ func Sessions() *schema.Table {
 	tableName := "aws_ssm_sessions"
 	return &schema.Table{
 		Name: tableName,
-		Description: `https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_Session.html. 
+		Description: `https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_Session.html.
 Only Active sessions are fetched.`,
 		Resolver:  fetchSsmSessions,
 		Transform: transformers.TransformWithStruct(&types.Session{}, transformers.WithPrimaryKeyComponents("SessionId")),

@@ -3,10 +3,10 @@ package ec2
 import (
 	"context"
 
-	"github.com/apache/arrow/go/v15/arrow"
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
 	"github.com/aws/aws-sdk-go-v2/service/ec2/types"
-	"github.com/cloudquery/cloudquery/plugins/source/aws/client"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/cloudquery/plugin-sdk/v4/transformers"
 	sdkTypes "github.com/cloudquery/plugin-sdk/v4/types"
@@ -16,7 +16,7 @@ func ManagedPrefixLists() *schema.Table {
 	tableName := "aws_ec2_managed_prefix_lists"
 	return &schema.Table{
 		Name: tableName,
-		Description: `https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ManagedPrefixList.html. 
+		Description: `https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ManagedPrefixList.html.
 The 'request_account_id' and 'request_region' columns are added to show the account_id and region of where the request was made from.`,
 		Resolver:  fetchEc2ManagedPrefixLists,
 		Multiplex: client.ServiceAccountRegionMultiplexer(tableName, "ec2"),
