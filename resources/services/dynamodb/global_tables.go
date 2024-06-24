@@ -10,7 +10,6 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/cloudquery/plugin-sdk/v4/transformers"
-	sdkTypes "github.com/cloudquery/plugin-sdk/v4/types"
 )
 
 func GlobalTables() *schema.Table {
@@ -20,6 +19,7 @@ func GlobalTables() *schema.Table {
 		Description: `https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_GlobalTableDescription.html
 This table only contains version 2017.11.29 (Legacy) Global Tables. See aws_dynamodb_tables for version 2019.11.21 (Current) Global Tables.
 The column "tags" is always empty because global tables do not support tags. The column will be removed in a future version.
+OH: The tag has been removed.
 `,
 		Resolver:            fetchGlobalTables,
 		PreResourceResolver: getGlobalTable,
@@ -33,11 +33,6 @@ The column "tags" is always empty because global tables do not support tags. The
 				Type:                arrow.BinaryTypes.String,
 				Resolver:            schema.PathResolver("GlobalTableArn"),
 				PrimaryKeyComponent: true,
-			},
-			{
-				Name:          "tags",
-				Type:          sdkTypes.ExtensionTypes.JSON,
-				IgnoreInTests: true,
 			},
 		},
 	}
