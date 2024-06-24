@@ -3,8 +3,8 @@ package computeoptimizer
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go-v2/service/computeoptimizer"
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/aws/aws-sdk-go-v2/service/computeoptimizer"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/cloudquery/plugin-sdk/v4/transformers"
 )

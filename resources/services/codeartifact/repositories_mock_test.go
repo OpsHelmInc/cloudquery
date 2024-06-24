@@ -3,10 +3,10 @@ package codeartifact
 import (
 	"testing"
 
-	"github.com/aws/aws-sdk-go-v2/service/codeartifact"
-	"github.com/aws/aws-sdk-go-v2/service/codeartifact/types"
 	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/OpsHelmInc/cloudquery/client/mocks"
+	"github.com/aws/aws-sdk-go-v2/service/codeartifact"
+	"github.com/aws/aws-sdk-go-v2/service/codeartifact/types"
 	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"

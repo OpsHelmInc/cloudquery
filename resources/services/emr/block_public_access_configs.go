@@ -3,8 +3,8 @@ package emr
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go-v2/service/emr"
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/aws/aws-sdk-go-v2/service/emr"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/cloudquery/plugin-sdk/v4/transformers"
 )

@@ -3,10 +3,10 @@ package support
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go-v2/service/support"
-	"github.com/aws/aws-sdk-go-v2/service/support/types"
 	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/OpsHelmInc/cloudquery/client/mocks"
+	"github.com/aws/aws-sdk-go-v2/service/support"
+	"github.com/aws/aws-sdk-go-v2/service/support/types"
 	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/cloudquery/plugin-sdk/v4/transformers"
