@@ -485,6 +485,36 @@ func (mr *MockDynamodbClientMockRecorder) GetItem(arg0, arg1 interface{}, arg2 .
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetItem", reflect.TypeOf((*MockDynamodbClient)(nil).GetItem), varargs...)
 }
 
+// GetResourcePolicy mocks base method.
+func (m *MockDynamodbClient) GetResourcePolicy(arg0 context.Context, arg1 *dynamodb.GetResourcePolicyInput, arg2 ...func(*dynamodb.Options)) (*dynamodb.GetResourcePolicyOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &dynamodb.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetResourcePolicy")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetResourcePolicy", varargs...)
+	ret0, _ := ret[0].(*dynamodb.GetResourcePolicyOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetResourcePolicy indicates an expected call of GetResourcePolicy.
+func (mr *MockDynamodbClientMockRecorder) GetResourcePolicy(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetResourcePolicy", reflect.TypeOf((*MockDynamodbClient)(nil).GetResourcePolicy), varargs...)
+}
+
 // ListBackups mocks base method.
 func (m *MockDynamodbClient) ListBackups(arg0 context.Context, arg1 *dynamodb.ListBackupsInput, arg2 ...func(*dynamodb.Options)) (*dynamodb.ListBackupsOutput, error) {
 

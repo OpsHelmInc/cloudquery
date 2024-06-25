@@ -34,4 +34,5 @@ The primary key for this table is **_cq_id**.
 |resource_type|`utf8`|
 |status|`utf8`|
 |support_code|`utf8`|
+|viewer_minimum_tls_protocol_version|`utf8`|
 |latest_cache_reset|`json`|

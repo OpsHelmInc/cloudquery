@@ -30,6 +30,7 @@ This table depends on [aws_eks_clusters](aws_eks_clusters.md).
 |marketplace_information|`json`|
 |modified_at|`timestamp[us, tz=UTC]`|
 |owner|`utf8`|
+|pod_identity_associations|`list<item: utf8, nullable>`|
 |publisher|`utf8`|
 |service_account_role_arn|`utf8`|
 |status|`utf8`|

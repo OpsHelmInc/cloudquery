@@ -31,4 +31,5 @@ The primary key for this table is **_cq_id**.
 |user_volume_encryption_enabled|`bool`|
 |volume_encryption_key|`utf8`|
 |workspace_id|`utf8`|
+|workspace_name|`utf8`|
 |workspace_properties|`json`|

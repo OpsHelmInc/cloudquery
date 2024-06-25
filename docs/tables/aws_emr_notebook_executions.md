@@ -19,6 +19,7 @@ This table depends on [aws_emr_clusters](aws_emr_clusters.md).
 |account_id|`utf8`|
 |region|`utf8`|
 |cluster_arn|`utf8`|
+|tags|`json`|
 |arn|`utf8`|
 |editor_id|`utf8`|
 |end_time|`timestamp[us, tz=UTC]`|
@@ -35,4 +36,3 @@ This table depends on [aws_emr_clusters](aws_emr_clusters.md).
 |output_notebook_uri|`utf8`|
 |start_time|`timestamp[us, tz=UTC]`|
 |status|`utf8`|
-|tags|`json`|

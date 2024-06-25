@@ -47,6 +47,7 @@ This table depends on [aws_redshift_clusters](aws_redshift_clusters.md).
 |owner_account|`utf8`|
 |port|`int64`|
 |restorable_node_types|`list<item: utf8, nullable>`|
+|snapshot_arn|`utf8`|
 |snapshot_create_time|`timestamp[us, tz=UTC]`|
 |snapshot_identifier|`utf8`|
 |snapshot_retention_start_time|`timestamp[us, tz=UTC]`|

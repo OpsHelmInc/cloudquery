@@ -35,6 +35,7 @@ The following tables depend on aws_kms_keys:
 |enabled|`bool`|
 |encryption_algorithms|`list<item: utf8, nullable>`|
 |expiration_model|`utf8`|
+|key_agreement_algorithms|`list<item: utf8, nullable>`|
 |key_manager|`utf8`|
 |key_spec|`utf8`|
 |key_state|`utf8`|

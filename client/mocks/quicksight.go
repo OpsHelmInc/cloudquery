@@ -815,6 +815,36 @@ func (mr *MockQuicksightClientMockRecorder) DescribeIpRestriction(arg0, arg1 int
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeIpRestriction", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeIpRestriction), varargs...)
 }
 
+// DescribeKeyRegistration mocks base method.
+func (m *MockQuicksightClient) DescribeKeyRegistration(arg0 context.Context, arg1 *quicksight.DescribeKeyRegistrationInput, arg2 ...func(*quicksight.Options)) (*quicksight.DescribeKeyRegistrationOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &quicksight.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeKeyRegistration")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeKeyRegistration", varargs...)
+	ret0, _ := ret[0].(*quicksight.DescribeKeyRegistrationOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeKeyRegistration indicates an expected call of DescribeKeyRegistration.
+func (mr *MockQuicksightClientMockRecorder) DescribeKeyRegistration(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeKeyRegistration", reflect.TypeOf((*MockQuicksightClient)(nil).DescribeKeyRegistration), varargs...)
+}
+
 // DescribeNamespace mocks base method.
 func (m *MockQuicksightClient) DescribeNamespace(arg0 context.Context, arg1 *quicksight.DescribeNamespaceInput, arg2 ...func(*quicksight.Options)) (*quicksight.DescribeNamespaceOutput, error) {
 

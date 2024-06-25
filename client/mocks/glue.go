@@ -2195,6 +2195,36 @@ func (mr *MockGlueClientMockRecorder) GetUnfilteredTableMetadata(arg0, arg1 inte
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUnfilteredTableMetadata", reflect.TypeOf((*MockGlueClient)(nil).GetUnfilteredTableMetadata), varargs...)
 }
 
+// GetUsageProfile mocks base method.
+func (m *MockGlueClient) GetUsageProfile(arg0 context.Context, arg1 *glue.GetUsageProfileInput, arg2 ...func(*glue.Options)) (*glue.GetUsageProfileOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &glue.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetUsageProfile")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetUsageProfile", varargs...)
+	ret0, _ := ret[0].(*glue.GetUsageProfileOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetUsageProfile indicates an expected call of GetUsageProfile.
+func (mr *MockGlueClientMockRecorder) GetUsageProfile(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUsageProfile", reflect.TypeOf((*MockGlueClient)(nil).GetUsageProfile), varargs...)
+}
+
 // GetUserDefinedFunction mocks base method.
 func (m *MockGlueClient) GetUserDefinedFunction(arg0 context.Context, arg1 *glue.GetUserDefinedFunctionInput, arg2 ...func(*glue.Options)) (*glue.GetUserDefinedFunctionOutput, error) {
 
@@ -2943,6 +2973,36 @@ func (mr *MockGlueClientMockRecorder) ListTriggers(arg0, arg1 interface{}, arg2 
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListTriggers", reflect.TypeOf((*MockGlueClient)(nil).ListTriggers), varargs...)
+}
+
+// ListUsageProfiles mocks base method.
+func (m *MockGlueClient) ListUsageProfiles(arg0 context.Context, arg1 *glue.ListUsageProfilesInput, arg2 ...func(*glue.Options)) (*glue.ListUsageProfilesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &glue.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListUsageProfiles")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListUsageProfiles", varargs...)
+	ret0, _ := ret[0].(*glue.ListUsageProfilesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListUsageProfiles indicates an expected call of ListUsageProfiles.
+func (mr *MockGlueClientMockRecorder) ListUsageProfiles(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListUsageProfiles", reflect.TypeOf((*MockGlueClient)(nil).ListUsageProfiles), varargs...)
 }
 
 // ListWorkflows mocks base method.

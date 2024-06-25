@@ -22,6 +22,7 @@ This table depends on [aws_eventbridge_event_bus_rules](aws_eventbridge_event_bu
 |event_bus_arn|`utf8`|
 |arn|`utf8`|
 |id|`utf8`|
+|app_sync_parameters|`json`|
 |batch_parameters|`json`|
 |dead_letter_config|`json`|
 |ecs_parameters|`json`|

@@ -22,4 +22,5 @@ The primary key for this table is **_cq_id**.
 |scan_type|`utf8`|
 |last_scanned_at|`timestamp[us, tz=UTC]`|
 |resource_metadata|`json`|
+|scan_mode|`utf8`|
 |scan_status|`json`|

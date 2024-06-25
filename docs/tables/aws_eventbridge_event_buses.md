@@ -21,5 +21,8 @@ The following tables depend on aws_eventbridge_event_buses:
 |region|`utf8`|
 |tags|`json`|
 |arn|`utf8`|
+|creation_time|`timestamp[us, tz=UTC]`|
+|description|`utf8`|
+|last_modified_time|`timestamp[us, tz=UTC]`|
 |name|`utf8`|
 |policy|`utf8`|

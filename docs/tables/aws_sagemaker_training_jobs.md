@@ -48,6 +48,7 @@ The primary key for this table is **_cq_id**.
 |profiler_rule_configurations|`json`|
 |profiler_rule_evaluation_statuses|`json`|
 |profiling_status|`utf8`|
+|remote_debug_config|`json`|
 |retry_strategy|`json`|
 |role_arn|`utf8`|
 |secondary_status_transitions|`json`|

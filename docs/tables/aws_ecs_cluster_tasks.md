@@ -36,6 +36,7 @@ This table depends on [aws_ecs_clusters](aws_ecs_clusters.md).
 |enable_execute_command|`bool`|
 |ephemeral_storage|`json`|
 |execution_stopped_at|`timestamp[us, tz=UTC]`|
+|fargate_ephemeral_storage|`json`|
 |group|`utf8`|
 |health_status|`utf8`|
 |inference_accelerators|`json`|

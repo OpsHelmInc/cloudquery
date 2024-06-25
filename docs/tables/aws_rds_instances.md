@@ -57,6 +57,7 @@ The primary key for this table is **_cq_id**.
 |enabled_cloudwatch_logs_exports|`list<item: utf8, nullable>`|
 |endpoint|`json`|
 |engine|`utf8`|
+|engine_lifecycle_support|`utf8`|
 |engine_version|`utf8`|
 |enhanced_monitoring_resource_arn|`utf8`|
 |iam_database_authentication_enabled|`bool`|

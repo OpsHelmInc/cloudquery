@@ -23,6 +23,7 @@ type CloudtrailClient interface {
 	ListEventDataStores(context.Context, *cloudtrail.ListEventDataStoresInput, ...func(*cloudtrail.Options)) (*cloudtrail.ListEventDataStoresOutput, error)
 	ListImportFailures(context.Context, *cloudtrail.ListImportFailuresInput, ...func(*cloudtrail.Options)) (*cloudtrail.ListImportFailuresOutput, error)
 	ListImports(context.Context, *cloudtrail.ListImportsInput, ...func(*cloudtrail.Options)) (*cloudtrail.ListImportsOutput, error)
+	ListInsightsMetricData(context.Context, *cloudtrail.ListInsightsMetricDataInput, ...func(*cloudtrail.Options)) (*cloudtrail.ListInsightsMetricDataOutput, error)
 	ListPublicKeys(context.Context, *cloudtrail.ListPublicKeysInput, ...func(*cloudtrail.Options)) (*cloudtrail.ListPublicKeysOutput, error)
 	ListQueries(context.Context, *cloudtrail.ListQueriesInput, ...func(*cloudtrail.Options)) (*cloudtrail.ListQueriesOutput, error)
 	ListTags(context.Context, *cloudtrail.ListTagsInput, ...func(*cloudtrail.Options)) (*cloudtrail.ListTagsOutput, error)

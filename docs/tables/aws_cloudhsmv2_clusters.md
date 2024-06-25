@@ -23,6 +23,7 @@ The primary key for this table is **_cq_id**.
 |create_timestamp|`timestamp[us, tz=UTC]`|
 |hsm_type|`utf8`|
 |hsms|`json`|
+|mode|`utf8`|
 |pre_co_password|`utf8`|
 |security_group|`utf8`|
 |source_backup_id|`utf8`|

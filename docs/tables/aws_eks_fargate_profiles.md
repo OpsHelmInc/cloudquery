@@ -23,6 +23,7 @@ This table depends on [aws_eks_clusters](aws_eks_clusters.md).
 |created_at|`timestamp[us, tz=UTC]`|
 |fargate_profile_arn|`utf8`|
 |fargate_profile_name|`utf8`|
+|health|`json`|
 |pod_execution_role_arn|`utf8`|
 |selectors|`json`|
 |status|`utf8`|

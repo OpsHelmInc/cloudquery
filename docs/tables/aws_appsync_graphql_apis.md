@@ -20,6 +20,8 @@ The primary key for this table is **_cq_id**.
 |api_type|`utf8`|
 |authentication_type|`utf8`|
 |dns|`json`|
+|enhanced_metrics_config|`json`|
+|introspection_config|`utf8`|
 |lambda_authorizer_config|`json`|
 |log_config|`json`|
 |merged_api_execution_role_arn|`utf8`|
@@ -27,6 +29,8 @@ The primary key for this table is **_cq_id**.
 |open_id_connect_config|`json`|
 |owner|`utf8`|
 |owner_contact|`utf8`|
+|query_depth_limit|`int64`|
+|resolver_count_limit|`int64`|
 |tags|`json`|
 |uris|`json`|
 |user_pool_config|`json`|

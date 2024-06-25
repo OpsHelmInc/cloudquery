@@ -485,6 +485,36 @@ func (mr *MockCloudtrailClientMockRecorder) ListImports(arg0, arg1 interface{}, 
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListImports", reflect.TypeOf((*MockCloudtrailClient)(nil).ListImports), varargs...)
 }
 
+// ListInsightsMetricData mocks base method.
+func (m *MockCloudtrailClient) ListInsightsMetricData(arg0 context.Context, arg1 *cloudtrail.ListInsightsMetricDataInput, arg2 ...func(*cloudtrail.Options)) (*cloudtrail.ListInsightsMetricDataOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudtrail.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListInsightsMetricData")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListInsightsMetricData", varargs...)
+	ret0, _ := ret[0].(*cloudtrail.ListInsightsMetricDataOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListInsightsMetricData indicates an expected call of ListInsightsMetricData.
+func (mr *MockCloudtrailClientMockRecorder) ListInsightsMetricData(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListInsightsMetricData", reflect.TypeOf((*MockCloudtrailClient)(nil).ListInsightsMetricData), varargs...)
+}
+
 // ListPublicKeys mocks base method.
 func (m *MockCloudtrailClient) ListPublicKeys(arg0 context.Context, arg1 *cloudtrail.ListPublicKeysInput, arg2 ...func(*cloudtrail.Options)) (*cloudtrail.ListPublicKeysOutput, error) {
 

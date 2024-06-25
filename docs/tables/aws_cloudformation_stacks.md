@@ -29,8 +29,10 @@ The following tables depend on aws_cloudformation_stacks:
 |stack_status|`utf8`|
 |capabilities|`list<item: utf8, nullable>`|
 |change_set_id|`utf8`|
+|deletion_mode|`utf8`|
 |deletion_time|`timestamp[us, tz=UTC]`|
 |description|`utf8`|
+|detailed_status|`utf8`|
 |disable_rollback|`bool`|
 |drift_information|`json`|
 |enable_termination_protection|`bool`|

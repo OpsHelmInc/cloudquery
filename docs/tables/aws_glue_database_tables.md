@@ -29,6 +29,7 @@ The following tables depend on aws_glue_database_tables:
 |database_name|`utf8`|
 |description|`utf8`|
 |federated_table|`json`|
+|is_multi_dialect_view|`bool`|
 |is_registered_with_lake_formation|`bool`|
 |last_access_time|`timestamp[us, tz=UTC]`|
 |last_analyzed_time|`timestamp[us, tz=UTC]`|
@@ -41,5 +42,6 @@ The following tables depend on aws_glue_database_tables:
 |target_table|`json`|
 |update_time|`timestamp[us, tz=UTC]`|
 |version_id|`utf8`|
+|view_definition|`json`|
 |view_expanded_text|`utf8`|
 |view_original_text|`utf8`|

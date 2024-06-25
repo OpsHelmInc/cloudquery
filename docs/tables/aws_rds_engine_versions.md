@@ -48,6 +48,7 @@ The following tables depend on aws_rds_engine_versions:
 |supports_certificate_rotation_without_restart|`bool`|
 |supports_global_databases|`bool`|
 |supports_integrations|`bool`|
+|supports_limitless_database|`bool`|
 |supports_local_write_forwarding|`bool`|
 |supports_log_exports_to_cloudwatch_logs|`bool`|
 |supports_parallel_query|`bool`|

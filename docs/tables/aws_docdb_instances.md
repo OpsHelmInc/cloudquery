@@ -41,6 +41,8 @@ This table depends on [aws_docdb_clusters](aws_docdb_clusters.md).
 |kms_key_id|`utf8`|
 |latest_restorable_time|`timestamp[us, tz=UTC]`|
 |pending_modified_values|`json`|
+|performance_insights_enabled|`bool`|
+|performance_insights_kms_key_id|`utf8`|
 |preferred_backup_window|`utf8`|
 |preferred_maintenance_window|`utf8`|
 |promotion_tier|`int64`|

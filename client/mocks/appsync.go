@@ -245,6 +245,36 @@ func (mr *MockAppsyncClientMockRecorder) GetGraphqlApi(arg0, arg1 interface{}, a
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetGraphqlApi", reflect.TypeOf((*MockAppsyncClient)(nil).GetGraphqlApi), varargs...)
 }
 
+// GetGraphqlApiEnvironmentVariables mocks base method.
+func (m *MockAppsyncClient) GetGraphqlApiEnvironmentVariables(arg0 context.Context, arg1 *appsync.GetGraphqlApiEnvironmentVariablesInput, arg2 ...func(*appsync.Options)) (*appsync.GetGraphqlApiEnvironmentVariablesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetGraphqlApiEnvironmentVariables")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetGraphqlApiEnvironmentVariables", varargs...)
+	ret0, _ := ret[0].(*appsync.GetGraphqlApiEnvironmentVariablesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetGraphqlApiEnvironmentVariables indicates an expected call of GetGraphqlApiEnvironmentVariables.
+func (mr *MockAppsyncClientMockRecorder) GetGraphqlApiEnvironmentVariables(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetGraphqlApiEnvironmentVariables", reflect.TypeOf((*MockAppsyncClient)(nil).GetGraphqlApiEnvironmentVariables), varargs...)
+}
+
 // GetIntrospectionSchema mocks base method.
 func (m *MockAppsyncClient) GetIntrospectionSchema(arg0 context.Context, arg1 *appsync.GetIntrospectionSchemaInput, arg2 ...func(*appsync.Options)) (*appsync.GetIntrospectionSchemaOutput, error) {
 

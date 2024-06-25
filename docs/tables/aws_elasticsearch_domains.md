@@ -29,12 +29,14 @@ The primary key for this table is **_cq_id**.
 |created|`bool`|
 |deleted|`bool`|
 |domain_endpoint_options|`json`|
+|domain_processing_status|`utf8`|
 |ebs_options|`json`|
 |elasticsearch_version|`utf8`|
 |encryption_at_rest_options|`json`|
 |endpoint|`utf8`|
 |endpoints|`json`|
 |log_publishing_options|`json`|
+|modifying_properties|`json`|
 |node_to_node_encryption_options|`json`|
 |processing|`bool`|
 |service_software_options|`json`|

@@ -34,6 +34,7 @@ The following tables depend on aws_dynamodb_tables:
 |latest_stream_arn|`utf8`|
 |latest_stream_label|`utf8`|
 |local_secondary_indexes|`json`|
+|on_demand_throughput|`json`|
 |provisioned_throughput|`json`|
 |replicas|`json`|
 |restore_summary|`json`|

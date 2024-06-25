@@ -305,6 +305,36 @@ func (mr *MockIotClientMockRecorder) DescribeCertificate(arg0, arg1 interface{},
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeCertificate", reflect.TypeOf((*MockIotClient)(nil).DescribeCertificate), varargs...)
 }
 
+// DescribeCertificateProvider mocks base method.
+func (m *MockIotClient) DescribeCertificateProvider(arg0 context.Context, arg1 *iot.DescribeCertificateProviderInput, arg2 ...func(*iot.Options)) (*iot.DescribeCertificateProviderOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &iot.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeCertificateProvider")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeCertificateProvider", varargs...)
+	ret0, _ := ret[0].(*iot.DescribeCertificateProviderOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeCertificateProvider indicates an expected call of DescribeCertificateProvider.
+func (mr *MockIotClientMockRecorder) DescribeCertificateProvider(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeCertificateProvider", reflect.TypeOf((*MockIotClient)(nil).DescribeCertificateProvider), varargs...)
+}
+
 // DescribeCustomMetric mocks base method.
 func (m *MockIotClient) DescribeCustomMetric(arg0 context.Context, arg1 *iot.DescribeCustomMetricInput, arg2 ...func(*iot.Options)) (*iot.DescribeCustomMetricOutput, error) {
 
@@ -1893,6 +1923,36 @@ func (mr *MockIotClientMockRecorder) ListCACertificates(arg0, arg1 interface{}, 
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListCACertificates", reflect.TypeOf((*MockIotClient)(nil).ListCACertificates), varargs...)
+}
+
+// ListCertificateProviders mocks base method.
+func (m *MockIotClient) ListCertificateProviders(arg0 context.Context, arg1 *iot.ListCertificateProvidersInput, arg2 ...func(*iot.Options)) (*iot.ListCertificateProvidersOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &iot.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListCertificateProviders")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListCertificateProviders", varargs...)
+	ret0, _ := ret[0].(*iot.ListCertificateProvidersOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListCertificateProviders indicates an expected call of ListCertificateProviders.
+func (mr *MockIotClientMockRecorder) ListCertificateProviders(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListCertificateProviders", reflect.TypeOf((*MockIotClient)(nil).ListCertificateProviders), varargs...)
 }
 
 // ListCertificates mocks base method.

@@ -21,6 +21,8 @@ The primary key for this table is **_cq_id**.
 |admin_contact|`json`|
 |admin_privacy|`bool`|
 |auto_renew|`bool`|
+|billing_contact|`json`|
+|billing_privacy|`bool`|
 |creation_date|`timestamp[us, tz=UTC]`|
 |dns_sec|`utf8`|
 |dnssec_keys|`json`|

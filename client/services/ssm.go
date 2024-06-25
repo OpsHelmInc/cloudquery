@@ -24,6 +24,7 @@ type SsmClient interface {
 	DescribeInstancePatchStates(context.Context, *ssm.DescribeInstancePatchStatesInput, ...func(*ssm.Options)) (*ssm.DescribeInstancePatchStatesOutput, error)
 	DescribeInstancePatchStatesForPatchGroup(context.Context, *ssm.DescribeInstancePatchStatesForPatchGroupInput, ...func(*ssm.Options)) (*ssm.DescribeInstancePatchStatesForPatchGroupOutput, error)
 	DescribeInstancePatches(context.Context, *ssm.DescribeInstancePatchesInput, ...func(*ssm.Options)) (*ssm.DescribeInstancePatchesOutput, error)
+	DescribeInstanceProperties(context.Context, *ssm.DescribeInstancePropertiesInput, ...func(*ssm.Options)) (*ssm.DescribeInstancePropertiesOutput, error)
 	DescribeInventoryDeletions(context.Context, *ssm.DescribeInventoryDeletionsInput, ...func(*ssm.Options)) (*ssm.DescribeInventoryDeletionsOutput, error)
 	DescribeMaintenanceWindowExecutionTaskInvocations(context.Context, *ssm.DescribeMaintenanceWindowExecutionTaskInvocationsInput, ...func(*ssm.Options)) (*ssm.DescribeMaintenanceWindowExecutionTaskInvocationsOutput, error)
 	DescribeMaintenanceWindowExecutionTasks(context.Context, *ssm.DescribeMaintenanceWindowExecutionTasksInput, ...func(*ssm.Options)) (*ssm.DescribeMaintenanceWindowExecutionTasksOutput, error)

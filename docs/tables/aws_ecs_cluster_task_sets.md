@@ -25,6 +25,7 @@ This table depends on [aws_ecs_cluster_services](aws_ecs_cluster_services.md).
 |computed_desired_count|`int64`|
 |created_at|`timestamp[us, tz=UTC]`|
 |external_id|`utf8`|
+|fargate_ephemeral_storage|`json`|
 |id|`utf8`|
 |launch_type|`utf8`|
 |load_balancers|`json`|

@@ -56,4 +56,5 @@ The following tables depend on aws_emr_clusters:
 |status|`json`|
 |step_concurrency_level|`int64`|
 |termination_protected|`bool`|
+|unhealthy_node_replacement|`bool`|
 |visible_to_all_users|`bool`|

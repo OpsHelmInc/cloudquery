@@ -17,6 +17,7 @@ The primary key for this table is **_cq_id**.
 |arn|`utf8`|
 |tags|`json`|
 |bgp_asn|`utf8`|
+|bgp_asn_extended|`utf8`|
 |certificate_arn|`utf8`|
 |customer_gateway_id|`utf8`|
 |device_name|`utf8`|

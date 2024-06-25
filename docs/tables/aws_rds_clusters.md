@@ -59,6 +59,7 @@ The following tables depend on aws_rds_clusters:
 |enabled_cloudwatch_logs_exports|`list<item: utf8, nullable>`|
 |endpoint|`utf8`|
 |engine|`utf8`|
+|engine_lifecycle_support|`utf8`|
 |engine_mode|`utf8`|
 |engine_version|`utf8`|
 |global_write_forwarding_requested|`bool`|

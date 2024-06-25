@@ -18,6 +18,7 @@ The primary key for this table is **_cq_id**.
 |association_name|`utf8`|
 |association_version|`utf8`|
 |document_version|`utf8`|
+|duration|`int64`|
 |instance_id|`utf8`|
 |last_execution_date|`timestamp[us, tz=UTC]`|
 |name|`utf8`|

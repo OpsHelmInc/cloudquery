@@ -515,6 +515,36 @@ func (mr *MockSsmClientMockRecorder) DescribeInstancePatches(arg0, arg1 interfac
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeInstancePatches", reflect.TypeOf((*MockSsmClient)(nil).DescribeInstancePatches), varargs...)
 }
 
+// DescribeInstanceProperties mocks base method.
+func (m *MockSsmClient) DescribeInstanceProperties(arg0 context.Context, arg1 *ssm.DescribeInstancePropertiesInput, arg2 ...func(*ssm.Options)) (*ssm.DescribeInstancePropertiesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssm.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeInstanceProperties")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeInstanceProperties", varargs...)
+	ret0, _ := ret[0].(*ssm.DescribeInstancePropertiesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeInstanceProperties indicates an expected call of DescribeInstanceProperties.
+func (mr *MockSsmClientMockRecorder) DescribeInstanceProperties(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeInstanceProperties", reflect.TypeOf((*MockSsmClient)(nil).DescribeInstanceProperties), varargs...)
+}
+
 // DescribeInventoryDeletions mocks base method.
 func (m *MockSsmClient) DescribeInventoryDeletions(arg0 context.Context, arg1 *ssm.DescribeInventoryDeletionsInput, arg2 ...func(*ssm.Options)) (*ssm.DescribeInventoryDeletionsOutput, error) {
 

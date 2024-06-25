@@ -43,6 +43,7 @@ The primary key for this table is **_cq_id**.
 |global_cluster_identifier|`utf8`|
 |hosted_zone_id|`utf8`|
 |iam_database_authentication_enabled|`bool`|
+|io_optimized_next_allowed_modification_time|`timestamp[us, tz=UTC]`|
 |kms_key_id|`utf8`|
 |latest_restorable_time|`timestamp[us, tz=UTC]`|
 |master_username|`utf8`|
@@ -58,4 +59,5 @@ The primary key for this table is **_cq_id**.
 |serverless_v2_scaling_configuration|`json`|
 |status|`utf8`|
 |storage_encrypted|`bool`|
+|storage_type|`utf8`|
 |vpc_security_groups|`json`|

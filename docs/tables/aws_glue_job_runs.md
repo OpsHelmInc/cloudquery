@@ -29,15 +29,18 @@ This table depends on [aws_glue_jobs](aws_glue_jobs.md).
 |execution_time|`int64`|
 |glue_version|`utf8`|
 |id|`utf8`|
+|job_mode|`utf8`|
 |job_name|`utf8`|
 |job_run_state|`utf8`|
 |last_modified_on|`timestamp[us, tz=UTC]`|
 |log_group_name|`utf8`|
+|maintenance_window|`utf8`|
 |max_capacity|`float64`|
 |notification_property|`json`|
 |number_of_workers|`int64`|
 |predecessor_runs|`json`|
 |previous_run_id|`utf8`|
+|profile_name|`utf8`|
 |security_configuration|`utf8`|
 |started_on|`timestamp[us, tz=UTC]`|
 |timeout|`int64`|

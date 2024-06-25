@@ -13,6 +13,7 @@ type AccessanalyzerClient interface {
 	GetAnalyzer(context.Context, *accessanalyzer.GetAnalyzerInput, ...func(*accessanalyzer.Options)) (*accessanalyzer.GetAnalyzerOutput, error)
 	GetArchiveRule(context.Context, *accessanalyzer.GetArchiveRuleInput, ...func(*accessanalyzer.Options)) (*accessanalyzer.GetArchiveRuleOutput, error)
 	GetFinding(context.Context, *accessanalyzer.GetFindingInput, ...func(*accessanalyzer.Options)) (*accessanalyzer.GetFindingOutput, error)
+	GetFindingRecommendation(context.Context, *accessanalyzer.GetFindingRecommendationInput, ...func(*accessanalyzer.Options)) (*accessanalyzer.GetFindingRecommendationOutput, error)
 	GetFindingV2(context.Context, *accessanalyzer.GetFindingV2Input, ...func(*accessanalyzer.Options)) (*accessanalyzer.GetFindingV2Output, error)
 	GetGeneratedPolicy(context.Context, *accessanalyzer.GetGeneratedPolicyInput, ...func(*accessanalyzer.Options)) (*accessanalyzer.GetGeneratedPolicyOutput, error)
 	ListAccessPreviewFindings(context.Context, *accessanalyzer.ListAccessPreviewFindingsInput, ...func(*accessanalyzer.Options)) (*accessanalyzer.ListAccessPreviewFindingsOutput, error)

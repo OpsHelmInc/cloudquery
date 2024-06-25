@@ -27,7 +27,9 @@ The primary key for this table is **_cq_id**.
 |kms_key|`utf8`|
 |last_update|`json`|
 |logging_configuration|`json`|
+|max_webservers|`int64`|
 |max_workers|`int64`|
+|min_webservers|`int64`|
 |min_workers|`int64`|
 |name|`utf8`|
 |network_configuration|`json`|

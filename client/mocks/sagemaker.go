@@ -1085,6 +1085,36 @@ func (mr *MockSagemakerClientMockRecorder) DescribeLineageGroup(arg0, arg1 inter
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeLineageGroup", reflect.TypeOf((*MockSagemakerClient)(nil).DescribeLineageGroup), varargs...)
 }
 
+// DescribeMlflowTrackingServer mocks base method.
+func (m *MockSagemakerClient) DescribeMlflowTrackingServer(arg0 context.Context, arg1 *sagemaker.DescribeMlflowTrackingServerInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.DescribeMlflowTrackingServerOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &sagemaker.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeMlflowTrackingServer")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeMlflowTrackingServer", varargs...)
+	ret0, _ := ret[0].(*sagemaker.DescribeMlflowTrackingServerOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeMlflowTrackingServer indicates an expected call of DescribeMlflowTrackingServer.
+func (mr *MockSagemakerClientMockRecorder) DescribeMlflowTrackingServer(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeMlflowTrackingServer", reflect.TypeOf((*MockSagemakerClient)(nil).DescribeMlflowTrackingServer), varargs...)
+}
+
 // DescribeModel mocks base method.
 func (m *MockSagemakerClient) DescribeModel(arg0 context.Context, arg1 *sagemaker.DescribeModelInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.DescribeModelOutput, error) {
 
@@ -3213,6 +3243,36 @@ func (mr *MockSagemakerClientMockRecorder) ListLineageGroups(arg0, arg1 interfac
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListLineageGroups", reflect.TypeOf((*MockSagemakerClient)(nil).ListLineageGroups), varargs...)
+}
+
+// ListMlflowTrackingServers mocks base method.
+func (m *MockSagemakerClient) ListMlflowTrackingServers(arg0 context.Context, arg1 *sagemaker.ListMlflowTrackingServersInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.ListMlflowTrackingServersOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &sagemaker.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListMlflowTrackingServers")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListMlflowTrackingServers", varargs...)
+	ret0, _ := ret[0].(*sagemaker.ListMlflowTrackingServersOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListMlflowTrackingServers indicates an expected call of ListMlflowTrackingServers.
+func (mr *MockSagemakerClientMockRecorder) ListMlflowTrackingServers(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListMlflowTrackingServers", reflect.TypeOf((*MockSagemakerClient)(nil).ListMlflowTrackingServers), varargs...)
 }
 
 // ListModelBiasJobDefinitions mocks base method.

@@ -22,6 +22,8 @@ The primary key for this table is **_cq_id**.
 |copy_timestamp|`timestamp[us, tz=UTC]`|
 |create_timestamp|`timestamp[us, tz=UTC]`|
 |delete_timestamp|`timestamp[us, tz=UTC]`|
+|hsm_type|`utf8`|
+|mode|`utf8`|
 |never_expires|`bool`|
 |source_backup|`utf8`|
 |source_cluster|`utf8`|

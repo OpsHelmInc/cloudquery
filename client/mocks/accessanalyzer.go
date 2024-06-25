@@ -185,6 +185,36 @@ func (mr *MockAccessanalyzerClientMockRecorder) GetFinding(arg0, arg1 interface{
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetFinding", reflect.TypeOf((*MockAccessanalyzerClient)(nil).GetFinding), varargs...)
 }
 
+// GetFindingRecommendation mocks base method.
+func (m *MockAccessanalyzerClient) GetFindingRecommendation(arg0 context.Context, arg1 *accessanalyzer.GetFindingRecommendationInput, arg2 ...func(*accessanalyzer.Options)) (*accessanalyzer.GetFindingRecommendationOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &accessanalyzer.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetFindingRecommendation")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetFindingRecommendation", varargs...)
+	ret0, _ := ret[0].(*accessanalyzer.GetFindingRecommendationOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetFindingRecommendation indicates an expected call of GetFindingRecommendation.
+func (mr *MockAccessanalyzerClientMockRecorder) GetFindingRecommendation(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetFindingRecommendation", reflect.TypeOf((*MockAccessanalyzerClient)(nil).GetFindingRecommendation), varargs...)
+}
+
 // GetFindingV2 mocks base method.
 func (m *MockAccessanalyzerClient) GetFindingV2(arg0 context.Context, arg1 *accessanalyzer.GetFindingV2Input, arg2 ...func(*accessanalyzer.Options)) (*accessanalyzer.GetFindingV2Output, error) {
 

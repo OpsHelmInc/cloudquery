@@ -20,6 +20,7 @@ The following tables depend on aws_emr_studios:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|tags|`json`|
 |auth_mode|`utf8`|
 |creation_time|`timestamp[us, tz=UTC]`|
 |default_s3_location|`utf8`|
@@ -35,7 +36,6 @@ The following tables depend on aws_emr_studios:
 |studio_arn|`utf8`|
 |studio_id|`utf8`|
 |subnet_ids|`list<item: utf8, nullable>`|
-|tags|`json`|
 |trusted_identity_propagation_enabled|`bool`|
 |url|`utf8`|
 |user_role|`utf8`|

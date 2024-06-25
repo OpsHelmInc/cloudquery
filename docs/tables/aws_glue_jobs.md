@@ -31,14 +31,17 @@ The following tables depend on aws_glue_jobs:
 |execution_class|`utf8`|
 |execution_property|`json`|
 |glue_version|`utf8`|
+|job_mode|`utf8`|
 |last_modified_on|`timestamp[us, tz=UTC]`|
 |log_uri|`utf8`|
+|maintenance_window|`utf8`|
 |max_capacity|`float64`|
 |max_retries|`int64`|
 |name|`utf8`|
 |non_overridable_arguments|`json`|
 |notification_property|`json`|
 |number_of_workers|`int64`|
+|profile_name|`utf8`|
 |role|`utf8`|
 |security_configuration|`utf8`|
 |source_control_details|`json`|

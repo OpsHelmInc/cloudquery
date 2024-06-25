@@ -3455,6 +3455,36 @@ func (mr *MockEc2ClientMockRecorder) DescribeTags(arg0, arg1 interface{}, arg2 .
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeTags", reflect.TypeOf((*MockEc2Client)(nil).DescribeTags), varargs...)
 }
 
+// DescribeTrafficMirrorFilterRules mocks base method.
+func (m *MockEc2Client) DescribeTrafficMirrorFilterRules(arg0 context.Context, arg1 *ec2.DescribeTrafficMirrorFilterRulesInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeTrafficMirrorFilterRulesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ec2.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeTrafficMirrorFilterRules")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeTrafficMirrorFilterRules", varargs...)
+	ret0, _ := ret[0].(*ec2.DescribeTrafficMirrorFilterRulesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeTrafficMirrorFilterRules indicates an expected call of DescribeTrafficMirrorFilterRules.
+func (mr *MockEc2ClientMockRecorder) DescribeTrafficMirrorFilterRules(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeTrafficMirrorFilterRules", reflect.TypeOf((*MockEc2Client)(nil).DescribeTrafficMirrorFilterRules), varargs...)
+}
+
 // DescribeTrafficMirrorFilters mocks base method.
 func (m *MockEc2Client) DescribeTrafficMirrorFilters(arg0 context.Context, arg1 *ec2.DescribeTrafficMirrorFiltersInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeTrafficMirrorFiltersOutput, error) {
 
@@ -4983,6 +5013,36 @@ func (mr *MockEc2ClientMockRecorder) GetInstanceMetadataDefaults(arg0, arg1 inte
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetInstanceMetadataDefaults", reflect.TypeOf((*MockEc2Client)(nil).GetInstanceMetadataDefaults), varargs...)
+}
+
+// GetInstanceTpmEkPub mocks base method.
+func (m *MockEc2Client) GetInstanceTpmEkPub(arg0 context.Context, arg1 *ec2.GetInstanceTpmEkPubInput, arg2 ...func(*ec2.Options)) (*ec2.GetInstanceTpmEkPubOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ec2.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetInstanceTpmEkPub")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetInstanceTpmEkPub", varargs...)
+	ret0, _ := ret[0].(*ec2.GetInstanceTpmEkPubOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetInstanceTpmEkPub indicates an expected call of GetInstanceTpmEkPub.
+func (mr *MockEc2ClientMockRecorder) GetInstanceTpmEkPub(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetInstanceTpmEkPub", reflect.TypeOf((*MockEc2Client)(nil).GetInstanceTpmEkPub), varargs...)
 }
 
 // GetInstanceTypesFromInstanceRequirements mocks base method.
