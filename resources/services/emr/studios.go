@@ -9,6 +9,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/emr/types"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/cloudquery/plugin-sdk/v4/transformers"
+	sdkTypes "github.com/cloudquery/plugin-sdk/v4/types"
 )
 
 func Studios() *schema.Table {
@@ -29,6 +30,11 @@ func Studios() *schema.Table {
 				Description:         `The Amazon Resource Name (ARN) of the EMR Studio.`,
 				Resolver:            schema.PathResolver("StudioArn"),
 				PrimaryKeyComponent: true,
+			},
+			{
+				Name:     "tags",
+				Type:     sdkTypes.ExtensionTypes.JSON,
+				Resolver: client.ResolveTags,
 			},
 		},
 		Relations: []*schema.Table{
@@ -64,5 +70,9 @@ func getStudio(ctx context.Context, meta schema.ClientMeta, resource *schema.Res
 		return err
 	}
 	resource.Item = response.Studio
+	err = resource.Set("tags", client.TagsToMap(response.Studio.Tags))
+	if err != nil {
+		return err
+	}
 	return nil
 }

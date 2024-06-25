@@ -9,6 +9,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/emr/types"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/cloudquery/plugin-sdk/v4/transformers"
+	sdkTypes "github.com/cloudquery/plugin-sdk/v4/types"
 )
 
 func notebookExecutions() *schema.Table {
@@ -28,6 +29,11 @@ func notebookExecutions() *schema.Table {
 				Type:                arrow.BinaryTypes.String,
 				Resolver:            schema.ParentColumnResolver("arn"),
 				PrimaryKeyComponent: false,
+			},
+			{
+				Name:     "tags",
+				Type:     sdkTypes.ExtensionTypes.JSON,
+				Resolver: client.ResolveTags,
 			},
 		},
 	}
@@ -60,5 +66,9 @@ func getNotebookExecution(ctx context.Context, meta schema.ClientMeta, resource 
 		return err
 	}
 	resource.Item = response.NotebookExecution
+	err = resource.Set("tags", client.TagsToMap(response.NotebookExecution.Tags))
+	if err != nil {
+		return err
+	}
 	return nil
 }

@@ -80,5 +80,9 @@ func getCluster(ctx context.Context, meta schema.ClientMeta, resource *schema.Re
 		return err
 	}
 	resource.Item = response.Cluster
+	err = resource.Set("tags", client.TagsToMap(response.Cluster.Tags))
+	if err != nil {
+		return err
+	}
 	return nil
 }
