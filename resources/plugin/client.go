@@ -81,7 +81,7 @@ func (c *Client) Sync(ctx context.Context, options plugin.SyncOptions, res chan<
 		c.logger.Info().Msg("No backend options provided, using no state backend")
 		stateClient = &state.NoOpClient{}
 	} else {
-		conn, err := grpc.DialContext(ctx, options.BackendOptions.Connection,
+		conn, err := grpc.NewClient(options.BackendOptions.Connection,
 			grpc.WithTransportCredentials(insecure.NewCredentials()),
 			grpc.WithDefaultCallOptions(
 				grpc.MaxCallRecvMsgSize(maxMsgSize),

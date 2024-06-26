@@ -31,18 +31,6 @@ func ConfigureAwsSDK(ctx context.Context, logger zerolog.Logger, awsPluginSpec *
 			})
 		}),
 	}
-	if awsPluginSpec.EndpointURL != "" {
-		configFns = append(configFns, config.WithEndpointResolverWithOptions(aws.EndpointResolverWithOptionsFunc(
-			func(service, region string, options ...any) (aws.Endpoint, error) {
-				return aws.Endpoint{
-					URL:               awsPluginSpec.EndpointURL,
-					HostnameImmutable: aws.ToBool(awsPluginSpec.HostnameImmutable),
-					PartitionID:       awsPluginSpec.PartitionID,
-					SigningRegion:     awsPluginSpec.SigningRegion,
-				}, nil
-			})),
-		)
-	}
 
 	if account.DefaultRegion != "" {
 		// According to the docs: If multiple WithDefaultRegion calls are made, the last call overrides the previous call values
@@ -58,6 +46,10 @@ func ConfigureAwsSDK(ctx context.Context, logger zerolog.Logger, awsPluginSpec *
 	if err != nil {
 		logger.Error().Err(err).Msg("error loading default config")
 		return awsCfg, err
+	}
+
+	if awsPluginSpec.EndpointURL != "" {
+		awsCfg.BaseEndpoint = &awsPluginSpec.EndpointURL
 	}
 
 	if account.RoleARN != "" {
