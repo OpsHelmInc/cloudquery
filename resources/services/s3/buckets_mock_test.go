@@ -62,23 +62,28 @@ func buildS3Buckets(t *testing.T, ctrl *gomock.Controller) client.Services {
 	golco := s3.GetObjectLockConfigurationOutput{}
 	require.NoError(t, faker.FakeObject(&golco))
 
-	m.EXPECT().ListBuckets(gomock.Any(), gomock.Any(), gomock.Any()).Return(&s3.ListBucketsOutput{Buckets: []s3Types.Bucket{b}}, nil)
-	m.EXPECT().GetBucketLogging(gomock.Any(), gomock.Any(), gomock.Any()).Return(&blog, nil)
-	m.EXPECT().GetBucketPolicy(gomock.Any(), gomock.Any(), gomock.Any()).Return(&bpol, nil)
-	m.EXPECT().GetBucketPolicyStatus(gomock.Any(), gomock.Any(), gomock.Any()).Return(&bpols, nil)
-	m.EXPECT().GetBucketVersioning(gomock.Any(), gomock.Any(), gomock.Any()).Return(&bver, nil)
-	m.EXPECT().GetBucketAcl(gomock.Any(), gomock.Any(), gomock.Any()).Return(&s3.GetBucketAclOutput{Grants: []s3Types.Grant{bgrant}}, nil)
-	m.EXPECT().GetBucketCors(gomock.Any(), gomock.Any(), gomock.Any()).Return(&s3.GetBucketCorsOutput{CORSRules: []s3Types.CORSRule{bcors}}, nil)
-	m.EXPECT().GetBucketEncryption(gomock.Any(), gomock.Any(), gomock.Any()).Return(&bencryption, nil)
-	m.EXPECT().GetPublicAccessBlock(gomock.Any(), gomock.Any(), gomock.Any()).Return(&bpba, nil)
-	m.EXPECT().GetBucketOwnershipControls(gomock.Any(), gomock.Any(), gomock.Any()).Return(&bownershipcontrols, nil)
-	m.EXPECT().GetBucketReplication(gomock.Any(), gomock.Any(), gomock.Any()).Return(&ro, nil)
-	m.EXPECT().GetBucketTagging(gomock.Any(), gomock.Any(), gomock.Any()).Return(&btag, nil)
-	m.EXPECT().GetBucketLifecycleConfiguration(gomock.Any(), gomock.Any(), gomock.Any()).Return(&glco, nil)
-	m.EXPECT().GetBucketLocation(gomock.Any(), gomock.Any(), gomock.Any()).Return(&bloc, nil)
-	m.EXPECT().GetBucketWebsite(gomock.Any(), gomock.Any(), gomock.Any()).Return(&websiteOutput, nil)
-	m.EXPECT().GetBucketNotificationConfiguration(gomock.Any(), gomock.Any(), gomock.Any()).Return(&gbnco, nil)
-	m.EXPECT().GetObjectLockConfiguration(gomock.Any(), gomock.Any(), gomock.Any()).Return(&golco, nil)
+	lbitco := s3.ListBucketIntelligentTieringConfigurationsOutput{}
+	require.NoError(t, faker.FakeObject(&lbitco))
+	lbitco.NextContinuationToken = nil
+
+	m.EXPECT().ListBuckets(gomock.Any(), gomock.Any(), gomock.Any()).Return(&s3.ListBucketsOutput{Buckets: []s3Types.Bucket{b}}, nil).MinTimes(1)
+	m.EXPECT().GetBucketLogging(gomock.Any(), gomock.Any(), gomock.Any()).Return(&blog, nil).MinTimes(1)
+	m.EXPECT().GetBucketPolicy(gomock.Any(), gomock.Any(), gomock.Any()).Return(&bpol, nil).MinTimes(1)
+	m.EXPECT().GetBucketPolicyStatus(gomock.Any(), gomock.Any(), gomock.Any()).Return(&bpols, nil).MinTimes(1)
+	m.EXPECT().GetBucketVersioning(gomock.Any(), gomock.Any(), gomock.Any()).Return(&bver, nil).MinTimes(1)
+	m.EXPECT().GetBucketAcl(gomock.Any(), gomock.Any(), gomock.Any()).Return(&s3.GetBucketAclOutput{Grants: []s3Types.Grant{bgrant}}, nil).MinTimes(1)
+	m.EXPECT().GetBucketCors(gomock.Any(), gomock.Any(), gomock.Any()).Return(&s3.GetBucketCorsOutput{CORSRules: []s3Types.CORSRule{bcors}}, nil).MinTimes(1)
+	m.EXPECT().GetBucketEncryption(gomock.Any(), gomock.Any(), gomock.Any()).Return(&bencryption, nil).MinTimes(1)
+	m.EXPECT().GetPublicAccessBlock(gomock.Any(), gomock.Any(), gomock.Any()).Return(&bpba, nil).MinTimes(1)
+	m.EXPECT().GetBucketOwnershipControls(gomock.Any(), gomock.Any(), gomock.Any()).Return(&bownershipcontrols, nil).MinTimes(1)
+	m.EXPECT().GetBucketReplication(gomock.Any(), gomock.Any(), gomock.Any()).Return(&ro, nil).MinTimes(1)
+	m.EXPECT().GetBucketTagging(gomock.Any(), gomock.Any(), gomock.Any()).Return(&btag, nil).MinTimes(1)
+	m.EXPECT().GetBucketLifecycleConfiguration(gomock.Any(), gomock.Any(), gomock.Any()).Return(&glco, nil).MinTimes(1)
+	m.EXPECT().GetBucketLocation(gomock.Any(), gomock.Any(), gomock.Any()).Return(&bloc, nil).MinTimes(1)
+	m.EXPECT().GetBucketWebsite(gomock.Any(), gomock.Any(), gomock.Any()).Return(&websiteOutput, nil).MinTimes(1)
+	m.EXPECT().GetBucketNotificationConfiguration(gomock.Any(), gomock.Any(), gomock.Any()).Return(&gbnco, nil).MinTimes(1)
+	m.EXPECT().GetObjectLockConfiguration(gomock.Any(), gomock.Any(), gomock.Any()).Return(&golco, nil).MinTimes(1)
+	m.EXPECT().ListBucketIntelligentTieringConfigurations(gomock.Any(), gomock.Any(), gomock.Any()).Return(&lbitco, nil).MinTimes(1)
 
 	return client.Services{S3: m}
 }

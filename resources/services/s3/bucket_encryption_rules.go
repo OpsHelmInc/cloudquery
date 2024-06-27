@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/resources/services/s3/models"
+	"github.com/OpsHelmInc/ohaws"
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/aws/aws-sdk-go-v2/service/s3/types"
@@ -32,7 +32,7 @@ func bucketEncryptionRules() *schema.Table {
 }
 
 func fetchS3BucketEncryptionRules(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
-	r := parent.Item.(*models.WrappedBucket)
+	r := parent.Item.(*ohaws.WrappedBucket)
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceS3).S3
 	region := parent.Get("region").(*scalar.String)

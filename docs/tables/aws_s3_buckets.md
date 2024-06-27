@@ -34,6 +34,21 @@ The following tables depend on aws_s3_buckets:
 |oh_resource_type|`utf8`|
 |creation_date|`timestamp[us, tz=UTC]`|
 |name|`utf8`|
+|replication_role|`utf8`|
+|replication_rules|`json`|
 |region|`utf8`|
-|policy_status|`json`|
+|logging_target_bucket|`utf8`|
+|logging_target_prefix|`utf8`|
+|policy|`json`|
+|versioning_status|`utf8`|
+|versioning_mfa_delete|`utf8`|
+|block_public_acls|`bool`|
+|block_public_policy|`bool`|
+|ignore_public_acls|`bool`|
+|restrict_public_buckets|`bool`|
 |tags|`json`|
+|ownership_controls|`list<item: utf8, nullable>`|
+|lifecycle_rules|`json`|
+|intelligent_tiering_configurations|`json`|
+|is_public|`bool`|
+|sse_algorithm|`utf8`|
