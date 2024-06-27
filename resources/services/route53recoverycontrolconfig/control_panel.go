@@ -27,6 +27,7 @@ func ControlPanels() *schema.Table {
 				Resolver:            schema.PathResolver("ClusterArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: schema.Tables{
 			safetyRules(),

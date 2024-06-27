@@ -19,6 +19,7 @@ This table depends on [aws_servicequotas_services](aws_servicequotas_services.md
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |adjustable|`bool`|
 |error_reason|`json`|
 |global_quota|`bool`|

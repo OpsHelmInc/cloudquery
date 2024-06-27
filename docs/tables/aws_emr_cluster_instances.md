@@ -19,6 +19,7 @@ This table depends on [aws_emr_clusters](aws_emr_clusters.md).
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |ebs_volumes|`json`|
 |ec2_instance_id|`utf8`|
 |id|`utf8`|

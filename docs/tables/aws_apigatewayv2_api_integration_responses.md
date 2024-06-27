@@ -21,6 +21,7 @@ This table depends on [aws_apigatewayv2_api_integrations](aws_apigatewayv2_api_i
 |api_integration_arn|`utf8`|
 |integration_id|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |integration_response_key|`utf8`|
 |content_handling_strategy|`utf8`|
 |integration_response_id|`utf8`|

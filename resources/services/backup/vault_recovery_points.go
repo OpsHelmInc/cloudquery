@@ -41,6 +41,7 @@ func vaultRecoveryPoints() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveRecoveryPointTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

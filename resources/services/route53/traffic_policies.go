@@ -28,6 +28,7 @@ func TrafficPolicies() *schema.Table {
 				Resolver:            resolveTrafficPolicyArn(),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

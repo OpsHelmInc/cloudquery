@@ -35,6 +35,7 @@ The 'request_account_id' and 'request_region' columns are added to show from whe
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: client.ResolveTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

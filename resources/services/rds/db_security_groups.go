@@ -37,6 +37,7 @@ func DbSecurityGroups() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveRDSTags("DBSecurityGroupArn"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

@@ -20,6 +20,7 @@ This table depends on [aws_appmesh_meshes](aws_appmesh_meshes.md).
 |request_region|`utf8`|
 |arn|`utf8`|
 |mesh_arn|`utf8`|
+|oh_resource_type|`utf8`|
 |mesh_name|`utf8`|
 |metadata|`json`|
 |spec|`json`|

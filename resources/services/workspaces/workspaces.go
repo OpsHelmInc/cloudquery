@@ -28,6 +28,7 @@ func Workspaces() *schema.Table {
 				Resolver:            resolveWorkspaceArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

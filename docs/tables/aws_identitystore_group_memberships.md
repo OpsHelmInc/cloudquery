@@ -21,6 +21,7 @@ This table depends on [aws_identitystore_groups](aws_identitystore_groups.md).
 |group_arn|`utf8`|
 |arn|`utf8`|
 |member_id|`utf8`|
+|oh_resource_type|`utf8`|
 |identity_store_id|`utf8`|
 |group_id|`utf8`|
 |membership_id|`utf8`|

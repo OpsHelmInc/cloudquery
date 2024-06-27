@@ -21,6 +21,7 @@ The following tables depend on aws_rds_clusters:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |activity_stream_kinesis_stream_name|`utf8`|
 |activity_stream_kms_key_id|`utf8`|
 |activity_stream_mode|`utf8`|

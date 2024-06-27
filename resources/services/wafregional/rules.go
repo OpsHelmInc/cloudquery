@@ -38,6 +38,7 @@ func Rules() *schema.Table {
 				Resolver:    resolveWafregionalRuleTags,
 				Description: `Rule tags.`,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

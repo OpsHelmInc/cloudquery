@@ -19,6 +19,7 @@ This table depends on [aws_frauddetector_models](aws_frauddetector_models.md).
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |created_time|`utf8`|
 |external_events_detail|`json`|
 |ingested_events_detail|`json`|

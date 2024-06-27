@@ -20,6 +20,7 @@ This table depends on [aws_ec2_transit_gateways](aws_ec2_transit_gateways.md).
 |region|`utf8`|
 |transit_gateway_arn|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |creation_time|`timestamp[us, tz=UTC]`|
 |options|`json`|
 |owner_id|`utf8`|

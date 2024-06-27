@@ -21,6 +21,7 @@ The following tables depend on aws_codebuild_projects:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |artifacts|`json`|
 |badge|`json`|
 |build_batch_config|`json`|

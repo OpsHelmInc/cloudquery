@@ -21,6 +21,7 @@ This table depends on [aws_apigatewayv2_apis](aws_apigatewayv2_apis.md).
 |api_arn|`utf8`|
 |api_id|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |auto_deployed|`bool`|
 |created_date|`timestamp[us, tz=UTC]`|
 |deployment_id|`utf8`|

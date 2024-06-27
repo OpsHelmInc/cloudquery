@@ -40,6 +40,7 @@ func ClusterSnapshots() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveNeptuneClusterSnapshotTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

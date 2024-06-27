@@ -34,6 +34,7 @@ func DbProxies() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveRDSTags("DBProxyArn"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

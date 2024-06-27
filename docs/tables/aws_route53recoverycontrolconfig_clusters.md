@@ -14,6 +14,7 @@ The primary key for this table is **_cq_id**.
 |_cq_parent_id|`uuid`|
 |request_account_id|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |cluster_arn|`utf8`|
 |cluster_endpoints|`json`|
 |name|`utf8`|

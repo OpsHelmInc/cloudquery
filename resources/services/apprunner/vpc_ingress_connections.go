@@ -43,6 +43,7 @@ Notes:
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveApprunnerTags("VpcIngressConnectionArn"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

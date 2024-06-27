@@ -28,6 +28,7 @@ The following tables depend on aws_apigateway_rest_apis:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |api_key_source|`utf8`|
 |binary_media_types|`list<item: utf8, nullable>`|
 |created_date|`timestamp[us, tz=UTC]`|

@@ -26,6 +26,7 @@ func routingControls() *schema.Table {
 				Resolver:            schema.PathResolver("RoutingControlArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

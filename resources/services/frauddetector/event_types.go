@@ -34,6 +34,7 @@ func EventTypes() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveResourceTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

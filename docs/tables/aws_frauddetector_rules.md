@@ -19,6 +19,7 @@ This table depends on [aws_frauddetector_detectors](aws_frauddetector_detectors.
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |created_time|`utf8`|
 |description|`utf8`|
 |detector_id|`utf8`|

@@ -22,6 +22,7 @@ The following tables depend on aws_apprunner_services:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |auto_scaling_configuration_summary|`json`|
 |created_at|`timestamp[us, tz=UTC]`|
 |instance_configuration|`json`|

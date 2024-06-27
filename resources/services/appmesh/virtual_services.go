@@ -33,6 +33,7 @@ func virtualServices() *schema.Table {
 				Resolver:            schema.ParentColumnResolver("arn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

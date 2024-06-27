@@ -28,6 +28,7 @@ func ConfigurationAggregators() *schema.Table {
 				Resolver:            schema.PathResolver("ConfigurationAggregatorArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{},
 	}

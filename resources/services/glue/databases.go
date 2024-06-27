@@ -33,6 +33,7 @@ func Databases() *schema.Table {
 			tagsCol(func(cl *client.Client, resource *schema.Resource) string {
 				return databaseARN(cl, aws.ToString(resource.Item.(types.Database).Name))
 			}),
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

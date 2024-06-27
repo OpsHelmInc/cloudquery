@@ -20,6 +20,7 @@ The following tables depend on aws_appstream_applications:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |app_block_arn|`utf8`|
 |created_time|`timestamp[us, tz=UTC]`|
 |description|`utf8`|

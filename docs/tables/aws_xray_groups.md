@@ -16,6 +16,7 @@ The primary key for this table is **_cq_id**.
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |filter_expression|`utf8`|
 |group_arn|`utf8`|
 |group_name|`utf8`|

@@ -27,6 +27,7 @@ func Subscriptions() *schema.Table {
 				Resolver:            schema.PathResolver("SubscriptionArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

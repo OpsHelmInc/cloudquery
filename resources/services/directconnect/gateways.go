@@ -36,6 +36,7 @@ func Gateways() *schema.Table {
 				Type:     arrow.BinaryTypes.String,
 				Resolver: schema.PathResolver("DirectConnectGatewayId"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			gatewayAssociations(),

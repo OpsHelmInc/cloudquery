@@ -21,6 +21,7 @@ The following tables depend on aws_iam_groups:
 |_cq_parent_id|`uuid`|
 |account_id|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |create_date|`timestamp[us, tz=UTC]`|
 |group_id|`utf8`|
 |group_name|`utf8`|

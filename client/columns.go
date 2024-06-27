@@ -49,3 +49,12 @@ func LanguageCodeColumn(pk bool) schema.Column {
 		PrimaryKeyComponent: pk,
 	}
 }
+
+func OhResourceTypeColumn() schema.Column {
+	return schema.Column{
+		Name:                "oh_resource_type",
+		Type:                arrow.BinaryTypes.String,
+		Resolver:            ResolveOHResourceType,
+		PrimaryKeyComponent: false,
+	}
+}

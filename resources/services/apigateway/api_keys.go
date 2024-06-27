@@ -31,6 +31,7 @@ func ApiKeys() *schema.Table {
 				Resolver:            resolveApigatewayAPIKeyArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

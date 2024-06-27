@@ -20,6 +20,7 @@ The following tables depend on aws_apigateway_usage_plans:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |api_stages|`json`|
 |description|`utf8`|
 |id|`utf8`|

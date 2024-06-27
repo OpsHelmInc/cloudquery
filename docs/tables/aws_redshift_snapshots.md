@@ -20,6 +20,7 @@ This table depends on [aws_redshift_clusters](aws_redshift_clusters.md).
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |accounts_with_restore_access|`json`|
 |actual_incremental_backup_size_in_mega_bytes|`float64`|
 |availability_zone|`utf8`|

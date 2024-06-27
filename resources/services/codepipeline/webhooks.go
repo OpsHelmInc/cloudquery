@@ -34,6 +34,7 @@ func Webhooks() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: client.ResolveTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

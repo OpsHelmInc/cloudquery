@@ -35,6 +35,7 @@ func restApiResources() *schema.Table {
 				Resolver:            resolveApigatewayRestAPIResourceArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			restApiResourceMethods(),

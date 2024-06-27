@@ -29,6 +29,7 @@ func usagePlanKeys() *schema.Table {
 				Resolver:            resolveApigatewayUsagePlanKeyArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

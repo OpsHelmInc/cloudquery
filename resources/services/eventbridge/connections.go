@@ -29,6 +29,7 @@ func Connections() *schema.Table {
 				Resolver:            schema.PathResolver("ConnectionArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

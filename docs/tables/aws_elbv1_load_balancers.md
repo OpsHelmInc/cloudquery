@@ -20,6 +20,7 @@ The following tables depend on aws_elbv1_load_balancers:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |availability_zones|`list<item: utf8, nullable>`|
 |backend_server_descriptions|`json`|
 |canonical_hosted_zone_name|`utf8`|

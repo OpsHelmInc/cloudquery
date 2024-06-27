@@ -33,6 +33,7 @@ func CachePolicies() *schema.Table {
 				Resolver:            resolveCachePolicyARN(),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

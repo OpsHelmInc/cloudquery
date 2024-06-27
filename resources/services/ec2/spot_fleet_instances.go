@@ -34,6 +34,7 @@ func spotFleetInstances() *schema.Table {
 				Type:     arrow.BinaryTypes.String,
 				Resolver: schema.ParentColumnResolver("spot_fleet_request_id"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

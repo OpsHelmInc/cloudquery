@@ -45,6 +45,7 @@ func Keys() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveKeysReplicaKeys,
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

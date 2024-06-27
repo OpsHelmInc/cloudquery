@@ -20,6 +20,7 @@ This table depends on [aws_apigateway_domain_names](aws_apigateway_domain_names.
 |region|`utf8`|
 |domain_name_arn|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |base_path|`utf8`|
 |rest_api_id|`utf8`|
 |stage|`utf8`|

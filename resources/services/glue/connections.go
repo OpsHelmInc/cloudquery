@@ -30,6 +30,7 @@ func Connections() *schema.Table {
 				Resolver:            resolveGlueConnectionArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

@@ -30,6 +30,7 @@ func Templates() *schema.Table {
 				Resolver:            resolveTemplateArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

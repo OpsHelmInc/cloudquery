@@ -31,6 +31,7 @@ func MultiRegionAccessPoints() *schema.Table {
 				Resolver:            resolveARN,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

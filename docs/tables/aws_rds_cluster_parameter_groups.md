@@ -21,6 +21,7 @@ The following tables depend on aws_rds_cluster_parameter_groups:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |db_cluster_parameter_group_arn|`utf8`|
 |db_cluster_parameter_group_name|`utf8`|
 |db_parameter_group_family|`utf8`|

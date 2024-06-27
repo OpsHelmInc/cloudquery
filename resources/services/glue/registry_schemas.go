@@ -32,6 +32,7 @@ func registrySchemas() *schema.Table {
 			tagsCol(func(_ *client.Client, resource *schema.Resource) string {
 				return *resource.Item.(*glue.GetSchemaOutput).RegistryArn
 			}),
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

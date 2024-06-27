@@ -31,6 +31,7 @@ func ClientCertificates() *schema.Table {
 				Resolver:            resolveApigatewayClientCertificateArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

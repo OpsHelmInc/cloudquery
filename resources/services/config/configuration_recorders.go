@@ -32,6 +32,7 @@ func ConfigurationRecorders() *schema.Table {
 				Resolver:            generateConfigRecorderArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

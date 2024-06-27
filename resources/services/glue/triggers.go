@@ -34,6 +34,7 @@ func Triggers() *schema.Table {
 			tagsCol(func(cl *client.Client, resource *schema.Resource) string {
 				return triggerARN(cl, aws.ToString(resource.Item.(types.Trigger).Name))
 			}),
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

@@ -33,6 +33,7 @@ func Protections() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveShieldProtectionTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

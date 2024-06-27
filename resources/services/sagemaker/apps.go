@@ -36,6 +36,7 @@ func Apps() *schema.Table {
 				Resolver:    resolveSagemakerAppTags,
 				Description: `The tags associated with the app.`,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

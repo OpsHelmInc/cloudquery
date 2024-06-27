@@ -35,6 +35,7 @@ func DbParameterGroups() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveNeptuneDbParameterGroupTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

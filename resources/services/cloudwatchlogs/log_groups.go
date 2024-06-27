@@ -34,6 +34,7 @@ func LogGroups() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveLogGroupTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			subscriptionFilters(),

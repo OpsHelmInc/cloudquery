@@ -34,6 +34,7 @@ func WebAcls() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveWafWebACLTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

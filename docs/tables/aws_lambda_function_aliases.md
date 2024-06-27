@@ -20,6 +20,7 @@ This table depends on [aws_lambda_functions](aws_lambda_functions.md).
 |region|`utf8`|
 |function_arn|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |alias_arn|`utf8`|
 |description|`utf8`|
 |function_version|`utf8`|

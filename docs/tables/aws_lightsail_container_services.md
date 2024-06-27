@@ -22,6 +22,7 @@ The following tables depend on aws_lightsail_container_services:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |container_service_name|`utf8`|
 |created_at|`timestamp[us, tz=UTC]`|
 |current_deployment|`json`|

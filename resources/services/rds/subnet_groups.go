@@ -34,6 +34,7 @@ func SubnetGroups() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveRDSTags("DBSubnetGroupArn"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

@@ -23,6 +23,7 @@ The following tables depend on aws_dynamodb_tables:
 |tags|`json`|
 |arn|`utf8`|
 |archival_summary|`json`|
+|oh_resource_type|`utf8`|
 |attribute_definitions|`json`|
 |billing_mode_summary|`json`|
 |creation_date_time|`timestamp[us, tz=UTC]`|

@@ -28,6 +28,7 @@ func fargateProfiles() *schema.Table {
 				Resolver:            schema.PathResolver("FargateProfileArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

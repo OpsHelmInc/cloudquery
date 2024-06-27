@@ -52,6 +52,7 @@ func Topics() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: schema.PathResolver("EffectiveDeliveryPolicy"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

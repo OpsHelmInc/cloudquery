@@ -33,6 +33,7 @@ func Jobs() *schema.Table {
 			tagsCol(func(cl *client.Client, resource *schema.Resource) string {
 				return jobARN(cl, aws.ToString(resource.Item.(types.Job).Name))
 			}),
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

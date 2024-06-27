@@ -29,6 +29,7 @@ func Flows() *schema.Table {
 				Resolver:            schema.PathResolver("FlowArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

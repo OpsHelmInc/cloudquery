@@ -22,6 +22,7 @@ This table depends on [aws_apigatewayv2_apis](aws_apigatewayv2_apis.md).
 |api_id|`utf8`|
 |arn|`utf8`|
 |model_template|`utf8`|
+|oh_resource_type|`utf8`|
 |name|`utf8`|
 |content_type|`utf8`|
 |description|`utf8`|

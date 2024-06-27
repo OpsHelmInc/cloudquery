@@ -35,6 +35,7 @@ func Certificates() *schema.Table {
 				Resolver:            schema.PathResolver("CertificateArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

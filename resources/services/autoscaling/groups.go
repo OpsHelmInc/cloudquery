@@ -54,6 +54,7 @@ func Groups() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: schema.PathResolver("Tags"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			groupScalingPolicies(),

@@ -35,6 +35,7 @@ func restApiStages() *schema.Table {
 				Resolver:            resolveApigatewayRestAPIStageArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

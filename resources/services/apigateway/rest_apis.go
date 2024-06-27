@@ -31,6 +31,7 @@ func RestApis() *schema.Table {
 				Resolver:            resolveApigatewayRestAPIArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			restApiAuthorizers(),

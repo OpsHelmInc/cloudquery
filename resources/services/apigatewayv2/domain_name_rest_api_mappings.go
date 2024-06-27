@@ -35,6 +35,7 @@ func domainNameRestApiMappings() *schema.Table {
 				Resolver:            resolveDomainNameRestApiMappingArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

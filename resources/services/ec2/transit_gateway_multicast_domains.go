@@ -34,6 +34,7 @@ func transitGatewayMulticastDomains() *schema.Table {
 				Resolver:            schema.PathResolver("TransitGatewayMulticastDomainArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

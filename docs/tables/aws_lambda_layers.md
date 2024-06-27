@@ -20,6 +20,7 @@ The following tables depend on aws_lambda_layers:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |latest_matching_version|`json`|
 |layer_arn|`utf8`|
 |layer_name|`utf8`|

@@ -34,6 +34,7 @@ func ReplicationGroups() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveElasticacheReplicationGroupTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

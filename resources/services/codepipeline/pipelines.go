@@ -36,6 +36,7 @@ func Pipelines() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolvePipelineTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

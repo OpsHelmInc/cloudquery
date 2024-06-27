@@ -97,6 +97,7 @@ func CredentialReports() *schema.Table {
 				Type:     arrow.BinaryTypes.String,
 				Resolver: schema.PathResolver("PasswordStatus"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

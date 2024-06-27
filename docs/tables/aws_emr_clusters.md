@@ -25,6 +25,7 @@ The following tables depend on aws_emr_clusters:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |applications|`json`|
 |auto_scaling_role|`utf8`|
 |auto_terminate|`bool`|

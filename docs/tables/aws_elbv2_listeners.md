@@ -24,6 +24,7 @@ The following tables depend on aws_elbv2_listeners:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |alpn_policy|`list<item: utf8, nullable>`|
 |certificates|`json`|
 |default_actions|`json`|

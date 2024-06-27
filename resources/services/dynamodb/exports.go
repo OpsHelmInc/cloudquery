@@ -29,6 +29,7 @@ func Exports() *schema.Table {
 				Resolver:            schema.PathResolver("ExportArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

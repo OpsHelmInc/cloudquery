@@ -20,6 +20,7 @@ This table depends on [aws_batch_job_queues](aws_batch_job_queues.md).
 |region|`utf8`|
 |tags|`json`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |job_definition|`utf8`|
 |job_id|`utf8`|
 |job_name|`utf8`|

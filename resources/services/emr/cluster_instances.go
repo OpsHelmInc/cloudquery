@@ -37,6 +37,7 @@ func clusterInstances() *schema.Table {
 				Resolver:            resolveClusterInstanceArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

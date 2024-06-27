@@ -39,6 +39,7 @@ func Instances() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: client.ResolveTagPath("TagList"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

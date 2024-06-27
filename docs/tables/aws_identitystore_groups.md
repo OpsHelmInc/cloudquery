@@ -20,6 +20,7 @@ The following tables depend on aws_identitystore_groups:
 |request_account_id|`utf8`|
 |request_region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |group_id|`utf8`|
 |identity_store_id|`utf8`|
 |description|`utf8`|

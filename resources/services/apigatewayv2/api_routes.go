@@ -40,6 +40,7 @@ func apiRoutes() *schema.Table {
 				Resolver:            resolveApiRouteArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			apiRouteResponses(),

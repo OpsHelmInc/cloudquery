@@ -38,6 +38,7 @@ func restApiAuthorizers() *schema.Table {
 				Resolver:            resolveApigatewayRestAPIAuthorizerArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

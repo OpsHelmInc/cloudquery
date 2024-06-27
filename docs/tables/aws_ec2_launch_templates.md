@@ -21,6 +21,7 @@ The following tables depend on aws_ec2_launch_templates:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |create_time|`timestamp[us, tz=UTC]`|
 |created_by|`utf8`|
 |default_version_number|`int64`|

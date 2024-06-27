@@ -20,6 +20,7 @@ The following tables depend on aws_route53recoverycontrolconfig_control_panels:
 |_cq_parent_id|`uuid`|
 |account_id|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |cluster_arn|`utf8`|
 |control_panel_arn|`utf8`|
 |default_control_panel|`bool`|

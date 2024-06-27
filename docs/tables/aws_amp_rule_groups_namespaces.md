@@ -20,6 +20,7 @@ This table depends on [aws_amp_workspaces](aws_amp_workspaces.md).
 |region|`utf8`|
 |workspace_arn|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |created_at|`timestamp[us, tz=UTC]`|
 |data|`binary`|
 |modified_at|`timestamp[us, tz=UTC]`|

@@ -21,6 +21,7 @@ The following tables depend on aws_emr_studios:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |auth_mode|`utf8`|
 |creation_time|`timestamp[us, tz=UTC]`|
 |default_s3_location|`utf8`|

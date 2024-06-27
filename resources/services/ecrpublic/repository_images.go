@@ -28,6 +28,7 @@ func repositoryImages() *schema.Table {
 				Resolver:            resolveImageArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

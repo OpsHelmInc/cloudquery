@@ -21,6 +21,7 @@ The following tables depend on aws_ses_configuration_sets:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |name|`utf8`|
 |delivery_options|`json`|
 |reputation_options|`json`|

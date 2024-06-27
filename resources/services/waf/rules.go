@@ -36,6 +36,7 @@ func Rules() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveWafRuleTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

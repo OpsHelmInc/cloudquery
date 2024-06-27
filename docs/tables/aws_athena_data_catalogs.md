@@ -21,6 +21,7 @@ The following tables depend on aws_athena_data_catalogs:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |name|`utf8`|
 |type|`utf8`|
 |description|`utf8`|

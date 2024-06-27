@@ -39,6 +39,7 @@ func Applications() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveElasticbeanstalkApplicationTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

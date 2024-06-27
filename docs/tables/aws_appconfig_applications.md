@@ -21,6 +21,7 @@ The following tables depend on aws_appconfig_applications:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |description|`utf8`|
 |id|`utf8`|
 |name|`utf8`|

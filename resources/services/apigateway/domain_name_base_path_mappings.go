@@ -35,6 +35,7 @@ func domainNameBasePathMappings() *schema.Table {
 				Resolver:            resolveApigatewayDomainNameBasePathMappingArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

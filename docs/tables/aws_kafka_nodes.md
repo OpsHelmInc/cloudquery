@@ -19,6 +19,7 @@ This table depends on [aws_kafka_clusters](aws_kafka_clusters.md).
 |account_id|`utf8`|
 |arn|`utf8`|
 |cluster_arn|`utf8`|
+|oh_resource_type|`utf8`|
 |added_to_cluster_time|`utf8`|
 |broker_node_info|`json`|
 |controller_node_info|`json`|

@@ -34,6 +34,7 @@ func Vaults() *schema.Table {
 				Resolver:            schema.PathResolver("VaultARN"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

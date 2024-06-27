@@ -20,6 +20,7 @@ The primary key for this table is **_cq_id**.
 |arn|`utf8`|
 |source_account_id|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |created_at|`timestamp[us, tz=UTC]`|
 |deleted_at|`timestamp[us, tz=UTC]`|
 |domain_name|`utf8`|

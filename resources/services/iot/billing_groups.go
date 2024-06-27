@@ -41,6 +41,7 @@ func BillingGroups() *schema.Table {
 				Resolver:            schema.PathResolver("BillingGroupArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

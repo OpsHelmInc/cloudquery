@@ -24,6 +24,7 @@ The following tables depend on aws_networkmanager_global_networks:
 |request_region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |created_at|`timestamp[us, tz=UTC]`|
 |description|`utf8`|
 |global_network_arn|`utf8`|

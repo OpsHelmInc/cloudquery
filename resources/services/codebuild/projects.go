@@ -34,6 +34,7 @@ func Projects() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: client.ResolveTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: schema.Tables{
 			builds(),

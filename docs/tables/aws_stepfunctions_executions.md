@@ -23,6 +23,7 @@ The following tables depend on aws_stepfunctions_executions:
 |region|`utf8`|
 |arn|`utf8`|
 |state_machine_arn|`utf8`|
+|oh_resource_type|`utf8`|
 |execution_arn|`utf8`|
 |start_date|`timestamp[us, tz=UTC]`|
 |status|`utf8`|

@@ -39,6 +39,7 @@ func clusterTasks() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: getEcsTaskProtection,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

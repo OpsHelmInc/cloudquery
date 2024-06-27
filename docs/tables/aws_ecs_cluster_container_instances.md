@@ -21,6 +21,7 @@ This table depends on [aws_ecs_clusters](aws_ecs_clusters.md).
 |cluster_arn|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |agent_connected|`bool`|
 |agent_update_status|`utf8`|
 |attachments|`json`|

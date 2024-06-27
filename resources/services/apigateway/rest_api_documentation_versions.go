@@ -35,6 +35,7 @@ func restApiDocumentationVersions() *schema.Table {
 				Resolver:            resolveApigatewayRestAPIDocumentationVersionArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

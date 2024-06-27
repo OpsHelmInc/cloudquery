@@ -48,6 +48,7 @@ func clusterSnapshots() *schema.Table {
 				Type:     arrow.BinaryTypes.String,
 				Resolver: schema.PathResolver("DBClusterSnapshotIdentifier"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

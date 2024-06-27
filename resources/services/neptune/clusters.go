@@ -35,6 +35,7 @@ func Clusters() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveNeptuneClusterTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

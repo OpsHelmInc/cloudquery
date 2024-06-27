@@ -21,6 +21,7 @@ The following tables depend on aws_batch_job_queues:
 |region|`utf8`|
 |tags|`json`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |compute_environment_order|`json`|
 |job_queue_arn|`utf8`|
 |job_queue_name|`utf8`|

@@ -25,6 +25,7 @@ The following tables depend on aws_autoscaling_groups:
 |arn|`utf8`|
 |tags|`json`|
 |tags_raw|`json`|
+|oh_resource_type|`utf8`|
 |auto_scaling_group_name|`utf8`|
 |availability_zones|`list<item: utf8, nullable>`|
 |created_time|`timestamp[us, tz=UTC]`|

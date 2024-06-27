@@ -37,6 +37,7 @@ func Servers() *schema.Table {
 				Resolver:    resolveServersTags,
 				Description: `Specifies the key-value pairs that you can use to search for and group servers that were assigned to the server that was described`,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

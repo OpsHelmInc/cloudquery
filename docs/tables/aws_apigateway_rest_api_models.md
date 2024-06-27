@@ -21,6 +21,7 @@ This table depends on [aws_apigateway_rest_apis](aws_apigateway_rest_apis.md).
 |rest_api_arn|`utf8`|
 |arn|`utf8`|
 |model_template|`utf8`|
+|oh_resource_type|`utf8`|
 |content_type|`utf8`|
 |description|`utf8`|
 |id|`utf8`|

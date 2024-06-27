@@ -19,6 +19,7 @@ This table depends on [aws_ecrpublic_repositories](aws_ecrpublic_repositories.md
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |artifact_media_type|`utf8`|
 |image_digest|`utf8`|
 |image_manifest_media_type|`utf8`|

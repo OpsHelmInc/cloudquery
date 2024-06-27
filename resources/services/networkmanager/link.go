@@ -33,6 +33,7 @@ The  'request_region' column is added to show region of where the request was ma
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: client.ResolveTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: schema.Tables{},
 	}

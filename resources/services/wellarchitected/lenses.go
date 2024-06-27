@@ -39,6 +39,7 @@ func Lenses() *schema.Table {
 				Resolver:            schema.PathResolver("LensArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

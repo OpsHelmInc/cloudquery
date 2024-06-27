@@ -35,6 +35,7 @@ func ResourceShareInvitations() *schema.Table {
 				Resolver:            resolveResourceShareInvitationReceiver,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

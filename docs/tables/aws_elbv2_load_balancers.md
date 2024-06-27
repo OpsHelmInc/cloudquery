@@ -23,6 +23,7 @@ The following tables depend on aws_elbv2_load_balancers:
 |region|`utf8`|
 |tags|`json`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |availability_zones|`json`|
 |canonical_hosted_zone_id|`utf8`|
 |created_time|`timestamp[us, tz=UTC]`|

@@ -35,6 +35,7 @@ func ThingTypes() *schema.Table {
 				Resolver:            schema.PathResolver("ThingTypeArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

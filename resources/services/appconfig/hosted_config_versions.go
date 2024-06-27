@@ -37,6 +37,7 @@ func hostedConfigurationVersions() *schema.Table {
 				Resolver:            resolveHostedConfigurationVersionARN,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{},
 	}

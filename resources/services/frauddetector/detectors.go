@@ -34,6 +34,7 @@ func Detectors() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveResourceTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

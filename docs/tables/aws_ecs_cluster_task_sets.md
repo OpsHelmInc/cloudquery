@@ -20,6 +20,7 @@ This table depends on [aws_ecs_cluster_services](aws_ecs_cluster_services.md).
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |capacity_provider_strategy|`json`|
 |cluster_arn|`utf8`|
 |computed_desired_count|`int64`|

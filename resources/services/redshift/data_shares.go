@@ -29,6 +29,7 @@ func DataShares() *schema.Table {
 				Resolver:            schema.PathResolver("DataShareArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

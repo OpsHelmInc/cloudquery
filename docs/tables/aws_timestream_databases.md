@@ -21,6 +21,7 @@ The following tables depend on aws_timestream_databases:
 |region|`utf8`|
 |tags|`json`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |creation_time|`timestamp[us, tz=UTC]`|
 |database_name|`utf8`|
 |kms_key_id|`utf8`|

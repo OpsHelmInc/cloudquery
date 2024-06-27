@@ -36,6 +36,7 @@ func Models() *schema.Table {
 				Resolver:    resolveSagemakerModelTags,
 				Description: `The tags associated with the model.`,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

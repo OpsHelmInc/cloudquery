@@ -21,6 +21,7 @@ The following tables depend on aws_glue_registries:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |created_time|`utf8`|
 |description|`utf8`|
 |registry_arn|`utf8`|

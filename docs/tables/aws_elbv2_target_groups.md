@@ -21,6 +21,7 @@ The following tables depend on aws_elbv2_target_groups:
 |region|`utf8`|
 |tags|`json`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |health_check_enabled|`bool`|
 |health_check_interval_seconds|`int64`|
 |health_check_path|`utf8`|

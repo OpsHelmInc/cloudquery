@@ -33,6 +33,7 @@ func executions() *schema.Table {
 				Type:     arrow.BinaryTypes.String,
 				Resolver: schema.ParentColumnResolver("arn"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			mapRuns(),

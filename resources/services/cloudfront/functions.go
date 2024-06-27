@@ -35,6 +35,7 @@ func Functions() *schema.Table {
 				Resolver:            schema.PathResolver("FunctionSummary.FunctionMetadata.FunctionARN"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

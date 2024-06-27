@@ -39,6 +39,7 @@ func Findings() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: client.ResolveTagPath("UserAttributes"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

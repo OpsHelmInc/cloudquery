@@ -29,6 +29,7 @@ func Layers() *schema.Table {
 				Resolver:            schema.PathResolver("LayerArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

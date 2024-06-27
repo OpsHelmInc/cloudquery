@@ -31,6 +31,7 @@ func UsagePlans() *schema.Table {
 				Resolver:            resolveApigatewayUsagePlanArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

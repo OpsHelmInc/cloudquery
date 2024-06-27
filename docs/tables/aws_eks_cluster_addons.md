@@ -20,6 +20,7 @@ This table depends on [aws_eks_clusters](aws_eks_clusters.md).
 |region|`utf8`|
 |arn|`utf8`|
 |cluster_arn|`utf8`|
+|oh_resource_type|`utf8`|
 |addon_arn|`utf8`|
 |addon_name|`utf8`|
 |addon_version|`utf8`|

@@ -30,6 +30,7 @@ func ServiceUpdates() *schema.Table {
 				Resolver:            resolveServiceUpdateArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

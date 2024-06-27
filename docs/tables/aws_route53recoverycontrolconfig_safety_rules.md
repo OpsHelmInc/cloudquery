@@ -18,5 +18,6 @@ This table depends on [aws_route53recoverycontrolconfig_control_panels](aws_rout
 |_cq_parent_id|`uuid`|
 |account_id|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |assertion|`json`|
 |gating|`json`|

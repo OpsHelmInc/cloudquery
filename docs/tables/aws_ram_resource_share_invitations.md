@@ -16,6 +16,7 @@ The primary key for this table is **_cq_id**.
 |region|`utf8`|
 |arn|`utf8`|
 |receiver_combined|`utf8`|
+|oh_resource_type|`utf8`|
 |invitation_timestamp|`timestamp[us, tz=UTC]`|
 |receiver_account_id|`utf8`|
 |receiver_arn|`utf8`|

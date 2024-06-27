@@ -38,6 +38,7 @@ func HealthChecks() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveRoute53healthCheckCloudWatchAlarmConfigurationDimensions,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

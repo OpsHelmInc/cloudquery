@@ -27,6 +27,7 @@ func ReadinessChecks() *schema.Table {
 				Resolver:            schema.PathResolver("ReadinessCheckArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

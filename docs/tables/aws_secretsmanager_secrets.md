@@ -22,6 +22,7 @@ The following tables depend on aws_secretsmanager_secrets:
 |arn|`utf8`|
 |policy|`json`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |created_date|`timestamp[us, tz=UTC]`|
 |deleted_date|`timestamp[us, tz=UTC]`|
 |description|`utf8`|

@@ -36,6 +36,7 @@ func TopicRules() *schema.Table {
 				Resolver:            schema.PathResolver("RuleArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

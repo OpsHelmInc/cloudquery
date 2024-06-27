@@ -21,6 +21,7 @@ The following tables depend on aws_appstream_stacks:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |name|`utf8`|
 |access_endpoints|`json`|
 |application_settings|`json`|

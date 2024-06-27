@@ -30,6 +30,7 @@ func Workloads() *schema.Table {
 				Resolver:            schema.PathResolver("WorkloadArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: schema.Tables{
 			workloadMilestones(),

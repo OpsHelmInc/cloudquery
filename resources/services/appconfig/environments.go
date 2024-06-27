@@ -36,6 +36,7 @@ func environments() *schema.Table {
 				Resolver:            resolveEnvironmentArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{},
 	}

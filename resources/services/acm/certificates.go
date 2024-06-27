@@ -35,6 +35,7 @@ func Certificates() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveCertificateTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

@@ -22,6 +22,7 @@ The following tables depend on aws_qldb_ledgers:
 |region|`utf8`|
 |tags|`json`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |creation_date_time|`timestamp[us, tz=UTC]`|
 |deletion_protection|`bool`|
 |encryption_description|`json`|

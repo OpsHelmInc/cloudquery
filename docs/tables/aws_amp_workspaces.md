@@ -22,6 +22,7 @@ The following tables depend on aws_amp_workspaces:
 |alert_manager_definition|`json`|
 |logging_configuration|`json`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |created_at|`timestamp[us, tz=UTC]`|
 |status|`json`|
 |workspace_id|`utf8`|

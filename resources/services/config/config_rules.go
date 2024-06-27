@@ -28,6 +28,7 @@ func ConfigRules() *schema.Table {
 				Resolver:            schema.PathResolver("ConfigRuleArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

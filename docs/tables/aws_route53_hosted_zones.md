@@ -21,6 +21,7 @@ The following tables depend on aws_route53_hosted_zones:
 |_cq_parent_id|`uuid`|
 |account_id|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |caller_reference|`utf8`|
 |id|`utf8`|
 |name|`utf8`|

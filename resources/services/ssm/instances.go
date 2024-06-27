@@ -31,6 +31,7 @@ func Instances() *schema.Table {
 				Resolver:            resolveInstanceARN,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

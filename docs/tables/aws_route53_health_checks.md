@@ -16,6 +16,7 @@ The primary key for this table is **_cq_id**.
 |arn|`utf8`|
 |tags|`json`|
 |cloud_watch_alarm_configuration_dimensions|`json`|
+|oh_resource_type|`utf8`|
 |caller_reference|`utf8`|
 |health_check_config|`json`|
 |health_check_version|`int64`|

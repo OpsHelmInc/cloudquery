@@ -22,6 +22,7 @@ The following tables depend on aws_directconnect_gateways:
 |request_region|`utf8`|
 |arn|`utf8`|
 |id|`utf8`|
+|oh_resource_type|`utf8`|
 |amazon_side_asn|`int64`|
 |direct_connect_gateway_id|`utf8`|
 |direct_connect_gateway_name|`utf8`|

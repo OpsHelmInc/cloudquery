@@ -25,6 +25,7 @@ The following tables depend on aws_ec2_transit_gateways:
 |region|`utf8`|
 |id|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |creation_time|`timestamp[us, tz=UTC]`|
 |description|`utf8`|
 |options|`json`|

@@ -40,6 +40,7 @@ func apiStages() *schema.Table {
 				Resolver:            resolveApiStageArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

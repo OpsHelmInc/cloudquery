@@ -28,6 +28,7 @@ func BatchImports() *schema.Table {
 				Resolver:            schema.PathResolver("Arn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

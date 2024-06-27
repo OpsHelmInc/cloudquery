@@ -35,3 +35,4 @@ The following tables depend on aws_lambda_functions:
 |concurrency|`json`|
 |configuration|`json`|
 |tags|`json`|
+|oh_resource_type|`utf8`|

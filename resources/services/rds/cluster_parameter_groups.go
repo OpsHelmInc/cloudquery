@@ -34,6 +34,7 @@ func ClusterParameterGroups() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveRDSTags("DBClusterParameterGroupArn"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

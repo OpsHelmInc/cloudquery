@@ -15,6 +15,7 @@ The primary key for this table is **_cq_id**.
 |account_id|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |client_id_list|`list<item: utf8, nullable>`|
 |create_date|`timestamp[us, tz=UTC]`|
 |thumbprint_list|`list<item: utf8, nullable>`|

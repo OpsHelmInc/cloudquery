@@ -22,6 +22,7 @@ This table depends on [aws_apigateway_rest_api_resource_methods](aws_apigateway_
 |resource_arn|`utf8`|
 |method_arn|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |cache_key_parameters|`list<item: utf8, nullable>`|
 |cache_namespace|`utf8`|
 |connection_id|`utf8`|

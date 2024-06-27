@@ -20,6 +20,7 @@ This table depends on [aws_ec2_spot_fleet_requests](aws_ec2_spot_fleet_requests.
 |region|`utf8`|
 |arn|`utf8`|
 |spot_fleet_request_id|`utf8`|
+|oh_resource_type|`utf8`|
 |instance_health|`utf8`|
 |instance_id|`utf8`|
 |instance_type|`utf8`|

@@ -28,6 +28,7 @@ func nodeGroups() *schema.Table {
 				Resolver:            schema.PathResolver("NodegroupArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

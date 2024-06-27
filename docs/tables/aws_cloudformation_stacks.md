@@ -24,6 +24,7 @@ The following tables depend on aws_cloudformation_stacks:
 |id|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |creation_time|`timestamp[us, tz=UTC]`|
 |stack_name|`utf8`|
 |stack_status|`utf8`|

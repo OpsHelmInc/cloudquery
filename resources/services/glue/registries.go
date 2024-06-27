@@ -32,6 +32,7 @@ func Registries() *schema.Table {
 			tagsCol(func(_ *client.Client, resource *schema.Resource) string {
 				return *resource.Item.(types.RegistryListItem).RegistryArn
 			}),
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

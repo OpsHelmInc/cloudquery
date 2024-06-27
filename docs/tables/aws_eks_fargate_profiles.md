@@ -19,6 +19,7 @@ This table depends on [aws_eks_clusters](aws_eks_clusters.md).
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |cluster_name|`utf8`|
 |created_at|`timestamp[us, tz=UTC]`|
 |fargate_profile_arn|`utf8`|

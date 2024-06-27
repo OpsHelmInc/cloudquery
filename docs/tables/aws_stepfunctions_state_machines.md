@@ -21,6 +21,7 @@ The following tables depend on aws_stepfunctions_state_machines:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |creation_date|`timestamp[us, tz=UTC]`|
 |definition|`utf8`|
 |name|`utf8`|

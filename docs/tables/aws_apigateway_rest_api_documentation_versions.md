@@ -20,6 +20,7 @@ This table depends on [aws_apigateway_rest_apis](aws_apigateway_rest_apis.md).
 |region|`utf8`|
 |rest_api_arn|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |created_date|`timestamp[us, tz=UTC]`|
 |description|`utf8`|
 |version|`utf8`|

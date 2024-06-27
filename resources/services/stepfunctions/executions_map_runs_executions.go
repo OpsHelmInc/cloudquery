@@ -37,6 +37,7 @@ func mapRunExecutions() *schema.Table {
 				Type:     arrow.BinaryTypes.String,
 				Resolver: schema.ParentColumnResolver("state_machine_arn"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

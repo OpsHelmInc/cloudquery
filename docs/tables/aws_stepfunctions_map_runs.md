@@ -23,6 +23,7 @@ The following tables depend on aws_stepfunctions_map_runs:
 |region|`utf8`|
 |arn|`utf8`|
 |state_machine_arn|`utf8`|
+|oh_resource_type|`utf8`|
 |execution_arn|`utf8`|
 |execution_counts|`json`|
 |item_counts|`json`|

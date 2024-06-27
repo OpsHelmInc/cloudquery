@@ -34,6 +34,7 @@ func AccessPoints() *schema.Table {
 				Type:     cqtypes.ExtensionTypes.JSON,
 				Resolver: client.ResolveTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

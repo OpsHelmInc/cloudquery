@@ -28,6 +28,7 @@ func Directories() *schema.Table {
 				Resolver:            resolveDirectoryArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

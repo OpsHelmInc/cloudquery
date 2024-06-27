@@ -23,6 +23,7 @@ The following tables depend on aws_backup_vaults:
 |access_policy|`json`|
 |notifications|`json`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |backup_vault_arn|`utf8`|
 |backup_vault_name|`utf8`|
 |creation_date|`timestamp[us, tz=UTC]`|

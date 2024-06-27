@@ -29,6 +29,7 @@ func ApplicationVersions() *schema.Table {
 				Resolver:            schema.PathResolver("ApplicationVersionArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

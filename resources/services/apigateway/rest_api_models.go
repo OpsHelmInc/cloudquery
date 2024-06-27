@@ -40,6 +40,7 @@ func restApiModels() *schema.Table {
 				Type:     arrow.BinaryTypes.String,
 				Resolver: resolveApigatewayRestAPIModelModelTemplate,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

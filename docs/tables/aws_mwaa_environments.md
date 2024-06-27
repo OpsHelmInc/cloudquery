@@ -15,6 +15,7 @@ The primary key for this table is **_cq_id**.
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |airflow_configuration_options|`json`|
 |airflow_version|`utf8`|
 |celery_executor_queue|`utf8`|

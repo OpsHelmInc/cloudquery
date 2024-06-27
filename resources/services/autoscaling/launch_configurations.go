@@ -28,6 +28,7 @@ func LaunchConfigurations() *schema.Table {
 				Resolver:            schema.PathResolver("LaunchConfigurationARN"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

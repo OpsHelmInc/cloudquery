@@ -34,6 +34,7 @@ func VpcConnectors() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveApprunnerTags("VpcConnectorArn"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

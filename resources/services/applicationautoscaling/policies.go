@@ -28,6 +28,7 @@ func Policies() *schema.Table {
 				Resolver:            schema.PathResolver("PolicyARN"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

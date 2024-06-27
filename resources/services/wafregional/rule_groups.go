@@ -43,6 +43,7 @@ func RuleGroups() *schema.Table {
 				Type:     arrow.ListOf(arrow.BinaryTypes.String),
 				Resolver: resolveWafregionalRuleGroupRuleIds,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

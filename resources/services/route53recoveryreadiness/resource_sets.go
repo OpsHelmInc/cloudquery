@@ -27,6 +27,7 @@ func ResourceSets() *schema.Table {
 				Resolver:            schema.PathResolver("ResourceSetArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

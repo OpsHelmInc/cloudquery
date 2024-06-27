@@ -28,6 +28,7 @@ func StaticIps() *schema.Table {
 				Type:                arrow.BinaryTypes.String,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

@@ -23,6 +23,7 @@ The following tables depend on aws_cloudformation_stack_sets:
 |id|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |administration_role_arn|`utf8`|
 |auto_deployment|`json`|
 |capabilities|`list<item: utf8, nullable>`|

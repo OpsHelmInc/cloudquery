@@ -46,6 +46,7 @@ func ThingGroups() *schema.Table {
 				Resolver:            schema.PathResolver("ThingGroupArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

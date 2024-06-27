@@ -35,6 +35,7 @@ func ComputeEnvironments() *schema.Table {
 				Resolver:            schema.PathResolver("ComputeEnvironmentArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

@@ -60,6 +60,7 @@ func SubnetGroups() *schema.Table {
 				Type:     arrow.BinaryTypes.String,
 				Resolver: schema.PathResolver("VpcId"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

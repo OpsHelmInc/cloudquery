@@ -31,6 +31,7 @@ func Applications() *schema.Table {
 				Resolver:            resolveApplicationArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: schema.Tables{
 			environments(),

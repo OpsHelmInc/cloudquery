@@ -20,6 +20,7 @@ This table depends on [aws_apigateway_usage_plans](aws_apigateway_usage_plans.md
 |region|`utf8`|
 |usage_plan_arn|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |id|`utf8`|
 |name|`utf8`|
 |type|`utf8`|

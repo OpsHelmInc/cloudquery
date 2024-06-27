@@ -29,6 +29,7 @@ func ProtectedResources() *schema.Table {
 				Resolver:            schema.PathResolver("ResourceArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

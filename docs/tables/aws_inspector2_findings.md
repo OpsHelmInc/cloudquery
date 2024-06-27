@@ -17,6 +17,7 @@ The primary key for this table is **_cq_id**.
 |request_account_id|`utf8`|
 |request_region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |aws_account_id|`utf8`|
 |description|`utf8`|
 |finding_arn|`utf8`|

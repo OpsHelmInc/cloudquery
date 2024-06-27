@@ -34,6 +34,7 @@ func ReservedInstances() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveRDSTags("ReservedDBInstanceArn"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

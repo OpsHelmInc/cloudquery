@@ -22,6 +22,7 @@ The following tables depend on aws_glue_ml_transforms:
 |arn|`utf8`|
 |schema|`json`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |created_on|`timestamp[us, tz=UTC]`|
 |description|`utf8`|
 |evaluation_metrics|`json`|

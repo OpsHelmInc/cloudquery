@@ -30,6 +30,7 @@ func Streams() *schema.Table {
 				Type:                arrow.BinaryTypes.String,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

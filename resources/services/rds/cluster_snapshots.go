@@ -39,6 +39,7 @@ func ClusterSnapshots() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveRDSClusterSnapshotAttributes,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

@@ -28,6 +28,7 @@ func ScheduledActions() *schema.Table {
 				Resolver:            schema.PathResolver("ScheduledActionARN"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

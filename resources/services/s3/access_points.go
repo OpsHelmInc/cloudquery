@@ -29,6 +29,7 @@ func AccessPoints() *schema.Table {
 				Resolver:            schema.PathResolver("AccessPointArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

@@ -24,6 +24,7 @@ The following tables depend on aws_apigateway_rest_api_resource_methods:
 |rest_api_arn|`utf8`|
 |resource_arn|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |api_key_required|`bool`|
 |authorization_scopes|`list<item: utf8, nullable>`|
 |authorization_type|`utf8`|

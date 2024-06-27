@@ -28,6 +28,7 @@ func ReplicationInstances() *schema.Table {
 				Resolver:            schema.PathResolver("ReplicationInstanceArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

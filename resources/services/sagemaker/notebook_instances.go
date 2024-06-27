@@ -36,6 +36,7 @@ func NotebookInstances() *schema.Table {
 				Resolver:    resolveSagemakerNotebookInstanceTags,
 				Description: `The tags associated with the notebook instance.`,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

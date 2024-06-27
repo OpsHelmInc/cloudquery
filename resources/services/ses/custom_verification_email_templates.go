@@ -33,6 +33,7 @@ func CustomVerificationEmailTemplates() *schema.Table {
 				Resolver:            resolveCustomVerificationEmailTemplateArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

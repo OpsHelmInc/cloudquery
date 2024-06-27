@@ -38,6 +38,7 @@ func snapshots() *schema.Table {
 				Resolver:    client.ResolveTags,
 				Description: `Tags consisting of a name/value pair for a resource.`,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

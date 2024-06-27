@@ -20,6 +20,7 @@ The following tables depend on aws_frauddetector_models:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |created_time|`utf8`|
 |description|`utf8`|
 |event_type_name|`utf8`|

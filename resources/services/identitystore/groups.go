@@ -30,6 +30,7 @@ func Groups() *schema.Table {
 				Resolver:            resolveGroupARN,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			groupMemberships(),

@@ -33,6 +33,7 @@ func virtualRouters() *schema.Table {
 				Resolver:            schema.ParentColumnResolver("arn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

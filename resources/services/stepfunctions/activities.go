@@ -28,6 +28,7 @@ func Activities() *schema.Table {
 				Resolver:            schema.PathResolver("ActivityArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

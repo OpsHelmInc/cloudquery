@@ -35,6 +35,7 @@ func FileCaches() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveFileCacheTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

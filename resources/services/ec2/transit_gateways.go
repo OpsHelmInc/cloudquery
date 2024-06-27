@@ -33,6 +33,7 @@ func TransitGateways() *schema.Table {
 				Resolver:            schema.PathResolver("TransitGatewayArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

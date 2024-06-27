@@ -20,6 +20,7 @@ This table depends on [aws_appconfig_applications](aws_appconfig_applications.md
 |region|`utf8`|
 |application_arn|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |application_id|`utf8`|
 |description|`utf8`|
 |id|`utf8`|

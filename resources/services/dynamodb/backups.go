@@ -30,6 +30,7 @@ func Backups() *schema.Table {
 				Resolver:            schema.PathResolver("BackupDetails.BackupArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

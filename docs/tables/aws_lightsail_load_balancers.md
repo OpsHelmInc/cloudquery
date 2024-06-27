@@ -21,6 +21,7 @@ The following tables depend on aws_lightsail_load_balancers:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |configuration_options|`json`|
 |created_at|`timestamp[us, tz=UTC]`|
 |dns_name|`utf8`|

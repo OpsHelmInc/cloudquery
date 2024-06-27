@@ -36,6 +36,7 @@ func Apis() *schema.Table {
 				Type:     arrow.BinaryTypes.String,
 				Resolver: schema.PathResolver("ApiId"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			apiAuthorizers(),

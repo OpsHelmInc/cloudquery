@@ -34,6 +34,7 @@ func CertificateAuthorities() *schema.Table {
 				Type:     cqtypes.ExtensionTypes.JSON,
 				Resolver: resolveCertificateAuthorityTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

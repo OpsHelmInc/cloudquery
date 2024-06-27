@@ -21,6 +21,7 @@ The following tables depend on aws_ecrpublic_repositories:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |created_at|`timestamp[us, tz=UTC]`|
 |registry_id|`utf8`|
 |repository_arn|`utf8`|

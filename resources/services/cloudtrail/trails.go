@@ -44,6 +44,7 @@ func Trails() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveCloudTrailStatus,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			trailEventSelectors(),

@@ -30,6 +30,7 @@ func Streams() *schema.Table {
 				Resolver:            schema.PathResolver("StreamArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

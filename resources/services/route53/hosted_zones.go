@@ -36,6 +36,7 @@ func HostedZones() *schema.Table {
 				Resolver:            resolveRoute53HostedZoneArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

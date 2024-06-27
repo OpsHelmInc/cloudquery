@@ -32,6 +32,7 @@ func functionAliases() *schema.Table {
 				Resolver:            schema.PathResolver("AliasArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

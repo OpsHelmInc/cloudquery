@@ -44,6 +44,7 @@ func jobs() *schema.Table {
 				Resolver:            schema.PathResolver("JobArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

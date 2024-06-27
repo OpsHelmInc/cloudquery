@@ -25,6 +25,7 @@ The following tables depend on aws_redshift_clusters:
 |arn|`utf8`|
 |logging_status|`json`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |allow_version_upgrade|`bool`|
 |aqua_configuration|`json`|
 |automated_snapshot_retention_period|`int64`|

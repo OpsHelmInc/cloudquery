@@ -21,6 +21,7 @@ The following tables depend on aws_wellarchitected_workloads:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |account_ids|`list<item: utf8, nullable>`|
 |applications|`list<item: utf8, nullable>`|
 |architectural_design|`utf8`|

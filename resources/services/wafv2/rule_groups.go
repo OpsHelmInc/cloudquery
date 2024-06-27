@@ -43,6 +43,7 @@ func RuleGroups() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveWafv2ruleGroupPolicy,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

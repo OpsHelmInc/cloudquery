@@ -38,6 +38,7 @@ func clusterOperations() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveKafkaTags("OperationArn"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

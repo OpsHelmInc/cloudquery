@@ -34,6 +34,7 @@ OH: The tag has been removed.
 				Resolver:            schema.PathResolver("GlobalTableArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

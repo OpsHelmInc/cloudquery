@@ -21,6 +21,7 @@ The following tables depend on aws_ec2_ebs_snapshots:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |data_encryption_key_id|`utf8`|
 |description|`utf8`|
 |encrypted|`bool`|

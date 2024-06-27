@@ -25,6 +25,7 @@ The following tables depend on aws_appmesh_meshes:
 |request_region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |mesh_name|`utf8`|
 |metadata|`json`|
 |spec|`json`|

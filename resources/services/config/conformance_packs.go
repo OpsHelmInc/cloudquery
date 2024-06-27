@@ -30,6 +30,7 @@ func ConformancePacks() *schema.Table {
 				Resolver:            schema.PathResolver("ConformancePackArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

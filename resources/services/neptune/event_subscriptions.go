@@ -35,6 +35,7 @@ func EventSubscriptions() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveNeptuneEventSubscriptionTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

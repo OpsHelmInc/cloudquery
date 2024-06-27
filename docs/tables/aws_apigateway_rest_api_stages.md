@@ -20,6 +20,7 @@ This table depends on [aws_apigateway_rest_apis](aws_apigateway_rest_apis.md).
 |region|`utf8`|
 |rest_api_arn|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |access_log_settings|`json`|
 |cache_cluster_enabled|`bool`|
 |cache_cluster_size|`utf8`|

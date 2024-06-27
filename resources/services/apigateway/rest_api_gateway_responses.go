@@ -35,6 +35,7 @@ func restApiGatewayResponses() *schema.Table {
 				Resolver:            resolveApigatewayRestAPIGatewayResponseArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

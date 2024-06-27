@@ -39,6 +39,7 @@ func MlTransforms() *schema.Table {
 			tagsCol(func(cl *client.Client, resource *schema.Resource) string {
 				return mlTransformARN(cl, aws.ToString(resource.Item.(types.MLTransform).TransformId))
 			}),
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

@@ -30,6 +30,7 @@ func Replays() *schema.Table {
 				Resolver:            schema.PathResolver("ReplayArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

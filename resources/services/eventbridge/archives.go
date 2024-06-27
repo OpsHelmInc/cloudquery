@@ -30,6 +30,7 @@ func Archives() *schema.Table {
 				Resolver:            resolveArchiveArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

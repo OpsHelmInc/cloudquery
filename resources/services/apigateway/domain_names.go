@@ -31,6 +31,7 @@ func DomainNames() *schema.Table {
 				Resolver:            resolveApigatewayDomainNameArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			domainNameBasePathMappings(),

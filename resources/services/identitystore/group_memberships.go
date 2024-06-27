@@ -40,6 +40,7 @@ func groupMemberships() *schema.Table {
 				Type:     arrow.BinaryTypes.String,
 				Resolver: resolveMemberID,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

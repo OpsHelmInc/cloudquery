@@ -19,6 +19,7 @@ This table depends on [aws_elastictranscoder_pipelines](aws_elastictranscoder_pi
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |id|`utf8`|
 |input|`json`|
 |inputs|`json`|

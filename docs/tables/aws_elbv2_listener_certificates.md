@@ -20,5 +20,6 @@ This table depends on [aws_elbv2_listeners](aws_elbv2_listeners.md).
 |region|`utf8`|
 |listener_arn|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |certificate_arn|`utf8`|
 |is_default|`bool`|

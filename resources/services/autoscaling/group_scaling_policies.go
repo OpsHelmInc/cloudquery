@@ -33,6 +33,7 @@ func groupScalingPolicies() *schema.Table {
 				Resolver:            schema.PathResolver("PolicyARN"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

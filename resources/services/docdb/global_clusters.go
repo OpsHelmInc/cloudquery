@@ -28,6 +28,7 @@ func GlobalClusters() *schema.Table {
 				Resolver:            schema.PathResolver("GlobalClusterArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

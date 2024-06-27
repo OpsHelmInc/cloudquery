@@ -29,6 +29,7 @@ func AccessGrantInstances() *schema.Table {
 				Resolver:            schema.PathResolver("AccessGrantsInstanceArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

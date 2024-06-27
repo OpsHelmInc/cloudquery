@@ -53,6 +53,7 @@ func Subscriptions() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: schema.PathResolver("RedrivePolicy"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

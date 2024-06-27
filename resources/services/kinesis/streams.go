@@ -36,6 +36,7 @@ func Streams() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveKinesisStreamTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

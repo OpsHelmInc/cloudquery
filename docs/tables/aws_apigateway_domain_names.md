@@ -20,6 +20,7 @@ The following tables depend on aws_apigateway_domain_names:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |certificate_arn|`utf8`|
 |certificate_name|`utf8`|
 |certificate_upload_date|`timestamp[us, tz=UTC]`|

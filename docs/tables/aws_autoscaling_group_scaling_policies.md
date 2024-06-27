@@ -20,6 +20,7 @@ This table depends on [aws_autoscaling_groups](aws_autoscaling_groups.md).
 |region|`utf8`|
 |group_arn|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |adjustment_type|`utf8`|
 |alarms|`json`|
 |auto_scaling_group_name|`utf8`|

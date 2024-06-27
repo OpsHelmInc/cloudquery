@@ -19,6 +19,7 @@ This table depends on [aws_route53_hosted_zones](aws_route53_hosted_zones.md).
 |account_id|`utf8`|
 |arn|`utf8`|
 |hosted_zone_arn|`utf8`|
+|oh_resource_type|`utf8`|
 |cloud_watch_logs_log_group_arn|`utf8`|
 |hosted_zone_id|`utf8`|
 |id|`utf8`|

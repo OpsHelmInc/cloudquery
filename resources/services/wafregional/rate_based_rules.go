@@ -37,6 +37,7 @@ func RateBasedRules() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveWafregionalRateBasedRuleTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

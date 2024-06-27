@@ -20,6 +20,7 @@ This table depends on [aws_docdb_clusters](aws_docdb_clusters.md).
 |region|`utf8`|
 |tags|`json`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |auto_minor_version_upgrade|`bool`|
 |availability_zone|`utf8`|
 |backup_retention_period|`int64`|

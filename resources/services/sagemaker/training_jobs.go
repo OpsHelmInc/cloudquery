@@ -36,6 +36,7 @@ func TrainingJobs() *schema.Table {
 				Resolver:    resolveSagemakerTrainingJobTags,
 				Description: `The tags associated with the model.`,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

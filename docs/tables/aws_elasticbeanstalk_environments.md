@@ -24,6 +24,7 @@ The following tables depend on aws_elasticbeanstalk_environments:
 |tags|`json`|
 |id|`utf8`|
 |listeners|`json`|
+|oh_resource_type|`utf8`|
 |abortable_operation_in_progress|`bool`|
 |application_name|`utf8`|
 |cname|`utf8`|

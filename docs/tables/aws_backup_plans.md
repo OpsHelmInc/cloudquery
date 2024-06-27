@@ -21,6 +21,7 @@ The following tables depend on aws_backup_plans:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |advanced_backup_settings|`json`|
 |backup_plan|`json`|
 |backup_plan_arn|`utf8`|

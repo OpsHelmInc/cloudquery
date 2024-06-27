@@ -34,6 +34,7 @@ func Groups() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveXrayGroupTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

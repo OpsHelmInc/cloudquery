@@ -33,6 +33,7 @@ func launchTemplateVersions() *schema.Table {
 				Resolver:            schema.PathResolver("VersionNumber"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

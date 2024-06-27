@@ -40,6 +40,7 @@ func apiIntegrations() *schema.Table {
 				Resolver:            resolveApiIntegrationArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			apiIntegrationResponses(),

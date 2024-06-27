@@ -23,6 +23,7 @@ The following tables depend on aws_apigateway_rest_api_resources:
 |region|`utf8`|
 |rest_api_arn|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |id|`utf8`|
 |parent_id|`utf8`|
 |path|`utf8`|

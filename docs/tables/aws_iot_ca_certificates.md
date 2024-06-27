@@ -16,6 +16,7 @@ The primary key for this table is **_cq_id**.
 |region|`utf8`|
 |certificates|`list<item: utf8, nullable>`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |auto_registration_status|`utf8`|
 |certificate_arn|`utf8`|
 |certificate_id|`utf8`|

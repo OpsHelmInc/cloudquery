@@ -16,6 +16,7 @@ The primary key for this table is **_cq_id**.
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |as2_service_managed_egress_ip_addresses|`list<item: utf8, nullable>`|
 |certificate|`utf8`|
 |domain|`utf8`|

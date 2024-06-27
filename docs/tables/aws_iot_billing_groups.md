@@ -17,6 +17,7 @@ The primary key for this table is **_cq_id**.
 |things_in_group|`list<item: utf8, nullable>`|
 |tags|`json`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |billing_group_arn|`utf8`|
 |billing_group_id|`utf8`|
 |billing_group_metadata|`json`|

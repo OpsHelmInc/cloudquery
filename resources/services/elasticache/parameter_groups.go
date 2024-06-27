@@ -28,6 +28,7 @@ func ParameterGroups() *schema.Table {
 				Resolver:            schema.PathResolver("ARN"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

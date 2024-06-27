@@ -34,6 +34,7 @@ func OptionGroups() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveRDSTags("OptionGroupArn"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

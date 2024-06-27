@@ -36,6 +36,7 @@ func NetworkInterfaces() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: client.ResolveTagPath("TagSet"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

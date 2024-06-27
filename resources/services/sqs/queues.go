@@ -53,6 +53,7 @@ func Queues() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveSqsQueueTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

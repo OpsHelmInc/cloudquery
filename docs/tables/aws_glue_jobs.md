@@ -21,6 +21,7 @@ The following tables depend on aws_glue_jobs:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |allocated_capacity|`int64`|
 |code_gen_configuration_nodes|`json`|
 |command|`json`|

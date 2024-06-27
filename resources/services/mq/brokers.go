@@ -29,6 +29,7 @@ func Brokers() *schema.Table {
 				Resolver:            schema.PathResolver("BrokerArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

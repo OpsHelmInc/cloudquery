@@ -20,6 +20,7 @@ This table depends on [aws_ec2_launch_templates](aws_ec2_launch_templates.md).
 |region|`utf8`|
 |arn|`utf8`|
 |version_number|`int64`|
+|oh_resource_type|`utf8`|
 |create_time|`timestamp[us, tz=UTC]`|
 |created_by|`utf8`|
 |default_version|`bool`|

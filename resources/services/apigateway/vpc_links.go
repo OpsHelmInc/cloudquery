@@ -31,6 +31,7 @@ func VpcLinks() *schema.Table {
 				Resolver:            resolveApigatewayVpcLinkArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

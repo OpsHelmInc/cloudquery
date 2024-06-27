@@ -24,6 +24,7 @@ The following tables depend on aws_apigatewayv2_api_routes:
 |api_arn|`utf8`|
 |api_id|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |route_key|`utf8`|
 |api_gateway_managed|`bool`|
 |api_key_required|`bool`|

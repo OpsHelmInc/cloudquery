@@ -35,6 +35,7 @@ func restApiRequestValidators() *schema.Table {
 				Resolver:            resolveApigatewayRestAPIRequestValidatorArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

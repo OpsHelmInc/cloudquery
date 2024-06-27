@@ -27,6 +27,7 @@ func RecoveryGroups() *schema.Table {
 				Resolver:            schema.PathResolver("RecoveryGroupArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

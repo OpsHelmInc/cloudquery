@@ -34,6 +34,7 @@ func TargetGroups() *schema.Table {
 				Resolver:            schema.PathResolver("TargetGroupArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

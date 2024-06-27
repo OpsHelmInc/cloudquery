@@ -35,6 +35,7 @@ func CaCertificates() *schema.Table {
 				Resolver:            schema.PathResolver("CertificateArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

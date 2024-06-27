@@ -23,6 +23,7 @@ The following tables depend on aws_glacier_vaults:
 |region|`utf8`|
 |tags|`json`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |creation_date|`utf8`|
 |last_inventory_date|`utf8`|
 |number_of_archives|`int64`|

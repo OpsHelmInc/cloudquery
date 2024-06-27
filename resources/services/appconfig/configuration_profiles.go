@@ -37,6 +37,7 @@ func configurationProfiles() *schema.Table {
 				Resolver:            resolveConfigProfileARN,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			hostedConfigurationVersions(),

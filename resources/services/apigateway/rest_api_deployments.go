@@ -35,6 +35,7 @@ func restApiDeployments() *schema.Table {
 				Resolver:            resolveApigatewayRestAPIDeploymentArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

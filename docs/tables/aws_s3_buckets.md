@@ -31,6 +31,7 @@ The following tables depend on aws_s3_buckets:
 |_cq_parent_id|`uuid`|
 |account_id|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |creation_date|`timestamp[us, tz=UTC]`|
 |name|`utf8`|
 |region|`utf8`|

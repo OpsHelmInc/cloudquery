@@ -29,6 +29,7 @@ func Buckets() *schema.Table {
 				Resolver:            resolveBucketARN(),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

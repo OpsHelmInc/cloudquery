@@ -22,6 +22,7 @@ The following tables depend on aws_ec2_images:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |architecture|`utf8`|
 |block_device_mappings|`json`|
 |boot_mode|`utf8`|

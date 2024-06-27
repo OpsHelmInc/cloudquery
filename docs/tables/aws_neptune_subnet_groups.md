@@ -21,4 +21,5 @@ The primary key for this table is **_cq_id**.
 |subnet_group_status|`utf8`|
 |subnets|`json`|
 |vpc_id|`utf8`|
+|oh_resource_type|`utf8`|
 |db_subnet_group_arn|`utf8`|

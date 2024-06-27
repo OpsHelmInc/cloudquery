@@ -30,6 +30,7 @@ func Channels() *schema.Table {
 				Resolver:            schema.PathResolver("ChannelArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

@@ -23,6 +23,7 @@ The following tables depend on aws_eks_clusters:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |access_config|`json`|
 |certificate_authority|`json`|
 |client_request_token|`utf8`|

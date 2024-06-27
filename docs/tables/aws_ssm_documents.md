@@ -22,6 +22,7 @@ The following tables depend on aws_ssm_documents:
 |arn|`utf8`|
 |permissions|`json`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |approved_version|`utf8`|
 |attachments_information|`json`|
 |author|`utf8`|

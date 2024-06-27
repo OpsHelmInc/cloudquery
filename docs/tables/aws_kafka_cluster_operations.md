@@ -20,6 +20,7 @@ This table depends on [aws_kafka_clusters](aws_kafka_clusters.md).
 |arn|`utf8`|
 |cluster_arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |client_request_id|`utf8`|
 |creation_time|`timestamp[us, tz=UTC]`|
 |end_time|`timestamp[us, tz=UTC]`|

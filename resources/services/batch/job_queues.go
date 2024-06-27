@@ -35,6 +35,7 @@ func JobQueues() *schema.Table {
 				Resolver:            schema.PathResolver("JobQueueArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			jobs(),

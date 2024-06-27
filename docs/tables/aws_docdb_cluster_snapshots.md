@@ -23,6 +23,7 @@ This table depends on [aws_docdb_clusters](aws_docdb_clusters.md).
 |attributes|`json`|
 |db_cluster_identifier|`utf8`|
 |db_cluster_snapshot_identifier|`utf8`|
+|oh_resource_type|`utf8`|
 |availability_zones|`list<item: utf8, nullable>`|
 |cluster_create_time|`timestamp[us, tz=UTC]`|
 |db_cluster_snapshot_arn|`utf8`|

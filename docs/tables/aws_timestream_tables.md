@@ -19,6 +19,7 @@ This table depends on [aws_timestream_databases](aws_timestream_databases.md).
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |creation_time|`timestamp[us, tz=UTC]`|
 |database_name|`utf8`|
 |last_updated_time|`timestamp[us, tz=UTC]`|

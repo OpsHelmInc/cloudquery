@@ -22,6 +22,7 @@ The following tables depend on aws_config_config_rules:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |source|`json`|
 |config_rule_arn|`utf8`|
 |config_rule_id|`utf8`|

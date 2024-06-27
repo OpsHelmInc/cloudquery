@@ -23,6 +23,7 @@ The following tables depend on aws_athena_work_groups:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |name|`utf8`|
 |configuration|`json`|
 |creation_time|`timestamp[us, tz=UTC]`|

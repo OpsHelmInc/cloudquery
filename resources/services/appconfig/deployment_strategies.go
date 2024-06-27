@@ -31,6 +31,7 @@ func DeploymentStrategies() *schema.Table {
 				Resolver:            resolveDeploymentStrategiesArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: schema.Tables{},
 	}

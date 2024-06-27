@@ -21,6 +21,7 @@ The following tables depend on aws_lightsail_disks:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |add_ons|`json`|
 |attached_to|`utf8`|
 |attachment_state|`utf8`|

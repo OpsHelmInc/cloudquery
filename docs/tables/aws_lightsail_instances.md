@@ -22,6 +22,7 @@ The following tables depend on aws_lightsail_instances:
 |access_details|`json`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |add_ons|`json`|
 |blueprint_id|`utf8`|
 |blueprint_name|`utf8`|

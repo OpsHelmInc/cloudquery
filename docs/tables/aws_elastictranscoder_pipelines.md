@@ -20,6 +20,7 @@ The following tables depend on aws_elastictranscoder_pipelines:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |aws_kms_key_arn|`utf8`|
 |content_config|`json`|
 |id|`utf8`|

@@ -22,6 +22,7 @@ The following tables depend on aws_cloudwatchlogs_log_groups:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |creation_time|`int64`|
 |data_protection_status|`utf8`|
 |inherited_properties|`list<item: utf8, nullable>`|

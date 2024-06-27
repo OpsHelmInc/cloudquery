@@ -35,6 +35,7 @@ func AutoScalingConfigurations() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveApprunnerTags("AutoScalingConfigurationArn"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

@@ -21,6 +21,7 @@ The following tables depend on aws_glue_databases:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |name|`utf8`|
 |catalog_id|`utf8`|
 |create_table_default_permissions|`json`|

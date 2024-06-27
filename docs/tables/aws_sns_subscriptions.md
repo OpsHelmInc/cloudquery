@@ -19,6 +19,7 @@ The primary key for this table is **_cq_id**.
 |effective_delivery_policy|`json`|
 |filter_policy|`json`|
 |redrive_policy|`json`|
+|oh_resource_type|`utf8`|
 |endpoint|`utf8`|
 |owner|`utf8`|
 |protocol|`utf8`|

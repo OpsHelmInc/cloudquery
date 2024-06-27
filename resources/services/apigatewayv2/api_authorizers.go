@@ -40,6 +40,7 @@ func apiAuthorizers() *schema.Table {
 				Resolver:            resolveApiAuthorizerArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

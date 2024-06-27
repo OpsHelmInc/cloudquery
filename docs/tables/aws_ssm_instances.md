@@ -21,6 +21,7 @@ The following tables depend on aws_ssm_instances:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |activation_id|`utf8`|
 |agent_version|`utf8`|
 |association_overview|`json`|

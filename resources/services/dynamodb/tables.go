@@ -41,6 +41,7 @@ func Tables() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: schema.PathResolver("ArchivalSummary"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			tableReplicaAutoScalings(),

@@ -29,6 +29,7 @@ func Apps() *schema.Table {
 				Resolver:            schema.PathResolver("AppArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

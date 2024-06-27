@@ -29,6 +29,7 @@ func DelegationSets() *schema.Table {
 				Description:         `The Amazon Resource Name (ARN) for the resource.`,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

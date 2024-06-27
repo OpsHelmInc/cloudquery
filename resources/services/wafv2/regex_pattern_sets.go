@@ -36,6 +36,7 @@ func RegexPatternSets() *schema.Table {
 				Resolver:            schema.PathResolver("ARN"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

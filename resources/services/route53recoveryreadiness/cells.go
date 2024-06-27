@@ -27,6 +27,7 @@ func Cells() *schema.Table {
 				Resolver:            schema.PathResolver("CellArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

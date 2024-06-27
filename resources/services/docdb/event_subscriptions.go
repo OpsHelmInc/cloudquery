@@ -29,6 +29,7 @@ func EventSubscriptions() *schema.Table {
 				Resolver:            schema.PathResolver("EventSubscriptionArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

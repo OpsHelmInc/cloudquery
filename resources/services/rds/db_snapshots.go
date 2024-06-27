@@ -40,6 +40,7 @@ func DbSnapshots() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: schema.PathResolver("Attributes"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

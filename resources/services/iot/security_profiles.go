@@ -41,6 +41,7 @@ func SecurityProfiles() *schema.Table {
 				Resolver:            schema.PathResolver("SecurityProfileArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

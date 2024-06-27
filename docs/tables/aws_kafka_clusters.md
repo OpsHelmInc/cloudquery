@@ -20,6 +20,7 @@ The following tables depend on aws_kafka_clusters:
 |_cq_parent_id|`uuid`|
 |account_id|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |active_operation_arn|`utf8`|
 |cluster_arn|`utf8`|
 |cluster_name|`utf8`|

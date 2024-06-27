@@ -26,6 +26,7 @@ The following tables depend on aws_apigatewayv2_apis:
 |region|`utf8`|
 |arn|`utf8`|
 |id|`utf8`|
+|oh_resource_type|`utf8`|
 |name|`utf8`|
 |protocol_type|`utf8`|
 |route_selection_expression|`utf8`|

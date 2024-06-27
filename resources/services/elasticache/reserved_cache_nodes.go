@@ -28,6 +28,7 @@ func ReservedCacheNodes() *schema.Table {
 				Resolver:            schema.PathResolver("ReservationARN"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

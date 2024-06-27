@@ -35,6 +35,7 @@ func restApiDocumentationParts() *schema.Table {
 				Resolver:            resolveApigatewayRestAPIDocumentationPartArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

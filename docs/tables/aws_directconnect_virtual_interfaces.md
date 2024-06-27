@@ -17,6 +17,7 @@ The primary key for this table is **_cq_id**.
 |arn|`utf8`|
 |id|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |address_family|`utf8`|
 |amazon_address|`utf8`|
 |amazon_side_asn|`int64`|

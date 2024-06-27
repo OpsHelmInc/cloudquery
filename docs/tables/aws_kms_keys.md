@@ -24,6 +24,7 @@ The following tables depend on aws_kms_keys:
 |tags|`json`|
 |arn|`utf8`|
 |replica_keys|`json`|
+|oh_resource_type|`utf8`|
 |key_id|`utf8`|
 |aws_account_id|`utf8`|
 |cloud_hsm_cluster_id|`utf8`|

@@ -23,6 +23,7 @@ The following tables depend on aws_ecs_cluster_services:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |capacity_provider_strategy|`json`|
 |cluster_arn|`utf8`|
 |created_at|`timestamp[us, tz=UTC]`|

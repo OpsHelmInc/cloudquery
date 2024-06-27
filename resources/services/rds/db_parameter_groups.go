@@ -34,6 +34,7 @@ func DbParameterGroups() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveRDSTags("DBParameterGroupArn"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

@@ -34,6 +34,7 @@ func SamplingRules() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveXraySamplingRuleTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

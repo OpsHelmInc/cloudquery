@@ -23,6 +23,7 @@ The following tables depend on aws_lambda_layer_versions:
 |region|`utf8`|
 |arn|`utf8`|
 |layer_arn|`utf8`|
+|oh_resource_type|`utf8`|
 |compatible_architectures|`list<item: utf8, nullable>`|
 |compatible_runtimes|`list<item: utf8, nullable>`|
 |created_date|`utf8`|

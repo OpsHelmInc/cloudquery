@@ -34,6 +34,7 @@ func instances() *schema.Table {
 				Resolver:            schema.PathResolver("DBInstanceArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

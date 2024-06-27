@@ -30,6 +30,7 @@ func Users() *schema.Table {
 				Resolver:            resolveUserARN,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

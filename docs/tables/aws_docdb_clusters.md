@@ -22,6 +22,7 @@ The following tables depend on aws_docdb_clusters:
 |region|`utf8`|
 |tags|`json`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |associated_roles|`json`|
 |availability_zones|`list<item: utf8, nullable>`|
 |backup_retention_period|`int64`|

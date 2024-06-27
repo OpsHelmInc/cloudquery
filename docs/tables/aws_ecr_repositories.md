@@ -23,6 +23,7 @@ The following tables depend on aws_ecr_repositories:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |created_at|`timestamp[us, tz=UTC]`|
 |encryption_configuration|`json`|
 |image_scanning_configuration|`json`|

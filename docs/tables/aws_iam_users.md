@@ -27,6 +27,7 @@ The following tables depend on aws_iam_users:
 |account_id|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |create_date|`timestamp[us, tz=UTC]`|
 |path|`utf8`|
 |user_id|`utf8`|

@@ -21,6 +21,7 @@ The following tables depend on aws_ram_resource_shares:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |allow_external_principals|`bool`|
 |creation_time|`timestamp[us, tz=UTC]`|
 |feature_set|`utf8`|

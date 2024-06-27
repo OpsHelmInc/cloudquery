@@ -36,6 +36,7 @@ func ResourceGroups() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveResourcegroupsResourceGroupTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

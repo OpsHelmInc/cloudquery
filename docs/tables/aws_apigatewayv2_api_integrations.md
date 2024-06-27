@@ -24,6 +24,7 @@ The following tables depend on aws_apigatewayv2_api_integrations:
 |api_arn|`utf8`|
 |api_id|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |api_gateway_managed|`bool`|
 |connection_id|`utf8`|
 |connection_type|`utf8`|

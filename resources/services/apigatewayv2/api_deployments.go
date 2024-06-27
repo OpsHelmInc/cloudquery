@@ -40,6 +40,7 @@ func apiDeployments() *schema.Table {
 				Resolver:            resolveApiDeploymentArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

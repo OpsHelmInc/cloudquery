@@ -21,6 +21,7 @@ This table depends on [aws_networkmanager_global_networks](aws_networkmanager_gl
 |request_region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |created_at|`timestamp[us, tz=UTC]`|
 |description|`utf8`|
 |global_network_id|`utf8`|

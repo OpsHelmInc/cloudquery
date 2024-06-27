@@ -20,6 +20,7 @@ The following tables depend on aws_config_conformance_packs:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |conformance_pack_arn|`utf8`|
 |conformance_pack_id|`utf8`|
 |conformance_pack_name|`utf8`|

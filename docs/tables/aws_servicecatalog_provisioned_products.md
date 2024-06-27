@@ -22,6 +22,7 @@ The following tables depend on aws_servicecatalog_provisioned_products:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |created_time|`timestamp[us, tz=UTC]`|
 |id|`utf8`|
 |idempotency_token|`utf8`|

@@ -28,6 +28,7 @@ func Clusters() *schema.Table {
 				Resolver:            schema.PathResolver("ClusterArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

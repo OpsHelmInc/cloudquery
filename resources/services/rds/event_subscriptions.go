@@ -34,6 +34,7 @@ func EventSubscriptions() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveRDSTags("EventSubscriptionArn"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

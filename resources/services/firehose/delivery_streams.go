@@ -36,6 +36,7 @@ func DeliveryStreams() *schema.Table {
 				Resolver:            schema.PathResolver("DeliveryStreamARN"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

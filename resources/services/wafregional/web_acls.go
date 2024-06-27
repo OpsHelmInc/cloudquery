@@ -41,6 +41,7 @@ func WebAcls() *schema.Table {
 				Type:     arrow.ListOf(arrow.BinaryTypes.String),
 				Resolver: resolveWafregionalWebACLResourcesForWebACL,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

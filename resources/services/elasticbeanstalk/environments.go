@@ -45,6 +45,7 @@ func Environments() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveElasticbeanstalkEnvironmentListeners,
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

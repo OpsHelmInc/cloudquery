@@ -34,6 +34,7 @@ func ReportPlans() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveReportPlanTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

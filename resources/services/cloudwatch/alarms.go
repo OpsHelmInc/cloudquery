@@ -39,6 +39,7 @@ func Alarms() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveCloudwatchAlarmDimensions,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

@@ -20,6 +20,7 @@ The following tables depend on aws_apigatewayv2_domain_names:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |domain_name|`utf8`|
 |api_mapping_selection_expression|`utf8`|
 |domain_name_configurations|`json`|

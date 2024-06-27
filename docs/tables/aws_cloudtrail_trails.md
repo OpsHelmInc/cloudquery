@@ -22,6 +22,7 @@ The following tables depend on aws_cloudtrail_trails:
 |cloudwatch_logs_log_group_name|`utf8`|
 |arn|`utf8`|
 |status|`json`|
+|oh_resource_type|`utf8`|
 |cloud_watch_logs_log_group_arn|`utf8`|
 |cloud_watch_logs_role_arn|`utf8`|
 |has_custom_event_selectors|`bool`|

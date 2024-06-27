@@ -19,6 +19,7 @@ The following tables depend on aws_route53_traffic_policies:
 |_cq_parent_id|`uuid`|
 |account_id|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |id|`utf8`|
 |latest_version|`int64`|
 |name|`utf8`|

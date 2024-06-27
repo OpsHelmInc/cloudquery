@@ -34,6 +34,7 @@ func Workflows() *schema.Table {
 			tagsCol(func(cl *client.Client, resource *schema.Resource) string {
 				return workflowARN(cl, aws.ToString(resource.Item.(*types.Workflow).Name))
 			}),
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

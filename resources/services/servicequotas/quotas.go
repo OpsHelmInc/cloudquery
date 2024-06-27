@@ -27,6 +27,7 @@ func quotas() *schema.Table {
 				Resolver:            schema.PathResolver("QuotaArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

@@ -35,6 +35,7 @@ func ObservabilityConfigurations() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveApprunnerTags("ObservabilityConfigurationArn"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

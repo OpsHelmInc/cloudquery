@@ -23,6 +23,7 @@ The following tables depend on aws_glue_registry_schemas:
 |region|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |compatibility|`utf8`|
 |created_time|`utf8`|
 |data_format|`utf8`|

@@ -35,6 +35,7 @@ func JobDefinitions() *schema.Table {
 				Resolver:            schema.PathResolver("JobDefinitionArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

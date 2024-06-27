@@ -26,6 +26,7 @@ func safetyRules() *schema.Table {
 				Resolver:            resolveRuleARN,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

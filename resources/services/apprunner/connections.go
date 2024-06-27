@@ -34,6 +34,7 @@ func Connections() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveApprunnerTags("ConnectionArn"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

@@ -34,6 +34,7 @@ func Crawlers() *schema.Table {
 			tagsCol(func(cl *client.Client, resource *schema.Resource) string {
 				return crawlerARN(cl, aws.ToString(resource.Item.(types.Crawler).Name))
 			}),
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

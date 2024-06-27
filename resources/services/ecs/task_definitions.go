@@ -38,6 +38,7 @@ func TaskDefinitions() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveEcsTaskDefinitionTags,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

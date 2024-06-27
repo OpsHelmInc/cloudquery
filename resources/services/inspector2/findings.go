@@ -31,6 +31,7 @@ The ` + "`request_account_id` and `request_region` columns are added to show fro
 				Resolver:            schema.PathResolver("FindingArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

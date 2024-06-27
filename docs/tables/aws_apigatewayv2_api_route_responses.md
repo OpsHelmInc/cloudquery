@@ -21,6 +21,7 @@ This table depends on [aws_apigatewayv2_api_routes](aws_apigatewayv2_api_routes.
 |api_route_arn|`utf8`|
 |route_id|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |route_response_key|`utf8`|
 |model_selection_expression|`utf8`|
 |response_models|`json`|

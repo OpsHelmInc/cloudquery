@@ -21,6 +21,7 @@ The following tables depend on aws_mq_brokers:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |actions_required|`json`|
 |authentication_strategy|`utf8`|
 |auto_minor_version_upgrade|`bool`|

@@ -33,6 +33,7 @@ func DevEndpoints() *schema.Table {
 			tagsCol(func(cl *client.Client, resource *schema.Resource) string {
 				return devEndpointARN(cl, aws.ToString(resource.Item.(types.DevEndpoint).EndpointName))
 			}),
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

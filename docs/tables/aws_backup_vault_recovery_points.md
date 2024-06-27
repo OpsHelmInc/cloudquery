@@ -21,6 +21,7 @@ This table depends on [aws_backup_vaults](aws_backup_vaults.md).
 |vault_arn|`utf8`|
 |arn|`utf8`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |backup_size_in_bytes|`int64`|
 |backup_vault_arn|`utf8`|
 |backup_vault_name|`utf8`|

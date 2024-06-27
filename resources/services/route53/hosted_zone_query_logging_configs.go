@@ -35,6 +35,7 @@ func hostedZoneQueryLoggingConfigs() *schema.Table {
 				Type:     arrow.BinaryTypes.String,
 				Resolver: schema.ParentColumnResolver("arn"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

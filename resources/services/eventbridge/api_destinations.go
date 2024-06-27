@@ -29,6 +29,7 @@ func ApiDestinations() *schema.Table {
 				Resolver:            schema.PathResolver("ApiDestinationArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

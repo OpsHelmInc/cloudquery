@@ -29,6 +29,7 @@ func Plans() *schema.Table {
 				Description:         `The Amazon Resource Name (ARN) of the Savings Plan.`,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

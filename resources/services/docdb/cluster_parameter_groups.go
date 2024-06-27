@@ -49,6 +49,7 @@ func ClusterParameterGroups() *schema.Table {
 				Type:     arrow.BinaryTypes.String,
 				Resolver: schema.PathResolver("DBParameterGroupFamily"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

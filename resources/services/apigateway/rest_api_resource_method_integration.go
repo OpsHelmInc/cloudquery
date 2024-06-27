@@ -45,6 +45,7 @@ func restApiResourceMethodIntegrations() *schema.Table {
 				Resolver:            resolveApigatewayRestAPIResourceMethodIntegrationArn,
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

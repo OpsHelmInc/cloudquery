@@ -45,6 +45,7 @@ func apiModels() *schema.Table {
 				Type:     arrow.BinaryTypes.String,
 				Resolver: resolveApigatewayv2apiModelModelTemplate,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

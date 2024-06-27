@@ -34,6 +34,7 @@ func SubnetGroups() *schema.Table {
 				Resolver:            schema.PathResolver("DBSubnetGroupArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

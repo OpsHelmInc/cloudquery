@@ -34,6 +34,7 @@ func LoadBalancers() *schema.Table {
 				Resolver:            schema.PathResolver("LoadBalancerArn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

@@ -24,6 +24,7 @@ The primary key for this table is **_cq_id**.
 |access_key_2_last_used_date|`timestamp[us, tz=UTC]`|
 |password_last_used|`timestamp[us, tz=UTC]`|
 |password_enabled|`utf8`|
+|oh_resource_type|`utf8`|
 |user|`utf8`|
 |password_status|`utf8`|
 |mfa_active|`bool`|
