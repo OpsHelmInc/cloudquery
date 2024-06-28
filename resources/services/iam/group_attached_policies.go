@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	"github.com/aws/aws-sdk-go-v2/service/iam/types"
@@ -31,7 +32,7 @@ func groupAttachedPolicies() *schema.Table {
 }
 
 func fetchIamGroupAttachedPolicies(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
-	p := parent.Item.(types.Group)
+	p := parent.Item.(*ohaws.Group)
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceIam).Iam
 	config := iam.ListAttachedGroupPoliciesInput{

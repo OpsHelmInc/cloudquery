@@ -28,7 +28,7 @@ func buildIamGroups(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m.EXPECT().ListAttachedGroupPolicies(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.ListAttachedGroupPoliciesOutput{
 			AttachedPolicies: []iamTypes.AttachedPolicy{p},
-		}, nil)
+		}, nil).MinTimes(1)
 
 	var l []string
 	require.NoError(t, faker.FakeObject(&l))
@@ -50,6 +50,18 @@ func buildIamGroups(t *testing.T, ctrl *gomock.Controller) client.Services {
 	require.NoError(t, faker.FakeObject(&lastAccessed))
 	m.EXPECT().GetServiceLastAccessedDetails(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.GetServiceLastAccessedDetailsOutput{ServicesLastAccessed: lastAccessed, JobStatus: iamTypes.JobStatusTypeCompleted},
+		nil,
+	)
+
+	m.EXPECT().GetGroup(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+		&iam.GetGroupOutput{
+			Group: &g,
+			Users: []iamTypes.User{
+				{
+					Arn: aws.String("arn:aws:iam::123456789012:user/name"),
+				},
+			},
+		},
 		nil,
 	)
 

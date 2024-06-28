@@ -6,9 +6,9 @@ import (
 	"net/url"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
-	"github.com/aws/aws-sdk-go-v2/service/iam/types"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/cloudquery/plugin-sdk/v4/transformers"
 	sdkTypes "github.com/cloudquery/plugin-sdk/v4/types"
@@ -42,7 +42,7 @@ func groupPolicies() *schema.Table {
 func fetchIamGroupPolicies(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceIam).Iam
-	group := parent.Item.(types.Group)
+	group := parent.Item.(*ohaws.Group)
 	config := iam.ListGroupPoliciesInput{
 		GroupName: group.GroupName,
 	}
@@ -67,7 +67,7 @@ func getGroupPolicy(ctx context.Context, meta schema.ClientMeta, resource *schem
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceIam).Iam
 	p := resource.Item.(string)
-	group := resource.Parent.Item.(types.Group)
+	group := resource.Parent.Item.(*ohaws.Group)
 
 	policyResult, err := svc.GetGroupPolicy(ctx, &iam.GetGroupPolicyInput{PolicyName: &p, GroupName: group.GroupName}, func(options *iam.Options) {
 		options.Region = cl.Region

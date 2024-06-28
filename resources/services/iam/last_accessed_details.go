@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
@@ -102,7 +103,7 @@ func fetchRoleLastAccessedDetails(ctx context.Context, meta schema.ClientMeta, p
 }
 
 func fetchGroupLastAccessedDetails(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
-	group := parent.Item.(types.Group)
+	group := parent.Item.(*ohaws.Group)
 	return fetchLastAccessedDetails(ctx, meta, group.Arn, res)
 }
 
