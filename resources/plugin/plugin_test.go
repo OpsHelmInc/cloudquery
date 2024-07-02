@@ -23,7 +23,7 @@ func TestAWS(t *testing.T) {
 func TestAWSTables(t *testing.T) {
 	pluralize := pluralize.NewClient()
 	descriptions := make(map[string]string)
-	tables := getTables().FlattenTables()
+	tables := GetTables().FlattenTables()
 	for _, table := range tables {
 		if !ignorePluralName(table.Name) && !pluralize.IsPlural(table.Name[strings.LastIndex(table.Name, ",")+1:]) {
 			t.Errorf("invalid table name: %s. must be plural.", table.Name)

@@ -34,7 +34,7 @@ func New(ctx context.Context, logger zerolog.Logger, specBytes []byte, options p
 	c := &Client{
 		options:   options,
 		logger:    logger,
-		allTables: getTables(),
+		allTables: GetTables(),
 	}
 	if options.NoConnection {
 		return c, nil

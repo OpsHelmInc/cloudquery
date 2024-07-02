@@ -123,7 +123,7 @@ import (
 	"github.com/cloudquery/plugin-sdk/v4/types"
 )
 
-func getTables() schema.Tables {
+func GetTables() schema.Tables {
 	t := []*schema.Table{
 		accessanalyzer.Analyzers(),
 		account.AlternateContacts(),
