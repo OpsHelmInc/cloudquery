@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/OpsHelmInc/cloudquery/client/spec"
+	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/cloudquery/plugin-sdk/v4/caser"
 	"github.com/cloudquery/plugin-sdk/v4/docs"
 	"github.com/cloudquery/plugin-sdk/v4/plugin"
@@ -113,7 +114,7 @@ func titleTransformerFunc(table *schema.Table, csr *caser.Caser) {
 	}
 }
 
-func AWS() *plugin.Plugin {
+func AWS(awsCfg *aws.Config) *plugin.Plugin {
 	return plugin.NewPlugin(
 		Name,
 		Version,
@@ -121,5 +122,6 @@ func AWS() *plugin.Plugin {
 		plugin.WithJSONSchema(spec.JSONSchema),
 		plugin.WithKind(Kind),
 		plugin.WithTeam(Team),
+		plugin.WithCustomConfig(awsCfg),
 	)
 }

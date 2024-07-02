@@ -23,7 +23,10 @@ type svcsDetail struct {
 	svcs      Services
 }
 
-func (c *Client) setupAWSAccount(ctx context.Context, logger zerolog.Logger, awsPluginSpec *spec.Spec, adminAccountSts AssumeRoleAPIClient, account spec.Account) (*svcsDetail, error) {
+func (c *Client) setupAWSAccount(ctx context.Context, logger zerolog.Logger, awsPluginSpec *spec.Spec, adminAccountSts AssumeRoleAPIClient, account spec.Account, overrideConfig *aws.Config) (*svcsDetail, error) {
+	var err error
+	var awsCfg aws.Config
+
 	if account.AccountName == "" {
 		account.AccountName = account.ID
 	}
@@ -45,27 +48,32 @@ func (c *Client) setupAWSAccount(ctx context.Context, logger zerolog.Logger, aws
 		c.specificRegions = false
 	}
 
-	awsCfg, err := ConfigureAwsSDK(ctx, logger, awsPluginSpec, account, adminAccountSts)
-	if err != nil {
-		warningMsg := logger.Warn().Str("account", account.AccountName).Err(err)
-		if account.Source == spec.AccountSourceOrg {
-			warningMsg.Msg("Unable to assume role in account")
-			return nil, nil
-		}
-		var ae smithy.APIError
-		if errors.As(err, &ae) {
-			if strings.Contains(ae.ErrorCode(), "AccessDenied") {
-				warningMsg.Msg("Access denied for account")
+	if overrideConfig != nil {
+		awsCfg = *overrideConfig
+	} else {
+		awsCfg, err = ConfigureAwsSDK(ctx, logger, awsPluginSpec, account, adminAccountSts)
+		if err != nil {
+			warningMsg := logger.Warn().Str("account", account.AccountName).Err(err)
+			if account.Source == spec.AccountSourceOrg {
+				warningMsg.Msg("Unable to assume role in account")
 				return nil, nil
 			}
-		}
-		if errors.Is(err, errRetrievingCredentials) {
-			warningMsg.Msg("Could not retrieve credentials for account")
-			return nil, nil
-		}
+			var ae smithy.APIError
+			if errors.As(err, &ae) {
+				if strings.Contains(ae.ErrorCode(), "AccessDenied") {
+					warningMsg.Msg("Access denied for account")
+					return nil, nil
+				}
+			}
+			if errors.Is(err, errRetrievingCredentials) {
+				warningMsg.Msg("Could not retrieve credentials for account")
+				return nil, nil
+			}
 
-		return nil, err
+			return nil, err
+		}
 	}
+
 	account.Regions = findEnabledRegions(ctx, logger, account.AccountName, ec2.NewFromConfig(awsCfg), localRegions, account.DefaultRegion)
 	if len(account.Regions) == 0 {
 		logger.Warn().Str("account", account.AccountName).Msg("No enabled regions provided in config for account")

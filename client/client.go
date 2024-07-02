@@ -8,6 +8,7 @@ import (
 	"sync"
 
 	"github.com/OpsHelmInc/cloudquery/client/spec"
+	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
 	wafv2types "github.com/aws/aws-sdk-go-v2/service/wafv2/types"
 	"github.com/aws/smithy-go/logging"
@@ -183,7 +184,7 @@ func (c *Client) withLanguageCode(code string) *Client {
 }
 
 // Configure is the entrypoint into configuring the AWS plugin. It is called by the plugin initialization in resources/plugin/aws.go
-func Configure(ctx context.Context, logger zerolog.Logger, s spec.Spec) (schema.ClientMeta, error) {
+func Configure(ctx context.Context, logger zerolog.Logger, s spec.Spec, overrideConfig *aws.Config) (schema.ClientMeta, error) {
 	if err := s.Validate(); err != nil {
 		return nil, fmt.Errorf("spec validation failed: %w", err)
 	}
@@ -211,7 +212,7 @@ func Configure(ctx context.Context, logger zerolog.Logger, s spec.Spec) (schema.
 	for _, account := range client.Spec.Accounts {
 		account := account
 		errorGroup.Go(func() error {
-			svcsDetail, err := client.setupAWSAccount(gtx, logger, client.Spec, adminAccountSts, account)
+			svcsDetail, err := client.setupAWSAccount(gtx, logger, client.Spec, adminAccountSts, account, overrideConfig)
 			if err != nil {
 				return err
 			}

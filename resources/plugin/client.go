@@ -7,6 +7,7 @@ import (
 
 	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/OpsHelmInc/cloudquery/client/spec"
+	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/cloudquery/plugin-sdk/v4/message"
 	"github.com/cloudquery/plugin-sdk/v4/plugin"
 	"github.com/cloudquery/plugin-sdk/v4/scheduler"
@@ -28,7 +29,7 @@ type Client struct {
 	allTables schema.Tables
 }
 
-func New(ctx context.Context, logger zerolog.Logger, specBytes []byte, options plugin.NewClientOptions) (plugin.Client, error) {
+func New(ctx context.Context, logger zerolog.Logger, specBytes []byte, options plugin.NewClientOptions, overrideConfig *aws.Config) (plugin.Client, error) {
 	var s spec.Spec
 	c := &Client{
 		options:   options,
@@ -46,7 +47,7 @@ func New(ctx context.Context, logger zerolog.Logger, specBytes []byte, options p
 	if err := s.Validate(); err != nil {
 		return nil, err
 	}
-	c.client, err = client.Configure(ctx, logger, s)
+	c.client, err = client.Configure(ctx, logger, s, overrideConfig)
 	if err != nil {
 		return nil, err
 	}

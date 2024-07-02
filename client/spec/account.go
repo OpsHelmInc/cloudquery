@@ -26,9 +26,6 @@ type Account struct {
 	// `local_profile` should be set to either `default` or `user1`.
 	LocalProfile string `json:"local_profile,omitempty" jsonschema:"example=my_aws_profile"`
 
-	// Can override all AWS configuration with the given value
-	ConfigOverride []byte `json:"config_override,omitempty"`
-
 	// If specified will use this to assume role.
 	RoleARN string `json:"role_arn,omitempty" jsonschema:"pattern=^(arn(:[^:\n]*){5}([:/].*)?)?$"`
 

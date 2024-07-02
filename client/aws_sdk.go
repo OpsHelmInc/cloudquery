@@ -2,8 +2,6 @@ package client
 
 import (
 	"context"
-	"encoding/json"
-	"fmt"
 	"time"
 
 	"github.com/OpsHelmInc/cloudquery/client/spec"
@@ -18,21 +16,6 @@ import (
 func ConfigureAwsSDK(ctx context.Context, logger zerolog.Logger, awsPluginSpec *spec.Spec, account spec.Account, stsClient AssumeRoleAPIClient) (aws.Config, error) {
 	var err error
 	var awsCfg aws.Config
-
-	if len(account.ConfigOverride) > 0 {
-		err := json.Unmarshal(account.ConfigOverride, &awsCfg)
-		if err != nil {
-			return awsCfg, fmt.Errorf("failed to unmarshal config override: %w", err)
-		}
-
-		// Test out retrieving credentials
-		if _, err := awsCfg.Credentials.Retrieve(ctx); err != nil {
-			logger.Error().Err(err).Msg("error retrieving credentials")
-			return awsCfg, errRetrievingCredentials
-		}
-
-		return awsCfg, nil
-	}
 
 	// This sets MaxRetries & MaxBackoff, too
 	awsPluginSpec.SetDefaults()

@@ -7,7 +7,7 @@ toolchain go1.22.1
 require (
 	github.com/OpsHelmInc/ohaws v0.2.1
 	github.com/apache/arrow/go/v16 v16.1.0
-	github.com/aws/aws-sdk-go-v2 v1.30.0
+	github.com/aws/aws-sdk-go-v2 v1.30.1
 	github.com/aws/aws-sdk-go-v2/config v1.27.21
 	github.com/aws/aws-sdk-go-v2/credentials v1.17.21
 	github.com/aws/aws-sdk-go-v2/service/accessanalyzer v1.31.1
@@ -125,7 +125,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/wellarchitected v1.31.1
 	github.com/aws/aws-sdk-go-v2/service/workspaces v1.40.1
 	github.com/aws/aws-sdk-go-v2/service/xray v1.26.1
-	github.com/aws/smithy-go v1.20.2
+	github.com/aws/smithy-go v1.20.3
 	github.com/basgys/goxml2json v1.1.0
 	github.com/cloudquery/codegen v0.3.12
 	github.com/cloudquery/plugin-sdk/v4 v4.48.0
@@ -232,10 +232,12 @@ require (
 	github.com/yosssi/ace v0.0.5 // indirect
 	github.com/zeebo/xxh3 v1.0.2 // indirect
 	go.opentelemetry.io/otel v1.27.0 // indirect
+	go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp v1.27.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.27.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.27.0 // indirect
 	go.opentelemetry.io/otel/metric v1.27.0 // indirect
 	go.opentelemetry.io/otel/sdk v1.27.0 // indirect
+	go.opentelemetry.io/otel/sdk/metric v1.27.0 // indirect
 	go.opentelemetry.io/otel/trace v1.27.0 // indirect
 	go.opentelemetry.io/proto/otlp v1.3.1 // indirect
 	golang.org/x/arch v0.8.0 // indirect
@@ -285,3 +287,5 @@ require (
 
 // github.com/cloudquery/jsonschema @ cqmain
 replace github.com/invopop/jsonschema => github.com/cloudquery/jsonschema v0.0.0-20231018073309-6c617a23d42f
+
+replace github.com/cloudquery/plugin-sdk/v4 => github.com/OpsHelmInc/cloudquery-plugin-sdk/v4 v4.49.0
