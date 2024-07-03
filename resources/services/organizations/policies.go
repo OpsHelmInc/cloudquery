@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/organizations"
 	"github.com/aws/aws-sdk-go-v2/service/organizations/types"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
@@ -17,7 +18,7 @@ func Policies() *schema.Table {
 		Name:        tableName,
 		Description: `https://docs.aws.amazon.com/organizations/latest/APIReference/API_Policy.html`,
 		Resolver:    fetchOrganizationsPolicies,
-		Transform:   transformers.TransformWithStruct(&types.PolicySummary{}, transformers.WithPrimaryKeyComponents("Arn")),
+		Transform:   transformers.TransformWithStruct(&types.PolicySummary{}),
 		Multiplex:   client.ServiceAccountRegionMultiplexer(tableName, "organizations"),
 		Columns: []schema.Column{
 			// This is needed as a PK because aws managed policies don't have an account_id in the ARN
@@ -27,6 +28,13 @@ func Policies() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolvePolicyContent,
 			},
+			{
+				Name:                "arn",
+				Type:                arrow.BinaryTypes.String,
+				Resolver:            schema.PathResolver("Arn"),
+				PrimaryKeyComponent: true,
+			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

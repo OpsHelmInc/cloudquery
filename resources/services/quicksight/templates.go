@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/quicksight"
 	"github.com/aws/aws-sdk-go-v2/service/quicksight/types"
@@ -19,9 +20,20 @@ func Templates() *schema.Table {
 		Name:        tableName,
 		Description: "https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TemplateSummary.html",
 		Resolver:    fetchQuicksightTemplates,
-		Transform:   transformers.TransformWithStruct(&types.TemplateSummary{}, transformers.WithPrimaryKeyComponents("Arn")),
+		Transform:   transformers.TransformWithStruct(&types.TemplateSummary{}),
 		Multiplex:   client.ServiceAccountRegionMultiplexer(tableName, "quicksight"),
-		Columns:     []schema.Column{client.DefaultAccountIDColumn(true), client.DefaultRegionColumn(true), tagsCol},
+		Columns: []schema.Column{
+			client.DefaultAccountIDColumn(true),
+			client.DefaultRegionColumn(true),
+			tagsCol,
+			{
+				Name:                "arn",
+				Type:                arrow.BinaryTypes.String,
+				Resolver:            schema.PathResolver("Arn"),
+				PrimaryKeyComponent: true,
+			},
+			client.OhResourceTypeColumn(),
+		},
 	}
 }
 

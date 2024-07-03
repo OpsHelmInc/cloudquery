@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/ram"
 	"github.com/aws/aws-sdk-go-v2/service/ram/types"
@@ -17,11 +18,17 @@ func Resources() *schema.Table {
 		Name:        tableName,
 		Description: `https://docs.aws.amazon.com/ram/latest/APIReference/API_Resource.html`,
 		Resolver:    fetchRamResources,
-		Transform:   transformers.TransformWithStruct(&types.Resource{}, transformers.WithPrimaryKeyComponents("Arn", "ResourceShareArn")),
+		Transform:   transformers.TransformWithStruct(&types.Resource{}),
 		Multiplex:   client.ServiceAccountRegionMultiplexer(tableName, "ram"),
 		Columns: []schema.Column{
 			client.DefaultAccountIDColumn(true),
 			client.DefaultRegionColumn(true),
+			{
+				Name:     "arn",
+				Type:     arrow.BinaryTypes.String,
+				Resolver: schema.PathResolver("Arn"),
+			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

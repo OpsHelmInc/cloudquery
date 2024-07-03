@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/organizations"
 	"github.com/aws/aws-sdk-go-v2/service/organizations/types"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
@@ -16,10 +17,17 @@ func DelegatedAdministrators() *schema.Table {
 		Name:        tableName,
 		Description: `https://docs.aws.amazon.com/organizations/latest/APIReference/API_DelegatedAdministrator.html`,
 		Resolver:    fetchOrganizationsDelegatedAdmins,
-		Transform:   transformers.TransformWithStruct(&types.DelegatedAdministrator{}, transformers.WithPrimaryKeyComponents("Arn")),
+		Transform:   transformers.TransformWithStruct(&types.DelegatedAdministrator{}),
 		Multiplex:   client.ServiceAccountRegionMultiplexer(tableName, "organizations"),
 		Columns: []schema.Column{
 			client.DefaultAccountIDColumn(true),
+			{
+				Name:                "arn",
+				Type:                arrow.BinaryTypes.String,
+				Resolver:            schema.PathResolver("Arn"),
+				PrimaryKeyComponent: true,
+			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: schema.Tables{
 			delegatedServices(),

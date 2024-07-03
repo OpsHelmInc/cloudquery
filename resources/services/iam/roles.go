@@ -6,6 +6,7 @@ import (
 	"net/url"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	"github.com/aws/aws-sdk-go-v2/service/iam/types"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
@@ -20,7 +21,7 @@ func Roles() *schema.Table {
 		Description:         `https://docs.aws.amazon.com/IAM/latest/APIReference/API_Role.html`,
 		Resolver:            fetchIamRoles,
 		PreResourceResolver: getRole,
-		Transform:           transformers.TransformWithStruct(&types.Role{}, transformers.WithPrimaryKeyComponents("Arn")),
+		Transform:           transformers.TransformWithStruct(&types.Role{}),
 		Multiplex:           client.ServiceAccountRegionMultiplexer(tableName, "iam"),
 		Columns: []schema.Column{
 			client.DefaultAccountIDColumn(true),
@@ -34,6 +35,13 @@ func Roles() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: client.ResolveTags,
 			},
+			{
+				Name:                "arn",
+				Type:                arrow.BinaryTypes.String,
+				Resolver:            schema.PathResolver("Arn"),
+				PrimaryKeyComponent: true,
+			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			roleAttachedPolicies(),

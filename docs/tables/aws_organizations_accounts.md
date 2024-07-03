@@ -21,6 +21,7 @@ The following tables depend on aws_organizations_accounts:
 |request_account_id|`utf8`|
 |tags|`json`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |email|`utf8`|
 |id|`utf8`|
 |joined_method|`utf8`|

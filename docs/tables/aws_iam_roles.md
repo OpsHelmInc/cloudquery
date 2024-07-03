@@ -23,6 +23,7 @@ The following tables depend on aws_iam_roles:
 |assume_role_policy_document|`json`|
 |tags|`json`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |create_date|`timestamp[us, tz=UTC]`|
 |path|`utf8`|
 |role_id|`utf8`|

@@ -21,10 +21,11 @@ The following tables depend on aws_cognito_user_pools:
 |region|`utf8`|
 |id|`utf8`|
 |tags|`json`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
 |account_recovery_setting|`json`|
 |admin_create_user_config|`json`|
 |alias_attributes|`list<item: utf8, nullable>`|
-|arn|`utf8`|
 |auto_verified_attributes|`list<item: utf8, nullable>`|
 |creation_date|`timestamp[us, tz=UTC]`|
 |custom_domain|`utf8`|

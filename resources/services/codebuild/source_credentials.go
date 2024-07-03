@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/codebuild"
 	"github.com/aws/aws-sdk-go-v2/service/codebuild/types"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
@@ -17,10 +18,17 @@ func SourceCredentials() *schema.Table {
 		Description: `https://docs.aws.amazon.com/codebuild/latest/APIReference/API_SourceCredentialsInfo.html`,
 		Resolver:    fetchSourceCredentials,
 		Multiplex:   client.ServiceAccountRegionMultiplexer(tableName, "codebuild"),
-		Transform:   transformers.TransformWithStruct(&types.SourceCredentialsInfo{}, transformers.WithPrimaryKeyComponents("Arn")),
+		Transform:   transformers.TransformWithStruct(&types.SourceCredentialsInfo{}),
 		Columns: []schema.Column{
 			client.DefaultAccountIDColumn(false),
 			client.DefaultRegionColumn(false),
+			{
+				Name:                "arn",
+				Resolver:            schema.PathResolver("Arn"),
+				Type:                arrow.BinaryTypes.String,
+				PrimaryKeyComponent: true,
+			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

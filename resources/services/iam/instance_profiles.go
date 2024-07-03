@@ -33,6 +33,13 @@ func InstanceProfiles() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveIamInstanceProfileTags,
 			},
+			{
+				Name:                "arn",
+				Resolver:            schema.PathResolver("Arn"),
+				Type:                arrow.BinaryTypes.String,
+				PrimaryKeyComponent: true,
+			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

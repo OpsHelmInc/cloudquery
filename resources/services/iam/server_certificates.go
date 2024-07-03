@@ -22,11 +22,17 @@ func ServerCertificates() *schema.Table {
 		Columns: []schema.Column{
 			client.DefaultAccountIDColumn(true),
 			{
-				Name:                "id",
+				Name:     "id",
+				Type:     arrow.BinaryTypes.String,
+				Resolver: schema.PathResolver("ServerCertificateId"),
+			},
+			{
+				Name:                "arn",
 				Type:                arrow.BinaryTypes.String,
-				Resolver:            schema.PathResolver("ServerCertificateId"),
+				Resolver:            schema.PathResolver("Arn"),
 				PrimaryKeyComponent: true,
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

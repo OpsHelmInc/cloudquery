@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/resiliencehub"
 	"github.com/aws/aws-sdk-go-v2/service/resiliencehub/types"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
@@ -19,8 +20,17 @@ func Apps() *schema.Table {
 		PreResourceResolver: describeApp,
 		Transform:           transformers.TransformWithStruct(&types.App{}),
 		Multiplex:           client.ServiceAccountRegionMultiplexer(tableName, "resiliencehub"),
-		Columns:             []schema.Column{client.DefaultAccountIDColumn(false), client.DefaultRegionColumn(false), arnColumn("AppArn")},
-		Relations:           []*schema.Table{appAssesments(), appVersions()},
+		Columns: []schema.Column{
+			client.DefaultAccountIDColumn(false),
+			client.DefaultRegionColumn(false),
+			{
+				Name:     "arn",
+				Type:     arrow.BinaryTypes.String,
+				Resolver: schema.PathResolver("AppArn"),
+			},
+			client.OhResourceTypeColumn(),
+		},
+		Relations: []*schema.Table{appAssesments(), appVersions()},
 	}
 }
 

@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/applicationautoscaling"
 	"github.com/aws/aws-sdk-go-v2/service/applicationautoscaling/types"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
@@ -21,6 +22,12 @@ func ScalableTargets() *schema.Table {
 		Columns: []schema.Column{
 			client.DefaultAccountIDColumn(true),
 			client.DefaultRegionColumn(true),
+			{
+				Name:     "arn",
+				Type:     arrow.BinaryTypes.String,
+				Resolver: schema.PathResolver("ScalableTargetARN"),
+			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

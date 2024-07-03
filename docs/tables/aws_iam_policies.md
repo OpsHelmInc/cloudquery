@@ -22,6 +22,7 @@ The following tables depend on aws_iam_policies:
 |id|`utf8`|
 |tags|`json`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |attachment_count|`int64`|
 |create_date|`timestamp[us, tz=UTC]`|
 |default_version_id|`utf8`|

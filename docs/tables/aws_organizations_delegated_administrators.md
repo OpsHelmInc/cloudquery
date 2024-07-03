@@ -19,6 +19,7 @@ The following tables depend on aws_organizations_delegated_administrators:
 |_cq_parent_id|`uuid`|
 |account_id|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |delegation_enabled_date|`timestamp[us, tz=UTC]`|
 |email|`utf8`|
 |id|`utf8`|

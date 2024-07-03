@@ -5,6 +5,7 @@ import (
 
 	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/OpsHelmInc/cloudquery/client/services"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/organizations"
 	"github.com/aws/aws-sdk-go-v2/service/organizations/types"
@@ -22,11 +23,17 @@ The 'request_account_id' column is added to show from where the request was made
 		PreResourceResolver: getOU,
 		Transform: transformers.TransformWithStruct(
 			&types.OrganizationalUnit{},
-			transformers.WithPrimaryKeyComponents("Arn"),
 		),
 		Multiplex: client.ServiceAccountRegionMultiplexer(tableName, "organizations"),
 		Columns: []schema.Column{
 			client.RequestAccountIDColumn(true),
+			{
+				Name:                "arn",
+				Type:                arrow.BinaryTypes.String,
+				Resolver:            schema.PathResolver("Arn"),
+				PrimaryKeyComponent: true,
+			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			organizationalUnitParents(),

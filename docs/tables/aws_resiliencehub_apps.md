@@ -21,6 +21,7 @@ The following tables depend on aws_resiliencehub_apps:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |app_arn|`utf8`|
 |creation_time|`timestamp[us, tz=UTC]`|
 |name|`utf8`|

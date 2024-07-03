@@ -18,6 +18,7 @@ The primary key for this table is **_cq_id**.
 |id|`utf8`|
 |saml_provider_arns|`list<item: utf8, nullable>`|
 |tags|`json`|
+|oh_resource_type|`utf8`|
 |allow_unauthenticated_identities|`bool`|
 |identity_pool_id|`utf8`|
 |identity_pool_name|`utf8`|

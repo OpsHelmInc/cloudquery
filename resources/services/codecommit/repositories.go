@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/codecommit"
 	"github.com/aws/aws-sdk-go-v2/service/codecommit/types"
@@ -19,7 +20,7 @@ func Repositories() *schema.Table {
 		Description: `https://docs.aws.amazon.com/codecommit/latest/APIReference/API_RepositoryMetadata.html`,
 		Resolver:    fetchRepositories,
 		Multiplex:   client.ServiceAccountRegionMultiplexer(tableName, "codecommit"),
-		Transform:   transformers.TransformWithStruct(&types.RepositoryMetadata{}, transformers.WithPrimaryKeyComponents("Arn")),
+		Transform:   transformers.TransformWithStruct(&types.RepositoryMetadata{}),
 		Columns: []schema.Column{
 			client.DefaultAccountIDColumn(false),
 			client.DefaultRegionColumn(false),
@@ -28,6 +29,13 @@ func Repositories() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveCodecommitTags,
 			},
+			{
+				Name:                "arn",
+				Type:                arrow.BinaryTypes.String,
+				Resolver:            schema.PathResolver("Arn"),
+				PrimaryKeyComponent: true,
+			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

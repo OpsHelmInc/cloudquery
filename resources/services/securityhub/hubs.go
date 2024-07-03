@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/securityhub"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/cloudquery/plugin-sdk/v4/transformers"
@@ -19,7 +20,6 @@ func Hubs() *schema.Table {
 		Transform: transformers.TransformWithStruct(&securityhub.DescribeHubOutput{},
 			transformers.WithTypeTransformer(client.TimestampTypeTransformer),
 			transformers.WithResolverTransformer(client.TimestampResolverTransformer),
-			transformers.WithPrimaryKeyComponents("HubArn"),
 			transformers.WithSkipFields("ResultMetadata"),
 		),
 		Multiplex: client.ServiceAccountRegionMultiplexer(tableName, "securityhub"),
@@ -31,6 +31,13 @@ func Hubs() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: fetchHubTags,
 			},
+			{
+				Name:                "arn",
+				Type:                arrow.BinaryTypes.String,
+				Resolver:            schema.PathResolver("HubArn"),
+				PrimaryKeyComponent: true,
+			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

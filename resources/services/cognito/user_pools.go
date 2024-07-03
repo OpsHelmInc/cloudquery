@@ -36,6 +36,12 @@ func UserPools() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: schema.PathResolver("UserPoolTags"),
 			},
+			{
+				Name:                "arn",
+				Type:                arrow.BinaryTypes.String,
+				PrimaryKeyComponent: true,
+			},
+			client.OhResourceTypeColumn(),
 		},
 
 		Relations: []*schema.Table{

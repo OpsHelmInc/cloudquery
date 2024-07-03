@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/codeartifact"
 	"github.com/aws/aws-sdk-go-v2/service/codeartifact/types"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
@@ -20,7 +21,7 @@ The 'request_account_id' and 'request_region' columns are added to show the acco
 		Resolver:            fetchDomains,
 		PreResourceResolver: getDomain,
 		Multiplex:           client.ServiceAccountRegionMultiplexer(tableName, "codeartifact"),
-		Transform:           transformers.TransformWithStruct(&types.DomainDescription{}, transformers.WithPrimaryKeyComponents("Arn")),
+		Transform:           transformers.TransformWithStruct(&types.DomainDescription{}),
 		Columns: []schema.Column{
 			client.RequestAccountIDColumn(true),
 			client.RequestRegionColumn(true),
@@ -29,6 +30,13 @@ The 'request_account_id' and 'request_region' columns are added to show the acco
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveCodeartifactTags("Arn"),
 			},
+			{
+				Name:                "arn",
+				Type:                arrow.BinaryTypes.String,
+				Resolver:            schema.PathResolver("Arn"),
+				PrimaryKeyComponent: true,
+			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{},
 	}

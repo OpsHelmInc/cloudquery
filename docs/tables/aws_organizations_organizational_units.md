@@ -20,5 +20,6 @@ The following tables depend on aws_organizations_organizational_units:
 |_cq_parent_id|`uuid`|
 |request_account_id|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |id|`utf8`|
 |name|`utf8`|

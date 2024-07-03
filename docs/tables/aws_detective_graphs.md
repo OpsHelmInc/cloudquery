@@ -21,4 +21,5 @@ The following tables depend on aws_detective_graphs:
 |region|`utf8`|
 |tags|`json`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |created_time|`timestamp[us, tz=UTC]`|

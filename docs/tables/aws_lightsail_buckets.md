@@ -21,9 +21,10 @@ The following tables depend on aws_lightsail_buckets:
 |region|`utf8`|
 |able_to_update_bundle|`bool`|
 |tags|`json`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
 |access_log_config|`json`|
 |access_rules|`json`|
-|arn|`utf8`|
 |bundle_id|`utf8`|
 |created_at|`timestamp[us, tz=UTC]`|
 |location|`json`|

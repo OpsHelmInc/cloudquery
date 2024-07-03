@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/auditmanager"
 	"github.com/aws/aws-sdk-go-v2/service/auditmanager/types"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
@@ -18,10 +19,17 @@ func Assessments() *schema.Table {
 		Resolver:            fetchAssessments,
 		PreResourceResolver: getAssessment,
 		Multiplex:           client.ServiceAccountRegionMultiplexer(tableName, "auditmanager"),
-		Transform:           transformers.TransformWithStruct(&types.Assessment{}, transformers.WithPrimaryKeyComponents("Arn")),
+		Transform:           transformers.TransformWithStruct(&types.Assessment{}),
 		Columns: []schema.Column{
 			client.DefaultAccountIDColumn(false),
 			client.DefaultRegionColumn(false),
+			{
+				Name:                "arn",
+				Type:                arrow.BinaryTypes.String,
+				Resolver:            schema.PathResolver("Arn"),
+				PrimaryKeyComponent: true,
+			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

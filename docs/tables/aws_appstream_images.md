@@ -14,10 +14,11 @@ The primary key for this table is **_cq_id**.
 |_cq_parent_id|`uuid`|
 |account_id|`utf8`|
 |region|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
 |name|`utf8`|
 |applications|`json`|
 |appstream_agent_version|`utf8`|
-|arn|`utf8`|
 |base_image_arn|`utf8`|
 |created_time|`timestamp[us, tz=UTC]`|
 |description|`utf8`|

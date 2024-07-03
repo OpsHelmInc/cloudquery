@@ -23,6 +23,7 @@ The following tables depend on aws_lightsail_databases:
 |region|`utf8`|
 |tags|`json`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |backup_retention_enabled|`bool`|
 |ca_certificate_identifier|`utf8`|
 |created_at|`timestamp[us, tz=UTC]`|

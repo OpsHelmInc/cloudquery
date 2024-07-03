@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/servicediscovery"
 	"github.com/aws/aws-sdk-go-v2/service/servicediscovery/types"
@@ -19,7 +20,7 @@ func Services() *schema.Table {
 		Description:         `https://docs.aws.amazon.com/cloud-map/latest/api/API_Service.html`,
 		Resolver:            fetchServices,
 		PreResourceResolver: getService,
-		Transform:           transformers.TransformWithStruct(&types.Service{}, transformers.WithPrimaryKeyComponents("Arn")),
+		Transform:           transformers.TransformWithStruct(&types.Service{}),
 		Multiplex:           client.ServiceAccountRegionMultiplexer(tableName, "servicediscovery"),
 		Columns: []schema.Column{
 			client.DefaultAccountIDColumn(false),
@@ -29,6 +30,13 @@ func Services() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveServicediscoveryTags("Arn"),
 			},
+			{
+				Name:                "arn",
+				Type:                arrow.BinaryTypes.String,
+				Resolver:            schema.PathResolver("Arn"),
+				PrimaryKeyComponent: true,
+			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			instances(),

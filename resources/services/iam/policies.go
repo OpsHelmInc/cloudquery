@@ -35,6 +35,13 @@ func Policies() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveIamPolicyTags,
 			},
+			{
+				Name:                "arn",
+				Resolver:            schema.PathResolver("Arn"),
+				Type:                arrow.BinaryTypes.String,
+				PrimaryKeyComponent: true,
+			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
 			policyLastAccessedDetails(),

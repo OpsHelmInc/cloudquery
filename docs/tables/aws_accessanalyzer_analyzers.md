@@ -21,6 +21,7 @@ The following tables depend on aws_accessanalyzer_analyzers:
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |created_at|`timestamp[us, tz=UTC]`|
 |name|`utf8`|
 |status|`utf8`|

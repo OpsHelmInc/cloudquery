@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/detective"
 	"github.com/aws/aws-sdk-go-v2/service/detective/types"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
@@ -18,7 +19,7 @@ func Graphs() *schema.Table {
 		Description: `https://docs.aws.amazon.com/detective/latest/APIReference/API_ListGraphs.html`,
 		Resolver:    fetchGraphs,
 		Multiplex:   client.ServiceAccountRegionMultiplexer(tableName, "api.detective"),
-		Transform:   transformers.TransformWithStruct(&types.Graph{}, transformers.WithPrimaryKeyComponents("Arn")),
+		Transform:   transformers.TransformWithStruct(&types.Graph{}),
 		Columns: []schema.Column{
 			client.DefaultAccountIDColumn(false),
 			client.DefaultRegionColumn(false),
@@ -27,6 +28,13 @@ func Graphs() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: resolveGraphTags,
 			},
+			{
+				Name:                "arn",
+				Type:                arrow.BinaryTypes.String,
+				Resolver:            schema.PathResolver("Arn"),
+				PrimaryKeyComponent: true,
+			},
+			client.OhResourceTypeColumn(),
 		},
 		Relations: schema.Tables{
 			members(),

@@ -13,5 +13,7 @@ The primary key for this table is **_cq_id**.
 |_cq_id (PK)|`uuid`|
 |_cq_parent_id|`uuid`|
 |account_id|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
 |content|`utf8`|
 |resource_policy_summary|`json`|

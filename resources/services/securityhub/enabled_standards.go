@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/securityhub"
 	"github.com/aws/aws-sdk-go-v2/service/securityhub/types"
@@ -23,7 +24,17 @@ func EnabledStandards() *schema.Table {
 			transformers.WithPrimaryKeyComponents("StandardsArn", "StandardsSubscriptionArn"),
 		),
 		Multiplex: client.ServiceAccountRegionMultiplexer(tableName, "securityhub"),
-		Columns:   schema.ColumnList{client.DefaultAccountIDColumn(true), client.DefaultRegionColumn(true)},
+		Columns: schema.ColumnList{
+			client.DefaultAccountIDColumn(true),
+			client.DefaultRegionColumn(true),
+			{
+				Name:                "arn",
+				Type:                arrow.BinaryTypes.String,
+				Resolver:            schema.PathResolver("StandardsArn"),
+				PrimaryKeyComponent: true,
+			},
+			client.OhResourceTypeColumn(),
+		},
 	}
 }
 

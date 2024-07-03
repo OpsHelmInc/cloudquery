@@ -21,6 +21,7 @@ The following tables depend on aws_quicksight_groups:
 |region|`utf8`|
 |tags|`json`|
 |arn|`utf8`|
+|oh_resource_type|`utf8`|
 |description|`utf8`|
 |group_name|`utf8`|
 |principal_id|`utf8`|

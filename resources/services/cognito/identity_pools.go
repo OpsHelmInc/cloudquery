@@ -49,6 +49,7 @@ func IdentityPools() *schema.Table {
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: schema.PathResolver("IdentityPoolTags"),
 			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }

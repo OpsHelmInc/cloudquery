@@ -26,6 +26,7 @@ func ContainerServices() *schema.Table {
 			{
 				Name:                "arn",
 				Type:                arrow.BinaryTypes.String,
+				Resolver:            schema.PathResolver("Arn"),
 				PrimaryKeyComponent: true,
 			},
 			{

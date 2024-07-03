@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/quicksight"
 	"github.com/aws/aws-sdk-go-v2/service/quicksight/types"
@@ -20,9 +21,20 @@ func Folders() *schema.Table {
 		Description:         "https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Folder.html",
 		Resolver:            fetchQuicksightFolders,
 		PreResourceResolver: getFolder,
-		Transform:           transformers.TransformWithStruct(&types.Folder{}, transformers.WithPrimaryKeyComponents("Arn")),
+		Transform:           transformers.TransformWithStruct(&types.Folder{}),
 		Multiplex:           client.ServiceAccountRegionMultiplexer(tableName, "quicksight"),
-		Columns:             []schema.Column{client.DefaultAccountIDColumn(true), client.DefaultRegionColumn(true), tagsCol},
+		Columns: []schema.Column{
+			client.DefaultAccountIDColumn(true),
+			client.DefaultRegionColumn(true),
+			tagsCol,
+			{
+				Name:                "arn",
+				Type:                arrow.BinaryTypes.String,
+				Resolver:            schema.PathResolver("Arn"),
+				PrimaryKeyComponent: true,
+			},
+			client.OhResourceTypeColumn(),
+		},
 	}
 }
 

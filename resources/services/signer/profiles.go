@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/signer"
 	"github.com/aws/aws-sdk-go-v2/service/signer/types"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
@@ -17,11 +18,18 @@ func Profiles() *schema.Table {
 		Description:         `https://docs.aws.amazon.com/signer/latest/api/API_GetSigningProfile.html`,
 		Resolver:            fetchProfiles,
 		PreResourceResolver: getProfile,
-		Transform:           transformers.TransformWithStruct(&signer.GetSigningProfileOutput{}, transformers.WithSkipFields("ResultMetadata"), transformers.WithPrimaryKeyComponents("ProfileVersionArn")),
+		Transform:           transformers.TransformWithStruct(&signer.GetSigningProfileOutput{}, transformers.WithSkipFields("ResultMetadata")),
 		Multiplex:           client.ServiceAccountRegionMultiplexer(tableName, "signer"),
 		Columns: []schema.Column{
 			client.DefaultAccountIDColumn(false),
 			client.DefaultRegionColumn(false),
+			{
+				Name:                "arn",
+				Type:                arrow.BinaryTypes.String,
+				Resolver:            schema.PathResolver("ProfileVersionArn"),
+				PrimaryKeyComponent: true,
+			},
+			client.OhResourceTypeColumn(),
 		},
 	}
 }
