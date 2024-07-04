@@ -52,9 +52,6 @@ func fetchLambdaFunctionAliases(ctx context.Context, meta schema.ClientMeta, par
 			options.Region = cl.Region
 		})
 		if err != nil {
-			return err
-		}
-		if err != nil {
 			if cl.IsNotFoundError(err) {
 				return nil
 			}
