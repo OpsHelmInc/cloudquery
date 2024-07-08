@@ -68,7 +68,7 @@ func (c *Client) Tables(_ context.Context, options plugin.TableOptions) (schema.
 	return c.allTables.FilterDfs(options.Tables, options.SkipTables, options.SkipDependentTables)
 }
 
-func (c *Client) Sync(ctx context.Context, options plugin.SyncOptions, res chan<- message.SyncMessage) error {
+func (c *Client) Sync(ctx context.Context, options plugin.SyncOptions, res chan<- message.SyncMessage, resources chan<- schema.Resource) error {
 	if c.options.NoConnection {
 		return fmt.Errorf("no connection")
 	}
@@ -102,7 +102,7 @@ func (c *Client) Sync(ctx context.Context, options plugin.SyncOptions, res chan<
 	// for each sync we want to create a copy of the client, so they won't share state
 	awsClient = awsClient.Duplicate()
 	awsClient.SetStateClient(stateClient)
-	err = c.scheduler.Sync(ctx, awsClient, tt, res, scheduler.WithSyncDeterministicCQID(options.DeterministicCQID))
+	err = c.scheduler.Sync(ctx, awsClient, tt, res, resources, scheduler.WithSyncDeterministicCQID(options.DeterministicCQID))
 	if err != nil {
 		return err
 	}
