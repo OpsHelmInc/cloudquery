@@ -68,7 +68,7 @@ func (c *Client) Tables(_ context.Context, options plugin.TableOptions) (schema.
 	return c.allTables.FilterDfs(options.Tables, options.SkipTables, options.SkipDependentTables)
 }
 
-func (c *Client) Sync(ctx context.Context, options plugin.SyncOptions, res chan<- message.SyncMessage, resources chan<- schema.Resource) error {
+func (c *Client) Sync(ctx context.Context, options plugin.SyncOptions, res chan<- message.SyncMessage, resources chan<- *schema.Resource) error {
 	if c.options.NoConnection {
 		return fmt.Errorf("no connection")
 	}
