@@ -38,10 +38,6 @@ func LaunchTemplates() *schema.Table {
 			},
 			client.OhResourceTypeColumn(),
 		},
-
-		Relations: []*schema.Table{
-			launchTemplateVersions(),
-		},
 	}
 }
 

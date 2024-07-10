@@ -15,19 +15,11 @@ import (
 func buildEc2LaunchTemplates(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m := mocks.NewMockEc2Client(ctrl)
 	lt := types.LaunchTemplate{}
-	ltv := types.LaunchTemplateVersion{}
 	require.NoError(t, faker.FakeObject(&lt))
-
-	require.NoError(t, faker.FakeObject(&ltv))
 
 	m.EXPECT().DescribeLaunchTemplates(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&ec2.DescribeLaunchTemplatesOutput{
 			LaunchTemplates: []types.LaunchTemplate{lt},
-		}, nil)
-
-	m.EXPECT().DescribeLaunchTemplateVersions(gomock.Any(), gomock.Any(), gomock.Any()).Return(
-		&ec2.DescribeLaunchTemplateVersionsOutput{
-			LaunchTemplateVersions: []types.LaunchTemplateVersion{ltv},
 		}, nil)
 
 	return client.Services{

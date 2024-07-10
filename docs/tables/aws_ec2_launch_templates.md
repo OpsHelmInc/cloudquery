@@ -6,11 +6,6 @@ https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplate.html
 
 The primary key for this table is **_cq_id**.
 
-## Relations
-
-The following tables depend on aws_ec2_launch_templates:
-  - [aws_ec2_launch_template_versions](aws_ec2_launch_template_versions.md)
-
 ## Columns
 
 | Name          | Type          |

@@ -102,6 +102,7 @@ import (
 	"github.com/OpsHelmInc/cloudquery/resources/services/sns"
 	"github.com/OpsHelmInc/cloudquery/resources/services/sqs"
 	"github.com/OpsHelmInc/cloudquery/resources/services/ssm"
+	"github.com/OpsHelmInc/cloudquery/resources/services/ssoadmin"
 	"github.com/OpsHelmInc/cloudquery/resources/services/stepfunctions"
 	"github.com/OpsHelmInc/cloudquery/resources/services/timestream"
 	"github.com/OpsHelmInc/cloudquery/resources/services/transfer"
@@ -213,6 +214,7 @@ func GetTables() schema.Tables {
 		ec2.EbsSnapshots(),
 		ec2.EbsVolumes(),
 		ec2.EgressOnlyInternetGateways(),
+		ec2.Eips(),
 		ec2.FlowLogs(),
 		ec2.Hosts(),
 		ec2.Images(),
@@ -220,11 +222,13 @@ func GetTables() schema.Tables {
 		ec2.Instances(),
 		ec2.InternetGateways(),
 		ec2.KeyPairs(),
+		ec2.LaunchTemplateVersions(),
 		ec2.LaunchTemplates(),
 		ec2.ManagedPrefixLists(),
 		ec2.NatGateways(),
 		ec2.NetworkAcls(),
 		ec2.NetworkInterfaces(),
+		iam.PasswordPolicies(),
 		ec2.ReservedInstances(),
 		ec2.RouteTables(),
 		ec2.SecurityGroups(),
@@ -236,6 +240,8 @@ func GetTables() schema.Tables {
 		ec2.Vpcs(),
 		ec2.VpnConnections(),
 		ec2.VpnGateways(),
+		ec2.RegionalConfigs(),
+		ec2.Regions(),
 		ecr.Repositories(),
 		ecrpublic.Repositories(),
 		ecs.Clusters(),
@@ -399,6 +405,7 @@ func GetTables() schema.Tables {
 		resiliencehub.SuggestedResiliencyPolicies(),
 		resourcegroups.ResourceGroups(),
 		route53.DelegationSets(),
+		route53.Domains(),
 		route53.HealthChecks(),
 		route53.HostedZones(),
 		route53.TrafficPolicies(),
@@ -452,6 +459,8 @@ func GetTables() schema.Tables {
 		ssm.ComplianceSummaryItems(),
 		ssm.Documents(),
 		ssm.Instances(),
+		ssm.Parameters(),
+		ssoadmin.Instances(),
 		stepfunctions.Activities(),
 		stepfunctions.StateMachines(),
 		timestream.Databases(),
