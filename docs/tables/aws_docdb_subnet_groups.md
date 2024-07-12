@@ -1,24 +1,25 @@
 # Table: aws_docdb_subnet_groups
 
+This table shows data for Amazon DocumentDB Subnet Groups.
+
 https://docs.aws.amazon.com/documentdb/latest/developerguide/API_DBSubnetGroup.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|tags|JSON|
-|arn (PK)|String|
-|db_subnet_group_description|String|
-|db_subnet_group_name|String|
-|subnet_group_status|String|
-|subnets|JSON|
-|vpc_id|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|tags|`json`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|db_subnet_group_arn|`utf8`|
+|db_subnet_group_description|`utf8`|
+|db_subnet_group_name|`utf8`|
+|subnet_group_status|`utf8`|
+|subnets|`json`|
+|vpc_id|`utf8`|

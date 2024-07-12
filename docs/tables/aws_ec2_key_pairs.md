@@ -1,26 +1,25 @@
 # Table: aws_ec2_key_pairs
 
+This table shows data for Amazon Elastic Compute Cloud (EC2) Key Pairs.
+
 https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_KeyPairInfo.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|oh_resource_type|String|
-|create_time|Timestamp|
-|key_fingerprint|String|
-|key_name|String|
-|key_pair_id|String|
-|key_type|String|
-|public_key|String|
-|tags|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|create_time|`timestamp[us, tz=UTC]`|
+|key_fingerprint|`utf8`|
+|key_name|`utf8`|
+|key_pair_id|`utf8`|
+|key_type|`utf8`|
+|public_key|`utf8`|

@@ -1,31 +1,34 @@
 # Table: aws_ecr_repositories
 
+This table shows data for Amazon Elastic Container Registry (ECR) Repositories.
+
 https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_Repository.html
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
 ## Relations
 
 The following tables depend on aws_ecr_repositories:
   - [aws_ecr_repository_images](aws_ecr_repository_images.md)
+  - [aws_ecr_repository_lifecycle_policies](aws_ecr_repository_lifecycle_policies.md)
+  - [aws_ecr_repository_policies](aws_ecr_repository_policies.md)
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|tags|JSON|
-|policy_text|JSON|
-|oh_resource_type|String|
-|created_at|Timestamp|
-|encryption_configuration|JSON|
-|image_scanning_configuration|JSON|
-|image_tag_mutability|String|
-|registry_id|String|
-|repository_name|String|
-|repository_uri|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|created_at|`timestamp[us, tz=UTC]`|
+|encryption_configuration|`json`|
+|image_scanning_configuration|`json`|
+|image_tag_mutability|`utf8`|
+|registry_id|`utf8`|
+|repository_arn|`utf8`|
+|repository_name|`utf8`|
+|repository_uri|`utf8`|

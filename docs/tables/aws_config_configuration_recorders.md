@@ -1,29 +1,29 @@
 # Table: aws_config_configuration_recorders
 
+This table shows data for Config Configuration Recorders.
 
+https://docs.aws.amazon.com/config/latest/APIReference/API_ConfigurationRecorder.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|name|String|
-|recording_group|JSON|
-|recording_mode|JSON|
-|role_arn|String|
-|status_last_error_code|String|
-|status_last_error_message|String|
-|status_last_start_time|Timestamp|
-|status_last_status|String|
-|status_last_status_change_time|Timestamp|
-|status_last_stop_time|Timestamp|
-|status_recording|Bool|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|name|`utf8`|
+|recording_group|`json`|
+|recording_mode|`json`|
+|role_arn|`utf8`|
+|status_last_error_code|`utf8`|
+|status_last_error_message|`utf8`|
+|status_last_start_time|`timestamp[us, tz=UTC]`|
+|status_last_status|`utf8`|
+|status_last_status_change_time|`timestamp[us, tz=UTC]`|
+|status_last_stop_time|`timestamp[us, tz=UTC]`|
+|status_recording|`bool`|

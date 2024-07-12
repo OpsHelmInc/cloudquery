@@ -1,27 +1,29 @@
 # Table: aws_ses_configuration_set_event_destinations
 
+This table shows data for Amazon Simple Email Service (SES) Configuration Set Event Destinations.
+
 https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_EventDestination.html
 
-The composite primary key for this table is (**account_id**, **region**, **configuration_set_name**, **name**).
+The primary key for this table is **_cq_id**.
 
 ## Relations
+
 This table depends on [aws_ses_configuration_sets](aws_ses_configuration_sets.md).
 
-
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id (PK)|String|
-|region (PK)|String|
-|configuration_set_name (PK)|String|
-|name (PK)|String|
-|matching_event_types|StringArray|
-|cloud_watch_destination|JSON|
-|enabled|Bool|
-|kinesis_firehose_destination|JSON|
-|pinpoint_destination|JSON|
-|sns_destination|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|configuration_set_name|`utf8`|
+|name|`utf8`|
+|matching_event_types|`list<item: utf8, nullable>`|
+|cloud_watch_destination|`json`|
+|enabled|`bool`|
+|event_bridge_destination|`json`|
+|kinesis_firehose_destination|`json`|
+|pinpoint_destination|`json`|
+|sns_destination|`json`|

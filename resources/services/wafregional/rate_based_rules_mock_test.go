@@ -9,17 +9,17 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/wafregional"
 	"github.com/aws/aws-sdk-go-v2/service/wafregional/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildRateBasedRulesMock(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m := mocks.NewMockWafregionalClient(ctrl)
 
 	var rule types.RateBasedRule
-	if err := faker.FakeObject(&rule); err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&rule))
+
 	m.EXPECT().ListRateBasedRules(
 		gomock.Any(),
 		&wafregional.ListRateBasedRulesInput{},
@@ -40,14 +40,19 @@ func buildRateBasedRulesMock(t *testing.T, ctrl *gomock.Controller) client.Servi
 		nil,
 	)
 
+	arn := aws.String(fmt.Sprintf("arn:aws:waf-regional:us-east-1:testAccount:ratebasedrule/%v", *rule.RuleId))
+
+	tif := types.TagInfoForResource{}
+	require.NoError(t, faker.FakeObject(&tif))
+	tif.ResourceARN = arn
 	m.EXPECT().ListTagsForResource(
 		gomock.Any(),
 		&wafregional.ListTagsForResourceInput{
-			ResourceARN: aws.String(fmt.Sprintf("arn:aws:waf-regional:us-east-1:testAccount:ratebasedrule/%v", *rule.RuleId)),
+			ResourceARN: arn,
 		},
 		gomock.Any(),
 	).Return(
-		&wafregional.ListTagsForResourceOutput{},
+		&wafregional.ListTagsForResourceOutput{TagInfoForResource: &tif},
 		nil,
 	)
 

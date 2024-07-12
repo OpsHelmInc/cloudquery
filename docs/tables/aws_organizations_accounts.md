@@ -1,24 +1,30 @@
 # Table: aws_organizations_accounts
 
+This table shows data for Organizations Accounts.
+
 https://docs.aws.amazon.com/organizations/latest/APIReference/API_Account.html
+The 'request_account_id' column is added to show from where the request was made.
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
+## Relations
 
+The following tables depend on aws_organizations_accounts:
+  - [aws_organizations_account_parents](aws_organizations_account_parents.md)
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|arn (PK)|String|
-|tags|JSON|
-|email|String|
-|id|String|
-|joined_method|String|
-|joined_timestamp|Timestamp|
-|name|String|
-|status|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|request_account_id|`utf8`|
+|tags|`json`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|email|`utf8`|
+|id|`utf8`|
+|joined_method|`utf8`|
+|joined_timestamp|`timestamp[us, tz=UTC]`|
+|name|`utf8`|
+|status|`utf8`|

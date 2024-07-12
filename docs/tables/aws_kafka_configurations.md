@@ -1,23 +1,23 @@
 # Table: aws_kafka_configurations
 
+This table shows data for Kafka Configurations.
+
 https://docs.aws.amazon.com/msk/1.0/apireference/clusters-clusterarn-configuration.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|arn (PK)|String|
-|creation_time|Timestamp|
-|description|String|
-|kafka_versions|StringArray|
-|latest_revision|JSON|
-|name|String|
-|state|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|creation_time|`timestamp[us, tz=UTC]`|
+|description|`utf8`|
+|kafka_versions|`list<item: utf8, nullable>`|
+|latest_revision|`json`|
+|name|`utf8`|
+|state|`utf8`|

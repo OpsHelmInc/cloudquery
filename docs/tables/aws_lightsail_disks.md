@@ -1,8 +1,10 @@
 # Table: aws_lightsail_disks
 
+This table shows data for Lightsail Disks.
+
 https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_Disk.html
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
 ## Relations
 
@@ -10,29 +12,29 @@ The following tables depend on aws_lightsail_disks:
   - [aws_lightsail_disk_snapshots](aws_lightsail_disk_snapshots.md)
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|tags|JSON|
-|add_ons|JSON|
-|attached_to|String|
-|attachment_state|String|
-|auto_mount_status|String|
-|created_at|Timestamp|
-|gb_in_use|Int|
-|iops|Int|
-|is_attached|Bool|
-|is_system_disk|Bool|
-|location|JSON|
-|name|String|
-|path|String|
-|resource_type|String|
-|size_in_gb|Int|
-|state|String|
-|support_code|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|add_ons|`json`|
+|attached_to|`utf8`|
+|attachment_state|`utf8`|
+|auto_mount_status|`utf8`|
+|created_at|`timestamp[us, tz=UTC]`|
+|gb_in_use|`int64`|
+|iops|`int64`|
+|is_attached|`bool`|
+|is_system_disk|`bool`|
+|location|`json`|
+|name|`utf8`|
+|path|`utf8`|
+|resource_type|`utf8`|
+|size_in_gb|`int64`|
+|state|`utf8`|
+|support_code|`utf8`|

@@ -1,8 +1,10 @@
 # Table: aws_glue_registries
 
+This table shows data for Glue Registries.
 
+https://docs.aws.amazon.com/glue/latest/webapi/API_RegistryListItem.html
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
 ## Relations
 
@@ -10,18 +12,19 @@ The following tables depend on aws_glue_registries:
   - [aws_glue_registry_schemas](aws_glue_registry_schemas.md)
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|tags|JSON|
-|arn (PK)|String|
-|created_time|String|
-|description|String|
-|registry_name|String|
-|status|String|
-|updated_time|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|created_time|`utf8`|
+|description|`utf8`|
+|registry_arn|`utf8`|
+|registry_name|`utf8`|
+|status|`utf8`|
+|updated_time|`utf8`|

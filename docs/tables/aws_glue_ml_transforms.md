@@ -1,8 +1,10 @@
 # Table: aws_glue_ml_transforms
 
+This table shows data for Glue ML Transforms.
 
+https://docs.aws.amazon.com/glue/latest/webapi/API_MLTransform.html
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
 ## Relations
 
@@ -10,32 +12,32 @@ The following tables depend on aws_glue_ml_transforms:
   - [aws_glue_ml_transform_task_runs](aws_glue_ml_transform_task_runs.md)
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|tags|JSON|
-|schema|JSON|
-|created_on|Timestamp|
-|description|String|
-|evaluation_metrics|JSON|
-|glue_version|String|
-|input_record_tables|JSON|
-|label_count|Int|
-|last_modified_on|Timestamp|
-|max_capacity|Float|
-|max_retries|Int|
-|name|String|
-|number_of_workers|Int|
-|parameters|JSON|
-|role|String|
-|status|String|
-|timeout|Int|
-|transform_encryption|JSON|
-|transform_id|String|
-|worker_type|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|schema|`json`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|created_on|`timestamp[us, tz=UTC]`|
+|description|`utf8`|
+|evaluation_metrics|`json`|
+|glue_version|`utf8`|
+|input_record_tables|`json`|
+|label_count|`int64`|
+|last_modified_on|`timestamp[us, tz=UTC]`|
+|max_capacity|`float64`|
+|max_retries|`int64`|
+|name|`utf8`|
+|number_of_workers|`int64`|
+|parameters|`json`|
+|role|`utf8`|
+|status|`utf8`|
+|timeout|`int64`|
+|transform_encryption|`json`|
+|transform_id|`utf8`|
+|worker_type|`utf8`|

@@ -70,6 +70,7 @@ type LightsailClient interface {
 	GetRelationalDatabaseSnapshot(context.Context, *lightsail.GetRelationalDatabaseSnapshotInput, ...func(*lightsail.Options)) (*lightsail.GetRelationalDatabaseSnapshotOutput, error)
 	GetRelationalDatabaseSnapshots(context.Context, *lightsail.GetRelationalDatabaseSnapshotsInput, ...func(*lightsail.Options)) (*lightsail.GetRelationalDatabaseSnapshotsOutput, error)
 	GetRelationalDatabases(context.Context, *lightsail.GetRelationalDatabasesInput, ...func(*lightsail.Options)) (*lightsail.GetRelationalDatabasesOutput, error)
+	GetSetupHistory(context.Context, *lightsail.GetSetupHistoryInput, ...func(*lightsail.Options)) (*lightsail.GetSetupHistoryOutput, error)
 	GetStaticIp(context.Context, *lightsail.GetStaticIpInput, ...func(*lightsail.Options)) (*lightsail.GetStaticIpOutput, error)
 	GetStaticIps(context.Context, *lightsail.GetStaticIpsInput, ...func(*lightsail.Options)) (*lightsail.GetStaticIpsOutput, error)
 }

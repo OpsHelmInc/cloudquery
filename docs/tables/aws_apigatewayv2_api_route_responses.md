@@ -1,27 +1,29 @@
 # Table: aws_apigatewayv2_api_route_responses
 
-https://docs.aws.amazon.com/apigateway/latest/api/API_RouteResponse.html
+This table shows data for Amazon API Gateway v2 API Route Responses.
+
+https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-routes-routeid-routeresponses.html
 
 The primary key for this table is **_cq_id**.
 
 ## Relations
+
 This table depends on [aws_apigatewayv2_api_routes](aws_apigatewayv2_api_routes.md).
 
-
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id (PK)|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|api_route_arn|String|
-|route_id|String|
-|arn|String|
-|route_response_key|String|
-|model_selection_expression|String|
-|response_models|JSON|
-|response_parameters|JSON|
-|route_response_id|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|api_route_arn|`utf8`|
+|route_id|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|route_response_key|`utf8`|
+|model_selection_expression|`utf8`|
+|response_models|`json`|
+|response_parameters|`json`|
+|route_response_id|`utf8`|

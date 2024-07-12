@@ -1,8 +1,10 @@
 # Table: aws_elbv1_load_balancers
 
+This table shows data for Amazon Elastic Load Balancer (ELB) v1 Load Balancers.
+
 https://docs.aws.amazon.com/elasticloadbalancing/2012-06-01/APIReference/API_LoadBalancerDescription.html
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
 ## Relations
 
@@ -10,31 +12,30 @@ The following tables depend on aws_elbv1_load_balancers:
   - [aws_elbv1_load_balancer_policies](aws_elbv1_load_balancer_policies.md)
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|oh_resource_type|String|
-|availability_zones|StringArray|
-|backend_server_descriptions|JSON|
-|canonical_hosted_zone_name|String|
-|canonical_hosted_zone_name_id|String|
-|created_time|Timestamp|
-|dns_name|String|
-|health_check|JSON|
-|instances|JSON|
-|listener_descriptions|JSON|
-|load_balancer_name|String|
-|policies|JSON|
-|scheme|String|
-|security_groups|StringArray|
-|source_security_group|JSON|
-|subnets|StringArray|
-|vpc_id|String|
-|tags|JSON|
-|attributes|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|availability_zones|`list<item: utf8, nullable>`|
+|backend_server_descriptions|`json`|
+|canonical_hosted_zone_name|`utf8`|
+|canonical_hosted_zone_name_id|`utf8`|
+|created_time|`timestamp[us, tz=UTC]`|
+|dns_name|`utf8`|
+|health_check|`json`|
+|instances|`json`|
+|listener_descriptions|`json`|
+|load_balancer_name|`utf8`|
+|policies|`json`|
+|scheme|`utf8`|
+|security_groups|`list<item: utf8, nullable>`|
+|source_security_group|`json`|
+|subnets|`list<item: utf8, nullable>`|
+|vpc_id|`utf8`|
+|tags|`json`|
+|attributes|`json`|

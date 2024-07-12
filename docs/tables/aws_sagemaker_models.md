@@ -1,29 +1,29 @@
 # Table: aws_sagemaker_models
 
+This table shows data for Amazon SageMaker Models.
 
+https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeModel.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|tags|JSON|
-|creation_time|Timestamp|
-|model_name|String|
-|containers|JSON|
-|deployment_recommendation|JSON|
-|enable_network_isolation|Bool|
-|execution_role_arn|String|
-|inference_execution_config|JSON|
-|primary_container|JSON|
-|vpc_config|JSON|
-|result_metadata|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|creation_time|`timestamp[us, tz=UTC]`|
+|model_arn|`utf8`|
+|model_name|`utf8`|
+|containers|`json`|
+|deployment_recommendation|`json`|
+|enable_network_isolation|`bool`|
+|execution_role_arn|`utf8`|
+|inference_execution_config|`json`|
+|primary_container|`json`|
+|vpc_config|`json`|

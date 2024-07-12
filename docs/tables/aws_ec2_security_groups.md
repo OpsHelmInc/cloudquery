@@ -1,27 +1,26 @@
 # Table: aws_ec2_security_groups
 
+This table shows data for Amazon Elastic Compute Cloud (EC2) Security Groups.
+
 https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecurityGroup.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|oh_resource_type|String|
-|description|String|
-|group_id|String|
-|group_name|String|
-|ip_permissions|JSON|
-|ip_permissions_egress|JSON|
-|owner_id|String|
-|tags|JSON|
-|vpc_id|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|description|`utf8`|
+|group_id|`utf8`|
+|group_name|`utf8`|
+|ip_permissions|`json`|
+|ip_permissions_egress|`json`|
+|owner_id|`utf8`|
+|vpc_id|`utf8`|

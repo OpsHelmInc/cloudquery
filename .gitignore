@@ -3,3 +3,4 @@ deploy-key
 /.idea/cloudquery.iml
 /.idea/modules.xml
 /.idea/vcs.xml
+vendor/

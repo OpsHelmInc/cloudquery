@@ -1,25 +1,26 @@
 # Table: aws_glue_database_table_indexes
 
+This table shows data for Glue Database Table Indexes.
 
+https://docs.aws.amazon.com/glue/latest/webapi/API_PartitionIndexDescriptor.html
 
-The composite primary key for this table is (**database_arn**, **database_table_name**, **index_name**).
+The primary key for this table is **_cq_id**.
 
 ## Relations
+
 This table depends on [aws_glue_database_tables](aws_glue_database_tables.md).
 
-
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|database_arn (PK)|String|
-|database_table_name (PK)|String|
-|index_name (PK)|String|
-|index_status|String|
-|keys|JSON|
-|backfill_errors|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|database_arn|`utf8`|
+|database_table_name|`utf8`|
+|index_name|`utf8`|
+|index_status|`utf8`|
+|keys|`json`|
+|backfill_errors|`json`|

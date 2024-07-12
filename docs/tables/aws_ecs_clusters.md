@@ -1,39 +1,41 @@
 # Table: aws_ecs_clusters
 
+This table shows data for Amazon Elastic Container Service (ECS) Clusters.
+
 https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Cluster.html
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
 ## Relations
 
 The following tables depend on aws_ecs_clusters:
-  - [aws_ecs_cluster_tasks](aws_ecs_cluster_tasks.md)
-  - [aws_ecs_cluster_services](aws_ecs_cluster_services.md)
   - [aws_ecs_cluster_container_instances](aws_ecs_cluster_container_instances.md)
+  - [aws_ecs_cluster_services](aws_ecs_cluster_services.md)
+  - [aws_ecs_cluster_tasks](aws_ecs_cluster_tasks.md)
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|oh_resource_type|String|
-|active_services_count|Int|
-|attachments|JSON|
-|attachments_status|String|
-|capacity_providers|StringArray|
-|cluster_name|String|
-|configuration|JSON|
-|default_capacity_provider_strategy|JSON|
-|pending_tasks_count|Int|
-|registered_container_instances_count|Int|
-|running_tasks_count|Int|
-|service_connect_defaults|JSON|
-|settings|JSON|
-|statistics|JSON|
-|status|String|
-|tags|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|active_services_count|`int64`|
+|attachments|`json`|
+|attachments_status|`utf8`|
+|capacity_providers|`list<item: utf8, nullable>`|
+|cluster_arn|`utf8`|
+|cluster_name|`utf8`|
+|configuration|`json`|
+|default_capacity_provider_strategy|`json`|
+|pending_tasks_count|`int64`|
+|registered_container_instances_count|`int64`|
+|running_tasks_count|`int64`|
+|service_connect_defaults|`json`|
+|settings|`json`|
+|statistics|`json`|
+|status|`utf8`|

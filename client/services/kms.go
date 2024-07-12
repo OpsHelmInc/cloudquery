@@ -17,6 +17,7 @@ type KmsClient interface {
 	ListAliases(context.Context, *kms.ListAliasesInput, ...func(*kms.Options)) (*kms.ListAliasesOutput, error)
 	ListGrants(context.Context, *kms.ListGrantsInput, ...func(*kms.Options)) (*kms.ListGrantsOutput, error)
 	ListKeyPolicies(context.Context, *kms.ListKeyPoliciesInput, ...func(*kms.Options)) (*kms.ListKeyPoliciesOutput, error)
+	ListKeyRotations(context.Context, *kms.ListKeyRotationsInput, ...func(*kms.Options)) (*kms.ListKeyRotationsOutput, error)
 	ListKeys(context.Context, *kms.ListKeysInput, ...func(*kms.Options)) (*kms.ListKeysOutput, error)
 	ListResourceTags(context.Context, *kms.ListResourceTagsInput, ...func(*kms.Options)) (*kms.ListResourceTagsOutput, error)
 	ListRetirableGrants(context.Context, *kms.ListRetirableGrantsInput, ...func(*kms.Options)) (*kms.ListRetirableGrantsOutput, error)

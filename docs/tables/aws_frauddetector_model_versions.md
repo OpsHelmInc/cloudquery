@@ -1,32 +1,34 @@
 # Table: aws_frauddetector_model_versions
 
+This table shows data for Amazon Fraud Detector Model Versions.
+
 https://docs.aws.amazon.com/frauddetector/latest/api/API_ModelVersionDetail.html
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
 ## Relations
+
 This table depends on [aws_frauddetector_models](aws_frauddetector_models.md).
 
-
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|created_time|String|
-|external_events_detail|JSON|
-|ingested_events_detail|JSON|
-|last_updated_time|String|
-|model_id|String|
-|model_type|String|
-|model_version_number|String|
-|status|String|
-|training_data_schema|JSON|
-|training_data_source|String|
-|training_result|JSON|
-|training_result_v2|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|created_time|`utf8`|
+|external_events_detail|`json`|
+|ingested_events_detail|`json`|
+|last_updated_time|`utf8`|
+|model_id|`utf8`|
+|model_type|`utf8`|
+|model_version_number|`utf8`|
+|status|`utf8`|
+|training_data_schema|`json`|
+|training_data_source|`utf8`|
+|training_result|`json`|
+|training_result_v2|`json`|

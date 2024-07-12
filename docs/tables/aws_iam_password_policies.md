@@ -1,29 +1,28 @@
 # Table: aws_iam_password_policies
 
+This table shows data for IAM Password Policies.
 
+https://docs.aws.amazon.com/IAM/latest/APIReference/API_PasswordPolicy.html
 
-The primary key for this table is **account_id**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|arn|String|
-|account_id (PK)|String|
-|oh_resource_type|String|
-|allow_users_to_change_password|Bool|
-|expire_passwords|Bool|
-|hard_expiry|Bool|
-|max_password_age|Int|
-|minimum_password_length|Int|
-|password_reuse_prevention|Int|
-|require_lowercase_characters|Bool|
-|require_numbers|Bool|
-|require_symbols|Bool|
-|require_uppercase_characters|Bool|
-|policy_exists|Bool|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|allow_users_to_change_password|`bool`|
+|expire_passwords|`bool`|
+|hard_expiry|`bool`|
+|max_password_age|`int64`|
+|minimum_password_length|`int64`|
+|password_reuse_prevention|`int64`|
+|require_lowercase_characters|`bool`|
+|require_numbers|`bool`|
+|require_symbols|`bool`|
+|require_uppercase_characters|`bool`|
+|policy_exists|`bool`|

@@ -1,29 +1,32 @@
 # Table: aws_athena_work_groups
 
+This table shows data for Athena Work Groups.
+
 https://docs.aws.amazon.com/athena/latest/APIReference/API_WorkGroup.html
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
 ## Relations
 
 The following tables depend on aws_athena_work_groups:
+  - [aws_athena_work_group_named_queries](aws_athena_work_group_named_queries.md)
   - [aws_athena_work_group_prepared_statements](aws_athena_work_group_prepared_statements.md)
   - [aws_athena_work_group_query_executions](aws_athena_work_group_query_executions.md)
-  - [aws_athena_work_group_named_queries](aws_athena_work_group_named_queries.md)
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|tags|JSON|
-|name|String|
-|configuration|JSON|
-|creation_time|Timestamp|
-|description|String|
-|state|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|name|`utf8`|
+|configuration|`json`|
+|creation_time|`timestamp[us, tz=UTC]`|
+|description|`utf8`|
+|identity_center_application_arn|`utf8`|
+|state|`utf8`|

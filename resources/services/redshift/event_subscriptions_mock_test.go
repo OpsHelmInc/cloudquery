@@ -8,17 +8,17 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/redshift"
 	"github.com/aws/aws-sdk-go-v2/service/redshift/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
-func buildRedshiftEventSubscriptionsMock(t *testing.T, ctrl *gomock.Controller) client.Services {
+func buildEventSubscriptionsMock(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m := mocks.NewMockRedshiftClient(ctrl)
 
 	var s types.EventSubscription
-	if err := faker.FakeObject(&s); err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&s))
+
 	m.EXPECT().DescribeEventSubscriptions(
 		gomock.Any(),
 		&redshift.DescribeEventSubscriptionsInput{MaxRecords: aws.Int32(100)},
@@ -36,5 +36,5 @@ func buildRedshiftEventSubscriptionsMock(t *testing.T, ctrl *gomock.Controller) 
 }
 
 func TestRedshiftEventSubscriptions(t *testing.T) {
-	client.AwsMockTestHelper(t, EventSubscriptions(), buildRedshiftEventSubscriptionsMock, client.TestOptions{})
+	client.AwsMockTestHelper(t, EventSubscriptions(), buildEventSubscriptionsMock, client.TestOptions{})
 }

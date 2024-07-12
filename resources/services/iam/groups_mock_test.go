@@ -8,24 +8,18 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	iamTypes "github.com/aws/aws-sdk-go-v2/service/iam/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildIamGroups(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m := mocks.NewMockIamClient(ctrl)
 	g := iamTypes.Group{}
-	err := faker.FakeObject(&g)
-	g.Arn = aws.String("arn:aws:iam::123456789012:group/Admins")
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&g))
 
 	p := iamTypes.AttachedPolicy{}
-	err = faker.FakeObject(&p)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&p))
 
 	m.EXPECT().ListGroups(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.ListGroupsOutput{
@@ -34,38 +28,42 @@ func buildIamGroups(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m.EXPECT().ListAttachedGroupPolicies(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.ListAttachedGroupPoliciesOutput{
 			AttachedPolicies: []iamTypes.AttachedPolicy{p},
-		}, nil)
+		}, nil).MinTimes(1)
 
-	// list policies
 	var l []string
-	err = faker.FakeObject(&l)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&l))
 	m.EXPECT().ListGroupPolicies(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.ListGroupPoliciesOutput{
 			PolicyNames: l,
 		}, nil)
 
-	// get policy
 	gp := iam.GetGroupPolicyOutput{}
-	err = faker.FakeObject(&gp)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&gp))
 	document := "{\"test\": {\"t1\":1}}"
 	gp.PolicyDocument = &document
 	m.EXPECT().GetGroupPolicy(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&gp, nil)
 
-	// get group
-	user := iamTypes.User{Arn: aws.String("arn:aws:iam::123456789012:user/test")}
-	gg := iam.GetGroupOutput{Group: &g, Users: []iamTypes.User{user}}
-	if err != nil {
-		t.Fatal(err)
-	}
+	// m.EXPECT().GenerateServiceLastAccessedDetails(gomock.Any(), gomock.Any(), gomock.Any()).Return(&iam.GenerateServiceLastAccessedDetailsOutput{JobId: aws.String("JobId")}, nil)
+
+	// lastAccessed := []iamTypes.ServiceLastAccessed{}
+	// require.NoError(t, faker.FakeObject(&lastAccessed))
+	// m.EXPECT().GetServiceLastAccessedDetails(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+	// 	&iam.GetServiceLastAccessedDetailsOutput{ServicesLastAccessed: lastAccessed, JobStatus: iamTypes.JobStatusTypeCompleted},
+	// 	nil,
+	// )
+
 	m.EXPECT().GetGroup(gomock.Any(), gomock.Any(), gomock.Any()).Return(
-		&gg, nil)
+		&iam.GetGroupOutput{
+			Group: &g,
+			Users: []iamTypes.User{
+				{
+					Arn: aws.String("arn:aws:iam::123456789012:user/name"),
+				},
+			},
+		},
+		nil,
+	)
 
 	return client.Services{
 		Iam: m,

@@ -1,38 +1,40 @@
 # Table: aws_directconnect_lags
 
+This table shows data for AWS Direct Connect Lags.
+
 https://docs.aws.amazon.com/directconnect/latest/APIReference/API_Lag.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|id|String|
-|tags|JSON|
-|allows_hosted_connections|Bool|
-|aws_device|String|
-|aws_device_v2|String|
-|aws_logical_device_id|String|
-|connections|JSON|
-|connections_bandwidth|String|
-|encryption_mode|String|
-|has_logical_redundancy|String|
-|jumbo_frame_capable|Bool|
-|lag_name|String|
-|lag_state|String|
-|location|String|
-|mac_sec_capable|Bool|
-|mac_sec_keys|JSON|
-|minimum_links|Int|
-|number_of_connections|Int|
-|owner_account|String|
-|provider_name|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|request_account_id|`utf8`|
+|request_region|`utf8`|
+|arn|`utf8`|
+|id|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|allows_hosted_connections|`bool`|
+|aws_device|`utf8`|
+|aws_device_v2|`utf8`|
+|aws_logical_device_id|`utf8`|
+|connections|`json`|
+|connections_bandwidth|`utf8`|
+|encryption_mode|`utf8`|
+|has_logical_redundancy|`utf8`|
+|jumbo_frame_capable|`bool`|
+|lag_id|`utf8`|
+|lag_name|`utf8`|
+|lag_state|`utf8`|
+|location|`utf8`|
+|mac_sec_capable|`bool`|
+|mac_sec_keys|`json`|
+|minimum_links|`int64`|
+|number_of_connections|`int64`|
+|owner_account|`utf8`|
+|provider_name|`utf8`|
+|region|`utf8`|

@@ -1,27 +1,27 @@
 # Table: aws_docdb_global_clusters
 
+This table shows data for Amazon DocumentDB Global Clusters.
+
 https://docs.aws.amazon.com/documentdb/latest/developerguide/API_GlobalCluster.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|database_name|String|
-|deletion_protection|Bool|
-|engine|String|
-|engine_version|String|
-|global_cluster_identifier|String|
-|global_cluster_members|JSON|
-|global_cluster_resource_id|String|
-|status|String|
-|storage_encrypted|Bool|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|database_name|`utf8`|
+|deletion_protection|`bool`|
+|engine|`utf8`|
+|engine_version|`utf8`|
+|global_cluster_arn|`utf8`|
+|global_cluster_identifier|`utf8`|
+|global_cluster_members|`json`|
+|global_cluster_resource_id|`utf8`|
+|status|`utf8`|
+|storage_encrypted|`bool`|

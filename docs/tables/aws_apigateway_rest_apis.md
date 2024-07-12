@@ -1,8 +1,10 @@
 # Table: aws_apigateway_rest_apis
 
+This table shows data for Amazon API Gateway Rest APIs.
+
 https://docs.aws.amazon.com/apigateway/latest/api/API_RestApi.html
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
 ## Relations
 
@@ -18,26 +20,26 @@ The following tables depend on aws_apigateway_rest_apis:
   - [aws_apigateway_rest_api_stages](aws_apigateway_rest_api_stages.md)
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|api_key_source|String|
-|binary_media_types|StringArray|
-|created_date|Timestamp|
-|description|String|
-|disable_execute_api_endpoint|Bool|
-|endpoint_configuration|JSON|
-|id|String|
-|minimum_compression_size|Int|
-|name|String|
-|policy|String|
-|root_resource_id|String|
-|tags|JSON|
-|version|String|
-|warnings|StringArray|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|api_key_source|`utf8`|
+|binary_media_types|`list<item: utf8, nullable>`|
+|created_date|`timestamp[us, tz=UTC]`|
+|description|`utf8`|
+|disable_execute_api_endpoint|`bool`|
+|endpoint_configuration|`json`|
+|id|`utf8`|
+|minimum_compression_size|`int64`|
+|name|`utf8`|
+|policy|`utf8`|
+|root_resource_id|`utf8`|
+|tags|`json`|
+|version|`utf8`|
+|warnings|`list<item: utf8, nullable>`|

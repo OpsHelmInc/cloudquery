@@ -1,33 +1,36 @@
 # Table: aws_ec2_vpc_endpoint_services
 
+This table shows data for Amazon Elastic Compute Cloud (EC2) VPC Endpoint Services.
+
 https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ServiceDetail.html
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
+## Relations
 
+The following tables depend on aws_ec2_vpc_endpoint_services:
+  - [aws_ec2_vpc_endpoint_service_permissions](aws_ec2_vpc_endpoint_service_permissions.md)
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|acceptance_required|Bool|
-|availability_zones|StringArray|
-|base_endpoint_dns_names|StringArray|
-|manages_vpc_endpoints|Bool|
-|owner|String|
-|payer_responsibility|String|
-|private_dns_name|String|
-|private_dns_name_verification_state|String|
-|private_dns_names|JSON|
-|service_id|String|
-|service_name|String|
-|service_type|JSON|
-|supported_ip_address_types|StringArray|
-|tags|JSON|
-|vpc_endpoint_policy_supported|Bool|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|tags|`json`|
+|acceptance_required|`bool`|
+|availability_zones|`list<item: utf8, nullable>`|
+|base_endpoint_dns_names|`list<item: utf8, nullable>`|
+|manages_vpc_endpoints|`bool`|
+|owner|`utf8`|
+|payer_responsibility|`utf8`|
+|private_dns_name|`utf8`|
+|private_dns_name_verification_state|`utf8`|
+|private_dns_names|`json`|
+|service_id|`utf8`|
+|service_name|`utf8`|
+|service_type|`json`|
+|supported_ip_address_types|`list<item: utf8, nullable>`|
+|vpc_endpoint_policy_supported|`bool`|

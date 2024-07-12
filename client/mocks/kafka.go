@@ -37,6 +37,16 @@ func (m *MockKafkaClient) EXPECT() *MockKafkaClientMockRecorder {
 
 // DescribeCluster mocks base method.
 func (m *MockKafkaClient) DescribeCluster(arg0 context.Context, arg1 *kafka.DescribeClusterInput, arg2 ...func(*kafka.Options)) (*kafka.DescribeClusterOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeCluster")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -57,6 +67,16 @@ func (mr *MockKafkaClientMockRecorder) DescribeCluster(arg0, arg1 interface{}, a
 
 // DescribeClusterOperation mocks base method.
 func (m *MockKafkaClient) DescribeClusterOperation(arg0 context.Context, arg1 *kafka.DescribeClusterOperationInput, arg2 ...func(*kafka.Options)) (*kafka.DescribeClusterOperationOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeClusterOperation")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -77,6 +97,16 @@ func (mr *MockKafkaClientMockRecorder) DescribeClusterOperation(arg0, arg1 inter
 
 // DescribeClusterOperationV2 mocks base method.
 func (m *MockKafkaClient) DescribeClusterOperationV2(arg0 context.Context, arg1 *kafka.DescribeClusterOperationV2Input, arg2 ...func(*kafka.Options)) (*kafka.DescribeClusterOperationV2Output, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeClusterOperationV2")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -97,6 +127,16 @@ func (mr *MockKafkaClientMockRecorder) DescribeClusterOperationV2(arg0, arg1 int
 
 // DescribeClusterV2 mocks base method.
 func (m *MockKafkaClient) DescribeClusterV2(arg0 context.Context, arg1 *kafka.DescribeClusterV2Input, arg2 ...func(*kafka.Options)) (*kafka.DescribeClusterV2Output, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeClusterV2")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -117,6 +157,16 @@ func (mr *MockKafkaClientMockRecorder) DescribeClusterV2(arg0, arg1 interface{},
 
 // DescribeConfiguration mocks base method.
 func (m *MockKafkaClient) DescribeConfiguration(arg0 context.Context, arg1 *kafka.DescribeConfigurationInput, arg2 ...func(*kafka.Options)) (*kafka.DescribeConfigurationOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeConfiguration")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -137,6 +187,16 @@ func (mr *MockKafkaClientMockRecorder) DescribeConfiguration(arg0, arg1 interfac
 
 // DescribeConfigurationRevision mocks base method.
 func (m *MockKafkaClient) DescribeConfigurationRevision(arg0 context.Context, arg1 *kafka.DescribeConfigurationRevisionInput, arg2 ...func(*kafka.Options)) (*kafka.DescribeConfigurationRevisionOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeConfigurationRevision")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -157,6 +217,16 @@ func (mr *MockKafkaClientMockRecorder) DescribeConfigurationRevision(arg0, arg1 
 
 // DescribeReplicator mocks base method.
 func (m *MockKafkaClient) DescribeReplicator(arg0 context.Context, arg1 *kafka.DescribeReplicatorInput, arg2 ...func(*kafka.Options)) (*kafka.DescribeReplicatorOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeReplicator")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -177,6 +247,16 @@ func (mr *MockKafkaClientMockRecorder) DescribeReplicator(arg0, arg1 interface{}
 
 // DescribeVpcConnection mocks base method.
 func (m *MockKafkaClient) DescribeVpcConnection(arg0 context.Context, arg1 *kafka.DescribeVpcConnectionInput, arg2 ...func(*kafka.Options)) (*kafka.DescribeVpcConnectionOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeVpcConnection")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -197,6 +277,16 @@ func (mr *MockKafkaClientMockRecorder) DescribeVpcConnection(arg0, arg1 interfac
 
 // GetBootstrapBrokers mocks base method.
 func (m *MockKafkaClient) GetBootstrapBrokers(arg0 context.Context, arg1 *kafka.GetBootstrapBrokersInput, arg2 ...func(*kafka.Options)) (*kafka.GetBootstrapBrokersOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetBootstrapBrokers")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -217,6 +307,16 @@ func (mr *MockKafkaClientMockRecorder) GetBootstrapBrokers(arg0, arg1 interface{
 
 // GetClusterPolicy mocks base method.
 func (m *MockKafkaClient) GetClusterPolicy(arg0 context.Context, arg1 *kafka.GetClusterPolicyInput, arg2 ...func(*kafka.Options)) (*kafka.GetClusterPolicyOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetClusterPolicy")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -237,6 +337,16 @@ func (mr *MockKafkaClientMockRecorder) GetClusterPolicy(arg0, arg1 interface{}, 
 
 // GetCompatibleKafkaVersions mocks base method.
 func (m *MockKafkaClient) GetCompatibleKafkaVersions(arg0 context.Context, arg1 *kafka.GetCompatibleKafkaVersionsInput, arg2 ...func(*kafka.Options)) (*kafka.GetCompatibleKafkaVersionsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetCompatibleKafkaVersions")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -257,6 +367,16 @@ func (mr *MockKafkaClientMockRecorder) GetCompatibleKafkaVersions(arg0, arg1 int
 
 // ListClientVpcConnections mocks base method.
 func (m *MockKafkaClient) ListClientVpcConnections(arg0 context.Context, arg1 *kafka.ListClientVpcConnectionsInput, arg2 ...func(*kafka.Options)) (*kafka.ListClientVpcConnectionsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListClientVpcConnections")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -277,6 +397,16 @@ func (mr *MockKafkaClientMockRecorder) ListClientVpcConnections(arg0, arg1 inter
 
 // ListClusterOperations mocks base method.
 func (m *MockKafkaClient) ListClusterOperations(arg0 context.Context, arg1 *kafka.ListClusterOperationsInput, arg2 ...func(*kafka.Options)) (*kafka.ListClusterOperationsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListClusterOperations")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -297,6 +427,16 @@ func (mr *MockKafkaClientMockRecorder) ListClusterOperations(arg0, arg1 interfac
 
 // ListClusterOperationsV2 mocks base method.
 func (m *MockKafkaClient) ListClusterOperationsV2(arg0 context.Context, arg1 *kafka.ListClusterOperationsV2Input, arg2 ...func(*kafka.Options)) (*kafka.ListClusterOperationsV2Output, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListClusterOperationsV2")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -317,6 +457,16 @@ func (mr *MockKafkaClientMockRecorder) ListClusterOperationsV2(arg0, arg1 interf
 
 // ListClusters mocks base method.
 func (m *MockKafkaClient) ListClusters(arg0 context.Context, arg1 *kafka.ListClustersInput, arg2 ...func(*kafka.Options)) (*kafka.ListClustersOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListClusters")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -337,6 +487,16 @@ func (mr *MockKafkaClientMockRecorder) ListClusters(arg0, arg1 interface{}, arg2
 
 // ListClustersV2 mocks base method.
 func (m *MockKafkaClient) ListClustersV2(arg0 context.Context, arg1 *kafka.ListClustersV2Input, arg2 ...func(*kafka.Options)) (*kafka.ListClustersV2Output, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListClustersV2")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -357,6 +517,16 @@ func (mr *MockKafkaClientMockRecorder) ListClustersV2(arg0, arg1 interface{}, ar
 
 // ListConfigurationRevisions mocks base method.
 func (m *MockKafkaClient) ListConfigurationRevisions(arg0 context.Context, arg1 *kafka.ListConfigurationRevisionsInput, arg2 ...func(*kafka.Options)) (*kafka.ListConfigurationRevisionsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListConfigurationRevisions")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -377,6 +547,16 @@ func (mr *MockKafkaClientMockRecorder) ListConfigurationRevisions(arg0, arg1 int
 
 // ListConfigurations mocks base method.
 func (m *MockKafkaClient) ListConfigurations(arg0 context.Context, arg1 *kafka.ListConfigurationsInput, arg2 ...func(*kafka.Options)) (*kafka.ListConfigurationsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListConfigurations")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -397,6 +577,16 @@ func (mr *MockKafkaClientMockRecorder) ListConfigurations(arg0, arg1 interface{}
 
 // ListKafkaVersions mocks base method.
 func (m *MockKafkaClient) ListKafkaVersions(arg0 context.Context, arg1 *kafka.ListKafkaVersionsInput, arg2 ...func(*kafka.Options)) (*kafka.ListKafkaVersionsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListKafkaVersions")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -417,6 +607,16 @@ func (mr *MockKafkaClientMockRecorder) ListKafkaVersions(arg0, arg1 interface{},
 
 // ListNodes mocks base method.
 func (m *MockKafkaClient) ListNodes(arg0 context.Context, arg1 *kafka.ListNodesInput, arg2 ...func(*kafka.Options)) (*kafka.ListNodesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListNodes")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -437,6 +637,16 @@ func (mr *MockKafkaClientMockRecorder) ListNodes(arg0, arg1 interface{}, arg2 ..
 
 // ListReplicators mocks base method.
 func (m *MockKafkaClient) ListReplicators(arg0 context.Context, arg1 *kafka.ListReplicatorsInput, arg2 ...func(*kafka.Options)) (*kafka.ListReplicatorsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListReplicators")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -457,6 +667,16 @@ func (mr *MockKafkaClientMockRecorder) ListReplicators(arg0, arg1 interface{}, a
 
 // ListScramSecrets mocks base method.
 func (m *MockKafkaClient) ListScramSecrets(arg0 context.Context, arg1 *kafka.ListScramSecretsInput, arg2 ...func(*kafka.Options)) (*kafka.ListScramSecretsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListScramSecrets")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -477,6 +697,16 @@ func (mr *MockKafkaClientMockRecorder) ListScramSecrets(arg0, arg1 interface{}, 
 
 // ListTagsForResource mocks base method.
 func (m *MockKafkaClient) ListTagsForResource(arg0 context.Context, arg1 *kafka.ListTagsForResourceInput, arg2 ...func(*kafka.Options)) (*kafka.ListTagsForResourceOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListTagsForResource")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -497,6 +727,16 @@ func (mr *MockKafkaClientMockRecorder) ListTagsForResource(arg0, arg1 interface{
 
 // ListVpcConnections mocks base method.
 func (m *MockKafkaClient) ListVpcConnections(arg0 context.Context, arg1 *kafka.ListVpcConnectionsInput, arg2 ...func(*kafka.Options)) (*kafka.ListVpcConnectionsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &kafka.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListVpcConnections")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {

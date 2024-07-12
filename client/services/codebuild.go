@@ -10,6 +10,7 @@ import (
 type CodebuildClient interface {
 	BatchGetBuildBatches(context.Context, *codebuild.BatchGetBuildBatchesInput, ...func(*codebuild.Options)) (*codebuild.BatchGetBuildBatchesOutput, error)
 	BatchGetBuilds(context.Context, *codebuild.BatchGetBuildsInput, ...func(*codebuild.Options)) (*codebuild.BatchGetBuildsOutput, error)
+	BatchGetFleets(context.Context, *codebuild.BatchGetFleetsInput, ...func(*codebuild.Options)) (*codebuild.BatchGetFleetsOutput, error)
 	BatchGetProjects(context.Context, *codebuild.BatchGetProjectsInput, ...func(*codebuild.Options)) (*codebuild.BatchGetProjectsOutput, error)
 	BatchGetReportGroups(context.Context, *codebuild.BatchGetReportGroupsInput, ...func(*codebuild.Options)) (*codebuild.BatchGetReportGroupsOutput, error)
 	BatchGetReports(context.Context, *codebuild.BatchGetReportsInput, ...func(*codebuild.Options)) (*codebuild.BatchGetReportsOutput, error)
@@ -22,6 +23,7 @@ type CodebuildClient interface {
 	ListBuilds(context.Context, *codebuild.ListBuildsInput, ...func(*codebuild.Options)) (*codebuild.ListBuildsOutput, error)
 	ListBuildsForProject(context.Context, *codebuild.ListBuildsForProjectInput, ...func(*codebuild.Options)) (*codebuild.ListBuildsForProjectOutput, error)
 	ListCuratedEnvironmentImages(context.Context, *codebuild.ListCuratedEnvironmentImagesInput, ...func(*codebuild.Options)) (*codebuild.ListCuratedEnvironmentImagesOutput, error)
+	ListFleets(context.Context, *codebuild.ListFleetsInput, ...func(*codebuild.Options)) (*codebuild.ListFleetsOutput, error)
 	ListProjects(context.Context, *codebuild.ListProjectsInput, ...func(*codebuild.Options)) (*codebuild.ListProjectsOutput, error)
 	ListReportGroups(context.Context, *codebuild.ListReportGroupsInput, ...func(*codebuild.Options)) (*codebuild.ListReportGroupsOutput, error)
 	ListReports(context.Context, *codebuild.ListReportsInput, ...func(*codebuild.Options)) (*codebuild.ListReportsOutput, error)

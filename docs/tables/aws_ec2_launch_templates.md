@@ -1,26 +1,25 @@
 # Table: aws_ec2_launch_templates
 
-https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateVersion.html
+This table shows data for Amazon Elastic Compute Cloud (EC2) Launch Templates.
 
-The composite primary key for this table is (**arn**, **launch_template_id**).
+https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplate.html
 
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|launch_template_id (PK)|String|
-|oh_resource_type|String|
-|create_time|Timestamp|
-|created_by|String|
-|default_version_number|Int|
-|latest_version_number|Int|
-|launch_template_name|String|
-|tags|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|create_time|`timestamp[us, tz=UTC]`|
+|created_by|`utf8`|
+|default_version_number|`int64`|
+|latest_version_number|`int64`|
+|launch_template_id|`utf8`|
+|launch_template_name|`utf8`|

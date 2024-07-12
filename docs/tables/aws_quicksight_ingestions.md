@@ -1,32 +1,33 @@
 # Table: aws_quicksight_ingestions
 
+This table shows data for QuickSight Ingestions.
 
+https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Ingestion.html
 
-The composite primary key for this table is (**arn**, **data_set_arn**).
+The primary key for this table is **_cq_id**.
 
 ## Relations
+
 This table depends on [aws_quicksight_data_sets](aws_quicksight_data_sets.md).
 
-
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|tags|JSON|
-|arn (PK)|String|
-|data_set_arn (PK)|String|
-|created_time|Timestamp|
-|ingestion_status|String|
-|error_info|JSON|
-|ingestion_id|String|
-|ingestion_size_in_bytes|Int|
-|ingestion_time_in_seconds|Int|
-|queue_info|JSON|
-|request_source|String|
-|request_type|String|
-|row_info|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|tags|`json`|
+|data_set_arn|`utf8`|
+|arn|`utf8`|
+|created_time|`timestamp[us, tz=UTC]`|
+|ingestion_status|`utf8`|
+|error_info|`json`|
+|ingestion_id|`utf8`|
+|ingestion_size_in_bytes|`int64`|
+|ingestion_time_in_seconds|`int64`|
+|queue_info|`json`|
+|request_source|`utf8`|
+|request_type|`utf8`|
+|row_info|`json`|

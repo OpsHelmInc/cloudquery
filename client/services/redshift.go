@@ -53,4 +53,5 @@ type RedshiftClient interface {
 	GetReservedNodeExchangeConfigurationOptions(context.Context, *redshift.GetReservedNodeExchangeConfigurationOptionsInput, ...func(*redshift.Options)) (*redshift.GetReservedNodeExchangeConfigurationOptionsOutput, error)
 	GetReservedNodeExchangeOfferings(context.Context, *redshift.GetReservedNodeExchangeOfferingsInput, ...func(*redshift.Options)) (*redshift.GetReservedNodeExchangeOfferingsOutput, error)
 	GetResourcePolicy(context.Context, *redshift.GetResourcePolicyInput, ...func(*redshift.Options)) (*redshift.GetResourcePolicyOutput, error)
+	ListRecommendations(context.Context, *redshift.ListRecommendationsInput, ...func(*redshift.Options)) (*redshift.ListRecommendationsOutput, error)
 }

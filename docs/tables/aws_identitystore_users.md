@@ -1,31 +1,34 @@
 # Table: aws_identitystore_users
 
+This table shows data for Identity Store Users.
 
+https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html
 
 The primary key for this table is **_cq_id**.
 
-
-
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id (PK)|UUID|
-|_cq_parent_id|UUID|
-|identity_store_id|String|
-|user_id|String|
-|addresses|JSON|
-|display_name|String|
-|emails|JSON|
-|external_ids|JSON|
-|locale|String|
-|name|JSON|
-|nick_name|String|
-|phone_numbers|JSON|
-|preferred_language|String|
-|profile_url|String|
-|timezone|String|
-|title|String|
-|user_name|String|
-|user_type|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|request_account_id|`utf8`|
+|request_region|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|identity_store_id|`utf8`|
+|user_id|`utf8`|
+|addresses|`json`|
+|display_name|`utf8`|
+|emails|`json`|
+|external_ids|`json`|
+|locale|`utf8`|
+|name|`json`|
+|nick_name|`utf8`|
+|phone_numbers|`json`|
+|preferred_language|`utf8`|
+|profile_url|`utf8`|
+|timezone|`utf8`|
+|title|`utf8`|
+|user_name|`utf8`|
+|user_type|`utf8`|

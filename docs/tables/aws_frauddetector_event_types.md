@@ -1,29 +1,29 @@
 # Table: aws_frauddetector_event_types
 
+This table shows data for Amazon Fraud Detector Event Types.
+
 https://docs.aws.amazon.com/frauddetector/latest/api/API_EventType.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|tags|JSON|
-|created_time|String|
-|description|String|
-|entity_types|StringArray|
-|event_ingestion|String|
-|event_orchestration|JSON|
-|event_variables|StringArray|
-|ingested_event_statistics|JSON|
-|labels|StringArray|
-|last_updated_time|String|
-|name|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|created_time|`utf8`|
+|description|`utf8`|
+|entity_types|`list<item: utf8, nullable>`|
+|event_ingestion|`utf8`|
+|event_orchestration|`json`|
+|event_variables|`list<item: utf8, nullable>`|
+|ingested_event_statistics|`json`|
+|labels|`list<item: utf8, nullable>`|
+|last_updated_time|`utf8`|
+|name|`utf8`|

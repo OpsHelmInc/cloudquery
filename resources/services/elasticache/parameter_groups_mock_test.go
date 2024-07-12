@@ -6,31 +6,22 @@ import (
 	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/elasticache"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildElasticacheParameterGroups(t *testing.T, ctrl *gomock.Controller) client.Services {
 	mockElasticache := mocks.NewMockElasticacheClient(ctrl)
 	parameterGroupsOutput := elasticache.DescribeCacheParameterGroupsOutput{}
-	err := faker.FakeObject(&parameterGroupsOutput)
+	require.NoError(t, faker.FakeObject(&parameterGroupsOutput))
 	parameterGroupsOutput.Marker = nil
-	if err != nil {
-		t.Fatal(err)
-	}
 
 	parametersOutput := elasticache.DescribeCacheParametersOutput{}
-	err = faker.FakeObject(&parametersOutput)
+	require.NoError(t, faker.FakeObject(&parametersOutput))
 	parametersOutput.Marker = nil
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	//expectedInput := elasticache.DescribeCacheParametersInput{
-	//	CacheParameterGroupName: parameterGroupsOutput.CacheParameterGroups[0].CacheParameterGroupName}
 
 	mockElasticache.EXPECT().DescribeCacheParameterGroups(gomock.Any(), gomock.Any(), gomock.Any()).Return(&parameterGroupsOutput, nil)
-	// mockElasticache.EXPECT().DescribeCacheParameters(gomock.Any(), &expectedInput, gomock.Any()).Return(&parametersOutput, nil)
 
 	return client.Services{
 		Elasticache: mockElasticache,

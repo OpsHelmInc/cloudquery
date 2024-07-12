@@ -1,43 +1,46 @@
 # Table: aws_elasticsearch_domains
 
+This table shows data for Elasticsearch Domains.
 
+https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DomainStatus.html
 
-The composite primary key for this table is (**account_id**, **region**, **id**).
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id (PK)|String|
-|region (PK)|String|
-|tags|JSON|
-|id (PK)|String|
-|arn|String|
-|domain_name|String|
-|elasticsearch_cluster_config|JSON|
-|access_policies|String|
-|advanced_options|JSON|
-|advanced_security_options|JSON|
-|auto_tune_options|JSON|
-|change_progress_details|JSON|
-|cognito_options|JSON|
-|created|Bool|
-|deleted|Bool|
-|domain_endpoint_options|JSON|
-|ebs_options|JSON|
-|elasticsearch_version|String|
-|encryption_at_rest_options|JSON|
-|endpoint|String|
-|endpoints|JSON|
-|log_publishing_options|JSON|
-|node_to_node_encryption_options|JSON|
-|processing|Bool|
-|service_software_options|JSON|
-|snapshot_options|JSON|
-|upgrade_processing|Bool|
-|vpc_options|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|authorized_principals|`json`|
+|tags|`json`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|domain_id|`utf8`|
+|domain_name|`utf8`|
+|elasticsearch_cluster_config|`json`|
+|access_policies|`utf8`|
+|advanced_options|`json`|
+|advanced_security_options|`json`|
+|auto_tune_options|`json`|
+|change_progress_details|`json`|
+|cognito_options|`json`|
+|created|`bool`|
+|deleted|`bool`|
+|domain_endpoint_options|`json`|
+|domain_processing_status|`utf8`|
+|ebs_options|`json`|
+|elasticsearch_version|`utf8`|
+|encryption_at_rest_options|`json`|
+|endpoint|`utf8`|
+|endpoints|`json`|
+|log_publishing_options|`json`|
+|modifying_properties|`json`|
+|node_to_node_encryption_options|`json`|
+|processing|`bool`|
+|service_software_options|`json`|
+|snapshot_options|`json`|
+|upgrade_processing|`bool`|
+|vpc_options|`json`|

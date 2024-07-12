@@ -1,22 +1,23 @@
 # Table: aws_iot_thing_types
 
+This table shows data for AWS IoT Thing Types.
+
 https://docs.aws.amazon.com/iot/latest/apireference/API_ThingTypeDefinition.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|tags|JSON|
-|arn (PK)|String|
-|thing_type_metadata|JSON|
-|thing_type_name|String|
-|thing_type_properties|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|tags|`json`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|thing_type_arn|`utf8`|
+|thing_type_metadata|`json`|
+|thing_type_name|`utf8`|
+|thing_type_properties|`json`|

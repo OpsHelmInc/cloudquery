@@ -1,28 +1,29 @@
 # Table: aws_rds_event_subscriptions
 
+This table shows data for Amazon Relational Database Service (RDS) Event Subscriptions.
+
 https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_EventSubscription.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|tags|JSON|
-|cust_subscription_id|String|
-|customer_aws_id|String|
-|enabled|Bool|
-|event_categories_list|StringArray|
-|sns_topic_arn|String|
-|source_ids_list|StringArray|
-|source_type|String|
-|status|String|
-|subscription_creation_time|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|cust_subscription_id|`utf8`|
+|customer_aws_id|`utf8`|
+|enabled|`bool`|
+|event_categories_list|`list<item: utf8, nullable>`|
+|event_subscription_arn|`utf8`|
+|sns_topic_arn|`utf8`|
+|source_ids_list|`list<item: utf8, nullable>`|
+|source_type|`utf8`|
+|status|`utf8`|
+|subscription_creation_time|`utf8`|

@@ -1,22 +1,23 @@
 # Table: aws_iam_server_certificates
 
+This table shows data for IAM Server Certificates.
+
 https://docs.aws.amazon.com/IAM/latest/APIReference/API_ServerCertificateMetadata.html
 
-The composite primary key for this table is (**account_id**, **id**).
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id (PK)|String|
-|id (PK)|String|
-|arn|String|
-|path|String|
-|server_certificate_name|String|
-|expiration|Timestamp|
-|upload_date|Timestamp|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|id|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|path|`utf8`|
+|server_certificate_id|`utf8`|
+|server_certificate_name|`utf8`|
+|expiration|`timestamp[us, tz=UTC]`|
+|upload_date|`timestamp[us, tz=UTC]`|

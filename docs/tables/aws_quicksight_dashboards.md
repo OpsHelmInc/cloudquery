@@ -1,25 +1,25 @@
 # Table: aws_quicksight_dashboards
 
+This table shows data for QuickSight Dashboards.
 
+https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DashboardSummary.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|tags|JSON|
-|arn (PK)|String|
-|created_time|Timestamp|
-|dashboard_id|String|
-|last_published_time|Timestamp|
-|last_updated_time|Timestamp|
-|name|String|
-|published_version_number|Int|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|tags|`json`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|created_time|`timestamp[us, tz=UTC]`|
+|dashboard_id|`utf8`|
+|last_published_time|`timestamp[us, tz=UTC]`|
+|last_updated_time|`timestamp[us, tz=UTC]`|
+|name|`utf8`|
+|published_version_number|`int64`|

@@ -1,28 +1,30 @@
 # Table: aws_apigatewayv2_api_deployments
 
-https://docs.aws.amazon.com/apigateway/latest/api/API_Deployment.html
+This table shows data for Amazon API Gateway v2 API Deployments.
+
+https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-deployments.html
 
 The primary key for this table is **_cq_id**.
 
 ## Relations
+
 This table depends on [aws_apigatewayv2_apis](aws_apigatewayv2_apis.md).
 
-
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id (PK)|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|api_arn|String|
-|api_id|String|
-|arn|String|
-|auto_deployed|Bool|
-|created_date|Timestamp|
-|deployment_id|String|
-|deployment_status|String|
-|deployment_status_message|String|
-|description|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|api_arn|`utf8`|
+|api_id|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|auto_deployed|`bool`|
+|created_date|`timestamp[us, tz=UTC]`|
+|deployment_id|`utf8`|
+|deployment_status|`utf8`|
+|deployment_status_message|`utf8`|
+|description|`utf8`|

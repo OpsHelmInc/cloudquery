@@ -1,19 +1,21 @@
 # Table: aws_ec2_regional_configs
 
+This table shows data for Amazon Elastic Compute Cloud (EC2) Regional Configs.
 
+https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetEbsDefaultKmsKeyId.html
+https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetEbsEncryptionByDefault.html
 
-The composite primary key for this table is (**account_id**, **region**).
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id (PK)|String|
-|region (PK)|String|
-|ebs_encryption_enabled_by_default|Bool|
-|ebs_default_kms_key_id|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|ebs_encryption_enabled_by_default|`bool`|
+|ebs_default_kms_key_id|`utf8`|

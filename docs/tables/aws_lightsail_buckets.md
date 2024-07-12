@@ -1,5 +1,7 @@
 # Table: aws_lightsail_buckets
 
+This table shows data for Lightsail Buckets.
+
 https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_Bucket.html
 
 The primary key for this table is **_cq_id**.
@@ -10,27 +12,27 @@ The following tables depend on aws_lightsail_buckets:
   - [aws_lightsail_bucket_access_keys](aws_lightsail_bucket_access_keys.md)
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id (PK)|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|able_to_update_bundle|Bool|
-|access_log_config|JSON|
-|access_rules|JSON|
-|arn|String|
-|bundle_id|String|
-|created_at|Timestamp|
-|location|JSON|
-|name|String|
-|object_versioning|String|
-|readonly_access_accounts|StringArray|
-|resource_type|String|
-|resources_receiving_access|JSON|
-|state|JSON|
-|support_code|String|
-|tags|JSON|
-|url|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|able_to_update_bundle|`bool`|
+|tags|`json`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|access_log_config|`json`|
+|access_rules|`json`|
+|bundle_id|`utf8`|
+|created_at|`timestamp[us, tz=UTC]`|
+|location|`json`|
+|name|`utf8`|
+|object_versioning|`utf8`|
+|readonly_access_accounts|`list<item: utf8, nullable>`|
+|resource_type|`utf8`|
+|resources_receiving_access|`json`|
+|state|`json`|
+|support_code|`utf8`|
+|url|`utf8`|

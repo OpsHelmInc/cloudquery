@@ -37,6 +37,16 @@ func (m *MockSsoadminClient) EXPECT() *MockSsoadminClientMockRecorder {
 
 // DescribeAccountAssignmentCreationStatus mocks base method.
 func (m *MockSsoadminClient) DescribeAccountAssignmentCreationStatus(arg0 context.Context, arg1 *ssoadmin.DescribeAccountAssignmentCreationStatusInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.DescribeAccountAssignmentCreationStatusOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeAccountAssignmentCreationStatus")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -57,6 +67,16 @@ func (mr *MockSsoadminClientMockRecorder) DescribeAccountAssignmentCreationStatu
 
 // DescribeAccountAssignmentDeletionStatus mocks base method.
 func (m *MockSsoadminClient) DescribeAccountAssignmentDeletionStatus(arg0 context.Context, arg1 *ssoadmin.DescribeAccountAssignmentDeletionStatusInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.DescribeAccountAssignmentDeletionStatusOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeAccountAssignmentDeletionStatus")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -77,6 +97,16 @@ func (mr *MockSsoadminClientMockRecorder) DescribeAccountAssignmentDeletionStatu
 
 // DescribeApplication mocks base method.
 func (m *MockSsoadminClient) DescribeApplication(arg0 context.Context, arg1 *ssoadmin.DescribeApplicationInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.DescribeApplicationOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeApplication")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -97,6 +127,16 @@ func (mr *MockSsoadminClientMockRecorder) DescribeApplication(arg0, arg1 interfa
 
 // DescribeApplicationAssignment mocks base method.
 func (m *MockSsoadminClient) DescribeApplicationAssignment(arg0 context.Context, arg1 *ssoadmin.DescribeApplicationAssignmentInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.DescribeApplicationAssignmentOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeApplicationAssignment")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -117,6 +157,16 @@ func (mr *MockSsoadminClientMockRecorder) DescribeApplicationAssignment(arg0, ar
 
 // DescribeApplicationProvider mocks base method.
 func (m *MockSsoadminClient) DescribeApplicationProvider(arg0 context.Context, arg1 *ssoadmin.DescribeApplicationProviderInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.DescribeApplicationProviderOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeApplicationProvider")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -137,6 +187,16 @@ func (mr *MockSsoadminClientMockRecorder) DescribeApplicationProvider(arg0, arg1
 
 // DescribeInstance mocks base method.
 func (m *MockSsoadminClient) DescribeInstance(arg0 context.Context, arg1 *ssoadmin.DescribeInstanceInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.DescribeInstanceOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeInstance")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -157,6 +217,16 @@ func (mr *MockSsoadminClientMockRecorder) DescribeInstance(arg0, arg1 interface{
 
 // DescribeInstanceAccessControlAttributeConfiguration mocks base method.
 func (m *MockSsoadminClient) DescribeInstanceAccessControlAttributeConfiguration(arg0 context.Context, arg1 *ssoadmin.DescribeInstanceAccessControlAttributeConfigurationInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.DescribeInstanceAccessControlAttributeConfigurationOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeInstanceAccessControlAttributeConfiguration")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -177,6 +247,16 @@ func (mr *MockSsoadminClientMockRecorder) DescribeInstanceAccessControlAttribute
 
 // DescribePermissionSet mocks base method.
 func (m *MockSsoadminClient) DescribePermissionSet(arg0 context.Context, arg1 *ssoadmin.DescribePermissionSetInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.DescribePermissionSetOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribePermissionSet")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -197,6 +277,16 @@ func (mr *MockSsoadminClientMockRecorder) DescribePermissionSet(arg0, arg1 inter
 
 // DescribePermissionSetProvisioningStatus mocks base method.
 func (m *MockSsoadminClient) DescribePermissionSetProvisioningStatus(arg0 context.Context, arg1 *ssoadmin.DescribePermissionSetProvisioningStatusInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.DescribePermissionSetProvisioningStatusOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribePermissionSetProvisioningStatus")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -217,6 +307,16 @@ func (mr *MockSsoadminClientMockRecorder) DescribePermissionSetProvisioningStatu
 
 // DescribeTrustedTokenIssuer mocks base method.
 func (m *MockSsoadminClient) DescribeTrustedTokenIssuer(arg0 context.Context, arg1 *ssoadmin.DescribeTrustedTokenIssuerInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.DescribeTrustedTokenIssuerOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeTrustedTokenIssuer")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -237,6 +337,16 @@ func (mr *MockSsoadminClientMockRecorder) DescribeTrustedTokenIssuer(arg0, arg1 
 
 // GetApplicationAccessScope mocks base method.
 func (m *MockSsoadminClient) GetApplicationAccessScope(arg0 context.Context, arg1 *ssoadmin.GetApplicationAccessScopeInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.GetApplicationAccessScopeOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetApplicationAccessScope")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -257,6 +367,16 @@ func (mr *MockSsoadminClientMockRecorder) GetApplicationAccessScope(arg0, arg1 i
 
 // GetApplicationAssignmentConfiguration mocks base method.
 func (m *MockSsoadminClient) GetApplicationAssignmentConfiguration(arg0 context.Context, arg1 *ssoadmin.GetApplicationAssignmentConfigurationInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.GetApplicationAssignmentConfigurationOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetApplicationAssignmentConfiguration")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -277,6 +397,16 @@ func (mr *MockSsoadminClientMockRecorder) GetApplicationAssignmentConfiguration(
 
 // GetApplicationAuthenticationMethod mocks base method.
 func (m *MockSsoadminClient) GetApplicationAuthenticationMethod(arg0 context.Context, arg1 *ssoadmin.GetApplicationAuthenticationMethodInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.GetApplicationAuthenticationMethodOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetApplicationAuthenticationMethod")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -297,6 +427,16 @@ func (mr *MockSsoadminClientMockRecorder) GetApplicationAuthenticationMethod(arg
 
 // GetApplicationGrant mocks base method.
 func (m *MockSsoadminClient) GetApplicationGrant(arg0 context.Context, arg1 *ssoadmin.GetApplicationGrantInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.GetApplicationGrantOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetApplicationGrant")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -317,6 +457,16 @@ func (mr *MockSsoadminClientMockRecorder) GetApplicationGrant(arg0, arg1 interfa
 
 // GetInlinePolicyForPermissionSet mocks base method.
 func (m *MockSsoadminClient) GetInlinePolicyForPermissionSet(arg0 context.Context, arg1 *ssoadmin.GetInlinePolicyForPermissionSetInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.GetInlinePolicyForPermissionSetOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetInlinePolicyForPermissionSet")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -337,6 +487,16 @@ func (mr *MockSsoadminClientMockRecorder) GetInlinePolicyForPermissionSet(arg0, 
 
 // GetPermissionsBoundaryForPermissionSet mocks base method.
 func (m *MockSsoadminClient) GetPermissionsBoundaryForPermissionSet(arg0 context.Context, arg1 *ssoadmin.GetPermissionsBoundaryForPermissionSetInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.GetPermissionsBoundaryForPermissionSetOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetPermissionsBoundaryForPermissionSet")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -357,6 +517,16 @@ func (mr *MockSsoadminClientMockRecorder) GetPermissionsBoundaryForPermissionSet
 
 // ListAccountAssignmentCreationStatus mocks base method.
 func (m *MockSsoadminClient) ListAccountAssignmentCreationStatus(arg0 context.Context, arg1 *ssoadmin.ListAccountAssignmentCreationStatusInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListAccountAssignmentCreationStatusOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListAccountAssignmentCreationStatus")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -377,6 +547,16 @@ func (mr *MockSsoadminClientMockRecorder) ListAccountAssignmentCreationStatus(ar
 
 // ListAccountAssignmentDeletionStatus mocks base method.
 func (m *MockSsoadminClient) ListAccountAssignmentDeletionStatus(arg0 context.Context, arg1 *ssoadmin.ListAccountAssignmentDeletionStatusInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListAccountAssignmentDeletionStatusOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListAccountAssignmentDeletionStatus")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -397,6 +577,16 @@ func (mr *MockSsoadminClientMockRecorder) ListAccountAssignmentDeletionStatus(ar
 
 // ListAccountAssignments mocks base method.
 func (m *MockSsoadminClient) ListAccountAssignments(arg0 context.Context, arg1 *ssoadmin.ListAccountAssignmentsInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListAccountAssignmentsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListAccountAssignments")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -417,6 +607,16 @@ func (mr *MockSsoadminClientMockRecorder) ListAccountAssignments(arg0, arg1 inte
 
 // ListAccountAssignmentsForPrincipal mocks base method.
 func (m *MockSsoadminClient) ListAccountAssignmentsForPrincipal(arg0 context.Context, arg1 *ssoadmin.ListAccountAssignmentsForPrincipalInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListAccountAssignmentsForPrincipalOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListAccountAssignmentsForPrincipal")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -437,6 +637,16 @@ func (mr *MockSsoadminClientMockRecorder) ListAccountAssignmentsForPrincipal(arg
 
 // ListAccountsForProvisionedPermissionSet mocks base method.
 func (m *MockSsoadminClient) ListAccountsForProvisionedPermissionSet(arg0 context.Context, arg1 *ssoadmin.ListAccountsForProvisionedPermissionSetInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListAccountsForProvisionedPermissionSetOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListAccountsForProvisionedPermissionSet")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -457,6 +667,16 @@ func (mr *MockSsoadminClientMockRecorder) ListAccountsForProvisionedPermissionSe
 
 // ListApplicationAccessScopes mocks base method.
 func (m *MockSsoadminClient) ListApplicationAccessScopes(arg0 context.Context, arg1 *ssoadmin.ListApplicationAccessScopesInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListApplicationAccessScopesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListApplicationAccessScopes")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -477,6 +697,16 @@ func (mr *MockSsoadminClientMockRecorder) ListApplicationAccessScopes(arg0, arg1
 
 // ListApplicationAssignments mocks base method.
 func (m *MockSsoadminClient) ListApplicationAssignments(arg0 context.Context, arg1 *ssoadmin.ListApplicationAssignmentsInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListApplicationAssignmentsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListApplicationAssignments")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -497,6 +727,16 @@ func (mr *MockSsoadminClientMockRecorder) ListApplicationAssignments(arg0, arg1 
 
 // ListApplicationAssignmentsForPrincipal mocks base method.
 func (m *MockSsoadminClient) ListApplicationAssignmentsForPrincipal(arg0 context.Context, arg1 *ssoadmin.ListApplicationAssignmentsForPrincipalInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListApplicationAssignmentsForPrincipalOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListApplicationAssignmentsForPrincipal")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -517,6 +757,16 @@ func (mr *MockSsoadminClientMockRecorder) ListApplicationAssignmentsForPrincipal
 
 // ListApplicationAuthenticationMethods mocks base method.
 func (m *MockSsoadminClient) ListApplicationAuthenticationMethods(arg0 context.Context, arg1 *ssoadmin.ListApplicationAuthenticationMethodsInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListApplicationAuthenticationMethodsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListApplicationAuthenticationMethods")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -537,6 +787,16 @@ func (mr *MockSsoadminClientMockRecorder) ListApplicationAuthenticationMethods(a
 
 // ListApplicationGrants mocks base method.
 func (m *MockSsoadminClient) ListApplicationGrants(arg0 context.Context, arg1 *ssoadmin.ListApplicationGrantsInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListApplicationGrantsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListApplicationGrants")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -557,6 +817,16 @@ func (mr *MockSsoadminClientMockRecorder) ListApplicationGrants(arg0, arg1 inter
 
 // ListApplicationProviders mocks base method.
 func (m *MockSsoadminClient) ListApplicationProviders(arg0 context.Context, arg1 *ssoadmin.ListApplicationProvidersInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListApplicationProvidersOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListApplicationProviders")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -577,6 +847,16 @@ func (mr *MockSsoadminClientMockRecorder) ListApplicationProviders(arg0, arg1 in
 
 // ListApplications mocks base method.
 func (m *MockSsoadminClient) ListApplications(arg0 context.Context, arg1 *ssoadmin.ListApplicationsInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListApplicationsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListApplications")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -597,6 +877,16 @@ func (mr *MockSsoadminClientMockRecorder) ListApplications(arg0, arg1 interface{
 
 // ListCustomerManagedPolicyReferencesInPermissionSet mocks base method.
 func (m *MockSsoadminClient) ListCustomerManagedPolicyReferencesInPermissionSet(arg0 context.Context, arg1 *ssoadmin.ListCustomerManagedPolicyReferencesInPermissionSetInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListCustomerManagedPolicyReferencesInPermissionSetOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListCustomerManagedPolicyReferencesInPermissionSet")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -617,6 +907,16 @@ func (mr *MockSsoadminClientMockRecorder) ListCustomerManagedPolicyReferencesInP
 
 // ListInstances mocks base method.
 func (m *MockSsoadminClient) ListInstances(arg0 context.Context, arg1 *ssoadmin.ListInstancesInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListInstancesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListInstances")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -637,6 +937,16 @@ func (mr *MockSsoadminClientMockRecorder) ListInstances(arg0, arg1 interface{}, 
 
 // ListManagedPoliciesInPermissionSet mocks base method.
 func (m *MockSsoadminClient) ListManagedPoliciesInPermissionSet(arg0 context.Context, arg1 *ssoadmin.ListManagedPoliciesInPermissionSetInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListManagedPoliciesInPermissionSetOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListManagedPoliciesInPermissionSet")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -657,6 +967,16 @@ func (mr *MockSsoadminClientMockRecorder) ListManagedPoliciesInPermissionSet(arg
 
 // ListPermissionSetProvisioningStatus mocks base method.
 func (m *MockSsoadminClient) ListPermissionSetProvisioningStatus(arg0 context.Context, arg1 *ssoadmin.ListPermissionSetProvisioningStatusInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListPermissionSetProvisioningStatusOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListPermissionSetProvisioningStatus")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -677,6 +997,16 @@ func (mr *MockSsoadminClientMockRecorder) ListPermissionSetProvisioningStatus(ar
 
 // ListPermissionSets mocks base method.
 func (m *MockSsoadminClient) ListPermissionSets(arg0 context.Context, arg1 *ssoadmin.ListPermissionSetsInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListPermissionSetsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListPermissionSets")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -697,6 +1027,16 @@ func (mr *MockSsoadminClientMockRecorder) ListPermissionSets(arg0, arg1 interfac
 
 // ListPermissionSetsProvisionedToAccount mocks base method.
 func (m *MockSsoadminClient) ListPermissionSetsProvisionedToAccount(arg0 context.Context, arg1 *ssoadmin.ListPermissionSetsProvisionedToAccountInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListPermissionSetsProvisionedToAccountOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListPermissionSetsProvisionedToAccount")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -717,6 +1057,16 @@ func (mr *MockSsoadminClientMockRecorder) ListPermissionSetsProvisionedToAccount
 
 // ListTagsForResource mocks base method.
 func (m *MockSsoadminClient) ListTagsForResource(arg0 context.Context, arg1 *ssoadmin.ListTagsForResourceInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListTagsForResourceOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListTagsForResource")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -737,6 +1087,16 @@ func (mr *MockSsoadminClientMockRecorder) ListTagsForResource(arg0, arg1 interfa
 
 // ListTrustedTokenIssuers mocks base method.
 func (m *MockSsoadminClient) ListTrustedTokenIssuers(arg0 context.Context, arg1 *ssoadmin.ListTrustedTokenIssuersInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.ListTrustedTokenIssuersOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ssoadmin.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListTrustedTokenIssuers")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {

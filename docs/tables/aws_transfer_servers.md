@@ -1,38 +1,39 @@
 # Table: aws_transfer_servers
 
+This table shows data for Transfer Servers.
+
 https://docs.aws.amazon.com/transfer/latest/userguide/API_DescribedServer.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|tags|JSON|
-|certificate|String|
-|domain|String|
-|endpoint_details|JSON|
-|endpoint_type|String|
-|host_key_fingerprint|String|
-|identity_provider_details|JSON|
-|identity_provider_type|String|
-|logging_role|String|
-|post_authentication_login_banner|String|
-|pre_authentication_login_banner|String|
-|protocol_details|JSON|
-|protocols|StringArray|
-|s3_storage_options|JSON|
-|security_policy_name|String|
-|server_id|String|
-|state|String|
-|structured_log_destinations|StringArray|
-|user_count|Int|
-|workflow_details|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|as2_service_managed_egress_ip_addresses|`list<item: utf8, nullable>`|
+|certificate|`utf8`|
+|domain|`utf8`|
+|endpoint_details|`json`|
+|endpoint_type|`utf8`|
+|host_key_fingerprint|`utf8`|
+|identity_provider_details|`json`|
+|identity_provider_type|`utf8`|
+|logging_role|`utf8`|
+|post_authentication_login_banner|`utf8`|
+|pre_authentication_login_banner|`utf8`|
+|protocol_details|`json`|
+|protocols|`list<item: utf8, nullable>`|
+|s3_storage_options|`json`|
+|security_policy_name|`utf8`|
+|server_id|`utf8`|
+|state|`utf8`|
+|structured_log_destinations|`list<item: utf8, nullable>`|
+|user_count|`int64`|
+|workflow_details|`json`|

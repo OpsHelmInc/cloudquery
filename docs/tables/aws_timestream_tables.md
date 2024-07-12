@@ -1,28 +1,30 @@
 # Table: aws_timestream_tables
 
+This table shows data for Timestream Tables.
 
+https://docs.aws.amazon.com/timestream/latest/developerguide/API_Table.html
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
 ## Relations
+
 This table depends on [aws_timestream_databases](aws_timestream_databases.md).
 
-
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|creation_time|Timestamp|
-|database_name|String|
-|last_updated_time|Timestamp|
-|magnetic_store_write_properties|JSON|
-|retention_properties|JSON|
-|schema|JSON|
-|table_name|String|
-|table_status|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|creation_time|`timestamp[us, tz=UTC]`|
+|database_name|`utf8`|
+|last_updated_time|`timestamp[us, tz=UTC]`|
+|magnetic_store_write_properties|`json`|
+|retention_properties|`json`|
+|schema|`json`|
+|table_name|`utf8`|
+|table_status|`utf8`|

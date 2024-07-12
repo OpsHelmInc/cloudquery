@@ -1,35 +1,36 @@
 # Table: aws_lightsail_disk_snapshots
 
+This table shows data for Lightsail Disk Snapshots.
+
 https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_DiskSnapshot.html
 
 The primary key for this table is **_cq_id**.
 
 ## Relations
+
 This table depends on [aws_lightsail_disks](aws_lightsail_disks.md).
 
-
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id (PK)|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|disk_arn|String|
-|arn|String|
-|created_at|Timestamp|
-|from_disk_arn|String|
-|from_disk_name|String|
-|from_instance_arn|String|
-|from_instance_name|String|
-|is_from_auto_snapshot|Bool|
-|location|JSON|
-|name|String|
-|progress|String|
-|resource_type|String|
-|size_in_gb|Int|
-|state|String|
-|support_code|String|
-|tags|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|disk_arn|`utf8`|
+|tags|`json`|
+|arn|`utf8`|
+|created_at|`timestamp[us, tz=UTC]`|
+|from_disk_arn|`utf8`|
+|from_disk_name|`utf8`|
+|from_instance_arn|`utf8`|
+|from_instance_name|`utf8`|
+|is_from_auto_snapshot|`bool`|
+|location|`json`|
+|name|`utf8`|
+|progress|`utf8`|
+|resource_type|`utf8`|
+|size_in_gb|`int64`|
+|state|`utf8`|
+|support_code|`utf8`|

@@ -1,29 +1,28 @@
 # Table: aws_ec2_vpcs
 
+This table shows data for Amazon Elastic Compute Cloud (EC2) VPCs.
+
 https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Vpc.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|oh_resource_type|String|
-|cidr_block|String|
-|cidr_block_association_set|JSON|
-|dhcp_options_id|String|
-|instance_tenancy|String|
-|ipv6_cidr_block_association_set|JSON|
-|is_default|Bool|
-|owner_id|String|
-|state|String|
-|tags|JSON|
-|vpc_id|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|cidr_block|`utf8`|
+|cidr_block_association_set|`json`|
+|dhcp_options_id|`utf8`|
+|instance_tenancy|`utf8`|
+|ipv6_cidr_block_association_set|`json`|
+|is_default|`bool`|
+|owner_id|`utf8`|
+|state|`utf8`|
+|vpc_id|`utf8`|
