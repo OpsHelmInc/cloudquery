@@ -44,7 +44,7 @@ func Policies() *schema.Table {
 			client.OhResourceTypeColumn(),
 		},
 		Relations: []*schema.Table{
-			policyLastAccessedDetails(),
+			// policyLastAccessedDetails(),
 			policyVersions(),
 		},
 	}

@@ -55,14 +55,14 @@ func buildIamPolicies(t *testing.T, ctrl *gomock.Controller) client.Services {
 		nil,
 	)
 
-	m.EXPECT().GenerateServiceLastAccessedDetails(gomock.Any(), gomock.Any(), gomock.Any()).Return(&iam.GenerateServiceLastAccessedDetailsOutput{JobId: aws.String("JobId")}, nil)
+	// m.EXPECT().GenerateServiceLastAccessedDetails(gomock.Any(), gomock.Any(), gomock.Any()).Return(&iam.GenerateServiceLastAccessedDetailsOutput{JobId: aws.String("JobId")}, nil)
 
-	lastAccessed := []iamTypes.ServiceLastAccessed{}
-	require.NoError(t, faker.FakeObject(&lastAccessed))
-	m.EXPECT().GetServiceLastAccessedDetails(gomock.Any(), gomock.Any(), gomock.Any()).Return(
-		&iam.GetServiceLastAccessedDetailsOutput{ServicesLastAccessed: lastAccessed, JobStatus: iamTypes.JobStatusTypeCompleted},
-		nil,
-	)
+	// lastAccessed := []iamTypes.ServiceLastAccessed{}
+	// require.NoError(t, faker.FakeObject(&lastAccessed))
+	// m.EXPECT().GetServiceLastAccessedDetails(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+	// 	&iam.GetServiceLastAccessedDetailsOutput{ServicesLastAccessed: lastAccessed, JobStatus: iamTypes.JobStatusTypeCompleted},
+	// 	nil,
+	// )
 
 	return client.Services{
 		Iam: m,

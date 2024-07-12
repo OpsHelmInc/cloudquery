@@ -10,7 +10,6 @@ The primary key for this table is **_cq_id**.
 
 The following tables depend on aws_iam_roles:
   - [aws_iam_role_attached_policies](aws_iam_role_attached_policies.md)
-  - [aws_iam_role_last_accessed_details](aws_iam_role_last_accessed_details.md)
   - [aws_iam_role_policies](aws_iam_role_policies.md)
 
 ## Columns

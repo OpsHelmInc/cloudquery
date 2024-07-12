@@ -44,14 +44,14 @@ func buildIamGroups(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m.EXPECT().GetGroupPolicy(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&gp, nil)
 
-	m.EXPECT().GenerateServiceLastAccessedDetails(gomock.Any(), gomock.Any(), gomock.Any()).Return(&iam.GenerateServiceLastAccessedDetailsOutput{JobId: aws.String("JobId")}, nil)
+	// m.EXPECT().GenerateServiceLastAccessedDetails(gomock.Any(), gomock.Any(), gomock.Any()).Return(&iam.GenerateServiceLastAccessedDetailsOutput{JobId: aws.String("JobId")}, nil)
 
-	lastAccessed := []iamTypes.ServiceLastAccessed{}
-	require.NoError(t, faker.FakeObject(&lastAccessed))
-	m.EXPECT().GetServiceLastAccessedDetails(gomock.Any(), gomock.Any(), gomock.Any()).Return(
-		&iam.GetServiceLastAccessedDetailsOutput{ServicesLastAccessed: lastAccessed, JobStatus: iamTypes.JobStatusTypeCompleted},
-		nil,
-	)
+	// lastAccessed := []iamTypes.ServiceLastAccessed{}
+	// require.NoError(t, faker.FakeObject(&lastAccessed))
+	// m.EXPECT().GetServiceLastAccessedDetails(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+	// 	&iam.GetServiceLastAccessedDetailsOutput{ServicesLastAccessed: lastAccessed, JobStatus: iamTypes.JobStatusTypeCompleted},
+	// 	nil,
+	// )
 
 	m.EXPECT().GetGroup(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.GetGroupOutput{

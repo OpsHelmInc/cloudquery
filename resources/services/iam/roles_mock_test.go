@@ -5,7 +5,6 @@ import (
 
 	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/OpsHelmInc/cloudquery/client/mocks"
-	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	iamTypes "github.com/aws/aws-sdk-go-v2/service/iam/types"
 	"github.com/cloudquery/plugin-sdk/v4/faker"
@@ -55,14 +54,14 @@ func buildRoles(t *testing.T, ctrl *gomock.Controller) client.Services {
 	tag := iamTypes.Tag{}
 	require.NoError(t, faker.FakeObject(&tag))
 
-	m.EXPECT().GenerateServiceLastAccessedDetails(gomock.Any(), gomock.Any(), gomock.Any()).Return(&iam.GenerateServiceLastAccessedDetailsOutput{JobId: aws.String("JobId")}, nil)
+	// m.EXPECT().GenerateServiceLastAccessedDetails(gomock.Any(), gomock.Any(), gomock.Any()).Return(&iam.GenerateServiceLastAccessedDetailsOutput{JobId: aws.String("JobId")}, nil)
 
-	lastAccessed := []iamTypes.ServiceLastAccessed{}
-	require.NoError(t, faker.FakeObject(&lastAccessed))
-	m.EXPECT().GetServiceLastAccessedDetails(gomock.Any(), gomock.Any(), gomock.Any()).Return(
-		&iam.GetServiceLastAccessedDetailsOutput{ServicesLastAccessed: lastAccessed, JobStatus: iamTypes.JobStatusTypeCompleted},
-		nil,
-	)
+	// lastAccessed := []iamTypes.ServiceLastAccessed{}
+	// require.NoError(t, faker.FakeObject(&lastAccessed))
+	// m.EXPECT().GetServiceLastAccessedDetails(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+	// 	&iam.GetServiceLastAccessedDetailsOutput{ServicesLastAccessed: lastAccessed, JobStatus: iamTypes.JobStatusTypeCompleted},
+	// 	nil,
+	// )
 
 	return client.Services{
 		Iam: m,

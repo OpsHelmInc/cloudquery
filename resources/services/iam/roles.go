@@ -45,7 +45,7 @@ func Roles() *schema.Table {
 		},
 		Relations: []*schema.Table{
 			roleAttachedPolicies(),
-			roleLastAccessedDetails(),
+			// roleLastAccessedDetails(),
 			rolePolicies(),
 		},
 	}

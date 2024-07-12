@@ -9,7 +9,6 @@ The primary key for this table is **_cq_id**.
 ## Relations
 
 The following tables depend on aws_iam_policies:
-  - [aws_iam_policy_last_accessed_details](aws_iam_policy_last_accessed_details.md)
   - [aws_iam_policy_versions](aws_iam_policy_versions.md)
 
 ## Columns
