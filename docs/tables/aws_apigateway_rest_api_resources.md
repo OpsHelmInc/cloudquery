@@ -1,26 +1,31 @@
 # Table: aws_apigateway_rest_api_resources
 
+This table shows data for Amazon API Gateway Rest API Resources.
+
 https://docs.aws.amazon.com/apigateway/latest/api/API_Resource.html
 
 The primary key for this table is **_cq_id**.
 
 ## Relations
+
 This table depends on [aws_apigateway_rest_apis](aws_apigateway_rest_apis.md).
 
+The following tables depend on aws_apigateway_rest_api_resources:
+  - [aws_apigateway_rest_api_resource_methods](aws_apigateway_rest_api_resource_methods.md)
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id (PK)|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|rest_api_arn|String|
-|arn|String|
-|id|String|
-|parent_id|String|
-|path|String|
-|path_part|String|
-|resource_methods|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|rest_api_arn|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|id|`utf8`|
+|parent_id|`utf8`|
+|path|`utf8`|
+|path_part|`utf8`|
+|resource_methods|`json`|

@@ -1,54 +1,55 @@
 # Table: aws_rds_db_snapshots
 
+This table shows data for Amazon Relational Database Service (RDS) DB Snapshots.
+
 https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_DBSnapshot.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|tags|JSON|
-|attributes|JSON|
-|allocated_storage|Int|
-|availability_zone|String|
-|db_instance_identifier|String|
-|db_snapshot_identifier|String|
-|db_system_id|String|
-|dbi_resource_id|String|
-|dedicated_log_volume|Bool|
-|encrypted|Bool|
-|engine|String|
-|engine_version|String|
-|iam_database_authentication_enabled|Bool|
-|instance_create_time|Timestamp|
-|iops|Int|
-|kms_key_id|String|
-|license_model|String|
-|master_username|String|
-|multi_tenant|Bool|
-|option_group_name|String|
-|original_snapshot_create_time|Timestamp|
-|percent_progress|Int|
-|port|Int|
-|processor_features|JSON|
-|snapshot_create_time|Timestamp|
-|snapshot_database_time|Timestamp|
-|snapshot_target|String|
-|snapshot_type|String|
-|source_db_snapshot_identifier|String|
-|source_region|String|
-|status|String|
-|storage_throughput|Int|
-|storage_type|String|
-|tde_credential_arn|String|
-|timezone|String|
-|vpc_id|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|attributes|`json`|
+|oh_resource_type|`utf8`|
+|allocated_storage|`int64`|
+|availability_zone|`utf8`|
+|db_instance_identifier|`utf8`|
+|db_snapshot_arn|`utf8`|
+|db_snapshot_identifier|`utf8`|
+|db_system_id|`utf8`|
+|dbi_resource_id|`utf8`|
+|dedicated_log_volume|`bool`|
+|encrypted|`bool`|
+|engine|`utf8`|
+|engine_version|`utf8`|
+|iam_database_authentication_enabled|`bool`|
+|instance_create_time|`timestamp[us, tz=UTC]`|
+|iops|`int64`|
+|kms_key_id|`utf8`|
+|license_model|`utf8`|
+|master_username|`utf8`|
+|multi_tenant|`bool`|
+|option_group_name|`utf8`|
+|original_snapshot_create_time|`timestamp[us, tz=UTC]`|
+|percent_progress|`int64`|
+|port|`int64`|
+|processor_features|`json`|
+|snapshot_create_time|`timestamp[us, tz=UTC]`|
+|snapshot_database_time|`timestamp[us, tz=UTC]`|
+|snapshot_target|`utf8`|
+|snapshot_type|`utf8`|
+|source_db_snapshot_identifier|`utf8`|
+|source_region|`utf8`|
+|status|`utf8`|
+|storage_throughput|`int64`|
+|storage_type|`utf8`|
+|tde_credential_arn|`utf8`|
+|timezone|`utf8`|
+|vpc_id|`utf8`|

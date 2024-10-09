@@ -13,7 +13,8 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/smithy-go"
-	"github.com/cloudquery/plugin-sdk/schema"
+	"github.com/cloudquery/plugin-sdk/v4/schema"
+	"github.com/cloudquery/plugin-sdk/v4/transformers"
 )
 
 type AWSService string
@@ -41,7 +42,8 @@ type DetailResolverFunc func(ctx context.Context, meta schema.ClientMeta, result
 
 const (
 	ApigatewayService           AWSService = "apigateway"
-	Athena                      AWSService = "athena"
+	AppconfigService            AWSService = "appconfig"
+	AthenaService               AWSService = "athena"
 	CloudformationService       AWSService = "cloudformation"
 	CloudfrontService           AWSService = "cloudfront"
 	CognitoIdentityService      AWSService = "cognito-identity"
@@ -53,12 +55,15 @@ const (
 	GlueService                 AWSService = "glue"
 	GuardDutyService            AWSService = "guardduty"
 	IamService                  AWSService = "iam"
+	IdentitystoreService        AWSService = "identitystore"
 	RedshiftService             AWSService = "redshift"
 	Route53Service              AWSService = "route53"
 	S3Service                   AWSService = "s3"
 	SESService                  AWSService = "ses"
 	WAFRegional                 AWSService = "waf-regional"
 	WorkspacesService           AWSService = "workspaces"
+	XRayService                 AWSService = "xray"
+	RDSService                  AWSService = "rds"
 )
 
 const (
@@ -123,31 +128,41 @@ func ReadSupportedServiceRegions() *SupportedServiceRegionsData {
 	return &result
 }
 
-func isSupportedServiceForRegion(service string, region string) bool {
+func supportedRegions(service string) []string {
 	readOnce.Do(func() {
 		supportedServiceRegion = ReadSupportedServiceRegions()
 	})
 
 	if supportedServiceRegion == nil {
-		return false
+		return nil
 	}
 
 	if supportedServiceRegion.Partitions == nil {
-		return false
+		return nil
+	}
+	regions := make([]string, 0)
+	for id := range supportedServiceRegion.Partitions {
+		currentPartition := supportedServiceRegion.Partitions[id]
+
+		if currentPartition.Services[service] == nil {
+			continue
+		}
+
+		for region := range currentPartition.Services[service].Regions {
+			regions = append(regions, region)
+		}
 	}
 
-	prt, _ := RegionsPartition(region)
-	currentPartition := supportedServiceRegion.Partitions[prt]
+	return regions
+}
 
-	if currentPartition.Services[service] == nil {
-		return false
+func isSupportedServiceForRegion(service string, region string) bool {
+	for _, r := range supportedRegions(service) {
+		if r == region {
+			return true
+		}
 	}
-
-	if currentPartition.Services[service].Regions[region] == nil {
-		return false
-	}
-
-	return true
+	return false
 }
 
 func getAvailableRegions() (map[string]bool, error) {
@@ -261,13 +276,6 @@ func ResolveARNWithAccount(service AWSService, resourceID func(resource *schema.
 	return resolveARN(service, resourceID, false, true)
 }
 
-// ResolveARNWithRegion returns a column resolver that will set a field value to a proper ARN
-// based on provided AWS service and resource id value returned by resourceID function.
-// Region is set to the value of the client and account id is left empty.
-func ResolveARNWithRegion(service AWSService, resourceID func(resource *schema.Resource) ([]string, error)) schema.ColumnResolver {
-	return resolveARN(service, resourceID, true, false)
-}
-
 // ResolveARN returns a column resolver that will set a field value to a proper ARN
 // based on provided AWS service and resource id value returned by resourceID function.
 // Region and account id are set to the values of the client.
@@ -301,15 +309,6 @@ func isNotFoundError(err error) bool {
 		if strings.Contains(errorCode, s) {
 			return true
 		}
-	}
-	return false
-}
-
-// IsAccessDeniedError checks if api error should be classified as a permissions issue
-func (c *Client) IsAccessDeniedError(err error) bool {
-	if isAccessDeniedError(err) {
-		c.logger.Warn().Err(err).Msg("API returned an Access Denied error, ignoring it and continuing...")
-		return true
 	}
 	return false
 }
@@ -403,5 +402,33 @@ func Sleep(ctx context.Context, dur time.Duration) error {
 		return ctx.Err()
 	case <-time.After(dur):
 		return nil
+	}
+}
+
+func CreateTrimPrefixTransformer(prefixes ...string) func(field reflect.StructField) (string, error) {
+	return func(field reflect.StructField) (string, error) {
+		name, err := transformers.DefaultNameTransformer(field)
+		if err != nil {
+			return "", err
+		}
+		for _, v := range prefixes {
+			if strings.HasPrefix(name, v) {
+				return name[len(v):], nil
+			}
+		}
+		return name, nil
+	}
+}
+
+func CreateReplaceTransformer(replace map[string]string) func(field reflect.StructField) (string, error) {
+	return func(field reflect.StructField) (string, error) {
+		name, err := transformers.DefaultNameTransformer(field)
+		if err != nil {
+			return "", err
+		}
+		for k, v := range replace {
+			name = strings.ReplaceAll(name, k, v)
+		}
+		return name, nil
 	}
 }

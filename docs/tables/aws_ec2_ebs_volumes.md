@@ -1,36 +1,35 @@
 # Table: aws_ec2_ebs_volumes
 
+This table shows data for Amazon Elastic Compute Cloud (EC2) Amazon Elastic Block Store (EBS) Volumes.
+
 https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Volume.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|oh_resource_type|String|
-|attachments|JSON|
-|availability_zone|String|
-|create_time|Timestamp|
-|encrypted|Bool|
-|fast_restored|Bool|
-|iops|Int|
-|kms_key_id|String|
-|multi_attach_enabled|Bool|
-|outpost_arn|String|
-|size|Int|
-|snapshot_id|String|
-|sse_type|String|
-|state|String|
-|tags|JSON|
-|throughput|Int|
-|volume_id|String|
-|volume_type|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|attachments|`json`|
+|availability_zone|`utf8`|
+|create_time|`timestamp[us, tz=UTC]`|
+|encrypted|`bool`|
+|fast_restored|`bool`|
+|iops|`int64`|
+|kms_key_id|`utf8`|
+|multi_attach_enabled|`bool`|
+|outpost_arn|`utf8`|
+|size|`int64`|
+|snapshot_id|`utf8`|
+|sse_type|`utf8`|
+|state|`utf8`|
+|throughput|`int64`|
+|volume_id|`utf8`|
+|volume_type|`utf8`|

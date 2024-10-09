@@ -8,17 +8,17 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/backup"
 	"github.com/aws/aws-sdk-go-v2/service/backup/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildBackupPlansMock(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m := mocks.NewMockBackupClient(ctrl)
 
 	var plan backup.GetBackupPlanOutput
-	if err := faker.FakeObject(&plan); err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&plan))
+
 	m.EXPECT().ListBackupPlans(
 		gomock.Any(),
 		&backup.ListBackupPlansInput{MaxResults: aws.Int32(1000)},
@@ -54,9 +54,8 @@ func buildBackupPlansMock(t *testing.T, ctrl *gomock.Controller) client.Services
 	)
 
 	var selection backup.GetBackupSelectionOutput
-	if err := faker.FakeObject(&selection); err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&selection))
+
 	selection.BackupPlanId = plan.BackupPlanId
 	m.EXPECT().ListBackupSelections(
 		gomock.Any(),
@@ -67,7 +66,7 @@ func buildBackupPlansMock(t *testing.T, ctrl *gomock.Controller) client.Services
 		gomock.Any(),
 	).Return(
 		&backup.ListBackupSelectionsOutput{
-			BackupSelectionsList: []types.BackupSelectionsListMember{{SelectionId: selection.SelectionId}},
+			BackupSelectionsList: []types.BackupSelectionsListMember{{BackupPlanId: plan.BackupPlanId, SelectionId: selection.SelectionId}},
 		},
 		nil,
 	)

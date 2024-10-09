@@ -1,28 +1,29 @@
 # Table: aws_directconnect_gateway_attachments
 
+This table shows data for AWS Direct Connect Gateway Attachments.
+
 https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DirectConnectGatewayAttachment.html
 
 The primary key for this table is **_cq_id**.
 
 ## Relations
+
 This table depends on [aws_directconnect_gateways](aws_directconnect_gateways.md).
 
-
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id (PK)|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|gateway_arn|String|
-|gateway_id|String|
-|attachment_state|String|
-|attachment_type|String|
-|direct_connect_gateway_id|String|
-|state_change_error|String|
-|virtual_interface_id|String|
-|virtual_interface_owner_account|String|
-|virtual_interface_region|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|request_account_id|`utf8`|
+|request_region|`utf8`|
+|gateway_arn|`utf8`|
+|gateway_id|`utf8`|
+|attachment_state|`utf8`|
+|attachment_type|`utf8`|
+|direct_connect_gateway_id|`utf8`|
+|state_change_error|`utf8`|
+|virtual_interface_id|`utf8`|
+|virtual_interface_owner_account|`utf8`|
+|virtual_interface_region|`utf8`|

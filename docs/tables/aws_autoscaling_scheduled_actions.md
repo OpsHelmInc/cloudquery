@@ -1,28 +1,29 @@
 # Table: aws_autoscaling_scheduled_actions
 
+This table shows data for Auto Scaling Scheduled Actions.
+
 https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_ScheduledUpdateGroupAction.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|auto_scaling_group_name|String|
-|desired_capacity|Int|
-|end_time|Timestamp|
-|max_size|Int|
-|min_size|Int|
-|recurrence|String|
-|scheduled_action_name|String|
-|start_time|Timestamp|
-|time|Timestamp|
-|time_zone|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|auto_scaling_group_name|`utf8`|
+|desired_capacity|`int64`|
+|end_time|`timestamp[us, tz=UTC]`|
+|max_size|`int64`|
+|min_size|`int64`|
+|recurrence|`utf8`|
+|scheduled_action_arn|`utf8`|
+|scheduled_action_name|`utf8`|
+|start_time|`timestamp[us, tz=UTC]`|
+|time|`timestamp[us, tz=UTC]`|
+|time_zone|`utf8`|

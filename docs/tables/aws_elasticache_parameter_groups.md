@@ -1,22 +1,22 @@
 # Table: aws_elasticache_parameter_groups
 
+This table shows data for Elasticache Parameter Groups.
+
 https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CacheParameterGroup.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|cache_parameter_group_family|String|
-|cache_parameter_group_name|String|
-|description|String|
-|is_global|Bool|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|cache_parameter_group_family|`utf8`|
+|cache_parameter_group_name|`utf8`|
+|description|`utf8`|
+|is_global|`bool`|

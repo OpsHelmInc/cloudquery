@@ -1,23 +1,23 @@
 # Table: aws_iam_role_policies
 
+This table shows data for IAM Role Policies.
 
+https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetRolePolicy.html
 
 The primary key for this table is **_cq_id**.
 
 ## Relations
+
 This table depends on [aws_iam_roles](aws_iam_roles.md).
 
-
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id (PK)|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|role_arn|String|
-|policy_document|JSON|
-|policy_name|String|
-|role_name|String|
-|result_metadata|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|role_arn|`utf8`|
+|policy_document|`json`|
+|policy_name|`utf8`|
+|role_name|`utf8`|

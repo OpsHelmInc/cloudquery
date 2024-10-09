@@ -1,25 +1,25 @@
 # Table: aws_apigateway_vpc_links
 
+This table shows data for Amazon API Gateway VPC Links.
+
 https://docs.aws.amazon.com/apigateway/latest/api/API_VpcLink.html
 
 The primary key for this table is **_cq_id**.
 
-
-
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id (PK)|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn|String|
-|description|String|
-|id|String|
-|name|String|
-|status|String|
-|status_message|String|
-|tags|JSON|
-|target_arns|StringArray|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|description|`utf8`|
+|id|`utf8`|
+|name|`utf8`|
+|status|`utf8`|
+|status_message|`utf8`|
+|tags|`json`|
+|target_arns|`list<item: utf8, nullable>`|

@@ -1,8 +1,10 @@
 # Table: aws_quicksight_groups
 
+This table shows data for QuickSight Groups.
 
+https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Group.html
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
 ## Relations
 
@@ -10,16 +12,16 @@ The following tables depend on aws_quicksight_groups:
   - [aws_quicksight_group_members](aws_quicksight_group_members.md)
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|tags|JSON|
-|arn (PK)|String|
-|description|String|
-|group_name|String|
-|principal_id|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|tags|`json`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|description|`utf8`|
+|group_name|`utf8`|
+|principal_id|`utf8`|

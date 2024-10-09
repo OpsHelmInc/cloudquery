@@ -34,6 +34,7 @@ type QuicksightClient interface {
 	DescribeIAMPolicyAssignment(context.Context, *quicksight.DescribeIAMPolicyAssignmentInput, ...func(*quicksight.Options)) (*quicksight.DescribeIAMPolicyAssignmentOutput, error)
 	DescribeIngestion(context.Context, *quicksight.DescribeIngestionInput, ...func(*quicksight.Options)) (*quicksight.DescribeIngestionOutput, error)
 	DescribeIpRestriction(context.Context, *quicksight.DescribeIpRestrictionInput, ...func(*quicksight.Options)) (*quicksight.DescribeIpRestrictionOutput, error)
+	DescribeKeyRegistration(context.Context, *quicksight.DescribeKeyRegistrationInput, ...func(*quicksight.Options)) (*quicksight.DescribeKeyRegistrationOutput, error)
 	DescribeNamespace(context.Context, *quicksight.DescribeNamespaceInput, ...func(*quicksight.Options)) (*quicksight.DescribeNamespaceOutput, error)
 	DescribeRefreshSchedule(context.Context, *quicksight.DescribeRefreshScheduleInput, ...func(*quicksight.Options)) (*quicksight.DescribeRefreshScheduleOutput, error)
 	DescribeRoleCustomPermission(context.Context, *quicksight.DescribeRoleCustomPermissionInput, ...func(*quicksight.Options)) (*quicksight.DescribeRoleCustomPermissionOutput, error)

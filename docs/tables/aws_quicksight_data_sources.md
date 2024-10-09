@@ -1,29 +1,29 @@
 # Table: aws_quicksight_data_sources
 
+This table shows data for QuickSight Data Sources.
 
+https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSource.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|tags|JSON|
-|arn (PK)|String|
-|created_time|Timestamp|
-|data_source_id|String|
-|error_info|JSON|
-|last_updated_time|Timestamp|
-|name|String|
-|secret_arn|String|
-|ssl_properties|JSON|
-|status|String|
-|type|String|
-|vpc_connection_properties|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|tags|`json`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|created_time|`timestamp[us, tz=UTC]`|
+|data_source_id|`utf8`|
+|error_info|`json`|
+|last_updated_time|`timestamp[us, tz=UTC]`|
+|name|`utf8`|
+|secret_arn|`utf8`|
+|ssl_properties|`json`|
+|status|`utf8`|
+|type|`utf8`|
+|vpc_connection_properties|`json`|

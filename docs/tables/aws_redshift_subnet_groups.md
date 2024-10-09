@@ -1,25 +1,25 @@
 # Table: aws_redshift_subnet_groups
 
+This table shows data for Redshift Subnet Groups.
+
 https://docs.aws.amazon.com/redshift/latest/APIReference/API_ClusterSubnetGroup.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|cluster_subnet_group_name|String|
-|description|String|
-|subnet_group_status|String|
-|subnets|JSON|
-|supported_cluster_ip_address_types|StringArray|
-|tags|JSON|
-|vpc_id|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|cluster_subnet_group_name|`utf8`|
+|description|`utf8`|
+|subnet_group_status|`utf8`|
+|subnets|`json`|
+|supported_cluster_ip_address_types|`list<item: utf8, nullable>`|
+|vpc_id|`utf8`|

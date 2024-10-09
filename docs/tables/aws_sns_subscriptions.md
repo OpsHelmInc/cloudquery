@@ -1,32 +1,32 @@
 # Table: aws_sns_subscriptions
 
+This table shows data for Sns Subscriptions.
 
+https://docs.aws.amazon.com/sns/latest/api/API_GetSubscriptionAttributes.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|delivery_policy|JSON|
-|effective_delivery_policy|JSON|
-|filter_policy|JSON|
-|redrive_policy|JSON|
-|oh_resource_type|String|
-|endpoint|String|
-|owner|String|
-|protocol|String|
-|topic_arn|String|
-|confirmation_was_authenticated|Bool|
-|pending_confirmation|Bool|
-|raw_message_delivery|Bool|
-|subscription_role_arn|String|
-|unknown_fields|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|delivery_policy|`json`|
+|effective_delivery_policy|`json`|
+|filter_policy|`json`|
+|redrive_policy|`json`|
+|oh_resource_type|`utf8`|
+|endpoint|`utf8`|
+|owner|`utf8`|
+|protocol|`utf8`|
+|subscription_arn|`utf8`|
+|topic_arn|`utf8`|
+|confirmation_was_authenticated|`bool`|
+|pending_confirmation|`bool`|
+|raw_message_delivery|`bool`|
+|subscription_role_arn|`utf8`|
+|unknown_fields|`json`|

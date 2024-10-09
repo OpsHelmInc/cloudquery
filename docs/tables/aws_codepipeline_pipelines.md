@@ -1,21 +1,21 @@
 # Table: aws_codepipeline_pipelines
 
+This table shows data for Codepipeline Pipelines.
 
+https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_GetPipeline.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|tags|JSON|
-|metadata|JSON|
-|pipeline|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|metadata|`json`|
+|pipeline|`json`|

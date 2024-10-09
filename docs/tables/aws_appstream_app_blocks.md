@@ -1,28 +1,28 @@
 # Table: aws_appstream_app_blocks
 
+This table shows data for Amazon AppStream App Blocks.
+
 https://docs.aws.amazon.com/appstream2/latest/APIReference/API_AppBlock.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|name|String|
-|app_block_errors|JSON|
-|created_time|Timestamp|
-|description|String|
-|display_name|String|
-|packaging_type|String|
-|post_setup_script_details|JSON|
-|setup_script_details|JSON|
-|source_s3_location|JSON|
-|state|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|name|`utf8`|
+|app_block_errors|`json`|
+|created_time|`timestamp[us, tz=UTC]`|
+|description|`utf8`|
+|display_name|`utf8`|
+|packaging_type|`utf8`|
+|post_setup_script_details|`json`|
+|setup_script_details|`json`|
+|source_s3_location|`json`|
+|state|`utf8`|

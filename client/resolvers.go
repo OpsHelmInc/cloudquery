@@ -2,61 +2,90 @@ package client
 
 import (
 	"context"
-	"reflect"
+	"fmt"
+	"strings"
 
-	"github.com/cloudquery/plugin-sdk/schema"
-	"github.com/pkg/errors"
+	"github.com/aws/aws-sdk-go-v2/aws/arn"
+	"github.com/cloudquery/plugin-sdk/v4/scalar"
+	"github.com/cloudquery/plugin-sdk/v4/schema"
+	"github.com/mitchellh/hashstructure/v2"
+	"github.com/thoas/go-funk"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
-func ResolveAWSAccount(_ context.Context, meta schema.ClientMeta, r *schema.Resource, _ schema.Column) error {
+func ResolveAWSAccount(_ context.Context, meta schema.ClientMeta, r *schema.Resource, c schema.Column) error {
 	client := meta.(*Client)
-	return r.Set("account_id", client.AccountID)
+	return r.Set(c.Name, client.AccountID)
 }
 
-func ResolveAWSRegion(_ context.Context, meta schema.ClientMeta, r *schema.Resource, _ schema.Column) error {
+func ResolveAWSRegion(_ context.Context, meta schema.ClientMeta, r *schema.Resource, c schema.Column) error {
 	client := meta.(*Client)
-	return r.Set("region", client.Region)
+	return r.Set(c.Name, client.Region)
 }
 
-func ResolveAWSNamespace(_ context.Context, meta schema.ClientMeta, r *schema.Resource, _ schema.Column) error {
+func ResolveAWSNamespace(_ context.Context, meta schema.ClientMeta, r *schema.Resource, c schema.Column) error {
 	client := meta.(*Client)
-	return r.Set("namespace", client.AutoscalingNamespace)
+	return r.Set(c.Name, client.AutoscalingNamespace)
+}
+
+func ResolveAWSPartition(_ context.Context, meta schema.ClientMeta, r *schema.Resource, c schema.Column) error {
+	client := meta.(*Client)
+	return r.Set(c.Name, client.Partition)
 }
 
 func ResolveWAFScope(_ context.Context, meta schema.ClientMeta, r *schema.Resource, c schema.Column) error {
-	return errors.WithStack(r.Set(c.Name, meta.(*Client).WAFScope))
+	return r.Set(c.Name, meta.(*Client).WAFScope)
+}
+
+func ResolveLanguageCode(_ context.Context, meta schema.ClientMeta, r *schema.Resource, c schema.Column) error {
+	client := meta.(*Client)
+	return r.Set(c.Name, client.LanguageCode)
 }
 
 func ResolveTags(ctx context.Context, meta schema.ClientMeta, r *schema.Resource, c schema.Column) error {
-	return ResolveTagField("Tags")(ctx, meta, r, c)
+	return ResolveTagPath("Tags")(ctx, meta, r, c)
 }
 
-func ResolveTagField(fieldName string) func(context.Context, schema.ClientMeta, *schema.Resource, schema.Column) error {
+func ResolveTagPath(fieldPath string) func(context.Context, schema.ClientMeta, *schema.Resource, schema.Column) error {
 	return func(_ context.Context, _ schema.ClientMeta, r *schema.Resource, c schema.Column) error {
-		var val reflect.Value
-
-		if reflect.TypeOf(r.Item).Kind() == reflect.Ptr {
-			val = reflect.ValueOf(r.Item).Elem()
-		} else {
-			val = reflect.ValueOf(r.Item)
+		val := funk.Get(r.Item, fieldPath, funk.WithAllowZero())
+		if val == nil {
+			return r.Set(c.Name, map[string]string{}) // can't have nil or the integration test will make a fuss
 		}
 
-		if val.Kind() != reflect.Struct {
-			panic("need struct type")
-		}
-		f := val.FieldByName(fieldName)
-		if f.IsNil() {
-			return errors.WithStack(r.Set(c.Name, map[string]string{})) // can't have nil or the integration test will make a fuss
-		} else if f.IsZero() {
-			panic("no such field " + fieldName)
-		}
-		data := TagsToMap(f.Interface())
-		return errors.WithStack(r.Set(c.Name, data))
+		return r.Set(c.Name, TagsToMap(val))
 	}
 }
 
-func StaticValueResolver(value any) schema.ColumnResolver {
-	return func(_ context.Context, meta schema.ClientMeta, r *schema.Resource, c schema.Column) error {
-		return r.Set(c.Name, value)
+func ResolveObjectHash(_ context.Context, _ schema.ClientMeta, r *schema.Resource, c schema.Column) error {
+	hash, err := hashstructure.Hash(r.Item, hashstructure.FormatV2, nil)
+	if err != nil {
+		return err
 	}
+	return r.Set(c.Name, fmt.Sprint(hash))
+}
+
+func ResolveOHResourceType(_ context.Context, meta schema.ClientMeta, r *schema.Resource, c schema.Column) error {
+	fetchedArn := r.Get("arn").(*scalar.String)
+	if !fetchedArn.IsValid() {
+		return fmt.Errorf("failed to resolve arn")
+	}
+
+	if strings.Contains(fetchedArn.String(), "test string") || strings.Contains(fetchedArn.String(), "teststring") {
+		// We should only be entering here during "go test"
+		return r.Set(c.Name, "test")
+	}
+
+	parsedArn, err := arn.Parse(fetchedArn.String())
+	if err != nil {
+		return fmt.Errorf("failed to parse arn: %s", fetchedArn.String())
+	}
+
+	resourceType, err := ohaws.ArnToResourceType(parsedArn)
+	if err != nil {
+		return fmt.Errorf("failed to get resource type from arn: %s", parsedArn.String())
+	}
+
+	return r.Set(c.Name, resourceType.CloudFormation)
 }

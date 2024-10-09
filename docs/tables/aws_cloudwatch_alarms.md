@@ -1,47 +1,48 @@
 # Table: aws_cloudwatch_alarms
 
+This table shows data for Cloudwatch Alarms.
+
 https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_MetricAlarm.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|tags|JSON|
-|arn (PK)|String|
-|dimensions|JSON|
-|actions_enabled|Bool|
-|alarm_actions|StringArray|
-|alarm_configuration_updated_timestamp|Timestamp|
-|alarm_description|String|
-|alarm_name|String|
-|comparison_operator|String|
-|datapoints_to_alarm|Int|
-|evaluate_low_sample_count_percentile|String|
-|evaluation_periods|Int|
-|evaluation_state|String|
-|extended_statistic|String|
-|insufficient_data_actions|StringArray|
-|metric_name|String|
-|metrics|JSON|
-|namespace|String|
-|ok_actions|StringArray|
-|period|Int|
-|state_reason|String|
-|state_reason_data|String|
-|state_transitioned_timestamp|Timestamp|
-|state_updated_timestamp|Timestamp|
-|state_value|String|
-|statistic|String|
-|threshold|Float|
-|threshold_metric_id|String|
-|treat_missing_data|String|
-|unit|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|tags|`json`|
+|arn|`utf8`|
+|dimensions|`json`|
+|oh_resource_type|`utf8`|
+|actions_enabled|`bool`|
+|alarm_actions|`list<item: utf8, nullable>`|
+|alarm_arn|`utf8`|
+|alarm_configuration_updated_timestamp|`timestamp[us, tz=UTC]`|
+|alarm_description|`utf8`|
+|alarm_name|`utf8`|
+|comparison_operator|`utf8`|
+|datapoints_to_alarm|`int64`|
+|evaluate_low_sample_count_percentile|`utf8`|
+|evaluation_periods|`int64`|
+|evaluation_state|`utf8`|
+|extended_statistic|`utf8`|
+|insufficient_data_actions|`list<item: utf8, nullable>`|
+|metric_name|`utf8`|
+|metrics|`json`|
+|namespace|`utf8`|
+|ok_actions|`list<item: utf8, nullable>`|
+|period|`int64`|
+|state_reason|`utf8`|
+|state_reason_data|`utf8`|
+|state_transitioned_timestamp|`timestamp[us, tz=UTC]`|
+|state_updated_timestamp|`timestamp[us, tz=UTC]`|
+|state_value|`utf8`|
+|statistic|`utf8`|
+|threshold|`float64`|
+|threshold_metric_id|`utf8`|
+|treat_missing_data|`utf8`|
+|unit|`utf8`|

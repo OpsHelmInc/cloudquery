@@ -1,26 +1,27 @@
 # Table: aws_apprunner_observability_configurations
 
+This table shows data for AWS App Runner Observability Configurations.
+
 https://docs.aws.amazon.com/apprunner/latest/api/API_ObservabilityConfiguration.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|tags|JSON|
-|created_at|Timestamp|
-|deleted_at|Timestamp|
-|latest|Bool|
-|observability_configuration_name|String|
-|observability_configuration_revision|Int|
-|status|String|
-|trace_configuration|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|created_at|`timestamp[us, tz=UTC]`|
+|deleted_at|`timestamp[us, tz=UTC]`|
+|latest|`bool`|
+|observability_configuration_arn|`utf8`|
+|observability_configuration_name|`utf8`|
+|observability_configuration_revision|`int64`|
+|status|`utf8`|
+|trace_configuration|`json`|

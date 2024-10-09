@@ -1,22 +1,23 @@
 # Table: aws_wafregional_rule_groups
 
+This table shows data for Wafregional Rule Groups.
+
 https://docs.aws.amazon.com/waf/latest/APIReference/API_wafRegional_RuleGroup.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|tags|JSON|
-|rule_group_id|String|
-|metric_name|String|
-|name|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|rule_ids|`list<item: utf8, nullable>`|
+|oh_resource_type|`utf8`|
+|rule_group_id|`utf8`|
+|metric_name|`utf8`|
+|name|`utf8`|

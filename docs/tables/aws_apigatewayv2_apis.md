@@ -1,6 +1,8 @@
 # Table: aws_apigatewayv2_apis
 
-https://docs.aws.amazon.com/apigateway/latest/api/API_Api.html
+This table shows data for Amazon API Gateway v2 APIs.
+
+https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis.html
 
 The primary key for this table is **_cq_id**.
 
@@ -15,28 +17,29 @@ The following tables depend on aws_apigatewayv2_apis:
   - [aws_apigatewayv2_api_stages](aws_apigatewayv2_api_stages.md)
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id (PK)|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn|String|
-|id|String|
-|name|String|
-|protocol_type|String|
-|route_selection_expression|String|
-|api_endpoint|String|
-|api_gateway_managed|Bool|
-|api_key_selection_expression|String|
-|cors_configuration|JSON|
-|created_date|Timestamp|
-|description|String|
-|disable_execute_api_endpoint|Bool|
-|disable_schema_validation|Bool|
-|import_info|StringArray|
-|tags|JSON|
-|version|String|
-|warnings|StringArray|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|id|`utf8`|
+|oh_resource_type|`utf8`|
+|name|`utf8`|
+|protocol_type|`utf8`|
+|route_selection_expression|`utf8`|
+|api_endpoint|`utf8`|
+|api_gateway_managed|`bool`|
+|api_id|`utf8`|
+|api_key_selection_expression|`utf8`|
+|cors_configuration|`json`|
+|created_date|`timestamp[us, tz=UTC]`|
+|description|`utf8`|
+|disable_execute_api_endpoint|`bool`|
+|disable_schema_validation|`bool`|
+|import_info|`list<item: utf8, nullable>`|
+|tags|`json`|
+|version|`utf8`|
+|warnings|`list<item: utf8, nullable>`|

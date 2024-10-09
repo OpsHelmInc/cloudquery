@@ -35,8 +35,48 @@ func (m *MockEksClient) EXPECT() *MockEksClientMockRecorder {
 	return m.recorder
 }
 
+// DescribeAccessEntry mocks base method.
+func (m *MockEksClient) DescribeAccessEntry(arg0 context.Context, arg1 *eks.DescribeAccessEntryInput, arg2 ...func(*eks.Options)) (*eks.DescribeAccessEntryOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeAccessEntry")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeAccessEntry", varargs...)
+	ret0, _ := ret[0].(*eks.DescribeAccessEntryOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeAccessEntry indicates an expected call of DescribeAccessEntry.
+func (mr *MockEksClientMockRecorder) DescribeAccessEntry(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeAccessEntry", reflect.TypeOf((*MockEksClient)(nil).DescribeAccessEntry), varargs...)
+}
+
 // DescribeAddon mocks base method.
 func (m *MockEksClient) DescribeAddon(arg0 context.Context, arg1 *eks.DescribeAddonInput, arg2 ...func(*eks.Options)) (*eks.DescribeAddonOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeAddon")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -57,6 +97,16 @@ func (mr *MockEksClientMockRecorder) DescribeAddon(arg0, arg1 interface{}, arg2 
 
 // DescribeAddonConfiguration mocks base method.
 func (m *MockEksClient) DescribeAddonConfiguration(arg0 context.Context, arg1 *eks.DescribeAddonConfigurationInput, arg2 ...func(*eks.Options)) (*eks.DescribeAddonConfigurationOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeAddonConfiguration")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -77,6 +127,16 @@ func (mr *MockEksClientMockRecorder) DescribeAddonConfiguration(arg0, arg1 inter
 
 // DescribeAddonVersions mocks base method.
 func (m *MockEksClient) DescribeAddonVersions(arg0 context.Context, arg1 *eks.DescribeAddonVersionsInput, arg2 ...func(*eks.Options)) (*eks.DescribeAddonVersionsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeAddonVersions")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -97,6 +157,16 @@ func (mr *MockEksClientMockRecorder) DescribeAddonVersions(arg0, arg1 interface{
 
 // DescribeCluster mocks base method.
 func (m *MockEksClient) DescribeCluster(arg0 context.Context, arg1 *eks.DescribeClusterInput, arg2 ...func(*eks.Options)) (*eks.DescribeClusterOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeCluster")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -117,6 +187,16 @@ func (mr *MockEksClientMockRecorder) DescribeCluster(arg0, arg1 interface{}, arg
 
 // DescribeEksAnywhereSubscription mocks base method.
 func (m *MockEksClient) DescribeEksAnywhereSubscription(arg0 context.Context, arg1 *eks.DescribeEksAnywhereSubscriptionInput, arg2 ...func(*eks.Options)) (*eks.DescribeEksAnywhereSubscriptionOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeEksAnywhereSubscription")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -137,6 +217,16 @@ func (mr *MockEksClientMockRecorder) DescribeEksAnywhereSubscription(arg0, arg1 
 
 // DescribeFargateProfile mocks base method.
 func (m *MockEksClient) DescribeFargateProfile(arg0 context.Context, arg1 *eks.DescribeFargateProfileInput, arg2 ...func(*eks.Options)) (*eks.DescribeFargateProfileOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeFargateProfile")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -157,6 +247,16 @@ func (mr *MockEksClientMockRecorder) DescribeFargateProfile(arg0, arg1 interface
 
 // DescribeIdentityProviderConfig mocks base method.
 func (m *MockEksClient) DescribeIdentityProviderConfig(arg0 context.Context, arg1 *eks.DescribeIdentityProviderConfigInput, arg2 ...func(*eks.Options)) (*eks.DescribeIdentityProviderConfigOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeIdentityProviderConfig")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -175,8 +275,48 @@ func (mr *MockEksClientMockRecorder) DescribeIdentityProviderConfig(arg0, arg1 i
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeIdentityProviderConfig", reflect.TypeOf((*MockEksClient)(nil).DescribeIdentityProviderConfig), varargs...)
 }
 
+// DescribeInsight mocks base method.
+func (m *MockEksClient) DescribeInsight(arg0 context.Context, arg1 *eks.DescribeInsightInput, arg2 ...func(*eks.Options)) (*eks.DescribeInsightOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeInsight")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeInsight", varargs...)
+	ret0, _ := ret[0].(*eks.DescribeInsightOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeInsight indicates an expected call of DescribeInsight.
+func (mr *MockEksClientMockRecorder) DescribeInsight(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeInsight", reflect.TypeOf((*MockEksClient)(nil).DescribeInsight), varargs...)
+}
+
 // DescribeNodegroup mocks base method.
 func (m *MockEksClient) DescribeNodegroup(arg0 context.Context, arg1 *eks.DescribeNodegroupInput, arg2 ...func(*eks.Options)) (*eks.DescribeNodegroupOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeNodegroup")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -197,6 +337,16 @@ func (mr *MockEksClientMockRecorder) DescribeNodegroup(arg0, arg1 interface{}, a
 
 // DescribePodIdentityAssociation mocks base method.
 func (m *MockEksClient) DescribePodIdentityAssociation(arg0 context.Context, arg1 *eks.DescribePodIdentityAssociationInput, arg2 ...func(*eks.Options)) (*eks.DescribePodIdentityAssociationOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribePodIdentityAssociation")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -217,6 +367,16 @@ func (mr *MockEksClientMockRecorder) DescribePodIdentityAssociation(arg0, arg1 i
 
 // DescribeUpdate mocks base method.
 func (m *MockEksClient) DescribeUpdate(arg0 context.Context, arg1 *eks.DescribeUpdateInput, arg2 ...func(*eks.Options)) (*eks.DescribeUpdateOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeUpdate")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -235,8 +395,78 @@ func (mr *MockEksClientMockRecorder) DescribeUpdate(arg0, arg1 interface{}, arg2
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeUpdate", reflect.TypeOf((*MockEksClient)(nil).DescribeUpdate), varargs...)
 }
 
+// ListAccessEntries mocks base method.
+func (m *MockEksClient) ListAccessEntries(arg0 context.Context, arg1 *eks.ListAccessEntriesInput, arg2 ...func(*eks.Options)) (*eks.ListAccessEntriesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListAccessEntries")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListAccessEntries", varargs...)
+	ret0, _ := ret[0].(*eks.ListAccessEntriesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListAccessEntries indicates an expected call of ListAccessEntries.
+func (mr *MockEksClientMockRecorder) ListAccessEntries(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAccessEntries", reflect.TypeOf((*MockEksClient)(nil).ListAccessEntries), varargs...)
+}
+
+// ListAccessPolicies mocks base method.
+func (m *MockEksClient) ListAccessPolicies(arg0 context.Context, arg1 *eks.ListAccessPoliciesInput, arg2 ...func(*eks.Options)) (*eks.ListAccessPoliciesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListAccessPolicies")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListAccessPolicies", varargs...)
+	ret0, _ := ret[0].(*eks.ListAccessPoliciesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListAccessPolicies indicates an expected call of ListAccessPolicies.
+func (mr *MockEksClientMockRecorder) ListAccessPolicies(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAccessPolicies", reflect.TypeOf((*MockEksClient)(nil).ListAccessPolicies), varargs...)
+}
+
 // ListAddons mocks base method.
 func (m *MockEksClient) ListAddons(arg0 context.Context, arg1 *eks.ListAddonsInput, arg2 ...func(*eks.Options)) (*eks.ListAddonsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListAddons")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -255,8 +485,48 @@ func (mr *MockEksClientMockRecorder) ListAddons(arg0, arg1 interface{}, arg2 ...
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAddons", reflect.TypeOf((*MockEksClient)(nil).ListAddons), varargs...)
 }
 
+// ListAssociatedAccessPolicies mocks base method.
+func (m *MockEksClient) ListAssociatedAccessPolicies(arg0 context.Context, arg1 *eks.ListAssociatedAccessPoliciesInput, arg2 ...func(*eks.Options)) (*eks.ListAssociatedAccessPoliciesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListAssociatedAccessPolicies")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListAssociatedAccessPolicies", varargs...)
+	ret0, _ := ret[0].(*eks.ListAssociatedAccessPoliciesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListAssociatedAccessPolicies indicates an expected call of ListAssociatedAccessPolicies.
+func (mr *MockEksClientMockRecorder) ListAssociatedAccessPolicies(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAssociatedAccessPolicies", reflect.TypeOf((*MockEksClient)(nil).ListAssociatedAccessPolicies), varargs...)
+}
+
 // ListClusters mocks base method.
 func (m *MockEksClient) ListClusters(arg0 context.Context, arg1 *eks.ListClustersInput, arg2 ...func(*eks.Options)) (*eks.ListClustersOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListClusters")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -277,6 +547,16 @@ func (mr *MockEksClientMockRecorder) ListClusters(arg0, arg1 interface{}, arg2 .
 
 // ListEksAnywhereSubscriptions mocks base method.
 func (m *MockEksClient) ListEksAnywhereSubscriptions(arg0 context.Context, arg1 *eks.ListEksAnywhereSubscriptionsInput, arg2 ...func(*eks.Options)) (*eks.ListEksAnywhereSubscriptionsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListEksAnywhereSubscriptions")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -297,6 +577,16 @@ func (mr *MockEksClientMockRecorder) ListEksAnywhereSubscriptions(arg0, arg1 int
 
 // ListFargateProfiles mocks base method.
 func (m *MockEksClient) ListFargateProfiles(arg0 context.Context, arg1 *eks.ListFargateProfilesInput, arg2 ...func(*eks.Options)) (*eks.ListFargateProfilesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListFargateProfiles")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -317,6 +607,16 @@ func (mr *MockEksClientMockRecorder) ListFargateProfiles(arg0, arg1 interface{},
 
 // ListIdentityProviderConfigs mocks base method.
 func (m *MockEksClient) ListIdentityProviderConfigs(arg0 context.Context, arg1 *eks.ListIdentityProviderConfigsInput, arg2 ...func(*eks.Options)) (*eks.ListIdentityProviderConfigsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListIdentityProviderConfigs")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -335,8 +635,48 @@ func (mr *MockEksClientMockRecorder) ListIdentityProviderConfigs(arg0, arg1 inte
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListIdentityProviderConfigs", reflect.TypeOf((*MockEksClient)(nil).ListIdentityProviderConfigs), varargs...)
 }
 
+// ListInsights mocks base method.
+func (m *MockEksClient) ListInsights(arg0 context.Context, arg1 *eks.ListInsightsInput, arg2 ...func(*eks.Options)) (*eks.ListInsightsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListInsights")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListInsights", varargs...)
+	ret0, _ := ret[0].(*eks.ListInsightsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListInsights indicates an expected call of ListInsights.
+func (mr *MockEksClientMockRecorder) ListInsights(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListInsights", reflect.TypeOf((*MockEksClient)(nil).ListInsights), varargs...)
+}
+
 // ListNodegroups mocks base method.
 func (m *MockEksClient) ListNodegroups(arg0 context.Context, arg1 *eks.ListNodegroupsInput, arg2 ...func(*eks.Options)) (*eks.ListNodegroupsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListNodegroups")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -357,6 +697,16 @@ func (mr *MockEksClientMockRecorder) ListNodegroups(arg0, arg1 interface{}, arg2
 
 // ListPodIdentityAssociations mocks base method.
 func (m *MockEksClient) ListPodIdentityAssociations(arg0 context.Context, arg1 *eks.ListPodIdentityAssociationsInput, arg2 ...func(*eks.Options)) (*eks.ListPodIdentityAssociationsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListPodIdentityAssociations")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -377,6 +727,16 @@ func (mr *MockEksClientMockRecorder) ListPodIdentityAssociations(arg0, arg1 inte
 
 // ListTagsForResource mocks base method.
 func (m *MockEksClient) ListTagsForResource(arg0 context.Context, arg1 *eks.ListTagsForResourceInput, arg2 ...func(*eks.Options)) (*eks.ListTagsForResourceOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListTagsForResource")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -397,6 +757,16 @@ func (mr *MockEksClientMockRecorder) ListTagsForResource(arg0, arg1 interface{},
 
 // ListUpdates mocks base method.
 func (m *MockEksClient) ListUpdates(arg0 context.Context, arg1 *eks.ListUpdatesInput, arg2 ...func(*eks.Options)) (*eks.ListUpdatesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &eks.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListUpdates")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {

@@ -1,25 +1,29 @@
 # Table: aws_kafka_nodes
 
+This table shows data for Kafka Nodes.
+
 https://docs.aws.amazon.com/msk/1.0/apireference/clusters-clusterarn-nodes.html#ListNodes
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
 ## Relations
+
 This table depends on [aws_kafka_clusters](aws_kafka_clusters.md).
 
-
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|arn (PK)|String|
-|cluster_arn|String|
-|added_to_cluster_time|String|
-|broker_node_info|JSON|
-|instance_type|String|
-|node_type|String|
-|zookeeper_node_info|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|arn|`utf8`|
+|cluster_arn|`utf8`|
+|oh_resource_type|`utf8`|
+|added_to_cluster_time|`utf8`|
+|broker_node_info|`json`|
+|controller_node_info|`json`|
+|instance_type|`utf8`|
+|node_arn|`utf8`|
+|node_type|`utf8`|
+|zookeeper_node_info|`json`|

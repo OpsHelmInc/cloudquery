@@ -2,19 +2,15 @@ package main
 
 import (
 	"context"
+	"log"
 
-	"github.com/OpsHelmInc/cloudquery/resources/plugin"
-	"github.com/aws/aws-sdk-go-v2/config"
-	"github.com/cloudquery/plugin-sdk/serve"
-	"github.com/rs/zerolog/log"
+	internalPlugin "github.com/OpsHelmInc/cloudquery/resources/plugin"
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/cloudquery/plugin-sdk/v4/serve"
 )
 
-const sentryDSN = "https://sentryDSNEndpoint"
-
 func main() {
-	cfg, err := config.LoadDefaultConfig(context.Background(), config.WithRegion("us-west-2"))
-	if err != nil {
-		log.Fatal().Err(err)
+	if err := serve.Plugin(internalPlugin.AWS(&aws.Config{})).Serve(context.Background()); err != nil {
+		log.Fatal(err)
 	}
-	serve.Source(plugin.AWS(cfg), serve.WithSourceSentryDSN(sentryDSN))
 }

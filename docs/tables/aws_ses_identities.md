@@ -1,30 +1,30 @@
 # Table: aws_ses_identities
 
+This table shows data for Amazon Simple Email Service (SES) Identities.
+
 https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetEmailIdentity.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|identity_name|String|
-|sending_enabled|Bool|
-|configuration_set_name|String|
-|dkim_attributes|JSON|
-|feedback_forwarding_status|Bool|
-|identity_type|String|
-|mail_from_attributes|JSON|
-|policies|JSON|
-|tags|JSON|
-|verification_info|JSON|
-|verification_status|String|
-|verified_for_sending_status|Bool|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|identity_name|`utf8`|
+|sending_enabled|`bool`|
+|configuration_set_name|`utf8`|
+|dkim_attributes|`json`|
+|feedback_forwarding_status|`bool`|
+|identity_type|`utf8`|
+|mail_from_attributes|`json`|
+|policies|`json`|
+|verification_info|`json`|
+|verification_status|`utf8`|
+|verified_for_sending_status|`bool`|

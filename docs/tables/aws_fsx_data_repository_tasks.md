@@ -1,33 +1,34 @@
 # Table: aws_fsx_data_repository_tasks
 
+This table shows data for Amazon FSx Data Repository Tasks.
+
 https://docs.aws.amazon.com/fsx/latest/APIReference/API_DataRepositoryTask.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|creation_time|Timestamp|
-|lifecycle|String|
-|task_id|String|
-|type|String|
-|capacity_to_release|Int|
-|end_time|Timestamp|
-|failure_details|JSON|
-|file_cache_id|String|
-|file_system_id|String|
-|paths|StringArray|
-|release_configuration|JSON|
-|report|JSON|
-|start_time|Timestamp|
-|status|JSON|
-|tags|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|creation_time|`timestamp[us, tz=UTC]`|
+|lifecycle|`utf8`|
+|task_id|`utf8`|
+|type|`utf8`|
+|capacity_to_release|`int64`|
+|end_time|`timestamp[us, tz=UTC]`|
+|failure_details|`json`|
+|file_cache_id|`utf8`|
+|file_system_id|`utf8`|
+|paths|`list<item: utf8, nullable>`|
+|release_configuration|`json`|
+|report|`json`|
+|resource_arn|`utf8`|
+|start_time|`timestamp[us, tz=UTC]`|
+|status|`json`|

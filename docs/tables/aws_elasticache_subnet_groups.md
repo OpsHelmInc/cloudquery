@@ -1,23 +1,23 @@
 # Table: aws_elasticache_subnet_groups
 
+This table shows data for Elasticache Subnet Groups.
+
 https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CacheSubnetGroup.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|cache_subnet_group_description|String|
-|cache_subnet_group_name|String|
-|subnets|JSON|
-|supported_network_types|StringArray|
-|vpc_id|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|cache_subnet_group_description|`utf8`|
+|cache_subnet_group_name|`utf8`|
+|subnets|`json`|
+|supported_network_types|`list<item: utf8, nullable>`|
+|vpc_id|`utf8`|

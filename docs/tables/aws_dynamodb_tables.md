@@ -1,45 +1,49 @@
 # Table: aws_dynamodb_tables
 
+This table shows data for Amazon DynamoDB Tables.
+
 https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_TableDescription.html
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
 ## Relations
 
 The following tables depend on aws_dynamodb_tables:
-  - [aws_dynamodb_table_replica_auto_scalings](aws_dynamodb_table_replica_auto_scalings.md)
   - [aws_dynamodb_table_continuous_backups](aws_dynamodb_table_continuous_backups.md)
+  - [aws_dynamodb_table_replica_auto_scalings](aws_dynamodb_table_replica_auto_scalings.md)
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|tags|JSON|
-|arn (PK)|String|
-|archival_summary|JSON|
-|attribute_definitions|JSON|
-|billing_mode_summary|JSON|
-|creation_date_time|Timestamp|
-|deletion_protection_enabled|Bool|
-|global_secondary_indexes|JSON|
-|global_table_version|String|
-|item_count|Int|
-|key_schema|JSON|
-|latest_stream_arn|String|
-|latest_stream_label|String|
-|local_secondary_indexes|JSON|
-|provisioned_throughput|JSON|
-|replicas|JSON|
-|restore_summary|JSON|
-|sse_description|JSON|
-|stream_specification|JSON|
-|table_class_summary|JSON|
-|table_id|String|
-|table_name|String|
-|table_size_bytes|Int|
-|table_status|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|tags|`json`|
+|arn|`utf8`|
+|archival_summary|`json`|
+|oh_resource_type|`utf8`|
+|attribute_definitions|`json`|
+|billing_mode_summary|`json`|
+|creation_date_time|`timestamp[us, tz=UTC]`|
+|deletion_protection_enabled|`bool`|
+|global_secondary_indexes|`json`|
+|global_table_version|`utf8`|
+|item_count|`int64`|
+|key_schema|`json`|
+|latest_stream_arn|`utf8`|
+|latest_stream_label|`utf8`|
+|local_secondary_indexes|`json`|
+|on_demand_throughput|`json`|
+|provisioned_throughput|`json`|
+|replicas|`json`|
+|restore_summary|`json`|
+|sse_description|`json`|
+|stream_specification|`json`|
+|table_arn|`utf8`|
+|table_class_summary|`json`|
+|table_id|`utf8`|
+|table_name|`utf8`|
+|table_size_bytes|`int64`|
+|table_status|`utf8`|

@@ -15,6 +15,7 @@ type AppsyncClient interface {
 	GetDomainName(context.Context, *appsync.GetDomainNameInput, ...func(*appsync.Options)) (*appsync.GetDomainNameOutput, error)
 	GetFunction(context.Context, *appsync.GetFunctionInput, ...func(*appsync.Options)) (*appsync.GetFunctionOutput, error)
 	GetGraphqlApi(context.Context, *appsync.GetGraphqlApiInput, ...func(*appsync.Options)) (*appsync.GetGraphqlApiOutput, error)
+	GetGraphqlApiEnvironmentVariables(context.Context, *appsync.GetGraphqlApiEnvironmentVariablesInput, ...func(*appsync.Options)) (*appsync.GetGraphqlApiEnvironmentVariablesOutput, error)
 	GetIntrospectionSchema(context.Context, *appsync.GetIntrospectionSchemaInput, ...func(*appsync.Options)) (*appsync.GetIntrospectionSchemaOutput, error)
 	GetResolver(context.Context, *appsync.GetResolverInput, ...func(*appsync.Options)) (*appsync.GetResolverOutput, error)
 	GetSchemaCreationStatus(context.Context, *appsync.GetSchemaCreationStatusInput, ...func(*appsync.Options)) (*appsync.GetSchemaCreationStatusOutput, error)

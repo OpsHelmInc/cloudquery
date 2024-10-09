@@ -8,27 +8,19 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/redshift"
 	"github.com/aws/aws-sdk-go-v2/service/redshift/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
-func buildRedshiftClustersMock(t *testing.T, ctrl *gomock.Controller) client.Services {
+func buildClustersMock(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m := mocks.NewMockRedshiftClient(ctrl)
 	g := types.Cluster{}
-	err := faker.FakeObject(&g)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&g))
 	p := types.Parameter{}
-	err = faker.FakeObject(&p)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&p))
 	logging := redshift.DescribeLoggingStatusOutput{}
-	err = faker.FakeObject(&logging)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&logging))
 
 	m.EXPECT().DescribeClusters(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&redshift.DescribeClustersOutput{
@@ -42,9 +34,8 @@ func buildRedshiftClustersMock(t *testing.T, ctrl *gomock.Controller) client.Ser
 		&logging, nil)
 
 	var snap types.Snapshot
-	if err := faker.FakeObject(&snap); err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&snap))
+
 	snap.ClusterIdentifier = g.ClusterIdentifier
 	snap.ClusterCreateTime = g.ClusterCreateTime
 	m.EXPECT().DescribeClusterSnapshots(
@@ -60,33 +51,46 @@ func buildRedshiftClustersMock(t *testing.T, ctrl *gomock.Controller) client.Ser
 		nil,
 	)
 
-	return client.Services{
-		Redshift: m,
-	}
-}
+	var eacc types.EndpointAccess
+	require.NoError(t, faker.FakeObject(&eacc))
 
-func buildRedshiftSubnetGroupsMock(t *testing.T, ctrl *gomock.Controller) client.Services {
-	m := mocks.NewMockRedshiftClient(ctrl)
+	eacc.ClusterIdentifier = g.ClusterIdentifier
 
-	g := types.ClusterSubnetGroup{}
-	err := faker.FakeObject(&g)
-	if err != nil {
-		t.Fatal(err)
-	}
+	m.EXPECT().DescribeEndpointAccess(
+		gomock.Any(),
+		&redshift.DescribeEndpointAccessInput{
+			ClusterIdentifier: g.ClusterIdentifier,
+			MaxRecords:        aws.Int32(100),
+		},
+		gomock.Any(),
+	).Return(
+		&redshift.DescribeEndpointAccessOutput{EndpointAccessList: []types.EndpointAccess{eacc}},
+		nil,
+	)
 
-	m.EXPECT().DescribeClusterSubnetGroups(gomock.Any(), gomock.Any(), gomock.Any()).Return(
-		&redshift.DescribeClusterSubnetGroupsOutput{
-			ClusterSubnetGroups: []types.ClusterSubnetGroup{g},
-		}, nil)
+	var eauth types.EndpointAuthorization
+	require.NoError(t, faker.FakeObject(&eauth))
+
+	eauth.ClusterIdentifier = g.ClusterIdentifier
+
+	m.EXPECT().DescribeEndpointAuthorization(
+		gomock.Any(),
+		&redshift.DescribeEndpointAuthorizationInput{
+			Account:           aws.String("testAccount"),
+			ClusterIdentifier: g.ClusterIdentifier,
+			MaxRecords:        aws.Int32(100),
+		},
+		gomock.Any(),
+	).Return(
+		&redshift.DescribeEndpointAuthorizationOutput{EndpointAuthorizationList: []types.EndpointAuthorization{eauth}},
+		nil,
+	)
+
 	return client.Services{
 		Redshift: m,
 	}
 }
 
 func TestRedshiftClusters(t *testing.T) {
-	client.AwsMockTestHelper(t, Clusters(), buildRedshiftClustersMock, client.TestOptions{})
-}
-
-func TestRedshiftSubnetGroups(t *testing.T) {
-	client.AwsMockTestHelper(t, SubnetGroups(), buildRedshiftSubnetGroupsMock, client.TestOptions{})
+	client.AwsMockTestHelper(t, Clusters(), buildClustersMock, client.TestOptions{})
 }

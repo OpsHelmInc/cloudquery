@@ -1,28 +1,30 @@
 # Table: aws_apigatewayv2_api_integration_responses
 
-https://docs.aws.amazon.com/apigateway/latest/api/API_IntegrationResponse.html
+This table shows data for Amazon API Gateway v2 API Integration Responses.
+
+https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-integrations-integrationid-integrationresponses-integrationresponseid.html
 
 The primary key for this table is **_cq_id**.
 
 ## Relations
+
 This table depends on [aws_apigatewayv2_api_integrations](aws_apigatewayv2_api_integrations.md).
 
-
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id (PK)|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|api_integration_arn|String|
-|integration_id|String|
-|arn|String|
-|integration_response_key|String|
-|content_handling_strategy|String|
-|integration_response_id|String|
-|response_parameters|JSON|
-|response_templates|JSON|
-|template_selection_expression|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|api_integration_arn|`utf8`|
+|integration_id|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|integration_response_key|`utf8`|
+|content_handling_strategy|`utf8`|
+|integration_response_id|`utf8`|
+|response_parameters|`json`|
+|response_templates|`json`|
+|template_selection_expression|`utf8`|

@@ -37,6 +37,16 @@ func (m *MockAppsyncClient) EXPECT() *MockAppsyncClientMockRecorder {
 
 // GetApiAssociation mocks base method.
 func (m *MockAppsyncClient) GetApiAssociation(arg0 context.Context, arg1 *appsync.GetApiAssociationInput, arg2 ...func(*appsync.Options)) (*appsync.GetApiAssociationOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetApiAssociation")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -57,6 +67,16 @@ func (mr *MockAppsyncClientMockRecorder) GetApiAssociation(arg0, arg1 interface{
 
 // GetApiCache mocks base method.
 func (m *MockAppsyncClient) GetApiCache(arg0 context.Context, arg1 *appsync.GetApiCacheInput, arg2 ...func(*appsync.Options)) (*appsync.GetApiCacheOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetApiCache")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -77,6 +97,16 @@ func (mr *MockAppsyncClientMockRecorder) GetApiCache(arg0, arg1 interface{}, arg
 
 // GetDataSource mocks base method.
 func (m *MockAppsyncClient) GetDataSource(arg0 context.Context, arg1 *appsync.GetDataSourceInput, arg2 ...func(*appsync.Options)) (*appsync.GetDataSourceOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetDataSource")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -97,6 +127,16 @@ func (mr *MockAppsyncClientMockRecorder) GetDataSource(arg0, arg1 interface{}, a
 
 // GetDataSourceIntrospection mocks base method.
 func (m *MockAppsyncClient) GetDataSourceIntrospection(arg0 context.Context, arg1 *appsync.GetDataSourceIntrospectionInput, arg2 ...func(*appsync.Options)) (*appsync.GetDataSourceIntrospectionOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetDataSourceIntrospection")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -117,6 +157,16 @@ func (mr *MockAppsyncClientMockRecorder) GetDataSourceIntrospection(arg0, arg1 i
 
 // GetDomainName mocks base method.
 func (m *MockAppsyncClient) GetDomainName(arg0 context.Context, arg1 *appsync.GetDomainNameInput, arg2 ...func(*appsync.Options)) (*appsync.GetDomainNameOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetDomainName")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -137,6 +187,16 @@ func (mr *MockAppsyncClientMockRecorder) GetDomainName(arg0, arg1 interface{}, a
 
 // GetFunction mocks base method.
 func (m *MockAppsyncClient) GetFunction(arg0 context.Context, arg1 *appsync.GetFunctionInput, arg2 ...func(*appsync.Options)) (*appsync.GetFunctionOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetFunction")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -157,6 +217,16 @@ func (mr *MockAppsyncClientMockRecorder) GetFunction(arg0, arg1 interface{}, arg
 
 // GetGraphqlApi mocks base method.
 func (m *MockAppsyncClient) GetGraphqlApi(arg0 context.Context, arg1 *appsync.GetGraphqlApiInput, arg2 ...func(*appsync.Options)) (*appsync.GetGraphqlApiOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetGraphqlApi")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -175,8 +245,48 @@ func (mr *MockAppsyncClientMockRecorder) GetGraphqlApi(arg0, arg1 interface{}, a
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetGraphqlApi", reflect.TypeOf((*MockAppsyncClient)(nil).GetGraphqlApi), varargs...)
 }
 
+// GetGraphqlApiEnvironmentVariables mocks base method.
+func (m *MockAppsyncClient) GetGraphqlApiEnvironmentVariables(arg0 context.Context, arg1 *appsync.GetGraphqlApiEnvironmentVariablesInput, arg2 ...func(*appsync.Options)) (*appsync.GetGraphqlApiEnvironmentVariablesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetGraphqlApiEnvironmentVariables")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetGraphqlApiEnvironmentVariables", varargs...)
+	ret0, _ := ret[0].(*appsync.GetGraphqlApiEnvironmentVariablesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetGraphqlApiEnvironmentVariables indicates an expected call of GetGraphqlApiEnvironmentVariables.
+func (mr *MockAppsyncClientMockRecorder) GetGraphqlApiEnvironmentVariables(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetGraphqlApiEnvironmentVariables", reflect.TypeOf((*MockAppsyncClient)(nil).GetGraphqlApiEnvironmentVariables), varargs...)
+}
+
 // GetIntrospectionSchema mocks base method.
 func (m *MockAppsyncClient) GetIntrospectionSchema(arg0 context.Context, arg1 *appsync.GetIntrospectionSchemaInput, arg2 ...func(*appsync.Options)) (*appsync.GetIntrospectionSchemaOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetIntrospectionSchema")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -197,6 +307,16 @@ func (mr *MockAppsyncClientMockRecorder) GetIntrospectionSchema(arg0, arg1 inter
 
 // GetResolver mocks base method.
 func (m *MockAppsyncClient) GetResolver(arg0 context.Context, arg1 *appsync.GetResolverInput, arg2 ...func(*appsync.Options)) (*appsync.GetResolverOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetResolver")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -217,6 +337,16 @@ func (mr *MockAppsyncClientMockRecorder) GetResolver(arg0, arg1 interface{}, arg
 
 // GetSchemaCreationStatus mocks base method.
 func (m *MockAppsyncClient) GetSchemaCreationStatus(arg0 context.Context, arg1 *appsync.GetSchemaCreationStatusInput, arg2 ...func(*appsync.Options)) (*appsync.GetSchemaCreationStatusOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetSchemaCreationStatus")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -237,6 +367,16 @@ func (mr *MockAppsyncClientMockRecorder) GetSchemaCreationStatus(arg0, arg1 inte
 
 // GetSourceApiAssociation mocks base method.
 func (m *MockAppsyncClient) GetSourceApiAssociation(arg0 context.Context, arg1 *appsync.GetSourceApiAssociationInput, arg2 ...func(*appsync.Options)) (*appsync.GetSourceApiAssociationOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetSourceApiAssociation")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -257,6 +397,16 @@ func (mr *MockAppsyncClientMockRecorder) GetSourceApiAssociation(arg0, arg1 inte
 
 // GetType mocks base method.
 func (m *MockAppsyncClient) GetType(arg0 context.Context, arg1 *appsync.GetTypeInput, arg2 ...func(*appsync.Options)) (*appsync.GetTypeOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetType")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -277,6 +427,16 @@ func (mr *MockAppsyncClientMockRecorder) GetType(arg0, arg1 interface{}, arg2 ..
 
 // ListApiKeys mocks base method.
 func (m *MockAppsyncClient) ListApiKeys(arg0 context.Context, arg1 *appsync.ListApiKeysInput, arg2 ...func(*appsync.Options)) (*appsync.ListApiKeysOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListApiKeys")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -297,6 +457,16 @@ func (mr *MockAppsyncClientMockRecorder) ListApiKeys(arg0, arg1 interface{}, arg
 
 // ListDataSources mocks base method.
 func (m *MockAppsyncClient) ListDataSources(arg0 context.Context, arg1 *appsync.ListDataSourcesInput, arg2 ...func(*appsync.Options)) (*appsync.ListDataSourcesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListDataSources")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -317,6 +487,16 @@ func (mr *MockAppsyncClientMockRecorder) ListDataSources(arg0, arg1 interface{},
 
 // ListDomainNames mocks base method.
 func (m *MockAppsyncClient) ListDomainNames(arg0 context.Context, arg1 *appsync.ListDomainNamesInput, arg2 ...func(*appsync.Options)) (*appsync.ListDomainNamesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListDomainNames")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -337,6 +517,16 @@ func (mr *MockAppsyncClientMockRecorder) ListDomainNames(arg0, arg1 interface{},
 
 // ListFunctions mocks base method.
 func (m *MockAppsyncClient) ListFunctions(arg0 context.Context, arg1 *appsync.ListFunctionsInput, arg2 ...func(*appsync.Options)) (*appsync.ListFunctionsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListFunctions")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -357,6 +547,16 @@ func (mr *MockAppsyncClientMockRecorder) ListFunctions(arg0, arg1 interface{}, a
 
 // ListGraphqlApis mocks base method.
 func (m *MockAppsyncClient) ListGraphqlApis(arg0 context.Context, arg1 *appsync.ListGraphqlApisInput, arg2 ...func(*appsync.Options)) (*appsync.ListGraphqlApisOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListGraphqlApis")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -377,6 +577,16 @@ func (mr *MockAppsyncClientMockRecorder) ListGraphqlApis(arg0, arg1 interface{},
 
 // ListResolvers mocks base method.
 func (m *MockAppsyncClient) ListResolvers(arg0 context.Context, arg1 *appsync.ListResolversInput, arg2 ...func(*appsync.Options)) (*appsync.ListResolversOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListResolvers")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -397,6 +607,16 @@ func (mr *MockAppsyncClientMockRecorder) ListResolvers(arg0, arg1 interface{}, a
 
 // ListResolversByFunction mocks base method.
 func (m *MockAppsyncClient) ListResolversByFunction(arg0 context.Context, arg1 *appsync.ListResolversByFunctionInput, arg2 ...func(*appsync.Options)) (*appsync.ListResolversByFunctionOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListResolversByFunction")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -417,6 +637,16 @@ func (mr *MockAppsyncClientMockRecorder) ListResolversByFunction(arg0, arg1 inte
 
 // ListSourceApiAssociations mocks base method.
 func (m *MockAppsyncClient) ListSourceApiAssociations(arg0 context.Context, arg1 *appsync.ListSourceApiAssociationsInput, arg2 ...func(*appsync.Options)) (*appsync.ListSourceApiAssociationsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListSourceApiAssociations")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -437,6 +667,16 @@ func (mr *MockAppsyncClientMockRecorder) ListSourceApiAssociations(arg0, arg1 in
 
 // ListTagsForResource mocks base method.
 func (m *MockAppsyncClient) ListTagsForResource(arg0 context.Context, arg1 *appsync.ListTagsForResourceInput, arg2 ...func(*appsync.Options)) (*appsync.ListTagsForResourceOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListTagsForResource")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -457,6 +697,16 @@ func (mr *MockAppsyncClientMockRecorder) ListTagsForResource(arg0, arg1 interfac
 
 // ListTypes mocks base method.
 func (m *MockAppsyncClient) ListTypes(arg0 context.Context, arg1 *appsync.ListTypesInput, arg2 ...func(*appsync.Options)) (*appsync.ListTypesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListTypes")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -477,6 +727,16 @@ func (mr *MockAppsyncClientMockRecorder) ListTypes(arg0, arg1 interface{}, arg2 
 
 // ListTypesByAssociation mocks base method.
 func (m *MockAppsyncClient) ListTypesByAssociation(arg0 context.Context, arg1 *appsync.ListTypesByAssociationInput, arg2 ...func(*appsync.Options)) (*appsync.ListTypesByAssociationOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &appsync.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListTypesByAssociation")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {

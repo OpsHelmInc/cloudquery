@@ -1,31 +1,31 @@
 # Table: aws_iot_thing_groups
 
+This table shows data for AWS IoT Thing Groups.
 
+https://docs.aws.amazon.com/iot/latest/apireference/API_DescribeThingGroup.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|things_in_group|StringArray|
-|policies|StringArray|
-|tags|JSON|
-|arn (PK)|String|
-|index_name|String|
-|query_string|String|
-|query_version|String|
-|status|String|
-|thing_group_id|String|
-|thing_group_metadata|JSON|
-|thing_group_name|String|
-|thing_group_properties|JSON|
-|version|Int|
-|result_metadata|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|things_in_group|`list<item: utf8, nullable>`|
+|policies|`list<item: utf8, nullable>`|
+|tags|`json`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|index_name|`utf8`|
+|query_string|`utf8`|
+|query_version|`utf8`|
+|status|`utf8`|
+|thing_group_arn|`utf8`|
+|thing_group_id|`utf8`|
+|thing_group_metadata|`json`|
+|thing_group_name|`utf8`|
+|thing_group_properties|`json`|
+|version|`int64`|

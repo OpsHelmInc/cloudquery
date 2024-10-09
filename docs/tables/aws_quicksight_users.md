@@ -1,29 +1,29 @@
 # Table: aws_quicksight_users
 
+This table shows data for QuickSight Users.
 
+https://docs.aws.amazon.com/quicksight/latest/APIReference/API_User.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|tags|JSON|
-|arn (PK)|String|
-|active|Bool|
-|custom_permissions_name|String|
-|email|String|
-|external_login_federation_provider_type|String|
-|external_login_federation_provider_url|String|
-|external_login_id|String|
-|identity_type|String|
-|principal_id|String|
-|role|String|
-|user_name|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|tags|`json`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|active|`bool`|
+|custom_permissions_name|`utf8`|
+|email|`utf8`|
+|external_login_federation_provider_type|`utf8`|
+|external_login_federation_provider_url|`utf8`|
+|external_login_id|`utf8`|
+|identity_type|`utf8`|
+|principal_id|`utf8`|
+|role|`utf8`|
+|user_name|`utf8`|

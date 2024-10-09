@@ -1,43 +1,47 @@
 # Table: aws_backup_vault_recovery_points
 
+This table shows data for Backup Vault Recovery Points.
+
 https://docs.aws.amazon.com/aws-backup/latest/devguide/API_RecoveryPointByBackupVault.html
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
 ## Relations
+
 This table depends on [aws_backup_vaults](aws_backup_vaults.md).
 
-
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|vault_arn|String|
-|arn (PK)|String|
-|tags|JSON|
-|backup_size_in_bytes|Int|
-|backup_vault_arn|String|
-|backup_vault_name|String|
-|calculated_lifecycle|JSON|
-|completion_date|Timestamp|
-|composite_member_identifier|String|
-|created_by|JSON|
-|creation_date|Timestamp|
-|encryption_key_arn|String|
-|iam_role_arn|String|
-|is_encrypted|Bool|
-|is_parent|Bool|
-|last_restore_time|Timestamp|
-|lifecycle|JSON|
-|parent_recovery_point_arn|String|
-|resource_arn|String|
-|resource_name|String|
-|resource_type|String|
-|source_backup_vault_arn|String|
-|status|String|
-|status_message|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|vault_arn|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|backup_size_in_bytes|`int64`|
+|backup_vault_arn|`utf8`|
+|backup_vault_name|`utf8`|
+|calculated_lifecycle|`json`|
+|completion_date|`timestamp[us, tz=UTC]`|
+|composite_member_identifier|`utf8`|
+|created_by|`json`|
+|creation_date|`timestamp[us, tz=UTC]`|
+|encryption_key_arn|`utf8`|
+|iam_role_arn|`utf8`|
+|is_encrypted|`bool`|
+|is_parent|`bool`|
+|last_restore_time|`timestamp[us, tz=UTC]`|
+|lifecycle|`json`|
+|parent_recovery_point_arn|`utf8`|
+|recovery_point_arn|`utf8`|
+|resource_arn|`utf8`|
+|resource_name|`utf8`|
+|resource_type|`utf8`|
+|source_backup_vault_arn|`utf8`|
+|status|`utf8`|
+|status_message|`utf8`|
+|vault_type|`utf8`|

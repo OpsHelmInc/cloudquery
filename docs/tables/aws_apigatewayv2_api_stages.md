@@ -1,36 +1,38 @@
 # Table: aws_apigatewayv2_api_stages
 
-https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html
+This table shows data for Amazon API Gateway v2 API Stages.
+
+https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-stages.html
 
 The primary key for this table is **_cq_id**.
 
 ## Relations
+
 This table depends on [aws_apigatewayv2_apis](aws_apigatewayv2_apis.md).
 
-
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id (PK)|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|api_arn|String|
-|api_id|String|
-|arn|String|
-|stage_name|String|
-|access_log_settings|JSON|
-|api_gateway_managed|Bool|
-|auto_deploy|Bool|
-|client_certificate_id|String|
-|created_date|Timestamp|
-|default_route_settings|JSON|
-|deployment_id|String|
-|description|String|
-|last_deployment_status_message|String|
-|last_updated_date|Timestamp|
-|route_settings|JSON|
-|stage_variables|JSON|
-|tags|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|api_arn|`utf8`|
+|api_id|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|stage_name|`utf8`|
+|access_log_settings|`json`|
+|api_gateway_managed|`bool`|
+|auto_deploy|`bool`|
+|client_certificate_id|`utf8`|
+|created_date|`timestamp[us, tz=UTC]`|
+|default_route_settings|`json`|
+|deployment_id|`utf8`|
+|description|`utf8`|
+|last_deployment_status_message|`utf8`|
+|last_updated_date|`timestamp[us, tz=UTC]`|
+|route_settings|`json`|
+|stage_variables|`json`|
+|tags|`json`|

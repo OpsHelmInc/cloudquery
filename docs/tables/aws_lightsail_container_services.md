@@ -1,8 +1,10 @@
 # Table: aws_lightsail_container_services
 
+This table shows data for Lightsail Container Services.
+
 https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_ContainerService.html
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
 ## Relations
 
@@ -11,30 +13,30 @@ The following tables depend on aws_lightsail_container_services:
   - [aws_lightsail_container_service_images](aws_lightsail_container_service_images.md)
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|container_service_name|String|
-|created_at|Timestamp|
-|current_deployment|JSON|
-|is_disabled|Bool|
-|location|JSON|
-|next_deployment|JSON|
-|power|String|
-|power_id|String|
-|principal_arn|String|
-|private_domain_name|String|
-|private_registry_access|JSON|
-|public_domain_names|JSON|
-|resource_type|String|
-|scale|Int|
-|state|String|
-|state_detail|JSON|
-|tags|JSON|
-|url|String|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|container_service_name|`utf8`|
+|created_at|`timestamp[us, tz=UTC]`|
+|current_deployment|`json`|
+|is_disabled|`bool`|
+|location|`json`|
+|next_deployment|`json`|
+|power|`utf8`|
+|power_id|`utf8`|
+|principal_arn|`utf8`|
+|private_domain_name|`utf8`|
+|private_registry_access|`json`|
+|public_domain_names|`json`|
+|resource_type|`utf8`|
+|scale|`int64`|
+|state|`utf8`|
+|state_detail|`json`|
+|url|`utf8`|

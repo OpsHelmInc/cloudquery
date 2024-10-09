@@ -5,28 +5,23 @@ import (
 	"errors"
 	"fmt"
 	"strings"
-	"time"
+	"sync"
 
-	"github.com/OpsHelmInc/cloudquery/client/services"
+	"github.com/OpsHelmInc/cloudquery/client/spec"
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/aws/arn"
-	"github.com/aws/aws-sdk-go-v2/aws/retry"
-	"github.com/aws/aws-sdk-go-v2/service/ec2"
-	"github.com/aws/aws-sdk-go-v2/service/ec2/types"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
 	wafv2types "github.com/aws/aws-sdk-go-v2/service/wafv2/types"
-	"github.com/aws/smithy-go"
 	"github.com/aws/smithy-go/logging"
-	"github.com/cloudquery/plugin-sdk/plugins"
-	"github.com/cloudquery/plugin-sdk/schema"
-	"github.com/cloudquery/plugin-sdk/specs"
+	"github.com/cloudquery/plugin-sdk/v4/schema"
+	"github.com/cloudquery/plugin-sdk/v4/state"
 	"github.com/rs/zerolog"
+	"golang.org/x/sync/errgroup"
 )
 
 type Client struct {
 	// Those are already normalized values after configure and this is why we don't want to hold
 	// config directly.
-	ServicesManager ServicesManager
+	ServicesManager *ServicesManager
 	logger          zerolog.Logger
 	// this is set by table clientList
 	AccountID            string
@@ -34,6 +29,11 @@ type Client struct {
 	AutoscalingNamespace string
 	WAFScope             wafv2types.Scope
 	Partition            string
+	LanguageCode         string
+	stateClient          state.Client
+	specificRegions      bool
+	Spec                 *spec.Spec
+	accountMutex         map[string]*sync.Mutex
 }
 
 type AwsLogger struct {
@@ -44,20 +44,11 @@ type AssumeRoleAPIClient interface {
 	AssumeRole(ctx context.Context, params *sts.AssumeRoleInput, optFns ...func(*sts.Options)) (*sts.AssumeRoleOutput, error)
 }
 
-type ServicesPartitionAccountRegionMap map[string]map[string]map[string]*Services
-
-// ServicesManager will hold the entire map of (account X region) services
-type ServicesManager struct {
-	services         ServicesPartitionAccountRegionMap
-	wafScopeServices map[string]map[string]*Services
-}
-
 const (
 	defaultRegion              = "us-east-1"
-	awsFailedToConfigureErrMsg = "failed to retrieve credentials for account %s. AWS Error: %w, detected aws env variables: %s"
-	awsOrgsFailedToFindMembers = "failed to list Org member accounts. Make sure that your credentials have the proper permissions"
 	defaultVar                 = "default"
-	cloudfrontScopeRegion      = defaultRegion
+	awsCloudfrontScopeRegion   = defaultRegion
+	awsCnCloudfrontScopeRegion = "cn-north-1"
 )
 
 var errInvalidRegion = errors.New("region wildcard \"*\" is only supported as first argument")
@@ -66,77 +57,78 @@ var errUnknownRegion = func(region string) error {
 }
 var errRetrievingCredentials = errors.New("error retrieving AWS credentials (see logs for details). Please verify your credentials and try again")
 
-func (s *ServicesManager) ServicesByPartitionAccountAndRegion(partition, accountId, region string) *Services {
-	if region == "" {
-		region = defaultRegion
-	}
-	return s.services[partition][accountId][region]
-}
+var ErrPaidAPIsNotEnabled = errors.New("not fetching resource because `use_paid_apis` is set to false")
 
-func (s *ServicesManager) ServicesByAccountForWAFScope(partition, accountId string) *Services {
-	return s.wafScopeServices[partition][accountId]
-}
-
-func (s *ServicesManager) InitServicesForPartitionAccountAndRegion(partition, accountId, region string, svcs Services) {
-	if s.services == nil {
-		s.services = make(map[string]map[string]map[string]*Services)
-	}
-	if s.services[partition] == nil {
-		s.services[partition] = make(map[string]map[string]*Services)
-	}
-	if s.services[partition][accountId] == nil {
-		s.services[partition][accountId] = make(map[string]*Services)
-	}
-	s.services[partition][accountId][region] = &svcs
-}
-
-func (s *ServicesManager) InitServicesForPartitionAccountAndScope(partition, accountId string, svcs Services) {
-	if s.wafScopeServices == nil {
-		s.wafScopeServices = make(map[string]map[string]*Services)
-	}
-	if s.wafScopeServices[partition] == nil {
-		s.wafScopeServices[partition] = make(map[string]*Services)
-	}
-	s.wafScopeServices[partition][accountId] = &svcs
-}
-
-func NewAwsClient(logger zerolog.Logger) Client {
+func NewAwsClient(logger zerolog.Logger, s *spec.Spec) Client {
 	return Client{
-		ServicesManager: ServicesManager{
-			services: ServicesPartitionAccountRegionMap{},
+		ServicesManager: &ServicesManager{
+			services: ServicesPartitionAccountMap{},
 		},
-		logger: logger,
+		logger:       logger,
+		Spec:         s,
+		accountMutex: map[string]*sync.Mutex{},
+		stateClient:  new(state.NoOpClient),
 	}
 }
 
-func (s ServicesPartitionAccountRegionMap) Accounts() []string {
-	accounts := make([]string, 0)
-	for partitions := range s {
-		for account := range s[partitions] {
-			accounts = append(accounts, account)
-		}
-	}
-	return accounts
-}
 func (c *Client) Logger() *zerolog.Logger {
 	return &c.logger
 }
 
 func (c *Client) ID() string {
-	return strings.TrimRight(strings.Join([]string{
+	idStrings := []string{
 		c.AccountID,
 		c.Region,
 		c.AutoscalingNamespace,
 		string(c.WAFScope),
-	}, ":"), ":")
+		c.LanguageCode,
+	}
+	return strings.TrimRight(strings.Join(idStrings, ":"), ":")
 }
 
-func (c *Client) Services() *Services {
-	s := c.ServicesManager.ServicesByPartitionAccountAndRegion(c.Partition, c.AccountID, c.Region)
-	if s == nil && c.WAFScope == wafv2types.ScopeCloudfront {
-		return c.ServicesManager.ServicesByAccountForWAFScope(c.Partition, c.AccountID)
+func (c *Client) updateService(service AWSServiceName) {
+	// Check to see if the service is already initialized
+	svc := c.ServicesManager.ServicesByPartitionAccount(c.Partition, c.AccountID).GetService(service)
+	if svc != nil {
+		return
 	}
-	return s
+	// If service is not  initialized, lock the account mutex and check again
+	c.accountMutex[c.AccountID].Lock()
+	defer c.accountMutex[c.AccountID].Unlock()
+	svc = c.ServicesManager.ServicesByPartitionAccount(c.Partition, c.AccountID).GetService(service)
+	// if service is still not initialized, initialize it
+	if svc == nil {
+		c.logger.Debug().Msgf("updating service %s for: %s", service.String(), c.AccountID)
+		c.ServicesManager.ServicesByPartitionAccount(c.Partition, c.AccountID).InitService(service)
+	}
+}
+func (c *Client) Services(service_names ...AWSServiceName) *Services {
+	for _, service := range service_names {
+		c.updateService(service)
+	}
+	return c.ServicesManager.ServicesByPartitionAccount(c.Partition, c.AccountID)
+}
+
+func (c *Client) StateClient() state.Client {
+	return c.stateClient
+}
+
+// SetStateClient will set state.Client value (or state.NopClient if the param is nil) to the current Client state backend.
+func (c *Client) SetStateClient(client state.Client) {
+	if client == nil {
+		client = new(state.NoOpClient)
+	}
+	c.stateClient = client
+}
+
+func (s *Services) Duplicate() Services {
+	duplicateServices := *s
+	return duplicateServices
+}
+
+func (c *Client) Duplicate() *Client {
+	duplicateClient := *c
+	return &duplicateClient
 }
 
 func (c *Client) withPartitionAccountIDAndRegion(partition, accountID, region string) *Client {
@@ -148,6 +140,9 @@ func (c *Client) withPartitionAccountIDAndRegion(partition, accountID, region st
 		Region:               region,
 		AutoscalingNamespace: c.AutoscalingNamespace,
 		WAFScope:             c.WAFScope,
+		stateClient:          c.stateClient,
+		Spec:                 c.Spec,
+		accountMutex:         c.accountMutex,
 	}
 }
 
@@ -160,6 +155,9 @@ func (c *Client) withPartitionAccountIDRegionAndNamespace(partition, accountID, 
 		Region:               region,
 		AutoscalingNamespace: namespace,
 		WAFScope:             c.WAFScope,
+		stateClient:          c.stateClient,
+		Spec:                 c.Spec,
+		accountMutex:         c.accountMutex,
 	}
 }
 
@@ -172,241 +170,77 @@ func (c *Client) withPartitionAccountIDRegionAndScope(partition, accountID, regi
 		Region:               region,
 		AutoscalingNamespace: c.AutoscalingNamespace,
 		WAFScope:             scope,
+		stateClient:          c.stateClient,
+		Spec:                 c.Spec,
+		accountMutex:         c.accountMutex,
 	}
 }
 
-func verifyRegions(regions []string) error {
-	availableRegions, err := getAvailableRegions()
-	if err != nil {
-		return err
-	}
-
-	// validate regions values
-	var hasWildcard bool
-	for i, region := range regions {
-		if region == "*" {
-			hasWildcard = true
-		}
-		if i != 0 && region == "*" {
-			return errInvalidRegion
-		}
-		if i > 0 && hasWildcard {
-			return errInvalidRegion
-		}
-		regionExist := availableRegions[region]
-		if !hasWildcard && !regionExist {
-			return errUnknownRegion(region)
-		}
-	}
-	return nil
-}
-func isAllRegions(regions []string) bool {
-	// if regions array is not valid return false
-	err := verifyRegions(regions)
-	if err != nil {
-		return false
-	}
-
-	wildcardAllRegions := false
-	if (len(regions) == 1 && regions[0] == "*") || (len(regions) == 0) {
-		wildcardAllRegions = true
-	}
-	return wildcardAllRegions
+func (c *Client) withLanguageCode(code string) *Client {
+	newC := *c
+	newC.LanguageCode = code
+	newC.logger = newC.logger.With().Str("language_code", code).Logger()
+	return &newC
 }
 
-func getAccountId(ctx context.Context, awsCfg aws.Config) (*sts.GetCallerIdentityOutput, error) {
-	svc := sts.NewFromConfig(awsCfg)
-	return svc.GetCallerIdentity(ctx, &sts.GetCallerIdentityInput{})
-}
-
-func configureAwsClient(ctx context.Context, logger zerolog.Logger, spec *Spec, baseAwsConfig aws.Config) (aws.Config, error) {
-	var err error
-
-	maxAttempts := 10
-	if spec.MaxRetries != nil {
-		maxAttempts = *spec.MaxRetries
+// Configure is the entrypoint into configuring the AWS plugin. It is called by the plugin initialization in resources/plugin/aws.go
+func Configure(ctx context.Context, logger zerolog.Logger, s spec.Spec, overrideConfig *aws.Config) (schema.ClientMeta, error) {
+	if err := s.Validate(); err != nil {
+		return nil, fmt.Errorf("spec validation failed: %w", err)
 	}
-	maxBackoff := 30
-	if spec.MaxBackoff != nil {
-		maxBackoff = *spec.MaxBackoff
-	}
+	s.SetDefaults()
 
-	if baseAwsConfig.Retryer == nil {
-		baseAwsConfig.Retryer = func() aws.Retryer {
-			return retry.NewStandard(func(so *retry.StandardOptions) {
-				so.MaxAttempts = maxAttempts
-				so.MaxBackoff = time.Duration(maxBackoff) * time.Second
-				so.RateLimiter = &NoRateLimiter{}
-			})
-		}
-	}
+	client := NewAwsClient(logger, &s)
 
-	if baseAwsConfig.Credentials == nil {
-		baseAwsConfig.Credentials = aws.NewCredentialsCache(baseAwsConfig.Credentials, func(options *aws.CredentialsCacheOptions) {
-			// ExpiryWindow will allow the credentials to trigger refreshing prior to
-			// the credentials actually expiring. This is beneficial so race conditions
-			// with expiring credentials do not cause requests to fail unexpectedly
-			// due to ExpiredToken exceptions.
-			//
-			// An ExpiryWindow of 5 minute would cause calls to IsExpired() to return true
-			// 5 minutes before the credentials are actually expired. This can cause an
-			// increased number of requests to refresh the credentials to occur. We balance this with jitter.
-			options.ExpiryWindow = 5 * time.Minute
-			// Jitter is added to avoid the thundering herd problem of many refresh requests
-			// happening all at once.
-			options.ExpiryWindowJitterFrac = 0.5
-		})
-	}
+	var adminAccountSts AssumeRoleAPIClient
 
-	// Test out retrieving credentials
-	if _, err := baseAwsConfig.Credentials.Retrieve(ctx); err != nil {
-		logger.Error().Err(err).Msg("error retrieving credentials")
-		return baseAwsConfig, errRetrievingCredentials
-	}
-
-	return baseAwsConfig, err
-}
-
-func CustomConfig(config aws.Config) plugins.SourceNewExecutionClientFunc {
-	return func(ctx context.Context, logger zerolog.Logger, spec specs.Source) (schema.ClientMeta, error) {
-		return Configure(ctx, logger, spec, config)
-	}
-}
-
-func Configure(ctx context.Context, logger zerolog.Logger, spec specs.Source, baseAwsConfig aws.Config) (schema.ClientMeta, error) {
-	var specConfig Spec
-	err := spec.UnmarshalSpec(&specConfig)
-	if err != nil {
-		return nil, fmt.Errorf("failed to unmarshal spec: %w", err)
-	}
-
-	client := NewAwsClient(logger)
-	if len(specConfig.Accounts) == 0 {
-		specConfig.Accounts = append(specConfig.Accounts, Account{
-			ID: defaultVar,
-		})
-	}
-
-	for _, account := range specConfig.Accounts {
-		if account.AccountName == "" {
-			account.AccountName = account.ID
-		}
-
-		localRegions := account.Regions
-		if len(localRegions) == 0 {
-			localRegions = specConfig.Regions
-		}
-
-		if err := verifyRegions(localRegions); err != nil {
+	if client.Spec.Organization != nil {
+		var err error
+		client.Spec.Accounts, adminAccountSts, err = loadOrgAccounts(ctx, logger, client.Spec)
+		if err != nil {
+			logger.Error().Err(err).Msg("error getting child accounts")
 			return nil, err
 		}
+	}
+	if len(client.Spec.Accounts) == 0 {
+		client.Spec.Accounts = []spec.Account{{ID: defaultVar}}
+	}
 
-		if isAllRegions(localRegions) {
-			logger.Info().Msg("All regions specified in `cloudquery.yml`. Assuming all regions")
-		}
-
-		awsCfg, err := configureAwsClient(ctx, logger, &specConfig, baseAwsConfig)
-		if err != nil {
-			var ae smithy.APIError
-			if errors.As(err, &ae) {
-				if strings.Contains(ae.ErrorCode(), "AccessDenied") {
-					logger.Warn().Str("account", account.AccountName).Err(err).Msg("Access denied for account")
-					continue
-				}
+	initLock := sync.Mutex{}
+	errorGroup, gtx := errgroup.WithContext(ctx)
+	errorGroup.SetLimit(client.Spec.InitializationConcurrency)
+	for _, account := range client.Spec.Accounts {
+		account := account
+		errorGroup.Go(func() error {
+			svcsDetail, err := client.setupAWSAccount(gtx, logger, client.Spec, adminAccountSts, account, overrideConfig)
+			if err != nil {
+				return err
 			}
-			if errors.Is(err, errRetrievingCredentials) {
-				logger.Warn().Str("account", account.AccountName).Err(err).Msg("Could not retrieve credentials for account")
-				continue
+			if svcsDetail == nil {
+				return nil
+			}
+			initLock.Lock()
+			defer initLock.Unlock()
+			client.ServicesManager.InitServices(*svcsDetail)
+			if client.accountMutex[svcsDetail.accountId] == nil {
+				client.accountMutex[svcsDetail.accountId] = &sync.Mutex{}
 			}
 
-			return nil, err
-		}
-		account.Regions = findEnabledRegions(ctx, logger, account.AccountName, ec2.NewFromConfig(awsCfg), localRegions, account.DefaultRegion)
-		if len(account.Regions) == 0 {
-			logger.Warn().Str("account", account.AccountName).Err(err).Msg("No enabled regions provided in config for account")
-			continue
-		}
-		awsCfg.Region = account.Regions[0]
-		output, err := getAccountId(ctx, awsCfg)
-		if err != nil {
-			return nil, err
-		}
-		iamArn, err := arn.Parse(*output.Arn)
-		if err != nil {
-			return nil, err
-		}
-
-		for _, region := range account.Regions {
-			client.ServicesManager.InitServicesForPartitionAccountAndRegion(iamArn.Partition, *output.Account, region, initServices(region, awsCfg))
-		}
-		client.ServicesManager.InitServicesForPartitionAccountAndScope(iamArn.Partition, *output.Account, initServices(cloudfrontScopeRegion, awsCfg))
-	}
-	if len(client.ServicesManager.services) == 0 {
-		return nil, fmt.Errorf("no enabled accounts instantiated")
-	}
-	return &client, nil
-}
-
-func findEnabledRegions(ctx context.Context, logger zerolog.Logger, accountName string, ec2Client services.Ec2Client, localRegions []string, accountDefaultRegion string) []string {
-	// By default we should use the default region (us-east-1)
-	regionsToCheck := []string{defaultRegion}
-	// If user specifies a Default Region we should use it
-	if accountDefaultRegion != "" {
-		regionsToCheck = []string{accountDefaultRegion}
-		// If no default region and * is not specified we should use all specified regions
-	} else if len(localRegions) > 0 && !isAllRegions(localRegions) {
-		regionsToCheck = localRegions
-	}
-
-	for _, region := range regionsToCheck {
-		enabledRegions, err := getEnabledRegions(ctx, ec2Client, region)
-		if err != nil {
-			logger.Warn().Str("account", accountName).Err(err).Msgf("Failed to find disabled regions for account when checking: %s", region)
-			continue
-		}
-		filteredRegions := filterDisabledRegions(localRegions, enabledRegions)
-		if len(filteredRegions) > 0 {
-			return filteredRegions
-		}
-	}
-	return []string{}
-}
-
-func getEnabledRegions(ctx context.Context, ec2Client services.Ec2Client, region string) ([]types.Region, error) {
-	res, err := ec2Client.DescribeRegions(ctx,
-		&ec2.DescribeRegionsInput{AllRegions: aws.Bool(false)},
-		func(o *ec2.Options) {
-			o.Region = region
+			return nil
 		})
-	if err != nil {
+	}
+	if err := errorGroup.Wait(); err != nil {
 		return nil, err
 	}
-	return res.Regions, nil
-}
 
-func filterDisabledRegions(regions []string, enabledRegions []types.Region) []string {
-	regionsMap := map[string]bool{}
-	for _, r := range enabledRegions {
-		if r.RegionName != nil && r.OptInStatus != nil && *r.OptInStatus != "not-opted-in" {
-			regionsMap[*r.RegionName] = true
+	if len(client.ServicesManager.services) == 0 {
+		// This is a special error case where we found active accounts, but just weren't able to assume a role in any of them
+		if client.Spec.Organization != nil && len(client.Spec.Accounts) > 0 && client.Spec.Organization.MemberCredentials == nil {
+			return nil, fmt.Errorf("discovered %d accounts in the AWS Organization, but the credentials specified in 'admin_account' were unable to assume a role in the member accounts. Verify that the role you are trying to assume (arn:aws:iam::<account_id>:role/%s) exists. If you need to use a different set of credentials to do the role assumption use 'member_trusted_principal'", len(client.Spec.Accounts), client.Spec.Organization.ChildAccountRoleName)
 		}
+		return nil, fmt.Errorf("no AWS accounts were successfully configured. See warning messages in the logs for details")
 	}
-
-	var filteredRegions []string
-	// Our list of regions might not always be the latest and most up to date list
-	// if a user specifies all regions via a "*" then they should get the most broad list possible
-	if isAllRegions(regions) {
-		for region := range regionsMap {
-			filteredRegions = append(filteredRegions, region)
-		}
-	} else {
-		for _, r := range regions {
-			if regionsMap[r] {
-				filteredRegions = append(filteredRegions, r)
-			}
-		}
-	}
-	return filteredRegions
+	return &client, nil
 }
 
 func (a AwsLogger) Logf(classification logging.Classification, format string, v ...any) {

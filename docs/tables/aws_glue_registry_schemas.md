@@ -1,36 +1,39 @@
 # Table: aws_glue_registry_schemas
 
+This table shows data for Glue Registry Schemas.
 
+https://docs.aws.amazon.com/glue/latest/webapi/API_GetSchema.html
 
 The primary key for this table is **_cq_id**.
 
 ## Relations
+
 This table depends on [aws_glue_registries](aws_glue_registries.md).
 
 The following tables depend on aws_glue_registry_schemas:
   - [aws_glue_registry_schema_versions](aws_glue_registry_schema_versions.md)
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id (PK)|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn|String|
-|tags|JSON|
-|compatibility|String|
-|created_time|String|
-|data_format|String|
-|description|String|
-|latest_schema_version|Int|
-|next_schema_version|Int|
-|registry_arn|String|
-|registry_name|String|
-|schema_checkpoint|Int|
-|schema_name|String|
-|schema_status|String|
-|updated_time|String|
-|result_metadata|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|compatibility|`utf8`|
+|created_time|`utf8`|
+|data_format|`utf8`|
+|description|`utf8`|
+|latest_schema_version|`int64`|
+|next_schema_version|`int64`|
+|registry_arn|`utf8`|
+|registry_name|`utf8`|
+|schema_arn|`utf8`|
+|schema_checkpoint|`int64`|
+|schema_name|`utf8`|
+|schema_status|`utf8`|
+|updated_time|`utf8`|

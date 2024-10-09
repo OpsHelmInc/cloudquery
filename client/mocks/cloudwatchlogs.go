@@ -37,6 +37,16 @@ func (m *MockCloudwatchlogsClient) EXPECT() *MockCloudwatchlogsClientMockRecorde
 
 // DescribeAccountPolicies mocks base method.
 func (m *MockCloudwatchlogsClient) DescribeAccountPolicies(arg0 context.Context, arg1 *cloudwatchlogs.DescribeAccountPoliciesInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.DescribeAccountPoliciesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeAccountPolicies")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -57,6 +67,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) DescribeAccountPolicies(arg0, ar
 
 // DescribeDeliveries mocks base method.
 func (m *MockCloudwatchlogsClient) DescribeDeliveries(arg0 context.Context, arg1 *cloudwatchlogs.DescribeDeliveriesInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.DescribeDeliveriesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeDeliveries")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -77,6 +97,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) DescribeDeliveries(arg0, arg1 in
 
 // DescribeDeliveryDestinations mocks base method.
 func (m *MockCloudwatchlogsClient) DescribeDeliveryDestinations(arg0 context.Context, arg1 *cloudwatchlogs.DescribeDeliveryDestinationsInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.DescribeDeliveryDestinationsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeDeliveryDestinations")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -97,6 +127,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) DescribeDeliveryDestinations(arg
 
 // DescribeDeliverySources mocks base method.
 func (m *MockCloudwatchlogsClient) DescribeDeliverySources(arg0 context.Context, arg1 *cloudwatchlogs.DescribeDeliverySourcesInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.DescribeDeliverySourcesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeDeliverySources")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -117,6 +157,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) DescribeDeliverySources(arg0, ar
 
 // DescribeDestinations mocks base method.
 func (m *MockCloudwatchlogsClient) DescribeDestinations(arg0 context.Context, arg1 *cloudwatchlogs.DescribeDestinationsInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.DescribeDestinationsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeDestinations")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -137,6 +187,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) DescribeDestinations(arg0, arg1 
 
 // DescribeExportTasks mocks base method.
 func (m *MockCloudwatchlogsClient) DescribeExportTasks(arg0 context.Context, arg1 *cloudwatchlogs.DescribeExportTasksInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.DescribeExportTasksOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeExportTasks")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -157,6 +217,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) DescribeExportTasks(arg0, arg1 i
 
 // DescribeLogGroups mocks base method.
 func (m *MockCloudwatchlogsClient) DescribeLogGroups(arg0 context.Context, arg1 *cloudwatchlogs.DescribeLogGroupsInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.DescribeLogGroupsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeLogGroups")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -177,6 +247,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) DescribeLogGroups(arg0, arg1 int
 
 // DescribeLogStreams mocks base method.
 func (m *MockCloudwatchlogsClient) DescribeLogStreams(arg0 context.Context, arg1 *cloudwatchlogs.DescribeLogStreamsInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.DescribeLogStreamsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeLogStreams")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -197,6 +277,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) DescribeLogStreams(arg0, arg1 in
 
 // DescribeMetricFilters mocks base method.
 func (m *MockCloudwatchlogsClient) DescribeMetricFilters(arg0 context.Context, arg1 *cloudwatchlogs.DescribeMetricFiltersInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.DescribeMetricFiltersOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeMetricFilters")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -217,6 +307,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) DescribeMetricFilters(arg0, arg1
 
 // DescribeQueries mocks base method.
 func (m *MockCloudwatchlogsClient) DescribeQueries(arg0 context.Context, arg1 *cloudwatchlogs.DescribeQueriesInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.DescribeQueriesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeQueries")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -237,6 +337,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) DescribeQueries(arg0, arg1 inter
 
 // DescribeQueryDefinitions mocks base method.
 func (m *MockCloudwatchlogsClient) DescribeQueryDefinitions(arg0 context.Context, arg1 *cloudwatchlogs.DescribeQueryDefinitionsInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.DescribeQueryDefinitionsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeQueryDefinitions")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -257,6 +367,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) DescribeQueryDefinitions(arg0, a
 
 // DescribeResourcePolicies mocks base method.
 func (m *MockCloudwatchlogsClient) DescribeResourcePolicies(arg0 context.Context, arg1 *cloudwatchlogs.DescribeResourcePoliciesInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.DescribeResourcePoliciesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeResourcePolicies")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -277,6 +397,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) DescribeResourcePolicies(arg0, a
 
 // DescribeSubscriptionFilters mocks base method.
 func (m *MockCloudwatchlogsClient) DescribeSubscriptionFilters(arg0 context.Context, arg1 *cloudwatchlogs.DescribeSubscriptionFiltersInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.DescribeSubscriptionFiltersOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeSubscriptionFilters")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -297,6 +427,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) DescribeSubscriptionFilters(arg0
 
 // GetDataProtectionPolicy mocks base method.
 func (m *MockCloudwatchlogsClient) GetDataProtectionPolicy(arg0 context.Context, arg1 *cloudwatchlogs.GetDataProtectionPolicyInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.GetDataProtectionPolicyOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetDataProtectionPolicy")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -317,6 +457,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) GetDataProtectionPolicy(arg0, ar
 
 // GetDelivery mocks base method.
 func (m *MockCloudwatchlogsClient) GetDelivery(arg0 context.Context, arg1 *cloudwatchlogs.GetDeliveryInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.GetDeliveryOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetDelivery")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -337,6 +487,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) GetDelivery(arg0, arg1 interface
 
 // GetDeliveryDestination mocks base method.
 func (m *MockCloudwatchlogsClient) GetDeliveryDestination(arg0 context.Context, arg1 *cloudwatchlogs.GetDeliveryDestinationInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.GetDeliveryDestinationOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetDeliveryDestination")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -357,6 +517,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) GetDeliveryDestination(arg0, arg
 
 // GetDeliveryDestinationPolicy mocks base method.
 func (m *MockCloudwatchlogsClient) GetDeliveryDestinationPolicy(arg0 context.Context, arg1 *cloudwatchlogs.GetDeliveryDestinationPolicyInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.GetDeliveryDestinationPolicyOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetDeliveryDestinationPolicy")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -377,6 +547,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) GetDeliveryDestinationPolicy(arg
 
 // GetDeliverySource mocks base method.
 func (m *MockCloudwatchlogsClient) GetDeliverySource(arg0 context.Context, arg1 *cloudwatchlogs.GetDeliverySourceInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.GetDeliverySourceOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetDeliverySource")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -397,6 +577,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) GetDeliverySource(arg0, arg1 int
 
 // GetLogAnomalyDetector mocks base method.
 func (m *MockCloudwatchlogsClient) GetLogAnomalyDetector(arg0 context.Context, arg1 *cloudwatchlogs.GetLogAnomalyDetectorInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.GetLogAnomalyDetectorOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetLogAnomalyDetector")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -417,6 +607,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) GetLogAnomalyDetector(arg0, arg1
 
 // GetLogEvents mocks base method.
 func (m *MockCloudwatchlogsClient) GetLogEvents(arg0 context.Context, arg1 *cloudwatchlogs.GetLogEventsInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.GetLogEventsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetLogEvents")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -437,6 +637,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) GetLogEvents(arg0, arg1 interfac
 
 // GetLogGroupFields mocks base method.
 func (m *MockCloudwatchlogsClient) GetLogGroupFields(arg0 context.Context, arg1 *cloudwatchlogs.GetLogGroupFieldsInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.GetLogGroupFieldsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetLogGroupFields")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -457,6 +667,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) GetLogGroupFields(arg0, arg1 int
 
 // GetLogRecord mocks base method.
 func (m *MockCloudwatchlogsClient) GetLogRecord(arg0 context.Context, arg1 *cloudwatchlogs.GetLogRecordInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.GetLogRecordOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetLogRecord")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -477,6 +697,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) GetLogRecord(arg0, arg1 interfac
 
 // GetQueryResults mocks base method.
 func (m *MockCloudwatchlogsClient) GetQueryResults(arg0 context.Context, arg1 *cloudwatchlogs.GetQueryResultsInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.GetQueryResultsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetQueryResults")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -497,6 +727,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) GetQueryResults(arg0, arg1 inter
 
 // ListAnomalies mocks base method.
 func (m *MockCloudwatchlogsClient) ListAnomalies(arg0 context.Context, arg1 *cloudwatchlogs.ListAnomaliesInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.ListAnomaliesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListAnomalies")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -517,6 +757,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) ListAnomalies(arg0, arg1 interfa
 
 // ListLogAnomalyDetectors mocks base method.
 func (m *MockCloudwatchlogsClient) ListLogAnomalyDetectors(arg0 context.Context, arg1 *cloudwatchlogs.ListLogAnomalyDetectorsInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.ListLogAnomalyDetectorsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListLogAnomalyDetectors")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -537,6 +787,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) ListLogAnomalyDetectors(arg0, ar
 
 // ListTagsForResource mocks base method.
 func (m *MockCloudwatchlogsClient) ListTagsForResource(arg0 context.Context, arg1 *cloudwatchlogs.ListTagsForResourceInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.ListTagsForResourceOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListTagsForResource")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
@@ -557,6 +817,16 @@ func (mr *MockCloudwatchlogsClientMockRecorder) ListTagsForResource(arg0, arg1 i
 
 // ListTagsLogGroup mocks base method.
 func (m *MockCloudwatchlogsClient) ListTagsLogGroup(arg0 context.Context, arg1 *cloudwatchlogs.ListTagsLogGroupInput, arg2 ...func(*cloudwatchlogs.Options)) (*cloudwatchlogs.ListTagsLogGroupOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &cloudwatchlogs.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListTagsLogGroup")
+	}
+
 	m.ctrl.T.Helper()
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {

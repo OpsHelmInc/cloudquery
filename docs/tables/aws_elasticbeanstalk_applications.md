@@ -1,25 +1,27 @@
 # Table: aws_elasticbeanstalk_applications
 
+This table shows data for AWS Elastic Beanstalk Applications.
+
 https://docs.aws.amazon.com/elasticbeanstalk/latest/api/API_ApplicationDescription.html
 
-The composite primary key for this table is (**arn**, **date_created**).
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|date_created (PK)|Timestamp|
-|application_name|String|
-|configuration_templates|StringArray|
-|date_updated|Timestamp|
-|description|String|
-|resource_lifecycle_config|JSON|
-|versions|StringArray|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|date_created|`timestamp[us, tz=UTC]`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|application_arn|`utf8`|
+|application_name|`utf8`|
+|configuration_templates|`list<item: utf8, nullable>`|
+|date_updated|`timestamp[us, tz=UTC]`|
+|description|`utf8`|
+|resource_lifecycle_config|`json`|
+|versions|`list<item: utf8, nullable>`|

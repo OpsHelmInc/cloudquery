@@ -9,27 +9,22 @@ import (
 	iTypes "github.com/aws/aws-sdk-go-v2/service/identitystore/types"
 	"github.com/aws/aws-sdk-go-v2/service/ssoadmin"
 	"github.com/aws/aws-sdk-go-v2/service/ssoadmin/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildGroups(t *testing.T, ctrl *gomock.Controller) client.Services {
 	mIdentity := mocks.NewMockIdentitystoreClient(ctrl)
 	mSSOAdmin := mocks.NewMockSsoadminClient(ctrl)
 	im := types.InstanceMetadata{}
-	err := faker.FakeObject(&im)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&im))
 	group := iTypes.Group{}
-	err = faker.FakeObject(&group)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&group))
 	groupMembership := iTypes.GroupMembership{}
-	err = faker.FakeObject(&groupMembership)
-	if err != nil {
-		t.Fatal(err)
+	require.NoError(t, faker.FakeObject(&groupMembership))
+	groupMembership.MemberId = &iTypes.MemberIdMemberUserId{
+		Value: "test",
 	}
 
 	mSSOAdmin.EXPECT().ListInstances(gomock.Any(), gomock.Any(), gomock.Any()).Return(

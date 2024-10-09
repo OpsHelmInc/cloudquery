@@ -1,38 +1,38 @@
 # Table: aws_ec2_hosts
 
+This table shows data for Amazon Elastic Compute Cloud (EC2) Hosts.
+
 https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Host.html
 
-The primary key for this table is **arn**.
-
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|allocation_time|Timestamp|
-|allows_multiple_instance_types|String|
-|asset_id|String|
-|auto_placement|String|
-|availability_zone|String|
-|availability_zone_id|String|
-|available_capacity|JSON|
-|client_token|String|
-|host_id|String|
-|host_maintenance|String|
-|host_properties|JSON|
-|host_recovery|String|
-|host_reservation_id|String|
-|instances|JSON|
-|member_of_service_linked_resource_group|Bool|
-|outpost_arn|String|
-|owner_id|String|
-|release_time|Timestamp|
-|state|String|
-|tags|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|allocation_time|`timestamp[us, tz=UTC]`|
+|allows_multiple_instance_types|`utf8`|
+|asset_id|`utf8`|
+|auto_placement|`utf8`|
+|availability_zone|`utf8`|
+|availability_zone_id|`utf8`|
+|available_capacity|`json`|
+|client_token|`utf8`|
+|host_id|`utf8`|
+|host_maintenance|`utf8`|
+|host_properties|`json`|
+|host_recovery|`utf8`|
+|host_reservation_id|`utf8`|
+|instances|`json`|
+|member_of_service_linked_resource_group|`bool`|
+|outpost_arn|`utf8`|
+|owner_id|`utf8`|
+|release_time|`timestamp[us, tz=UTC]`|
+|state|`utf8`|

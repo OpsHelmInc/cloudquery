@@ -1,8 +1,10 @@
 # Table: aws_quicksight_data_sets
 
+This table shows data for QuickSight Data Sets.
 
+https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetSummary.html
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
 ## Relations
 
@@ -10,21 +12,21 @@ The following tables depend on aws_quicksight_data_sets:
   - [aws_quicksight_ingestions](aws_quicksight_ingestions.md)
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|tags|JSON|
-|arn (PK)|String|
-|column_level_permission_rules_applied|Bool|
-|created_time|Timestamp|
-|data_set_id|String|
-|import_mode|String|
-|last_updated_time|Timestamp|
-|name|String|
-|row_level_permission_data_set|JSON|
-|row_level_permission_tag_configuration_applied|Bool|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|region|`utf8`|
+|tags|`json`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|column_level_permission_rules_applied|`bool`|
+|created_time|`timestamp[us, tz=UTC]`|
+|data_set_id|`utf8`|
+|import_mode|`utf8`|
+|last_updated_time|`timestamp[us, tz=UTC]`|
+|name|`utf8`|
+|row_level_permission_data_set|`json`|
+|row_level_permission_tag_configuration_applied|`bool`|

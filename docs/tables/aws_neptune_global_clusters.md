@@ -1,27 +1,26 @@
 # Table: aws_neptune_global_clusters
 
-https://docs.aws.amazon.com/neptune/latest/userguide/api-instances.html#DescribeDBInstances
+This table shows data for Neptune Global Clusters.
 
-The primary key for this table is **arn**.
+https://docs.aws.amazon.com/neptune/latest/userguide/api-global-dbs.html#GlobalCluster
 
-
+The primary key for this table is **_cq_id**.
 
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|region|String|
-|arn (PK)|String|
-|tags|JSON|
-|deletion_protection|Bool|
-|engine|String|
-|engine_version|String|
-|global_cluster_identifier|String|
-|global_cluster_members|JSON|
-|global_cluster_resource_id|String|
-|status|String|
-|storage_encrypted|Bool|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|arn|`utf8`|
+|oh_resource_type|`utf8`|
+|deletion_protection|`bool`|
+|engine|`utf8`|
+|engine_version|`utf8`|
+|global_cluster_arn|`utf8`|
+|global_cluster_identifier|`utf8`|
+|global_cluster_members|`json`|
+|global_cluster_resource_id|`utf8`|
+|status|`utf8`|
+|storage_encrypted|`bool`|

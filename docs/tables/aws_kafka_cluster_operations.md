@@ -1,31 +1,34 @@
 # Table: aws_kafka_cluster_operations
 
+This table shows data for Kafka Cluster Operations.
+
 https://docs.aws.amazon.com/msk/1.0/apireference/clusters-clusterarn-operations.html
 
-The primary key for this table is **arn**.
+The primary key for this table is **_cq_id**.
 
 ## Relations
+
 This table depends on [aws_kafka_clusters](aws_kafka_clusters.md).
 
-
 ## Columns
+
 | Name          | Type          |
 | ------------- | ------------- |
-|_cq_source_name|String|
-|_cq_sync_time|Timestamp|
-|_cq_id|UUID|
-|_cq_parent_id|UUID|
-|account_id|String|
-|arn (PK)|String|
-|cluster_arn|String|
-|tags|JSON|
-|client_request_id|String|
-|creation_time|Timestamp|
-|end_time|Timestamp|
-|error_info|JSON|
-|operation_state|String|
-|operation_steps|JSON|
-|operation_type|String|
-|source_cluster_info|JSON|
-|target_cluster_info|JSON|
-|vpc_connection_info|JSON|
+|_cq_id (PK)|`uuid`|
+|_cq_parent_id|`uuid`|
+|account_id|`utf8`|
+|arn|`utf8`|
+|cluster_arn|`utf8`|
+|tags|`json`|
+|oh_resource_type|`utf8`|
+|client_request_id|`utf8`|
+|creation_time|`timestamp[us, tz=UTC]`|
+|end_time|`timestamp[us, tz=UTC]`|
+|error_info|`json`|
+|operation_arn|`utf8`|
+|operation_state|`utf8`|
+|operation_steps|`json`|
+|operation_type|`utf8`|
+|source_cluster_info|`json`|
+|target_cluster_info|`json`|
+|vpc_connection_info|`json`|

@@ -6,111 +6,94 @@ import (
 	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
-	iamTypes "github.com/aws/aws-sdk-go-v2/service/iam/types"
-	"github.com/cloudquery/plugin-sdk/faker"
+	"github.com/aws/aws-sdk-go-v2/service/iam/types"
+	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/require"
 )
 
 func buildIamUsers(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m := mocks.NewMockIamClient(ctrl)
-	u := iamTypes.User{}
-	err := faker.FakeObject(&u)
-	if err != nil {
-		t.Fatal(err)
-	}
-	g := iamTypes.Group{}
-	err = faker.FakeObject(&g)
-	if err != nil {
-		t.Fatal(err)
-	}
-	km := iamTypes.AccessKeyMetadata{}
-	err = faker.FakeObject(&km)
-	if err != nil {
-		t.Fatal(err)
-	}
-	aup := iamTypes.AttachedPolicy{}
-	err = faker.FakeObject(&aup)
-	if err != nil {
-		t.Fatal(err)
-	}
+	u := types.User{}
+	require.NoError(t, faker.FakeObject(&u))
+	g := types.Group{}
+	require.NoError(t, faker.FakeObject(&g))
+	km := types.AccessKeyMetadata{}
+	require.NoError(t, faker.FakeObject(&km))
+	aup := types.AttachedPolicy{}
+	require.NoError(t, faker.FakeObject(&aup))
 	akl := iam.GetAccessKeyLastUsedOutput{}
-	err = faker.FakeObject(&akl)
-	if err != nil {
-		t.Fatal(err)
-	}
-	ut := iam.ListUserTagsOutput{}
-	err = faker.FakeObject(&ut)
-	if err != nil {
-		t.Fatal(err)
-	}
-	mfa := iam.ListMFADevicesOutput{}
-	err = faker.FakeObject(&mfa)
-	if err != nil {
-		t.Fatal(err)
-	}
-	log := iam.GetLoginProfileOutput{}
-	err = faker.FakeObject(&log)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&akl))
+	mfaDevice := types.MFADevice{}
+	require.NoError(t, faker.FakeObject(&mfaDevice))
 
-	var tags []iamTypes.Tag
-	err = faker.FakeObject(&tags)
-	if err != nil {
-		t.Fatal(err)
-	}
+	sshPublicKey := types.SSHPublicKeyMetadata{}
+	require.NoError(t, faker.FakeObject(&sshPublicKey))
 
-	m.EXPECT().ListUsers(gomock.Any(), gomock.Any()).Return(
+	var tags []types.Tag
+	require.NoError(t, faker.FakeObject(&tags))
+
+	m.EXPECT().ListUsers(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.ListUsersOutput{
-			Users: []iamTypes.User{u},
+			Users: []types.User{u},
 		}, nil)
-	m.EXPECT().GetUser(gomock.Any(), gomock.Any()).Return(
+	m.EXPECT().GetUser(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.GetUserOutput{
 			User: &u,
 		}, nil)
-	m.EXPECT().ListGroupsForUser(gomock.Any(), gomock.Any()).AnyTimes().Return(
+	m.EXPECT().ListGroupsForUser(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.ListGroupsForUserOutput{
-			Groups: []iamTypes.Group{g},
+			Groups: []types.Group{g},
 		}, nil)
-	m.EXPECT().ListAccessKeys(gomock.Any(), gomock.Any()).AnyTimes().Return(
+	m.EXPECT().ListAccessKeys(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.ListAccessKeysOutput{
-			AccessKeyMetadata: []iamTypes.AccessKeyMetadata{km},
+			AccessKeyMetadata: []types.AccessKeyMetadata{km},
 		}, nil)
-	m.EXPECT().ListAttachedUserPolicies(gomock.Any(), gomock.Any()).AnyTimes().Return(
+	m.EXPECT().ListAttachedUserPolicies(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.ListAttachedUserPoliciesOutput{
-			AttachedPolicies: []iamTypes.AttachedPolicy{aup},
+			AttachedPolicies: []types.AttachedPolicy{aup},
 		}, nil)
-	m.EXPECT().GetAccessKeyLastUsed(gomock.Any(), gomock.Any()).AnyTimes().Return(
+	m.EXPECT().GetAccessKeyLastUsed(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&akl, nil)
+	m.EXPECT().ListMFADevices(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+		&iam.ListMFADevicesOutput{
+			MFADevices: []types.MFADevice{mfaDevice},
+		}, nil)
 
-	m.EXPECT().ListUserTags(gomock.Any(), gomock.Any()).Return(
-		&ut, nil)
-	m.EXPECT().ListMFADevices(gomock.Any(), gomock.Any()).Return(
-		&mfa, nil)
-	m.EXPECT().GetLoginProfile(gomock.Any(), gomock.Any()).Return(
-		&log, nil)
-
-	//list user inline policies
 	var l []string
-	err = faker.FakeObject(&l)
-	if err != nil {
-		t.Fatal(err)
-	}
-	m.EXPECT().ListUserPolicies(gomock.Any(), gomock.Any(), gomock.Any()).AnyTimes().Return(
+	require.NoError(t, faker.FakeObject(&l))
+	m.EXPECT().ListUserPolicies(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.ListUserPoliciesOutput{
 			PolicyNames: l,
 		}, nil)
 
-	//get policy
 	p := iam.GetUserPolicyOutput{}
-	err = faker.FakeObject(&p)
-	if err != nil {
-		t.Fatal(err)
-	}
+	require.NoError(t, faker.FakeObject(&p))
 	document := "{\"test\": {\"t1\":1}}"
 	p.PolicyDocument = &document
-	m.EXPECT().GetUserPolicy(gomock.Any(), gomock.Any(), gomock.Any()).AnyTimes().Return(
+	m.EXPECT().GetUserPolicy(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&p, nil)
+
+	m.EXPECT().ListSSHPublicKeys(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+		&iam.ListSSHPublicKeysOutput{
+			SSHPublicKeys: []types.SSHPublicKeyMetadata{sshPublicKey},
+		}, nil)
+
+	sc := types.SigningCertificate{}
+	require.NoError(t, faker.FakeObject(&sc))
+	m.EXPECT().ListSigningCertificates(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+		&iam.ListSigningCertificatesOutput{
+			Certificates: []types.SigningCertificate{sc},
+		}, nil)
+
+	// m.EXPECT().GenerateServiceLastAccessedDetails(gomock.Any(), gomock.Any(), gomock.Any()).Return(&iam.GenerateServiceLastAccessedDetailsOutput{JobId: aws.String("JobId")}, nil)
+
+	// lastAccessed := []types.ServiceLastAccessed{}
+	// require.NoError(t, faker.FakeObject(&lastAccessed))
+	// m.EXPECT().GetServiceLastAccessedDetails(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+	// 	&iam.GetServiceLastAccessedDetailsOutput{ServicesLastAccessed: lastAccessed, JobStatus: types.JobStatusTypeCompleted},
+	// 	nil,
+	// )
 
 	return client.Services{
 		Iam: m,
