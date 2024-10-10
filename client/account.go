@@ -5,8 +5,8 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/OpsHelmInc/cloudquery/client/services"
-	"github.com/OpsHelmInc/cloudquery/client/spec"
+	"github.com/OpsHelmInc/cloudquery/v2/client/services"
+	"github.com/OpsHelmInc/cloudquery/v2/client/spec"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"

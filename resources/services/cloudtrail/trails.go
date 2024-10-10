@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"regexp"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/resources/services/cloudtrail/models"
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/resources/services/cloudtrail/models"
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"

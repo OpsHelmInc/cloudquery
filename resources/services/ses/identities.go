@@ -3,8 +3,8 @@ package ses
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/resources/services/ses/models"
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/resources/services/ses/models"
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/sesv2"
 	"github.com/aws/aws-sdk-go-v2/service/sesv2/types"

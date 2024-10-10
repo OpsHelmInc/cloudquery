@@ -6,8 +6,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/stretchr/testify/require"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/sns"
 	"github.com/aws/aws-sdk-go-v2/service/sns/types"
 	"github.com/cloudquery/plugin-sdk/v4/faker"

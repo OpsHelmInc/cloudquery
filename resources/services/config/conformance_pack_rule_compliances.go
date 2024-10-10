@@ -3,8 +3,8 @@ package config
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/resources/services/config/models"
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/resources/services/config/models"
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/configservice"
 	"github.com/aws/aws-sdk-go-v2/service/configservice/types"

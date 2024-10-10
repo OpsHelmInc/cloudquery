@@ -3,7 +3,7 @@ package dms
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client/services"
+	"github.com/OpsHelmInc/cloudquery/v2/client/services"
 	"github.com/aws/aws-sdk-go-v2/service/databasemigrationservice"
 	"github.com/thoas/go-funk"
 )

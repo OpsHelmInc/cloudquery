@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/OpsHelmInc/cloudquery/client/spec"
+	"github.com/OpsHelmInc/cloudquery/v2/client/spec"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/retry"
 	"github.com/aws/aws-sdk-go-v2/config"

@@ -6,14 +6,14 @@ import (
 	"path"
 	"runtime"
 
-	"github.com/OpsHelmInc/cloudquery/client/spec"
+	"github.com/OpsHelmInc/cloudquery/v2/client/spec"
 	"github.com/cloudquery/codegen/jsonschema"
 )
 
 func main() {
 	fmt.Println("Generating JSON schema for plugin spec")
 	jsonschema.GenerateIntoFile(new(spec.Spec), path.Join(currDir(), "..", "schema.json"),
-		jsonschema.WithAddGoComments("github.com/OpsHelmInc/cloudquery/client/spec", path.Join(currDir(), "..")),
+		jsonschema.WithAddGoComments("github.com/OpsHelmInc/cloudquery/v2/client/spec", path.Join(currDir(), "..")),
 		jsonschema.WithAddGoComments("github.com/aws/aws-sdk-go-v2", path.Join(currDir(), "..", "..", "..", "vendor", "github.com/aws/aws-sdk-go-v2")),
 	)
 }

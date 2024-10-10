@@ -3,7 +3,7 @@ package appmesh
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/appmesh"
 	"github.com/aws/aws-sdk-go-v2/service/appmesh/types"

@@ -3,8 +3,8 @@ package cloudtrail
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/resources/services/cloudtrail/models"
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/resources/services/cloudtrail/models"
 	"github.com/aws/aws-sdk-go-v2/service/cloudtrail"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/cloudquery/plugin-sdk/v4/transformers"

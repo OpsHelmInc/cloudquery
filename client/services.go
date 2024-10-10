@@ -1,7 +1,7 @@
 package client
 
 import (
-	"github.com/OpsHelmInc/cloudquery/client/services"
+	"github.com/OpsHelmInc/cloudquery/v2/client/services"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/accessanalyzer"
 	"github.com/aws/aws-sdk-go-v2/service/account"

@@ -3,7 +3,7 @@ package networkmanager
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/aws/aws-sdk-go-v2/service/networkmanager"
 	"github.com/aws/aws-sdk-go-v2/service/networkmanager/types"
 	"github.com/cloudquery/plugin-sdk/v4/schema"
