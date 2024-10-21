@@ -5,8 +5,6 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client/services"
-	"github.com/OpsHelmInc/cloudquery/v2/client/spec"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
@@ -15,6 +13,9 @@ import (
 	"github.com/aws/smithy-go"
 	"github.com/rs/zerolog"
 	"github.com/thoas/go-funk"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client/services"
+	"github.com/OpsHelmInc/cloudquery/v2/client/spec"
 )
 
 type svcsDetail struct {
@@ -198,6 +199,7 @@ func verifyRegions(regions []string) error {
 	}
 	return nil
 }
+
 func isAllRegions(regions []string) bool {
 	// if regions array is not valid return false
 	err := verifyRegions(regions)

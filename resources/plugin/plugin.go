@@ -4,12 +4,13 @@ import (
 	"maps"
 	"strings"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client/spec"
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/cloudquery/plugin-sdk/v4/caser"
-	"github.com/cloudquery/plugin-sdk/v4/docs"
-	"github.com/cloudquery/plugin-sdk/v4/plugin"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client/spec"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/caser"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/docs"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/plugin"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
 )
 
 var (

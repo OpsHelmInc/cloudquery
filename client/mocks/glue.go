@@ -845,6 +845,66 @@ func (mr *MockGlueClientMockRecorder) GetDataCatalogEncryptionSettings(arg0, arg
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDataCatalogEncryptionSettings", reflect.TypeOf((*MockGlueClient)(nil).GetDataCatalogEncryptionSettings), varargs...)
 }
 
+// GetDataQualityModel mocks base method.
+func (m *MockGlueClient) GetDataQualityModel(arg0 context.Context, arg1 *glue.GetDataQualityModelInput, arg2 ...func(*glue.Options)) (*glue.GetDataQualityModelOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &glue.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetDataQualityModel")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetDataQualityModel", varargs...)
+	ret0, _ := ret[0].(*glue.GetDataQualityModelOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetDataQualityModel indicates an expected call of GetDataQualityModel.
+func (mr *MockGlueClientMockRecorder) GetDataQualityModel(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDataQualityModel", reflect.TypeOf((*MockGlueClient)(nil).GetDataQualityModel), varargs...)
+}
+
+// GetDataQualityModelResult mocks base method.
+func (m *MockGlueClient) GetDataQualityModelResult(arg0 context.Context, arg1 *glue.GetDataQualityModelResultInput, arg2 ...func(*glue.Options)) (*glue.GetDataQualityModelResultOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &glue.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetDataQualityModelResult")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetDataQualityModelResult", varargs...)
+	ret0, _ := ret[0].(*glue.GetDataQualityModelResultOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetDataQualityModelResult indicates an expected call of GetDataQualityModelResult.
+func (mr *MockGlueClientMockRecorder) GetDataQualityModelResult(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDataQualityModelResult", reflect.TypeOf((*MockGlueClient)(nil).GetDataQualityModelResult), varargs...)
+}
+
 // GetDataQualityResult mocks base method.
 func (m *MockGlueClient) GetDataQualityResult(arg0 context.Context, arg1 *glue.GetDataQualityResultInput, arg2 ...func(*glue.Options)) (*glue.GetDataQualityResultOutput, error) {
 
@@ -2673,6 +2733,66 @@ func (mr *MockGlueClientMockRecorder) ListDataQualityRulesets(arg0, arg1 interfa
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListDataQualityRulesets", reflect.TypeOf((*MockGlueClient)(nil).ListDataQualityRulesets), varargs...)
+}
+
+// ListDataQualityStatisticAnnotations mocks base method.
+func (m *MockGlueClient) ListDataQualityStatisticAnnotations(arg0 context.Context, arg1 *glue.ListDataQualityStatisticAnnotationsInput, arg2 ...func(*glue.Options)) (*glue.ListDataQualityStatisticAnnotationsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &glue.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListDataQualityStatisticAnnotations")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListDataQualityStatisticAnnotations", varargs...)
+	ret0, _ := ret[0].(*glue.ListDataQualityStatisticAnnotationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListDataQualityStatisticAnnotations indicates an expected call of ListDataQualityStatisticAnnotations.
+func (mr *MockGlueClientMockRecorder) ListDataQualityStatisticAnnotations(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListDataQualityStatisticAnnotations", reflect.TypeOf((*MockGlueClient)(nil).ListDataQualityStatisticAnnotations), varargs...)
+}
+
+// ListDataQualityStatistics mocks base method.
+func (m *MockGlueClient) ListDataQualityStatistics(arg0 context.Context, arg1 *glue.ListDataQualityStatisticsInput, arg2 ...func(*glue.Options)) (*glue.ListDataQualityStatisticsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &glue.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListDataQualityStatistics")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListDataQualityStatistics", varargs...)
+	ret0, _ := ret[0].(*glue.ListDataQualityStatisticsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListDataQualityStatistics indicates an expected call of ListDataQualityStatistics.
+func (mr *MockGlueClientMockRecorder) ListDataQualityStatistics(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListDataQualityStatistics", reflect.TypeOf((*MockGlueClient)(nil).ListDataQualityStatistics), varargs...)
 }
 
 // ListDevEndpoints mocks base method.

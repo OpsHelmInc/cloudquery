@@ -1445,6 +1445,36 @@ func (mr *MockSagemakerClientMockRecorder) DescribeNotebookInstanceLifecycleConf
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeNotebookInstanceLifecycleConfig", reflect.TypeOf((*MockSagemakerClient)(nil).DescribeNotebookInstanceLifecycleConfig), varargs...)
 }
 
+// DescribeOptimizationJob mocks base method.
+func (m *MockSagemakerClient) DescribeOptimizationJob(arg0 context.Context, arg1 *sagemaker.DescribeOptimizationJobInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.DescribeOptimizationJobOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &sagemaker.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeOptimizationJob")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeOptimizationJob", varargs...)
+	ret0, _ := ret[0].(*sagemaker.DescribeOptimizationJobOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeOptimizationJob indicates an expected call of DescribeOptimizationJob.
+func (mr *MockSagemakerClientMockRecorder) DescribeOptimizationJob(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeOptimizationJob", reflect.TypeOf((*MockSagemakerClient)(nil).DescribeOptimizationJob), varargs...)
+}
+
 // DescribePipeline mocks base method.
 func (m *MockSagemakerClient) DescribePipeline(arg0 context.Context, arg1 *sagemaker.DescribePipelineInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.DescribePipelineOutput, error) {
 
@@ -3753,6 +3783,36 @@ func (mr *MockSagemakerClientMockRecorder) ListNotebookInstances(arg0, arg1 inte
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListNotebookInstances", reflect.TypeOf((*MockSagemakerClient)(nil).ListNotebookInstances), varargs...)
+}
+
+// ListOptimizationJobs mocks base method.
+func (m *MockSagemakerClient) ListOptimizationJobs(arg0 context.Context, arg1 *sagemaker.ListOptimizationJobsInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.ListOptimizationJobsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &sagemaker.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListOptimizationJobs")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListOptimizationJobs", varargs...)
+	ret0, _ := ret[0].(*sagemaker.ListOptimizationJobsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListOptimizationJobs indicates an expected call of ListOptimizationJobs.
+func (mr *MockSagemakerClientMockRecorder) ListOptimizationJobs(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListOptimizationJobs", reflect.TypeOf((*MockSagemakerClient)(nil).ListOptimizationJobs), varargs...)
 }
 
 // ListPipelineExecutionSteps mocks base method.

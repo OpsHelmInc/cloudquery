@@ -1,14 +1,16 @@
 package emr
 
 import (
-	"github.com/OpsHelmInc/cloudquery/v2/client"
-	"github.com/OpsHelmInc/cloudquery/v2/client/mocks"
+	"testing"
+
 	"github.com/aws/aws-sdk-go-v2/service/emr"
 	"github.com/aws/aws-sdk-go-v2/service/emr/types"
-	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
-	"testing"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/client/mocks"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/faker"
 )
 
 func buildStudios(t *testing.T, ctrl *gomock.Controller) client.Services {

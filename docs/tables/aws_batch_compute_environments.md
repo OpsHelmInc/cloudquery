@@ -21,6 +21,7 @@ The primary key for this table is **_cq_id**.
 |compute_environment_name|`utf8`|
 |compute_resources|`json`|
 |container_orchestration_type|`utf8`|
+|context|`utf8`|
 |ecs_cluster_arn|`utf8`|
 |eks_configuration|`json`|
 |service_role|`utf8`|

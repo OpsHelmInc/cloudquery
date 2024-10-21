@@ -3,10 +3,11 @@ package rds
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/aws/aws-sdk-go-v2/service/rds"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/thoas/go-funk"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
 )
 
 func resolveRDSTags(path string) schema.ColumnResolver {

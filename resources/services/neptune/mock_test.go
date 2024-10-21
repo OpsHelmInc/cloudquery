@@ -3,14 +3,15 @@ package neptune
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
-	"github.com/OpsHelmInc/cloudquery/v2/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/neptune"
 	"github.com/aws/aws-sdk-go-v2/service/neptune/types"
-	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/client/mocks"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/faker"
 )
 
 func buildNeptuneDBClusters(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -90,9 +91,11 @@ func buildNeptuneDBSubnetGroups(t *testing.T, ctrl *gomock.Controller) client.Se
 func TestNeptuneInstances(t *testing.T) {
 	client.AwsMockTestHelper(t, Instances(), buildNeptuneDBInstances, client.TestOptions{})
 }
+
 func TestNeptuneClusters(t *testing.T) {
 	client.AwsMockTestHelper(t, Clusters(), buildNeptuneDBClusters, client.TestOptions{})
 }
+
 func TestNeptuneSubnetGroups(t *testing.T) {
 	client.AwsMockTestHelper(t, SubnetGroups(), buildNeptuneDBSubnetGroups, client.TestOptions{})
 }

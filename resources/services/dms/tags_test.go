@@ -4,13 +4,14 @@ import (
 	"context"
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/databasemigrationservice"
 	"github.com/aws/aws-sdk-go-v2/service/databasemigrationservice/types"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
 	"github.com/thoas/go-funk"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client/mocks"
 )
 
 func TestGetTags(t *testing.T) {

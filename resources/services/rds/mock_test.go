@@ -3,14 +3,15 @@ package rds
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
-	"github.com/OpsHelmInc/cloudquery/v2/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/rds"
 	rdsTypes "github.com/aws/aws-sdk-go-v2/service/rds/types"
-	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/client/mocks"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/faker"
 )
 
 func buildRdsCertificates(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -104,12 +105,15 @@ func buildRdsDBReservedInstances(t *testing.T, ctrl *gomock.Controller) client.S
 func TestRdsCertificates(t *testing.T) {
 	client.AwsMockTestHelper(t, Certificates(), buildRdsCertificates, client.TestOptions{})
 }
+
 func TestRdsInstances(t *testing.T) {
 	client.AwsMockTestHelper(t, Instances(), buildRdsDBInstances, client.TestOptions{})
 }
+
 func TestRdsClusters(t *testing.T) {
 	client.AwsMockTestHelper(t, Clusters(), buildRdsDBClusters, client.TestOptions{})
 }
+
 func TestRdsSubnetGroups(t *testing.T) {
 	client.AwsMockTestHelper(t, SubnetGroups(), buildRdsDBSubnetGroups, client.TestOptions{})
 }

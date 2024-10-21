@@ -6,9 +6,10 @@ import (
 	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/cloudquery/plugin-sdk/v4/scheduler"
 	"github.com/invopop/jsonschema"
 	orderedmap "github.com/wk8/go-ordered-map/v2"
+
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/scheduler"
 )
 
 type Spec struct {

@@ -6,12 +6,13 @@ import (
 	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
-	"github.com/cloudquery/plugin-sdk/v4/scalar"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/mitchellh/hashstructure/v2"
 	"github.com/thoas/go-funk"
 
 	"github.com/OpsHelmInc/ohaws"
+
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/scalar"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
 )
 
 func ResolveAWSAccount(_ context.Context, meta schema.ClientMeta, r *schema.Resource, c schema.Column) error {

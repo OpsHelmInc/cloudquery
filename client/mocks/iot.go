@@ -2825,6 +2825,36 @@ func (mr *MockIotClientMockRecorder) ListRoleAliases(arg0, arg1 interface{}, arg
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListRoleAliases", reflect.TypeOf((*MockIotClient)(nil).ListRoleAliases), varargs...)
 }
 
+// ListSbomValidationResults mocks base method.
+func (m *MockIotClient) ListSbomValidationResults(arg0 context.Context, arg1 *iot.ListSbomValidationResultsInput, arg2 ...func(*iot.Options)) (*iot.ListSbomValidationResultsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &iot.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListSbomValidationResults")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListSbomValidationResults", varargs...)
+	ret0, _ := ret[0].(*iot.ListSbomValidationResultsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListSbomValidationResults indicates an expected call of ListSbomValidationResults.
+func (mr *MockIotClientMockRecorder) ListSbomValidationResults(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListSbomValidationResults", reflect.TypeOf((*MockIotClient)(nil).ListSbomValidationResults), varargs...)
+}
+
 // ListScheduledAudits mocks base method.
 func (m *MockIotClient) ListScheduledAudits(arg0 context.Context, arg1 *iot.ListScheduledAuditsInput, arg2 ...func(*iot.Options)) (*iot.ListScheduledAuditsOutput, error) {
 

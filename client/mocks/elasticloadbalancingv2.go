@@ -65,6 +65,36 @@ func (mr *MockElasticloadbalancingv2ClientMockRecorder) DescribeAccountLimits(ar
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeAccountLimits", reflect.TypeOf((*MockElasticloadbalancingv2Client)(nil).DescribeAccountLimits), varargs...)
 }
 
+// DescribeListenerAttributes mocks base method.
+func (m *MockElasticloadbalancingv2Client) DescribeListenerAttributes(arg0 context.Context, arg1 *elasticloadbalancingv2.DescribeListenerAttributesInput, arg2 ...func(*elasticloadbalancingv2.Options)) (*elasticloadbalancingv2.DescribeListenerAttributesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &elasticloadbalancingv2.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeListenerAttributes")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeListenerAttributes", varargs...)
+	ret0, _ := ret[0].(*elasticloadbalancingv2.DescribeListenerAttributesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeListenerAttributes indicates an expected call of DescribeListenerAttributes.
+func (mr *MockElasticloadbalancingv2ClientMockRecorder) DescribeListenerAttributes(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeListenerAttributes", reflect.TypeOf((*MockElasticloadbalancingv2Client)(nil).DescribeListenerAttributes), varargs...)
+}
+
 // DescribeListenerCertificates mocks base method.
 func (m *MockElasticloadbalancingv2Client) DescribeListenerCertificates(arg0 context.Context, arg1 *elasticloadbalancingv2.DescribeListenerCertificatesInput, arg2 ...func(*elasticloadbalancingv2.Options)) (*elasticloadbalancingv2.DescribeListenerCertificatesOutput, error) {
 
@@ -453,6 +483,36 @@ func (mr *MockElasticloadbalancingv2ClientMockRecorder) DescribeTrustStores(arg0
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeTrustStores", reflect.TypeOf((*MockElasticloadbalancingv2Client)(nil).DescribeTrustStores), varargs...)
+}
+
+// GetResourcePolicy mocks base method.
+func (m *MockElasticloadbalancingv2Client) GetResourcePolicy(arg0 context.Context, arg1 *elasticloadbalancingv2.GetResourcePolicyInput, arg2 ...func(*elasticloadbalancingv2.Options)) (*elasticloadbalancingv2.GetResourcePolicyOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &elasticloadbalancingv2.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to GetResourcePolicy")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetResourcePolicy", varargs...)
+	ret0, _ := ret[0].(*elasticloadbalancingv2.GetResourcePolicyOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetResourcePolicy indicates an expected call of GetResourcePolicy.
+func (mr *MockElasticloadbalancingv2ClientMockRecorder) GetResourcePolicy(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetResourcePolicy", reflect.TypeOf((*MockElasticloadbalancingv2Client)(nil).GetResourcePolicy), varargs...)
 }
 
 // GetTrustStoreCaCertificatesBundle mocks base method.

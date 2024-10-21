@@ -65,6 +65,7 @@ type Ec2Client interface {
 	DescribeInstances(context.Context, *ec2.DescribeInstancesInput, ...func(*ec2.Options)) (*ec2.DescribeInstancesOutput, error)
 	DescribeInternetGateways(context.Context, *ec2.DescribeInternetGatewaysInput, ...func(*ec2.Options)) (*ec2.DescribeInternetGatewaysOutput, error)
 	DescribeIpamByoasn(context.Context, *ec2.DescribeIpamByoasnInput, ...func(*ec2.Options)) (*ec2.DescribeIpamByoasnOutput, error)
+	DescribeIpamExternalResourceVerificationTokens(context.Context, *ec2.DescribeIpamExternalResourceVerificationTokensInput, ...func(*ec2.Options)) (*ec2.DescribeIpamExternalResourceVerificationTokensOutput, error)
 	DescribeIpamPools(context.Context, *ec2.DescribeIpamPoolsInput, ...func(*ec2.Options)) (*ec2.DescribeIpamPoolsOutput, error)
 	DescribeIpamResourceDiscoveries(context.Context, *ec2.DescribeIpamResourceDiscoveriesInput, ...func(*ec2.Options)) (*ec2.DescribeIpamResourceDiscoveriesOutput, error)
 	DescribeIpamResourceDiscoveryAssociations(context.Context, *ec2.DescribeIpamResourceDiscoveryAssociationsInput, ...func(*ec2.Options)) (*ec2.DescribeIpamResourceDiscoveryAssociationsOutput, error)

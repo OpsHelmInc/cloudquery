@@ -4,11 +4,12 @@ import (
 	"context"
 	"strings"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/apprunner"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
 	"github.com/thoas/go-funk"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
 )
 
 func resolveApprunnerTags(path string) schema.ColumnResolver {

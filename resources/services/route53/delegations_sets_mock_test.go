@@ -3,13 +3,14 @@ package route53
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
-	"github.com/OpsHelmInc/cloudquery/v2/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/route53"
 	route53Types "github.com/aws/aws-sdk-go-v2/service/route53/types"
-	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/client/mocks"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/faker"
 )
 
 func buildRoute53DelegationSetsMock(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -25,6 +26,7 @@ func buildRoute53DelegationSetsMock(t *testing.T, ctrl *gomock.Controller) clien
 		Route53: m,
 	}
 }
+
 func TestRoute53DelegationSets(t *testing.T) {
 	client.AwsMockTestHelper(t, DelegationSets(), buildRoute53DelegationSetsMock, client.TestOptions{})
 }

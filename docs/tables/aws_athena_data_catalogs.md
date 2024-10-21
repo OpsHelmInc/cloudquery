@@ -24,5 +24,8 @@ The following tables depend on aws_athena_data_catalogs:
 |oh_resource_type|`utf8`|
 |name|`utf8`|
 |type|`utf8`|
+|connection_type|`utf8`|
 |description|`utf8`|
+|error|`utf8`|
 |parameters|`json`|
+|status|`utf8`|

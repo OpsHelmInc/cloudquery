@@ -1745,6 +1745,36 @@ func (mr *MockEc2ClientMockRecorder) DescribeIpamByoasn(arg0, arg1 interface{}, 
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeIpamByoasn", reflect.TypeOf((*MockEc2Client)(nil).DescribeIpamByoasn), varargs...)
 }
 
+// DescribeIpamExternalResourceVerificationTokens mocks base method.
+func (m *MockEc2Client) DescribeIpamExternalResourceVerificationTokens(arg0 context.Context, arg1 *ec2.DescribeIpamExternalResourceVerificationTokensInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeIpamExternalResourceVerificationTokensOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &ec2.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to DescribeIpamExternalResourceVerificationTokens")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeIpamExternalResourceVerificationTokens", varargs...)
+	ret0, _ := ret[0].(*ec2.DescribeIpamExternalResourceVerificationTokensOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeIpamExternalResourceVerificationTokens indicates an expected call of DescribeIpamExternalResourceVerificationTokens.
+func (mr *MockEc2ClientMockRecorder) DescribeIpamExternalResourceVerificationTokens(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeIpamExternalResourceVerificationTokens", reflect.TypeOf((*MockEc2Client)(nil).DescribeIpamExternalResourceVerificationTokens), varargs...)
+}
+
 // DescribeIpamPools mocks base method.
 func (m *MockEc2Client) DescribeIpamPools(arg0 context.Context, arg1 *ec2.DescribeIpamPoolsInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeIpamPoolsOutput, error) {
 

@@ -3,11 +3,12 @@ package quicksight
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/aws/aws-sdk-go-v2/service/quicksight"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
-	sdkTypes "github.com/cloudquery/plugin-sdk/v4/types"
 	"github.com/thoas/go-funk"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
+	sdkTypes "github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/types"
 )
 
 var tagsCol = schema.Column{

@@ -11,14 +11,17 @@ type ExpandedStackSet struct {
 	types.StackSet
 	types.CallAs
 }
+
 type ExpandedStackSetOperationSummary struct {
 	types.StackSetOperationSummary
 	types.CallAs
 }
+
 type ExpandedStackSetOperation struct {
 	types.StackSetOperation
 	types.CallAs
 }
+
 type ExpandedStackInstanceSummary struct {
 	types.StackInstanceSummary
 	types.CallAs

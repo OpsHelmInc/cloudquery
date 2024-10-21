@@ -7,10 +7,11 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	types1 "github.com/aws/aws-sdk-go-v2/service/codepipeline/types"
 	types2 "github.com/aws/aws-sdk-go-v2/service/redshift/types"
-	"github.com/cloudquery/plugin-sdk/v4/scalar"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
-	sdkTypes "github.com/cloudquery/plugin-sdk/v4/types"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/scalar"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
+	sdkTypes "github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/types"
 )
 
 func TestResolveTags(t *testing.T) {
