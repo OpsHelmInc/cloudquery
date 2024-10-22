@@ -3,11 +3,11 @@ package codeartifact
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/aws/aws-sdk-go-v2/service/codeartifact"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
-
 	"github.com/thoas/go-funk"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
 )
 
 func resolveCodeartifactTags(path string) schema.ColumnResolver {

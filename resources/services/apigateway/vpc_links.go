@@ -4,14 +4,15 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/apigateway"
 	"github.com/aws/aws-sdk-go-v2/service/apigateway/types"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
-	"github.com/cloudquery/plugin-sdk/v4/transformers"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
 )
 
 func VpcLinks() *schema.Table {
@@ -52,6 +53,7 @@ func fetchApigatewayVpcLinks(ctx context.Context, meta schema.ClientMeta, parent
 	}
 	return nil
 }
+
 func resolveApigatewayVpcLinkArn(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	cl := meta.(*client.Client)
 	link := resource.Item.(types.VpcLink)

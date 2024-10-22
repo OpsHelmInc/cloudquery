@@ -37,6 +37,7 @@ The following tables depend on aws_glue_database_tables:
 |parameters|`json`|
 |partition_keys|`json`|
 |retention|`int64`|
+|status|`json`|
 |storage_descriptor|`json`|
 |table_type|`utf8`|
 |target_table|`json`|

@@ -5,17 +5,18 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
-	"github.com/OpsHelmInc/cloudquery/v2/client/spec"
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/cloudquery/plugin-sdk/v4/message"
-	"github.com/cloudquery/plugin-sdk/v4/plugin"
-	"github.com/cloudquery/plugin-sdk/v4/scheduler"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
-	"github.com/cloudquery/plugin-sdk/v4/state"
 	"github.com/rs/zerolog"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/client/spec"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/message"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/plugin"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/scheduler"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/state"
 )
 
 const maxMsgSize = 100 * 1024 * 1024 // 100 MiB

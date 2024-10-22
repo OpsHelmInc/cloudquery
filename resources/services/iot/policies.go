@@ -3,14 +3,15 @@ package iot
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/iot"
 	"github.com/aws/aws-sdk-go-v2/service/iot/types"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
-	"github.com/cloudquery/plugin-sdk/v4/transformers"
-	sdkTypes "github.com/cloudquery/plugin-sdk/v4/types"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
+	sdkTypes "github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/types"
 )
 
 func Policies() *schema.Table {

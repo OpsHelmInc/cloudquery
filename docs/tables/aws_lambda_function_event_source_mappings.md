@@ -25,9 +25,12 @@ This table depends on [aws_lambda_functions](aws_lambda_functions.md).
 |destination_config|`json`|
 |document_db_event_source_config|`json`|
 |event_source_arn|`utf8`|
+|event_source_mapping_arn|`utf8`|
 |filter_criteria|`json`|
+|filter_criteria_error|`json`|
 |function_arn|`utf8`|
 |function_response_types|`list<item: utf8, nullable>`|
+|kms_key_arn|`utf8`|
 |last_modified|`timestamp[us, tz=UTC]`|
 |last_processing_result|`utf8`|
 |maximum_batching_window_in_seconds|`int64`|

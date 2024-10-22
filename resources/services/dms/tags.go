@@ -3,9 +3,10 @@ package dms
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client/services"
 	"github.com/aws/aws-sdk-go-v2/service/databasemigrationservice"
 	"github.com/thoas/go-funk"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client/services"
 )
 
 // getTags fetches tags for the given resources and returns them in a map. arnPtrPath is the path to the ARN field in the resource. The returned map is keyed by ARN.

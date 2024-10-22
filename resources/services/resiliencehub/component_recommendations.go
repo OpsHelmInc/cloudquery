@@ -3,11 +3,12 @@ package resiliencehub
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/aws/aws-sdk-go-v2/service/resiliencehub"
 	"github.com/aws/aws-sdk-go-v2/service/resiliencehub/types"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
-	"github.com/cloudquery/plugin-sdk/v4/transformers"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
 )
 
 func appComponentRecommendations() *schema.Table {

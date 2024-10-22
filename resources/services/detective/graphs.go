@@ -3,13 +3,14 @@ package detective
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/detective"
 	"github.com/aws/aws-sdk-go-v2/service/detective/types"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
-	"github.com/cloudquery/plugin-sdk/v4/transformers"
-	sdkTypes "github.com/cloudquery/plugin-sdk/v4/types"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
+	sdkTypes "github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/types"
 )
 
 func Graphs() *schema.Table {
@@ -60,6 +61,7 @@ func fetchGraphs(ctx context.Context, meta schema.ClientMeta, parent *schema.Res
 
 	return nil
 }
+
 func resolveGraphTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	graph := resource.Item.(types.Graph)
 	cl := meta.(*client.Client)

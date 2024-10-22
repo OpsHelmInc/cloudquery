@@ -34,3 +34,5 @@ The following tables depend on aws_backup_vaults:
 |max_retention_days|`int64`|
 |min_retention_days|`int64`|
 |number_of_recovery_points|`int64`|
+|vault_state|`utf8`|
+|vault_type|`utf8`|

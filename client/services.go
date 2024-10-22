@@ -1,7 +1,6 @@
 package client
 
 import (
-	"github.com/OpsHelmInc/cloudquery/v2/client/services"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/accessanalyzer"
 	"github.com/aws/aws-sdk-go-v2/service/account"
@@ -123,6 +122,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/wellarchitected"
 	"github.com/aws/aws-sdk-go-v2/service/workspaces"
 	"github.com/aws/aws-sdk-go-v2/service/xray"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client/services"
 )
 
 func initServices(config aws.Config, regions []string) Services {

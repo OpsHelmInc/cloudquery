@@ -33,6 +33,7 @@ The following tables depend on aws_glue_jobs:
 |execution_property|`json`|
 |glue_version|`utf8`|
 |job_mode|`utf8`|
+|job_run_queuing_enabled|`bool`|
 |last_modified_on|`timestamp[us, tz=UTC]`|
 |log_uri|`utf8`|
 |maintenance_window|`utf8`|

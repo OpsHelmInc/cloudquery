@@ -43,4 +43,5 @@ The following tables depend on aws_eks_clusters:
 |role_arn|`utf8`|
 |status|`utf8`|
 |tags|`json`|
+|upgrade_policy|`json`|
 |version|`utf8`|

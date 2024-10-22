@@ -19,4 +19,6 @@ The primary key for this table is **_cq_id**.
 |access_grants_instance_arn|`utf8`|
 |access_grants_instance_id|`utf8`|
 |created_at|`timestamp[us, tz=UTC]`|
+|identity_center_application_arn|`utf8`|
 |identity_center_arn|`utf8`|
+|identity_center_instance_arn|`utf8`|

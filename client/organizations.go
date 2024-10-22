@@ -3,16 +3,16 @@ package client
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client/services"
-	"github.com/OpsHelmInc/cloudquery/v2/client/spec"
-	"github.com/thoas/go-funk"
-
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/organizations"
 	orgTypes "github.com/aws/aws-sdk-go-v2/service/organizations/types"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
 	"github.com/rs/zerolog"
+	"github.com/thoas/go-funk"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client/services"
+	"github.com/OpsHelmInc/cloudquery/v2/client/spec"
 )
 
 // Parses org configuration and grabs the appropriate accounts

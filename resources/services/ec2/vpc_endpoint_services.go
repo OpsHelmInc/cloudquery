@@ -3,13 +3,14 @@ package ec2
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
 	"github.com/aws/aws-sdk-go-v2/service/ec2/types"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
-	"github.com/cloudquery/plugin-sdk/v4/transformers"
-	sdkTypes "github.com/cloudquery/plugin-sdk/v4/types"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
+	sdkTypes "github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/types"
 )
 
 func VpcEndpointServices() *schema.Table {
@@ -34,6 +35,7 @@ func VpcEndpointServices() *schema.Table {
 		},
 	}
 }
+
 func fetchEc2VpcEndpointServices(ctx context.Context, meta schema.ClientMeta, _ *schema.Resource, res chan<- any) error {
 	var config ec2.DescribeVpcEndpointServicesInput
 	cl := meta.(*client.Client)

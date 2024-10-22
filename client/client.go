@@ -7,15 +7,16 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client/spec"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
 	wafv2types "github.com/aws/aws-sdk-go-v2/service/wafv2/types"
 	"github.com/aws/smithy-go/logging"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
-	"github.com/cloudquery/plugin-sdk/v4/state"
 	"github.com/rs/zerolog"
 	"golang.org/x/sync/errgroup"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client/spec"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/state"
 )
 
 type Client struct {
@@ -51,10 +52,13 @@ const (
 	awsCnCloudfrontScopeRegion = "cn-north-1"
 )
 
-var errInvalidRegion = errors.New("region wildcard \"*\" is only supported as first argument")
-var errUnknownRegion = func(region string) error {
-	return fmt.Errorf("unknown region: %q", region)
-}
+var (
+	errInvalidRegion = errors.New("region wildcard \"*\" is only supported as first argument")
+	errUnknownRegion = func(region string) error {
+		return fmt.Errorf("unknown region: %q", region)
+	}
+)
+
 var errRetrievingCredentials = errors.New("error retrieving AWS credentials (see logs for details). Please verify your credentials and try again")
 
 var ErrPaidAPIsNotEnabled = errors.New("not fetching resource because `use_paid_apis` is set to false")
@@ -102,6 +106,7 @@ func (c *Client) updateService(service AWSServiceName) {
 		c.ServicesManager.ServicesByPartitionAccount(c.Partition, c.AccountID).InitService(service)
 	}
 }
+
 func (c *Client) Services(service_names ...AWSServiceName) *Services {
 	for _, service := range service_names {
 		c.updateService(service)

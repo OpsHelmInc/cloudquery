@@ -1,0 +1,61 @@
+[
+  {
+    "columns": [
+      {
+        "description": "col1 description",
+        "incremental_key": false,
+        "name": "col1",
+        "not_null": true,
+        "primary_key": true,
+        "type": "int64",
+        "unique": true
+      }
+    ],
+    "description": "",
+    "is_incremental": false,
+    "name": "table1",
+    "relations": ["table2"],
+    "title": "",
+    "is_paid": false
+  },
+  {
+    "columns": [
+      {
+        "description": "col1 description",
+        "incremental_key": true,
+        "name": "col1",
+        "not_null": false,
+        "primary_key": false,
+        "type": "uuid",
+        "unique": false
+      }
+    ],
+    "description": "",
+    "parent": "table1",
+    "relations": ["table3"],
+    "is_incremental": false,
+    "name": "table2",
+    "title": "",
+    "is_paid": false
+  },
+  {
+    "columns": [
+      {
+        "description": "col1 description",
+        "incremental_key": true,
+        "name": "col1",
+        "not_null": false,
+        "primary_key": false,
+        "type": "uuid",
+        "unique": false
+      }
+    ],
+    "description": "",
+    "parent": "table2",
+    "relations": [],
+    "is_incremental": false,
+    "name": "table3",
+    "title": "",
+    "is_paid": true
+  }
+]

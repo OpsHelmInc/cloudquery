@@ -3,13 +3,14 @@ package apprunner
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/apprunner"
 	"github.com/aws/aws-sdk-go-v2/service/apprunner/types"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
-	"github.com/cloudquery/plugin-sdk/v4/transformers"
-	sdkTypes "github.com/cloudquery/plugin-sdk/v4/types"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
+	sdkTypes "github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/types"
 )
 
 func AutoScalingConfigurations() *schema.Table {
@@ -56,6 +57,7 @@ func fetchApprunnerAutoScalingConfigurations(ctx context.Context, meta schema.Cl
 	}
 	return nil
 }
+
 func getAutoScalingConfiguration(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceApprunner).Apprunner

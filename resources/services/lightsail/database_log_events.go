@@ -4,15 +4,16 @@ import (
 	"context"
 	"time"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
-	"github.com/OpsHelmInc/cloudquery/v2/resources/services/lightsail/models"
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/lightsail"
 	"github.com/aws/aws-sdk-go-v2/service/lightsail/types"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
-	"github.com/cloudquery/plugin-sdk/v4/transformers"
 	"golang.org/x/sync/errgroup"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
+	"github.com/OpsHelmInc/cloudquery/v2/resources/services/lightsail/models"
 )
 
 func databaseLogEvents() *schema.Table {

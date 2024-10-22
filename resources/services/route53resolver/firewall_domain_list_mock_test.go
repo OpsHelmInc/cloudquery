@@ -3,13 +3,14 @@ package route53resolver
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
-	"github.com/OpsHelmInc/cloudquery/v2/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/route53resolver"
 	"github.com/aws/aws-sdk-go-v2/service/route53resolver/types"
-	"github.com/cloudquery/plugin-sdk/v4/faker"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/client/mocks"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/faker"
 )
 
 func buildFirewallDomainListMock(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -34,6 +35,7 @@ func buildFirewallDomainListMock(t *testing.T, ctrl *gomock.Controller) client.S
 		Route53resolver: m,
 	}
 }
+
 func TestFirewallDomainList(t *testing.T) {
 	client.AwsMockTestHelper(t, FirewallDomainLists(), buildFirewallDomainListMock, client.TestOptions{})
 }

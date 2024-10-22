@@ -6,14 +6,14 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client/mocks"
-	"github.com/OpsHelmInc/cloudquery/v2/client/spec"
-	"github.com/golang/mock/gomock"
-
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/organizations"
 	orgTypes "github.com/aws/aws-sdk-go-v2/service/organizations/types"
+	"github.com/golang/mock/gomock"
 	"github.com/google/go-cmp/cmp"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client/mocks"
+	"github.com/OpsHelmInc/cloudquery/v2/client/spec"
 )
 
 // sets up test accounts with the following structure:

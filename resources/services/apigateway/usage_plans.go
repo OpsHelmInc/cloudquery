@@ -4,14 +4,15 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/apigateway"
 	"github.com/aws/aws-sdk-go-v2/service/apigateway/types"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
-	"github.com/cloudquery/plugin-sdk/v4/transformers"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
 )
 
 func UsagePlans() *schema.Table {
@@ -55,6 +56,7 @@ func fetchApigatewayUsagePlans(ctx context.Context, meta schema.ClientMeta, pare
 	}
 	return nil
 }
+
 func resolveApigatewayUsagePlanArn(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	cl := meta.(*client.Client)
 	up := resource.Item.(types.UsagePlan)
@@ -66,6 +68,7 @@ func resolveApigatewayUsagePlanArn(ctx context.Context, meta schema.ClientMeta, 
 		Resource:  fmt.Sprintf("/usageplans/%s", aws.ToString(up.Id)),
 	}.String())
 }
+
 func fetchApigatewayUsagePlanKeys(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	r := parent.Item.(types.UsagePlan)
 	cl := meta.(*client.Client)
@@ -82,6 +85,7 @@ func fetchApigatewayUsagePlanKeys(ctx context.Context, meta schema.ClientMeta, p
 	}
 	return nil
 }
+
 func resolveApigatewayUsagePlanKeyArn(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	cl := meta.(*client.Client)
 	up := resource.Parent.Item.(types.UsagePlan)

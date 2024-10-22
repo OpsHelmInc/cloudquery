@@ -101,6 +101,7 @@ type IotClient interface {
 	ListProvisioningTemplates(context.Context, *iot.ListProvisioningTemplatesInput, ...func(*iot.Options)) (*iot.ListProvisioningTemplatesOutput, error)
 	ListRelatedResourcesForAuditFinding(context.Context, *iot.ListRelatedResourcesForAuditFindingInput, ...func(*iot.Options)) (*iot.ListRelatedResourcesForAuditFindingOutput, error)
 	ListRoleAliases(context.Context, *iot.ListRoleAliasesInput, ...func(*iot.Options)) (*iot.ListRoleAliasesOutput, error)
+	ListSbomValidationResults(context.Context, *iot.ListSbomValidationResultsInput, ...func(*iot.Options)) (*iot.ListSbomValidationResultsOutput, error)
 	ListScheduledAudits(context.Context, *iot.ListScheduledAuditsInput, ...func(*iot.Options)) (*iot.ListScheduledAuditsOutput, error)
 	ListSecurityProfiles(context.Context, *iot.ListSecurityProfilesInput, ...func(*iot.Options)) (*iot.ListSecurityProfilesOutput, error)
 	ListSecurityProfilesForTarget(context.Context, *iot.ListSecurityProfilesForTargetInput, ...func(*iot.Options)) (*iot.ListSecurityProfilesForTargetOutput, error)

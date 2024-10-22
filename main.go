@@ -4,9 +4,10 @@ import (
 	"context"
 	"log"
 
-	internalPlugin "github.com/OpsHelmInc/cloudquery/v2/resources/plugin"
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/cloudquery/plugin-sdk/v4/serve"
+
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/serve"
+	internalPlugin "github.com/OpsHelmInc/cloudquery/v2/resources/plugin"
 )
 
 func main() {

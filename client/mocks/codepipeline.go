@@ -335,6 +335,66 @@ func (mr *MockCodepipelineClientMockRecorder) ListPipelines(arg0, arg1 interface
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListPipelines", reflect.TypeOf((*MockCodepipelineClient)(nil).ListPipelines), varargs...)
 }
 
+// ListRuleExecutions mocks base method.
+func (m *MockCodepipelineClient) ListRuleExecutions(arg0 context.Context, arg1 *codepipeline.ListRuleExecutionsInput, arg2 ...func(*codepipeline.Options)) (*codepipeline.ListRuleExecutionsOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codepipeline.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListRuleExecutions")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListRuleExecutions", varargs...)
+	ret0, _ := ret[0].(*codepipeline.ListRuleExecutionsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListRuleExecutions indicates an expected call of ListRuleExecutions.
+func (mr *MockCodepipelineClientMockRecorder) ListRuleExecutions(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListRuleExecutions", reflect.TypeOf((*MockCodepipelineClient)(nil).ListRuleExecutions), varargs...)
+}
+
+// ListRuleTypes mocks base method.
+func (m *MockCodepipelineClient) ListRuleTypes(arg0 context.Context, arg1 *codepipeline.ListRuleTypesInput, arg2 ...func(*codepipeline.Options)) (*codepipeline.ListRuleTypesOutput, error) {
+
+	// Assertion inserted by client/mockgen/main.go
+	o := &codepipeline.Options{}
+	for _, f := range arg2 {
+		f(o)
+	}
+	if o.Region == "" {
+		m.ctrl.T.Errorf("Region not set in call to ListRuleTypes")
+	}
+
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListRuleTypes", varargs...)
+	ret0, _ := ret[0].(*codepipeline.ListRuleTypesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListRuleTypes indicates an expected call of ListRuleTypes.
+func (mr *MockCodepipelineClientMockRecorder) ListRuleTypes(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListRuleTypes", reflect.TypeOf((*MockCodepipelineClient)(nil).ListRuleTypes), varargs...)
+}
+
 // ListTagsForResource mocks base method.
 func (m *MockCodepipelineClient) ListTagsForResource(arg0 context.Context, arg1 *codepipeline.ListTagsForResourceInput, arg2 ...func(*codepipeline.Options)) (*codepipeline.ListTagsForResourceOutput, error) {
 

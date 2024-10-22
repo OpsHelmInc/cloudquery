@@ -3,14 +3,15 @@ package elbv1
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
-	"github.com/OpsHelmInc/cloudquery/v2/resources/services/elbv1/models"
 	"github.com/apache/arrow/go/v16/arrow"
 	elbv1 "github.com/aws/aws-sdk-go-v2/service/elasticloadbalancing"
 	"github.com/aws/aws-sdk-go-v2/service/elasticloadbalancing/types"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
-	"github.com/cloudquery/plugin-sdk/v4/transformers"
-	sdkTypes "github.com/cloudquery/plugin-sdk/v4/types"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
+	sdkTypes "github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/types"
+	"github.com/OpsHelmInc/cloudquery/v2/resources/services/elbv1/models"
 )
 
 func loadBalancerPolicies() *schema.Table {
@@ -56,6 +57,7 @@ func fetchElbv1LoadBalancerPolicies(ctx context.Context, meta schema.ClientMeta,
 	res <- response.PolicyDescriptions
 	return nil
 }
+
 func resolveElbv1loadBalancerPolicyAttributeDescriptions(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	r := resource.Item.(types.PolicyDescription)
 

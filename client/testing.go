@@ -10,14 +10,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client/spec"
-	"github.com/cloudquery/plugin-sdk/v4/message"
-	"github.com/cloudquery/plugin-sdk/v4/scheduler"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
-	"github.com/cloudquery/plugin-sdk/v4/transformers"
-	sdkTypes "github.com/cloudquery/plugin-sdk/v4/types"
 	"github.com/golang/mock/gomock"
 	"github.com/rs/zerolog"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client/spec"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/message"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/scheduler"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
+	sdkTypes "github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/types"
 )
 
 type TestOptions struct {

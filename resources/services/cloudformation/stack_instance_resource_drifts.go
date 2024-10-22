@@ -3,14 +3,15 @@ package cloudformation
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
-	"github.com/OpsHelmInc/cloudquery/v2/resources/services/cloudformation/models"
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/cloudformation"
 	"github.com/aws/aws-sdk-go-v2/service/cloudformation/types"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
-	"github.com/cloudquery/plugin-sdk/v4/transformers"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
+	"github.com/OpsHelmInc/cloudquery/v2/resources/services/cloudformation/models"
 )
 
 func stackInstanceResourceDrifts() *schema.Table {
@@ -39,6 +40,7 @@ The 'request_account_id' and 'request_region' columns are added to show the acco
 		},
 	}
 }
+
 func fetchStackInstanceResourceDrifts(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	instance := parent.Item.(models.ExpandedStackInstanceSummary)
 	if instance.DriftStatus == types.StackDriftStatusNotChecked {

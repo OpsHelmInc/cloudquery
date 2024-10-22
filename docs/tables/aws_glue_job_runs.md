@@ -31,6 +31,7 @@ This table depends on [aws_glue_jobs](aws_glue_jobs.md).
 |id|`utf8`|
 |job_mode|`utf8`|
 |job_name|`utf8`|
+|job_run_queuing_enabled|`bool`|
 |job_run_state|`utf8`|
 |last_modified_on|`timestamp[us, tz=UTC]`|
 |log_group_name|`utf8`|
@@ -43,6 +44,7 @@ This table depends on [aws_glue_jobs](aws_glue_jobs.md).
 |profile_name|`utf8`|
 |security_configuration|`utf8`|
 |started_on|`timestamp[us, tz=UTC]`|
+|state_detail|`utf8`|
 |timeout|`int64`|
 |trigger_name|`utf8`|
 |worker_type|`utf8`|

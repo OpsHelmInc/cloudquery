@@ -4,7 +4,8 @@ import (
 	"sort"
 
 	wafv2types "github.com/aws/aws-sdk-go-v2/service/wafv2/types"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
+
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
 )
 
 var AllNamespaces = []string{ // this is only used in applicationautoscaling

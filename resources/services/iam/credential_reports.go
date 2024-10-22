@@ -5,15 +5,16 @@ import (
 	"errors"
 	"time"
 
-	"github.com/OpsHelmInc/cloudquery/v2/client"
-	"github.com/OpsHelmInc/cloudquery/v2/resources/services/iam/models"
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	"github.com/aws/smithy-go"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
-	"github.com/cloudquery/plugin-sdk/v4/transformers"
 	"github.com/gocarina/gocsv"
 	"github.com/thoas/go-funk"
+
+	"github.com/OpsHelmInc/cloudquery/v2/client"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
+	"github.com/OpsHelmInc/cloudquery/v2/resources/services/iam/models"
 )
 
 func CredentialReports() *schema.Table {
@@ -151,6 +152,7 @@ func fetchIamCredentialReports(ctx context.Context, meta schema.ClientMeta, _ *s
 		}
 	}
 }
+
 func timestampPathResolver(path string) schema.ColumnResolver {
 	return func(_ context.Context, meta schema.ClientMeta, r *schema.Resource, c schema.Column) error {
 		t := funk.Get(r.Item, path, funk.WithAllowZero())

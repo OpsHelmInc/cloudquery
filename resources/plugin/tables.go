@@ -3,6 +3,9 @@ package plugin
 import (
 	"fmt"
 
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
+	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/types"
 	"github.com/OpsHelmInc/cloudquery/v2/resources/services/accessanalyzer"
 	"github.com/OpsHelmInc/cloudquery/v2/resources/services/acm"
 	"github.com/OpsHelmInc/cloudquery/v2/resources/services/acmpca"
@@ -112,9 +115,6 @@ import (
 	"github.com/OpsHelmInc/cloudquery/v2/resources/services/wellarchitected"
 	"github.com/OpsHelmInc/cloudquery/v2/resources/services/workspaces"
 	"github.com/OpsHelmInc/cloudquery/v2/resources/services/xray"
-	"github.com/cloudquery/plugin-sdk/v4/schema"
-	"github.com/cloudquery/plugin-sdk/v4/transformers"
-	"github.com/cloudquery/plugin-sdk/v4/types"
 )
 
 func GetTables() schema.Tables {
