@@ -735,6 +735,26 @@ func (mr *MockS3controlClientMockRecorder) ListAccessPointsForObjectLambda(arg0,
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAccessPointsForObjectLambda", reflect.TypeOf((*MockS3controlClient)(nil).ListAccessPointsForObjectLambda), varargs...)
 }
 
+// ListCallerAccessGrants mocks base method.
+func (m *MockS3controlClient) ListCallerAccessGrants(arg0 context.Context, arg1 *s3control.ListCallerAccessGrantsInput, arg2 ...func(*s3control.Options)) (*s3control.ListCallerAccessGrantsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListCallerAccessGrants", varargs...)
+	ret0, _ := ret[0].(*s3control.ListCallerAccessGrantsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListCallerAccessGrants indicates an expected call of ListCallerAccessGrants.
+func (mr *MockS3controlClientMockRecorder) ListCallerAccessGrants(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListCallerAccessGrants", reflect.TypeOf((*MockS3controlClient)(nil).ListCallerAccessGrants), varargs...)
+}
+
 // ListJobs mocks base method.
 func (m *MockS3controlClient) ListJobs(arg0 context.Context, arg1 *s3control.ListJobsInput, arg2 ...func(*s3control.Options)) (*s3control.ListJobsOutput, error) {
 	m.ctrl.T.Helper()

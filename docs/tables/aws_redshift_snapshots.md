@@ -46,6 +46,7 @@ This table depends on [aws_redshift_clusters](aws_redshift_clusters.md).
 |owner_account|String|
 |port|Int|
 |restorable_node_types|StringArray|
+|snapshot_arn|String|
 |snapshot_create_time|Timestamp|
 |snapshot_identifier|String|
 |snapshot_retention_start_time|Timestamp|

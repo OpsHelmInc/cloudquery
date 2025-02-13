@@ -115,6 +115,26 @@ func (mr *MockResourcegroupsClientMockRecorder) GetGroupQuery(arg0, arg1 interfa
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetGroupQuery", reflect.TypeOf((*MockResourcegroupsClient)(nil).GetGroupQuery), varargs...)
 }
 
+// GetTagSyncTask mocks base method.
+func (m *MockResourcegroupsClient) GetTagSyncTask(arg0 context.Context, arg1 *resourcegroups.GetTagSyncTaskInput, arg2 ...func(*resourcegroups.Options)) (*resourcegroups.GetTagSyncTaskOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetTagSyncTask", varargs...)
+	ret0, _ := ret[0].(*resourcegroups.GetTagSyncTaskOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetTagSyncTask indicates an expected call of GetTagSyncTask.
+func (mr *MockResourcegroupsClientMockRecorder) GetTagSyncTask(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTagSyncTask", reflect.TypeOf((*MockResourcegroupsClient)(nil).GetTagSyncTask), varargs...)
+}
+
 // GetTags mocks base method.
 func (m *MockResourcegroupsClient) GetTags(arg0 context.Context, arg1 *resourcegroups.GetTagsInput, arg2 ...func(*resourcegroups.Options)) (*resourcegroups.GetTagsOutput, error) {
 	m.ctrl.T.Helper()
@@ -155,6 +175,26 @@ func (mr *MockResourcegroupsClientMockRecorder) ListGroupResources(arg0, arg1 in
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListGroupResources", reflect.TypeOf((*MockResourcegroupsClient)(nil).ListGroupResources), varargs...)
 }
 
+// ListGroupingStatuses mocks base method.
+func (m *MockResourcegroupsClient) ListGroupingStatuses(arg0 context.Context, arg1 *resourcegroups.ListGroupingStatusesInput, arg2 ...func(*resourcegroups.Options)) (*resourcegroups.ListGroupingStatusesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListGroupingStatuses", varargs...)
+	ret0, _ := ret[0].(*resourcegroups.ListGroupingStatusesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListGroupingStatuses indicates an expected call of ListGroupingStatuses.
+func (mr *MockResourcegroupsClientMockRecorder) ListGroupingStatuses(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListGroupingStatuses", reflect.TypeOf((*MockResourcegroupsClient)(nil).ListGroupingStatuses), varargs...)
+}
+
 // ListGroups mocks base method.
 func (m *MockResourcegroupsClient) ListGroups(arg0 context.Context, arg1 *resourcegroups.ListGroupsInput, arg2 ...func(*resourcegroups.Options)) (*resourcegroups.ListGroupsOutput, error) {
 	m.ctrl.T.Helper()
@@ -173,6 +213,26 @@ func (mr *MockResourcegroupsClientMockRecorder) ListGroups(arg0, arg1 interface{
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListGroups", reflect.TypeOf((*MockResourcegroupsClient)(nil).ListGroups), varargs...)
+}
+
+// ListTagSyncTasks mocks base method.
+func (m *MockResourcegroupsClient) ListTagSyncTasks(arg0 context.Context, arg1 *resourcegroups.ListTagSyncTasksInput, arg2 ...func(*resourcegroups.Options)) (*resourcegroups.ListTagSyncTasksOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListTagSyncTasks", varargs...)
+	ret0, _ := ret[0].(*resourcegroups.ListTagSyncTasksOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListTagSyncTasks indicates an expected call of ListTagSyncTasks.
+func (mr *MockResourcegroupsClientMockRecorder) ListTagSyncTasks(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListTagSyncTasks", reflect.TypeOf((*MockResourcegroupsClient)(nil).ListTagSyncTasks), varargs...)
 }
 
 // SearchResources mocks base method.

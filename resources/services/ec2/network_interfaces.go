@@ -118,6 +118,11 @@ func NetworkInterfaces() *schema.Table {
 				Resolver: schema.PathResolver("NetworkInterfaceId"),
 			},
 			{
+				Name:     "operator",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Operator"),
+			},
+			{
 				Name:     "outpost_arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("OutpostArn"),

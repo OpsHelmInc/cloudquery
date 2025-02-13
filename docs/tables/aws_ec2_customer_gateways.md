@@ -18,6 +18,7 @@ The primary key for this table is **arn**.
 |arn (PK)|String|
 |oh_resource_type|String|
 |bgp_asn|String|
+|bgp_asn_extended|String|
 |certificate_arn|String|
 |customer_gateway_id|String|
 |device_name|String|

@@ -23,5 +23,6 @@ The primary key for this table is **arn**.
 |ip_permissions|JSON|
 |ip_permissions_egress|JSON|
 |owner_id|String|
+|security_group_arn|String|
 |tags|JSON|
 |vpc_id|String|

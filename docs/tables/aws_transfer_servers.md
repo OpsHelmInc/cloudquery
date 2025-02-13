@@ -17,6 +17,7 @@ The primary key for this table is **arn**.
 |region|String|
 |arn (PK)|String|
 |tags|JSON|
+|as2_service_managed_egress_ip_addresses|StringArray|
 |certificate|String|
 |domain|String|
 |endpoint_details|JSON|

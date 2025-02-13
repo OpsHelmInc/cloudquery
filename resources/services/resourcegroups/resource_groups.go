@@ -48,9 +48,29 @@ func ResourceGroups() *schema.Table {
 				Resolver: schema.PathResolver("Name"),
 			},
 			{
+				Name:     "application_tag",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ApplicationTag"),
+			},
+			{
+				Name:     "criticality",
+				Type:     schema.TypeInt,
+				Resolver: schema.PathResolver("Criticality"),
+			},
+			{
 				Name:     "description",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Description"),
+			},
+			{
+				Name:     "display_name",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("DisplayName"),
+			},
+			{
+				Name:     "owner",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("Owner"),
 			},
 			{
 				Name:     "query",

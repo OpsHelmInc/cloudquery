@@ -189,6 +189,11 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("TerminationProtected"),
 			},
 			{
+				Name:     "unhealthy_node_replacement",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("UnhealthyNodeReplacement"),
+			},
+			{
 				Name:     "visible_to_all_users",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("VisibleToAllUsers"),

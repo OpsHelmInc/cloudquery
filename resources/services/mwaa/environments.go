@@ -94,9 +94,19 @@ func Environments() *schema.Table {
 				Resolver: schema.PathResolver("LoggingConfiguration"),
 			},
 			{
+				Name:     "max_webservers",
+				Type:     schema.TypeInt,
+				Resolver: schema.PathResolver("MaxWebservers"),
+			},
+			{
 				Name:     "max_workers",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("MaxWorkers"),
+			},
+			{
+				Name:     "min_webservers",
+				Type:     schema.TypeInt,
+				Resolver: schema.PathResolver("MinWebservers"),
 			},
 			{
 				Name:     "min_workers",

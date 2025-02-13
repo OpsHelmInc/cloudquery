@@ -28,7 +28,9 @@ The primary key for this table is **arn**.
 |kms_key|String|
 |last_update|JSON|
 |logging_configuration|JSON|
+|max_webservers|Int|
 |max_workers|Int|
+|min_webservers|Int|
 |min_workers|Int|
 |name|String|
 |network_configuration|JSON|

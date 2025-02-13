@@ -23,6 +23,7 @@ This table depends on [aws_athena_work_groups](aws_athena_work_groups.md).
 |query|String|
 |query_execution_context|JSON|
 |query_execution_id|String|
+|query_results_s3_access_grants_configuration|JSON|
 |result_configuration|JSON|
 |result_reuse_configuration|JSON|
 |statement_type|String|

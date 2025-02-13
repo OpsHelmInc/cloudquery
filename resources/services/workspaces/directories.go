@@ -28,6 +28,11 @@ func Directories() *schema.Table {
 				},
 			},
 			{
+				Name:     "active_directory_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ActiveDirectoryConfig"),
+			},
+			{
 				Name:     "alias",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Alias"),
@@ -63,6 +68,16 @@ func Directories() *schema.Table {
 				Resolver: schema.PathResolver("DnsIpAddresses"),
 			},
 			{
+				Name:     "error_message",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ErrorMessage"),
+			},
+			{
+				Name:     "id_c_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("IDCConfig"),
+			},
+			{
 				Name:     "iam_role_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("IamRoleId"),
@@ -71,6 +86,11 @@ func Directories() *schema.Table {
 				Name:     "ip_group_ids",
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("IpGroupIds"),
+			},
+			{
+				Name:     "microsoft_entra_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("MicrosoftEntraConfig"),
 			},
 			{
 				Name:     "registration_code",
@@ -93,6 +113,11 @@ func Directories() *schema.Table {
 				Resolver: schema.PathResolver("State"),
 			},
 			{
+				Name:     "streaming_properties",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("StreamingProperties"),
+			},
+			{
 				Name:     "subnet_ids",
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("SubnetIds"),
@@ -101,6 +126,11 @@ func Directories() *schema.Table {
 				Name:     "tenancy",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Tenancy"),
+			},
+			{
+				Name:     "user_identity_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("UserIdentityType"),
 			},
 			{
 				Name:     "workspace_access_properties",
@@ -113,9 +143,24 @@ func Directories() *schema.Table {
 				Resolver: schema.PathResolver("WorkspaceCreationProperties"),
 			},
 			{
+				Name:     "workspace_directory_description",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("WorkspaceDirectoryDescription"),
+			},
+			{
+				Name:     "workspace_directory_name",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("WorkspaceDirectoryName"),
+			},
+			{
 				Name:     "workspace_security_group_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("WorkspaceSecurityGroupId"),
+			},
+			{
+				Name:     "workspace_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("WorkspaceType"),
 			},
 		},
 	}

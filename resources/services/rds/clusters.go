@@ -133,6 +133,11 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("ClusterCreateTime"),
 			},
 			{
+				Name:     "cluster_scalability_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ClusterScalabilityType"),
+			},
+			{
 				Name:     "copy_tags_to_snapshot",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("CopyTagsToSnapshot"),
@@ -183,6 +188,11 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("DBSystemId"),
 			},
 			{
+				Name:     "database_insights_mode",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("DatabaseInsightsMode"),
+			},
+			{
 				Name:     "database_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("DatabaseName"),
@@ -226,6 +236,11 @@ func Clusters() *schema.Table {
 				Name:     "engine",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Engine"),
+			},
+			{
+				Name:     "engine_lifecycle_support",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("EngineLifecycleSupport"),
 			},
 			{
 				Name:     "engine_mode",

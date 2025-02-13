@@ -48,6 +48,8 @@ The primary key for this table is **arn**.
 |metadata_options|JSON|
 |monitoring|JSON|
 |network_interfaces|JSON|
+|network_performance_options|JSON|
+|operator|JSON|
 |outpost_arn|String|
 |placement|JSON|
 |platform|String|

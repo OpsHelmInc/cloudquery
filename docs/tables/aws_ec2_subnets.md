@@ -21,6 +21,7 @@ The primary key for this table is **arn**.
 |availability_zone|String|
 |availability_zone_id|String|
 |available_ip_address_count|Int|
+|block_public_access_states|JSON|
 |cidr_block|String|
 |customer_owned_ipv4_pool|String|
 |default_for_az|Bool|

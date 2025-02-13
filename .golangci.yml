@@ -72,6 +72,8 @@ linters-settings:
         disabled: true
       - name: import-alias-naming
         disabled: true
+      - name: use-errors-new
+        disabled: true
 
 linters:
   enable:

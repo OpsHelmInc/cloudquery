@@ -22,6 +22,7 @@ The primary key for this table is **arn**.
 |container_definitions|JSON|
 |cpu|String|
 |deregistered_at|Timestamp|
+|enable_fault_injection|Bool|
 |ephemeral_storage|JSON|
 |execution_role_arn|String|
 |family|String|

@@ -175,6 +175,11 @@ func Snapshots() *schema.Table {
 				Resolver: schema.PathResolver("RestorableNodeTypes"),
 			},
 			{
+				Name:     "snapshot_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("SnapshotArn"),
+			},
+			{
 				Name:     "snapshot_create_time",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("SnapshotCreateTime"),

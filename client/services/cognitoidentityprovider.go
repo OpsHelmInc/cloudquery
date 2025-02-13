@@ -9,6 +9,8 @@ import (
 //go:generate mockgen -package=mocks -destination=../mocks/cognitoidentityprovider.go -source=cognitoidentityprovider.go CognitoidentityproviderClient
 type CognitoidentityproviderClient interface {
 	DescribeIdentityProvider(context.Context, *cognitoidentityprovider.DescribeIdentityProviderInput, ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.DescribeIdentityProviderOutput, error)
+	DescribeManagedLoginBranding(context.Context, *cognitoidentityprovider.DescribeManagedLoginBrandingInput, ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.DescribeManagedLoginBrandingOutput, error)
+	DescribeManagedLoginBrandingByClient(context.Context, *cognitoidentityprovider.DescribeManagedLoginBrandingByClientInput, ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.DescribeManagedLoginBrandingByClientOutput, error)
 	DescribeResourceServer(context.Context, *cognitoidentityprovider.DescribeResourceServerInput, ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.DescribeResourceServerOutput, error)
 	DescribeRiskConfiguration(context.Context, *cognitoidentityprovider.DescribeRiskConfigurationInput, ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.DescribeRiskConfigurationOutput, error)
 	DescribeUserImportJob(context.Context, *cognitoidentityprovider.DescribeUserImportJobInput, ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.DescribeUserImportJobOutput, error)
@@ -24,6 +26,7 @@ type CognitoidentityproviderClient interface {
 	GetUICustomization(context.Context, *cognitoidentityprovider.GetUICustomizationInput, ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.GetUICustomizationOutput, error)
 	GetUser(context.Context, *cognitoidentityprovider.GetUserInput, ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.GetUserOutput, error)
 	GetUserAttributeVerificationCode(context.Context, *cognitoidentityprovider.GetUserAttributeVerificationCodeInput, ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.GetUserAttributeVerificationCodeOutput, error)
+	GetUserAuthFactors(context.Context, *cognitoidentityprovider.GetUserAuthFactorsInput, ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.GetUserAuthFactorsOutput, error)
 	GetUserPoolMfaConfig(context.Context, *cognitoidentityprovider.GetUserPoolMfaConfigInput, ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.GetUserPoolMfaConfigOutput, error)
 	ListDevices(context.Context, *cognitoidentityprovider.ListDevicesInput, ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.ListDevicesOutput, error)
 	ListGroups(context.Context, *cognitoidentityprovider.ListGroupsInput, ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.ListGroupsOutput, error)
@@ -35,4 +38,5 @@ type CognitoidentityproviderClient interface {
 	ListUserPools(context.Context, *cognitoidentityprovider.ListUserPoolsInput, ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.ListUserPoolsOutput, error)
 	ListUsers(context.Context, *cognitoidentityprovider.ListUsersInput, ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.ListUsersOutput, error)
 	ListUsersInGroup(context.Context, *cognitoidentityprovider.ListUsersInGroupInput, ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.ListUsersInGroupOutput, error)
+	ListWebAuthnCredentials(context.Context, *cognitoidentityprovider.ListWebAuthnCredentialsInput, ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.ListWebAuthnCredentialsOutput, error)
 }

@@ -63,6 +63,16 @@ func DomainNames() *schema.Table {
 				Resolver: schema.PathResolver("DomainName"),
 			},
 			{
+				Name:     "domain_name_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("DomainNameArn"),
+			},
+			{
+				Name:     "domain_name_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("DomainNameId"),
+			},
+			{
 				Name:     "domain_name_status",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("DomainNameStatus"),
@@ -78,6 +88,11 @@ func DomainNames() *schema.Table {
 				Resolver: schema.PathResolver("EndpointConfiguration"),
 			},
 			{
+				Name:     "management_policy",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ManagementPolicy"),
+			},
+			{
 				Name:     "mutual_tls_authentication",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("MutualTlsAuthentication"),
@@ -86,6 +101,11 @@ func DomainNames() *schema.Table {
 				Name:     "ownership_verification_certificate_arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("OwnershipVerificationCertificateArn"),
+			},
+			{
+				Name:     "policy",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("Policy"),
 			},
 			{
 				Name:     "regional_certificate_arn",

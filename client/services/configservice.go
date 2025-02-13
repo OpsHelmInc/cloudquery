@@ -55,6 +55,7 @@ type ConfigserviceClient interface {
 	GetResourceEvaluationSummary(context.Context, *configservice.GetResourceEvaluationSummaryInput, ...func(*configservice.Options)) (*configservice.GetResourceEvaluationSummaryOutput, error)
 	GetStoredQuery(context.Context, *configservice.GetStoredQueryInput, ...func(*configservice.Options)) (*configservice.GetStoredQueryOutput, error)
 	ListAggregateDiscoveredResources(context.Context, *configservice.ListAggregateDiscoveredResourcesInput, ...func(*configservice.Options)) (*configservice.ListAggregateDiscoveredResourcesOutput, error)
+	ListConfigurationRecorders(context.Context, *configservice.ListConfigurationRecordersInput, ...func(*configservice.Options)) (*configservice.ListConfigurationRecordersOutput, error)
 	ListConformancePackComplianceScores(context.Context, *configservice.ListConformancePackComplianceScoresInput, ...func(*configservice.Options)) (*configservice.ListConformancePackComplianceScoresOutput, error)
 	ListDiscoveredResources(context.Context, *configservice.ListDiscoveredResourcesInput, ...func(*configservice.Options)) (*configservice.ListDiscoveredResourcesOutput, error)
 	ListResourceEvaluations(context.Context, *configservice.ListResourceEvaluationsInput, ...func(*configservice.Options)) (*configservice.ListResourceEvaluationsOutput, error)

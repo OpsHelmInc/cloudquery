@@ -22,5 +22,8 @@ The following tables depend on aws_athena_data_catalogs:
 |tags|JSON|
 |name|String|
 |type|String|
+|connection_type|String|
 |description|String|
+|error|String|
 |parameters|JSON|
+|status|String|

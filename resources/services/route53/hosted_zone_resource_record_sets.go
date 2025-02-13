@@ -55,6 +55,11 @@ func HostedZoneResourceRecordSets() *schema.Table {
 				Resolver: schema.PathResolver("GeoLocation"),
 			},
 			{
+				Name:     "geo_proximity_location",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("GeoProximityLocation"),
+			},
+			{
 				Name:     "health_check_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("HealthCheckId"),

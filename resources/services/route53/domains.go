@@ -61,6 +61,16 @@ func Domains() *schema.Table {
 				Resolver: schema.PathResolver("AutoRenew"),
 			},
 			{
+				Name:     "billing_contact",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("BillingContact"),
+			},
+			{
+				Name:     "billing_privacy",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("BillingPrivacy"),
+			},
+			{
 				Name:     "creation_date",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreationDate"),

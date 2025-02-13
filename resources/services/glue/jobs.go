@@ -87,6 +87,16 @@ func Jobs() *schema.Table {
 				Resolver: schema.PathResolver("GlueVersion"),
 			},
 			{
+				Name:     "job_mode",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("JobMode"),
+			},
+			{
+				Name:     "job_run_queuing_enabled",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("JobRunQueuingEnabled"),
+			},
+			{
 				Name:     "last_modified_on",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("LastModifiedOn"),
@@ -95,6 +105,11 @@ func Jobs() *schema.Table {
 				Name:     "log_uri",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("LogUri"),
+			},
+			{
+				Name:     "maintenance_window",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("MaintenanceWindow"),
 			},
 			{
 				Name:     "max_capacity",
@@ -125,6 +140,11 @@ func Jobs() *schema.Table {
 				Name:     "number_of_workers",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("NumberOfWorkers"),
+			},
+			{
+				Name:     "profile_name",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ProfileName"),
 			},
 			{
 				Name:     "role",

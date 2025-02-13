@@ -36,6 +36,7 @@ The primary key for this table is **arn**.
 |character_set_name|String|
 |clone_group_id|String|
 |cluster_create_time|Timestamp|
+|cluster_scalability_type|String|
 |copy_tags_to_snapshot|Bool|
 |cross_account_clone|Bool|
 |custom_endpoints|StringArray|
@@ -46,6 +47,7 @@ The primary key for this table is **arn**.
 |db_cluster_parameter_group|String|
 |db_subnet_group|String|
 |db_system_id|String|
+|database_insights_mode|String|
 |database_name|String|
 |db_cluster_resource_id|String|
 |deletion_protection|Bool|
@@ -55,6 +57,7 @@ The primary key for this table is **arn**.
 |enabled_cloudwatch_logs_exports|StringArray|
 |endpoint|String|
 |engine|String|
+|engine_lifecycle_support|String|
 |engine_mode|String|
 |engine_version|String|
 |global_write_forwarding_requested|Bool|

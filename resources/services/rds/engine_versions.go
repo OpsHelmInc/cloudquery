@@ -117,6 +117,11 @@ func EngineVersions() *schema.Table {
 				Resolver: schema.PathResolver("MajorEngineVersion"),
 			},
 			{
+				Name:     "serverless_v2_features_support",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ServerlessV2FeaturesSupport"),
+			},
+			{
 				Name:     "status",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Status"),
@@ -170,6 +175,11 @@ func EngineVersions() *schema.Table {
 				Name:     "supports_integrations",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("SupportsIntegrations"),
+			},
+			{
+				Name:     "supports_limitless_database",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("SupportsLimitlessDatabase"),
 			},
 			{
 				Name:     "supports_local_write_forwarding",

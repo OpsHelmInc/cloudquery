@@ -19,6 +19,7 @@ The composite primary key for this table is (**account_id**, **region**, **assoc
 |association_name|String|
 |association_version|String|
 |document_version|String|
+|duration|Int|
 |instance_id|String|
 |last_execution_date|Timestamp|
 |name|String|

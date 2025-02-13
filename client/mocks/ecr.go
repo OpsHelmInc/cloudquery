@@ -195,6 +195,46 @@ func (mr *MockEcrClientMockRecorder) DescribeRepositories(arg0, arg1 interface{}
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeRepositories", reflect.TypeOf((*MockEcrClient)(nil).DescribeRepositories), varargs...)
 }
 
+// DescribeRepositoryCreationTemplates mocks base method.
+func (m *MockEcrClient) DescribeRepositoryCreationTemplates(arg0 context.Context, arg1 *ecr.DescribeRepositoryCreationTemplatesInput, arg2 ...func(*ecr.Options)) (*ecr.DescribeRepositoryCreationTemplatesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeRepositoryCreationTemplates", varargs...)
+	ret0, _ := ret[0].(*ecr.DescribeRepositoryCreationTemplatesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeRepositoryCreationTemplates indicates an expected call of DescribeRepositoryCreationTemplates.
+func (mr *MockEcrClientMockRecorder) DescribeRepositoryCreationTemplates(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeRepositoryCreationTemplates", reflect.TypeOf((*MockEcrClient)(nil).DescribeRepositoryCreationTemplates), varargs...)
+}
+
+// GetAccountSetting mocks base method.
+func (m *MockEcrClient) GetAccountSetting(arg0 context.Context, arg1 *ecr.GetAccountSettingInput, arg2 ...func(*ecr.Options)) (*ecr.GetAccountSettingOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetAccountSetting", varargs...)
+	ret0, _ := ret[0].(*ecr.GetAccountSettingOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetAccountSetting indicates an expected call of GetAccountSetting.
+func (mr *MockEcrClientMockRecorder) GetAccountSetting(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAccountSetting", reflect.TypeOf((*MockEcrClient)(nil).GetAccountSetting), varargs...)
+}
+
 // GetAuthorizationToken mocks base method.
 func (m *MockEcrClient) GetAuthorizationToken(arg0 context.Context, arg1 *ecr.GetAuthorizationTokenInput, arg2 ...func(*ecr.Options)) (*ecr.GetAuthorizationTokenOutput, error) {
 	m.ctrl.T.Helper()

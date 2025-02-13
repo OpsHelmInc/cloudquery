@@ -58,6 +58,16 @@ func GraphqlApis() *schema.Table {
 				Resolver: schema.PathResolver("Dns"),
 			},
 			{
+				Name:     "enhanced_metrics_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("EnhancedMetricsConfig"),
+			},
+			{
+				Name:     "introspection_config",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("IntrospectionConfig"),
+			},
+			{
 				Name:     "lambda_authorizer_config",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("LambdaAuthorizerConfig"),
@@ -91,6 +101,16 @@ func GraphqlApis() *schema.Table {
 				Name:     "owner_contact",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("OwnerContact"),
+			},
+			{
+				Name:     "query_depth_limit",
+				Type:     schema.TypeInt,
+				Resolver: schema.PathResolver("QueryDepthLimit"),
+			},
+			{
+				Name:     "resolver_count_limit",
+				Type:     schema.TypeInt,
+				Resolver: schema.PathResolver("ResolverCountLimit"),
 			},
 			{
 				Name:     "tags",

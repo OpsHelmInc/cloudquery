@@ -56,6 +56,11 @@ func WorkGroupQueryExecutions() *schema.Table {
 				Resolver: schema.PathResolver("QueryExecutionId"),
 			},
 			{
+				Name:     "query_results_s3_access_grants_configuration",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("QueryResultsS3AccessGrantsConfiguration"),
+			},
+			{
 				Name:     "result_configuration",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ResultConfiguration"),

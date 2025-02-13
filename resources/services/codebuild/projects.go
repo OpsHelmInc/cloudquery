@@ -38,6 +38,11 @@ func Projects() *schema.Table {
 				Resolver: schema.PathResolver("Artifacts"),
 			},
 			{
+				Name:     "auto_retry_limit",
+				Type:     schema.TypeInt,
+				Resolver: schema.PathResolver("AutoRetryLimit"),
+			},
+			{
 				Name:     "badge",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Badge"),

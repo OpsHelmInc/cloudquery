@@ -27,6 +27,7 @@ The following tables depend on aws_glue_database_tables:
 |database_name|String|
 |description|String|
 |federated_table|JSON|
+|is_multi_dialect_view|Bool|
 |is_registered_with_lake_formation|Bool|
 |last_access_time|Timestamp|
 |last_analyzed_time|Timestamp|
@@ -34,10 +35,12 @@ The following tables depend on aws_glue_database_tables:
 |parameters|JSON|
 |partition_keys|JSON|
 |retention|Int|
+|status|JSON|
 |storage_descriptor|JSON|
 |table_type|String|
 |target_table|JSON|
 |update_time|Timestamp|
 |version_id|String|
+|view_definition|JSON|
 |view_expanded_text|String|
 |view_original_text|String|

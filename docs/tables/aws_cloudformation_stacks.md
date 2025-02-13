@@ -25,8 +25,10 @@ The following tables depend on aws_cloudformation_stacks:
 |stack_status|String|
 |capabilities|StringArray|
 |change_set_id|String|
+|deletion_mode|String|
 |deletion_time|Timestamp|
 |description|String|
+|detailed_status|String|
 |disable_rollback|Bool|
 |drift_information|JSON|
 |enable_termination_protection|Bool|

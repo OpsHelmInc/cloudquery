@@ -23,6 +23,7 @@ This table depends on [aws_route53_hosted_zones](aws_route53_hosted_zones.md).
 |cidr_routing_config|JSON|
 |failover|String|
 |geo_location|JSON|
+|geo_proximity_location|JSON|
 |health_check_id|String|
 |multi_value_answer|Bool|
 |region|String|

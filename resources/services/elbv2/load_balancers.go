@@ -74,6 +74,11 @@ func LoadBalancers() *schema.Table {
 				Resolver: schema.PathResolver("DNSName"),
 			},
 			{
+				Name:     "enable_prefix_for_ipv6_source_nat",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("EnablePrefixForIpv6SourceNat"),
+			},
+			{
 				Name:     "enforce_security_group_inbound_rules_on_private_link_traffic",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic"),

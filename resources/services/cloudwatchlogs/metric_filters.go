@@ -33,6 +33,11 @@ func MetricFilters() *schema.Table {
 				},
 			},
 			{
+				Name:     "apply_on_transformed_logs",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("ApplyOnTransformedLogs"),
+			},
+			{
 				Name:     "creation_time",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("CreationTime"),

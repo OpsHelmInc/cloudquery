@@ -23,4 +23,5 @@ The composite primary key for this table is (**arn**, **launch_template_id**).
 |default_version_number|Int|
 |latest_version_number|Int|
 |launch_template_name|String|
+|operator|JSON|
 |tags|JSON|

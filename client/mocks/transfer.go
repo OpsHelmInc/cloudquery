@@ -235,6 +235,46 @@ func (mr *MockTransferClientMockRecorder) DescribeUser(arg0, arg1 interface{}, a
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeUser", reflect.TypeOf((*MockTransferClient)(nil).DescribeUser), varargs...)
 }
 
+// DescribeWebApp mocks base method.
+func (m *MockTransferClient) DescribeWebApp(arg0 context.Context, arg1 *transfer.DescribeWebAppInput, arg2 ...func(*transfer.Options)) (*transfer.DescribeWebAppOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeWebApp", varargs...)
+	ret0, _ := ret[0].(*transfer.DescribeWebAppOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeWebApp indicates an expected call of DescribeWebApp.
+func (mr *MockTransferClientMockRecorder) DescribeWebApp(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeWebApp", reflect.TypeOf((*MockTransferClient)(nil).DescribeWebApp), varargs...)
+}
+
+// DescribeWebAppCustomization mocks base method.
+func (m *MockTransferClient) DescribeWebAppCustomization(arg0 context.Context, arg1 *transfer.DescribeWebAppCustomizationInput, arg2 ...func(*transfer.Options)) (*transfer.DescribeWebAppCustomizationOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeWebAppCustomization", varargs...)
+	ret0, _ := ret[0].(*transfer.DescribeWebAppCustomizationOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeWebAppCustomization indicates an expected call of DescribeWebAppCustomization.
+func (mr *MockTransferClientMockRecorder) DescribeWebAppCustomization(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeWebAppCustomization", reflect.TypeOf((*MockTransferClient)(nil).DescribeWebAppCustomization), varargs...)
+}
+
 // DescribeWorkflow mocks base method.
 func (m *MockTransferClient) DescribeWorkflow(arg0 context.Context, arg1 *transfer.DescribeWorkflowInput, arg2 ...func(*transfer.Options)) (*transfer.DescribeWorkflowOutput, error) {
 	m.ctrl.T.Helper()
@@ -355,6 +395,26 @@ func (mr *MockTransferClientMockRecorder) ListExecutions(arg0, arg1 interface{},
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListExecutions", reflect.TypeOf((*MockTransferClient)(nil).ListExecutions), varargs...)
 }
 
+// ListFileTransferResults mocks base method.
+func (m *MockTransferClient) ListFileTransferResults(arg0 context.Context, arg1 *transfer.ListFileTransferResultsInput, arg2 ...func(*transfer.Options)) (*transfer.ListFileTransferResultsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListFileTransferResults", varargs...)
+	ret0, _ := ret[0].(*transfer.ListFileTransferResultsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListFileTransferResults indicates an expected call of ListFileTransferResults.
+func (mr *MockTransferClientMockRecorder) ListFileTransferResults(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListFileTransferResults", reflect.TypeOf((*MockTransferClient)(nil).ListFileTransferResults), varargs...)
+}
+
 // ListHostKeys mocks base method.
 func (m *MockTransferClient) ListHostKeys(arg0 context.Context, arg1 *transfer.ListHostKeysInput, arg2 ...func(*transfer.Options)) (*transfer.ListHostKeysOutput, error) {
 	m.ctrl.T.Helper()
@@ -473,6 +533,26 @@ func (mr *MockTransferClientMockRecorder) ListUsers(arg0, arg1 interface{}, arg2
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListUsers", reflect.TypeOf((*MockTransferClient)(nil).ListUsers), varargs...)
+}
+
+// ListWebApps mocks base method.
+func (m *MockTransferClient) ListWebApps(arg0 context.Context, arg1 *transfer.ListWebAppsInput, arg2 ...func(*transfer.Options)) (*transfer.ListWebAppsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListWebApps", varargs...)
+	ret0, _ := ret[0].(*transfer.ListWebAppsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListWebApps indicates an expected call of ListWebApps.
+func (mr *MockTransferClientMockRecorder) ListWebApps(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListWebApps", reflect.TypeOf((*MockTransferClient)(nil).ListWebApps), varargs...)
 }
 
 // ListWorkflows mocks base method.

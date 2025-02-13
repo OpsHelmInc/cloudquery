@@ -21,6 +21,8 @@ The primary key for this table is **arn**.
 |api_type|String|
 |authentication_type|String|
 |dns|JSON|
+|enhanced_metrics_config|JSON|
+|introspection_config|String|
 |lambda_authorizer_config|JSON|
 |log_config|JSON|
 |merged_api_execution_role_arn|String|
@@ -28,6 +30,8 @@ The primary key for this table is **arn**.
 |open_id_connect_config|JSON|
 |owner|String|
 |owner_contact|String|
+|query_depth_limit|Int|
+|resolver_count_limit|Int|
 |tags|JSON|
 |uris|JSON|
 |user_pool_config|JSON|

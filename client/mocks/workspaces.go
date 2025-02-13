@@ -455,6 +455,86 @@ func (mr *MockWorkspacesClientMockRecorder) DescribeWorkspacesConnectionStatus(a
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeWorkspacesConnectionStatus", reflect.TypeOf((*MockWorkspacesClient)(nil).DescribeWorkspacesConnectionStatus), varargs...)
 }
 
+// DescribeWorkspacesPoolSessions mocks base method.
+func (m *MockWorkspacesClient) DescribeWorkspacesPoolSessions(arg0 context.Context, arg1 *workspaces.DescribeWorkspacesPoolSessionsInput, arg2 ...func(*workspaces.Options)) (*workspaces.DescribeWorkspacesPoolSessionsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeWorkspacesPoolSessions", varargs...)
+	ret0, _ := ret[0].(*workspaces.DescribeWorkspacesPoolSessionsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeWorkspacesPoolSessions indicates an expected call of DescribeWorkspacesPoolSessions.
+func (mr *MockWorkspacesClientMockRecorder) DescribeWorkspacesPoolSessions(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeWorkspacesPoolSessions", reflect.TypeOf((*MockWorkspacesClient)(nil).DescribeWorkspacesPoolSessions), varargs...)
+}
+
+// DescribeWorkspacesPools mocks base method.
+func (m *MockWorkspacesClient) DescribeWorkspacesPools(arg0 context.Context, arg1 *workspaces.DescribeWorkspacesPoolsInput, arg2 ...func(*workspaces.Options)) (*workspaces.DescribeWorkspacesPoolsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeWorkspacesPools", varargs...)
+	ret0, _ := ret[0].(*workspaces.DescribeWorkspacesPoolsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeWorkspacesPools indicates an expected call of DescribeWorkspacesPools.
+func (mr *MockWorkspacesClientMockRecorder) DescribeWorkspacesPools(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeWorkspacesPools", reflect.TypeOf((*MockWorkspacesClient)(nil).DescribeWorkspacesPools), varargs...)
+}
+
+// GetAccountLink mocks base method.
+func (m *MockWorkspacesClient) GetAccountLink(arg0 context.Context, arg1 *workspaces.GetAccountLinkInput, arg2 ...func(*workspaces.Options)) (*workspaces.GetAccountLinkOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetAccountLink", varargs...)
+	ret0, _ := ret[0].(*workspaces.GetAccountLinkOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetAccountLink indicates an expected call of GetAccountLink.
+func (mr *MockWorkspacesClientMockRecorder) GetAccountLink(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAccountLink", reflect.TypeOf((*MockWorkspacesClient)(nil).GetAccountLink), varargs...)
+}
+
+// ListAccountLinks mocks base method.
+func (m *MockWorkspacesClient) ListAccountLinks(arg0 context.Context, arg1 *workspaces.ListAccountLinksInput, arg2 ...func(*workspaces.Options)) (*workspaces.ListAccountLinksOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListAccountLinks", varargs...)
+	ret0, _ := ret[0].(*workspaces.ListAccountLinksOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListAccountLinks indicates an expected call of ListAccountLinks.
+func (mr *MockWorkspacesClientMockRecorder) ListAccountLinks(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAccountLinks", reflect.TypeOf((*MockWorkspacesClient)(nil).ListAccountLinks), varargs...)
+}
+
 // ListAvailableManagementCidrRanges mocks base method.
 func (m *MockWorkspacesClient) ListAvailableManagementCidrRanges(arg0 context.Context, arg1 *workspaces.ListAvailableManagementCidrRangesInput, arg2 ...func(*workspaces.Options)) (*workspaces.ListAvailableManagementCidrRangesOutput, error) {
 	m.ctrl.T.Helper()

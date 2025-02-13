@@ -27,6 +27,7 @@ The primary key for this table is **arn**.
 |private_dns_names|JSON|
 |service_id|String|
 |service_name|String|
+|service_region|String|
 |service_type|JSON|
 |supported_ip_address_types|StringArray|
 |tags|JSON|

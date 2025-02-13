@@ -16,6 +16,8 @@ type EcrClient interface {
 	DescribePullThroughCacheRules(context.Context, *ecr.DescribePullThroughCacheRulesInput, ...func(*ecr.Options)) (*ecr.DescribePullThroughCacheRulesOutput, error)
 	DescribeRegistry(context.Context, *ecr.DescribeRegistryInput, ...func(*ecr.Options)) (*ecr.DescribeRegistryOutput, error)
 	DescribeRepositories(context.Context, *ecr.DescribeRepositoriesInput, ...func(*ecr.Options)) (*ecr.DescribeRepositoriesOutput, error)
+	DescribeRepositoryCreationTemplates(context.Context, *ecr.DescribeRepositoryCreationTemplatesInput, ...func(*ecr.Options)) (*ecr.DescribeRepositoryCreationTemplatesOutput, error)
+	GetAccountSetting(context.Context, *ecr.GetAccountSettingInput, ...func(*ecr.Options)) (*ecr.GetAccountSettingOutput, error)
 	GetAuthorizationToken(context.Context, *ecr.GetAuthorizationTokenInput, ...func(*ecr.Options)) (*ecr.GetAuthorizationTokenOutput, error)
 	GetDownloadUrlForLayer(context.Context, *ecr.GetDownloadUrlForLayerInput, ...func(*ecr.Options)) (*ecr.GetDownloadUrlForLayerOutput, error)
 	GetLifecyclePolicy(context.Context, *ecr.GetLifecyclePolicyInput, ...func(*ecr.Options)) (*ecr.GetLifecyclePolicyOutput, error)

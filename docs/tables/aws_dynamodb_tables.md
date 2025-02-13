@@ -33,6 +33,8 @@ The following tables depend on aws_dynamodb_tables:
 |latest_stream_arn|String|
 |latest_stream_label|String|
 |local_secondary_indexes|JSON|
+|multi_region_consistency|String|
+|on_demand_throughput|JSON|
 |provisioned_throughput|JSON|
 |replicas|JSON|
 |restore_summary|JSON|
@@ -43,3 +45,4 @@ The following tables depend on aws_dynamodb_tables:
 |table_name|String|
 |table_size_bytes|Int|
 |table_status|String|
+|warm_throughput|JSON|

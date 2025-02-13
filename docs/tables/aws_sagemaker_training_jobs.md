@@ -48,6 +48,7 @@ The primary key for this table is **arn**.
 |profiler_rule_configurations|JSON|
 |profiler_rule_evaluation_statuses|JSON|
 |profiling_status|String|
+|remote_debug_config|JSON|
 |retry_strategy|JSON|
 |role_arn|String|
 |secondary_status_transitions|JSON|

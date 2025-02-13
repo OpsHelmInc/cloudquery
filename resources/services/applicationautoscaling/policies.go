@@ -68,6 +68,11 @@ func Policies() *schema.Table {
 				Resolver: schema.PathResolver("Alarms"),
 			},
 			{
+				Name:     "predictive_scaling_policy_configuration",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("PredictiveScalingPolicyConfiguration"),
+			},
+			{
 				Name:     "step_scaling_policy_configuration",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("StepScalingPolicyConfiguration"),

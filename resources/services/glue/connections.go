@@ -32,9 +32,29 @@ func Connections() *schema.Table {
 				},
 			},
 			{
+				Name:     "athena_properties",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("AthenaProperties"),
+			},
+			{
+				Name:     "authentication_configuration",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("AuthenticationConfiguration"),
+			},
+			{
+				Name:     "compatible_compute_environments",
+				Type:     schema.TypeStringArray,
+				Resolver: schema.PathResolver("CompatibleComputeEnvironments"),
+			},
+			{
 				Name:     "connection_properties",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ConnectionProperties"),
+			},
+			{
+				Name:     "connection_schema_version",
+				Type:     schema.TypeInt,
+				Resolver: schema.PathResolver("ConnectionSchemaVersion"),
 			},
 			{
 				Name:     "connection_type",
@@ -50,6 +70,11 @@ func Connections() *schema.Table {
 				Name:     "description",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Description"),
+			},
+			{
+				Name:     "last_connection_validation_time",
+				Type:     schema.TypeTimestamp,
+				Resolver: schema.PathResolver("LastConnectionValidationTime"),
 			},
 			{
 				Name:     "last_updated_by",
@@ -75,6 +100,26 @@ func Connections() *schema.Table {
 				Name:     "physical_connection_requirements",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("PhysicalConnectionRequirements"),
+			},
+			{
+				Name:     "python_properties",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("PythonProperties"),
+			},
+			{
+				Name:     "spark_properties",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("SparkProperties"),
+			},
+			{
+				Name:     "status",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("Status"),
+			},
+			{
+				Name:     "status_reason",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("StatusReason"),
 			},
 		},
 	}

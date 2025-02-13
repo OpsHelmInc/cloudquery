@@ -355,6 +355,26 @@ func (mr *MockApigatewayClientMockRecorder) GetDomainName(arg0, arg1 interface{}
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDomainName", reflect.TypeOf((*MockApigatewayClient)(nil).GetDomainName), varargs...)
 }
 
+// GetDomainNameAccessAssociations mocks base method.
+func (m *MockApigatewayClient) GetDomainNameAccessAssociations(arg0 context.Context, arg1 *apigateway.GetDomainNameAccessAssociationsInput, arg2 ...func(*apigateway.Options)) (*apigateway.GetDomainNameAccessAssociationsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetDomainNameAccessAssociations", varargs...)
+	ret0, _ := ret[0].(*apigateway.GetDomainNameAccessAssociationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetDomainNameAccessAssociations indicates an expected call of GetDomainNameAccessAssociations.
+func (mr *MockApigatewayClientMockRecorder) GetDomainNameAccessAssociations(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDomainNameAccessAssociations", reflect.TypeOf((*MockApigatewayClient)(nil).GetDomainNameAccessAssociations), varargs...)
+}
+
 // GetDomainNames mocks base method.
 func (m *MockApigatewayClient) GetDomainNames(arg0 context.Context, arg1 *apigateway.GetDomainNamesInput, arg2 ...func(*apigateway.Options)) (*apigateway.GetDomainNamesOutput, error) {
 	m.ctrl.T.Helper()

@@ -25,11 +25,15 @@ The following tables depend on aws_apigateway_domain_names:
 |distribution_domain_name|String|
 |distribution_hosted_zone_id|String|
 |domain_name|String|
+|domain_name_arn|String|
+|domain_name_id|String|
 |domain_name_status|String|
 |domain_name_status_message|String|
 |endpoint_configuration|JSON|
+|management_policy|String|
 |mutual_tls_authentication|JSON|
 |ownership_verification_certificate_arn|String|
+|policy|String|
 |regional_certificate_arn|String|
 |regional_certificate_name|String|
 |regional_domain_name|String|

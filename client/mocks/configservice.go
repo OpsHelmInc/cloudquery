@@ -975,6 +975,26 @@ func (mr *MockConfigserviceClientMockRecorder) ListAggregateDiscoveredResources(
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAggregateDiscoveredResources", reflect.TypeOf((*MockConfigserviceClient)(nil).ListAggregateDiscoveredResources), varargs...)
 }
 
+// ListConfigurationRecorders mocks base method.
+func (m *MockConfigserviceClient) ListConfigurationRecorders(arg0 context.Context, arg1 *configservice.ListConfigurationRecordersInput, arg2 ...func(*configservice.Options)) (*configservice.ListConfigurationRecordersOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListConfigurationRecorders", varargs...)
+	ret0, _ := ret[0].(*configservice.ListConfigurationRecordersOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListConfigurationRecorders indicates an expected call of ListConfigurationRecorders.
+func (mr *MockConfigserviceClientMockRecorder) ListConfigurationRecorders(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListConfigurationRecorders", reflect.TypeOf((*MockConfigserviceClient)(nil).ListConfigurationRecorders), varargs...)
+}
+
 // ListConformancePackComplianceScores mocks base method.
 func (m *MockConfigserviceClient) ListConformancePackComplianceScores(arg0 context.Context, arg1 *configservice.ListConformancePackComplianceScoresInput, arg2 ...func(*configservice.Options)) (*configservice.ListConformancePackComplianceScoresOutput, error) {
 	m.ctrl.T.Helper()

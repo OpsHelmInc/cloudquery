@@ -68,6 +68,11 @@ func ReplicationInstances() *schema.Table {
 				Resolver: schema.PathResolver("InstanceCreateTime"),
 			},
 			{
+				Name:     "kerberos_authentication_settings",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("KerberosAuthenticationSettings"),
+			},
+			{
 				Name:     "kms_key_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("KmsKeyId"),

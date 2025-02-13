@@ -48,6 +48,11 @@ func VpcEndpoints() *schema.Table {
 				Resolver: schema.PathResolver("DnsOptions"),
 			},
 			{
+				Name:     "failure_reason",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("FailureReason"),
+			},
+			{
 				Name:     "groups",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Groups"),
@@ -56,6 +61,16 @@ func VpcEndpoints() *schema.Table {
 				Name:     "ip_address_type",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("IpAddressType"),
+			},
+			{
+				Name:     "ipv4_prefixes",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Ipv4Prefixes"),
+			},
+			{
+				Name:     "ipv6_prefixes",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Ipv6Prefixes"),
 			},
 			{
 				Name:     "last_error",
@@ -88,6 +103,11 @@ func VpcEndpoints() *schema.Table {
 				Resolver: schema.PathResolver("RequesterManaged"),
 			},
 			{
+				Name:     "resource_configuration_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ResourceConfigurationArn"),
+			},
+			{
 				Name:     "route_table_ids",
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("RouteTableIds"),
@@ -96,6 +116,16 @@ func VpcEndpoints() *schema.Table {
 				Name:     "service_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ServiceName"),
+			},
+			{
+				Name:     "service_network_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ServiceNetworkArn"),
+			},
+			{
+				Name:     "service_region",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ServiceRegion"),
 			},
 			{
 				Name:     "state",

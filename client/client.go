@@ -7,7 +7,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/OpsHelmInc/cloudquery/client/services"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/aws/retry"
@@ -21,6 +20,8 @@ import (
 	"github.com/cloudquery/plugin-sdk/schema"
 	"github.com/cloudquery/plugin-sdk/specs"
 	"github.com/rs/zerolog"
+
+	"github.com/OpsHelmInc/cloudquery/client/services"
 )
 
 type Client struct {
@@ -60,10 +61,12 @@ const (
 	cloudfrontScopeRegion      = defaultRegion
 )
 
-var errInvalidRegion = errors.New("region wildcard \"*\" is only supported as first argument")
-var errUnknownRegion = func(region string) error {
-	return fmt.Errorf("unknown region: %q", region)
-}
+var (
+	errInvalidRegion = errors.New("region wildcard \"*\" is only supported as first argument")
+	errUnknownRegion = func(region string) error {
+		return fmt.Errorf("unknown region: %q", region)
+	}
+)
 var errRetrievingCredentials = errors.New("error retrieving AWS credentials (see logs for details). Please verify your credentials and try again")
 
 func (s *ServicesManager) ServicesByPartitionAccountAndRegion(partition, accountId, region string) *Services {
@@ -118,6 +121,7 @@ func (s ServicesPartitionAccountRegionMap) Accounts() []string {
 	}
 	return accounts
 }
+
 func (c *Client) Logger() *zerolog.Logger {
 	return &c.logger
 }
@@ -200,6 +204,7 @@ func verifyRegions(regions []string) error {
 	}
 	return nil
 }
+
 func isAllRegions(regions []string) bool {
 	// if regions array is not valid return false
 	err := verifyRegions(regions)

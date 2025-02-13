@@ -32,4 +32,5 @@ This table depends on [aws_accessanalyzer_analyzers](aws_accessanalyzer_analyzer
 |is_public|Bool|
 |principal|JSON|
 |resource|String|
+|resource_control_policy_restriction|String|
 |sources|JSON|

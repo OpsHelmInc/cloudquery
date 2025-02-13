@@ -88,6 +88,11 @@ func ReplicationGroups() *schema.Table {
 				Resolver: schema.PathResolver("Description"),
 			},
 			{
+				Name:     "engine",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("Engine"),
+			},
+			{
 				Name:     "global_replication_group_info",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("GlobalReplicationGroupInfo"),

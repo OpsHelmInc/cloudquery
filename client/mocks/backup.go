@@ -395,6 +395,26 @@ func (mr *MockBackupClientMockRecorder) GetLegalHold(arg0, arg1 interface{}, arg
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetLegalHold", reflect.TypeOf((*MockBackupClient)(nil).GetLegalHold), varargs...)
 }
 
+// GetRecoveryPointIndexDetails mocks base method.
+func (m *MockBackupClient) GetRecoveryPointIndexDetails(arg0 context.Context, arg1 *backup.GetRecoveryPointIndexDetailsInput, arg2 ...func(*backup.Options)) (*backup.GetRecoveryPointIndexDetailsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetRecoveryPointIndexDetails", varargs...)
+	ret0, _ := ret[0].(*backup.GetRecoveryPointIndexDetailsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetRecoveryPointIndexDetails indicates an expected call of GetRecoveryPointIndexDetails.
+func (mr *MockBackupClientMockRecorder) GetRecoveryPointIndexDetails(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetRecoveryPointIndexDetails", reflect.TypeOf((*MockBackupClient)(nil).GetRecoveryPointIndexDetails), varargs...)
+}
+
 // GetRecoveryPointRestoreMetadata mocks base method.
 func (m *MockBackupClient) GetRecoveryPointRestoreMetadata(arg0 context.Context, arg1 *backup.GetRecoveryPointRestoreMetadataInput, arg2 ...func(*backup.Options)) (*backup.GetRecoveryPointRestoreMetadataOutput, error) {
 	m.ctrl.T.Helper()
@@ -713,6 +733,26 @@ func (mr *MockBackupClientMockRecorder) ListFrameworks(arg0, arg1 interface{}, a
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListFrameworks", reflect.TypeOf((*MockBackupClient)(nil).ListFrameworks), varargs...)
+}
+
+// ListIndexedRecoveryPoints mocks base method.
+func (m *MockBackupClient) ListIndexedRecoveryPoints(arg0 context.Context, arg1 *backup.ListIndexedRecoveryPointsInput, arg2 ...func(*backup.Options)) (*backup.ListIndexedRecoveryPointsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListIndexedRecoveryPoints", varargs...)
+	ret0, _ := ret[0].(*backup.ListIndexedRecoveryPointsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListIndexedRecoveryPoints indicates an expected call of ListIndexedRecoveryPoints.
+func (mr *MockBackupClientMockRecorder) ListIndexedRecoveryPoints(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListIndexedRecoveryPoints", reflect.TypeOf((*MockBackupClient)(nil).ListIndexedRecoveryPoints), varargs...)
 }
 
 // ListLegalHolds mocks base method.

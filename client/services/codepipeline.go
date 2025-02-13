@@ -18,6 +18,8 @@ type CodepipelineClient interface {
 	ListActionTypes(context.Context, *codepipeline.ListActionTypesInput, ...func(*codepipeline.Options)) (*codepipeline.ListActionTypesOutput, error)
 	ListPipelineExecutions(context.Context, *codepipeline.ListPipelineExecutionsInput, ...func(*codepipeline.Options)) (*codepipeline.ListPipelineExecutionsOutput, error)
 	ListPipelines(context.Context, *codepipeline.ListPipelinesInput, ...func(*codepipeline.Options)) (*codepipeline.ListPipelinesOutput, error)
+	ListRuleExecutions(context.Context, *codepipeline.ListRuleExecutionsInput, ...func(*codepipeline.Options)) (*codepipeline.ListRuleExecutionsOutput, error)
+	ListRuleTypes(context.Context, *codepipeline.ListRuleTypesInput, ...func(*codepipeline.Options)) (*codepipeline.ListRuleTypesOutput, error)
 	ListTagsForResource(context.Context, *codepipeline.ListTagsForResourceInput, ...func(*codepipeline.Options)) (*codepipeline.ListTagsForResourceOutput, error)
 	ListWebhooks(context.Context, *codepipeline.ListWebhooksInput, ...func(*codepipeline.Options)) (*codepipeline.ListWebhooksOutput, error)
 }

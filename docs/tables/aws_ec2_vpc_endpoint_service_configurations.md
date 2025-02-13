@@ -25,9 +25,11 @@ The primary key for this table is **arn**.
 |payer_responsibility|String|
 |private_dns_name|String|
 |private_dns_name_configuration|JSON|
+|remote_access_enabled|Bool|
 |service_id|String|
 |service_name|String|
 |service_state|String|
 |service_type|JSON|
 |supported_ip_address_types|StringArray|
+|supported_regions|JSON|
 |tags|JSON|

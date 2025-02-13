@@ -3,12 +3,13 @@ package mwaa
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/mwaa"
 	"github.com/aws/aws-sdk-go-v2/service/mwaa/types"
 	"github.com/cloudquery/plugin-sdk/faker"
 	"github.com/golang/mock/gomock"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/mocks"
 )
 
 func buildMwaaEnvironments(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -19,7 +20,7 @@ func buildMwaaEnvironments(t *testing.T, ctrl *gomock.Controller) client.Service
 		t.Fatal(err)
 	}
 
-	m.EXPECT().ListEnvironments(gomock.Any(), gomock.Any()).Return(
+	m.EXPECT().ListEnvironments(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&mwaa.ListEnvironmentsOutput{
 			Environments: []string{*g.Name},
 		}, nil)

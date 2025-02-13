@@ -78,6 +78,11 @@ func VpcEndpointServiceConfigurations() *schema.Table {
 				Resolver: schema.PathResolver("PrivateDnsNameConfiguration"),
 			},
 			{
+				Name:     "remote_access_enabled",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("RemoteAccessEnabled"),
+			},
+			{
 				Name:     "service_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ServiceId"),
@@ -101,6 +106,11 @@ func VpcEndpointServiceConfigurations() *schema.Table {
 				Name:     "supported_ip_address_types",
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("SupportedIpAddressTypes"),
+			},
+			{
+				Name:     "supported_regions",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("SupportedRegions"),
 			},
 			{
 				Name:     "tags",

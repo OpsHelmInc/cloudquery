@@ -25,6 +25,7 @@ The primary key for this table is **arn**.
 |iops|Int|
 |kms_key_id|String|
 |multi_attach_enabled|Bool|
+|operator|JSON|
 |outpost_arn|String|
 |size|Int|
 |snapshot_id|String|

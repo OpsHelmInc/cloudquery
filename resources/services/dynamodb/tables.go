@@ -99,6 +99,16 @@ func Tables() *schema.Table {
 				Resolver: schema.PathResolver("LocalSecondaryIndexes"),
 			},
 			{
+				Name:     "multi_region_consistency",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("MultiRegionConsistency"),
+			},
+			{
+				Name:     "on_demand_throughput",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("OnDemandThroughput"),
+			},
+			{
 				Name:     "provisioned_throughput",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ProvisionedThroughput"),
@@ -147,6 +157,11 @@ func Tables() *schema.Table {
 				Name:     "table_status",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("TableStatus"),
+			},
+			{
+				Name:     "warm_throughput",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("WarmThroughput"),
 			},
 		},
 

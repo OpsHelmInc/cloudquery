@@ -58,6 +58,11 @@ func Subnets() *schema.Table {
 				Resolver: schema.PathResolver("AvailableIpAddressCount"),
 			},
 			{
+				Name:     "block_public_access_states",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("BlockPublicAccessStates"),
+			},
+			{
 				Name:     "cidr_block",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("CidrBlock"),

@@ -194,6 +194,11 @@ func TrainingJobs() *schema.Table {
 				Resolver: schema.PathResolver("ProfilingStatus"),
 			},
 			{
+				Name:     "remote_debug_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("RemoteDebugConfig"),
+			},
+			{
 				Name:     "retry_strategy",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("RetryStrategy"),

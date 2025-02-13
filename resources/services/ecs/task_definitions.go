@@ -64,6 +64,11 @@ func TaskDefinitions() *schema.Table {
 				Resolver: schema.PathResolver("DeregisteredAt"),
 			},
 			{
+				Name:     "enable_fault_injection",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("EnableFaultInjection"),
+			},
+			{
 				Name:     "ephemeral_storage",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("EphemeralStorage"),

@@ -59,6 +59,11 @@ func WorkGroups() *schema.Table {
 				Resolver: schema.PathResolver("Description"),
 			},
 			{
+				Name:     "identity_center_application_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("IdentityCenterApplicationArn"),
+			},
+			{
 				Name:     "state",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("State"),

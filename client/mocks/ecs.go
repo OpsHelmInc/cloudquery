@@ -95,6 +95,46 @@ func (mr *MockEcsClientMockRecorder) DescribeContainerInstances(arg0, arg1 inter
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeContainerInstances", reflect.TypeOf((*MockEcsClient)(nil).DescribeContainerInstances), varargs...)
 }
 
+// DescribeServiceDeployments mocks base method.
+func (m *MockEcsClient) DescribeServiceDeployments(arg0 context.Context, arg1 *ecs.DescribeServiceDeploymentsInput, arg2 ...func(*ecs.Options)) (*ecs.DescribeServiceDeploymentsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeServiceDeployments", varargs...)
+	ret0, _ := ret[0].(*ecs.DescribeServiceDeploymentsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeServiceDeployments indicates an expected call of DescribeServiceDeployments.
+func (mr *MockEcsClientMockRecorder) DescribeServiceDeployments(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeServiceDeployments", reflect.TypeOf((*MockEcsClient)(nil).DescribeServiceDeployments), varargs...)
+}
+
+// DescribeServiceRevisions mocks base method.
+func (m *MockEcsClient) DescribeServiceRevisions(arg0 context.Context, arg1 *ecs.DescribeServiceRevisionsInput, arg2 ...func(*ecs.Options)) (*ecs.DescribeServiceRevisionsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeServiceRevisions", varargs...)
+	ret0, _ := ret[0].(*ecs.DescribeServiceRevisionsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeServiceRevisions indicates an expected call of DescribeServiceRevisions.
+func (mr *MockEcsClientMockRecorder) DescribeServiceRevisions(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeServiceRevisions", reflect.TypeOf((*MockEcsClient)(nil).DescribeServiceRevisions), varargs...)
+}
+
 // DescribeServices mocks base method.
 func (m *MockEcsClient) DescribeServices(arg0 context.Context, arg1 *ecs.DescribeServicesInput, arg2 ...func(*ecs.Options)) (*ecs.DescribeServicesOutput, error) {
 	m.ctrl.T.Helper()
@@ -273,6 +313,26 @@ func (mr *MockEcsClientMockRecorder) ListContainerInstances(arg0, arg1 interface
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListContainerInstances", reflect.TypeOf((*MockEcsClient)(nil).ListContainerInstances), varargs...)
+}
+
+// ListServiceDeployments mocks base method.
+func (m *MockEcsClient) ListServiceDeployments(arg0 context.Context, arg1 *ecs.ListServiceDeploymentsInput, arg2 ...func(*ecs.Options)) (*ecs.ListServiceDeploymentsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListServiceDeployments", varargs...)
+	ret0, _ := ret[0].(*ecs.ListServiceDeploymentsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListServiceDeployments indicates an expected call of ListServiceDeployments.
+func (mr *MockEcsClientMockRecorder) ListServiceDeployments(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListServiceDeployments", reflect.TypeOf((*MockEcsClient)(nil).ListServiceDeployments), varargs...)
 }
 
 // ListServices mocks base method.

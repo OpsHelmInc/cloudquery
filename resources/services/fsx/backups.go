@@ -94,6 +94,11 @@ func Backups() *schema.Table {
 				Resolver: schema.PathResolver("ResourceType"),
 			},
 			{
+				Name:     "size_in_bytes",
+				Type:     schema.TypeInt,
+				Resolver: schema.PathResolver("SizeInBytes"),
+			},
+			{
 				Name:     "source_backup_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("SourceBackupId"),

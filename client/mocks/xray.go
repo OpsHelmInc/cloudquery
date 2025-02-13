@@ -115,6 +115,26 @@ func (mr *MockXrayClientMockRecorder) GetGroups(arg0, arg1 interface{}, arg2 ...
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetGroups", reflect.TypeOf((*MockXrayClient)(nil).GetGroups), varargs...)
 }
 
+// GetIndexingRules mocks base method.
+func (m *MockXrayClient) GetIndexingRules(arg0 context.Context, arg1 *xray.GetIndexingRulesInput, arg2 ...func(*xray.Options)) (*xray.GetIndexingRulesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetIndexingRules", varargs...)
+	ret0, _ := ret[0].(*xray.GetIndexingRulesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetIndexingRules indicates an expected call of GetIndexingRules.
+func (mr *MockXrayClientMockRecorder) GetIndexingRules(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetIndexingRules", reflect.TypeOf((*MockXrayClient)(nil).GetIndexingRules), varargs...)
+}
+
 // GetInsight mocks base method.
 func (m *MockXrayClient) GetInsight(arg0 context.Context, arg1 *xray.GetInsightInput, arg2 ...func(*xray.Options)) (*xray.GetInsightOutput, error) {
 	m.ctrl.T.Helper()
@@ -193,6 +213,26 @@ func (mr *MockXrayClientMockRecorder) GetInsightSummaries(arg0, arg1 interface{}
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetInsightSummaries", reflect.TypeOf((*MockXrayClient)(nil).GetInsightSummaries), varargs...)
+}
+
+// GetRetrievedTracesGraph mocks base method.
+func (m *MockXrayClient) GetRetrievedTracesGraph(arg0 context.Context, arg1 *xray.GetRetrievedTracesGraphInput, arg2 ...func(*xray.Options)) (*xray.GetRetrievedTracesGraphOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetRetrievedTracesGraph", varargs...)
+	ret0, _ := ret[0].(*xray.GetRetrievedTracesGraphOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetRetrievedTracesGraph indicates an expected call of GetRetrievedTracesGraph.
+func (mr *MockXrayClientMockRecorder) GetRetrievedTracesGraph(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetRetrievedTracesGraph", reflect.TypeOf((*MockXrayClient)(nil).GetRetrievedTracesGraph), varargs...)
 }
 
 // GetSamplingRules mocks base method.
@@ -315,6 +355,26 @@ func (mr *MockXrayClientMockRecorder) GetTraceGraph(arg0, arg1 interface{}, arg2
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTraceGraph", reflect.TypeOf((*MockXrayClient)(nil).GetTraceGraph), varargs...)
 }
 
+// GetTraceSegmentDestination mocks base method.
+func (m *MockXrayClient) GetTraceSegmentDestination(arg0 context.Context, arg1 *xray.GetTraceSegmentDestinationInput, arg2 ...func(*xray.Options)) (*xray.GetTraceSegmentDestinationOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetTraceSegmentDestination", varargs...)
+	ret0, _ := ret[0].(*xray.GetTraceSegmentDestinationOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetTraceSegmentDestination indicates an expected call of GetTraceSegmentDestination.
+func (mr *MockXrayClientMockRecorder) GetTraceSegmentDestination(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTraceSegmentDestination", reflect.TypeOf((*MockXrayClient)(nil).GetTraceSegmentDestination), varargs...)
+}
+
 // GetTraceSummaries mocks base method.
 func (m *MockXrayClient) GetTraceSummaries(arg0 context.Context, arg1 *xray.GetTraceSummariesInput, arg2 ...func(*xray.Options)) (*xray.GetTraceSummariesOutput, error) {
 	m.ctrl.T.Helper()
@@ -353,6 +413,26 @@ func (mr *MockXrayClientMockRecorder) ListResourcePolicies(arg0, arg1 interface{
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListResourcePolicies", reflect.TypeOf((*MockXrayClient)(nil).ListResourcePolicies), varargs...)
+}
+
+// ListRetrievedTraces mocks base method.
+func (m *MockXrayClient) ListRetrievedTraces(arg0 context.Context, arg1 *xray.ListRetrievedTracesInput, arg2 ...func(*xray.Options)) (*xray.ListRetrievedTracesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListRetrievedTraces", varargs...)
+	ret0, _ := ret[0].(*xray.ListRetrievedTracesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListRetrievedTraces indicates an expected call of ListRetrievedTraces.
+func (mr *MockXrayClientMockRecorder) ListRetrievedTraces(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListRetrievedTraces", reflect.TypeOf((*MockXrayClient)(nil).ListRetrievedTraces), varargs...)
 }
 
 // ListTagsForResource mocks base method.

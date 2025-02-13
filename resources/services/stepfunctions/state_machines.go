@@ -69,6 +69,11 @@ func StateMachines() *schema.Table {
 				Resolver: schema.PathResolver("Description"),
 			},
 			{
+				Name:     "encryption_configuration",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("EncryptionConfiguration"),
+			},
+			{
 				Name:     "label",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Label"),
@@ -92,6 +97,11 @@ func StateMachines() *schema.Table {
 				Name:     "tracing_configuration",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("TracingConfiguration"),
+			},
+			{
+				Name:     "variable_references",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("VariableReferences"),
 			},
 		},
 	}

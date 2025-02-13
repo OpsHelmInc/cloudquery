@@ -83,6 +83,11 @@ func Images() *schema.Table {
 				Resolver: schema.PathResolver("Hypervisor"),
 			},
 			{
+				Name:     "image_allowed",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("ImageAllowed"),
+			},
+			{
 				Name:     "image_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ImageId"),
@@ -161,6 +166,16 @@ func Images() *schema.Table {
 				Name:     "root_device_type",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("RootDeviceType"),
+			},
+			{
+				Name:     "source_image_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("SourceImageId"),
+			},
+			{
+				Name:     "source_image_region",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("SourceImageRegion"),
 			},
 			{
 				Name:     "source_instance_id",

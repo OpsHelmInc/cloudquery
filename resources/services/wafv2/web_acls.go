@@ -113,6 +113,11 @@ func WebAcls() *schema.Table {
 				Resolver: schema.PathResolver("PreProcessFirewallManagerRuleGroups"),
 			},
 			{
+				Name:     "retrofitted_by_firewall_manager",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("RetrofittedByFirewallManager"),
+			},
+			{
 				Name:     "rules",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Rules"),

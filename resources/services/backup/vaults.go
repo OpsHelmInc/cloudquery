@@ -94,6 +94,16 @@ func Vaults() *schema.Table {
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("NumberOfRecoveryPoints"),
 			},
+			{
+				Name:     "vault_state",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("VaultState"),
+			},
+			{
+				Name:     "vault_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("VaultType"),
+			},
 		},
 
 		Relations: []*schema.Table{

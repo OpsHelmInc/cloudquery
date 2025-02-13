@@ -33,6 +33,7 @@ The following tables depend on aws_kms_keys:
 |enabled|Bool|
 |encryption_algorithms|StringArray|
 |expiration_model|String|
+|key_agreement_algorithms|StringArray|
 |key_manager|String|
 |key_spec|String|
 |key_state|String|

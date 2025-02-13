@@ -32,4 +32,5 @@ The following tables depend on aws_lambda_functions:
 |concurrency|JSON|
 |configuration|JSON|
 |tags|JSON|
+|tags_error|JSON|
 |result_metadata|JSON|

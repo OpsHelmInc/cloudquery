@@ -33,6 +33,11 @@ func InstanceStatuses() *schema.Table {
 				},
 			},
 			{
+				Name:     "attached_ebs_status",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("AttachedEbsStatus"),
+			},
+			{
 				Name:     "availability_zone",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("AvailabilityZone"),
@@ -56,6 +61,11 @@ func InstanceStatuses() *schema.Table {
 				Name:     "instance_status",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("InstanceStatus"),
+			},
+			{
+				Name:     "operator",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Operator"),
 			},
 			{
 				Name:     "outpost_arn",

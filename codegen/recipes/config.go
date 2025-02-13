@@ -4,10 +4,11 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/OpsHelmInc/cloudquery/resources/services/config/models"
 	"github.com/aws/aws-sdk-go-v2/service/configservice/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/resources/services/config/models"
 )
 
 func ConfigResources() []*Resource {
@@ -19,12 +20,14 @@ func ConfigResources() []*Resource {
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
-					{
-						Name:     "arn",
-						Type:     schema.TypeString,
-						Resolver: `generateConfigRecorderArn`,
-						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-					},
+					/*
+						{
+							Name:     "arn",
+							Type:     schema.TypeString,
+							Resolver: `generateConfigRecorderArn`,
+							Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+						},
+					*/
 				}...),
 		},
 		{

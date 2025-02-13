@@ -20,5 +20,8 @@ The following tables depend on aws_eventbridge_event_buses:
 |region|String|
 |tags|JSON|
 |arn (PK)|String|
+|creation_time|Timestamp|
+|description|String|
+|last_modified_time|Timestamp|
 |name|String|
 |policy|String|

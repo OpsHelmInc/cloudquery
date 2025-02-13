@@ -32,6 +32,7 @@ The primary key for this table is **arn**.
 |managed_by_firewall_manager|Bool|
 |post_process_firewall_manager_rule_groups|JSON|
 |pre_process_firewall_manager_rule_groups|JSON|
+|retrofitted_by_firewall_manager|Bool|
 |rules|JSON|
 |token_domains|StringArray|
 |logging_configuration|JSON|

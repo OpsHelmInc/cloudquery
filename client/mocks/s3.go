@@ -235,6 +235,26 @@ func (mr *MockS3ClientMockRecorder) GetBucketLogging(arg0, arg1 interface{}, arg
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetBucketLogging", reflect.TypeOf((*MockS3Client)(nil).GetBucketLogging), varargs...)
 }
 
+// GetBucketMetadataTableConfiguration mocks base method.
+func (m *MockS3Client) GetBucketMetadataTableConfiguration(arg0 context.Context, arg1 *s3.GetBucketMetadataTableConfigurationInput, arg2 ...func(*s3.Options)) (*s3.GetBucketMetadataTableConfigurationOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetBucketMetadataTableConfiguration", varargs...)
+	ret0, _ := ret[0].(*s3.GetBucketMetadataTableConfigurationOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetBucketMetadataTableConfiguration indicates an expected call of GetBucketMetadataTableConfiguration.
+func (mr *MockS3ClientMockRecorder) GetBucketMetadataTableConfiguration(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetBucketMetadataTableConfiguration", reflect.TypeOf((*MockS3Client)(nil).GetBucketMetadataTableConfiguration), varargs...)
+}
+
 // GetBucketMetricsConfiguration mocks base method.
 func (m *MockS3Client) GetBucketMetricsConfiguration(arg0 context.Context, arg1 *s3.GetBucketMetricsConfigurationInput, arg2 ...func(*s3.Options)) (*s3.GetBucketMetricsConfigurationOutput, error) {
 	m.ctrl.T.Helper()

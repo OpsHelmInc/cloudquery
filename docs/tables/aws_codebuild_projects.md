@@ -17,6 +17,7 @@ The primary key for this table is **arn**.
 |region|String|
 |arn (PK)|String|
 |artifacts|JSON|
+|auto_retry_limit|Int|
 |badge|JSON|
 |build_batch_config|JSON|
 |cache|JSON|

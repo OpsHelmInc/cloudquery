@@ -63,6 +63,11 @@ func Stacks() *schema.Table {
 				Resolver: schema.PathResolver("ChangeSetId"),
 			},
 			{
+				Name:     "deletion_mode",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("DeletionMode"),
+			},
+			{
 				Name:     "deletion_time",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("DeletionTime"),
@@ -71,6 +76,11 @@ func Stacks() *schema.Table {
 				Name:     "description",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Description"),
+			},
+			{
+				Name:     "detailed_status",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("DetailedStatus"),
 			},
 			{
 				Name:     "disable_rollback",

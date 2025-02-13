@@ -23,12 +23,16 @@ The primary key for this table is **arn**.
 |created_time|Timestamp|
 |description|String|
 |display_name|String|
+|dynamic_app_providers_enabled|String|
 |image_builder_name|String|
 |image_builder_supported|Bool|
 |image_errors|JSON|
 |image_permissions|JSON|
+|image_shared_with_others|String|
+|latest_appstream_agent_version|String|
 |platform|String|
 |public_base_image_released_date|Timestamp|
 |state|String|
 |state_change_reason|JSON|
+|supported_instance_families|StringArray|
 |visibility|String|

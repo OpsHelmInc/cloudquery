@@ -39,6 +39,8 @@ This table depends on [aws_docdb_clusters](aws_docdb_clusters.md).
 |kms_key_id|String|
 |latest_restorable_time|Timestamp|
 |pending_modified_values|JSON|
+|performance_insights_enabled|Bool|
+|performance_insights_kms_key_id|String|
 |preferred_backup_window|String|
 |preferred_maintenance_window|String|
 |promotion_tier|Int|

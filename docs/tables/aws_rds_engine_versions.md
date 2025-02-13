@@ -34,6 +34,7 @@ The following tables depend on aws_rds_engine_versions:
 |image|JSON|
 |kms_key_id|String|
 |major_engine_version|String|
+|serverless_v2_features_support|JSON|
 |status|String|
 |supported_ca_certificate_identifiers|StringArray|
 |supported_character_sets|JSON|
@@ -45,6 +46,7 @@ The following tables depend on aws_rds_engine_versions:
 |supports_certificate_rotation_without_restart|Bool|
 |supports_global_databases|Bool|
 |supports_integrations|Bool|
+|supports_limitless_database|Bool|
 |supports_local_write_forwarding|Bool|
 |supports_log_exports_to_cloudwatch_logs|Bool|
 |supports_parallel_query|Bool|

@@ -10,5 +10,6 @@ import (
 type Cloudhsmv2Client interface {
 	DescribeBackups(context.Context, *cloudhsmv2.DescribeBackupsInput, ...func(*cloudhsmv2.Options)) (*cloudhsmv2.DescribeBackupsOutput, error)
 	DescribeClusters(context.Context, *cloudhsmv2.DescribeClustersInput, ...func(*cloudhsmv2.Options)) (*cloudhsmv2.DescribeClustersOutput, error)
+	GetResourcePolicy(context.Context, *cloudhsmv2.GetResourcePolicyInput, ...func(*cloudhsmv2.Options)) (*cloudhsmv2.GetResourcePolicyOutput, error)
 	ListTags(context.Context, *cloudhsmv2.ListTagsInput, ...func(*cloudhsmv2.Options)) (*cloudhsmv2.ListTagsOutput, error)
 }

@@ -68,6 +68,11 @@ func SecurityGroups() *schema.Table {
 				Resolver: schema.PathResolver("OwnerId"),
 			},
 			{
+				Name:     "security_group_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("SecurityGroupArn"),
+			},
+			{
 				Name:     "tags",
 				Type:     schema.TypeJSON,
 				Resolver: client.ResolveTags,

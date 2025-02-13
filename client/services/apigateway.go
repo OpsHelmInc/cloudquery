@@ -24,6 +24,7 @@ type ApigatewayClient interface {
 	GetDocumentationVersion(context.Context, *apigateway.GetDocumentationVersionInput, ...func(*apigateway.Options)) (*apigateway.GetDocumentationVersionOutput, error)
 	GetDocumentationVersions(context.Context, *apigateway.GetDocumentationVersionsInput, ...func(*apigateway.Options)) (*apigateway.GetDocumentationVersionsOutput, error)
 	GetDomainName(context.Context, *apigateway.GetDomainNameInput, ...func(*apigateway.Options)) (*apigateway.GetDomainNameOutput, error)
+	GetDomainNameAccessAssociations(context.Context, *apigateway.GetDomainNameAccessAssociationsInput, ...func(*apigateway.Options)) (*apigateway.GetDomainNameAccessAssociationsOutput, error)
 	GetDomainNames(context.Context, *apigateway.GetDomainNamesInput, ...func(*apigateway.Options)) (*apigateway.GetDomainNamesOutput, error)
 	GetExport(context.Context, *apigateway.GetExportInput, ...func(*apigateway.Options)) (*apigateway.GetExportOutput, error)
 	GetGatewayResponse(context.Context, *apigateway.GetGatewayResponseInput, ...func(*apigateway.Options)) (*apigateway.GetGatewayResponseOutput, error)

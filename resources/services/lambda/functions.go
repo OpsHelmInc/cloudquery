@@ -73,6 +73,11 @@ func Functions() *schema.Table {
 				Resolver: schema.PathResolver("Tags"),
 			},
 			{
+				Name:     "tags_error",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("TagsError"),
+			},
+			{
 				Name:     "result_metadata",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ResultMetadata"),

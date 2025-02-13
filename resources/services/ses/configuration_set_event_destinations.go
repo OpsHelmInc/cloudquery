@@ -62,6 +62,11 @@ func ConfigurationSetEventDestinations() *schema.Table {
 				Resolver: schema.PathResolver("Enabled"),
 			},
 			{
+				Name:     "event_bridge_destination",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("EventBridgeDestination"),
+			},
+			{
 				Name:     "kinesis_firehose_destination",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("KinesisFirehoseDestination"),
