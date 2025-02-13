@@ -10,6 +10,7 @@ import (
 	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func signingCertificates() *schema.Table {
@@ -37,7 +38,7 @@ func signingCertificates() *schema.Table {
 }
 
 func fetchUserSigningCertificates(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
-	config := &iam.ListSigningCertificatesInput{UserName: parent.Item.(*types.User).UserName}
+	config := &iam.ListSigningCertificatesInput{UserName: parent.Item.(*ohaws.User).UserName}
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceIam).Iam
 	paginator := iam.NewListSigningCertificatesPaginator(svc, config)

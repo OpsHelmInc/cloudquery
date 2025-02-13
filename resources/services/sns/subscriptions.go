@@ -13,7 +13,7 @@ import (
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
 	sdkTypes "github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/types"
-	"github.com/OpsHelmInc/cloudquery/v2/resources/services/sns/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func Subscriptions() *schema.Table {
@@ -23,7 +23,7 @@ func Subscriptions() *schema.Table {
 		Description:         `https://docs.aws.amazon.com/sns/latest/api/API_GetSubscriptionAttributes.html`,
 		Resolver:            fetchSnsSubscriptions,
 		PreResourceResolver: getSnsSubscription,
-		Transform:           transformers.TransformWithStruct(&models.Subscription{}),
+		Transform:           transformers.TransformWithStruct(&ohaws.Subscription{}),
 		Multiplex:           client.ServiceAccountRegionMultiplexer(tableName, "sns"),
 		Columns: []schema.Column{
 			client.DefaultAccountIDColumn(false),
@@ -80,7 +80,7 @@ func getSnsSubscription(ctx context.Context, meta schema.ClientMeta, resource *s
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceSns).Sns
 	item := resource.Item.(types.Subscription)
-	s := models.Subscription{
+	s := ohaws.Subscription{
 		SubscriptionArn: item.SubscriptionArn,
 		Owner:           item.Owner,
 		Protocol:        item.Protocol,

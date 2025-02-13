@@ -10,6 +10,7 @@ import (
 	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func userGroups() *schema.Table {
@@ -38,7 +39,7 @@ func userGroups() *schema.Table {
 
 func fetchIamUserGroups(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	var config iam.ListGroupsForUserInput
-	p := parent.Item.(*types.User)
+	p := parent.Item.(*ohaws.User)
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceIam).Iam
 	config.UserName = p.UserName

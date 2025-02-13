@@ -25,10 +25,23 @@ func buildRoles(t *testing.T, ctrl *gomock.Controller) client.Services {
 	document := `{"stuff": 3}`
 	r.AssumeRolePolicyDocument = &document
 
+	pd := iam.GetRolePolicyOutput{}
+	require.NoError(t, faker.FakeObject(&pd))
+	pd.PolicyDocument = &document
+
+	var l []string
+	require.NoError(t, faker.FakeObject(&l))
+
 	m.EXPECT().GetRole(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.GetRoleOutput{
 			Role: &r,
 		}, nil)
+	m.EXPECT().ListRolePolicies(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+		&iam.ListRolePoliciesOutput{
+			PolicyNames: l,
+		}, nil)
+	m.EXPECT().GetRolePolicy(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+		&pd, nil)
 
 	m.EXPECT().ListRoles(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.ListRolesOutput{
@@ -39,21 +52,13 @@ func buildRoles(t *testing.T, ctrl *gomock.Controller) client.Services {
 			AttachedPolicies: []iamTypes.AttachedPolicy{p},
 		}, nil)
 
-	var l []string
-	require.NoError(t, faker.FakeObject(&l))
-	m.EXPECT().ListRolePolicies(gomock.Any(), gomock.Any(), gomock.Any()).Return(
-		&iam.ListRolePoliciesOutput{
-			PolicyNames: l,
-		}, nil)
-
-	pd := iam.GetRolePolicyOutput{}
-	require.NoError(t, faker.FakeObject(&pd))
-	pd.PolicyDocument = &document
-	m.EXPECT().GetRolePolicy(gomock.Any(), gomock.Any(), gomock.Any()).Return(
-		&pd, nil)
-
 	tag := iamTypes.Tag{}
 	require.NoError(t, faker.FakeObject(&tag))
+
+	m.EXPECT().ListAttachedRolePolicies(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+		&iam.ListAttachedRolePoliciesOutput{
+			AttachedPolicies: []iamTypes.AttachedPolicy{p},
+		}, nil)
 
 	// m.EXPECT().GenerateServiceLastAccessedDetails(gomock.Any(), gomock.Any(), gomock.Any()).Return(&iam.GenerateServiceLastAccessedDetailsOutput{JobId: aws.String("JobId")}, nil)
 

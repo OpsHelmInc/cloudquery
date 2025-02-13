@@ -10,6 +10,7 @@ import (
 	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func sshPublicKeys() *schema.Table {
@@ -46,7 +47,7 @@ func fetchIamSshPublicKeys(ctx context.Context, meta schema.ClientMeta, parent *
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceIam).Iam
 	paginator := iam.NewListSSHPublicKeysPaginator(svc, &iam.ListSSHPublicKeysInput{
-		UserName: parent.Item.(*types.User).UserName,
+		UserName: parent.Item.(*ohaws.User).UserName,
 	})
 	for paginator.HasMorePages() {
 		page, err := paginator.NextPage(ctx, func(options *iam.Options) {

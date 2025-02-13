@@ -33,3 +33,11 @@ The following tables depend on aws_iam_users:
 |user_name|`utf8`|
 |password_last_used|`timestamp[us, tz=UTC]`|
 |permissions_boundary|`json`|
+|inline_policies|`json`|
+|attached_policies|`json`|
+|groups|`json`|
+|mfa_devices|`json`|
+|login_profile|`json`|
+|password_set|`bool`|
+|mfa_active|`bool`|
+|access_keys|`json`|

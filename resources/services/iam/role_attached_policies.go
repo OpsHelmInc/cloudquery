@@ -10,6 +10,7 @@ import (
 	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func roleAttachedPolicies() *schema.Table {
@@ -32,7 +33,7 @@ func roleAttachedPolicies() *schema.Table {
 }
 
 func fetchIamRoleAttachedPolicies(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
-	p := parent.Item.(*types.Role)
+	p := parent.Item.(*ohaws.Role)
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceIam).Iam
 	config := iam.ListAttachedRolePoliciesInput{

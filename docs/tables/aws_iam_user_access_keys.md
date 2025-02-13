@@ -20,9 +20,9 @@ This table depends on [aws_iam_users](aws_iam_users.md).
 |user_arn|`utf8`|
 |access_key_id|`utf8`|
 |user_id|`utf8`|
-|last_used|`timestamp[us, tz=UTC]`|
-|last_used_service_name|`utf8`|
 |create_date|`timestamp[us, tz=UTC]`|
 |status|`utf8`|
 |user_name|`utf8`|
-|last_rotated|`timestamp[us, tz=UTC]`|
+|last_used_date|`timestamp[us, tz=UTC]`|
+|last_used_region|`utf8`|
+|last_used_service_name|`utf8`|

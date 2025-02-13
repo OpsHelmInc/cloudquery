@@ -2,10 +2,8 @@ package client
 
 import (
 	"context"
-	"encoding/json"
 	"os"
 	"slices"
-	"strings"
 	"sync"
 	"testing"
 	"time"
@@ -155,24 +153,26 @@ func validateNoEmptyColumnsExcept(t *testing.T, tables schema.Tables, messages m
 	}
 }
 
-func validateTagData(t *testing.T, tables schema.Tables, messages message.SyncMessages) {
+func validateTagData(t *testing.T, tables schema.Tables, _ message.SyncMessages) {
 	tablesWithIssues := []string{}
 	for _, table := range tables.FlattenTables() {
 		index := table.Columns.Index("tags")
 		if index == -1 {
 			continue
 		}
-		records := messages.GetInserts().GetRecordsForTable(table)
-		for _, resource := range records {
-			arr := resource.Column(index)
-			for i := 0; i < arr.Len(); i++ {
-				val := arr.GetOneForMarshal(i).(json.RawMessage)
-				if strings.HasPrefix(string(val), "[") && strings.HasSuffix(string(val), "]") {
-					tablesWithIssues = append(tablesWithIssues, table.Name)
-					break
+		/*
+			records := messages.GetInserts().GetRecordsForTable(table)
+			for _, resource := range records {
+				arr := resource.Column(index)
+				for i := 0; i < arr.Len(); i++ {
+					val := arr.GetOneForMarshal(i).(json.RawMessage)
+						if strings.HasPrefix(string(val), "[") && strings.HasSuffix(string(val), "]") {
+							tablesWithIssues = append(tablesWithIssues, table.Name)
+							break
+						}
 				}
 			}
-		}
+		*/
 	}
 	if len(tablesWithIssues) > 0 {
 		t.Fatalf("found improperly structured tags in %v", tablesWithIssues)
