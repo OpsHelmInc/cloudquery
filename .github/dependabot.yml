@@ -19,6 +19,9 @@ updates:
         patterns:
           - '*google.golang.org/*'
           - '*cloud.google.com/go*'
+      opshelm-internal:
+        patterns:
+          - 'github.com/OpsHelmInc/*' # Group our internal dependencies together
   - package-ecosystem: "github-actions" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:

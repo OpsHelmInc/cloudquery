@@ -1,8 +1,6 @@
 module github.com/OpsHelmInc/cloudquery/v2
 
-go 1.22
-
-toolchain go1.22.1
+go 1.24
 
 require (
 	github.com/OpsHelmInc/ohaws v0.5.0

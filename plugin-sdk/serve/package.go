@@ -171,7 +171,7 @@ func (s *PluginServe) build(pluginDirectory string, target plugin.BuildTarget, d
 	}
 
 	//nolint:govet
-	targetZip := fmt.Sprintf(pluginFileName + ".zip")
+	targetZip := pluginFileName + ".zip"
 	checksum, err := calcChecksum(path.Join(distPath, targetZip))
 	if err != nil {
 		return nil, fmt.Errorf("failed to calculate checksum: %w", err)
