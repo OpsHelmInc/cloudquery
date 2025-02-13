@@ -16,7 +16,6 @@ The primary key for this table is **arn**.
 |account_id|String|
 |region|String|
 |arn (PK)|String|
-|tags|JSON|
 |delivery_policy|JSON|
 |policy|JSON|
 |effective_delivery_policy|JSON|
@@ -29,4 +28,5 @@ The primary key for this table is **arn**.
 |kms_master_key_id|String|
 |fifo_topic|Bool|
 |content_based_deduplication|Bool|
+|tags|JSON|
 |unknown_fields|JSON|

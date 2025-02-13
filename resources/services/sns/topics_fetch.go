@@ -3,13 +3,14 @@ package sns
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/resources/services/sns/models"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/sns"
 	"github.com/aws/aws-sdk-go-v2/service/sns/types"
 	"github.com/cloudquery/plugin-sdk/schema"
 	"github.com/mitchellh/mapstructure"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchSnsTopics(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -41,7 +42,7 @@ func getTopic(ctx context.Context, meta schema.ClientMeta, resource *schema.Reso
 		return err
 	}
 
-	t := &models.Topic{Arn: topic.TopicArn}
+	t := &ohaws.Topic{Arn: topic.TopicArn}
 	dec, err := mapstructure.NewDecoder(&mapstructure.DecoderConfig{WeaklyTypedInput: true, Result: t})
 	if err != nil {
 		return err
@@ -50,20 +51,15 @@ func getTopic(ctx context.Context, meta schema.ClientMeta, resource *schema.Reso
 		return err
 	}
 
-	resource.Item = t
-	return nil
-}
-
-func resolveSnsTopicTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	topic := resource.Item.(*models.Topic)
-	cl := meta.(*client.Client)
-	svc := cl.Services().Sns
 	tagParams := sns.ListTagsForResourceInput{
-		ResourceArn: topic.Arn,
+		ResourceArn: topic.TopicArn,
 	}
 	tags, err := svc.ListTagsForResource(ctx, &tagParams)
 	if err != nil {
 		return err
 	}
-	return resource.Set(c.Name, client.TagsToMap(tags.Tags))
+	t.Tags = tags.Tags
+
+	resource.Item = t
+	return nil
 }

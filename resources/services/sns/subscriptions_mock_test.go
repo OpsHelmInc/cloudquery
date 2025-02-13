@@ -5,12 +5,13 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/sns"
 	"github.com/aws/aws-sdk-go-v2/service/sns/types"
 	"github.com/cloudquery/plugin-sdk/faker"
 	"github.com/golang/mock/gomock"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/mocks"
 )
 
 func buildSnsSubscriptions(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -37,6 +38,8 @@ func buildSnsSubscriptions(t *testing.T, ctrl *gomock.Controller) client.Service
 	m.EXPECT().ListSubscriptions(
 		gomock.Any(),
 		&sns.ListSubscriptionsInput{},
+		gomock.Any(),
+		gomock.Any(),
 	).Return(
 		&sns.ListSubscriptionsOutput{
 			Subscriptions: []types.Subscription{sub, emptySub},

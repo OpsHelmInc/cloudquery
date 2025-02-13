@@ -33,11 +33,6 @@ func Topics() *schema.Table {
 				},
 			},
 			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveSnsTopicTags,
-			},
-			{
 				Name:     "delivery_policy",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("DeliveryPolicy"),
@@ -96,6 +91,11 @@ func Topics() *schema.Table {
 				Name:     "content_based_deduplication",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("ContentBasedDeduplication"),
+			},
+			{
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: client.ResolveTags,
 			},
 			{
 				Name:     "unknown_fields",

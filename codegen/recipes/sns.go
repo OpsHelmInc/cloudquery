@@ -4,14 +4,14 @@ import (
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
 
-	"github.com/OpsHelmInc/cloudquery/resources/services/sns/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func SNSResources() []*Resource {
 	resources := []*Resource{
 		{
 			SubService:          "subscriptions",
-			Struct:              &models.Subscription{},
+			Struct:              &ohaws.Subscription{},
 			SkipFields:          []string{"SubscriptionArn", "DeliveryPolicy", "EffectiveDeliveryPolicy", "FilterPolicy", "RedrivePolicy"},
 			PreResourceResolver: "getSnsSubscription",
 			ExtraColumns: append(
@@ -53,7 +53,7 @@ func SNSResources() []*Resource {
 
 		{
 			SubService:          "topics",
-			Struct:              &models.Topic{},
+			Struct:              &ohaws.Topic{},
 			SkipFields:          []string{"Arn", "Policy", "EffectiveDeliveryPolicy", "DeliveryPolicy"},
 			PreResourceResolver: "getTopic",
 			ExtraColumns: append(
@@ -64,11 +64,6 @@ func SNSResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("Arn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveSnsTopicTags`,
 					},
 					{
 						Name:     "delivery_policy",

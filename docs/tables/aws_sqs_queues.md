@@ -16,7 +16,6 @@ The primary key for this table is **arn**.
 |account_id|String|
 |region|String|
 |arn (PK)|String|
-|tags|JSON|
 |policy|JSON|
 |redrive_policy|JSON|
 |redrive_allow_policy|JSON|
@@ -39,4 +38,5 @@ The primary key for this table is **arn**.
 |content_based_deduplication|Bool|
 |deduplication_scope|String|
 |fifo_throughput_limit|String|
+|tags|JSON|
 |unknown_fields|JSON|
