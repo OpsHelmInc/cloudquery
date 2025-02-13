@@ -34,59 +34,14 @@ func Streams() *schema.Table {
 				},
 			},
 			{
+				Name:     "stream_description_summary",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("StreamDescriptionSummary"),
+			},
+			{
 				Name:     "tags",
 				Type:     schema.TypeJSON,
-				Resolver: resolveKinesisStreamTags,
-			},
-			{
-				Name:     "enhanced_monitoring",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("EnhancedMonitoring"),
-			},
-			{
-				Name:     "open_shard_count",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("OpenShardCount"),
-			},
-			{
-				Name:     "retention_period_hours",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("RetentionPeriodHours"),
-			},
-			{
-				Name:     "stream_creation_timestamp",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("StreamCreationTimestamp"),
-			},
-			{
-				Name:     "stream_name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("StreamName"),
-			},
-			{
-				Name:     "stream_status",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("StreamStatus"),
-			},
-			{
-				Name:     "consumer_count",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("ConsumerCount"),
-			},
-			{
-				Name:     "encryption_type",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("EncryptionType"),
-			},
-			{
-				Name:     "key_id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("KeyId"),
-			},
-			{
-				Name:     "stream_mode_details",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("StreamModeDetails"),
+				Resolver: client.ResolveTags,
 			},
 		},
 	}

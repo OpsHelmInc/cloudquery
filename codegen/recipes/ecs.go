@@ -8,7 +8,7 @@ import (
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
 
-	"github.com/OpsHelmInc/cloudquery/resources/services/ecs/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func ECSResources() []*Resource {
@@ -104,11 +104,12 @@ func ECSResources() []*Resource {
 			Relations: []string{},
 		},
 		{
-			SubService:          "task_definitions",
-			Struct:              &models.TaskDefinitionWrapper{},
-			Description:         "https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TaskDefinition.html",
-			SkipFields:          []string{"TaskDefinitionArn", "Tags"},
-			PreResourceResolver: "getTaskDefinition",
+			SubService:            "task_definitions",
+			Struct:                &ohaws.TaskDefinition{},
+			UnwrapEmbeddedStructs: true,
+			Description:           "https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TaskDefinition.html",
+			SkipFields:            []string{"TaskDefinitionArn", "Tags"},
+			PreResourceResolver:   "getTaskDefinition",
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{

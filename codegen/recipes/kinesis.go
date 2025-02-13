@@ -1,16 +1,17 @@
 package recipes
 
 import (
-	"github.com/aws/aws-sdk-go-v2/service/kinesis/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func KinesisResources() []*Resource {
 	resources := []*Resource{
 		{
 			SubService:          "streams",
-			Struct:              &types.StreamDescriptionSummary{},
+			Struct:              &ohaws.KinesisStream{},
 			Description:         "https://docs.aws.amazon.com/kinesis/latest/APIReference/API_StreamDescriptionSummary.html",
 			SkipFields:          []string{"StreamARN"},
 			PreResourceResolver: "getStream",
@@ -22,11 +23,6 @@ func KinesisResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("StreamARN")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveKinesisStreamTags`,
 					},
 				}...),
 		},
