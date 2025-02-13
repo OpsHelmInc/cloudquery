@@ -22,6 +22,7 @@ func (f faker) getFakedValue(a any) (reflect.Value, error) {
 	if t == nil {
 		return reflect.Value{}, errEFaceNotAllowed
 	}
+	//nolint
 	f.maxDepth--
 	if f.maxDepth < 0 {
 		return reflect.Value{}, fmt.Errorf("max_depth reached")

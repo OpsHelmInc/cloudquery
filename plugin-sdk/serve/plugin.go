@@ -118,7 +118,7 @@ func (s *PluginServe) newCmdPluginServe() *cobra.Command {
 	err := telemetryLevel.Set(getEnvOrDefault("CQ_TELEMETRY_LEVEL", telemetryLevel.Value))
 	if err != nil {
 		//nolint:govet
-		fmt.Fprintf(os.Stderr, "failed to set telemetry level: "+err.Error())
+		fmt.Fprintf(os.Stderr, "failed to set telemetry level: %s", err)
 		os.Exit(1)
 	}
 
