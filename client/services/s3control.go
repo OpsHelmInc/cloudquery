@@ -43,6 +43,7 @@ type S3controlClient interface {
 	ListAccessGrantsLocations(context.Context, *s3control.ListAccessGrantsLocationsInput, ...func(*s3control.Options)) (*s3control.ListAccessGrantsLocationsOutput, error)
 	ListAccessPoints(context.Context, *s3control.ListAccessPointsInput, ...func(*s3control.Options)) (*s3control.ListAccessPointsOutput, error)
 	ListAccessPointsForObjectLambda(context.Context, *s3control.ListAccessPointsForObjectLambdaInput, ...func(*s3control.Options)) (*s3control.ListAccessPointsForObjectLambdaOutput, error)
+	ListCallerAccessGrants(context.Context, *s3control.ListCallerAccessGrantsInput, ...func(*s3control.Options)) (*s3control.ListCallerAccessGrantsOutput, error)
 	ListJobs(context.Context, *s3control.ListJobsInput, ...func(*s3control.Options)) (*s3control.ListJobsOutput, error)
 	ListMultiRegionAccessPoints(context.Context, *s3control.ListMultiRegionAccessPointsInput, ...func(*s3control.Options)) (*s3control.ListMultiRegionAccessPointsOutput, error)
 	ListRegionalBuckets(context.Context, *s3control.ListRegionalBucketsInput, ...func(*s3control.Options)) (*s3control.ListRegionalBucketsOutput, error)

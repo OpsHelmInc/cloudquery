@@ -21,6 +21,7 @@ The primary key for this table is **arn**.
 |data_protection_status|String|
 |inherited_properties|StringArray|
 |kms_key_id|String|
+|log_group_arn|String|
 |log_group_class|String|
 |log_group_name|String|
 |metric_filter_count|Int|

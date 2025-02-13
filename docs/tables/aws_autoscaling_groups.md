@@ -31,7 +31,10 @@ The following tables depend on aws_autoscaling_groups:
 |health_check_type|String|
 |max_size|Int|
 |min_size|Int|
+|availability_zone_distribution|JSON|
+|availability_zone_impairment_policy|JSON|
 |capacity_rebalance|Bool|
+|capacity_reservation_specification|JSON|
 |context|String|
 |default_instance_warmup|Int|
 |desired_capacity_type|String|

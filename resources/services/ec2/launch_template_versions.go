@@ -79,6 +79,11 @@ func LaunchTemplateVersions() *schema.Table {
 				Resolver: schema.PathResolver("LaunchTemplateName"),
 			},
 			{
+				Name:     "operator",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Operator"),
+			},
+			{
 				Name:     "version_description",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("VersionDescription"),

@@ -27,6 +27,7 @@ The composite primary key for this table is (**account_id**, **region**, **id**)
 |progress_percent|Int|
 |resource_arn|String|
 |resource_type|String|
+|size_in_bytes|Int|
 |source_backup_id|String|
 |source_backup_region|String|
 |tags|JSON|

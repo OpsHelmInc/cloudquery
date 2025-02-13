@@ -155,6 +155,46 @@ func (mr *MockInspector2ClientMockRecorder) DescribeOrganizationConfiguration(ar
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeOrganizationConfiguration", reflect.TypeOf((*MockInspector2Client)(nil).DescribeOrganizationConfiguration), varargs...)
 }
 
+// GetCisScanReport mocks base method.
+func (m *MockInspector2Client) GetCisScanReport(arg0 context.Context, arg1 *inspector2.GetCisScanReportInput, arg2 ...func(*inspector2.Options)) (*inspector2.GetCisScanReportOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetCisScanReport", varargs...)
+	ret0, _ := ret[0].(*inspector2.GetCisScanReportOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetCisScanReport indicates an expected call of GetCisScanReport.
+func (mr *MockInspector2ClientMockRecorder) GetCisScanReport(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetCisScanReport", reflect.TypeOf((*MockInspector2Client)(nil).GetCisScanReport), varargs...)
+}
+
+// GetCisScanResultDetails mocks base method.
+func (m *MockInspector2Client) GetCisScanResultDetails(arg0 context.Context, arg1 *inspector2.GetCisScanResultDetailsInput, arg2 ...func(*inspector2.Options)) (*inspector2.GetCisScanResultDetailsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetCisScanResultDetails", varargs...)
+	ret0, _ := ret[0].(*inspector2.GetCisScanResultDetailsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetCisScanResultDetails indicates an expected call of GetCisScanResultDetails.
+func (mr *MockInspector2ClientMockRecorder) GetCisScanResultDetails(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetCisScanResultDetails", reflect.TypeOf((*MockInspector2Client)(nil).GetCisScanResultDetails), varargs...)
+}
+
 // GetConfiguration mocks base method.
 func (m *MockInspector2Client) GetConfiguration(arg0 context.Context, arg1 *inspector2.GetConfigurationInput, arg2 ...func(*inspector2.Options)) (*inspector2.GetConfigurationOutput, error) {
 	m.ctrl.T.Helper()
@@ -313,6 +353,86 @@ func (mr *MockInspector2ClientMockRecorder) ListAccountPermissions(arg0, arg1 in
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAccountPermissions", reflect.TypeOf((*MockInspector2Client)(nil).ListAccountPermissions), varargs...)
+}
+
+// ListCisScanConfigurations mocks base method.
+func (m *MockInspector2Client) ListCisScanConfigurations(arg0 context.Context, arg1 *inspector2.ListCisScanConfigurationsInput, arg2 ...func(*inspector2.Options)) (*inspector2.ListCisScanConfigurationsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListCisScanConfigurations", varargs...)
+	ret0, _ := ret[0].(*inspector2.ListCisScanConfigurationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListCisScanConfigurations indicates an expected call of ListCisScanConfigurations.
+func (mr *MockInspector2ClientMockRecorder) ListCisScanConfigurations(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListCisScanConfigurations", reflect.TypeOf((*MockInspector2Client)(nil).ListCisScanConfigurations), varargs...)
+}
+
+// ListCisScanResultsAggregatedByChecks mocks base method.
+func (m *MockInspector2Client) ListCisScanResultsAggregatedByChecks(arg0 context.Context, arg1 *inspector2.ListCisScanResultsAggregatedByChecksInput, arg2 ...func(*inspector2.Options)) (*inspector2.ListCisScanResultsAggregatedByChecksOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListCisScanResultsAggregatedByChecks", varargs...)
+	ret0, _ := ret[0].(*inspector2.ListCisScanResultsAggregatedByChecksOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListCisScanResultsAggregatedByChecks indicates an expected call of ListCisScanResultsAggregatedByChecks.
+func (mr *MockInspector2ClientMockRecorder) ListCisScanResultsAggregatedByChecks(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListCisScanResultsAggregatedByChecks", reflect.TypeOf((*MockInspector2Client)(nil).ListCisScanResultsAggregatedByChecks), varargs...)
+}
+
+// ListCisScanResultsAggregatedByTargetResource mocks base method.
+func (m *MockInspector2Client) ListCisScanResultsAggregatedByTargetResource(arg0 context.Context, arg1 *inspector2.ListCisScanResultsAggregatedByTargetResourceInput, arg2 ...func(*inspector2.Options)) (*inspector2.ListCisScanResultsAggregatedByTargetResourceOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListCisScanResultsAggregatedByTargetResource", varargs...)
+	ret0, _ := ret[0].(*inspector2.ListCisScanResultsAggregatedByTargetResourceOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListCisScanResultsAggregatedByTargetResource indicates an expected call of ListCisScanResultsAggregatedByTargetResource.
+func (mr *MockInspector2ClientMockRecorder) ListCisScanResultsAggregatedByTargetResource(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListCisScanResultsAggregatedByTargetResource", reflect.TypeOf((*MockInspector2Client)(nil).ListCisScanResultsAggregatedByTargetResource), varargs...)
+}
+
+// ListCisScans mocks base method.
+func (m *MockInspector2Client) ListCisScans(arg0 context.Context, arg1 *inspector2.ListCisScansInput, arg2 ...func(*inspector2.Options)) (*inspector2.ListCisScansOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListCisScans", varargs...)
+	ret0, _ := ret[0].(*inspector2.ListCisScansOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListCisScans indicates an expected call of ListCisScans.
+func (mr *MockInspector2ClientMockRecorder) ListCisScans(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListCisScans", reflect.TypeOf((*MockInspector2Client)(nil).ListCisScans), varargs...)
 }
 
 // ListCoverage mocks base method.

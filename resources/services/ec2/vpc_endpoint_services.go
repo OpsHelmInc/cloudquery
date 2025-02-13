@@ -88,6 +88,11 @@ func VpcEndpointServices() *schema.Table {
 				Resolver: schema.PathResolver("ServiceName"),
 			},
 			{
+				Name:     "service_region",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ServiceRegion"),
+			},
+			{
 				Name:     "service_type",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ServiceType"),

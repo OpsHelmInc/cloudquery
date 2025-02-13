@@ -17,6 +17,7 @@ The primary key for this table is **arn**.
 |region|String|
 |arn (PK)|String|
 |oh_resource_type|String|
+|block_public_access_states|JSON|
 |cidr_block|String|
 |cidr_block_association_set|JSON|
 |dhcp_options_id|String|

@@ -43,6 +43,11 @@ func Nodes() *schema.Table {
 				Resolver: schema.PathResolver("BrokerNodeInfo"),
 			},
 			{
+				Name:     "controller_node_info",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ControllerNodeInfo"),
+			},
+			{
 				Name:     "instance_type",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("InstanceType"),

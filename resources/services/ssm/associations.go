@@ -54,6 +54,11 @@ func Associations() *schema.Table {
 				Resolver: schema.PathResolver("DocumentVersion"),
 			},
 			{
+				Name:     "duration",
+				Type:     schema.TypeInt,
+				Resolver: schema.PathResolver("Duration"),
+			},
+			{
 				Name:     "instance_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("InstanceId"),

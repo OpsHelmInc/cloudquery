@@ -20,6 +20,7 @@ This table depends on [aws_kafka_clusters](aws_kafka_clusters.md).
 |cluster_arn|String|
 |added_to_cluster_time|String|
 |broker_node_info|JSON|
+|controller_node_info|JSON|
 |instance_type|String|
 |node_type|String|
 |zookeeper_node_info|JSON|

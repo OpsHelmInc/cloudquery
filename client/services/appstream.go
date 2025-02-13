@@ -21,6 +21,7 @@ type AppstreamClient interface {
 	DescribeImages(context.Context, *appstream.DescribeImagesInput, ...func(*appstream.Options)) (*appstream.DescribeImagesOutput, error)
 	DescribeSessions(context.Context, *appstream.DescribeSessionsInput, ...func(*appstream.Options)) (*appstream.DescribeSessionsOutput, error)
 	DescribeStacks(context.Context, *appstream.DescribeStacksInput, ...func(*appstream.Options)) (*appstream.DescribeStacksOutput, error)
+	DescribeThemeForStack(context.Context, *appstream.DescribeThemeForStackInput, ...func(*appstream.Options)) (*appstream.DescribeThemeForStackOutput, error)
 	DescribeUsageReportSubscriptions(context.Context, *appstream.DescribeUsageReportSubscriptionsInput, ...func(*appstream.Options)) (*appstream.DescribeUsageReportSubscriptionsOutput, error)
 	DescribeUserStackAssociations(context.Context, *appstream.DescribeUserStackAssociationsInput, ...func(*appstream.Options)) (*appstream.DescribeUserStackAssociationsOutput, error)
 	DescribeUsers(context.Context, *appstream.DescribeUsersInput, ...func(*appstream.Options)) (*appstream.DescribeUsersOutput, error)

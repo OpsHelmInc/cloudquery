@@ -35,6 +35,7 @@ This table depends on [aws_ecs_clusters](aws_ecs_clusters.md).
 |enable_execute_command|Bool|
 |ephemeral_storage|JSON|
 |execution_stopped_at|Timestamp|
+|fargate_ephemeral_storage|JSON|
 |group|String|
 |health_status|String|
 |inference_accelerators|JSON|

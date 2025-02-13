@@ -455,6 +455,26 @@ func (mr *MockSesv2ClientMockRecorder) GetMessageInsights(arg0, arg1 interface{}
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetMessageInsights", reflect.TypeOf((*MockSesv2Client)(nil).GetMessageInsights), varargs...)
 }
 
+// GetMultiRegionEndpoint mocks base method.
+func (m *MockSesv2Client) GetMultiRegionEndpoint(arg0 context.Context, arg1 *sesv2.GetMultiRegionEndpointInput, arg2 ...func(*sesv2.Options)) (*sesv2.GetMultiRegionEndpointOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetMultiRegionEndpoint", varargs...)
+	ret0, _ := ret[0].(*sesv2.GetMultiRegionEndpointOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetMultiRegionEndpoint indicates an expected call of GetMultiRegionEndpoint.
+func (mr *MockSesv2ClientMockRecorder) GetMultiRegionEndpoint(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetMultiRegionEndpoint", reflect.TypeOf((*MockSesv2Client)(nil).GetMultiRegionEndpoint), varargs...)
+}
+
 // GetSuppressedDestination mocks base method.
 func (m *MockSesv2Client) GetSuppressedDestination(arg0 context.Context, arg1 *sesv2.GetSuppressedDestinationInput, arg2 ...func(*sesv2.Options)) (*sesv2.GetSuppressedDestinationOutput, error) {
 	m.ctrl.T.Helper()
@@ -693,6 +713,26 @@ func (mr *MockSesv2ClientMockRecorder) ListImportJobs(arg0, arg1 interface{}, ar
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListImportJobs", reflect.TypeOf((*MockSesv2Client)(nil).ListImportJobs), varargs...)
+}
+
+// ListMultiRegionEndpoints mocks base method.
+func (m *MockSesv2Client) ListMultiRegionEndpoints(arg0 context.Context, arg1 *sesv2.ListMultiRegionEndpointsInput, arg2 ...func(*sesv2.Options)) (*sesv2.ListMultiRegionEndpointsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListMultiRegionEndpoints", varargs...)
+	ret0, _ := ret[0].(*sesv2.ListMultiRegionEndpointsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListMultiRegionEndpoints indicates an expected call of ListMultiRegionEndpoints.
+func (mr *MockSesv2ClientMockRecorder) ListMultiRegionEndpoints(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListMultiRegionEndpoints", reflect.TypeOf((*MockSesv2Client)(nil).ListMultiRegionEndpoints), varargs...)
 }
 
 // ListRecommendations mocks base method.

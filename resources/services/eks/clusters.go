@@ -39,6 +39,11 @@ func Clusters() *schema.Table {
 				Resolver: client.StaticValueResolver("AWS::EKS::Cluster"),
 			},
 			{
+				Name:     "access_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("AccessConfig"),
+			},
+			{
 				Name:     "certificate_authority",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("CertificateAuthority"),
@@ -47,6 +52,11 @@ func Clusters() *schema.Table {
 				Name:     "client_request_token",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ClientRequestToken"),
+			},
+			{
+				Name:     "compute_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ComputeConfig"),
 			},
 			{
 				Name:     "connector_config",
@@ -109,6 +119,11 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("PlatformVersion"),
 			},
 			{
+				Name:     "remote_network_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("RemoteNetworkConfig"),
+			},
+			{
 				Name:     "resources_vpc_config",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ResourcesVpcConfig"),
@@ -124,14 +139,29 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("Status"),
 			},
 			{
+				Name:     "storage_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("StorageConfig"),
+			},
+			{
 				Name:     "tags",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Tags"),
 			},
 			{
+				Name:     "upgrade_policy",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("UpgradePolicy"),
+			},
+			{
 				Name:     "version",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Version"),
+			},
+			{
+				Name:     "zonal_shift_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ZonalShiftConfig"),
 			},
 		},
 	}

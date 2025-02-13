@@ -93,6 +93,11 @@ func ImageBuilders() *schema.Table {
 				Resolver: schema.PathResolver("InstanceType"),
 			},
 			{
+				Name:     "latest_appstream_agent_version",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("LatestAppstreamAgentVersion"),
+			},
+			{
 				Name:     "network_access_configuration",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("NetworkAccessConfiguration"),

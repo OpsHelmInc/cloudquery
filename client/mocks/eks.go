@@ -35,6 +35,26 @@ func (m *MockEksClient) EXPECT() *MockEksClientMockRecorder {
 	return m.recorder
 }
 
+// DescribeAccessEntry mocks base method.
+func (m *MockEksClient) DescribeAccessEntry(arg0 context.Context, arg1 *eks.DescribeAccessEntryInput, arg2 ...func(*eks.Options)) (*eks.DescribeAccessEntryOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeAccessEntry", varargs...)
+	ret0, _ := ret[0].(*eks.DescribeAccessEntryOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeAccessEntry indicates an expected call of DescribeAccessEntry.
+func (mr *MockEksClientMockRecorder) DescribeAccessEntry(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeAccessEntry", reflect.TypeOf((*MockEksClient)(nil).DescribeAccessEntry), varargs...)
+}
+
 // DescribeAddon mocks base method.
 func (m *MockEksClient) DescribeAddon(arg0 context.Context, arg1 *eks.DescribeAddonInput, arg2 ...func(*eks.Options)) (*eks.DescribeAddonOutput, error) {
 	m.ctrl.T.Helper()
@@ -115,6 +135,26 @@ func (mr *MockEksClientMockRecorder) DescribeCluster(arg0, arg1 interface{}, arg
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeCluster", reflect.TypeOf((*MockEksClient)(nil).DescribeCluster), varargs...)
 }
 
+// DescribeClusterVersions mocks base method.
+func (m *MockEksClient) DescribeClusterVersions(arg0 context.Context, arg1 *eks.DescribeClusterVersionsInput, arg2 ...func(*eks.Options)) (*eks.DescribeClusterVersionsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeClusterVersions", varargs...)
+	ret0, _ := ret[0].(*eks.DescribeClusterVersionsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeClusterVersions indicates an expected call of DescribeClusterVersions.
+func (mr *MockEksClientMockRecorder) DescribeClusterVersions(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeClusterVersions", reflect.TypeOf((*MockEksClient)(nil).DescribeClusterVersions), varargs...)
+}
+
 // DescribeEksAnywhereSubscription mocks base method.
 func (m *MockEksClient) DescribeEksAnywhereSubscription(arg0 context.Context, arg1 *eks.DescribeEksAnywhereSubscriptionInput, arg2 ...func(*eks.Options)) (*eks.DescribeEksAnywhereSubscriptionOutput, error) {
 	m.ctrl.T.Helper()
@@ -173,6 +213,26 @@ func (mr *MockEksClientMockRecorder) DescribeIdentityProviderConfig(arg0, arg1 i
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeIdentityProviderConfig", reflect.TypeOf((*MockEksClient)(nil).DescribeIdentityProviderConfig), varargs...)
+}
+
+// DescribeInsight mocks base method.
+func (m *MockEksClient) DescribeInsight(arg0 context.Context, arg1 *eks.DescribeInsightInput, arg2 ...func(*eks.Options)) (*eks.DescribeInsightOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeInsight", varargs...)
+	ret0, _ := ret[0].(*eks.DescribeInsightOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeInsight indicates an expected call of DescribeInsight.
+func (mr *MockEksClientMockRecorder) DescribeInsight(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeInsight", reflect.TypeOf((*MockEksClient)(nil).DescribeInsight), varargs...)
 }
 
 // DescribeNodegroup mocks base method.
@@ -235,6 +295,46 @@ func (mr *MockEksClientMockRecorder) DescribeUpdate(arg0, arg1 interface{}, arg2
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeUpdate", reflect.TypeOf((*MockEksClient)(nil).DescribeUpdate), varargs...)
 }
 
+// ListAccessEntries mocks base method.
+func (m *MockEksClient) ListAccessEntries(arg0 context.Context, arg1 *eks.ListAccessEntriesInput, arg2 ...func(*eks.Options)) (*eks.ListAccessEntriesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListAccessEntries", varargs...)
+	ret0, _ := ret[0].(*eks.ListAccessEntriesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListAccessEntries indicates an expected call of ListAccessEntries.
+func (mr *MockEksClientMockRecorder) ListAccessEntries(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAccessEntries", reflect.TypeOf((*MockEksClient)(nil).ListAccessEntries), varargs...)
+}
+
+// ListAccessPolicies mocks base method.
+func (m *MockEksClient) ListAccessPolicies(arg0 context.Context, arg1 *eks.ListAccessPoliciesInput, arg2 ...func(*eks.Options)) (*eks.ListAccessPoliciesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListAccessPolicies", varargs...)
+	ret0, _ := ret[0].(*eks.ListAccessPoliciesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListAccessPolicies indicates an expected call of ListAccessPolicies.
+func (mr *MockEksClientMockRecorder) ListAccessPolicies(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAccessPolicies", reflect.TypeOf((*MockEksClient)(nil).ListAccessPolicies), varargs...)
+}
+
 // ListAddons mocks base method.
 func (m *MockEksClient) ListAddons(arg0 context.Context, arg1 *eks.ListAddonsInput, arg2 ...func(*eks.Options)) (*eks.ListAddonsOutput, error) {
 	m.ctrl.T.Helper()
@@ -253,6 +353,26 @@ func (mr *MockEksClientMockRecorder) ListAddons(arg0, arg1 interface{}, arg2 ...
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAddons", reflect.TypeOf((*MockEksClient)(nil).ListAddons), varargs...)
+}
+
+// ListAssociatedAccessPolicies mocks base method.
+func (m *MockEksClient) ListAssociatedAccessPolicies(arg0 context.Context, arg1 *eks.ListAssociatedAccessPoliciesInput, arg2 ...func(*eks.Options)) (*eks.ListAssociatedAccessPoliciesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListAssociatedAccessPolicies", varargs...)
+	ret0, _ := ret[0].(*eks.ListAssociatedAccessPoliciesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListAssociatedAccessPolicies indicates an expected call of ListAssociatedAccessPolicies.
+func (mr *MockEksClientMockRecorder) ListAssociatedAccessPolicies(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAssociatedAccessPolicies", reflect.TypeOf((*MockEksClient)(nil).ListAssociatedAccessPolicies), varargs...)
 }
 
 // ListClusters mocks base method.
@@ -333,6 +453,26 @@ func (mr *MockEksClientMockRecorder) ListIdentityProviderConfigs(arg0, arg1 inte
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListIdentityProviderConfigs", reflect.TypeOf((*MockEksClient)(nil).ListIdentityProviderConfigs), varargs...)
+}
+
+// ListInsights mocks base method.
+func (m *MockEksClient) ListInsights(arg0 context.Context, arg1 *eks.ListInsightsInput, arg2 ...func(*eks.Options)) (*eks.ListInsightsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListInsights", varargs...)
+	ret0, _ := ret[0].(*eks.ListInsightsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListInsights indicates an expected call of ListInsights.
+func (mr *MockEksClientMockRecorder) ListInsights(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListInsights", reflect.TypeOf((*MockEksClient)(nil).ListInsights), varargs...)
 }
 
 // ListNodegroups mocks base method.

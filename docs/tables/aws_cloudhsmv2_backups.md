@@ -18,11 +18,14 @@ The primary key for this table is **arn**.
 |arn (PK)|String|
 |tags|JSON|
 |backup_id|String|
+|backup_arn|String|
 |backup_state|String|
 |cluster_id|String|
 |copy_timestamp|Timestamp|
 |create_timestamp|Timestamp|
 |delete_timestamp|Timestamp|
+|hsm_type|String|
+|mode|String|
 |never_expires|Bool|
 |source_backup|String|
 |source_cluster|String|

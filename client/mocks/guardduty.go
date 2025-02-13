@@ -255,6 +255,26 @@ func (mr *MockGuarddutyClientMockRecorder) GetInvitationsCount(arg0, arg1 interf
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetInvitationsCount", reflect.TypeOf((*MockGuarddutyClient)(nil).GetInvitationsCount), varargs...)
 }
 
+// GetMalwareProtectionPlan mocks base method.
+func (m *MockGuarddutyClient) GetMalwareProtectionPlan(arg0 context.Context, arg1 *guardduty.GetMalwareProtectionPlanInput, arg2 ...func(*guardduty.Options)) (*guardduty.GetMalwareProtectionPlanOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetMalwareProtectionPlan", varargs...)
+	ret0, _ := ret[0].(*guardduty.GetMalwareProtectionPlanOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetMalwareProtectionPlan indicates an expected call of GetMalwareProtectionPlan.
+func (mr *MockGuarddutyClientMockRecorder) GetMalwareProtectionPlan(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetMalwareProtectionPlan", reflect.TypeOf((*MockGuarddutyClient)(nil).GetMalwareProtectionPlan), varargs...)
+}
+
 // GetMalwareScanSettings mocks base method.
 func (m *MockGuarddutyClient) GetMalwareScanSettings(arg0 context.Context, arg1 *guardduty.GetMalwareScanSettingsInput, arg2 ...func(*guardduty.Options)) (*guardduty.GetMalwareScanSettingsOutput, error) {
 	m.ctrl.T.Helper()
@@ -333,6 +353,26 @@ func (mr *MockGuarddutyClientMockRecorder) GetMembers(arg0, arg1 interface{}, ar
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetMembers", reflect.TypeOf((*MockGuarddutyClient)(nil).GetMembers), varargs...)
+}
+
+// GetOrganizationStatistics mocks base method.
+func (m *MockGuarddutyClient) GetOrganizationStatistics(arg0 context.Context, arg1 *guardduty.GetOrganizationStatisticsInput, arg2 ...func(*guardduty.Options)) (*guardduty.GetOrganizationStatisticsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetOrganizationStatistics", varargs...)
+	ret0, _ := ret[0].(*guardduty.GetOrganizationStatisticsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetOrganizationStatistics indicates an expected call of GetOrganizationStatistics.
+func (mr *MockGuarddutyClientMockRecorder) GetOrganizationStatistics(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetOrganizationStatistics", reflect.TypeOf((*MockGuarddutyClient)(nil).GetOrganizationStatistics), varargs...)
 }
 
 // GetRemainingFreeTrialDays mocks base method.
@@ -513,6 +553,26 @@ func (mr *MockGuarddutyClientMockRecorder) ListInvitations(arg0, arg1 interface{
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListInvitations", reflect.TypeOf((*MockGuarddutyClient)(nil).ListInvitations), varargs...)
+}
+
+// ListMalwareProtectionPlans mocks base method.
+func (m *MockGuarddutyClient) ListMalwareProtectionPlans(arg0 context.Context, arg1 *guardduty.ListMalwareProtectionPlansInput, arg2 ...func(*guardduty.Options)) (*guardduty.ListMalwareProtectionPlansOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListMalwareProtectionPlans", varargs...)
+	ret0, _ := ret[0].(*guardduty.ListMalwareProtectionPlansOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListMalwareProtectionPlans indicates an expected call of ListMalwareProtectionPlans.
+func (mr *MockGuarddutyClientMockRecorder) ListMalwareProtectionPlans(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListMalwareProtectionPlans", reflect.TypeOf((*MockGuarddutyClient)(nil).ListMalwareProtectionPlans), varargs...)
 }
 
 // ListMembers mocks base method.

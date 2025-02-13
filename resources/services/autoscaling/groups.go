@@ -88,9 +88,24 @@ func Groups() *schema.Table {
 				Resolver: schema.PathResolver("MinSize"),
 			},
 			{
+				Name:     "availability_zone_distribution",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("AvailabilityZoneDistribution"),
+			},
+			{
+				Name:     "availability_zone_impairment_policy",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("AvailabilityZoneImpairmentPolicy"),
+			},
+			{
 				Name:     "capacity_rebalance",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("CapacityRebalance"),
+			},
+			{
+				Name:     "capacity_reservation_specification",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("CapacityReservationSpecification"),
 			},
 			{
 				Name:     "context",

@@ -295,6 +295,26 @@ func (mr *MockAppstreamClientMockRecorder) DescribeStacks(arg0, arg1 interface{}
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeStacks", reflect.TypeOf((*MockAppstreamClient)(nil).DescribeStacks), varargs...)
 }
 
+// DescribeThemeForStack mocks base method.
+func (m *MockAppstreamClient) DescribeThemeForStack(arg0 context.Context, arg1 *appstream.DescribeThemeForStackInput, arg2 ...func(*appstream.Options)) (*appstream.DescribeThemeForStackOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeThemeForStack", varargs...)
+	ret0, _ := ret[0].(*appstream.DescribeThemeForStackOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeThemeForStack indicates an expected call of DescribeThemeForStack.
+func (mr *MockAppstreamClientMockRecorder) DescribeThemeForStack(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeThemeForStack", reflect.TypeOf((*MockAppstreamClient)(nil).DescribeThemeForStack), varargs...)
+}
+
 // DescribeUsageReportSubscriptions mocks base method.
 func (m *MockAppstreamClient) DescribeUsageReportSubscriptions(arg0 context.Context, arg1 *appstream.DescribeUsageReportSubscriptionsInput, arg2 ...func(*appstream.Options)) (*appstream.DescribeUsageReportSubscriptionsOutput, error) {
 	m.ctrl.T.Helper()

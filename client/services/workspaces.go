@@ -29,5 +29,9 @@ type WorkspacesClient interface {
 	DescribeWorkspaceSnapshots(context.Context, *workspaces.DescribeWorkspaceSnapshotsInput, ...func(*workspaces.Options)) (*workspaces.DescribeWorkspaceSnapshotsOutput, error)
 	DescribeWorkspaces(context.Context, *workspaces.DescribeWorkspacesInput, ...func(*workspaces.Options)) (*workspaces.DescribeWorkspacesOutput, error)
 	DescribeWorkspacesConnectionStatus(context.Context, *workspaces.DescribeWorkspacesConnectionStatusInput, ...func(*workspaces.Options)) (*workspaces.DescribeWorkspacesConnectionStatusOutput, error)
+	DescribeWorkspacesPoolSessions(context.Context, *workspaces.DescribeWorkspacesPoolSessionsInput, ...func(*workspaces.Options)) (*workspaces.DescribeWorkspacesPoolSessionsOutput, error)
+	DescribeWorkspacesPools(context.Context, *workspaces.DescribeWorkspacesPoolsInput, ...func(*workspaces.Options)) (*workspaces.DescribeWorkspacesPoolsOutput, error)
+	GetAccountLink(context.Context, *workspaces.GetAccountLinkInput, ...func(*workspaces.Options)) (*workspaces.GetAccountLinkOutput, error)
+	ListAccountLinks(context.Context, *workspaces.ListAccountLinksInput, ...func(*workspaces.Options)) (*workspaces.ListAccountLinksOutput, error)
 	ListAvailableManagementCidrRanges(context.Context, *workspaces.ListAvailableManagementCidrRangesInput, ...func(*workspaces.Options)) (*workspaces.ListAvailableManagementCidrRangesOutput, error)
 }

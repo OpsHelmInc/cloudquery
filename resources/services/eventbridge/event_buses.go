@@ -37,6 +37,21 @@ func EventBuses() *schema.Table {
 				},
 			},
 			{
+				Name:     "creation_time",
+				Type:     schema.TypeTimestamp,
+				Resolver: schema.PathResolver("CreationTime"),
+			},
+			{
+				Name:     "description",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("Description"),
+			},
+			{
+				Name:     "last_modified_time",
+				Type:     schema.TypeTimestamp,
+				Resolver: schema.PathResolver("LastModifiedTime"),
+			},
+			{
 				Name:     "name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Name"),

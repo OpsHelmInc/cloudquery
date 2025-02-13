@@ -355,6 +355,26 @@ func (mr *MockSsmClientMockRecorder) DescribeInstancePatches(arg0, arg1 interfac
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeInstancePatches", reflect.TypeOf((*MockSsmClient)(nil).DescribeInstancePatches), varargs...)
 }
 
+// DescribeInstanceProperties mocks base method.
+func (m *MockSsmClient) DescribeInstanceProperties(arg0 context.Context, arg1 *ssm.DescribeInstancePropertiesInput, arg2 ...func(*ssm.Options)) (*ssm.DescribeInstancePropertiesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeInstanceProperties", varargs...)
+	ret0, _ := ret[0].(*ssm.DescribeInstancePropertiesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeInstanceProperties indicates an expected call of DescribeInstanceProperties.
+func (mr *MockSsmClientMockRecorder) DescribeInstanceProperties(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeInstanceProperties", reflect.TypeOf((*MockSsmClient)(nil).DescribeInstanceProperties), varargs...)
+}
+
 // DescribeInventoryDeletions mocks base method.
 func (m *MockSsmClient) DescribeInventoryDeletions(arg0 context.Context, arg1 *ssm.DescribeInventoryDeletionsInput, arg2 ...func(*ssm.Options)) (*ssm.DescribeInventoryDeletionsOutput, error) {
 	m.ctrl.T.Helper()
@@ -813,6 +833,26 @@ func (mr *MockSsmClientMockRecorder) GetDocument(arg0, arg1 interface{}, arg2 ..
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDocument", reflect.TypeOf((*MockSsmClient)(nil).GetDocument), varargs...)
+}
+
+// GetExecutionPreview mocks base method.
+func (m *MockSsmClient) GetExecutionPreview(arg0 context.Context, arg1 *ssm.GetExecutionPreviewInput, arg2 ...func(*ssm.Options)) (*ssm.GetExecutionPreviewOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetExecutionPreview", varargs...)
+	ret0, _ := ret[0].(*ssm.GetExecutionPreviewOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetExecutionPreview indicates an expected call of GetExecutionPreview.
+func (mr *MockSsmClientMockRecorder) GetExecutionPreview(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetExecutionPreview", reflect.TypeOf((*MockSsmClient)(nil).GetExecutionPreview), varargs...)
 }
 
 // GetInventory mocks base method.
@@ -1373,6 +1413,46 @@ func (mr *MockSsmClientMockRecorder) ListInventoryEntries(arg0, arg1 interface{}
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListInventoryEntries", reflect.TypeOf((*MockSsmClient)(nil).ListInventoryEntries), varargs...)
+}
+
+// ListNodes mocks base method.
+func (m *MockSsmClient) ListNodes(arg0 context.Context, arg1 *ssm.ListNodesInput, arg2 ...func(*ssm.Options)) (*ssm.ListNodesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListNodes", varargs...)
+	ret0, _ := ret[0].(*ssm.ListNodesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListNodes indicates an expected call of ListNodes.
+func (mr *MockSsmClientMockRecorder) ListNodes(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListNodes", reflect.TypeOf((*MockSsmClient)(nil).ListNodes), varargs...)
+}
+
+// ListNodesSummary mocks base method.
+func (m *MockSsmClient) ListNodesSummary(arg0 context.Context, arg1 *ssm.ListNodesSummaryInput, arg2 ...func(*ssm.Options)) (*ssm.ListNodesSummaryOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListNodesSummary", varargs...)
+	ret0, _ := ret[0].(*ssm.ListNodesSummaryOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListNodesSummary indicates an expected call of ListNodesSummary.
+func (mr *MockSsmClientMockRecorder) ListNodesSummary(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListNodesSummary", reflect.TypeOf((*MockSsmClient)(nil).ListNodesSummary), varargs...)
 }
 
 // ListOpsItemEvents mocks base method.

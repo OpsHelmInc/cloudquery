@@ -30,6 +30,11 @@ func TargetGroupTargetHealthDescriptions() *schema.Table {
 				Resolver: schema.ParentColumnResolver("arn"),
 			},
 			{
+				Name:     "administrative_override",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("AdministrativeOverride"),
+			},
+			{
 				Name:     "anomaly_detection",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("AnomalyDetection"),

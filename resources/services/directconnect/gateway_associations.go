@@ -40,6 +40,11 @@ func GatewayAssociations() *schema.Table {
 				Resolver: schema.PathResolver("AllowedPrefixesToDirectConnectGateway"),
 			},
 			{
+				Name:     "associated_core_network",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("AssociatedCoreNetwork"),
+			},
+			{
 				Name:     "associated_gateway",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("AssociatedGateway"),

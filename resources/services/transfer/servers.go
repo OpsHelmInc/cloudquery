@@ -40,6 +40,11 @@ func Servers() *schema.Table {
 				Description: `Specifies the key-value pairs that you can use to search for and group servers that were assigned to the server that was described`,
 			},
 			{
+				Name:     "as2_service_managed_egress_ip_addresses",
+				Type:     schema.TypeStringArray,
+				Resolver: schema.PathResolver("As2ServiceManagedEgressIpAddresses"),
+			},
+			{
 				Name:     "certificate",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Certificate"),

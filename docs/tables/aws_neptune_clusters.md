@@ -43,6 +43,7 @@ The primary key for this table is **arn**.
 |global_cluster_identifier|String|
 |hosted_zone_id|String|
 |iam_database_authentication_enabled|Bool|
+|io_optimized_next_allowed_modification_time|Timestamp|
 |kms_key_id|String|
 |latest_restorable_time|Timestamp|
 |master_username|String|
@@ -58,4 +59,5 @@ The primary key for this table is **arn**.
 |serverless_v2_scaling_configuration|JSON|
 |status|String|
 |storage_encrypted|Bool|
+|storage_type|String|
 |vpc_security_groups|JSON|

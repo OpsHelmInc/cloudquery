@@ -23,6 +23,7 @@ The primary key for this table is **arn**.
 |engine_version|String|
 |free_until|Timestamp|
 |instance_create_time|Timestamp|
+|kerberos_authentication_settings|JSON|
 |kms_key_id|String|
 |multi_az|Bool|
 |network_type|String|

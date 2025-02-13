@@ -133,6 +133,11 @@ func ClusterSnapshots() *schema.Table {
 				Resolver: schema.PathResolver("StorageEncrypted"),
 			},
 			{
+				Name:     "storage_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("StorageType"),
+			},
+			{
 				Name:     "vpc_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("VpcId"),

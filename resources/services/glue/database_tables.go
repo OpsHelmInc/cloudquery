@@ -70,6 +70,11 @@ func DatabaseTables() *schema.Table {
 				Resolver: schema.PathResolver("FederatedTable"),
 			},
 			{
+				Name:     "is_multi_dialect_view",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("IsMultiDialectView"),
+			},
+			{
 				Name:     "is_registered_with_lake_formation",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("IsRegisteredWithLakeFormation"),
@@ -105,6 +110,11 @@ func DatabaseTables() *schema.Table {
 				Resolver: schema.PathResolver("Retention"),
 			},
 			{
+				Name:     "status",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Status"),
+			},
+			{
 				Name:     "storage_descriptor",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("StorageDescriptor"),
@@ -128,6 +138,11 @@ func DatabaseTables() *schema.Table {
 				Name:     "version_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("VersionId"),
+			},
+			{
+				Name:     "view_definition",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ViewDefinition"),
 			},
 			{
 				Name:     "view_expanded_text",

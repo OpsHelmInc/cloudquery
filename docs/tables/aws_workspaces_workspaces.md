@@ -32,4 +32,5 @@ The primary key for this table is **arn**.
 |user_volume_encryption_enabled|Bool|
 |volume_encryption_key|String|
 |workspace_id|String|
+|workspace_name|String|
 |workspace_properties|JSON|

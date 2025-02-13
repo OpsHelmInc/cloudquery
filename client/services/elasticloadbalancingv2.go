@@ -9,6 +9,8 @@ import (
 //go:generate mockgen -package=mocks -destination=../mocks/elasticloadbalancingv2.go -source=elasticloadbalancingv2.go Elasticloadbalancingv2Client
 type Elasticloadbalancingv2Client interface {
 	DescribeAccountLimits(context.Context, *elasticloadbalancingv2.DescribeAccountLimitsInput, ...func(*elasticloadbalancingv2.Options)) (*elasticloadbalancingv2.DescribeAccountLimitsOutput, error)
+	DescribeCapacityReservation(context.Context, *elasticloadbalancingv2.DescribeCapacityReservationInput, ...func(*elasticloadbalancingv2.Options)) (*elasticloadbalancingv2.DescribeCapacityReservationOutput, error)
+	DescribeListenerAttributes(context.Context, *elasticloadbalancingv2.DescribeListenerAttributesInput, ...func(*elasticloadbalancingv2.Options)) (*elasticloadbalancingv2.DescribeListenerAttributesOutput, error)
 	DescribeListenerCertificates(context.Context, *elasticloadbalancingv2.DescribeListenerCertificatesInput, ...func(*elasticloadbalancingv2.Options)) (*elasticloadbalancingv2.DescribeListenerCertificatesOutput, error)
 	DescribeListeners(context.Context, *elasticloadbalancingv2.DescribeListenersInput, ...func(*elasticloadbalancingv2.Options)) (*elasticloadbalancingv2.DescribeListenersOutput, error)
 	DescribeLoadBalancerAttributes(context.Context, *elasticloadbalancingv2.DescribeLoadBalancerAttributesInput, ...func(*elasticloadbalancingv2.Options)) (*elasticloadbalancingv2.DescribeLoadBalancerAttributesOutput, error)
@@ -22,6 +24,7 @@ type Elasticloadbalancingv2Client interface {
 	DescribeTrustStoreAssociations(context.Context, *elasticloadbalancingv2.DescribeTrustStoreAssociationsInput, ...func(*elasticloadbalancingv2.Options)) (*elasticloadbalancingv2.DescribeTrustStoreAssociationsOutput, error)
 	DescribeTrustStoreRevocations(context.Context, *elasticloadbalancingv2.DescribeTrustStoreRevocationsInput, ...func(*elasticloadbalancingv2.Options)) (*elasticloadbalancingv2.DescribeTrustStoreRevocationsOutput, error)
 	DescribeTrustStores(context.Context, *elasticloadbalancingv2.DescribeTrustStoresInput, ...func(*elasticloadbalancingv2.Options)) (*elasticloadbalancingv2.DescribeTrustStoresOutput, error)
+	GetResourcePolicy(context.Context, *elasticloadbalancingv2.GetResourcePolicyInput, ...func(*elasticloadbalancingv2.Options)) (*elasticloadbalancingv2.GetResourcePolicyOutput, error)
 	GetTrustStoreCaCertificatesBundle(context.Context, *elasticloadbalancingv2.GetTrustStoreCaCertificatesBundleInput, ...func(*elasticloadbalancingv2.Options)) (*elasticloadbalancingv2.GetTrustStoreCaCertificatesBundleOutput, error)
 	GetTrustStoreRevocationContent(context.Context, *elasticloadbalancingv2.GetTrustStoreRevocationContentInput, ...func(*elasticloadbalancingv2.Options)) (*elasticloadbalancingv2.GetTrustStoreRevocationContentOutput, error)
 }

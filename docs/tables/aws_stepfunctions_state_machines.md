@@ -23,8 +23,10 @@ The primary key for this table is **arn**.
 |role_arn|String|
 |type|String|
 |description|String|
+|encryption_configuration|JSON|
 |label|String|
 |logging_configuration|JSON|
 |revision_id|String|
 |status|String|
 |tracing_configuration|JSON|
+|variable_references|JSON|

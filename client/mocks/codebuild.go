@@ -75,6 +75,26 @@ func (mr *MockCodebuildClientMockRecorder) BatchGetBuilds(arg0, arg1 interface{}
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "BatchGetBuilds", reflect.TypeOf((*MockCodebuildClient)(nil).BatchGetBuilds), varargs...)
 }
 
+// BatchGetFleets mocks base method.
+func (m *MockCodebuildClient) BatchGetFleets(arg0 context.Context, arg1 *codebuild.BatchGetFleetsInput, arg2 ...func(*codebuild.Options)) (*codebuild.BatchGetFleetsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "BatchGetFleets", varargs...)
+	ret0, _ := ret[0].(*codebuild.BatchGetFleetsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// BatchGetFleets indicates an expected call of BatchGetFleets.
+func (mr *MockCodebuildClientMockRecorder) BatchGetFleets(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "BatchGetFleets", reflect.TypeOf((*MockCodebuildClient)(nil).BatchGetFleets), varargs...)
+}
+
 // BatchGetProjects mocks base method.
 func (m *MockCodebuildClient) BatchGetProjects(arg0 context.Context, arg1 *codebuild.BatchGetProjectsInput, arg2 ...func(*codebuild.Options)) (*codebuild.BatchGetProjectsOutput, error) {
 	m.ctrl.T.Helper()
@@ -313,6 +333,26 @@ func (mr *MockCodebuildClientMockRecorder) ListCuratedEnvironmentImages(arg0, ar
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListCuratedEnvironmentImages", reflect.TypeOf((*MockCodebuildClient)(nil).ListCuratedEnvironmentImages), varargs...)
+}
+
+// ListFleets mocks base method.
+func (m *MockCodebuildClient) ListFleets(arg0 context.Context, arg1 *codebuild.ListFleetsInput, arg2 ...func(*codebuild.Options)) (*codebuild.ListFleetsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListFleets", varargs...)
+	ret0, _ := ret[0].(*codebuild.ListFleetsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListFleets indicates an expected call of ListFleets.
+func (mr *MockCodebuildClientMockRecorder) ListFleets(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListFleets", reflect.TypeOf((*MockCodebuildClient)(nil).ListFleets), varargs...)
 }
 
 // ListProjects mocks base method.

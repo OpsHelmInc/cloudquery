@@ -19,6 +19,10 @@ The primary key for this table is **arn**.
 |tags|JSON|
 |group_arn|String|
 |name|String|
+|application_tag|JSON|
+|criticality|Int|
 |description|String|
+|display_name|String|
+|owner|String|
 |query|String|
 |type|String|

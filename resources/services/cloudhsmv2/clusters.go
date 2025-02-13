@@ -68,9 +68,24 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("HsmType"),
 			},
 			{
+				Name:     "hsm_type_rollback_expiration",
+				Type:     schema.TypeTimestamp,
+				Resolver: schema.PathResolver("HsmTypeRollbackExpiration"),
+			},
+			{
 				Name:     "hsms",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Hsms"),
+			},
+			{
+				Name:     "mode",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("Mode"),
+			},
+			{
+				Name:     "network_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("NetworkType"),
 			},
 			{
 				Name:     "pre_co_password",

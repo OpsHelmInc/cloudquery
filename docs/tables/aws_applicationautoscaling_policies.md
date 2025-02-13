@@ -23,5 +23,6 @@ The primary key for this table is **arn**.
 |scalable_dimension|String|
 |service_namespace|String|
 |alarms|JSON|
+|predictive_scaling_policy_configuration|JSON|
 |step_scaling_policy_configuration|JSON|
 |target_tracking_scaling_policy_configuration|JSON|

@@ -18,9 +18,13 @@ The primary key for this table is **arn**.
 |arn (PK)|String|
 |attribute|JSON|
 |oh_resource_type|String|
+|availability_zone|String|
+|completion_duration_minutes|Int|
+|completion_time|Timestamp|
 |data_encryption_key_id|String|
 |description|String|
 |encrypted|Bool|
+|full_snapshot_size_in_bytes|Int|
 |kms_key_id|String|
 |outpost_arn|String|
 |owner_alias|String|
@@ -34,5 +38,6 @@ The primary key for this table is **arn**.
 |state_message|String|
 |storage_tier|String|
 |tags|JSON|
+|transfer_type|String|
 |volume_id|String|
 |volume_size|Int|

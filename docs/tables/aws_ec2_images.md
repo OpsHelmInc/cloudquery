@@ -26,6 +26,7 @@ The primary key for this table is **arn**.
 |description|String|
 |ena_support|Bool|
 |hypervisor|String|
+|image_allowed|Bool|
 |image_id|String|
 |image_location|String|
 |image_owner_alias|String|
@@ -42,6 +43,8 @@ The primary key for this table is **arn**.
 |ramdisk_id|String|
 |root_device_name|String|
 |root_device_type|String|
+|source_image_id|String|
+|source_image_region|String|
 |source_instance_id|String|
 |sriov_net_support|String|
 |state|String|

@@ -95,6 +95,26 @@ func (mr *MockCloudtrailClientMockRecorder) GetChannel(arg0, arg1 interface{}, a
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetChannel", reflect.TypeOf((*MockCloudtrailClient)(nil).GetChannel), varargs...)
 }
 
+// GetDashboard mocks base method.
+func (m *MockCloudtrailClient) GetDashboard(arg0 context.Context, arg1 *cloudtrail.GetDashboardInput, arg2 ...func(*cloudtrail.Options)) (*cloudtrail.GetDashboardOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetDashboard", varargs...)
+	ret0, _ := ret[0].(*cloudtrail.GetDashboardOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetDashboard indicates an expected call of GetDashboard.
+func (mr *MockCloudtrailClientMockRecorder) GetDashboard(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDashboard", reflect.TypeOf((*MockCloudtrailClient)(nil).GetDashboard), varargs...)
+}
+
 // GetEventDataStore mocks base method.
 func (m *MockCloudtrailClient) GetEventDataStore(arg0 context.Context, arg1 *cloudtrail.GetEventDataStoreInput, arg2 ...func(*cloudtrail.Options)) (*cloudtrail.GetEventDataStoreOutput, error) {
 	m.ctrl.T.Helper()
@@ -275,6 +295,26 @@ func (mr *MockCloudtrailClientMockRecorder) ListChannels(arg0, arg1 interface{},
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListChannels", reflect.TypeOf((*MockCloudtrailClient)(nil).ListChannels), varargs...)
 }
 
+// ListDashboards mocks base method.
+func (m *MockCloudtrailClient) ListDashboards(arg0 context.Context, arg1 *cloudtrail.ListDashboardsInput, arg2 ...func(*cloudtrail.Options)) (*cloudtrail.ListDashboardsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListDashboards", varargs...)
+	ret0, _ := ret[0].(*cloudtrail.ListDashboardsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListDashboards indicates an expected call of ListDashboards.
+func (mr *MockCloudtrailClientMockRecorder) ListDashboards(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListDashboards", reflect.TypeOf((*MockCloudtrailClient)(nil).ListDashboards), varargs...)
+}
+
 // ListEventDataStores mocks base method.
 func (m *MockCloudtrailClient) ListEventDataStores(arg0 context.Context, arg1 *cloudtrail.ListEventDataStoresInput, arg2 ...func(*cloudtrail.Options)) (*cloudtrail.ListEventDataStoresOutput, error) {
 	m.ctrl.T.Helper()
@@ -333,6 +373,26 @@ func (mr *MockCloudtrailClientMockRecorder) ListImports(arg0, arg1 interface{}, 
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListImports", reflect.TypeOf((*MockCloudtrailClient)(nil).ListImports), varargs...)
+}
+
+// ListInsightsMetricData mocks base method.
+func (m *MockCloudtrailClient) ListInsightsMetricData(arg0 context.Context, arg1 *cloudtrail.ListInsightsMetricDataInput, arg2 ...func(*cloudtrail.Options)) (*cloudtrail.ListInsightsMetricDataOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListInsightsMetricData", varargs...)
+	ret0, _ := ret[0].(*cloudtrail.ListInsightsMetricDataOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListInsightsMetricData indicates an expected call of ListInsightsMetricData.
+func (mr *MockCloudtrailClientMockRecorder) ListInsightsMetricData(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListInsightsMetricData", reflect.TypeOf((*MockCloudtrailClient)(nil).ListInsightsMetricData), varargs...)
 }
 
 // ListPublicKeys mocks base method.
@@ -413,4 +473,24 @@ func (mr *MockCloudtrailClientMockRecorder) ListTrails(arg0, arg1 interface{}, a
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListTrails", reflect.TypeOf((*MockCloudtrailClient)(nil).ListTrails), varargs...)
+}
+
+// SearchSampleQueries mocks base method.
+func (m *MockCloudtrailClient) SearchSampleQueries(arg0 context.Context, arg1 *cloudtrail.SearchSampleQueriesInput, arg2 ...func(*cloudtrail.Options)) (*cloudtrail.SearchSampleQueriesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "SearchSampleQueries", varargs...)
+	ret0, _ := ret[0].(*cloudtrail.SearchSampleQueriesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// SearchSampleQueries indicates an expected call of SearchSampleQueries.
+func (mr *MockCloudtrailClientMockRecorder) SearchSampleQueries(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SearchSampleQueries", reflect.TypeOf((*MockCloudtrailClient)(nil).SearchSampleQueries), varargs...)
 }

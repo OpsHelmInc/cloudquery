@@ -16,6 +16,7 @@ The composite primary key for this table is (**account_id**, **region**, **name*
 |account_id (PK)|String|
 |region (PK)|String|
 |name (PK)|String|
+|arn|String|
 |allowed_pattern|String|
 |data_type|String|
 |description|String|

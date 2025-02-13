@@ -43,6 +43,21 @@ func EbsSnapshots() *schema.Table {
 				Resolver: client.StaticValueResolver("AWS::EC2::Snapshot"),
 			},
 			{
+				Name:     "availability_zone",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("AvailabilityZone"),
+			},
+			{
+				Name:     "completion_duration_minutes",
+				Type:     schema.TypeInt,
+				Resolver: schema.PathResolver("CompletionDurationMinutes"),
+			},
+			{
+				Name:     "completion_time",
+				Type:     schema.TypeTimestamp,
+				Resolver: schema.PathResolver("CompletionTime"),
+			},
+			{
 				Name:     "data_encryption_key_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("DataEncryptionKeyId"),
@@ -56,6 +71,11 @@ func EbsSnapshots() *schema.Table {
 				Name:     "encrypted",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("Encrypted"),
+			},
+			{
+				Name:     "full_snapshot_size_in_bytes",
+				Type:     schema.TypeInt,
+				Resolver: schema.PathResolver("FullSnapshotSizeInBytes"),
 			},
 			{
 				Name:     "kms_key_id",
@@ -121,6 +141,11 @@ func EbsSnapshots() *schema.Table {
 				Name:     "tags",
 				Type:     schema.TypeJSON,
 				Resolver: client.ResolveTags,
+			},
+			{
+				Name:     "transfer_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("TransferType"),
 			},
 			{
 				Name:     "volume_id",

@@ -27,6 +27,7 @@ The primary key for this table is **arn**.
 |configuration_endpoint|JSON|
 |data_tiering|String|
 |description|String|
+|engine|String|
 |global_replication_group_info|JSON|
 |ip_discovery|String|
 |kms_key_id|String|

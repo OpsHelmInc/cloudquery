@@ -102,6 +102,11 @@ func AnalyzerFindings() *schema.Table {
 				Resolver: schema.PathResolver("Resource"),
 			},
 			{
+				Name:     "resource_control_policy_restriction",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ResourceControlPolicyRestriction"),
+			},
+			{
 				Name:     "sources",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Sources"),

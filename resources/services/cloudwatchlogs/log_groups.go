@@ -58,6 +58,11 @@ func LogGroups() *schema.Table {
 				Resolver: schema.PathResolver("KmsKeyId"),
 			},
 			{
+				Name:     "log_group_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("LogGroupArn"),
+			},
+			{
 				Name:     "log_group_class",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("LogGroupClass"),

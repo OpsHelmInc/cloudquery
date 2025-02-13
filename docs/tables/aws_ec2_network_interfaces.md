@@ -33,6 +33,7 @@ The primary key for this table is **arn**.
 |ipv6_prefixes|JSON|
 |mac_address|String|
 |network_interface_id|String|
+|operator|JSON|
 |outpost_arn|String|
 |owner_id|String|
 |private_dns_name|String|

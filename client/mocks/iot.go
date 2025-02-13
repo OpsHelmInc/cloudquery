@@ -215,6 +215,26 @@ func (mr *MockIotClientMockRecorder) DescribeCertificate(arg0, arg1 interface{},
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeCertificate", reflect.TypeOf((*MockIotClient)(nil).DescribeCertificate), varargs...)
 }
 
+// DescribeCertificateProvider mocks base method.
+func (m *MockIotClient) DescribeCertificateProvider(arg0 context.Context, arg1 *iot.DescribeCertificateProviderInput, arg2 ...func(*iot.Options)) (*iot.DescribeCertificateProviderOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeCertificateProvider", varargs...)
+	ret0, _ := ret[0].(*iot.DescribeCertificateProviderOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeCertificateProvider indicates an expected call of DescribeCertificateProvider.
+func (mr *MockIotClientMockRecorder) DescribeCertificateProvider(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeCertificateProvider", reflect.TypeOf((*MockIotClient)(nil).DescribeCertificateProvider), varargs...)
+}
+
 // DescribeCustomMetric mocks base method.
 func (m *MockIotClient) DescribeCustomMetric(arg0 context.Context, arg1 *iot.DescribeCustomMetricInput, arg2 ...func(*iot.Options)) (*iot.DescribeCustomMetricOutput, error) {
 	m.ctrl.T.Helper()
@@ -755,6 +775,46 @@ func (mr *MockIotClientMockRecorder) GetCardinality(arg0, arg1 interface{}, arg2
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetCardinality", reflect.TypeOf((*MockIotClient)(nil).GetCardinality), varargs...)
 }
 
+// GetCommand mocks base method.
+func (m *MockIotClient) GetCommand(arg0 context.Context, arg1 *iot.GetCommandInput, arg2 ...func(*iot.Options)) (*iot.GetCommandOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetCommand", varargs...)
+	ret0, _ := ret[0].(*iot.GetCommandOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetCommand indicates an expected call of GetCommand.
+func (mr *MockIotClientMockRecorder) GetCommand(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetCommand", reflect.TypeOf((*MockIotClient)(nil).GetCommand), varargs...)
+}
+
+// GetCommandExecution mocks base method.
+func (m *MockIotClient) GetCommandExecution(arg0 context.Context, arg1 *iot.GetCommandExecutionInput, arg2 ...func(*iot.Options)) (*iot.GetCommandExecutionOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetCommandExecution", varargs...)
+	ret0, _ := ret[0].(*iot.GetCommandExecutionOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetCommandExecution indicates an expected call of GetCommandExecution.
+func (mr *MockIotClientMockRecorder) GetCommandExecution(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetCommandExecution", reflect.TypeOf((*MockIotClient)(nil).GetCommandExecution), varargs...)
+}
+
 // GetEffectivePolicies mocks base method.
 func (m *MockIotClient) GetEffectivePolicies(arg0 context.Context, arg1 *iot.GetEffectivePoliciesInput, arg2 ...func(*iot.Options)) (*iot.GetEffectivePoliciesOutput, error) {
 	m.ctrl.T.Helper()
@@ -1013,6 +1073,26 @@ func (mr *MockIotClientMockRecorder) GetStatistics(arg0, arg1 interface{}, arg2 
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetStatistics", reflect.TypeOf((*MockIotClient)(nil).GetStatistics), varargs...)
+}
+
+// GetThingConnectivityData mocks base method.
+func (m *MockIotClient) GetThingConnectivityData(arg0 context.Context, arg1 *iot.GetThingConnectivityDataInput, arg2 ...func(*iot.Options)) (*iot.GetThingConnectivityDataOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetThingConnectivityData", varargs...)
+	ret0, _ := ret[0].(*iot.GetThingConnectivityDataOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetThingConnectivityData indicates an expected call of GetThingConnectivityData.
+func (mr *MockIotClientMockRecorder) GetThingConnectivityData(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetThingConnectivityData", reflect.TypeOf((*MockIotClient)(nil).GetThingConnectivityData), varargs...)
 }
 
 // GetTopicRule mocks base method.
@@ -1275,6 +1355,26 @@ func (mr *MockIotClientMockRecorder) ListCACertificates(arg0, arg1 interface{}, 
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListCACertificates", reflect.TypeOf((*MockIotClient)(nil).ListCACertificates), varargs...)
 }
 
+// ListCertificateProviders mocks base method.
+func (m *MockIotClient) ListCertificateProviders(arg0 context.Context, arg1 *iot.ListCertificateProvidersInput, arg2 ...func(*iot.Options)) (*iot.ListCertificateProvidersOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListCertificateProviders", varargs...)
+	ret0, _ := ret[0].(*iot.ListCertificateProvidersOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListCertificateProviders indicates an expected call of ListCertificateProviders.
+func (mr *MockIotClientMockRecorder) ListCertificateProviders(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListCertificateProviders", reflect.TypeOf((*MockIotClient)(nil).ListCertificateProviders), varargs...)
+}
+
 // ListCertificates mocks base method.
 func (m *MockIotClient) ListCertificates(arg0 context.Context, arg1 *iot.ListCertificatesInput, arg2 ...func(*iot.Options)) (*iot.ListCertificatesOutput, error) {
 	m.ctrl.T.Helper()
@@ -1313,6 +1413,46 @@ func (mr *MockIotClientMockRecorder) ListCertificatesByCA(arg0, arg1 interface{}
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListCertificatesByCA", reflect.TypeOf((*MockIotClient)(nil).ListCertificatesByCA), varargs...)
+}
+
+// ListCommandExecutions mocks base method.
+func (m *MockIotClient) ListCommandExecutions(arg0 context.Context, arg1 *iot.ListCommandExecutionsInput, arg2 ...func(*iot.Options)) (*iot.ListCommandExecutionsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListCommandExecutions", varargs...)
+	ret0, _ := ret[0].(*iot.ListCommandExecutionsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListCommandExecutions indicates an expected call of ListCommandExecutions.
+func (mr *MockIotClientMockRecorder) ListCommandExecutions(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListCommandExecutions", reflect.TypeOf((*MockIotClient)(nil).ListCommandExecutions), varargs...)
+}
+
+// ListCommands mocks base method.
+func (m *MockIotClient) ListCommands(arg0 context.Context, arg1 *iot.ListCommandsInput, arg2 ...func(*iot.Options)) (*iot.ListCommandsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListCommands", varargs...)
+	ret0, _ := ret[0].(*iot.ListCommandsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListCommands indicates an expected call of ListCommands.
+func (mr *MockIotClientMockRecorder) ListCommands(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListCommands", reflect.TypeOf((*MockIotClient)(nil).ListCommands), varargs...)
 }
 
 // ListCustomMetrics mocks base method.
@@ -1775,6 +1915,26 @@ func (mr *MockIotClientMockRecorder) ListPrincipalThings(arg0, arg1 interface{},
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListPrincipalThings", reflect.TypeOf((*MockIotClient)(nil).ListPrincipalThings), varargs...)
 }
 
+// ListPrincipalThingsV2 mocks base method.
+func (m *MockIotClient) ListPrincipalThingsV2(arg0 context.Context, arg1 *iot.ListPrincipalThingsV2Input, arg2 ...func(*iot.Options)) (*iot.ListPrincipalThingsV2Output, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListPrincipalThingsV2", varargs...)
+	ret0, _ := ret[0].(*iot.ListPrincipalThingsV2Output)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListPrincipalThingsV2 indicates an expected call of ListPrincipalThingsV2.
+func (mr *MockIotClientMockRecorder) ListPrincipalThingsV2(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListPrincipalThingsV2", reflect.TypeOf((*MockIotClient)(nil).ListPrincipalThingsV2), varargs...)
+}
+
 // ListProvisioningTemplateVersions mocks base method.
 func (m *MockIotClient) ListProvisioningTemplateVersions(arg0 context.Context, arg1 *iot.ListProvisioningTemplateVersionsInput, arg2 ...func(*iot.Options)) (*iot.ListProvisioningTemplateVersionsOutput, error) {
 	m.ctrl.T.Helper()
@@ -1853,6 +2013,26 @@ func (mr *MockIotClientMockRecorder) ListRoleAliases(arg0, arg1 interface{}, arg
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListRoleAliases", reflect.TypeOf((*MockIotClient)(nil).ListRoleAliases), varargs...)
+}
+
+// ListSbomValidationResults mocks base method.
+func (m *MockIotClient) ListSbomValidationResults(arg0 context.Context, arg1 *iot.ListSbomValidationResultsInput, arg2 ...func(*iot.Options)) (*iot.ListSbomValidationResultsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListSbomValidationResults", varargs...)
+	ret0, _ := ret[0].(*iot.ListSbomValidationResultsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListSbomValidationResults indicates an expected call of ListSbomValidationResults.
+func (mr *MockIotClientMockRecorder) ListSbomValidationResults(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListSbomValidationResults", reflect.TypeOf((*MockIotClient)(nil).ListSbomValidationResults), varargs...)
 }
 
 // ListScheduledAudits mocks base method.
@@ -2053,6 +2233,26 @@ func (mr *MockIotClientMockRecorder) ListThingPrincipals(arg0, arg1 interface{},
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListThingPrincipals", reflect.TypeOf((*MockIotClient)(nil).ListThingPrincipals), varargs...)
+}
+
+// ListThingPrincipalsV2 mocks base method.
+func (m *MockIotClient) ListThingPrincipalsV2(arg0 context.Context, arg1 *iot.ListThingPrincipalsV2Input, arg2 ...func(*iot.Options)) (*iot.ListThingPrincipalsV2Output, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListThingPrincipalsV2", varargs...)
+	ret0, _ := ret[0].(*iot.ListThingPrincipalsV2Output)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListThingPrincipalsV2 indicates an expected call of ListThingPrincipalsV2.
+func (mr *MockIotClientMockRecorder) ListThingPrincipalsV2(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListThingPrincipalsV2", reflect.TypeOf((*MockIotClient)(nil).ListThingPrincipalsV2), varargs...)
 }
 
 // ListThingRegistrationTaskReports mocks base method.

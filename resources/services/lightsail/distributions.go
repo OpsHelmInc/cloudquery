@@ -127,6 +127,11 @@ func Distributions() *schema.Table {
 				Resolver: schema.PathResolver("SupportCode"),
 			},
 			{
+				Name:     "viewer_minimum_tls_protocol_version",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ViewerMinimumTlsProtocolVersion"),
+			},
+			{
 				Name:     "latest_cache_reset",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("LatestCacheReset"),

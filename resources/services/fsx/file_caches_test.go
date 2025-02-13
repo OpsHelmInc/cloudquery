@@ -3,13 +3,14 @@ package fsx
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/fsx"
 	"github.com/aws/aws-sdk-go-v2/service/fsx/types"
 	"github.com/cloudquery/plugin-sdk/faker"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/mocks"
 )
 
 func buildFileCachesMock(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -18,6 +19,7 @@ func buildFileCachesMock(t *testing.T, ctrl *gomock.Controller) client.Services 
 	var fc types.FileCache
 	require.NoError(t, faker.FakeObject(&fc))
 	m.EXPECT().DescribeFileCaches(
+		gomock.Any(),
 		gomock.Any(),
 		gomock.Any(),
 	).Return(

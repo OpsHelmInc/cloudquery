@@ -29,12 +29,14 @@ The composite primary key for this table is (**account_id**, **region**, **id**)
 |created|Bool|
 |deleted|Bool|
 |domain_endpoint_options|JSON|
+|domain_processing_status|String|
 |ebs_options|JSON|
 |elasticsearch_version|String|
 |encryption_at_rest_options|JSON|
 |endpoint|String|
 |endpoints|JSON|
 |log_publishing_options|JSON|
+|modifying_properties|JSON|
 |node_to_node_encryption_options|JSON|
 |processing|Bool|
 |service_software_options|JSON|

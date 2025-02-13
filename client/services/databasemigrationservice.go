@@ -13,6 +13,7 @@ type DatabasemigrationserviceClient interface {
 	DescribeCertificates(context.Context, *databasemigrationservice.DescribeCertificatesInput, ...func(*databasemigrationservice.Options)) (*databasemigrationservice.DescribeCertificatesOutput, error)
 	DescribeConnections(context.Context, *databasemigrationservice.DescribeConnectionsInput, ...func(*databasemigrationservice.Options)) (*databasemigrationservice.DescribeConnectionsOutput, error)
 	DescribeConversionConfiguration(context.Context, *databasemigrationservice.DescribeConversionConfigurationInput, ...func(*databasemigrationservice.Options)) (*databasemigrationservice.DescribeConversionConfigurationOutput, error)
+	DescribeDataMigrations(context.Context, *databasemigrationservice.DescribeDataMigrationsInput, ...func(*databasemigrationservice.Options)) (*databasemigrationservice.DescribeDataMigrationsOutput, error)
 	DescribeDataProviders(context.Context, *databasemigrationservice.DescribeDataProvidersInput, ...func(*databasemigrationservice.Options)) (*databasemigrationservice.DescribeDataProvidersOutput, error)
 	DescribeEndpointSettings(context.Context, *databasemigrationservice.DescribeEndpointSettingsInput, ...func(*databasemigrationservice.Options)) (*databasemigrationservice.DescribeEndpointSettingsOutput, error)
 	DescribeEndpointTypes(context.Context, *databasemigrationservice.DescribeEndpointTypesInput, ...func(*databasemigrationservice.Options)) (*databasemigrationservice.DescribeEndpointTypesOutput, error)

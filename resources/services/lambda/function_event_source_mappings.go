@@ -60,14 +60,29 @@ func FunctionEventSourceMappings() *schema.Table {
 				Resolver: schema.PathResolver("EventSourceArn"),
 			},
 			{
+				Name:     "event_source_mapping_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("EventSourceMappingArn"),
+			},
+			{
 				Name:     "filter_criteria",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("FilterCriteria"),
 			},
 			{
+				Name:     "filter_criteria_error",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("FilterCriteriaError"),
+			},
+			{
 				Name:     "function_response_types",
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("FunctionResponseTypes"),
+			},
+			{
+				Name:     "kms_key_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("KMSKeyArn"),
 			},
 			{
 				Name:     "last_modified",
@@ -95,9 +110,19 @@ func FunctionEventSourceMappings() *schema.Table {
 				Resolver: schema.PathResolver("MaximumRetryAttempts"),
 			},
 			{
+				Name:     "metrics_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("MetricsConfig"),
+			},
+			{
 				Name:     "parallelization_factor",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("ParallelizationFactor"),
+			},
+			{
+				Name:     "provisioned_poller_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ProvisionedPollerConfig"),
 			},
 			{
 				Name:     "queues",

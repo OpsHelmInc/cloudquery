@@ -1275,6 +1275,26 @@ func (mr *MockLightsailClientMockRecorder) GetRelationalDatabases(arg0, arg1 int
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetRelationalDatabases", reflect.TypeOf((*MockLightsailClient)(nil).GetRelationalDatabases), varargs...)
 }
 
+// GetSetupHistory mocks base method.
+func (m *MockLightsailClient) GetSetupHistory(arg0 context.Context, arg1 *lightsail.GetSetupHistoryInput, arg2 ...func(*lightsail.Options)) (*lightsail.GetSetupHistoryOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetSetupHistory", varargs...)
+	ret0, _ := ret[0].(*lightsail.GetSetupHistoryOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetSetupHistory indicates an expected call of GetSetupHistory.
+func (mr *MockLightsailClientMockRecorder) GetSetupHistory(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSetupHistory", reflect.TypeOf((*MockLightsailClient)(nil).GetSetupHistory), varargs...)
+}
+
 // GetStaticIp mocks base method.
 func (m *MockLightsailClient) GetStaticIp(arg0 context.Context, arg1 *lightsail.GetStaticIpInput, arg2 ...func(*lightsail.Options)) (*lightsail.GetStaticIpOutput, error) {
 	m.ctrl.T.Helper()

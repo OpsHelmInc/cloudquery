@@ -50,6 +50,7 @@ The primary key for this table is **arn**.
 |db_security_groups|JSON|
 |db_subnet_group|JSON|
 |db_system_id|String|
+|database_insights_mode|String|
 |db_instance_port|Int|
 |dbi_resource_id|String|
 |dedicated_log_volume|Bool|
@@ -58,6 +59,7 @@ The primary key for this table is **arn**.
 |enabled_cloudwatch_logs_exports|StringArray|
 |endpoint|JSON|
 |engine|String|
+|engine_lifecycle_support|String|
 |engine_version|String|
 |enhanced_monitoring_resource_arn|String|
 |iam_database_authentication_enabled|Bool|

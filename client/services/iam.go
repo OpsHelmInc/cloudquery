@@ -51,6 +51,7 @@ type IamClient interface {
 	ListMFADevices(context.Context, *iam.ListMFADevicesInput, ...func(*iam.Options)) (*iam.ListMFADevicesOutput, error)
 	ListOpenIDConnectProviderTags(context.Context, *iam.ListOpenIDConnectProviderTagsInput, ...func(*iam.Options)) (*iam.ListOpenIDConnectProviderTagsOutput, error)
 	ListOpenIDConnectProviders(context.Context, *iam.ListOpenIDConnectProvidersInput, ...func(*iam.Options)) (*iam.ListOpenIDConnectProvidersOutput, error)
+	ListOrganizationsFeatures(context.Context, *iam.ListOrganizationsFeaturesInput, ...func(*iam.Options)) (*iam.ListOrganizationsFeaturesOutput, error)
 	ListPolicies(context.Context, *iam.ListPoliciesInput, ...func(*iam.Options)) (*iam.ListPoliciesOutput, error)
 	ListPoliciesGrantingServiceAccess(context.Context, *iam.ListPoliciesGrantingServiceAccessInput, ...func(*iam.Options)) (*iam.ListPoliciesGrantingServiceAccessOutput, error)
 	ListPolicyTags(context.Context, *iam.ListPolicyTagsInput, ...func(*iam.Options)) (*iam.ListPolicyTagsOutput, error)

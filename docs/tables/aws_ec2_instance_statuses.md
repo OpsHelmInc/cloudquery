@@ -16,10 +16,12 @@ The primary key for this table is **arn**.
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|attached_ebs_status|JSON|
 |availability_zone|String|
 |events|JSON|
 |instance_id|String|
 |instance_state|JSON|
 |instance_status|JSON|
+|operator|JSON|
 |outpost_arn|String|
 |system_status|JSON|

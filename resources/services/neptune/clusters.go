@@ -168,6 +168,11 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("IAMDatabaseAuthenticationEnabled"),
 			},
 			{
+				Name:     "io_optimized_next_allowed_modification_time",
+				Type:     schema.TypeTimestamp,
+				Resolver: schema.PathResolver("IOOptimizedNextAllowedModificationTime"),
+			},
+			{
 				Name:     "kms_key_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("KmsKeyId"),
@@ -241,6 +246,11 @@ func Clusters() *schema.Table {
 				Name:     "storage_encrypted",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("StorageEncrypted"),
+			},
+			{
+				Name:     "storage_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("StorageType"),
 			},
 			{
 				Name:     "vpc_security_groups",

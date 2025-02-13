@@ -133,6 +133,11 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("LatestRestorableTime"),
 			},
 			{
+				Name:     "master_user_secret",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("MasterUserSecret"),
+			},
+			{
 				Name:     "master_username",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("MasterUsername"),

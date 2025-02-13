@@ -113,6 +113,11 @@ func Workspaces() *schema.Table {
 				Resolver: schema.PathResolver("WorkspaceId"),
 			},
 			{
+				Name:     "workspace_name",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("WorkspaceName"),
+			},
+			{
 				Name:     "workspace_properties",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("WorkspaceProperties"),

@@ -3,12 +3,13 @@ package iam
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	iamTypes "github.com/aws/aws-sdk-go-v2/service/iam/types"
 	"github.com/cloudquery/plugin-sdk/faker"
 	"github.com/golang/mock/gomock"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/mocks"
 )
 
 func buildIamUsers(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -60,7 +61,7 @@ func buildIamUsers(t *testing.T, ctrl *gomock.Controller) client.Services {
 		t.Fatal(err)
 	}
 
-	m.EXPECT().ListUsers(gomock.Any(), gomock.Any()).Return(
+	m.EXPECT().ListUsers(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.ListUsersOutput{
 			Users: []iamTypes.User{u},
 		}, nil)
@@ -90,7 +91,7 @@ func buildIamUsers(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m.EXPECT().GetLoginProfile(gomock.Any(), gomock.Any()).Return(
 		&log, nil)
 
-	//list user inline policies
+	// list user inline policies
 	var l []string
 	err = faker.FakeObject(&l)
 	if err != nil {
@@ -101,7 +102,7 @@ func buildIamUsers(t *testing.T, ctrl *gomock.Controller) client.Services {
 			PolicyNames: l,
 		}, nil)
 
-	//get policy
+	// get policy
 	p := iam.GetUserPolicyOutput{}
 	err = faker.FakeObject(&p)
 	if err != nil {

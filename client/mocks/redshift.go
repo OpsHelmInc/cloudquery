@@ -515,6 +515,26 @@ func (mr *MockRedshiftClientMockRecorder) DescribeInboundIntegrations(arg0, arg1
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeInboundIntegrations", reflect.TypeOf((*MockRedshiftClient)(nil).DescribeInboundIntegrations), varargs...)
 }
 
+// DescribeIntegrations mocks base method.
+func (m *MockRedshiftClient) DescribeIntegrations(arg0 context.Context, arg1 *redshift.DescribeIntegrationsInput, arg2 ...func(*redshift.Options)) (*redshift.DescribeIntegrationsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeIntegrations", varargs...)
+	ret0, _ := ret[0].(*redshift.DescribeIntegrationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeIntegrations indicates an expected call of DescribeIntegrations.
+func (mr *MockRedshiftClientMockRecorder) DescribeIntegrations(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeIntegrations", reflect.TypeOf((*MockRedshiftClient)(nil).DescribeIntegrations), varargs...)
+}
+
 // DescribeLoggingStatus mocks base method.
 func (m *MockRedshiftClient) DescribeLoggingStatus(arg0 context.Context, arg1 *redshift.DescribeLoggingStatusInput, arg2 ...func(*redshift.Options)) (*redshift.DescribeLoggingStatusOutput, error) {
 	m.ctrl.T.Helper()
@@ -933,4 +953,24 @@ func (mr *MockRedshiftClientMockRecorder) GetResourcePolicy(arg0, arg1 interface
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetResourcePolicy", reflect.TypeOf((*MockRedshiftClient)(nil).GetResourcePolicy), varargs...)
+}
+
+// ListRecommendations mocks base method.
+func (m *MockRedshiftClient) ListRecommendations(arg0 context.Context, arg1 *redshift.ListRecommendationsInput, arg2 ...func(*redshift.Options)) (*redshift.ListRecommendationsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListRecommendations", varargs...)
+	ret0, _ := ret[0].(*redshift.ListRecommendationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListRecommendations indicates an expected call of ListRecommendations.
+func (mr *MockRedshiftClientMockRecorder) ListRecommendations(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListRecommendations", reflect.TypeOf((*MockRedshiftClient)(nil).ListRecommendations), varargs...)
 }

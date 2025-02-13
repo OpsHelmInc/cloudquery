@@ -23,7 +23,10 @@ The primary key for this table is **arn**.
 |cluster_id|String|
 |create_timestamp|Timestamp|
 |hsm_type|String|
+|hsm_type_rollback_expiration|Timestamp|
 |hsms|JSON|
+|mode|String|
+|network_type|String|
 |pre_co_password|String|
 |security_group|String|
 |source_backup_id|String|

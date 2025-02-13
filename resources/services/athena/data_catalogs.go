@@ -49,14 +49,29 @@ func DataCatalogs() *schema.Table {
 				Resolver: schema.PathResolver("Type"),
 			},
 			{
+				Name:     "connection_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ConnectionType"),
+			},
+			{
 				Name:     "description",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Description"),
 			},
 			{
+				Name:     "error",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("Error"),
+			},
+			{
 				Name:     "parameters",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Parameters"),
+			},
+			{
+				Name:     "status",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("Status"),
 			},
 		},
 

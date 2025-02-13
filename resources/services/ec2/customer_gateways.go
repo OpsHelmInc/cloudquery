@@ -43,6 +43,11 @@ func CustomerGateways() *schema.Table {
 				Resolver: schema.PathResolver("BgpAsn"),
 			},
 			{
+				Name:     "bgp_asn_extended",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("BgpAsnExtended"),
+			},
+			{
 				Name:     "certificate_arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("CertificateArn"),

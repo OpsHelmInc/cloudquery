@@ -16,6 +16,7 @@ The primary key for this table is **arn**.
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|apply_on_transformed_logs|Bool|
 |creation_time|Int|
 |filter_name|String|
 |filter_pattern|String|

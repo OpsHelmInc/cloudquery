@@ -104,6 +104,11 @@ func Domains() *schema.Table {
 				Resolver: schema.PathResolver("DomainEndpointOptions"),
 			},
 			{
+				Name:     "domain_processing_status",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("DomainProcessingStatus"),
+			},
+			{
 				Name:     "ebs_options",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("EBSOptions"),
@@ -132,6 +137,11 @@ func Domains() *schema.Table {
 				Name:     "log_publishing_options",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("LogPublishingOptions"),
+			},
+			{
+				Name:     "modifying_properties",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ModifyingProperties"),
 			},
 			{
 				Name:     "node_to_node_encryption_options",

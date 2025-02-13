@@ -93,6 +93,16 @@ func VaultRecoveryPoints() *schema.Table {
 				Resolver: schema.PathResolver("IamRoleArn"),
 			},
 			{
+				Name:     "index_status",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("IndexStatus"),
+			},
+			{
+				Name:     "index_status_message",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("IndexStatusMessage"),
+			},
+			{
 				Name:     "is_encrypted",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("IsEncrypted"),
@@ -146,6 +156,11 @@ func VaultRecoveryPoints() *schema.Table {
 				Name:     "status_message",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("StatusMessage"),
+			},
+			{
+				Name:     "vault_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("VaultType"),
 			},
 		},
 	}

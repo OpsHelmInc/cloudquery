@@ -135,6 +135,26 @@ func (mr *MockDatabasemigrationserviceClientMockRecorder) DescribeConversionConf
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeConversionConfiguration", reflect.TypeOf((*MockDatabasemigrationserviceClient)(nil).DescribeConversionConfiguration), varargs...)
 }
 
+// DescribeDataMigrations mocks base method.
+func (m *MockDatabasemigrationserviceClient) DescribeDataMigrations(arg0 context.Context, arg1 *databasemigrationservice.DescribeDataMigrationsInput, arg2 ...func(*databasemigrationservice.Options)) (*databasemigrationservice.DescribeDataMigrationsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeDataMigrations", varargs...)
+	ret0, _ := ret[0].(*databasemigrationservice.DescribeDataMigrationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeDataMigrations indicates an expected call of DescribeDataMigrations.
+func (mr *MockDatabasemigrationserviceClientMockRecorder) DescribeDataMigrations(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeDataMigrations", reflect.TypeOf((*MockDatabasemigrationserviceClient)(nil).DescribeDataMigrations), varargs...)
+}
+
 // DescribeDataProviders mocks base method.
 func (m *MockDatabasemigrationserviceClient) DescribeDataProviders(arg0 context.Context, arg1 *databasemigrationservice.DescribeDataProvidersInput, arg2 ...func(*databasemigrationservice.Options)) (*databasemigrationservice.DescribeDataProvidersOutput, error) {
 	m.ctrl.T.Helper()

@@ -115,6 +115,26 @@ func (mr *MockApplicationautoscalingClientMockRecorder) DescribeScheduledActions
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeScheduledActions", reflect.TypeOf((*MockApplicationautoscalingClient)(nil).DescribeScheduledActions), varargs...)
 }
 
+// GetPredictiveScalingForecast mocks base method.
+func (m *MockApplicationautoscalingClient) GetPredictiveScalingForecast(arg0 context.Context, arg1 *applicationautoscaling.GetPredictiveScalingForecastInput, arg2 ...func(*applicationautoscaling.Options)) (*applicationautoscaling.GetPredictiveScalingForecastOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetPredictiveScalingForecast", varargs...)
+	ret0, _ := ret[0].(*applicationautoscaling.GetPredictiveScalingForecastOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetPredictiveScalingForecast indicates an expected call of GetPredictiveScalingForecast.
+func (mr *MockApplicationautoscalingClientMockRecorder) GetPredictiveScalingForecast(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPredictiveScalingForecast", reflect.TypeOf((*MockApplicationautoscalingClient)(nil).GetPredictiveScalingForecast), varargs...)
+}
+
 // ListTagsForResource mocks base method.
 func (m *MockApplicationautoscalingClient) ListTagsForResource(arg0 context.Context, arg1 *applicationautoscaling.ListTagsForResourceInput, arg2 ...func(*applicationautoscaling.Options)) (*applicationautoscaling.ListTagsForResourceOutput, error) {
 	m.ctrl.T.Helper()

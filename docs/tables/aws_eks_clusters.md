@@ -17,8 +17,10 @@ The primary key for this table is **arn**.
 |region|String|
 |arn (PK)|String|
 |oh_resource_type|String|
+|access_config|JSON|
 |certificate_authority|JSON|
 |client_request_token|String|
+|compute_config|JSON|
 |connector_config|JSON|
 |created_at|Timestamp|
 |encryption_config|JSON|
@@ -31,8 +33,12 @@ The primary key for this table is **arn**.
 |name|String|
 |outpost_config|JSON|
 |platform_version|String|
+|remote_network_config|JSON|
 |resources_vpc_config|JSON|
 |role_arn|String|
 |status|String|
+|storage_config|JSON|
 |tags|JSON|
+|upgrade_policy|JSON|
 |version|String|
+|zonal_shift_config|JSON|

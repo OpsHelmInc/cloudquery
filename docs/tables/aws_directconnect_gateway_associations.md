@@ -20,6 +20,7 @@ This table depends on [aws_directconnect_gateways](aws_directconnect_gateways.md
 |gateway_arn|String|
 |gateway_id|String|
 |allowed_prefixes_to_direct_connect_gateway|JSON|
+|associated_core_network|JSON|
 |associated_gateway|JSON|
 |association_id|String|
 |association_state|String|

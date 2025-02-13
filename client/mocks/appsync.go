@@ -35,6 +35,26 @@ func (m *MockAppsyncClient) EXPECT() *MockAppsyncClientMockRecorder {
 	return m.recorder
 }
 
+// GetApi mocks base method.
+func (m *MockAppsyncClient) GetApi(arg0 context.Context, arg1 *appsync.GetApiInput, arg2 ...func(*appsync.Options)) (*appsync.GetApiOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetApi", varargs...)
+	ret0, _ := ret[0].(*appsync.GetApiOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetApi indicates an expected call of GetApi.
+func (mr *MockAppsyncClientMockRecorder) GetApi(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetApi", reflect.TypeOf((*MockAppsyncClient)(nil).GetApi), varargs...)
+}
+
 // GetApiAssociation mocks base method.
 func (m *MockAppsyncClient) GetApiAssociation(arg0 context.Context, arg1 *appsync.GetApiAssociationInput, arg2 ...func(*appsync.Options)) (*appsync.GetApiAssociationOutput, error) {
 	m.ctrl.T.Helper()
@@ -73,6 +93,26 @@ func (mr *MockAppsyncClientMockRecorder) GetApiCache(arg0, arg1 interface{}, arg
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetApiCache", reflect.TypeOf((*MockAppsyncClient)(nil).GetApiCache), varargs...)
+}
+
+// GetChannelNamespace mocks base method.
+func (m *MockAppsyncClient) GetChannelNamespace(arg0 context.Context, arg1 *appsync.GetChannelNamespaceInput, arg2 ...func(*appsync.Options)) (*appsync.GetChannelNamespaceOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetChannelNamespace", varargs...)
+	ret0, _ := ret[0].(*appsync.GetChannelNamespaceOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetChannelNamespace indicates an expected call of GetChannelNamespace.
+func (mr *MockAppsyncClientMockRecorder) GetChannelNamespace(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetChannelNamespace", reflect.TypeOf((*MockAppsyncClient)(nil).GetChannelNamespace), varargs...)
 }
 
 // GetDataSource mocks base method.
@@ -173,6 +213,26 @@ func (mr *MockAppsyncClientMockRecorder) GetGraphqlApi(arg0, arg1 interface{}, a
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetGraphqlApi", reflect.TypeOf((*MockAppsyncClient)(nil).GetGraphqlApi), varargs...)
+}
+
+// GetGraphqlApiEnvironmentVariables mocks base method.
+func (m *MockAppsyncClient) GetGraphqlApiEnvironmentVariables(arg0 context.Context, arg1 *appsync.GetGraphqlApiEnvironmentVariablesInput, arg2 ...func(*appsync.Options)) (*appsync.GetGraphqlApiEnvironmentVariablesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetGraphqlApiEnvironmentVariables", varargs...)
+	ret0, _ := ret[0].(*appsync.GetGraphqlApiEnvironmentVariablesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetGraphqlApiEnvironmentVariables indicates an expected call of GetGraphqlApiEnvironmentVariables.
+func (mr *MockAppsyncClientMockRecorder) GetGraphqlApiEnvironmentVariables(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetGraphqlApiEnvironmentVariables", reflect.TypeOf((*MockAppsyncClient)(nil).GetGraphqlApiEnvironmentVariables), varargs...)
 }
 
 // GetIntrospectionSchema mocks base method.
@@ -293,6 +353,46 @@ func (mr *MockAppsyncClientMockRecorder) ListApiKeys(arg0, arg1 interface{}, arg
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListApiKeys", reflect.TypeOf((*MockAppsyncClient)(nil).ListApiKeys), varargs...)
+}
+
+// ListApis mocks base method.
+func (m *MockAppsyncClient) ListApis(arg0 context.Context, arg1 *appsync.ListApisInput, arg2 ...func(*appsync.Options)) (*appsync.ListApisOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListApis", varargs...)
+	ret0, _ := ret[0].(*appsync.ListApisOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListApis indicates an expected call of ListApis.
+func (mr *MockAppsyncClientMockRecorder) ListApis(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListApis", reflect.TypeOf((*MockAppsyncClient)(nil).ListApis), varargs...)
+}
+
+// ListChannelNamespaces mocks base method.
+func (m *MockAppsyncClient) ListChannelNamespaces(arg0 context.Context, arg1 *appsync.ListChannelNamespacesInput, arg2 ...func(*appsync.Options)) (*appsync.ListChannelNamespacesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListChannelNamespaces", varargs...)
+	ret0, _ := ret[0].(*appsync.ListChannelNamespacesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListChannelNamespaces indicates an expected call of ListChannelNamespaces.
+func (mr *MockAppsyncClientMockRecorder) ListChannelNamespaces(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListChannelNamespaces", reflect.TypeOf((*MockAppsyncClient)(nil).ListChannelNamespaces), varargs...)
 }
 
 // ListDataSources mocks base method.

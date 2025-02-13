@@ -28,6 +28,7 @@ The primary key for this table is **arn**.
 |image_arn|String|
 |image_builder_errors|JSON|
 |instance_type|String|
+|latest_appstream_agent_version|String|
 |network_access_configuration|JSON|
 |platform|String|
 |state|String|

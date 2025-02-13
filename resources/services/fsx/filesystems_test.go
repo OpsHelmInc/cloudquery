@@ -3,13 +3,14 @@ package fsx
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/fsx"
 	"github.com/aws/aws-sdk-go-v2/service/fsx/types"
 	"github.com/cloudquery/plugin-sdk/faker"
 	"github.com/golang/mock/gomock"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/mocks"
 )
 
 func buildFilesystemsMock(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -26,6 +27,7 @@ func buildFilesystemsMock(t *testing.T, ctrl *gomock.Controller) client.Services
 	m.EXPECT().DescribeFileSystems(
 		gomock.Any(),
 		&fsx.DescribeFileSystemsInput{MaxResults: aws.Int32(1000)},
+		gomock.Any(),
 	).Return(
 		&fsx.DescribeFileSystemsOutput{FileSystems: []types.FileSystem{f}},
 		nil,

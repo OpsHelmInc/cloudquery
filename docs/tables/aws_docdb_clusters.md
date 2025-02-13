@@ -40,6 +40,7 @@ The following tables depend on aws_docdb_clusters:
 |hosted_zone_id|String|
 |kms_key_id|String|
 |latest_restorable_time|Timestamp|
+|master_user_secret|JSON|
 |master_username|String|
 |multi_az|Bool|
 |percent_progress|String|

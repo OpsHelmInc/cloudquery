@@ -104,6 +104,11 @@ func Keys() *schema.Table {
 				Resolver: schema.PathResolver("ExpirationModel"),
 			},
 			{
+				Name:     "key_agreement_algorithms",
+				Type:     schema.TypeStringArray,
+				Resolver: schema.PathResolver("KeyAgreementAlgorithms"),
+			},
+			{
 				Name:     "key_manager",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("KeyManager"),

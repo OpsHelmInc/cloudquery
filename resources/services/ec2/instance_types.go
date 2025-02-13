@@ -143,6 +143,11 @@ func InstanceTypes() *schema.Table {
 				Resolver: schema.PathResolver("NitroTpmSupport"),
 			},
 			{
+				Name:     "phc_support",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("PhcSupport"),
+			},
+			{
 				Name:     "placement_group_info",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("PlacementGroupInfo"),

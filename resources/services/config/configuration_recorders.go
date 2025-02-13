@@ -26,10 +26,7 @@ func ConfigurationRecorders() *schema.Table {
 			{
 				Name:     "arn",
 				Type:     schema.TypeString,
-				Resolver: generateConfigRecorderArn,
-				CreationOptions: schema.ColumnCreationOptions{
-					PrimaryKey: true,
-				},
+				Resolver: schema.PathResolver("Arn"),
 			},
 			{
 				Name:     "name",
@@ -47,9 +44,19 @@ func ConfigurationRecorders() *schema.Table {
 				Resolver: schema.PathResolver("RecordingMode"),
 			},
 			{
+				Name:     "recording_scope",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("RecordingScope"),
+			},
+			{
 				Name:     "role_arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("RoleARN"),
+			},
+			{
+				Name:     "service_principal",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ServicePrincipal"),
 			},
 			{
 				Name:     "status_last_error_code",

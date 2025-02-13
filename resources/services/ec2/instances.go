@@ -194,6 +194,16 @@ func Instances() *schema.Table {
 				Resolver: schema.PathResolver("NetworkInterfaces"),
 			},
 			{
+				Name:     "network_performance_options",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("NetworkPerformanceOptions"),
+			},
+			{
+				Name:     "operator",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Operator"),
+			},
+			{
 				Name:     "outpost_arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("OutpostArn"),

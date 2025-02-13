@@ -43,6 +43,11 @@ func Backups() *schema.Table {
 				Resolver: schema.PathResolver("BackupId"),
 			},
 			{
+				Name:     "backup_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("BackupArn"),
+			},
+			{
 				Name:     "backup_state",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("BackupState"),
@@ -66,6 +71,16 @@ func Backups() *schema.Table {
 				Name:     "delete_timestamp",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("DeleteTimestamp"),
+			},
+			{
+				Name:     "hsm_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("HsmType"),
+			},
+			{
+				Name:     "mode",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("Mode"),
 			},
 			{
 				Name:     "never_expires",

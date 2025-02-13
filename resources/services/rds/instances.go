@@ -203,6 +203,11 @@ func Instances() *schema.Table {
 				Resolver: schema.PathResolver("DBSystemId"),
 			},
 			{
+				Name:     "database_insights_mode",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("DatabaseInsightsMode"),
+			},
+			{
 				Name:     "db_instance_port",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("DbInstancePort"),
@@ -241,6 +246,11 @@ func Instances() *schema.Table {
 				Name:     "engine",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Engine"),
+			},
+			{
+				Name:     "engine_lifecycle_support",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("EngineLifecycleSupport"),
 			},
 			{
 				Name:     "engine_version",

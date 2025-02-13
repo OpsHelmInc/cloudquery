@@ -35,4 +35,5 @@ The primary key for this table is **arn**.
 |resource_type|String|
 |status|String|
 |support_code|String|
+|viewer_minimum_tls_protocol_version|String|
 |latest_cache_reset|JSON|

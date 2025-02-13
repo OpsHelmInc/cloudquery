@@ -185,6 +185,11 @@ func UserPools() *schema.Table {
 				Resolver: schema.PathResolver("UserPoolTags"),
 			},
 			{
+				Name:     "user_pool_tier",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("UserPoolTier"),
+			},
+			{
 				Name:     "username_attributes",
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("UsernameAttributes"),

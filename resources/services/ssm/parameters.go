@@ -39,6 +39,11 @@ func Parameters() *schema.Table {
 				},
 			},
 			{
+				Name:     "arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ARN"),
+			},
+			{
 				Name:     "allowed_pattern",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("AllowedPattern"),

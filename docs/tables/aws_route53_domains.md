@@ -21,6 +21,8 @@ The composite primary key for this table is (**account_id**, **domain_name**).
 |admin_contact|JSON|
 |admin_privacy|Bool|
 |auto_renew|Bool|
+|billing_contact|JSON|
+|billing_privacy|Bool|
 |creation_date|Timestamp|
 |dns_sec|String|
 |dnssec_keys|JSON|

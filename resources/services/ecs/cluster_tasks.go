@@ -118,6 +118,11 @@ func ClusterTasks() *schema.Table {
 				Resolver: schema.PathResolver("ExecutionStoppedAt"),
 			},
 			{
+				Name:     "fargate_ephemeral_storage",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("FargateEphemeralStorage"),
+			},
+			{
 				Name:     "group",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Group"),

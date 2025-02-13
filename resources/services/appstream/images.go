@@ -68,6 +68,11 @@ func Images() *schema.Table {
 				Resolver: schema.PathResolver("DisplayName"),
 			},
 			{
+				Name:     "dynamic_app_providers_enabled",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("DynamicAppProvidersEnabled"),
+			},
+			{
 				Name:     "image_builder_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ImageBuilderName"),
@@ -88,6 +93,16 @@ func Images() *schema.Table {
 				Resolver: schema.PathResolver("ImagePermissions"),
 			},
 			{
+				Name:     "image_shared_with_others",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ImageSharedWithOthers"),
+			},
+			{
+				Name:     "latest_appstream_agent_version",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("LatestAppstreamAgentVersion"),
+			},
+			{
 				Name:     "platform",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Platform"),
@@ -106,6 +121,11 @@ func Images() *schema.Table {
 				Name:     "state_change_reason",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("StateChangeReason"),
+			},
+			{
+				Name:     "supported_instance_families",
+				Type:     schema.TypeStringArray,
+				Resolver: schema.PathResolver("SupportedInstanceFamilies"),
 			},
 			{
 				Name:     "visibility",

@@ -47,4 +47,5 @@ The primary key for this table is **arn**.
 |step_concurrency_level|Int|
 |tags|JSON|
 |termination_protected|Bool|
+|unhealthy_node_replacement|Bool|
 |visible_to_all_users|Bool|

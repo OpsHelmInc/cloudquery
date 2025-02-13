@@ -55,6 +55,46 @@ func (mr *MockCognitoidentityproviderClientMockRecorder) DescribeIdentityProvide
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeIdentityProvider", reflect.TypeOf((*MockCognitoidentityproviderClient)(nil).DescribeIdentityProvider), varargs...)
 }
 
+// DescribeManagedLoginBranding mocks base method.
+func (m *MockCognitoidentityproviderClient) DescribeManagedLoginBranding(arg0 context.Context, arg1 *cognitoidentityprovider.DescribeManagedLoginBrandingInput, arg2 ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.DescribeManagedLoginBrandingOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeManagedLoginBranding", varargs...)
+	ret0, _ := ret[0].(*cognitoidentityprovider.DescribeManagedLoginBrandingOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeManagedLoginBranding indicates an expected call of DescribeManagedLoginBranding.
+func (mr *MockCognitoidentityproviderClientMockRecorder) DescribeManagedLoginBranding(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeManagedLoginBranding", reflect.TypeOf((*MockCognitoidentityproviderClient)(nil).DescribeManagedLoginBranding), varargs...)
+}
+
+// DescribeManagedLoginBrandingByClient mocks base method.
+func (m *MockCognitoidentityproviderClient) DescribeManagedLoginBrandingByClient(arg0 context.Context, arg1 *cognitoidentityprovider.DescribeManagedLoginBrandingByClientInput, arg2 ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.DescribeManagedLoginBrandingByClientOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeManagedLoginBrandingByClient", varargs...)
+	ret0, _ := ret[0].(*cognitoidentityprovider.DescribeManagedLoginBrandingByClientOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeManagedLoginBrandingByClient indicates an expected call of DescribeManagedLoginBrandingByClient.
+func (mr *MockCognitoidentityproviderClientMockRecorder) DescribeManagedLoginBrandingByClient(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeManagedLoginBrandingByClient", reflect.TypeOf((*MockCognitoidentityproviderClient)(nil).DescribeManagedLoginBrandingByClient), varargs...)
+}
+
 // DescribeResourceServer mocks base method.
 func (m *MockCognitoidentityproviderClient) DescribeResourceServer(arg0 context.Context, arg1 *cognitoidentityprovider.DescribeResourceServerInput, arg2 ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.DescribeResourceServerOutput, error) {
 	m.ctrl.T.Helper()
@@ -355,6 +395,26 @@ func (mr *MockCognitoidentityproviderClientMockRecorder) GetUserAttributeVerific
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserAttributeVerificationCode", reflect.TypeOf((*MockCognitoidentityproviderClient)(nil).GetUserAttributeVerificationCode), varargs...)
 }
 
+// GetUserAuthFactors mocks base method.
+func (m *MockCognitoidentityproviderClient) GetUserAuthFactors(arg0 context.Context, arg1 *cognitoidentityprovider.GetUserAuthFactorsInput, arg2 ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.GetUserAuthFactorsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetUserAuthFactors", varargs...)
+	ret0, _ := ret[0].(*cognitoidentityprovider.GetUserAuthFactorsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetUserAuthFactors indicates an expected call of GetUserAuthFactors.
+func (mr *MockCognitoidentityproviderClientMockRecorder) GetUserAuthFactors(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserAuthFactors", reflect.TypeOf((*MockCognitoidentityproviderClient)(nil).GetUserAuthFactors), varargs...)
+}
+
 // GetUserPoolMfaConfig mocks base method.
 func (m *MockCognitoidentityproviderClient) GetUserPoolMfaConfig(arg0 context.Context, arg1 *cognitoidentityprovider.GetUserPoolMfaConfigInput, arg2 ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.GetUserPoolMfaConfigOutput, error) {
 	m.ctrl.T.Helper()
@@ -573,4 +633,24 @@ func (mr *MockCognitoidentityproviderClientMockRecorder) ListUsersInGroup(arg0, 
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListUsersInGroup", reflect.TypeOf((*MockCognitoidentityproviderClient)(nil).ListUsersInGroup), varargs...)
+}
+
+// ListWebAuthnCredentials mocks base method.
+func (m *MockCognitoidentityproviderClient) ListWebAuthnCredentials(arg0 context.Context, arg1 *cognitoidentityprovider.ListWebAuthnCredentialsInput, arg2 ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.ListWebAuthnCredentialsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListWebAuthnCredentials", varargs...)
+	ret0, _ := ret[0].(*cognitoidentityprovider.ListWebAuthnCredentialsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListWebAuthnCredentials indicates an expected call of ListWebAuthnCredentials.
+func (mr *MockCognitoidentityproviderClientMockRecorder) ListWebAuthnCredentials(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListWebAuthnCredentials", reflect.TypeOf((*MockCognitoidentityproviderClient)(nil).ListWebAuthnCredentials), varargs...)
 }

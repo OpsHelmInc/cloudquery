@@ -22,6 +22,7 @@ This table depends on [aws_ses_configuration_sets](aws_ses_configuration_sets.md
 |matching_event_types|StringArray|
 |cloud_watch_destination|JSON|
 |enabled|Bool|
+|event_bridge_destination|JSON|
 |kinesis_firehose_destination|JSON|
 |pinpoint_destination|JSON|
 |sns_destination|JSON|

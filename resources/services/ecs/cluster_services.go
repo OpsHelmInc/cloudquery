@@ -38,6 +38,11 @@ func ClusterServices() *schema.Table {
 				Resolver: client.StaticValueResolver("AWS::ECS::Service"),
 			},
 			{
+				Name:     "availability_zone_rebalancing",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("AvailabilityZoneRebalancing"),
+			},
+			{
 				Name:     "capacity_provider_strategy",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("CapacityProviderStrategy"),

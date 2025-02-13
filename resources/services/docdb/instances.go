@@ -138,6 +138,16 @@ func Instances() *schema.Table {
 				Resolver: schema.PathResolver("PendingModifiedValues"),
 			},
 			{
+				Name:     "performance_insights_enabled",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("PerformanceInsightsEnabled"),
+			},
+			{
+				Name:     "performance_insights_kms_key_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("PerformanceInsightsKMSKeyId"),
+			},
+			{
 				Name:     "preferred_backup_window",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("PreferredBackupWindow"),

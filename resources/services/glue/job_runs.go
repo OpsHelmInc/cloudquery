@@ -79,9 +79,19 @@ func JobRuns() *schema.Table {
 				Resolver: schema.PathResolver("Id"),
 			},
 			{
+				Name:     "job_mode",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("JobMode"),
+			},
+			{
 				Name:     "job_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("JobName"),
+			},
+			{
+				Name:     "job_run_queuing_enabled",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("JobRunQueuingEnabled"),
 			},
 			{
 				Name:     "job_run_state",
@@ -97,6 +107,11 @@ func JobRuns() *schema.Table {
 				Name:     "log_group_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("LogGroupName"),
+			},
+			{
+				Name:     "maintenance_window",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("MaintenanceWindow"),
 			},
 			{
 				Name:     "max_capacity",
@@ -124,6 +139,11 @@ func JobRuns() *schema.Table {
 				Resolver: schema.PathResolver("PreviousRunId"),
 			},
 			{
+				Name:     "profile_name",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ProfileName"),
+			},
+			{
 				Name:     "security_configuration",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("SecurityConfiguration"),
@@ -132,6 +152,11 @@ func JobRuns() *schema.Table {
 				Name:     "started_on",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("StartedOn"),
+			},
+			{
+				Name:     "state_detail",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("StateDetail"),
 			},
 			{
 				Name:     "timeout",
