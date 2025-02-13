@@ -75,8 +75,3 @@ func getKinesisStreamTags(ctx context.Context, svc services.KinesisClient, strea
 
 	return tags, nil
 }
-
-func resolveKinesisStreamTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	r := resource.Item.(*ohaws.KinesisStream)
-	return resource.Set(c.Name, client.TagsToMap(r.Tags))
-}
