@@ -13,7 +13,7 @@ import (
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
 	sdkTypes "github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/types"
-	"github.com/OpsHelmInc/cloudquery/v2/resources/services/sqs/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func Queues() *schema.Table {
@@ -23,7 +23,7 @@ func Queues() *schema.Table {
 		Description:         `https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_GetQueueAttributes.html`,
 		Resolver:            fetchSqsQueues,
 		PreResourceResolver: getQueue,
-		Transform:           transformers.TransformWithStruct(&models.Queue{}),
+		Transform:           transformers.TransformWithStruct(&ohaws.Queue{}),
 		Multiplex:           client.ServiceAccountRegionMultiplexer(tableName, "sqs"),
 		Columns: []schema.Column{
 			client.DefaultAccountIDColumn(false),
@@ -48,11 +48,6 @@ func Queues() *schema.Table {
 				Name:     "redrive_allow_policy",
 				Type:     sdkTypes.ExtensionTypes.JSON,
 				Resolver: schema.PathResolver("RedriveAllowPolicy"),
-			},
-			{
-				Name:     "tags",
-				Type:     sdkTypes.ExtensionTypes.JSON,
-				Resolver: resolveSqsQueueTags,
 			},
 			client.OhResourceTypeColumn(),
 		},
@@ -92,7 +87,7 @@ func getQueue(ctx context.Context, meta schema.ClientMeta, resource *schema.Reso
 		return err
 	}
 
-	q := &models.Queue{URL: qURL}
+	q := &ohaws.Queue{URL: qURL}
 	d, err := mapstructure.NewDecoder(&mapstructure.DecoderConfig{WeaklyTypedInput: true, Result: q})
 	if err != nil {
 		return err
@@ -101,19 +96,14 @@ func getQueue(ctx context.Context, meta schema.ClientMeta, resource *schema.Reso
 		return err
 	}
 
-	resource.Item = q
-	return nil
-}
-
-func resolveSqsQueueTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	cl := meta.(*client.Client)
-	svc := cl.Services(client.AWSServiceSqs).Sqs
-	q := resource.Item.(*models.Queue)
-	result, err := svc.ListQueueTags(ctx, &sqs.ListQueueTagsInput{QueueUrl: &q.URL}, func(o *sqs.Options) {
+	tagsResp, err := svc.ListQueueTags(ctx, &sqs.ListQueueTagsInput{QueueUrl: aws.String(qURL)}, func(o *sqs.Options) {
 		o.Region = cl.Region
 	})
 	if err != nil {
 		return err
 	}
-	return resource.Set(c.Name, result.Tags)
+	q.Tags = tagsResp.Tags
+
+	resource.Item = q
+	return nil
 }

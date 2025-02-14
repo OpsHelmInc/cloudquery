@@ -2,25 +2,26 @@ package iam
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/apache/arrow/go/v16/arrow"
+	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
-	"github.com/aws/aws-sdk-go-v2/service/iam/types"
 
 	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
-	"github.com/OpsHelmInc/cloudquery/v2/resources/services/iam/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func userAccessKeys() *schema.Table {
 	tableName := "aws_iam_user_access_keys"
 	return &schema.Table{
-		Name:                 tableName,
-		Description:          `https://docs.aws.amazon.com/IAM/latest/APIReference/API_AccessKeyMetadata.html`,
-		Resolver:             fetchIamUserAccessKeys,
-		PostResourceResolver: postIamUserAccessKeyResolver,
-		Transform:            transformers.TransformWithStruct(&models.AccessKeyWrapper{}, transformers.WithUnwrapAllEmbeddedStructs()),
+		Name:        tableName,
+		Description: `https://docs.aws.amazon.com/IAM/latest/APIReference/API_AccessKeyMetadata.html`,
+		Resolver:    fetchIamUserAccessKeys,
+		// PostResourceResolver: postIamUserAccessKeyResolver,
+		Transform: transformers.TransformWithStruct(&ohaws.AccessKey{}, transformers.WithUnwrapAllEmbeddedStructs()),
 		Columns: []schema.Column{
 			client.DefaultAccountIDColumn(true),
 			{
@@ -40,21 +41,13 @@ func userAccessKeys() *schema.Table {
 				Type:     arrow.BinaryTypes.String,
 				Resolver: schema.ParentColumnResolver("user_id"),
 			},
-			{
-				Name: "last_used",
-				Type: arrow.FixedWidthTypes.Timestamp_us,
-			},
-			{
-				Name: "last_used_service_name",
-				Type: arrow.BinaryTypes.String,
-			},
 		},
 	}
 }
 
 func fetchIamUserAccessKeys(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	var config iam.ListAccessKeysInput
-	p := parent.Item.(*types.User)
+	p := parent.Item.(*ohaws.User)
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceIam).Iam
 	config.UserName = p.UserName
@@ -66,42 +59,22 @@ func fetchIamUserAccessKeys(ctx context.Context, meta schema.ClientMeta, parent 
 		if err != nil {
 			return err
 		}
-		keys := make([]models.AccessKeyWrapper, len(page.AccessKeyMetadata))
+		keys := make([]ohaws.AccessKey, len(page.AccessKeyMetadata))
 		for i, key := range page.AccessKeyMetadata {
-			switch i {
-			case 0:
-				keys[i] = models.AccessKeyWrapper{AccessKeyMetadata: key, LastRotated: *key.CreateDate}
-			case 1:
-				keys[i] = models.AccessKeyWrapper{AccessKeyMetadata: key, LastRotated: *key.CreateDate}
-			default:
-				keys[i] = models.AccessKeyWrapper{AccessKeyMetadata: key}
+			keys[i] = ohaws.AccessKey{AccessKeyMetadata: key}
+
+			r, err := svc.GetAccessKeyLastUsed(ctx, &iam.GetAccessKeyLastUsedInput{AccessKeyId: keys[i].AccessKeyId}, func(o *iam.Options) {
+				o.Region = cl.Region
+			})
+			if err != nil {
+				return fmt.Errorf("error getting access key last used: %w", err)
 			}
+
+			keys[i].LastUsedDate = r.AccessKeyLastUsed.LastUsedDate
+			keys[i].LastUsedRegion = aws.ToString(r.AccessKeyLastUsed.Region)
+			keys[i].LastUsedServiceName = aws.ToString(r.AccessKeyLastUsed.ServiceName)
 		}
 		res <- keys
-	}
-	return nil
-}
-
-func postIamUserAccessKeyResolver(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
-	r := resource.Item.(models.AccessKeyWrapper)
-	if r.AccessKeyId == nil {
-		return nil
-	}
-	cl := meta.(*client.Client)
-	svc := cl.Services(client.AWSServiceIam).Iam
-	output, err := svc.GetAccessKeyLastUsed(ctx, &iam.GetAccessKeyLastUsedInput{AccessKeyId: r.AccessKeyId}, func(options *iam.Options) {
-		options.Region = cl.Region
-	})
-	if err != nil {
-		return err
-	}
-	if output.AccessKeyLastUsed != nil {
-		if err := resource.Set("last_used", output.AccessKeyLastUsed.LastUsedDate); err != nil {
-			return err
-		}
-		if err := resource.Set("last_used_service_name", output.AccessKeyLastUsed.ServiceName); err != nil {
-			return err
-		}
 	}
 	return nil
 }

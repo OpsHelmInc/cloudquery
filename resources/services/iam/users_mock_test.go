@@ -27,6 +27,8 @@ func buildIamUsers(t *testing.T, ctrl *gomock.Controller) client.Services {
 	require.NoError(t, faker.FakeObject(&akl))
 	mfaDevice := types.MFADevice{}
 	require.NoError(t, faker.FakeObject(&mfaDevice))
+	lp := types.LoginProfile{}
+	require.NoError(t, faker.FakeObject(&lp))
 
 	sshPublicKey := types.SSHPublicKeyMetadata{}
 	require.NoError(t, faker.FakeObject(&sshPublicKey))
@@ -46,6 +48,10 @@ func buildIamUsers(t *testing.T, ctrl *gomock.Controller) client.Services {
 		&iam.ListGroupsForUserOutput{
 			Groups: []types.Group{g},
 		}, nil)
+	m.EXPECT().ListUserTags(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+		&iam.ListUserTagsOutput{
+			Tags: tags,
+		}, nil)
 	m.EXPECT().ListAccessKeys(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.ListAccessKeysOutput{
 			AccessKeyMetadata: []types.AccessKeyMetadata{km},
@@ -59,6 +65,10 @@ func buildIamUsers(t *testing.T, ctrl *gomock.Controller) client.Services {
 	m.EXPECT().ListMFADevices(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.ListMFADevicesOutput{
 			MFADevices: []types.MFADevice{mfaDevice},
+		}, nil)
+	m.EXPECT().GetLoginProfile(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+		&iam.GetLoginProfileOutput{
+			LoginProfile: &lp,
 		}, nil)
 
 	var l []string
@@ -74,6 +84,31 @@ func buildIamUsers(t *testing.T, ctrl *gomock.Controller) client.Services {
 	p.PolicyDocument = &document
 	m.EXPECT().GetUserPolicy(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&p, nil)
+
+	m.EXPECT().GetUserPolicy(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+		&p, nil)
+	m.EXPECT().ListUserPolicies(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+		&iam.ListUserPoliciesOutput{
+			PolicyNames: l,
+		}, nil)
+	m.EXPECT().ListAttachedUserPolicies(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+		&iam.ListAttachedUserPoliciesOutput{
+			AttachedPolicies: []types.AttachedPolicy{aup},
+		}, nil)
+	m.EXPECT().ListGroupsForUser(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+		&iam.ListGroupsForUserOutput{
+			Groups: []types.Group{g},
+		}, nil)
+	m.EXPECT().ListMFADevices(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+		&iam.ListMFADevicesOutput{
+			MFADevices: []types.MFADevice{mfaDevice},
+		}, nil)
+	m.EXPECT().ListAccessKeys(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+		&iam.ListAccessKeysOutput{
+			AccessKeyMetadata: []types.AccessKeyMetadata{km},
+		}, nil)
+	m.EXPECT().GetAccessKeyLastUsed(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+		&akl, nil)
 
 	m.EXPECT().ListSSHPublicKeys(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.ListSSHPublicKeysOutput{

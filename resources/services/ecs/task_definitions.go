@@ -13,7 +13,7 @@ import (
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
 	sdkTypes "github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/types"
-	"github.com/OpsHelmInc/cloudquery/v2/resources/services/ecs/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func TaskDefinitions() *schema.Table {
@@ -24,7 +24,7 @@ func TaskDefinitions() *schema.Table {
 		Resolver:            fetchEcsTaskDefinitions,
 		PreResourceResolver: getTaskDefinition,
 		Multiplex:           client.ServiceAccountRegionMultiplexer(tableName, "ecs"),
-		Transform:           transformers.TransformWithStruct(&types.TaskDefinition{}),
+		Transform:           transformers.TransformWithStruct(&ohaws.TaskDefinition{}),
 		Columns: []schema.Column{
 			client.DefaultAccountIDColumn(false),
 			client.DefaultRegionColumn(false),
@@ -78,7 +78,7 @@ func getTaskDefinition(ctx context.Context, meta schema.ClientMeta, resource *sc
 	if describeTaskDefinitionOutput.TaskDefinition == nil {
 		return errors.New("nil TaskDefinition encountered")
 	}
-	resource.Item = models.TaskDefinitionWrapper{
+	resource.Item = ohaws.TaskDefinition{
 		TaskDefinition: describeTaskDefinitionOutput.TaskDefinition,
 		Tags:           describeTaskDefinitionOutput.Tags,
 	}
@@ -86,6 +86,6 @@ func getTaskDefinition(ctx context.Context, meta schema.ClientMeta, resource *sc
 }
 
 func resolveEcsTaskDefinitionTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	r := resource.Item.(models.TaskDefinitionWrapper)
+	r := resource.Item.(ohaws.TaskDefinition)
 	return resource.Set(c.Name, client.TagsToMap(r.Tags))
 }

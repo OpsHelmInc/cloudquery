@@ -10,7 +10,7 @@ import (
 	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
-	"github.com/OpsHelmInc/cloudquery/v2/resources/services/elbv1/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func LoadBalancers() *schema.Table {
@@ -20,7 +20,7 @@ func LoadBalancers() *schema.Table {
 		Description: `https://docs.aws.amazon.com/elasticloadbalancing/2012-06-01/APIReference/API_LoadBalancerDescription.html`,
 		Resolver:    fetchElbv1LoadBalancers,
 		Multiplex:   client.ServiceAccountRegionMultiplexer(tableName, "elasticloadbalancing"),
-		Transform:   transformers.TransformWithStruct(&models.ELBv1LoadBalancerWrapper{}, transformers.WithUnwrapAllEmbeddedStructs()),
+		Transform:   transformers.TransformWithStruct(&ohaws.LoadBalancerV1{}, transformers.WithUnwrapAllEmbeddedStructs()),
 		Columns: []schema.Column{
 			client.DefaultAccountIDColumn(false),
 			client.DefaultRegionColumn(false),
@@ -39,34 +39,34 @@ func LoadBalancers() *schema.Table {
 }
 
 func fetchElbv1LoadBalancers(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
-	cl := meta.(*client.Client)
-	svc := cl.Services(client.AWSServiceElasticloadbalancing).Elasticloadbalancing
+	c := meta.(*client.Client)
+	svc := c.Services(client.AWSServiceElasticloadbalancing).Elasticloadbalancing
 	processLoadBalancers := func(loadBalancers []types.LoadBalancerDescription) error {
 		tagsCfg := &elbv1.DescribeTagsInput{LoadBalancerNames: make([]string, 0, len(loadBalancers))}
 		for _, lb := range loadBalancers {
 			tagsCfg.LoadBalancerNames = append(tagsCfg.LoadBalancerNames, *lb.LoadBalancerName)
 		}
 		tagsResponse, err := svc.DescribeTags(ctx, tagsCfg, func(options *elbv1.Options) {
-			options.Region = cl.Region
+			options.Region = c.Region
 		})
 		if err != nil {
 			return err
 		}
 		for _, lb := range loadBalancers {
 			loadBalancerAttributes, err := svc.DescribeLoadBalancerAttributes(ctx, &elbv1.DescribeLoadBalancerAttributesInput{LoadBalancerName: lb.LoadBalancerName}, func(options *elbv1.Options) {
-				options.Region = cl.Region
+				options.Region = c.Region
 			})
 			if err != nil {
-				if cl.IsNotFoundError(err) {
+				if c.IsNotFoundError(err) {
 					continue
 				}
 				return err
 			}
 
-			wrapper := models.ELBv1LoadBalancerWrapper{
+			wrapper := ohaws.LoadBalancerV1{
 				LoadBalancerDescription: lb,
 				Tags:                    client.TagsToMap(getTagsByLoadBalancerName(*lb.LoadBalancerName, tagsResponse.TagDescriptions)),
-				Attributes:              loadBalancerAttributes.LoadBalancerAttributes,
+				LoadBalancerAttributes:  loadBalancerAttributes.LoadBalancerAttributes,
 			}
 
 			res <- wrapper
@@ -76,7 +76,7 @@ func fetchElbv1LoadBalancers(ctx context.Context, meta schema.ClientMeta, parent
 	paginator := elbv1.NewDescribeLoadBalancersPaginator(svc, &elbv1.DescribeLoadBalancersInput{})
 	for paginator.HasMorePages() {
 		page, err := paginator.NextPage(ctx, func(options *elbv1.Options) {
-			options.Region = cl.Region
+			options.Region = c.Region
 		})
 		if err != nil {
 			return err
@@ -109,6 +109,6 @@ func getTagsByLoadBalancerName(id string, tagsResponse []types.TagDescription) [
 
 func resolveLoadBalancerARN() schema.ColumnResolver {
 	return client.ResolveARN(client.ElasticLoadBalancingService, func(resource *schema.Resource) ([]string, error) {
-		return []string{"loadbalancer", *resource.Item.(models.ELBv1LoadBalancerWrapper).LoadBalancerName}, nil
+		return []string{"loadbalancer", *resource.Item.(ohaws.LoadBalancerV1).LoadBalancerName}, nil
 	})
 }

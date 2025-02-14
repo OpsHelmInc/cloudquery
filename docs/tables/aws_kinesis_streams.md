@@ -15,7 +15,6 @@ The primary key for this table is **_cq_id**.
 |account_id|`utf8`|
 |region|`utf8`|
 |arn|`utf8`|
-|tags|`json`|
 |oh_resource_type|`utf8`|
 |enhanced_monitoring|`json`|
 |open_shard_count|`int64`|
@@ -28,3 +27,4 @@ The primary key for this table is **_cq_id**.
 |encryption_type|`utf8`|
 |key_id|`utf8`|
 |stream_mode_details|`json`|
+|tags|`json`|

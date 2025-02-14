@@ -18,7 +18,6 @@ The primary key for this table is **_cq_id**.
 |policy|`json`|
 |redrive_policy|`json`|
 |redrive_allow_policy|`json`|
-|tags|`json`|
 |oh_resource_type|`utf8`|
 |url|`utf8`|
 |approximate_number_of_messages|`int64`|
@@ -38,4 +37,5 @@ The primary key for this table is **_cq_id**.
 |content_based_deduplication|`bool`|
 |deduplication_scope|`utf8`|
 |fifo_throughput_limit|`utf8`|
+|tags|`json`|
 |unknown_fields|`json`|

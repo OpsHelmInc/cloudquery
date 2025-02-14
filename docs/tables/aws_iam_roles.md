@@ -23,11 +23,5 @@ The following tables depend on aws_iam_roles:
 |tags|`json`|
 |arn|`utf8`|
 |oh_resource_type|`utf8`|
-|create_date|`timestamp[us, tz=UTC]`|
-|path|`utf8`|
-|role_id|`utf8`|
-|role_name|`utf8`|
-|description|`utf8`|
-|max_session_duration|`int64`|
-|permissions_boundary|`json`|
-|role_last_used|`json`|
+|role|`json`|
+|policies|`json`|

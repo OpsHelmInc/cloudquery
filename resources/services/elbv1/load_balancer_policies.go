@@ -11,7 +11,7 @@ import (
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
 	sdkTypes "github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/types"
-	"github.com/OpsHelmInc/cloudquery/v2/resources/services/elbv1/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func loadBalancerPolicies() *schema.Table {
@@ -45,7 +45,7 @@ func loadBalancerPolicies() *schema.Table {
 }
 
 func fetchElbv1LoadBalancerPolicies(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
-	r := parent.Item.(models.ELBv1LoadBalancerWrapper)
+	r := parent.Item.(ohaws.LoadBalancerV1)
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceElasticloadbalancing).Elasticloadbalancing
 	response, err := svc.DescribeLoadBalancerPolicies(ctx, &elbv1.DescribeLoadBalancerPoliciesInput{LoadBalancerName: r.LoadBalancerName}, func(options *elbv1.Options) {

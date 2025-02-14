@@ -7,12 +7,12 @@ import (
 
 	"github.com/apache/arrow/go/v16/arrow"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
-	"github.com/aws/aws-sdk-go-v2/service/iam/types"
 
 	"github.com/OpsHelmInc/cloudquery/v2/client"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
 	sdkTypes "github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/types"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func userPolicies() *schema.Table {
@@ -48,7 +48,7 @@ func userPolicies() *schema.Table {
 func fetchIamUserPolicies(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceIam).Iam
-	user := parent.Item.(*types.User)
+	user := parent.Item.(*ohaws.User)
 	config := iam.ListUserPoliciesInput{UserName: user.UserName}
 	paginator := iam.NewListUserPoliciesPaginator(svc, &config)
 	for paginator.HasMorePages() {
@@ -70,7 +70,7 @@ func getUserPolicy(ctx context.Context, meta schema.ClientMeta, resource *schema
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceIam).Iam
 	p := resource.Item.(string)
-	user := resource.Parent.Item.(*types.User)
+	user := resource.Parent.Item.(*ohaws.User)
 
 	policyResult, err := svc.GetUserPolicy(ctx, &iam.GetUserPolicyInput{PolicyName: &p, UserName: user.UserName}, func(options *iam.Options) {
 		options.Region = cl.Region

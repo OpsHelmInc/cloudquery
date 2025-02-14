@@ -12,7 +12,7 @@ import (
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/schema"
 	"github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/transformers"
 	sdkTypes "github.com/OpsHelmInc/cloudquery/v2/plugin-sdk/types"
-	"github.com/OpsHelmInc/cloudquery/v2/resources/services/sns/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func Topics() *schema.Table {
@@ -22,7 +22,7 @@ func Topics() *schema.Table {
 		Description:         `https://docs.aws.amazon.com/sns/latest/api/API_GetTopicAttributes.html`,
 		Resolver:            fetchSnsTopics,
 		PreResourceResolver: getTopic,
-		Transform:           transformers.TransformWithStruct(&models.Topic{}),
+		Transform:           transformers.TransformWithStruct(&ohaws.Topic{}),
 		Multiplex:           client.ServiceAccountRegionMultiplexer(tableName, "sns"),
 		Columns: []schema.Column{
 			client.DefaultAccountIDColumn(false),
@@ -90,7 +90,7 @@ func getTopic(ctx context.Context, meta schema.ClientMeta, resource *schema.Reso
 		return err
 	}
 
-	t := &models.Topic{Arn: topic.TopicArn}
+	t := &ohaws.Topic{Arn: topic.TopicArn}
 	dec, err := mapstructure.NewDecoder(&mapstructure.DecoderConfig{WeaklyTypedInput: true, Result: t})
 	if err != nil {
 		return err
@@ -104,7 +104,7 @@ func getTopic(ctx context.Context, meta schema.ClientMeta, resource *schema.Reso
 }
 
 func resolveSnsTopicTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	topic := resource.Item.(*models.Topic)
+	topic := resource.Item.(*ohaws.Topic)
 	cl := meta.(*client.Client)
 	svc := cl.Services(client.AWSServiceSns).Sns
 	tagParams := sns.ListTagsForResourceInput{
