@@ -22,10 +22,12 @@ updates:
       opshelm-internal:
         patterns:
           - 'github.com/OpsHelmInc/*' # Group our internal dependencies together
+    rebase-strategy: disabled
   - package-ecosystem: "github-actions" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+    rebase-strategy: disabled
 registries:
   github-opshelm:
     type: git
