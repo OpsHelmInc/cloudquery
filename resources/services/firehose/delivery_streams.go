@@ -26,11 +26,6 @@ func DeliveryStreams() *schema.Table {
 				Resolver: client.ResolveAWSRegion,
 			},
 			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveFirehoseDeliveryStreamTags,
-			},
-			{
 				Name:     "arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("DeliveryStreamARN"),
@@ -39,59 +34,14 @@ func DeliveryStreams() *schema.Table {
 				},
 			},
 			{
-				Name:     "delivery_stream_name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("DeliveryStreamName"),
-			},
-			{
-				Name:     "delivery_stream_status",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("DeliveryStreamStatus"),
-			},
-			{
-				Name:     "delivery_stream_type",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("DeliveryStreamType"),
-			},
-			{
-				Name:     "destinations",
+				Name:     "delivery_stream_description",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("Destinations"),
+				Resolver: schema.PathResolver("DeliveryStreamDescription"),
 			},
 			{
-				Name:     "has_more_destinations",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("HasMoreDestinations"),
-			},
-			{
-				Name:     "version_id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("VersionId"),
-			},
-			{
-				Name:     "create_timestamp",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("CreateTimestamp"),
-			},
-			{
-				Name:     "delivery_stream_encryption_configuration",
+				Name:     "tags",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("DeliveryStreamEncryptionConfiguration"),
-			},
-			{
-				Name:     "failure_description",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("FailureDescription"),
-			},
-			{
-				Name:     "last_update_timestamp",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("LastUpdateTimestamp"),
-			},
-			{
-				Name:     "source",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("Source"),
+				Resolver: client.ResolveTags,
 			},
 		},
 	}

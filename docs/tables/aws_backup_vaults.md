@@ -21,15 +21,5 @@ The following tables depend on aws_backup_vaults:
 |arn (PK)|String|
 |access_policy|JSON|
 |notifications|JSON|
+|backup_vault_list_member|JSON|
 |tags|JSON|
-|backup_vault_name|String|
-|creation_date|Timestamp|
-|creator_request_id|String|
-|encryption_key_arn|String|
-|lock_date|Timestamp|
-|locked|Bool|
-|max_retention_days|Int|
-|min_retention_days|Int|
-|number_of_recovery_points|Int|
-|vault_state|String|
-|vault_type|String|

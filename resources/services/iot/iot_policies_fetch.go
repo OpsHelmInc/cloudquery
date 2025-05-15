@@ -2,11 +2,14 @@ package iot
 
 import (
 	"context"
+	"fmt"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/iot"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchIotPolicies(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -31,7 +34,9 @@ func fetchIotPolicies(ctx context.Context, meta schema.ClientMeta, parent *schem
 			if err != nil {
 				return err
 			}
-			res <- profile
+			res <- &ohaws.IoTPolicy{
+				GetPolicyOutput: *profile,
+			}
 		}
 
 		if aws.ToString(response.NextMarker) == "" {
@@ -41,8 +46,25 @@ func fetchIotPolicies(ctx context.Context, meta schema.ClientMeta, parent *schem
 	}
 	return nil
 }
+
+func getIotPolicy(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
+	cl := meta.(*client.Client)
+	svc := cl.Services().Iot
+	policy := resource.Item.(*ohaws.IoTPolicy)
+
+	tags, err := getResourceTags(ctx, svc, aws.ToString(policy.PolicyArn))
+	if err != nil {
+		return fmt.Errorf("error listing tags: %w", err)
+	}
+
+	policy.Tags = tags
+	resource.Item = policy
+
+	return nil
+}
+
 func ResolveIotPolicyTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	i := resource.Item.(*iot.GetPolicyOutput)
+	i := resource.Item.(*ohaws.IoTPolicy)
 	cl := meta.(*client.Client)
 	svc := cl.Services().Iot
 	input := iot.ListTagsForResourceInput{
@@ -52,7 +74,6 @@ func ResolveIotPolicyTags(ctx context.Context, meta schema.ClientMeta, resource 
 
 	for {
 		response, err := svc.ListTagsForResource(ctx, &input)
-
 		if err != nil {
 			return err
 		}

@@ -9,6 +9,8 @@ import (
 	"github.com/cloudquery/plugin-sdk/schema"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/services"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchKmsKeys(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -36,48 +38,55 @@ func getKey(ctx context.Context, meta schema.ClientMeta, resource *schema.Resour
 	if err != nil {
 		return err
 	}
-	resource.Item = d.KeyMetadata
+
+	var tags []ohaws.Tag
+	if d.KeyMetadata.Origin != "EXTERNAL" && d.KeyMetadata.KeyManager != "AWS" {
+		t, err := getKeyTags(ctx, c, svc, *d.KeyMetadata.KeyId)
+		if err != nil {
+			return err
+		}
+		tags = t
+	}
+
+	resource.Item = &ohaws.KMSKey{
+		KeyMetadata: *d.KeyMetadata,
+		Tags:        tags,
+	}
+
 	return nil
 }
 
 func resolveKeysReplicaKeys(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	key := resource.Item.(*types.KeyMetadata)
+	key := resource.Item.(*ohaws.KMSKey)
 	if key.MultiRegionConfiguration == nil {
 		return nil
 	}
 	return resource.Set(c.Name, key.MultiRegionConfiguration.ReplicaKeys)
 }
 
-func resolveKeysTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	cl := meta.(*client.Client)
-	svc := cl.Services().Kms
-	key := resource.Item.(*types.KeyMetadata)
-	if key.Origin == "EXTERNAL" || key.KeyManager == "AWS" {
-		return nil
-	}
-
-	params := kms.ListResourceTagsInput{KeyId: key.KeyId}
+func getKeyTags(ctx context.Context, cl *client.Client, svc services.KmsClient, keyID string) ([]ohaws.Tag, error) {
+	params := kms.ListResourceTagsInput{KeyId: aws.String(keyID)}
 	paginator := kms.NewListResourceTagsPaginator(svc, &params)
-	tags := make(map[string]string)
+	var tags []ohaws.Tag
 	for paginator.HasMorePages() {
 		page, err := paginator.NextPage(ctx, func(options *kms.Options) {
 			options.Region = cl.Region
 		})
 		if err != nil {
-			return err
+			return nil, err
 		}
-		// Cannot use client.TagToMap because key/val names are different
-		for _, v := range page.Tags {
-			tags[aws.ToString(v.TagKey)] = aws.ToString(v.TagValue)
+
+		for _, t := range page.Tags {
+			tags = append(tags, ohaws.Tag{Key: t.TagKey, Value: t.TagValue})
 		}
 	}
-	return resource.Set(c.Name, tags)
+	return tags, nil
 }
 
 func resolveKeysRotationEnabled(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	cl := meta.(*client.Client)
 	svc := cl.Services().Kms
-	key := resource.Item.(*types.KeyMetadata)
+	key := resource.Item.(*ohaws.KMSKey)
 	if key.Origin == "EXTERNAL" || key.KeyManager == "AWS" {
 		return nil
 	}

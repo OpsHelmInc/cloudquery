@@ -15,6 +15,12 @@ The primary key for this table is **arn**.
 |_cq_parent_id|UUID|
 |account_id|String|
 |region|String|
-|tags|JSON|
 |arn (PK)|String|
+|creation_date|Timestamp|
+|default_version_id|String|
+|generation_id|String|
+|last_modified_date|Timestamp|
+|policy_document|String|
 |policy_name|String|
+|result_metadata|JSON|
+|tags|JSON|

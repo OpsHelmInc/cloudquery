@@ -30,3 +30,4 @@ The primary key for this table is **arn**.
 |status|String|
 |transfer_data|JSON|
 |validity|JSON|
+|tags|JSON|

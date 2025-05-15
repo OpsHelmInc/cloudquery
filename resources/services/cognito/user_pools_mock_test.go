@@ -3,13 +3,14 @@ package cognito
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider"
 	"github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider/types"
 	"github.com/cloudquery/plugin-sdk/faker"
 	"github.com/golang/mock/gomock"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/mocks"
 )
 
 func buildCognitoUserPools(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -39,6 +40,16 @@ func buildCognitoUserPools(t *testing.T, ctrl *gomock.Controller) client.Service
 		gomock.Any(),
 	).Return(
 		&cognitoidentityprovider.DescribeUserPoolOutput{UserPool: &pool},
+		nil,
+	)
+
+	m.EXPECT().ListTagsForResource(
+		gomock.Any(),
+		&cognitoidentityprovider.ListTagsForResourceInput{ResourceArn: pool.Arn},
+	).Return(
+		&cognitoidentityprovider.ListTagsForResourceOutput{
+			Tags: map[string]string{"key1": "val1"},
+		},
 		nil,
 	)
 

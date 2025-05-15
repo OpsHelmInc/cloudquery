@@ -5,6 +5,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/backup/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func BackupResources() []*Resource {
@@ -26,7 +28,7 @@ func BackupResources() []*Resource {
 		{
 			SubService:          "plans",
 			Description:         "https://docs.aws.amazon.com/aws-backup/latest/devguide/API_GetBackupPlan.html",
-			Struct:              &backup.GetBackupPlanOutput{},
+			Struct:              &ohaws.BackupPlan{},
 			SkipFields:          []string{"BackupPlanArn"},
 			PreResourceResolver: "getPlan",
 			ExtraColumns: append(
@@ -37,11 +39,6 @@ func BackupResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("BackupPlanArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolvePlanTags`,
 					},
 				}...),
 			Relations: []string{
@@ -84,10 +81,11 @@ func BackupResources() []*Resource {
 			},
 		},
 		{
-			SubService:  "vaults",
-			Struct:      &types.BackupVaultListMember{},
-			Description: "https://docs.aws.amazon.com/aws-backup/latest/devguide/API_BackupVaultListMember.html",
-			SkipFields:  []string{"BackupVaultArn"},
+			SubService:          "vaults",
+			Struct:              &ohaws.BackupVault{},
+			PreResourceResolver: "getBackupVault",
+			Description:         "https://docs.aws.amazon.com/aws-backup/latest/devguide/API_BackupVaultListMember.html",
+			SkipFields:          []string{"BackupVaultArn"},
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
@@ -108,11 +106,6 @@ func BackupResources() []*Resource {
 						Type:          schema.TypeJSON,
 						Resolver:      `resolveVaultNotifications`,
 						IgnoreInTests: true,
-					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveVaultTags`,
 					},
 				}...),
 			Relations: []string{

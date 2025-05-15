@@ -5,12 +5,13 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
-	"github.com/OpsHelmInc/cloudquery/resources/services/iam/models"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	"github.com/golang/mock/gomock"
 	"github.com/rs/zerolog"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/mocks"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 var exampleReport = `user,arn,user_creation_time,password_enabled,password_last_used,password_last_changed,password_next_rotation,mfa_active,access_key_1_active,access_key_1_last_rotated,access_key_1_last_used_date,access_key_1_last_used_region,access_key_1_last_used_service,access_key_2_active,access_key_2_last_rotated,access_key_2_last_used_date,access_key_2_last_used_region,access_key_2_last_used_service,cert_1_active,cert_1_last_rotated,cert_2_active,cert_2_last_rotated
@@ -63,9 +64,9 @@ func testCredentialReportsWithNilValues(t *testing.T) {
 		var wg sync.WaitGroup
 		wg.Add(1)
 		go func() {
-			got := make([]*models.CredentialReportEntry, 0, 3)
+			got := make([]*ohaws.CredentialReportEntry, 0, 3)
 			for v := range res {
-				vals := v.([]*models.CredentialReportEntry)
+				vals := v.([]*ohaws.CredentialReportEntry)
 				got = append(got, vals...)
 			}
 			if len(got) != 3 {

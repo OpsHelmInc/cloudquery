@@ -9,10 +9,11 @@ import (
 
 func LoadBalancers() *schema.Table {
 	return &schema.Table{
-		Name:        "aws_elbv2_load_balancers",
-		Description: `https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_LoadBalancer.html`,
-		Resolver:    fetchElbv2LoadBalancers,
-		Multiplex:   client.ServiceAccountRegionMultiplexer("elasticloadbalancing"),
+		Name:                "aws_elbv2_load_balancers",
+		Description:         `https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_LoadBalancer.html`,
+		Resolver:            fetchElbv2LoadBalancers,
+		PreResourceResolver: getLoadBalancer,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("elasticloadbalancing"),
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -31,11 +32,6 @@ func LoadBalancers() *schema.Table {
 				IgnoreInTests: true,
 			},
 			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveElbv2loadBalancerTags,
-			},
-			{
 				Name:     "arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("LoadBalancerArn"),
@@ -49,80 +45,24 @@ func LoadBalancers() *schema.Table {
 				Resolver: client.StaticValueResolver("AWS::ElasticLoadBalancingV2::LoadBalancer"),
 			},
 			{
-				Name:     "availability_zones",
+				Name:     "load_balancer",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("AvailabilityZones"),
+				Resolver: schema.PathResolver("LoadBalancer"),
 			},
 			{
-				Name:     "canonical_hosted_zone_id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("CanonicalHostedZoneId"),
-			},
-			{
-				Name:     "created_time",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("CreatedTime"),
-			},
-			{
-				Name:     "customer_owned_ipv4_pool",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("CustomerOwnedIpv4Pool"),
-			},
-			{
-				Name:     "dns_name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("DNSName"),
-			},
-			{
-				Name:     "enable_prefix_for_ipv6_source_nat",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("EnablePrefixForIpv6SourceNat"),
-			},
-			{
-				Name:     "enforce_security_group_inbound_rules_on_private_link_traffic",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic"),
-			},
-			{
-				Name:     "ip_address_type",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("IpAddressType"),
-			},
-			{
-				Name:     "load_balancer_name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("LoadBalancerName"),
-			},
-			{
-				Name:     "scheme",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Scheme"),
-			},
-			{
-				Name:     "security_groups",
-				Type:     schema.TypeStringArray,
-				Resolver: schema.PathResolver("SecurityGroups"),
-			},
-			{
-				Name:     "state",
+				Name:     "tags",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("State"),
+				Resolver: schema.PathResolver("Tags"),
 			},
 			{
-				Name:     "type",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Type"),
-			},
-			{
-				Name:     "vpc_id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("VpcId"),
+				Name:     "unknown_attributes",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("UnknownAttributes"),
 			},
 		},
 
 		Relations: []*schema.Table{
 			Listeners(),
-			LoadBalancerAttributes(),
 		},
 	}
 }

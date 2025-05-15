@@ -4,12 +4,15 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/athena"
 	"github.com/aws/aws-sdk-go-v2/service/athena/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/services"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchAthenaWorkGroups(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -35,51 +38,56 @@ func getWorkGroup(ctx context.Context, meta schema.ClientMeta, resource *schema.
 	c := meta.(*client.Client)
 	svc := c.Services().Athena
 
-	wg := resource.Item.(types.WorkGroupSummary)
-	dc, err := svc.GetWorkGroup(ctx, &athena.GetWorkGroupInput{
-		WorkGroup: wg.Name,
+	wgs := resource.Item.(types.WorkGroupSummary)
+	r, err := svc.GetWorkGroup(ctx, &athena.GetWorkGroupInput{
+		WorkGroup: wgs.Name,
 	})
 	if err != nil {
 		return err
 	}
-	resource.Item = *dc.WorkGroup
+
+	wg := ohaws.AthenaWorkGroup{
+		WorkGroup: *r.WorkGroup,
+	}
+
+	tags, err := getAthenaWorkGroupTags(ctx, c, svc, createWorkGroupArn(c, *wg.Name))
+	if err != nil {
+		return err
+	}
+	wg.Tags = tags
+
+	resource.Item = &wg
 	return nil
 }
 
 func resolveAthenaWorkGroupArn(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	cl := meta.(*client.Client)
-	dc := resource.Item.(types.WorkGroup)
+	dc := resource.Item.(*ohaws.AthenaWorkGroup)
 	return resource.Set(c.Name, createWorkGroupArn(cl, *dc.Name))
 }
 
-func resolveAthenaWorkGroupTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	cl := meta.(*client.Client)
-	svc := cl.Services().Athena
-	wg := resource.Item.(types.WorkGroup)
-	arnStr := createWorkGroupArn(cl, *wg.Name)
-	params := athena.ListTagsForResourceInput{ResourceARN: &arnStr}
-	tags := make(map[string]string)
-	for {
-		result, err := svc.ListTagsForResource(ctx, &params)
+func getAthenaWorkGroupTags(ctx context.Context, c *client.Client, svc services.AthenaClient, workgroupArn string) ([]types.Tag, error) {
+	params := athena.ListTagsForResourceInput{ResourceARN: &workgroupArn}
+
+	var tags []types.Tag
+	tagsPaginator := athena.NewListTagsForResourcePaginator(svc, &params)
+	for tagsPaginator.HasMorePages() {
+		result, err := tagsPaginator.NextPage(ctx)
 		if err != nil {
-			if cl.IsNotFoundError(err) {
-				return nil
+			if c.IsNotFoundError(err) {
+				return nil, nil
 			}
-			return err
+			return nil, err
 		}
-		client.TagsIntoMap(result.Tags, tags)
-		if aws.ToString(result.NextToken) == "" {
-			break
-		}
-		params.NextToken = result.NextToken
+		tags = append(tags, result.Tags...)
 	}
-	return resource.Set(c.Name, tags)
+	return tags, nil
 }
 
 func fetchAthenaWorkGroupPreparedStatements(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	c := meta.(*client.Client)
 	svc := c.Services().Athena
-	wg := parent.Item.(types.WorkGroup)
+	wg := parent.Item.(*ohaws.AthenaWorkGroup)
 	input := athena.ListPreparedStatementsInput{WorkGroup: wg.Name}
 	for {
 		response, err := svc.ListPreparedStatements(ctx, &input)
@@ -98,7 +106,7 @@ func fetchAthenaWorkGroupPreparedStatements(ctx context.Context, meta schema.Cli
 func getWorkGroupPreparedStatement(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
 	c := meta.(*client.Client)
 	svc := c.Services().Athena
-	wg := resource.Parent.Item.(types.WorkGroup)
+	wg := resource.Parent.Item.(*ohaws.AthenaWorkGroup)
 
 	d := resource.Item.(types.PreparedStatementSummary)
 	dc, err := svc.GetPreparedStatement(ctx, &athena.GetPreparedStatementInput{
@@ -115,7 +123,7 @@ func getWorkGroupPreparedStatement(ctx context.Context, meta schema.ClientMeta, 
 func fetchAthenaWorkGroupQueryExecutions(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	c := meta.(*client.Client)
 	svc := c.Services().Athena
-	wg := parent.Item.(types.WorkGroup)
+	wg := parent.Item.(*ohaws.AthenaWorkGroup)
 	input := athena.ListQueryExecutionsInput{WorkGroup: wg.Name}
 	for {
 		response, err := svc.ListQueryExecutions(ctx, &input)
@@ -149,7 +157,7 @@ func getWorkGroupQueryExecution(ctx context.Context, meta schema.ClientMeta, res
 func fetchAthenaWorkGroupNamedQueries(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	c := meta.(*client.Client)
 	svc := c.Services().Athena
-	wg := parent.Item.(types.WorkGroup)
+	wg := parent.Item.(*ohaws.AthenaWorkGroup)
 	input := athena.ListNamedQueriesInput{WorkGroup: wg.Name}
 	for {
 		response, err := svc.ListNamedQueries(ctx, &input)

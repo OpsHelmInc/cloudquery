@@ -37,6 +37,7 @@ The following tables depend on aws_apigatewayv2_apis:
 |disable_execute_api_endpoint|Bool|
 |disable_schema_validation|Bool|
 |import_info|StringArray|
+|ip_address_type|String|
 |tags|JSON|
 |version|String|
 |warnings|StringArray|

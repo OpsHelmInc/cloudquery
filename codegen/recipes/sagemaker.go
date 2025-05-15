@@ -4,16 +4,18 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/sagemaker"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func SagemakerResources() []*Resource {
 	resources := []*Resource{
-
 		{
-			SubService:          "endpoint_configurations",
-			Struct:              &sagemaker.DescribeEndpointConfigOutput{},
-			SkipFields:          []string{"EndpointConfigArn"},
-			PreResourceResolver: "getEndpointConfiguration",
+			SubService:            "endpoint_configurations",
+			Struct:                &ohaws.SagemakerEndpointConfig{},
+			SkipFields:            []string{"EndpointConfigArn"},
+			PreResourceResolver:   "getEndpointConfiguration",
+			UnwrapEmbeddedStructs: true,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
@@ -22,12 +24,6 @@ func SagemakerResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("EndpointConfigArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-					},
-					{
-						Name:        "tags",
-						Description: "The tags associated with the model.",
-						Type:        schema.TypeJSON,
-						Resolver:    `resolveSagemakerEndpointConfigurationTags`,
 					},
 				}...),
 		},

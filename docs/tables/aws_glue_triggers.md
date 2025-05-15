@@ -16,7 +16,6 @@ The primary key for this table is **arn**.
 |account_id|String|
 |region|String|
 |arn (PK)|String|
-|tags|JSON|
 |actions|JSON|
 |description|String|
 |event_batching_condition|JSON|
@@ -27,3 +26,4 @@ The primary key for this table is **arn**.
 |state|String|
 |type|String|
 |workflow_name|String|
+|tags|JSON|

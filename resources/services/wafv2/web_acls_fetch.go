@@ -3,13 +3,15 @@ package wafv2
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/resources/services/wafv2/models"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/cloudfront"
 	"github.com/aws/aws-sdk-go-v2/service/wafv2"
 	"github.com/aws/aws-sdk-go-v2/service/wafv2/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/services"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchWafv2WebAcls(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -64,20 +66,26 @@ func getWebAcl(ctx context.Context, meta schema.ClientMeta, resource *schema.Res
 		}
 	}
 
+	tags, err := getWebACLTags(ctx, c, svc, *webAcl.ARN)
+	if err != nil {
+		return err
+	}
+
 	var webAclLoggingConfiguration *types.LoggingConfiguration
 	if loggingConfigurationOutput != nil {
 		webAclLoggingConfiguration = loggingConfigurationOutput.LoggingConfiguration
 	}
 
-	resource.Item = &models.WebACLWrapper{
-		WebACL:               webAclOutput.WebACL,
+	resource.Item = &ohaws.WAFv2WebACL{
+		WebACL:               *webAclOutput.WebACL,
 		LoggingConfiguration: webAclLoggingConfiguration,
+		Tags:                 tags,
 	}
 	return nil
 }
 
 func resolveWafv2webACLResourcesForWebACL(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	webACL := resource.Item.(*models.WebACLWrapper)
+	webACL := resource.Item.(*ohaws.WAFv2WebACL)
 
 	cl := meta.(*client.Client)
 	service := cl.Services().Wafv2
@@ -113,27 +121,25 @@ func resolveWafv2webACLResourcesForWebACL(ctx context.Context, meta schema.Clien
 	}
 	return resource.Set(c.Name, resourceArns)
 }
-func resolveWebACLTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	webACL := resource.Item.(*models.WebACLWrapper)
 
-	cl := meta.(*client.Client)
-	service := cl.Services().Wafv2
-
-	// Resolve tags
-	outputTags := make(map[string]*string)
-	tagsConfig := wafv2.ListTagsForResourceInput{ResourceARN: webACL.ARN}
+func getWebACLTags(ctx context.Context, c *client.Client, svc services.Wafv2Client, webACLArn string) ([]types.Tag, error) {
+	var tags []types.Tag
+	params := wafv2.ListTagsForResourceInput{ResourceARN: aws.String(webACLArn)}
 	for {
-		tags, err := service.ListTagsForResource(ctx, &tagsConfig)
+		result, err := svc.ListTagsForResource(ctx, &params, func(options *wafv2.Options) {
+			options.Region = c.Region
+		})
 		if err != nil {
-			return err
+			return nil, err
 		}
-		for _, t := range tags.TagInfoForResource.TagList {
-			outputTags[*t.Key] = t.Value
+		if result != nil || result.TagInfoForResource != nil {
+			tags = append(tags, result.TagInfoForResource.TagList...)
 		}
-		if aws.ToString(tags.NextMarker) == "" {
+		if aws.ToString(result.NextMarker) == "" {
 			break
 		}
-		tagsConfig.NextMarker = tags.NextMarker
+		params.NextMarker = result.NextMarker
 	}
-	return resource.Set(c.Name, outputTags)
+
+	return tags, nil
 }

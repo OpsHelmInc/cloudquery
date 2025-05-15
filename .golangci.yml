@@ -1,114 +1,114 @@
+version: "2"
 run:
-  tests: true
-  skip-dirs:
-    - bin
-    - docs
-    - client/mocks
-    - resources/forks
-    - codegen
-  timeout: 10m
   build-tags:
     - all
-
-linters-settings:
-  gofmt:
-    rewrite-rules:
-      - pattern: 'interface{}'
-        replacement: 'any'
-  errcheck:
-    check-blank: false
-    ignore: fmt:.*,[rR]ead|[wW]rite|[cC]lose,io:Copy
-  gocritic:
-    disabled-checks:
-      - commentFormatting
-  dupl:
-    # tokens count to trigger issue, 150 by default
-    threshold: 500
-
-  revive:
-    enable-all-rules: true
-    rules:
-      - name: cyclomatic
-        disabled: true
-      - name: argument-limit
-        disabled: true
-      - name: function-length
-        disabled: true
-      - name: function-result-limit
-        disabled: true
-      - name: line-length-limit
-        disabled: true
-      - name: file-header
-        disabled: true
-      - name: cognitive-complexity
-        disabled: true
-      - name: banned-characters
-        disabled: true
-      - name: max-public-structs
-        disabled: true
-      - name: add-constant
-        disabled: true
-      - name: unhandled-error
-        disabled: true
-      - name: var-naming
-        disabled: true
-      - name: deep-exit
-        disabled: true
-      - name: exported
-        disabled: false
-        arguments:
-          - 'disableStutteringCheck'
-      - name: unused-parameter
-        disabled: true
-      - name: confusing-naming
-        disabled: true
-      - name: confusing-results
-        disabled: true
-      - name: flag-parameter
-        disabled: true
-      - name: nested-structs
-        disabled: true
-      - name: unchecked-type-assertion
-        disabled: true
-      - name: import-alias-naming
-        disabled: true
-      - name: use-errors-new
-        disabled: true
-
+  tests: true
 linters:
   enable:
     - asciicheck
     - bodyclose
     - dupl
-    - errcheck
     - gocritic
-    - gofmt
-    - gosimple
-    - govet
-    - ineffassign
     - importas
     - misspell
     - nakedret
     - prealloc
     - revive
-    - staticcheck
     - unconvert
     - unparam
-    - unused
-
-issues:
-  exclude-rules:
-    # Exclude some linters from running on tests files.
-    - path: _test\.go
-      linters:
-        - dupl
-        - gocritic
-        - revive
-      # Exclude some linters from running on resource files.
-    - path: resources(\\|\/).*\.go
-      linters:
-        - dupl
-    # Exclude some linters from running on services files.
-    - path: services\.go
-      linters:
-        - dupl
+  settings:
+    dupl:
+      threshold: 500
+    errcheck:
+      check-blank: false
+    gocritic:
+      disabled-checks:
+        - commentFormatting
+    revive:
+      enable-all-rules: true
+      rules:
+        - name: cyclomatic
+          disabled: true
+        - name: argument-limit
+          disabled: true
+        - name: function-length
+          disabled: true
+        - name: function-result-limit
+          disabled: true
+        - name: line-length-limit
+          disabled: true
+        - name: file-header
+          disabled: true
+        - name: cognitive-complexity
+          disabled: true
+        - name: banned-characters
+          disabled: true
+        - name: max-public-structs
+          disabled: true
+        - name: add-constant
+          disabled: true
+        - name: unhandled-error
+          disabled: true
+        - name: var-naming
+          disabled: true
+        - name: deep-exit
+          disabled: true
+        - name: exported
+          arguments:
+            - disableStutteringCheck
+          disabled: false
+        - name: unused-parameter
+          disabled: true
+        - name: confusing-naming
+          disabled: true
+        - name: confusing-results
+          disabled: true
+        - name: flag-parameter
+          disabled: true
+        - name: nested-structs
+          disabled: true
+        - name: unchecked-type-assertion
+          disabled: true
+        - name: import-alias-naming
+          disabled: true
+        - name: use-errors-new
+          disabled: true
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    rules:
+      - linters:
+          - dupl
+          - gocritic
+          - revive
+        path: _test\.go
+      - linters:
+          - dupl
+        path: resources(\\|\/).*\.go
+      - linters:
+          - dupl
+        path: services\.go
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+      - resources/forks
+      - codegen
+formatters:
+  enable:
+    - gofmt
+  settings:
+    gofmt:
+      rewrite-rules:
+        - pattern: interface{}
+          replacement: any
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$

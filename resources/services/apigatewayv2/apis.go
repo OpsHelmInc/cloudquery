@@ -95,6 +95,11 @@ func Apis() *schema.Table {
 				Resolver: schema.PathResolver("ImportInfo"),
 			},
 			{
+				Name:     "ip_address_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("IpAddressType"),
+			},
+			{
 				Name:     "tags",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Tags"),

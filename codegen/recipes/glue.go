@@ -5,6 +5,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/glue/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func GlueResources() []*Resource {
@@ -70,9 +72,11 @@ func GlueResources() []*Resource {
 				}...),
 		},
 		{
-			SubService: "databases",
-			Struct:     &types.Database{},
-			SkipFields: []string{},
+			SubService:            "databases",
+			Struct:                &ohaws.GlueDatabase{},
+			PreResourceResolver:   "getGlueDatabase",
+			SkipFields:            []string{},
+			UnwrapEmbeddedStructs: true,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
@@ -82,20 +86,17 @@ func GlueResources() []*Resource {
 						Resolver: `resolveGlueDatabaseArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveGlueDatabaseTags`,
-					},
 				}...),
 			Relations: []string{
 				"DatabaseTables()",
 			},
 		},
 		{
-			SubService: "database_tables",
-			Struct:     &types.Table{},
-			SkipFields: []string{"Name"},
+			SubService:            "database_tables",
+			Struct:                &ohaws.GlueTable{},
+			PreResourceResolver:   "getGlueTable",
+			SkipFields:            []string{"Name"},
+			UnwrapEmbeddedStructs: true,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
@@ -182,9 +183,11 @@ func GlueResources() []*Resource {
 				}...),
 		},
 		{
-			SubService: "jobs",
-			Struct:     &types.Job{},
-			SkipFields: []string{},
+			SubService:            "jobs",
+			Struct:                &ohaws.GlueJob{},
+			PreResourceResolver:   "getGlueJob",
+			SkipFields:            []string{},
+			UnwrapEmbeddedStructs: true,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
@@ -193,11 +196,6 @@ func GlueResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveGlueJobArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveGlueJobTags`,
 					},
 				}...),
 			Relations: []string{
@@ -351,10 +349,11 @@ func GlueResources() []*Resource {
 			},
 		},
 		{
-			SubService:          "triggers",
-			Struct:              &types.Trigger{},
-			SkipFields:          []string{},
-			PreResourceResolver: "getTrigger",
+			SubService:            "triggers",
+			Struct:                &ohaws.GlueTrigger{},
+			SkipFields:            []string{},
+			PreResourceResolver:   "getTrigger",
+			UnwrapEmbeddedStructs: true,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
@@ -363,11 +362,6 @@ func GlueResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveGlueTriggerArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveGlueTriggerTags`,
 					},
 				}...),
 		},

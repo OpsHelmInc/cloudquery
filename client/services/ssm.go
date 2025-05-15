@@ -41,6 +41,7 @@ type SsmClient interface {
 	DescribePatchGroups(context.Context, *ssm.DescribePatchGroupsInput, ...func(*ssm.Options)) (*ssm.DescribePatchGroupsOutput, error)
 	DescribePatchProperties(context.Context, *ssm.DescribePatchPropertiesInput, ...func(*ssm.Options)) (*ssm.DescribePatchPropertiesOutput, error)
 	DescribeSessions(context.Context, *ssm.DescribeSessionsInput, ...func(*ssm.Options)) (*ssm.DescribeSessionsOutput, error)
+	GetAccessToken(context.Context, *ssm.GetAccessTokenInput, ...func(*ssm.Options)) (*ssm.GetAccessTokenOutput, error)
 	GetAutomationExecution(context.Context, *ssm.GetAutomationExecutionInput, ...func(*ssm.Options)) (*ssm.GetAutomationExecutionOutput, error)
 	GetCalendarState(context.Context, *ssm.GetCalendarStateInput, ...func(*ssm.Options)) (*ssm.GetCalendarStateOutput, error)
 	GetCommandInvocation(context.Context, *ssm.GetCommandInvocationInput, ...func(*ssm.Options)) (*ssm.GetCommandInvocationOutput, error)

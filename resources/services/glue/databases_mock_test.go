@@ -3,12 +3,13 @@ package glue
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/glue"
 	"github.com/cloudquery/plugin-sdk/faker"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/mocks"
 )
 
 func buildDatabasesMock(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -29,9 +30,15 @@ func buildDatabasesMock(t *testing.T, ctrl *gomock.Controller) client.Services {
 	i.NextToken = nil
 	m.EXPECT().GetPartitionIndexes(gomock.Any(), gomock.Any()).Return(&i, nil)
 
+	// get database tags
 	tags := glue.GetTagsOutput{}
 	require.NoError(t, faker.FakeObject(&tags))
 	m.EXPECT().GetTags(gomock.Any(), gomock.Any()).Return(&tags, nil)
+
+	// get table tags
+	tableTags := glue.GetTagsOutput{}
+	require.NoError(t, faker.FakeObject(&tableTags))
+	m.EXPECT().GetTags(gomock.Any(), gomock.Any()).Return(&tableTags, nil)
 
 	return client.Services{
 		Glue: m,

@@ -15,16 +15,6 @@ The primary key for this table is **arn**.
 |_cq_parent_id|UUID|
 |account_id|String|
 |region|String|
-|tags|JSON|
 |arn (PK)|String|
-|delivery_stream_name|String|
-|delivery_stream_status|String|
-|delivery_stream_type|String|
-|destinations|JSON|
-|has_more_destinations|Bool|
-|version_id|String|
-|create_timestamp|Timestamp|
-|delivery_stream_encryption_configuration|JSON|
-|failure_description|JSON|
-|last_update_timestamp|Timestamp|
-|source|JSON|
+|delivery_stream_description|JSON|
+|tags|JSON|

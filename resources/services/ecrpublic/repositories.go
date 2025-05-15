@@ -9,10 +9,11 @@ import (
 
 func Repositories() *schema.Table {
 	return &schema.Table{
-		Name:        "aws_ecrpublic_repositories",
-		Description: `https://docs.aws.amazon.com/AmazonECRPublic/latest/APIReference/API_Repository.html`,
-		Resolver:    fetchEcrpublicRepositories,
-		Multiplex:   client.ServiceAccountRegionMultiplexer("api.ecr-public"),
+		Name:                "aws_ecrpublic_repositories",
+		Description:         `https://docs.aws.amazon.com/AmazonECRPublic/latest/APIReference/API_Repository.html`,
+		Resolver:            fetchEcrpublicRepositories,
+		PreResourceResolver: getRepository,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("api.ecr-public"),
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -33,34 +34,19 @@ func Repositories() *schema.Table {
 				},
 			},
 			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveRepositoryTags,
-			},
-			{
 				Name:     "oh_resource_type",
 				Type:     schema.TypeString,
 				Resolver: client.StaticValueResolver("AWS::ECR::PublicRepository"),
 			},
 			{
-				Name:     "created_at",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("CreatedAt"),
+				Name:     "repository",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Repository"),
 			},
 			{
-				Name:     "registry_id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("RegistryId"),
-			},
-			{
-				Name:     "repository_name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("RepositoryName"),
-			},
-			{
-				Name:     "repository_uri",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("RepositoryUri"),
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Tags"),
 			},
 		},
 

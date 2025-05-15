@@ -18,6 +18,11 @@ The primary key for this table is **arn**.
 |principals|StringArray|
 |arn (PK)|String|
 |attributes|JSON|
+|billing_group_name|String|
+|default_client_id|String|
+|thing_id|String|
 |thing_name|String|
 |thing_type_name|String|
 |version|Int|
+|result_metadata|JSON|
+|tags|JSON|

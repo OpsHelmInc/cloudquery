@@ -19,11 +19,5 @@ The following tables depend on aws_athena_data_catalogs:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|data_catalog|JSON|
 |tags|JSON|
-|name|String|
-|type|String|
-|connection_type|String|
-|description|String|
-|error|String|
-|parameters|JSON|
-|status|String|

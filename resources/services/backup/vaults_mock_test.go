@@ -3,13 +3,14 @@ package backup
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/backup"
 	"github.com/aws/aws-sdk-go-v2/service/backup/types"
 	"github.com/cloudquery/plugin-sdk/faker"
 	"github.com/golang/mock/gomock"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/mocks"
 )
 
 func buildBackupVaultsMock(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -85,7 +86,7 @@ func buildBackupVaultsMock(t *testing.T, ctrl *gomock.Controller) client.Service
 		gomock.Any(),
 	).Return(
 		&backup.ListTagsOutput{
-			Tags: map[string]string{"tag1": "value1"},
+			Tags: map[string]string{"tag2": "value2"},
 		},
 		nil,
 	)

@@ -58,6 +58,11 @@ func Vpcs() *schema.Table {
 				Resolver: schema.PathResolver("DhcpOptionsId"),
 			},
 			{
+				Name:     "encryption_control",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("EncryptionControl"),
+			},
+			{
 				Name:     "instance_tenancy",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("InstanceTenancy"),

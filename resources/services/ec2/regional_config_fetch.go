@@ -9,7 +9,7 @@ import (
 	"github.com/cloudquery/plugin-sdk/schema"
 
 	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/resources/services/ec2/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchEc2RegionalConfigs(ctx context.Context, meta schema.ClientMeta, _ *schema.Resource, res chan<- any) error {
@@ -18,7 +18,7 @@ func fetchEc2RegionalConfigs(ctx context.Context, meta schema.ClientMeta, _ *sch
 	var errs error
 
 	svc := c.Services().Ec2
-	var regionalConfig models.RegionalConfig
+	var regionalConfig ohaws.RegionalConfig
 	resp, err := svc.GetEbsDefaultKmsKeyId(ctx, &ec2.GetEbsDefaultKmsKeyIdInput{})
 	if err != nil {
 		c.Logger().Error().Err(err).Msg("error calling GetEbsDefaultKmsKeyId")

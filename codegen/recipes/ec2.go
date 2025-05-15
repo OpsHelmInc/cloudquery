@@ -5,7 +5,7 @@ import (
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
 
-	"github.com/OpsHelmInc/cloudquery/resources/services/ec2/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func EC2Resources() []*Resource {
@@ -396,7 +396,7 @@ func EC2Resources() []*Resource {
 		{
 			Name:        "aws_regions", // rename table for backwards-compatibility
 			SubService:  "regions",
-			Struct:      &models.Region{},
+			Struct:      &ohaws.Region{},
 			Description: "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Region.html",
 			SkipFields:  []string{"RegionName", "Region", "EC2Config"},
 			Multiplex:   `client.AccountMultiplex`,
@@ -441,7 +441,7 @@ func EC2Resources() []*Resource {
 		},
 		{
 			SubService: "regional_configs",
-			Struct:     &models.RegionalConfig{},
+			Struct:     &ohaws.RegionalConfig{},
 			ExtraColumns: []codegen.ColumnDefinition{
 				{
 					Name:     "account_id",

@@ -3,11 +3,14 @@ package sagemaker
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/sagemaker"
 	"github.com/aws/aws-sdk-go-v2/service/sagemaker/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+	"github.com/mitchellh/mapstructure"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchSagemakerEndpointConfigurations(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -42,26 +45,27 @@ func getEndpointConfiguration(ctx context.Context, meta schema.ClientMeta, resou
 		return err
 	}
 
-	resource.Item = response
-	return nil
-}
-
-func resolveSagemakerEndpointConfigurationTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, _ schema.Column) error {
-	r := resource.Item.(*sagemaker.DescribeEndpointConfigOutput)
-	c := meta.(*client.Client)
-	svc := c.Services().Sagemaker
-	config := sagemaker.ListTagsInput{
-		ResourceArn: r.EndpointConfigArn,
-	}
-	response, err := svc.ListTags(ctx, &config)
-	if err != nil {
+	var ec ohaws.SagemakerEndpointConfig
+	if err := mapstructure.Decode(response, &ec); err != nil {
 		return err
 	}
 
-	tags := make(map[string]*string, len(response.Tags))
-	for _, t := range response.Tags {
-		tags[*t.Key] = t.Value
+	listTagsInput := &sagemaker.ListTagsInput{
+		ResourceArn: ec.EndpointConfigArn,
 	}
 
-	return resource.Set("tags", tags)
+	tagsPaginator := sagemaker.NewListTagsPaginator(svc, listTagsInput)
+	for tagsPaginator.HasMorePages() {
+		p, err := tagsPaginator.NextPage(ctx, func(o *sagemaker.Options) {
+			o.Region = c.Region
+		})
+		if err != nil {
+			return err
+		}
+
+		ec.Tags = append(ec.Tags, p.Tags...)
+	}
+
+	resource.Item = &ec
+	return nil
 }

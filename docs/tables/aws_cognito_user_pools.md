@@ -52,3 +52,4 @@ The following tables depend on aws_cognito_user_pools:
 |username_attributes|StringArray|
 |username_configuration|JSON|
 |verification_message_template|JSON|
+|tags|JSON|

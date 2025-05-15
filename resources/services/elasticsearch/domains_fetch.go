@@ -3,10 +3,13 @@ package elasticsearch
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/service/elasticsearchservice"
 	"github.com/aws/aws-sdk-go-v2/service/elasticsearchservice/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/services"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchElasticsearchDomains(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -32,28 +35,30 @@ func getDomain(ctx context.Context, meta schema.ClientMeta, resource *schema.Res
 		return nil
 	}
 
-	resource.Item = domainOutput.DomainStatus
-	return nil
-}
+	domain := ohaws.ElasticsearchDomain{
+		ElasticsearchDomainStatus: *domainOutput.DomainStatus,
+	}
 
-func resolveElasticsearchDomainTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	region := meta.(*client.Client).Region
-	svc := meta.(*client.Client).Services().Elasticsearchservice
-	domain := resource.Item.(*types.ElasticsearchDomainStatus)
-	tagsOutput, err := svc.ListTags(ctx, &elasticsearchservice.ListTagsInput{
-		ARN: domain.ARN,
-	}, func(o *elasticsearchservice.Options) {
-		o.Region = region
-	})
+	tags, err := getElasticsearchDomainTags(ctx, svc, *domain.ARN)
 	if err != nil {
 		return err
 	}
+	domain.Tags = tags
+
+	resource.Item = &domain
+	return nil
+}
+
+func getElasticsearchDomainTags(ctx context.Context, svc services.ElasticsearchserviceClient, domainARN string) ([]types.Tag, error) {
+	tagsOutput, err := svc.ListTags(ctx, &elasticsearchservice.ListTagsInput{
+		ARN: &domainARN,
+	})
+	if err != nil {
+		return nil, err
+	}
 	if len(tagsOutput.TagList) == 0 {
-		return nil
+		return nil, nil
 	}
-	tags := make(map[string]*string)
-	for _, s := range tagsOutput.TagList {
-		tags[*s.Key] = s.Value
-	}
-	return resource.Set(c.Name, tags)
+
+	return tagsOutput.TagList, nil
 }

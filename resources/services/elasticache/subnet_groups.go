@@ -9,10 +9,11 @@ import (
 
 func SubnetGroups() *schema.Table {
 	return &schema.Table{
-		Name:        "aws_elasticache_subnet_groups",
-		Description: `https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CacheSubnetGroup.html`,
-		Resolver:    fetchElasticacheSubnetGroups,
-		Multiplex:   client.ServiceAccountRegionMultiplexer("elasticache"),
+		Name:                "aws_elasticache_subnet_groups",
+		Description:         `https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CacheSubnetGroup.html`,
+		Resolver:            fetchElasticacheSubnetGroups,
+		PreResourceResolver: getCacheSubnetGroup,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("elasticache"),
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -56,6 +57,11 @@ func SubnetGroups() *schema.Table {
 				Name:     "vpc_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("VpcId"),
+			},
+			{
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: client.ResolveTags,
 			},
 		},
 	}

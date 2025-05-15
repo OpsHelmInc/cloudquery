@@ -9,10 +9,9 @@ import (
 
 func UserAccessKeys() *schema.Table {
 	return &schema.Table{
-		Name:                 "aws_iam_user_access_keys",
-		Resolver:             fetchIamUserAccessKeys,
-		PostResourceResolver: postIamUserAccessKeyResolver,
-		Multiplex:            client.AccountMultiplex,
+		Name:      "aws_iam_user_access_keys",
+		Resolver:  fetchIamUserAccessKeys,
+		Multiplex: client.AccountMultiplex,
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -33,14 +32,6 @@ func UserAccessKeys() *schema.Table {
 				Name:     "user_id",
 				Type:     schema.TypeString,
 				Resolver: schema.ParentColumnResolver("id"),
-			},
-			{
-				Name: "last_used",
-				Type: schema.TypeTimestamp,
-			},
-			{
-				Name: "last_used_service_name",
-				Type: schema.TypeString,
 			},
 			{
 				Name:     "oh_resource_type",
@@ -68,9 +59,19 @@ func UserAccessKeys() *schema.Table {
 				Resolver: schema.PathResolver("UserName"),
 			},
 			{
-				Name:     "last_rotated",
+				Name:     "last_used_date",
 				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("LastRotated"),
+				Resolver: schema.PathResolver("LastUsedDate"),
+			},
+			{
+				Name:     "last_used_region",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("LastUsedRegion"),
+			},
+			{
+				Name:     "last_used_service_name",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("LastUsedServiceName"),
 			},
 		},
 	}

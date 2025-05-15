@@ -19,13 +19,7 @@ The following tables depend on aws_ecr_repositories:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
-|tags|JSON|
 |policy_text|JSON|
 |oh_resource_type|String|
-|created_at|Timestamp|
-|encryption_configuration|JSON|
-|image_scanning_configuration|JSON|
-|image_tag_mutability|String|
-|registry_id|String|
-|repository_name|String|
-|repository_uri|String|
+|repository|JSON|
+|tags|JSON|

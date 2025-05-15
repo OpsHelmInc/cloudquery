@@ -123,6 +123,11 @@ func EbsVolumes() *schema.Table {
 				Resolver: schema.PathResolver("VolumeId"),
 			},
 			{
+				Name:     "volume_initialization_rate",
+				Type:     schema.TypeInt,
+				Resolver: schema.PathResolver("VolumeInitializationRate"),
+			},
+			{
 				Name:     "volume_type",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("VolumeType"),

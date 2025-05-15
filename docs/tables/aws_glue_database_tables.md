@@ -44,3 +44,4 @@ The following tables depend on aws_glue_database_tables:
 |view_definition|JSON|
 |view_expanded_text|String|
 |view_original_text|String|
+|tags|JSON|

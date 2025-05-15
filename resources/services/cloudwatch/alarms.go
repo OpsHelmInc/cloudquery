@@ -9,10 +9,11 @@ import (
 
 func Alarms() *schema.Table {
 	return &schema.Table{
-		Name:        "aws_cloudwatch_alarms",
-		Description: `https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_MetricAlarm.html`,
-		Resolver:    fetchCloudwatchAlarms,
-		Multiplex:   client.ServiceAccountRegionMultiplexer("logs"),
+		Name:                "aws_cloudwatch_alarms",
+		Description:         `https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_MetricAlarm.html`,
+		Resolver:            fetchCloudwatchAlarms,
+		PreResourceResolver: getAlarm,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("logs"),
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -25,14 +26,9 @@ func Alarms() *schema.Table {
 				Resolver: client.ResolveAWSRegion,
 			},
 			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveCloudwatchAlarmTags,
-			},
-			{
 				Name:     "arn",
 				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("AlarmArn"),
+				Resolver: schema.PathResolver("MetricAlarm.AlarmArn"),
 				CreationOptions: schema.ColumnCreationOptions{
 					PrimaryKey: true,
 				},
@@ -43,139 +39,14 @@ func Alarms() *schema.Table {
 				Resolver: resolveCloudwatchAlarmDimensions,
 			},
 			{
-				Name:     "actions_enabled",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("ActionsEnabled"),
-			},
-			{
-				Name:     "alarm_actions",
-				Type:     schema.TypeStringArray,
-				Resolver: schema.PathResolver("AlarmActions"),
-			},
-			{
-				Name:     "alarm_configuration_updated_timestamp",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("AlarmConfigurationUpdatedTimestamp"),
-			},
-			{
-				Name:     "alarm_description",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("AlarmDescription"),
-			},
-			{
-				Name:     "alarm_name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("AlarmName"),
-			},
-			{
-				Name:     "comparison_operator",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("ComparisonOperator"),
-			},
-			{
-				Name:     "datapoints_to_alarm",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("DatapointsToAlarm"),
-			},
-			{
-				Name:     "evaluate_low_sample_count_percentile",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("EvaluateLowSampleCountPercentile"),
-			},
-			{
-				Name:     "evaluation_periods",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("EvaluationPeriods"),
-			},
-			{
-				Name:     "evaluation_state",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("EvaluationState"),
-			},
-			{
-				Name:     "extended_statistic",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("ExtendedStatistic"),
-			},
-			{
-				Name:     "insufficient_data_actions",
-				Type:     schema.TypeStringArray,
-				Resolver: schema.PathResolver("InsufficientDataActions"),
-			},
-			{
-				Name:     "metric_name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("MetricName"),
-			},
-			{
-				Name:     "metrics",
+				Name:     "metric_alarm",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("Metrics"),
+				Resolver: schema.PathResolver("MetricAlarm"),
 			},
 			{
-				Name:     "namespace",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Namespace"),
-			},
-			{
-				Name:     "ok_actions",
-				Type:     schema.TypeStringArray,
-				Resolver: schema.PathResolver("OKActions"),
-			},
-			{
-				Name:     "period",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("Period"),
-			},
-			{
-				Name:     "state_reason",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("StateReason"),
-			},
-			{
-				Name:     "state_reason_data",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("StateReasonData"),
-			},
-			{
-				Name:     "state_transitioned_timestamp",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("StateTransitionedTimestamp"),
-			},
-			{
-				Name:     "state_updated_timestamp",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("StateUpdatedTimestamp"),
-			},
-			{
-				Name:     "state_value",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("StateValue"),
-			},
-			{
-				Name:     "statistic",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Statistic"),
-			},
-			{
-				Name:     "threshold",
-				Type:     schema.TypeFloat,
-				Resolver: schema.PathResolver("Threshold"),
-			},
-			{
-				Name:     "threshold_metric_id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("ThresholdMetricId"),
-			},
-			{
-				Name:     "treat_missing_data",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("TreatMissingData"),
-			},
-			{
-				Name:     "unit",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Unit"),
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: client.ResolveTags,
 			},
 		},
 	}

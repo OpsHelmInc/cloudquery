@@ -3,12 +3,14 @@ package ecrpublic
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/ecrpublic"
 	"github.com/aws/aws-sdk-go-v2/service/ecrpublic/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchEcrpublicRepositories(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -23,7 +25,15 @@ func fetchEcrpublicRepositories(ctx context.Context, meta schema.ClientMeta, par
 		if err != nil {
 			return err
 		}
-		res <- output.Repositories
+
+		repos := make([]*ohaws.ECRPublicRepository, len(output.Repositories))
+		for idx, r := range output.Repositories {
+			repos[idx] = &ohaws.ECRPublicRepository{
+				Repository: r,
+			}
+		}
+		res <- repos
+
 		if aws.ToString(output.NextToken) == "" {
 			break
 		}
@@ -32,10 +42,10 @@ func fetchEcrpublicRepositories(ctx context.Context, meta schema.ClientMeta, par
 	return nil
 }
 
-func resolveRepositoryTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
+func getRepository(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
 	cl := meta.(*client.Client)
 	svc := cl.Services().Ecrpublic
-	repo := resource.Item.(types.Repository)
+	repo := resource.Item.(*ohaws.ECRPublicRepository)
 
 	input := ecrpublic.ListTagsForResourceInput{
 		ResourceArn: repo.RepositoryArn,
@@ -44,12 +54,14 @@ func resolveRepositoryTags(ctx context.Context, meta schema.ClientMeta, resource
 	if err != nil {
 		return err
 	}
-	return resource.Set(c.Name, client.TagsToMap(output.Tags))
+
+	repo.Tags = client.TagsToMap(output.Tags)
+	return nil
 }
 
 func fetchEcrpublicRepositoryImages(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	maxResults := int32(1000)
-	p := parent.Item.(types.Repository)
+	p := parent.Item.(*ohaws.ECRPublicRepository)
 	config := ecrpublic.DescribeImagesInput{
 		RepositoryName: p.RepositoryName,
 		MaxResults:     &maxResults,

@@ -9,10 +9,11 @@ import (
 
 func Policies() *schema.Table {
 	return &schema.Table{
-		Name:        "aws_iot_policies",
-		Description: `https://docs.aws.amazon.com/iot/latest/apireference/API_Policy.html`,
-		Resolver:    fetchIotPolicies,
-		Multiplex:   client.ServiceAccountRegionMultiplexer("iot"),
+		Name:                "aws_iot_policies",
+		Description:         `https://docs.aws.amazon.com/iot/latest/apireference/API_Policy.html`,
+		Resolver:            fetchIotPolicies,
+		PreResourceResolver: getIotPolicy,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("iot"),
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -25,11 +26,6 @@ func Policies() *schema.Table {
 				Resolver: client.ResolveAWSRegion,
 			},
 			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: ResolveIotPolicyTags,
-			},
-			{
 				Name:     "arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("PolicyArn"),
@@ -38,9 +34,44 @@ func Policies() *schema.Table {
 				},
 			},
 			{
+				Name:     "creation_date",
+				Type:     schema.TypeTimestamp,
+				Resolver: schema.PathResolver("CreationDate"),
+			},
+			{
+				Name:     "default_version_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("DefaultVersionId"),
+			},
+			{
+				Name:     "generation_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("GenerationId"),
+			},
+			{
+				Name:     "last_modified_date",
+				Type:     schema.TypeTimestamp,
+				Resolver: schema.PathResolver("LastModifiedDate"),
+			},
+			{
+				Name:     "policy_document",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("PolicyDocument"),
+			},
+			{
 				Name:     "policy_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("PolicyName"),
+			},
+			{
+				Name:     "result_metadata",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ResultMetadata"),
+			},
+			{
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: client.ResolveTags,
 			},
 		},
 	}

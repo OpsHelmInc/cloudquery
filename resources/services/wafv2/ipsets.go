@@ -31,11 +31,6 @@ func Ipsets() *schema.Table {
 				Resolver: resolveIpsetAddresses,
 			},
 			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveIpsetTags,
-			},
-			{
 				Name:     "arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ARN"),
@@ -44,24 +39,14 @@ func Ipsets() *schema.Table {
 				},
 			},
 			{
-				Name:     "ip_address_version",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("IPAddressVersion"),
+				Name:     "ip_set",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("IPSet"),
 			},
 			{
-				Name:     "id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Id"),
-			},
-			{
-				Name:     "name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Name"),
-			},
-			{
-				Name:     "description",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Description"),
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: client.ResolveTags,
 			},
 		},
 	}

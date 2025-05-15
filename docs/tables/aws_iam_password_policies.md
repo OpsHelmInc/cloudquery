@@ -16,14 +16,5 @@ The primary key for this table is **account_id**.
 |arn|String|
 |account_id (PK)|String|
 |oh_resource_type|String|
-|allow_users_to_change_password|Bool|
-|expire_passwords|Bool|
-|hard_expiry|Bool|
-|max_password_age|Int|
-|minimum_password_length|Int|
-|password_reuse_prevention|Int|
-|require_lowercase_characters|Bool|
-|require_numbers|Bool|
-|require_symbols|Bool|
-|require_uppercase_characters|Bool|
+|password_policy|JSON|
 |policy_exists|Bool|

@@ -1,16 +1,17 @@
 package recipes
 
 import (
-	"github.com/aws/aws-sdk-go-v2/service/acm/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func ACMResources() []*Resource {
 	resources := []*Resource{
 		{
 			SubService:          "certificates",
-			Struct:              &types.CertificateDetail{},
+			Struct:              &ohaws.ACMCertificate{},
 			Description:         "https://docs.aws.amazon.com/acm/latest/APIReference/API_CertificateDetail.html",
 			SkipFields:          []string{"CertificateArn"},
 			PreResourceResolver: "getCertificate",
@@ -23,11 +24,6 @@ func ACMResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("CertificateArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveCertificateTags`,
 					},
 				}...),
 		},

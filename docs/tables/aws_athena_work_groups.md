@@ -21,10 +21,5 @@ The following tables depend on aws_athena_work_groups:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|work_group|JSON|
 |tags|JSON|
-|name|String|
-|configuration|JSON|
-|creation_time|Timestamp|
-|description|String|
-|identity_center_application_arn|String|
-|state|String|

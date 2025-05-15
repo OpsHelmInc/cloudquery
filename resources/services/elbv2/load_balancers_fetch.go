@@ -3,14 +3,18 @@ package elbv2
 import (
 	"context"
 	"errors"
+	"fmt"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	elbv2 "github.com/aws/aws-sdk-go-v2/service/elasticloadbalancingv2"
 	"github.com/aws/aws-sdk-go-v2/service/elasticloadbalancingv2/types"
 	"github.com/aws/aws-sdk-go-v2/service/wafv2"
 	wafv2types "github.com/aws/aws-sdk-go-v2/service/wafv2/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+	"github.com/mitchellh/mapstructure"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchElbv2LoadBalancers(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -22,7 +26,13 @@ func fetchElbv2LoadBalancers(ctx context.Context, meta schema.ClientMeta, parent
 		if err != nil {
 			return err
 		}
-		res <- response.LoadBalancers
+		lbs := make([]*ohaws.LoadBalancerV2, len(response.LoadBalancers))
+		for idx, lb := range response.LoadBalancers {
+			lbs[idx] = &ohaws.LoadBalancerV2{
+				LoadBalancer: lb,
+			}
+		}
+		res <- lbs
 		if aws.ToString(response.NextMarker) == "" {
 			break
 		}
@@ -30,8 +40,9 @@ func fetchElbv2LoadBalancers(ctx context.Context, meta schema.ClientMeta, parent
 	}
 	return nil
 }
+
 func resolveElbv2loadBalancerWebACLArn(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	p := resource.Item.(types.LoadBalancer)
+	p := resource.Item.(*ohaws.LoadBalancerV2)
 	// only application load balancer can have web acl arn
 	if p.Type != types.LoadBalancerTypeEnumApplication {
 		return nil
@@ -55,45 +66,45 @@ func resolveElbv2loadBalancerWebACLArn(ctx context.Context, meta schema.ClientMe
 
 	return resource.Set(c.Name, response.WebACL.ARN)
 }
-func resolveElbv2loadBalancerTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	cl := meta.(*client.Client)
-	region := cl.Region
-	svc := cl.Services().Elasticloadbalancingv2
-	loadBalancer := resource.Item.(types.LoadBalancer)
-	tagsOutput, err := svc.DescribeTags(ctx, &elbv2.DescribeTagsInput{
-		ResourceArns: []string{
-			*loadBalancer.LoadBalancerArn,
-		},
-	}, func(o *elbv2.Options) {
-		o.Region = region
-	})
-	if err != nil {
-		if cl.IsNotFoundError(err) {
-			return nil
-		}
-		return err
-	}
-	if len(tagsOutput.TagDescriptions) == 0 {
-		return nil
-	}
-	tags := make(map[string]*string)
-	for _, td := range tagsOutput.TagDescriptions {
-		for _, s := range td.Tags {
-			tags[*s.Key] = s.Value
-		}
-	}
 
-	return resource.Set(c.Name, tags)
-}
-
-func fetchElbv2LoadBalancerAttributes(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
-	lb := parent.Item.(types.LoadBalancer)
+func getLoadBalancer(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
 	c := meta.(*client.Client)
 	svc := c.Services().Elasticloadbalancingv2
-	result, err := svc.DescribeLoadBalancerAttributes(ctx, &elbv2.DescribeLoadBalancerAttributesInput{LoadBalancerArn: lb.LoadBalancerArn})
+	lb := resource.Item.(*ohaws.LoadBalancerV2)
+
+	attrsResp, err := svc.DescribeLoadBalancerAttributes(ctx, &elbv2.DescribeLoadBalancerAttributesInput{LoadBalancerArn: lb.LoadBalancerArn})
 	if err != nil {
-		return err
+		return fmt.Errorf("error describing load balancer attributes: %w", err)
 	}
-	res <- result.Attributes
+
+	attrsMap := make(map[string]string, len(attrsResp.Attributes))
+	for i := range attrsResp.Attributes {
+		if s := aws.ToString(attrsResp.Attributes[i].Key); s != "" {
+			attrsMap[s] = aws.ToString(attrsResp.Attributes[i].Value)
+		}
+	}
+
+	d, err := mapstructure.NewDecoder(&mapstructure.DecoderConfig{WeaklyTypedInput: true, Result: &lb})
+	if err != nil {
+		return fmt.Errorf("error instantiating decoder: %w", err)
+	}
+	if err := d.Decode(attrsMap); err != nil {
+		return fmt.Errorf("error decoding load balancer attributes: %w", err)
+	}
+
+	tagsResp, err := svc.DescribeTags(ctx, &elbv2.DescribeTagsInput{ResourceArns: []string{aws.ToString(lb.LoadBalancerArn)}})
+	if err != nil {
+		return fmt.Errorf("error describing load balancer tags: %w", err)
+	}
+
+	arnStr := aws.ToString(lb.LoadBalancerArn)
+	for _, t := range tagsResp.TagDescriptions {
+		if aws.ToString(t.ResourceArn) == arnStr {
+			lb.Tags = client.TagsToMap(t.Tags)
+		}
+	}
+
+	resource.Item = lb
+
 	return nil
 }

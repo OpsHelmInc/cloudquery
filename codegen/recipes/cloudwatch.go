@@ -1,30 +1,27 @@
 package recipes
 
 import (
-	"github.com/aws/aws-sdk-go-v2/service/cloudwatch/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func CloudwatchResources() []*Resource {
 	resources := []*Resource{
 		{
-			SubService:  "alarms",
-			Struct:      &types.MetricAlarm{},
-			Description: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_MetricAlarm.html",
-			SkipFields:  []string{"AlarmArn", "Dimensions"},
+			SubService:          "alarms",
+			Struct:              &ohaws.Alarm{},
+			Description:         "https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_MetricAlarm.html",
+			SkipFields:          []string{"AlarmArn", "Dimensions", "CompositeAlarm"},
+			PreResourceResolver: "getAlarm",
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
 					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveCloudwatchAlarmTags`,
-					},
-					{
 						Name:     "arn",
 						Type:     schema.TypeString,
-						Resolver: `schema.PathResolver("AlarmArn")`,
+						Resolver: `schema.PathResolver("MetricAlarm.AlarmArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
 					},
 					{

@@ -9,9 +9,10 @@ import (
 
 func Jobs() *schema.Table {
 	return &schema.Table{
-		Name:      "aws_glue_jobs",
-		Resolver:  fetchGlueJobs,
-		Multiplex: client.ServiceAccountRegionMultiplexer("glue"),
+		Name:                "aws_glue_jobs",
+		Resolver:            fetchGlueJobs,
+		PreResourceResolver: getGlueJob,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("glue"),
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -30,11 +31,6 @@ func Jobs() *schema.Table {
 				CreationOptions: schema.ColumnCreationOptions{
 					PrimaryKey: true,
 				},
-			},
-			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveGlueJobTags,
 			},
 			{
 				Name:     "allocated_capacity",
@@ -170,6 +166,11 @@ func Jobs() *schema.Table {
 				Name:     "worker_type",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("WorkerType"),
+			},
+			{
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Tags"),
 			},
 		},
 

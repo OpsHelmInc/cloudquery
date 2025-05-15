@@ -8,7 +8,6 @@ The primary key for this table is **arn**.
 
 The following tables depend on aws_elbv2_load_balancers:
   - [aws_elbv2_listeners](aws_elbv2_listeners.md)
-  - [aws_elbv2_load_balancer_attributes](aws_elbv2_load_balancer_attributes.md)
 
 ## Columns
 | Name          | Type          |
@@ -20,20 +19,8 @@ The following tables depend on aws_elbv2_load_balancers:
 |account_id|String|
 |region|String|
 |web_acl_arn|String|
-|tags|JSON|
 |arn (PK)|String|
 |oh_resource_type|String|
-|availability_zones|JSON|
-|canonical_hosted_zone_id|String|
-|created_time|Timestamp|
-|customer_owned_ipv4_pool|String|
-|dns_name|String|
-|enable_prefix_for_ipv6_source_nat|String|
-|enforce_security_group_inbound_rules_on_private_link_traffic|String|
-|ip_address_type|String|
-|load_balancer_name|String|
-|scheme|String|
-|security_groups|StringArray|
-|state|JSON|
-|type|String|
-|vpc_id|String|
+|load_balancer|JSON|
+|tags|JSON|
+|unknown_attributes|JSON|

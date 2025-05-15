@@ -3,10 +3,13 @@ package acm
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/service/acm"
 	"github.com/aws/aws-sdk-go-v2/service/acm/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/services"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchAcmCertificates(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -32,17 +35,26 @@ func getCertificate(ctx context.Context, meta schema.ClientMeta, resource *schem
 	if err != nil {
 		return err
 	}
-	resource.Item = output.Certificate
-	return nil
-}
 
-func resolveCertificateTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	cert := resource.Item.(*types.CertificateDetail)
-	cl := meta.(*client.Client)
-	svc := cl.Services().Acm
-	out, err := svc.ListTagsForCertificate(ctx, &acm.ListTagsForCertificateInput{CertificateArn: cert.CertificateArn})
+	cert := ohaws.ACMCertificate{
+		CertificateDetail: *output.Certificate,
+	}
+
+	tags, err := getCertificateTags(ctx, svc, *cert.CertificateArn)
 	if err != nil {
 		return err
 	}
-	return resource.Set(c.Name, client.TagsToMap(out.Tags))
+	cert.Tags = tags
+
+	resource.Item = &cert
+	return nil
+}
+
+func getCertificateTags(ctx context.Context, svc services.AcmClient, certificateArn string) ([]types.Tag, error) {
+	out, err := svc.ListTagsForCertificate(ctx, &acm.ListTagsForCertificateInput{CertificateArn: &certificateArn})
+	if err != nil {
+		return nil, err
+	}
+
+	return out.Tags, nil
 }

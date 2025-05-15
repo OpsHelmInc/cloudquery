@@ -4,17 +4,18 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/OpsHelmInc/cloudquery/resources/services/cloudtrail/models"
 	"github.com/aws/aws-sdk-go-v2/service/cloudtrail/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func CloudtrailResources() []*Resource {
 	resources := []*Resource{
 		{
 			SubService:  "trails",
-			Struct:      &models.CloudTrailWrapper{},
+			Struct:      &ohaws.CloudTrail{},
 			Description: "https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_Trail.html",
 			SkipFields:  []string{"TrailARN"},
 			ExtraColumns: append(defaultRegionalColumns, []codegen.ColumnDefinition{

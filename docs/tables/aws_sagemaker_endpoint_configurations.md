@@ -16,7 +16,6 @@ The primary key for this table is **arn**.
 |account_id|String|
 |region|String|
 |arn (PK)|String|
-|tags|JSON|
 |creation_time|Timestamp|
 |endpoint_config_name|String|
 |production_variants|JSON|
@@ -28,4 +27,4 @@ The primary key for this table is **arn**.
 |kms_key_id|String|
 |shadow_production_variants|JSON|
 |vpc_config|JSON|
-|result_metadata|JSON|
+|tags|JSON|

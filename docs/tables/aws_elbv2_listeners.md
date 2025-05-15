@@ -20,13 +20,6 @@ The following tables depend on aws_elbv2_listeners:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
-|tags|JSON|
 |oh_resource_type|String|
-|alpn_policy|StringArray|
-|certificates|JSON|
-|default_actions|JSON|
-|load_balancer_arn|String|
-|mutual_authentication|JSON|
-|port|Int|
-|protocol|String|
-|ssl_policy|String|
+|listener|JSON|
+|tags|JSON|

@@ -31,11 +31,6 @@ func Keys() *schema.Table {
 				Resolver: resolveKeysRotationEnabled,
 			},
 			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveKeysTags,
-			},
-			{
 				Name: "arn",
 				Type: schema.TypeString,
 				CreationOptions: schema.ColumnCreationOptions{
@@ -49,124 +44,14 @@ func Keys() *schema.Table {
 				IgnoreInTests: true,
 			},
 			{
-				Name:     "key_id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("KeyId"),
-			},
-			{
-				Name:     "aws_account_id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("AWSAccountId"),
-			},
-			{
-				Name:     "cloud_hsm_cluster_id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("CloudHsmClusterId"),
-			},
-			{
-				Name:     "creation_date",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("CreationDate"),
-			},
-			{
-				Name:     "custom_key_store_id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("CustomKeyStoreId"),
-			},
-			{
-				Name:     "customer_master_key_spec",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("CustomerMasterKeySpec"),
-			},
-			{
-				Name:     "deletion_date",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("DeletionDate"),
-			},
-			{
-				Name:     "description",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Description"),
-			},
-			{
-				Name:     "enabled",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("Enabled"),
-			},
-			{
-				Name:     "encryption_algorithms",
-				Type:     schema.TypeStringArray,
-				Resolver: schema.PathResolver("EncryptionAlgorithms"),
-			},
-			{
-				Name:     "expiration_model",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("ExpirationModel"),
-			},
-			{
-				Name:     "key_agreement_algorithms",
-				Type:     schema.TypeStringArray,
-				Resolver: schema.PathResolver("KeyAgreementAlgorithms"),
-			},
-			{
-				Name:     "key_manager",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("KeyManager"),
-			},
-			{
-				Name:     "key_spec",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("KeySpec"),
-			},
-			{
-				Name:     "key_state",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("KeyState"),
-			},
-			{
-				Name:     "key_usage",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("KeyUsage"),
-			},
-			{
-				Name:     "mac_algorithms",
-				Type:     schema.TypeStringArray,
-				Resolver: schema.PathResolver("MacAlgorithms"),
-			},
-			{
-				Name:     "multi_region",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("MultiRegion"),
-			},
-			{
-				Name:     "multi_region_configuration",
+				Name:     "key_metadata",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("MultiRegionConfiguration"),
+				Resolver: schema.PathResolver("KeyMetadata"),
 			},
 			{
-				Name:     "origin",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Origin"),
-			},
-			{
-				Name:     "pending_deletion_window_in_days",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("PendingDeletionWindowInDays"),
-			},
-			{
-				Name:     "signing_algorithms",
-				Type:     schema.TypeStringArray,
-				Resolver: schema.PathResolver("SigningAlgorithms"),
-			},
-			{
-				Name:     "valid_to",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("ValidTo"),
-			},
-			{
-				Name:     "xks_key_configuration",
+				Name:     "tags",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("XksKeyConfiguration"),
+				Resolver: client.ResolveTags,
 			},
 		},
 

@@ -19,13 +19,5 @@ The following tables depend on aws_backup_plans:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
+|get_backup_plan_output|JSON|
 |tags|JSON|
-|advanced_backup_settings|JSON|
-|backup_plan|JSON|
-|backup_plan_id|String|
-|creation_date|Timestamp|
-|creator_request_id|String|
-|deletion_date|Timestamp|
-|last_execution_date|Timestamp|
-|version_id|String|
-|result_metadata|JSON|

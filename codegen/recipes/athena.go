@@ -4,6 +4,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/athena/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func AthenaResources() []*Resource {
@@ -11,7 +13,7 @@ func AthenaResources() []*Resource {
 		{
 			SubService:          "data_catalogs",
 			Description:         "https://docs.aws.amazon.com/athena/latest/APIReference/API_DataCatalog.html",
-			Struct:              &types.DataCatalog{},
+			Struct:              &ohaws.AthenaDataCatalog{},
 			SkipFields:          []string{},
 			PreResourceResolver: "getDataCatalog",
 			ExtraColumns: append(
@@ -22,11 +24,6 @@ func AthenaResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveAthenaDataCatalogArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveAthenaDataCatalogTags`,
 					},
 				}...),
 			Relations: []string{
@@ -89,7 +86,7 @@ func AthenaResources() []*Resource {
 		{
 			SubService:          "work_groups",
 			Description:         "https://docs.aws.amazon.com/athena/latest/APIReference/API_WorkGroup.html",
-			Struct:              &types.WorkGroup{},
+			Struct:              &ohaws.AthenaWorkGroup{},
 			SkipFields:          []string{},
 			PreResourceResolver: "getWorkGroup",
 			ExtraColumns: append(
@@ -100,11 +97,6 @@ func AthenaResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveAthenaWorkGroupArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveAthenaWorkGroupTags`,
 					},
 				}...),
 			Relations: []string{

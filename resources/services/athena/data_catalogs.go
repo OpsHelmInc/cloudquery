@@ -34,44 +34,14 @@ func DataCatalogs() *schema.Table {
 				},
 			},
 			{
+				Name:     "data_catalog",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("DataCatalog"),
+			},
+			{
 				Name:     "tags",
 				Type:     schema.TypeJSON,
-				Resolver: resolveAthenaDataCatalogTags,
-			},
-			{
-				Name:     "name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Name"),
-			},
-			{
-				Name:     "type",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Type"),
-			},
-			{
-				Name:     "connection_type",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("ConnectionType"),
-			},
-			{
-				Name:     "description",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Description"),
-			},
-			{
-				Name:     "error",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Error"),
-			},
-			{
-				Name:     "parameters",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("Parameters"),
-			},
-			{
-				Name:     "status",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Status"),
+				Resolver: client.ResolveTags,
 			},
 		},
 

@@ -9,10 +9,11 @@ import (
 
 func Things() *schema.Table {
 	return &schema.Table{
-		Name:        "aws_iot_things",
-		Description: `https://docs.aws.amazon.com/iot/latest/apireference/API_ThingAttribute.html`,
-		Resolver:    fetchIotThings,
-		Multiplex:   client.ServiceAccountRegionMultiplexer("iot"),
+		Name:                "aws_iot_things",
+		Description:         `https://docs.aws.amazon.com/iot/latest/apireference/API_ThingAttribute.html`,
+		Resolver:            fetchIotThings,
+		PreResourceResolver: getIotThing,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("iot"),
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -44,6 +45,21 @@ func Things() *schema.Table {
 				Resolver: schema.PathResolver("Attributes"),
 			},
 			{
+				Name:     "billing_group_name",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("BillingGroupName"),
+			},
+			{
+				Name:     "default_client_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("DefaultClientId"),
+			},
+			{
+				Name:     "thing_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ThingId"),
+			},
+			{
 				Name:     "thing_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ThingName"),
@@ -57,6 +73,16 @@ func Things() *schema.Table {
 				Name:     "version",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("Version"),
+			},
+			{
+				Name:     "result_metadata",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ResultMetadata"),
+			},
+			{
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: client.ResolveTags,
 			},
 		},
 	}

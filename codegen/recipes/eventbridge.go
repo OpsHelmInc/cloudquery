@@ -5,23 +5,22 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/eventbridge/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func EventbridgeResources() []*Resource {
 	regionalResources := []*Resource{
 		{
-			SubService:  "event_buses",
-			Struct:      &types.EventBus{},
-			Description: "https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_EventBus.html",
-			SkipFields:  []string{"Arn"},
+			SubService:            "event_buses",
+			Struct:                &ohaws.EventBus{},
+			PreResourceResolver:   "getEventbridgeEventBus",
+			Description:           "https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_EventBus.html",
+			SkipFields:            []string{"Arn"},
+			UnwrapEmbeddedStructs: true,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveEventbridgeEventBusTags`,
-					},
 					{
 						Name:    "arn",
 						Type:    schema.TypeString,
@@ -34,10 +33,12 @@ func EventbridgeResources() []*Resource {
 			ShouldGenerateResolverAndMockTest: false,
 		},
 		{
-			SubService:  "event_bus_rules",
-			Struct:      &types.Rule{},
-			Description: "https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Rule.html",
-			SkipFields:  []string{},
+			SubService:            "event_bus_rules",
+			Struct:                &ohaws.EventBridgeRule{},
+			PreResourceResolver:   "getEventBusRule",
+			Description:           "https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Rule.html",
+			SkipFields:            []string{},
+			UnwrapEmbeddedStructs: true,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
@@ -46,27 +47,25 @@ func EventbridgeResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.ParentColumnResolver("arn")`,
 					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveEventbridgeEventBusRuleTags`,
-					},
 				}...),
 			ShouldGenerateResolverAndMockTest: false,
 		},
 		{
-			SubService:  "api_destinations",
-			Struct:      &types.ApiDestination{},
-			Description: "https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ApiDestination.html",
-			SkipFields:  []string{"ApiDestinationArn"},
-			ExtraColumns: append(defaultRegionalColumns, []codegen.ColumnDefinition{{
-				Name:     "arn",
-				Type:     schema.TypeString,
-				Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-				Resolver: `schema.PathResolver("ApiDestinationArn")`,
-			},
+			SubService:            "api_destinations",
+			Struct:                &ohaws.EventBridgeAPIDestination{},
+			PreResourceResolver:   "getEventBridgeAPIDestination",
+			Description:           "https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ApiDestination.html",
+			SkipFields:            []string{"ApiDestinationArn"},
+			UnwrapEmbeddedStructs: true,
+			ExtraColumns: append(defaultRegionalColumns, []codegen.ColumnDefinition{
+				{
+					Name:     "arn",
+					Type:     schema.TypeString,
+					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					Resolver: `schema.PathResolver("ApiDestinationArn")`,
+				},
 			}...),
-			ShouldGenerateResolverAndMockTest: true,
+			ShouldGenerateResolverAndMockTest: false,
 		},
 		{
 			SubService:  "archives",
@@ -85,12 +84,13 @@ func EventbridgeResources() []*Resource {
 			Struct:      &types.Connection{},
 			Description: "https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Connection.html",
 			SkipFields:  []string{"ConnectionArn"},
-			ExtraColumns: append(defaultRegionalColumns, []codegen.ColumnDefinition{{
-				Name:     "arn",
-				Type:     schema.TypeString,
-				Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-				Resolver: `schema.PathResolver("ConnectionArn")`,
-			},
+			ExtraColumns: append(defaultRegionalColumns, []codegen.ColumnDefinition{
+				{
+					Name:     "arn",
+					Type:     schema.TypeString,
+					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					Resolver: `schema.PathResolver("ConnectionArn")`,
+				},
 			}...),
 			ShouldGenerateResolverAndMockTest: true,
 		},
@@ -99,12 +99,13 @@ func EventbridgeResources() []*Resource {
 			Struct:      &types.EventSource{},
 			Description: "https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_EventSource.html",
 			SkipFields:  []string{"Arn"},
-			ExtraColumns: append(defaultRegionalColumns, []codegen.ColumnDefinition{{
-				Name:     "arn",
-				Type:     schema.TypeString,
-				Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-				Resolver: `schema.PathResolver("Arn")`,
-			},
+			ExtraColumns: append(defaultRegionalColumns, []codegen.ColumnDefinition{
+				{
+					Name:     "arn",
+					Type:     schema.TypeString,
+					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					Resolver: `schema.PathResolver("Arn")`,
+				},
 			}...),
 			ShouldGenerateResolverAndMockTest: true,
 		},
@@ -112,12 +113,13 @@ func EventbridgeResources() []*Resource {
 			SubService:  "replays",
 			Struct:      &types.Replay{},
 			Description: "https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Replay.html",
-			ExtraColumns: append(defaultRegionalColumns, []codegen.ColumnDefinition{{
-				Name:     "arn",
-				Type:     schema.TypeString,
-				Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-				Resolver: `resolveReplayArn`,
-			},
+			ExtraColumns: append(defaultRegionalColumns, []codegen.ColumnDefinition{
+				{
+					Name:     "arn",
+					Type:     schema.TypeString,
+					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					Resolver: `resolveReplayArn`,
+				},
 			}...),
 			ShouldGenerateResolverAndMockTest: true,
 		},
@@ -129,12 +131,13 @@ func EventbridgeResources() []*Resource {
 			Struct:      &types.Endpoint{},
 			Description: "https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Endpoint.html",
 			SkipFields:  []string{"Arn"},
-			ExtraColumns: append(defaultAccountColumns, []codegen.ColumnDefinition{{
-				Name:     "arn",
-				Type:     schema.TypeString,
-				Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-				Resolver: `schema.PathResolver("Arn")`,
-			},
+			ExtraColumns: append(defaultAccountColumns, []codegen.ColumnDefinition{
+				{
+					Name:     "arn",
+					Type:     schema.TypeString,
+					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
+					Resolver: `schema.PathResolver("Arn")`,
+				},
 			}...),
 			ShouldGenerateResolverAndMockTest: true,
 		},

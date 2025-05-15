@@ -18,10 +18,13 @@ The following tables depend on aws_eventbridge_event_buses:
 |_cq_parent_id|UUID|
 |account_id|String|
 |region|String|
-|tags|JSON|
 |arn (PK)|String|
 |creation_time|Timestamp|
+|dead_letter_config|JSON|
 |description|String|
+|kms_key_identifier|String|
 |last_modified_time|Timestamp|
 |name|String|
 |policy|String|
+|result_metadata|JSON|
+|tags|JSON|

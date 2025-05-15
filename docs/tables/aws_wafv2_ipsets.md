@@ -16,9 +16,6 @@ The primary key for this table is **arn**.
 |account_id|String|
 |region|String|
 |addresses|InetArray|
-|tags|JSON|
 |arn (PK)|String|
-|ip_address_version|String|
-|id|String|
-|name|String|
-|description|String|
+|ip_set|JSON|
+|tags|JSON|

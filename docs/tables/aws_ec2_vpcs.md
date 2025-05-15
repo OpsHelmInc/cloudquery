@@ -21,6 +21,7 @@ The primary key for this table is **arn**.
 |cidr_block|String|
 |cidr_block_association_set|JSON|
 |dhcp_options_id|String|
+|encryption_control|JSON|
 |instance_tenancy|String|
 |ipv6_cidr_block_association_set|JSON|
 |is_default|Bool|

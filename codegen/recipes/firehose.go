@@ -1,27 +1,23 @@
 package recipes
 
 import (
-	"github.com/aws/aws-sdk-go-v2/service/firehose/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func FirehoseResources() []*Resource {
 	resources := []*Resource{
 		{
 			SubService:          "delivery_streams",
-			Struct:              &types.DeliveryStreamDescription{},
+			Struct:              &ohaws.FirehoseStream{},
 			Description:         "https://docs.aws.amazon.com/firehose/latest/APIReference/API_DeliveryStreamDescription.html",
 			SkipFields:          []string{"DeliveryStreamARN"},
 			PreResourceResolver: "getDeliveryStream",
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveFirehoseDeliveryStreamTags`,
-					},
 					{
 						Name:     "arn",
 						Type:     schema.TypeString,

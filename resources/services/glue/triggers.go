@@ -33,11 +33,6 @@ func Triggers() *schema.Table {
 				},
 			},
 			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveGlueTriggerTags,
-			},
-			{
 				Name:     "actions",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Actions"),
@@ -86,6 +81,11 @@ func Triggers() *schema.Table {
 				Name:     "workflow_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("WorkflowName"),
+			},
+			{
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Tags"),
 			},
 		},
 	}

@@ -9,9 +9,10 @@ import (
 
 func ThingGroups() *schema.Table {
 	return &schema.Table{
-		Name:      "aws_iot_thing_groups",
-		Resolver:  fetchIotThingGroups,
-		Multiplex: client.ServiceAccountRegionMultiplexer("iot"),
+		Name:                "aws_iot_thing_groups",
+		Resolver:            fetchIotThingGroups,
+		PreResourceResolver: getIotThingGroup,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("iot"),
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -33,11 +34,6 @@ func ThingGroups() *schema.Table {
 				Type:          schema.TypeStringArray,
 				Resolver:      ResolveIotThingGroupPolicies,
 				IgnoreInTests: true,
-			},
-			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: ResolveIotThingGroupTags,
 			},
 			{
 				Name:     "arn",
@@ -96,6 +92,11 @@ func ThingGroups() *schema.Table {
 				Name:     "result_metadata",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ResultMetadata"),
+			},
+			{
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: client.ResolveTags,
 			},
 		},
 	}

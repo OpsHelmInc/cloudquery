@@ -9,10 +9,11 @@ import (
 
 func ApiDestinations() *schema.Table {
 	return &schema.Table{
-		Name:        "aws_eventbridge_api_destinations",
-		Description: `https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ApiDestination.html`,
-		Resolver:    fetchEventbridgeApiDestinations,
-		Multiplex:   client.ServiceAccountRegionMultiplexer("events"),
+		Name:                "aws_eventbridge_api_destinations",
+		Description:         `https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ApiDestination.html`,
+		Resolver:            fetchEventbridgeApiDestinations,
+		PreResourceResolver: getEventBridgeAPIDestination,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("events"),
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -48,6 +49,11 @@ func ApiDestinations() *schema.Table {
 				Resolver: schema.PathResolver("CreationTime"),
 			},
 			{
+				Name:     "description",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("Description"),
+			},
+			{
 				Name:     "http_method",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("HttpMethod"),
@@ -71,6 +77,16 @@ func ApiDestinations() *schema.Table {
 				Name:     "name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Name"),
+			},
+			{
+				Name:     "result_metadata",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ResultMetadata"),
+			},
+			{
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: client.ResolveTags,
 			},
 		},
 	}

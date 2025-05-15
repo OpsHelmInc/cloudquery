@@ -3,11 +3,14 @@ package firehose
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/firehose"
 	"github.com/aws/aws-sdk-go-v2/service/firehose/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/services"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchFirehoseDeliveryStreams(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -38,22 +41,29 @@ func getDeliveryStream(ctx context.Context, meta schema.ClientMeta, resource *sc
 	if err != nil {
 		return err
 	}
-	resource.Item = streamSummary.DeliveryStreamDescription
+
+	tags, err := getFirehoseDeliveryStreamTags(ctx, svc, *streamSummary.DeliveryStreamDescription.DeliveryStreamName)
+	if err != nil {
+		return err
+	}
+
+	resource.Item = &ohaws.FirehoseStream{
+		DeliveryStreamDescription: *streamSummary.DeliveryStreamDescription,
+		Tags:                      tags,
+	}
+
 	return nil
 }
 
-func resolveFirehoseDeliveryStreamTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	cl := meta.(*client.Client)
-	svc := cl.Services().Firehose
-	summary := resource.Item.(*types.DeliveryStreamDescription)
+func getFirehoseDeliveryStreamTags(ctx context.Context, svc services.FirehoseClient, streamName string) ([]types.Tag, error) {
 	input := firehose.ListTagsForDeliveryStreamInput{
-		DeliveryStreamName: summary.DeliveryStreamName,
+		DeliveryStreamName: aws.String(streamName),
 	}
 	var tags []types.Tag
 	for {
 		output, err := svc.ListTagsForDeliveryStream(ctx, &input)
 		if err != nil {
-			return err
+			return nil, err
 		}
 		tags = append(tags, output.Tags...)
 		if !aws.ToBool(output.HasMoreTags) {
@@ -61,5 +71,5 @@ func resolveFirehoseDeliveryStreamTags(ctx context.Context, meta schema.ClientMe
 		}
 		input.ExclusiveStartTagKey = aws.String(*output.Tags[len(output.Tags)-1].Key)
 	}
-	return resource.Set(c.Name, client.TagsToMap(tags))
+	return tags, nil
 }
