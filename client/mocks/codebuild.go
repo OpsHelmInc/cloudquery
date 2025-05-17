@@ -75,6 +75,26 @@ func (mr *MockCodebuildClientMockRecorder) BatchGetBuilds(arg0, arg1 interface{}
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "BatchGetBuilds", reflect.TypeOf((*MockCodebuildClient)(nil).BatchGetBuilds), varargs...)
 }
 
+// BatchGetCommandExecutions mocks base method.
+func (m *MockCodebuildClient) BatchGetCommandExecutions(arg0 context.Context, arg1 *codebuild.BatchGetCommandExecutionsInput, arg2 ...func(*codebuild.Options)) (*codebuild.BatchGetCommandExecutionsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "BatchGetCommandExecutions", varargs...)
+	ret0, _ := ret[0].(*codebuild.BatchGetCommandExecutionsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// BatchGetCommandExecutions indicates an expected call of BatchGetCommandExecutions.
+func (mr *MockCodebuildClientMockRecorder) BatchGetCommandExecutions(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "BatchGetCommandExecutions", reflect.TypeOf((*MockCodebuildClient)(nil).BatchGetCommandExecutions), varargs...)
+}
+
 // BatchGetFleets mocks base method.
 func (m *MockCodebuildClient) BatchGetFleets(arg0 context.Context, arg1 *codebuild.BatchGetFleetsInput, arg2 ...func(*codebuild.Options)) (*codebuild.BatchGetFleetsOutput, error) {
 	m.ctrl.T.Helper()
@@ -153,6 +173,26 @@ func (mr *MockCodebuildClientMockRecorder) BatchGetReports(arg0, arg1 interface{
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "BatchGetReports", reflect.TypeOf((*MockCodebuildClient)(nil).BatchGetReports), varargs...)
+}
+
+// BatchGetSandboxes mocks base method.
+func (m *MockCodebuildClient) BatchGetSandboxes(arg0 context.Context, arg1 *codebuild.BatchGetSandboxesInput, arg2 ...func(*codebuild.Options)) (*codebuild.BatchGetSandboxesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "BatchGetSandboxes", varargs...)
+	ret0, _ := ret[0].(*codebuild.BatchGetSandboxesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// BatchGetSandboxes indicates an expected call of BatchGetSandboxes.
+func (mr *MockCodebuildClientMockRecorder) BatchGetSandboxes(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "BatchGetSandboxes", reflect.TypeOf((*MockCodebuildClient)(nil).BatchGetSandboxes), varargs...)
 }
 
 // DescribeCodeCoverages mocks base method.
@@ -315,6 +355,26 @@ func (mr *MockCodebuildClientMockRecorder) ListBuildsForProject(arg0, arg1 inter
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListBuildsForProject", reflect.TypeOf((*MockCodebuildClient)(nil).ListBuildsForProject), varargs...)
 }
 
+// ListCommandExecutionsForSandbox mocks base method.
+func (m *MockCodebuildClient) ListCommandExecutionsForSandbox(arg0 context.Context, arg1 *codebuild.ListCommandExecutionsForSandboxInput, arg2 ...func(*codebuild.Options)) (*codebuild.ListCommandExecutionsForSandboxOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListCommandExecutionsForSandbox", varargs...)
+	ret0, _ := ret[0].(*codebuild.ListCommandExecutionsForSandboxOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListCommandExecutionsForSandbox indicates an expected call of ListCommandExecutionsForSandbox.
+func (mr *MockCodebuildClientMockRecorder) ListCommandExecutionsForSandbox(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListCommandExecutionsForSandbox", reflect.TypeOf((*MockCodebuildClient)(nil).ListCommandExecutionsForSandbox), varargs...)
+}
+
 // ListCuratedEnvironmentImages mocks base method.
 func (m *MockCodebuildClient) ListCuratedEnvironmentImages(arg0 context.Context, arg1 *codebuild.ListCuratedEnvironmentImagesInput, arg2 ...func(*codebuild.Options)) (*codebuild.ListCuratedEnvironmentImagesOutput, error) {
 	m.ctrl.T.Helper()
@@ -433,6 +493,46 @@ func (mr *MockCodebuildClientMockRecorder) ListReportsForReportGroup(arg0, arg1 
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListReportsForReportGroup", reflect.TypeOf((*MockCodebuildClient)(nil).ListReportsForReportGroup), varargs...)
+}
+
+// ListSandboxes mocks base method.
+func (m *MockCodebuildClient) ListSandboxes(arg0 context.Context, arg1 *codebuild.ListSandboxesInput, arg2 ...func(*codebuild.Options)) (*codebuild.ListSandboxesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListSandboxes", varargs...)
+	ret0, _ := ret[0].(*codebuild.ListSandboxesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListSandboxes indicates an expected call of ListSandboxes.
+func (mr *MockCodebuildClientMockRecorder) ListSandboxes(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListSandboxes", reflect.TypeOf((*MockCodebuildClient)(nil).ListSandboxes), varargs...)
+}
+
+// ListSandboxesForProject mocks base method.
+func (m *MockCodebuildClient) ListSandboxesForProject(arg0 context.Context, arg1 *codebuild.ListSandboxesForProjectInput, arg2 ...func(*codebuild.Options)) (*codebuild.ListSandboxesForProjectOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListSandboxesForProject", varargs...)
+	ret0, _ := ret[0].(*codebuild.ListSandboxesForProjectOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListSandboxesForProject indicates an expected call of ListSandboxesForProject.
+func (mr *MockCodebuildClientMockRecorder) ListSandboxesForProject(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListSandboxesForProject", reflect.TypeOf((*MockCodebuildClient)(nil).ListSandboxesForProject), varargs...)
 }
 
 // ListSharedProjects mocks base method.

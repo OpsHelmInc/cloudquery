@@ -4,16 +4,16 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/OpsHelmInc/cloudquery/resources/services/route53/models"
 	"github.com/aws/aws-sdk-go-v2/service/route53/types"
 	"github.com/aws/aws-sdk-go-v2/service/route53domains"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func Route53Resources() []*Resource {
 	resources := []*Resource{
-
 		{
 			SubService:  "delegation_sets",
 			Struct:      &types.DelegationSet{},
@@ -86,9 +86,10 @@ func Route53Resources() []*Resource {
 		},
 
 		{
-			SubService: "hosted_zones",
-			Struct:     &models.Route53HostedZoneWrapper{},
-			SkipFields: []string{"ARN"},
+			SubService:            "hosted_zones",
+			Struct:                &ohaws.Route53HostedZone{},
+			SkipFields:            []string{"ARN"},
+			UnwrapEmbeddedStructs: true,
 			ExtraColumns: append(
 				defaultAccountColumns,
 				[]codegen.ColumnDefinition{

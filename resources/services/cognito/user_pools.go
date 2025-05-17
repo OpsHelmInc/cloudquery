@@ -204,6 +204,11 @@ func UserPools() *schema.Table {
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("VerificationMessageTemplate"),
 			},
+			{
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Tags"),
+			},
 		},
 
 		Relations: []*schema.Table{

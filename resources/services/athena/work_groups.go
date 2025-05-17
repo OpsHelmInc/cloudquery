@@ -34,39 +34,14 @@ func WorkGroups() *schema.Table {
 				},
 			},
 			{
+				Name:     "work_group",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("WorkGroup"),
+			},
+			{
 				Name:     "tags",
 				Type:     schema.TypeJSON,
-				Resolver: resolveAthenaWorkGroupTags,
-			},
-			{
-				Name:     "name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Name"),
-			},
-			{
-				Name:     "configuration",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("Configuration"),
-			},
-			{
-				Name:     "creation_time",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("CreationTime"),
-			},
-			{
-				Name:     "description",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Description"),
-			},
-			{
-				Name:     "identity_center_application_arn",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("IdentityCenterApplicationArn"),
-			},
-			{
-				Name:     "state",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("State"),
+				Resolver: client.ResolveTags,
 			},
 		},
 

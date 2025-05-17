@@ -18,8 +18,8 @@ This table depends on [aws_eventbridge_event_buses](aws_eventbridge_event_buses.
 |account_id|String|
 |region|String|
 |event_bus_arn|String|
-|tags|JSON|
 |arn|String|
+|created_by|String|
 |description|String|
 |event_bus_name|String|
 |event_pattern|String|
@@ -28,3 +28,5 @@ This table depends on [aws_eventbridge_event_buses](aws_eventbridge_event_buses.
 |role_arn|String|
 |schedule_expression|String|
 |state|String|
+|result_metadata|JSON|
+|tags|JSON|

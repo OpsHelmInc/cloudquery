@@ -2,12 +2,15 @@ package eventbridge
 
 import (
 	"context"
+	"fmt"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/eventbridge"
 	"github.com/aws/aws-sdk-go-v2/service/eventbridge/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchEventbridgeEventBuses(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -27,12 +30,34 @@ func fetchEventbridgeEventBuses(ctx context.Context, meta schema.ClientMeta, par
 	}
 	return nil
 }
-func resolveEventbridgeEventBusTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	eventBusArn := resource.Item.(types.EventBus).Arn
-	return resolveEventBridgeTags(ctx, meta, resource, c, *eventBusArn)
+
+func getEventbridgeEventBus(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
+	c := meta.(*client.Client)
+	svc := c.Services().Eventbridge
+	eb := resource.Item.(types.EventBus)
+
+	resp, err := svc.DescribeEventBus(ctx, &eventbridge.DescribeEventBusInput{Name: eb.Name})
+	if err != nil {
+		return fmt.Errorf("error describing event bus: %w", err)
+	}
+
+	eventBus := &ohaws.EventBus{
+		DescribeEventBusOutput: resp,
+	}
+
+	tags, err := getEventBridgeTags(ctx, meta, *eventBus.Arn)
+	if err != nil {
+		return err
+	}
+
+	eventBus.Tags = tags
+	resource.Item = eventBus
+
+	return nil
 }
+
 func fetchEventbridgeEventBusRules(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
-	p := parent.Item.(types.EventBus)
+	p := parent.Item.(*ohaws.EventBus)
 	input := eventbridge.ListRulesInput{
 		EventBusName: p.Arn,
 	}
@@ -51,12 +76,36 @@ func fetchEventbridgeEventBusRules(ctx context.Context, meta schema.ClientMeta, 
 	}
 	return nil
 }
-func resolveEventbridgeEventBusRuleTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	eventBusArn := resource.Item.(types.Rule).Arn
-	return resolveEventBridgeTags(ctx, meta, resource, c, *eventBusArn)
+
+func getEventBusRule(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
+	c := meta.(*client.Client)
+	svc := c.Services().Eventbridge
+	r := resource.Item.(types.Rule)
+
+	resp, err := svc.DescribeRule(ctx, &eventbridge.DescribeRuleInput{
+		Name:         r.Name,
+		EventBusName: r.EventBusName,
+	})
+	if err != nil {
+		return fmt.Errorf("error describing event bridge rule: %w", err)
+	}
+
+	rule := &ohaws.EventBridgeRule{
+		DescribeRuleOutput: resp,
+	}
+
+	tags, err := getEventBridgeTags(ctx, meta, *rule.Arn)
+	if err != nil {
+		return err
+	}
+	rule.Tags = tags
+
+	resource.Item = rule
+
+	return nil
 }
 
-func resolveEventBridgeTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column, resourceArn string) error {
+func getEventBridgeTags(ctx context.Context, meta schema.ClientMeta, resourceArn string) ([]types.Tag, error) {
 	cl := meta.(*client.Client)
 	svc := cl.Services().Eventbridge
 	input := eventbridge.ListTagsForResourceInput{
@@ -64,7 +113,7 @@ func resolveEventBridgeTags(ctx context.Context, meta schema.ClientMeta, resourc
 	}
 	output, err := svc.ListTagsForResource(ctx, &input)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return resource.Set(c.Name, client.TagsToMap(output.Tags))
+	return output.Tags, nil
 }

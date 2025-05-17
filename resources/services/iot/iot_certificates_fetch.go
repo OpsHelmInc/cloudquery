@@ -2,12 +2,14 @@ package iot
 
 import (
 	"context"
+	"fmt"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/iot"
-	"github.com/aws/aws-sdk-go-v2/service/iot/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchIotCertificates(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -24,7 +26,7 @@ func fetchIotCertificates(ctx context.Context, meta schema.ClientMeta, parent *s
 		}
 
 		for _, ct := range response.Certificates {
-			cert, err := svc.DescribeCertificate(ctx, &iot.DescribeCertificateInput{
+			resp, err := svc.DescribeCertificate(ctx, &iot.DescribeCertificateInput{
 				CertificateId: ct.CertificateId,
 			}, func(options *iot.Options) {
 				options.Region = cl.Region
@@ -32,7 +34,10 @@ func fetchIotCertificates(ctx context.Context, meta schema.ClientMeta, parent *s
 			if err != nil {
 				return err
 			}
-			res <- cert.CertificateDescription
+			cert := &ohaws.IoTCertificate{
+				CertificateDescription: *resp.CertificateDescription,
+			}
+			res <- cert
 		}
 
 		if aws.ToString(response.NextMarker) == "" {
@@ -42,8 +47,25 @@ func fetchIotCertificates(ctx context.Context, meta schema.ClientMeta, parent *s
 	}
 	return nil
 }
+
+func getIotCertificate(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
+	cl := meta.(*client.Client)
+	svc := cl.Services().Iot
+	cert := resource.Item.(*ohaws.IoTCertificate)
+
+	tags, err := getResourceTags(ctx, svc, aws.ToString(cert.CertificateArn))
+	if err != nil {
+		return fmt.Errorf("error listing tags: %w", err)
+	}
+
+	cert.Tags = tags
+	resource.Item = cert
+
+	return nil
+}
+
 func ResolveIotCertificatePolicies(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	i := resource.Item.(*types.CertificateDescription)
+	i := resource.Item.(*ohaws.IoTCertificate)
 	cl := meta.(*client.Client)
 	svc := cl.Services().Iot
 	input := iot.ListAttachedPoliciesInput{

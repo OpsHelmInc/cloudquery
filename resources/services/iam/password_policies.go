@@ -32,54 +32,9 @@ func PasswordPolicies() *schema.Table {
 				Resolver: client.StaticValueResolver("AWS::IAM::AccountPasswordPolicy"),
 			},
 			{
-				Name:     "allow_users_to_change_password",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("AllowUsersToChangePassword"),
-			},
-			{
-				Name:     "expire_passwords",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("ExpirePasswords"),
-			},
-			{
-				Name:     "hard_expiry",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("HardExpiry"),
-			},
-			{
-				Name:     "max_password_age",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("MaxPasswordAge"),
-			},
-			{
-				Name:     "minimum_password_length",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("MinimumPasswordLength"),
-			},
-			{
-				Name:     "password_reuse_prevention",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("PasswordReusePrevention"),
-			},
-			{
-				Name:     "require_lowercase_characters",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("RequireLowercaseCharacters"),
-			},
-			{
-				Name:     "require_numbers",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("RequireNumbers"),
-			},
-			{
-				Name:     "require_symbols",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("RequireSymbols"),
-			},
-			{
-				Name:     "require_uppercase_characters",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("RequireUppercaseCharacters"),
+				Name:     "password_policy",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("PasswordPolicy"),
 			},
 			{
 				Name:     "policy_exists",

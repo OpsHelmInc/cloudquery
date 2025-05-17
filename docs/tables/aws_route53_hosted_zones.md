@@ -28,4 +28,5 @@ The following tables depend on aws_route53_hosted_zones:
 |resource_record_set_count|Int|
 |tags|JSON|
 |delegation_set_id|String|
+|delegation_set|JSON|
 |vpcs|JSON|

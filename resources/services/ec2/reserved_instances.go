@@ -38,6 +38,11 @@ func ReservedInstances() *schema.Table {
 				Resolver: schema.PathResolver("AvailabilityZone"),
 			},
 			{
+				Name:     "availability_zone_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("AvailabilityZoneId"),
+			},
+			{
 				Name:     "currency_code",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("CurrencyCode"),

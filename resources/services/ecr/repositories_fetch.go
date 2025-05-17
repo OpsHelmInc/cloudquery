@@ -11,6 +11,7 @@ import (
 
 	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/OpsHelmInc/cloudquery/resources/services/ecr/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchEcrRepositories(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -25,7 +26,14 @@ func fetchEcrRepositories(ctx context.Context, meta schema.ClientMeta, parent *s
 		if err != nil {
 			return err
 		}
-		res <- output.Repositories
+
+		repos := make([]*ohaws.ECRRepository, len(output.Repositories))
+		for idx, r := range output.Repositories {
+			repos[idx] = &ohaws.ECRRepository{
+				Repository: r,
+			}
+		}
+		res <- repos
 		if aws.ToString(output.NextToken) == "" {
 			break
 		}
@@ -34,10 +42,10 @@ func fetchEcrRepositories(ctx context.Context, meta schema.ClientMeta, parent *s
 	return nil
 }
 
-func resolveRepositoryTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
+func getRepository(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
 	cl := meta.(*client.Client)
 	svc := cl.Services().Ecr
-	repo := resource.Item.(types.Repository)
+	repo := resource.Item.(*ohaws.ECRRepository)
 
 	input := ecr.ListTagsForResourceInput{
 		ResourceArn: repo.RepositoryArn,
@@ -46,13 +54,15 @@ func resolveRepositoryTags(ctx context.Context, meta schema.ClientMeta, resource
 	if err != nil {
 		return err
 	}
-	return resource.Set(c.Name, client.TagsToMap(output.Tags))
+
+	repo.Tags = client.TagsToMap(output.Tags)
+	return nil
 }
 
 func resolveRepositoryPolicy(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	cl := meta.(*client.Client)
 	svc := cl.Services().Ecr
-	repo := resource.Item.(types.Repository)
+	repo := resource.Item.(*ohaws.ECRRepository)
 
 	input := ecr.GetRepositoryPolicyInput{
 		RepositoryName: repo.RepositoryName,
@@ -67,7 +77,7 @@ func resolveRepositoryPolicy(ctx context.Context, meta schema.ClientMeta, resour
 
 func fetchEcrRepositoryImages(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	config := ecr.DescribeImagesInput{
-		RepositoryName: parent.Item.(types.Repository).RepositoryName,
+		RepositoryName: parent.Item.(*ohaws.ECRRepository).RepositoryName,
 		MaxResults:     aws.Int32(1000),
 	}
 	paginator := ecr.NewDescribeImagesPaginator(meta.(*client.Client).Services().Ecr, &config)
@@ -84,7 +94,7 @@ func fetchEcrRepositoryImages(ctx context.Context, meta schema.ClientMeta, paren
 func fetchEcrRepositoryImageScanFindings(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	c := meta.(*client.Client)
 	image := parent.Item.(types.ImageDetail)
-	repo := parent.Parent.Item.(types.Repository)
+	repo := parent.Parent.Item.(*ohaws.ECRRepository)
 	for _, tag := range image.ImageTags {
 		config := ecr.DescribeImageScanFindingsInput{
 			RepositoryName: repo.RepositoryName,

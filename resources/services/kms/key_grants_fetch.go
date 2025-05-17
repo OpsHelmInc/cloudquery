@@ -3,15 +3,16 @@ package kms
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/kms"
-	"github.com/aws/aws-sdk-go-v2/service/kms/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchKmsKeyGrants(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
-	k := parent.Item.(*types.KeyMetadata)
+	k := parent.Item.(*ohaws.KMSKey)
 	config := kms.ListGrantsInput{
 		KeyId: k.Arn,
 		Limit: aws.Int32(100),

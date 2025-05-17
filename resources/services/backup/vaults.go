@@ -9,10 +9,11 @@ import (
 
 func Vaults() *schema.Table {
 	return &schema.Table{
-		Name:        "aws_backup_vaults",
-		Description: `https://docs.aws.amazon.com/aws-backup/latest/devguide/API_BackupVaultListMember.html`,
-		Resolver:    fetchBackupVaults,
-		Multiplex:   client.ServiceAccountRegionMultiplexer("backup"),
+		Name:                "aws_backup_vaults",
+		Description:         `https://docs.aws.amazon.com/aws-backup/latest/devguide/API_BackupVaultListMember.html`,
+		Resolver:            fetchBackupVaults,
+		PreResourceResolver: getBackupVault,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("backup"),
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -45,64 +46,14 @@ func Vaults() *schema.Table {
 				IgnoreInTests: true,
 			},
 			{
+				Name:     "backup_vault_list_member",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("BackupVaultListMember"),
+			},
+			{
 				Name:     "tags",
 				Type:     schema.TypeJSON,
-				Resolver: resolveVaultTags,
-			},
-			{
-				Name:     "backup_vault_name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("BackupVaultName"),
-			},
-			{
-				Name:     "creation_date",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("CreationDate"),
-			},
-			{
-				Name:     "creator_request_id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("CreatorRequestId"),
-			},
-			{
-				Name:     "encryption_key_arn",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("EncryptionKeyArn"),
-			},
-			{
-				Name:     "lock_date",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("LockDate"),
-			},
-			{
-				Name:     "locked",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("Locked"),
-			},
-			{
-				Name:     "max_retention_days",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("MaxRetentionDays"),
-			},
-			{
-				Name:     "min_retention_days",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("MinRetentionDays"),
-			},
-			{
-				Name:     "number_of_recovery_points",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("NumberOfRecoveryPoints"),
-			},
-			{
-				Name:     "vault_state",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("VaultState"),
-			},
-			{
-				Name:     "vault_type",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("VaultType"),
+				Resolver: schema.PathResolver("Tags"),
 			},
 		},
 

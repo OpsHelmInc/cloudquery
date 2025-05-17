@@ -33,12 +33,6 @@ func EndpointConfigurations() *schema.Table {
 				},
 			},
 			{
-				Name:        "tags",
-				Type:        schema.TypeJSON,
-				Resolver:    resolveSagemakerEndpointConfigurationTags,
-				Description: `The tags associated with the model.`,
-			},
-			{
 				Name:     "creation_time",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreationTime"),
@@ -94,9 +88,9 @@ func EndpointConfigurations() *schema.Table {
 				Resolver: schema.PathResolver("VpcConfig"),
 			},
 			{
-				Name:     "result_metadata",
+				Name:     "tags",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("ResultMetadata"),
+				Resolver: client.ResolveTags,
 			},
 		},
 	}

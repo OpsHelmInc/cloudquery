@@ -34,4 +34,5 @@ The primary key for this table is **arn**.
 |tags|JSON|
 |throughput|Int|
 |volume_id|String|
+|volume_initialization_rate|Int|
 |volume_type|String|

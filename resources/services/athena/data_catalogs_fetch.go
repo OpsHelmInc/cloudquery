@@ -4,12 +4,15 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/athena"
 	"github.com/aws/aws-sdk-go-v2/service/athena/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/services"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchAthenaDataCatalogs(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -41,48 +44,57 @@ func getDataCatalog(ctx context.Context, meta schema.ClientMeta, resource *schem
 		// retrieving of default data catalog (AwsDataCatalog) returns "not found error" (with statuscode 400: InvalidRequestException:...) but it exists and its
 		// relations can be fetched by its name
 		if client.IsAWSError(err, "InvalidRequestException") && *catalogSummary.CatalogName == "AwsDataCatalog" {
-			resource.Item = types.DataCatalog{Name: catalogSummary.CatalogName, Type: catalogSummary.Type}
+			resource.Item = &ohaws.AthenaDataCatalog{DataCatalog: types.DataCatalog{Name: catalogSummary.CatalogName, Type: catalogSummary.Type}}
 			return nil
 		}
 		return err
 	}
-	resource.Item = *dc.DataCatalog
+
+	catalog := ohaws.AthenaDataCatalog{
+		DataCatalog: *dc.DataCatalog,
+	}
+
+	tags, err := getDataCatalogTags(ctx, c, svc, createDataCatalogArn(c, *catalog.Name))
+	if err != nil {
+		return err
+	}
+	catalog.Tags = tags
+
+	resource.Item = &catalog
+
 	return nil
 }
 
 func resolveAthenaDataCatalogArn(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	cl := meta.(*client.Client)
-	dc := resource.Item.(types.DataCatalog)
+	dc := resource.Item.(*ohaws.AthenaDataCatalog)
 	return resource.Set(c.Name, createDataCatalogArn(cl, *dc.Name))
 }
-func resolveAthenaDataCatalogTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	cl := meta.(*client.Client)
-	svc := cl.Services().Athena
-	dc := resource.Item.(types.DataCatalog)
-	arnStr := createDataCatalogArn(cl, *dc.Name)
-	params := athena.ListTagsForResourceInput{ResourceARN: &arnStr}
-	tags := make(map[string]string)
-	for {
-		result, err := svc.ListTagsForResource(ctx, &params)
+
+func getDataCatalogTags(ctx context.Context, c *client.Client, svc services.AthenaClient, catalogArn string) ([]types.Tag, error) {
+	params := athena.ListTagsForResourceInput{ResourceARN: &catalogArn}
+
+	var tags []types.Tag
+	tagsPaginator := athena.NewListTagsForResourcePaginator(svc, &params)
+	for tagsPaginator.HasMorePages() {
+		result, err := tagsPaginator.NextPage(ctx)
 		if err != nil {
-			if cl.IsNotFoundError(err) {
-				return nil
+			if c.IsNotFoundError(err) {
+				return nil, nil
 			}
-			return err
+			return nil, err
 		}
-		client.TagsIntoMap(result.Tags, tags)
-		if aws.ToString(result.NextToken) == "" {
-			break
-		}
-		params.NextToken = result.NextToken
+
+		tags = append(tags, result.Tags...)
 	}
-	return resource.Set(c.Name, tags)
+	return tags, nil
 }
+
 func fetchAthenaDataCatalogDatabases(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	c := meta.(*client.Client)
 	svc := c.Services().Athena
 	input := athena.ListDatabasesInput{
-		CatalogName: parent.Item.(types.DataCatalog).Name,
+		CatalogName: parent.Item.(*ohaws.AthenaDataCatalog).Name,
 	}
 	for {
 		response, err := svc.ListDatabases(ctx, &input)
@@ -98,11 +110,12 @@ func fetchAthenaDataCatalogDatabases(ctx context.Context, meta schema.ClientMeta
 	}
 	return nil
 }
+
 func fetchAthenaDataCatalogDatabaseTables(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	cl := meta.(*client.Client)
 	svc := cl.Services().Athena
 	input := athena.ListTableMetadataInput{
-		CatalogName:  parent.Parent.Item.(types.DataCatalog).Name,
+		CatalogName:  parent.Parent.Item.(*ohaws.AthenaDataCatalog).Name,
 		DatabaseName: parent.Item.(types.Database).Name,
 	}
 	for {

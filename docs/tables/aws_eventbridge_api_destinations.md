@@ -19,8 +19,11 @@ The primary key for this table is **arn**.
 |api_destination_state|String|
 |connection_arn|String|
 |creation_time|Timestamp|
+|description|String|
 |http_method|String|
 |invocation_endpoint|String|
 |invocation_rate_limit_per_second|Int|
 |last_modified_time|Timestamp|
 |name|String|
+|result_metadata|JSON|
+|tags|JSON|

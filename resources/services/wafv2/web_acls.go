@@ -25,11 +25,6 @@ func WebAcls() *schema.Table {
 				Resolver: client.ResolveAWSRegion,
 			},
 			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveWebACLTags,
-			},
-			{
 				Name:     "resources_for_web_acl",
 				Type:     schema.TypeStringArray,
 				Resolver: resolveWafv2webACLResourcesForWebACL,
@@ -43,94 +38,19 @@ func WebAcls() *schema.Table {
 				},
 			},
 			{
-				Name:     "default_action",
+				Name:     "web_acl",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("DefaultAction"),
-			},
-			{
-				Name:     "id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Id"),
-			},
-			{
-				Name:     "name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Name"),
-			},
-			{
-				Name:     "visibility_config",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("VisibilityConfig"),
-			},
-			{
-				Name:     "association_config",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("AssociationConfig"),
-			},
-			{
-				Name:     "capacity",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("Capacity"),
-			},
-			{
-				Name:     "captcha_config",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("CaptchaConfig"),
-			},
-			{
-				Name:     "challenge_config",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("ChallengeConfig"),
-			},
-			{
-				Name:     "custom_response_bodies",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("CustomResponseBodies"),
-			},
-			{
-				Name:     "description",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Description"),
-			},
-			{
-				Name:     "label_namespace",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("LabelNamespace"),
-			},
-			{
-				Name:     "managed_by_firewall_manager",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("ManagedByFirewallManager"),
-			},
-			{
-				Name:     "post_process_firewall_manager_rule_groups",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("PostProcessFirewallManagerRuleGroups"),
-			},
-			{
-				Name:     "pre_process_firewall_manager_rule_groups",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("PreProcessFirewallManagerRuleGroups"),
-			},
-			{
-				Name:     "retrofitted_by_firewall_manager",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("RetrofittedByFirewallManager"),
-			},
-			{
-				Name:     "rules",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("Rules"),
-			},
-			{
-				Name:     "token_domains",
-				Type:     schema.TypeStringArray,
-				Resolver: schema.PathResolver("TokenDomains"),
+				Resolver: schema.PathResolver("WebACL"),
 			},
 			{
 				Name:     "logging_configuration",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("LoggingConfiguration"),
+			},
+			{
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: client.ResolveTags,
 			},
 		},
 	}

@@ -8,7 +8,7 @@ import (
 	"github.com/cloudquery/plugin-sdk/schema"
 
 	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/resources/services/iam/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchIamPasswordPolicies(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -18,12 +18,12 @@ func fetchIamPasswordPolicies(ctx context.Context, meta schema.ClientMeta, paren
 	response, err := svc.GetAccountPasswordPolicy(ctx, &config)
 	if err != nil {
 		if c.IsNotFoundError(err) {
-			res <- models.PasswordPolicyWrapper{PolicyExists: false}
+			res <- ohaws.PasswordPolicy{PolicyExists: false}
 			return nil
 		}
 		return err
 	}
-	res <- models.PasswordPolicyWrapper{PasswordPolicy: *response.PasswordPolicy, PolicyExists: true}
+	res <- ohaws.PasswordPolicy{PasswordPolicy: *response.PasswordPolicy, PolicyExists: true}
 	return nil
 }
 

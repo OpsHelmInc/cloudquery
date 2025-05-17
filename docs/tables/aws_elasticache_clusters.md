@@ -49,3 +49,4 @@ The primary key for this table is **arn**.
 |snapshot_window|String|
 |transit_encryption_enabled|Bool|
 |transit_encryption_mode|String|
+|tags|JSON|

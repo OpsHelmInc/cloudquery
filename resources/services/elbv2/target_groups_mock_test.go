@@ -3,12 +3,13 @@ package elbv2
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/elasticloadbalancingv2"
 	elbv2Types "github.com/aws/aws-sdk-go-v2/service/elasticloadbalancingv2/types"
 	"github.com/cloudquery/plugin-sdk/faker"
 	"github.com/golang/mock/gomock"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/mocks"
 )
 
 func buildElbv2TargetGroups(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -30,6 +31,13 @@ func buildElbv2TargetGroups(t *testing.T, ctrl *gomock.Controller) client.Servic
 		t.Fatal(err)
 	}
 	m.EXPECT().DescribeTags(gomock.Any(), gomock.Any(), gomock.Any()).Return(&tags, nil)
+
+	attrs := elasticloadbalancingv2.DescribeTargetGroupAttributesOutput{}
+	err = faker.FakeObject(&attrs)
+	if err != nil {
+		t.Fatal(err)
+	}
+	m.EXPECT().DescribeTargetGroupAttributes(gomock.Any(), gomock.Any(), gomock.Any()).Return(&attrs, nil)
 
 	th := elasticloadbalancingv2.DescribeTargetHealthOutput{}
 	err = faker.FakeObject(&th)

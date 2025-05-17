@@ -9,10 +9,11 @@ import (
 
 func EventBuses() *schema.Table {
 	return &schema.Table{
-		Name:        "aws_eventbridge_event_buses",
-		Description: `https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_EventBus.html`,
-		Resolver:    fetchEventbridgeEventBuses,
-		Multiplex:   client.ServiceAccountRegionMultiplexer("events"),
+		Name:                "aws_eventbridge_event_buses",
+		Description:         `https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_EventBus.html`,
+		Resolver:            fetchEventbridgeEventBuses,
+		PreResourceResolver: getEventbridgeEventBus,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("events"),
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -23,11 +24,6 @@ func EventBuses() *schema.Table {
 				Name:     "region",
 				Type:     schema.TypeString,
 				Resolver: client.ResolveAWSRegion,
-			},
-			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveEventbridgeEventBusTags,
 			},
 			{
 				Name: "arn",
@@ -42,9 +38,19 @@ func EventBuses() *schema.Table {
 				Resolver: schema.PathResolver("CreationTime"),
 			},
 			{
+				Name:     "dead_letter_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("DeadLetterConfig"),
+			},
+			{
 				Name:     "description",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Description"),
+			},
+			{
+				Name:     "kms_key_identifier",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("KmsKeyIdentifier"),
 			},
 			{
 				Name:     "last_modified_time",
@@ -60,6 +66,16 @@ func EventBuses() *schema.Table {
 				Name:     "policy",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Policy"),
+			},
+			{
+				Name:     "result_metadata",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ResultMetadata"),
+			},
+			{
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: client.ResolveTags,
 			},
 		},
 

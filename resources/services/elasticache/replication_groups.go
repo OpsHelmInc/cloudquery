@@ -9,10 +9,11 @@ import (
 
 func ReplicationGroups() *schema.Table {
 	return &schema.Table{
-		Name:        "aws_elasticache_replication_groups",
-		Description: `https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ReplicationGroup.html`,
-		Resolver:    fetchElasticacheReplicationGroups,
-		Multiplex:   client.ServiceAccountRegionMultiplexer("elasticache"),
+		Name:                "aws_elasticache_replication_groups",
+		Description:         `https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ReplicationGroup.html`,
+		Resolver:            fetchElasticacheReplicationGroups,
+		PreResourceResolver: getReplicationGroup,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("elasticache"),
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -186,6 +187,11 @@ func ReplicationGroups() *schema.Table {
 				Name:     "user_group_ids",
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("UserGroupIds"),
+			},
+			{
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: client.ResolveTags,
 			},
 		},
 	}

@@ -100,6 +100,11 @@ func Eips() *schema.Table {
 				Resolver: schema.PathResolver("PublicIpv4Pool"),
 			},
 			{
+				Name:     "service_managed",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ServiceManaged"),
+			},
+			{
 				Name:     "tags",
 				Type:     schema.TypeJSON,
 				Resolver: client.ResolveTags,

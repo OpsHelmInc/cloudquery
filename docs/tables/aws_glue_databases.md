@@ -19,7 +19,6 @@ The following tables depend on aws_glue_databases:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
-|tags|JSON|
 |name|String|
 |catalog_id|String|
 |create_table_default_permissions|JSON|
@@ -29,3 +28,4 @@ The following tables depend on aws_glue_databases:
 |location_uri|String|
 |parameters|JSON|
 |target_database|JSON|
+|tags|JSON|

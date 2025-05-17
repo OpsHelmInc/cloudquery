@@ -19,7 +19,6 @@ The following tables depend on aws_glue_jobs:
 |account_id|String|
 |region|String|
 |arn (PK)|String|
-|tags|JSON|
 |allocated_capacity|Int|
 |code_gen_configuration_nodes|JSON|
 |command|JSON|
@@ -47,3 +46,4 @@ The following tables depend on aws_glue_jobs:
 |source_control_details|JSON|
 |timeout|Int|
 |worker_type|String|
+|tags|JSON|

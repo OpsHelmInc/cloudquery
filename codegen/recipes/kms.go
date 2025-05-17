@@ -4,6 +4,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/kms/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func KMSResources() []*Resource {
@@ -25,7 +27,7 @@ func KMSResources() []*Resource {
 				}...),
 		}, {
 			SubService:          "keys",
-			Struct:              &types.KeyMetadata{},
+			Struct:              &ohaws.KMSKey{},
 			Description:         "https://docs.aws.amazon.com/kms/latest/APIReference/API_KeyMetadata.html",
 			PreResourceResolver: "getKey",
 			SkipFields:          []string{"Arn"},
@@ -36,11 +38,6 @@ func KMSResources() []*Resource {
 						Name:     "rotation_enabled",
 						Type:     schema.TypeBool,
 						Resolver: `resolveKeysRotationEnabled`,
-					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveKeysTags`,
 					},
 					{
 						Name:    "arn",

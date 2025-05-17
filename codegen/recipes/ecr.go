@@ -7,6 +7,7 @@ import (
 	"github.com/cloudquery/plugin-sdk/schema"
 
 	"github.com/OpsHelmInc/cloudquery/resources/services/ecr/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func ECRResources() []*Resource {
@@ -49,11 +50,12 @@ func ECRResources() []*Resource {
 				}...),
 		},
 		{
-			SubService:  "repositories",
-			Struct:      &types.Repository{},
-			Description: "https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_Repository.html",
-			SkipFields:  []string{"RepositoryArn"},
-			Multiplex:   `client.ServiceAccountRegionMultiplexer("api.ecr")`,
+			SubService:          "repositories",
+			Struct:              &ohaws.ECRRepository{},
+			PreResourceResolver: "getRepository",
+			Description:         "https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_Repository.html",
+			SkipFields:          []string{"RepositoryArn"},
+			Multiplex:           `client.ServiceAccountRegionMultiplexer("api.ecr")`,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
@@ -62,11 +64,6 @@ func ECRResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("RepositoryArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveRepositoryTags`,
 					},
 					{
 						Name:     "policy_text",

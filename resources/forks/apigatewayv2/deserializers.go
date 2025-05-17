@@ -61,7 +61,7 @@ func (m *awsRestjson1_deserializeOpGetDomainNames) HandleDeserialize(ctx context
 
 	decoder := json.NewDecoder(body)
 	decoder.UseNumber()
-	var shape interface{}
+	var shape any
 	if err := decoder.Decode(&shape); err != nil && err != io.EOF {
 		var snapshot bytes.Buffer
 		io.Copy(&snapshot, ringBuffer)
@@ -145,7 +145,7 @@ func awsRestjson1_deserializeOpErrorGetDomainNames(response *smithyhttp.Response
 	}
 }
 
-func awsRestjson1_deserializeOpDocumentGetDomainNamesOutput(v **apigatewayv2.GetDomainNamesOutput, value interface{}) error {
+func awsRestjson1_deserializeOpDocumentGetDomainNamesOutput(v **apigatewayv2.GetDomainNamesOutput, value any) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
@@ -153,7 +153,7 @@ func awsRestjson1_deserializeOpDocumentGetDomainNamesOutput(v **apigatewayv2.Get
 		return nil
 	}
 
-	shape, ok := value.(map[string]interface{})
+	shape, ok := value.(map[string]any)
 	if !ok {
 		return fmt.Errorf("unexpected JSON type %v", value)
 	}
@@ -198,7 +198,7 @@ func awsRestjson1_deserializeErrorBadRequestException(response *smithyhttp.Respo
 	body := io.TeeReader(errorBody, ringBuffer)
 	decoder := json.NewDecoder(body)
 	decoder.UseNumber()
-	var shape interface{}
+	var shape any
 	if err := decoder.Decode(&shape); err != nil && err != io.EOF {
 		var snapshot bytes.Buffer
 		io.Copy(&snapshot, ringBuffer)
@@ -234,7 +234,7 @@ func awsRestjson1_deserializeErrorNotFoundException(response *smithyhttp.Respons
 	body := io.TeeReader(errorBody, ringBuffer)
 	decoder := json.NewDecoder(body)
 	decoder.UseNumber()
-	var shape interface{}
+	var shape any
 	if err := decoder.Decode(&shape); err != nil && err != io.EOF {
 		var snapshot bytes.Buffer
 		io.Copy(&snapshot, ringBuffer)
@@ -270,7 +270,7 @@ func awsRestjson1_deserializeErrorTooManyRequestsException(response *smithyhttp.
 	body := io.TeeReader(errorBody, ringBuffer)
 	decoder := json.NewDecoder(body)
 	decoder.UseNumber()
-	var shape interface{}
+	var shape any
 	if err := decoder.Decode(&shape); err != nil && err != io.EOF {
 		var snapshot bytes.Buffer
 		io.Copy(&snapshot, ringBuffer)
@@ -298,7 +298,7 @@ func awsRestjson1_deserializeErrorTooManyRequestsException(response *smithyhttp.
 	return output
 }
 
-func awsRestjson1_deserializeDocument__listOfDomainName(v *[]types.DomainName, value interface{}) error {
+func awsRestjson1_deserializeDocument__listOfDomainName(v *[]types.DomainName, value any) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
@@ -306,7 +306,7 @@ func awsRestjson1_deserializeDocument__listOfDomainName(v *[]types.DomainName, v
 		return nil
 	}
 
-	shape, ok := value.([]interface{})
+	shape, ok := value.([]any)
 	if !ok {
 		return fmt.Errorf("unexpected JSON type %v", value)
 	}
@@ -332,7 +332,7 @@ func awsRestjson1_deserializeDocument__listOfDomainName(v *[]types.DomainName, v
 	return nil
 }
 
-func awsRestjson1_deserializeDocumentBadRequestException(v **types.BadRequestException, value interface{}) error {
+func awsRestjson1_deserializeDocumentBadRequestException(v **types.BadRequestException, value any) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
@@ -340,7 +340,7 @@ func awsRestjson1_deserializeDocumentBadRequestException(v **types.BadRequestExc
 		return nil
 	}
 
-	shape, ok := value.(map[string]interface{})
+	shape, ok := value.(map[string]any)
 	if !ok {
 		return fmt.Errorf("unexpected JSON type %v", value)
 	}
@@ -372,7 +372,7 @@ func awsRestjson1_deserializeDocumentBadRequestException(v **types.BadRequestExc
 	return nil
 }
 
-func awsRestjson1_deserializeDocumentTooManyRequestsException(v **types.TooManyRequestsException, value interface{}) error {
+func awsRestjson1_deserializeDocumentTooManyRequestsException(v **types.TooManyRequestsException, value any) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
@@ -380,7 +380,7 @@ func awsRestjson1_deserializeDocumentTooManyRequestsException(v **types.TooManyR
 		return nil
 	}
 
-	shape, ok := value.(map[string]interface{})
+	shape, ok := value.(map[string]any)
 	if !ok {
 		return fmt.Errorf("unexpected JSON type %v", value)
 	}
@@ -421,7 +421,7 @@ func awsRestjson1_deserializeDocumentTooManyRequestsException(v **types.TooManyR
 	return nil
 }
 
-func awsRestjson1_deserializeDocumentDomainName(v **types.DomainName, value interface{}) error {
+func awsRestjson1_deserializeDocumentDomainName(v **types.DomainName, value any) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
@@ -429,7 +429,7 @@ func awsRestjson1_deserializeDocumentDomainName(v **types.DomainName, value inte
 		return nil
 	}
 
-	shape, ok := value.(map[string]interface{})
+	shape, ok := value.(map[string]any)
 	if !ok {
 		return fmt.Errorf("unexpected JSON type %v", value)
 	}
@@ -485,7 +485,7 @@ func awsRestjson1_deserializeDocumentDomainName(v **types.DomainName, value inte
 	return nil
 }
 
-func awsRestjson1_deserializeDocumentDomainNameConfigurations(v *[]types.DomainNameConfiguration, value interface{}) error {
+func awsRestjson1_deserializeDocumentDomainNameConfigurations(v *[]types.DomainNameConfiguration, value any) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
@@ -493,7 +493,7 @@ func awsRestjson1_deserializeDocumentDomainNameConfigurations(v *[]types.DomainN
 		return nil
 	}
 
-	shape, ok := value.([]interface{})
+	shape, ok := value.([]any)
 	if !ok {
 		return fmt.Errorf("unexpected JSON type %v", value)
 	}
@@ -519,7 +519,7 @@ func awsRestjson1_deserializeDocumentDomainNameConfigurations(v *[]types.DomainN
 	return nil
 }
 
-func awsRestjson1_deserializeDocumentMutualTlsAuthentication(v **types.MutualTlsAuthentication, value interface{}) error {
+func awsRestjson1_deserializeDocumentMutualTlsAuthentication(v **types.MutualTlsAuthentication, value any) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
@@ -527,7 +527,7 @@ func awsRestjson1_deserializeDocumentMutualTlsAuthentication(v **types.MutualTls
 		return nil
 	}
 
-	shape, ok := value.(map[string]interface{})
+	shape, ok := value.(map[string]any)
 	if !ok {
 		return fmt.Errorf("unexpected JSON type %v", value)
 	}
@@ -573,7 +573,7 @@ func awsRestjson1_deserializeDocumentMutualTlsAuthentication(v **types.MutualTls
 	return nil
 }
 
-func awsRestjson1_deserializeDocumentTags(v *map[string]string, value interface{}) error {
+func awsRestjson1_deserializeDocumentTags(v *map[string]string, value any) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
@@ -581,7 +581,7 @@ func awsRestjson1_deserializeDocumentTags(v *map[string]string, value interface{
 		return nil
 	}
 
-	shape, ok := value.(map[string]interface{})
+	shape, ok := value.(map[string]any)
 	if !ok {
 		return fmt.Errorf("unexpected JSON type %v", value)
 	}
@@ -609,7 +609,7 @@ func awsRestjson1_deserializeDocumentTags(v *map[string]string, value interface{
 	return nil
 }
 
-func awsRestjson1_deserializeDocumentNotFoundException(v **types.NotFoundException, value interface{}) error {
+func awsRestjson1_deserializeDocumentNotFoundException(v **types.NotFoundException, value any) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
@@ -617,7 +617,7 @@ func awsRestjson1_deserializeDocumentNotFoundException(v **types.NotFoundExcepti
 		return nil
 	}
 
-	shape, ok := value.(map[string]interface{})
+	shape, ok := value.(map[string]any)
 	if !ok {
 		return fmt.Errorf("unexpected JSON type %v", value)
 	}
@@ -658,7 +658,7 @@ func awsRestjson1_deserializeDocumentNotFoundException(v **types.NotFoundExcepti
 	return nil
 }
 
-func awsRestjson1_deserializeDocumentDomainNameConfiguration(v **types.DomainNameConfiguration, value interface{}) error {
+func awsRestjson1_deserializeDocumentDomainNameConfiguration(v **types.DomainNameConfiguration, value any) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
@@ -666,7 +666,7 @@ func awsRestjson1_deserializeDocumentDomainNameConfiguration(v **types.DomainNam
 		return nil
 	}
 
-	shape, ok := value.(map[string]interface{})
+	shape, ok := value.(map[string]any)
 	if !ok {
 		return fmt.Errorf("unexpected JSON type %v", value)
 	}
@@ -776,7 +776,7 @@ func awsRestjson1_deserializeDocumentDomainNameConfiguration(v **types.DomainNam
 	return nil
 }
 
-func awsRestjson1_deserializeDocument__listOf__string(v *[]string, value interface{}) error {
+func awsRestjson1_deserializeDocument__listOf__string(v *[]string, value any) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
@@ -784,7 +784,7 @@ func awsRestjson1_deserializeDocument__listOf__string(v *[]string, value interfa
 		return nil
 	}
 
-	shape, ok := value.([]interface{})
+	shape, ok := value.([]any)
 	if !ok {
 		return fmt.Errorf("unexpected JSON type %v", value)
 	}

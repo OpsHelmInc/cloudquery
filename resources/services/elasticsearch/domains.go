@@ -31,11 +31,6 @@ func Domains() *schema.Table {
 				},
 			},
 			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveElasticsearchDomainTags,
-			},
-			{
 				Name:     "id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("DomainId"),
@@ -44,134 +39,14 @@ func Domains() *schema.Table {
 				},
 			},
 			{
-				Name:     "arn",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("ARN"),
-			},
-			{
-				Name:     "domain_name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("DomainName"),
-			},
-			{
-				Name:     "elasticsearch_cluster_config",
+				Name:     "elasticsearch_domain_status",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("ElasticsearchClusterConfig"),
+				Resolver: schema.PathResolver("ElasticsearchDomainStatus"),
 			},
 			{
-				Name:     "access_policies",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("AccessPolicies"),
-			},
-			{
-				Name:     "advanced_options",
+				Name:     "tags",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("AdvancedOptions"),
-			},
-			{
-				Name:     "advanced_security_options",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("AdvancedSecurityOptions"),
-			},
-			{
-				Name:     "auto_tune_options",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("AutoTuneOptions"),
-			},
-			{
-				Name:     "change_progress_details",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("ChangeProgressDetails"),
-			},
-			{
-				Name:     "cognito_options",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("CognitoOptions"),
-			},
-			{
-				Name:     "created",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("Created"),
-			},
-			{
-				Name:     "deleted",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("Deleted"),
-			},
-			{
-				Name:     "domain_endpoint_options",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("DomainEndpointOptions"),
-			},
-			{
-				Name:     "domain_processing_status",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("DomainProcessingStatus"),
-			},
-			{
-				Name:     "ebs_options",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("EBSOptions"),
-			},
-			{
-				Name:     "elasticsearch_version",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("ElasticsearchVersion"),
-			},
-			{
-				Name:     "encryption_at_rest_options",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("EncryptionAtRestOptions"),
-			},
-			{
-				Name:     "endpoint",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Endpoint"),
-			},
-			{
-				Name:     "endpoints",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("Endpoints"),
-			},
-			{
-				Name:     "log_publishing_options",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("LogPublishingOptions"),
-			},
-			{
-				Name:     "modifying_properties",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("ModifyingProperties"),
-			},
-			{
-				Name:     "node_to_node_encryption_options",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("NodeToNodeEncryptionOptions"),
-			},
-			{
-				Name:     "processing",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("Processing"),
-			},
-			{
-				Name:     "service_software_options",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("ServiceSoftwareOptions"),
-			},
-			{
-				Name:     "snapshot_options",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("SnapshotOptions"),
-			},
-			{
-				Name:     "upgrade_processing",
-				Type:     schema.TypeBool,
-				Resolver: schema.PathResolver("UpgradeProcessing"),
-			},
-			{
-				Name:     "vpc_options",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("VPCOptions"),
+				Resolver: client.ResolveTags,
 			},
 		},
 	}

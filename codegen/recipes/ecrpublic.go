@@ -4,16 +4,19 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/ecrpublic/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func ECRPublicResources() []*Resource {
 	resources := []*Resource{
 		{
-			SubService:  "repositories",
-			Struct:      &types.Repository{},
-			Description: "https://docs.aws.amazon.com/AmazonECRPublic/latest/APIReference/API_Repository.html",
-			SkipFields:  []string{"RepositoryArn"},
-			Multiplex:   `client.ServiceAccountRegionMultiplexer("api.ecr-public")`,
+			SubService:          "repositories",
+			Struct:              &ohaws.ECRPublicRepository{},
+			PreResourceResolver: "getRepository",
+			Description:         "https://docs.aws.amazon.com/AmazonECRPublic/latest/APIReference/API_Repository.html",
+			SkipFields:          []string{"RepositoryArn"},
+			Multiplex:           `client.ServiceAccountRegionMultiplexer("api.ecr-public")`,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
@@ -22,11 +25,6 @@ func ECRPublicResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("RepositoryArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveRepositoryTags`,
 					},
 					{
 						Name:     ohResourceTypeColumn,

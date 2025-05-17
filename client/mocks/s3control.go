@@ -315,6 +315,26 @@ func (mr *MockS3controlClientMockRecorder) GetAccessPointPolicyStatusForObjectLa
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAccessPointPolicyStatusForObjectLambda", reflect.TypeOf((*MockS3controlClient)(nil).GetAccessPointPolicyStatusForObjectLambda), varargs...)
 }
 
+// GetAccessPointScope mocks base method.
+func (m *MockS3controlClient) GetAccessPointScope(arg0 context.Context, arg1 *s3control.GetAccessPointScopeInput, arg2 ...func(*s3control.Options)) (*s3control.GetAccessPointScopeOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetAccessPointScope", varargs...)
+	ret0, _ := ret[0].(*s3control.GetAccessPointScopeOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetAccessPointScope indicates an expected call of GetAccessPointScope.
+func (mr *MockS3controlClientMockRecorder) GetAccessPointScope(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAccessPointScope", reflect.TypeOf((*MockS3controlClient)(nil).GetAccessPointScope), varargs...)
+}
+
 // GetBucket mocks base method.
 func (m *MockS3controlClient) GetBucket(arg0 context.Context, arg1 *s3control.GetBucketInput, arg2 ...func(*s3control.Options)) (*s3control.GetBucketOutput, error) {
 	m.ctrl.T.Helper()
@@ -713,6 +733,26 @@ func (mr *MockS3controlClientMockRecorder) ListAccessPoints(arg0, arg1 interface
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAccessPoints", reflect.TypeOf((*MockS3controlClient)(nil).ListAccessPoints), varargs...)
+}
+
+// ListAccessPointsForDirectoryBuckets mocks base method.
+func (m *MockS3controlClient) ListAccessPointsForDirectoryBuckets(arg0 context.Context, arg1 *s3control.ListAccessPointsForDirectoryBucketsInput, arg2 ...func(*s3control.Options)) (*s3control.ListAccessPointsForDirectoryBucketsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListAccessPointsForDirectoryBuckets", varargs...)
+	ret0, _ := ret[0].(*s3control.ListAccessPointsForDirectoryBucketsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListAccessPointsForDirectoryBuckets indicates an expected call of ListAccessPointsForDirectoryBuckets.
+func (mr *MockS3controlClientMockRecorder) ListAccessPointsForDirectoryBuckets(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAccessPointsForDirectoryBuckets", reflect.TypeOf((*MockS3controlClient)(nil).ListAccessPointsForDirectoryBuckets), varargs...)
 }
 
 // ListAccessPointsForObjectLambda mocks base method.

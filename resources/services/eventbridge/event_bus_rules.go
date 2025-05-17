@@ -9,10 +9,11 @@ import (
 
 func EventBusRules() *schema.Table {
 	return &schema.Table{
-		Name:        "aws_eventbridge_event_bus_rules",
-		Description: `https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Rule.html`,
-		Resolver:    fetchEventbridgeEventBusRules,
-		Multiplex:   client.ServiceAccountRegionMultiplexer("events"),
+		Name:                "aws_eventbridge_event_bus_rules",
+		Description:         `https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Rule.html`,
+		Resolver:            fetchEventbridgeEventBusRules,
+		PreResourceResolver: getEventBusRule,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("events"),
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -30,14 +31,14 @@ func EventBusRules() *schema.Table {
 				Resolver: schema.ParentColumnResolver("arn"),
 			},
 			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveEventbridgeEventBusRuleTags,
-			},
-			{
 				Name:     "arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Arn"),
+			},
+			{
+				Name:     "created_by",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("CreatedBy"),
 			},
 			{
 				Name:     "description",
@@ -78,6 +79,16 @@ func EventBusRules() *schema.Table {
 				Name:     "state",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("State"),
+			},
+			{
+				Name:     "result_metadata",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ResultMetadata"),
+			},
+			{
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: client.ResolveTags,
 			},
 		},
 	}

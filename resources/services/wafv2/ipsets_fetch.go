@@ -4,11 +4,14 @@ import (
 	"context"
 	"net"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/wafv2"
 	"github.com/aws/aws-sdk-go-v2/service/wafv2/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/services"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchWafv2Ipsets(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -54,12 +57,21 @@ func getIpset(ctx context.Context, meta schema.ClientMeta, resource *schema.Reso
 		return err
 	}
 
-	resource.Item = info.IPSet
+	tags, err := getIpsetTags(ctx, cl, svc, *info.IPSet.ARN)
+	if err != nil {
+		return err
+	}
+
+	resource.Item = &ohaws.WAFv2IPSet{
+		IPSet: *info.IPSet,
+		Tags:  tags,
+	}
+
 	return nil
 }
 
 func resolveIpsetAddresses(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	s := resource.Item.(*types.IPSet)
+	s := resource.Item.(*ohaws.WAFv2IPSet)
 	addrs := make([]*net.IPNet, 0, len(s.Addresses))
 	for _, a := range s.Addresses {
 		_, n, err := net.ParseCIDR(a)
@@ -71,28 +83,24 @@ func resolveIpsetAddresses(ctx context.Context, meta schema.ClientMeta, resource
 	return resource.Set(c.Name, addrs)
 }
 
-func resolveIpsetTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	cl := meta.(*client.Client)
-	svc := cl.Services().Wafv2
-	s := resource.Item.(*types.IPSet)
-	tags := make(map[string]string)
-	params := wafv2.ListTagsForResourceInput{ResourceARN: s.ARN}
+func getIpsetTags(ctx context.Context, c *client.Client, svc services.Wafv2Client, ipsetArn string) ([]types.Tag, error) {
+	var tags []types.Tag
+	params := wafv2.ListTagsForResourceInput{ResourceARN: aws.String(ipsetArn)}
 	for {
 		result, err := svc.ListTagsForResource(ctx, &params, func(options *wafv2.Options) {
-			options.Region = cl.Region
+			options.Region = c.Region
 		})
 		if err != nil {
-			return err
+			return nil, err
 		}
 		if result != nil || result.TagInfoForResource != nil {
-			for _, t := range result.TagInfoForResource.TagList {
-				tags[aws.ToString(t.Key)] = aws.ToString(t.Value)
-			}
+			tags = append(tags, result.TagInfoForResource.TagList...)
 		}
 		if aws.ToString(result.NextMarker) == "" {
 			break
 		}
 		params.NextMarker = result.NextMarker
 	}
-	return resource.Set(c.Name, tags)
+
+	return tags, nil
 }

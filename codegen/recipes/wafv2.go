@@ -4,17 +4,18 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/OpsHelmInc/cloudquery/resources/services/wafv2/models"
 	"github.com/aws/aws-sdk-go-v2/service/wafv2/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func WAFv2Resources() []*Resource {
 	resources := []*Resource{
 		{
 			SubService:          "ipsets",
-			Struct:              &types.IPSet{},
+			Struct:              &ohaws.WAFv2IPSet{},
 			Description:         "https://docs.aws.amazon.com/waf/latest/APIReference/API_IPSet.html",
 			SkipFields:          []string{"Addresses", "ARN"},
 			PreResourceResolver: "getIpset",
@@ -33,11 +34,6 @@ func WAFv2Resources() []*Resource {
 					Name:     "addresses",
 					Type:     schema.TypeInetArray,
 					Resolver: "resolveIpsetAddresses",
-				},
-				{
-					Name:     "tags",
-					Type:     schema.TypeJSON,
-					Resolver: "resolveIpsetTags",
 				},
 				{
 					Name:     "arn",
@@ -145,7 +141,7 @@ func WAFv2Resources() []*Resource {
 		},
 		{
 			SubService:          "web_acls",
-			Struct:              &models.WebACLWrapper{},
+			Struct:              &ohaws.WAFv2WebACL{},
 			SkipFields:          []string{"ARN"},
 			PreResourceResolver: "getWebAcl",
 			ExtraColumns: []codegen.ColumnDefinition{
@@ -158,11 +154,6 @@ func WAFv2Resources() []*Resource {
 					Name:     "region",
 					Type:     schema.TypeString,
 					Resolver: "client.ResolveAWSRegion",
-				},
-				{
-					Name:     "tags",
-					Type:     schema.TypeJSON,
-					Resolver: "resolveWebACLTags",
 				},
 				{
 					Name:     "resources_for_web_acl",

@@ -38,29 +38,9 @@ func FunctionAliases() *schema.Table {
 				},
 			},
 			{
-				Name:     "description",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Description"),
-			},
-			{
-				Name:     "function_version",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("FunctionVersion"),
-			},
-			{
-				Name:     "name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Name"),
-			},
-			{
-				Name:     "revision_id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("RevisionId"),
-			},
-			{
-				Name:     "routing_config",
+				Name:     "alias_configuration",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("RoutingConfig"),
+				Resolver: schema.PathResolver("AliasConfiguration"),
 			},
 			{
 				Name:     "url_config",

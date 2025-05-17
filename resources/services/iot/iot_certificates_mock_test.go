@@ -3,11 +3,12 @@ package iot
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/iot"
 	"github.com/cloudquery/plugin-sdk/faker"
 	"github.com/golang/mock/gomock"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/mocks"
 )
 
 func buildIotCertificatesMock(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -38,6 +39,15 @@ func buildIotCertificatesMock(t *testing.T, ctrl *gomock.Controller) client.Serv
 	p.NextMarker = nil
 	m.EXPECT().ListAttachedPolicies(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&p, nil)
+
+	tags := iot.ListTagsForResourceOutput{}
+	err = faker.FakeObject(&tags)
+	if err != nil {
+		t.Fatal(err)
+	}
+	tags.NextToken = nil
+	m.EXPECT().ListTagsForResource(gomock.Any(), gomock.Any(), gomock.Any()).Return(
+		&tags, nil)
 
 	return client.Services{
 		Iot: m,

@@ -4,12 +4,13 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/glue"
-	"github.com/aws/aws-sdk-go-v2/service/glue/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchGlueTriggers(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -40,28 +41,30 @@ func getTrigger(ctx context.Context, meta schema.ClientMeta, resource *schema.Re
 	if err != nil {
 		return err
 	}
-	resource.Item = *dc.Trigger
+
+	input := glue.GetTagsInput{
+		ResourceArn: aws.String(triggerARN(c, name)),
+	}
+
+	tagsResp, err := svc.GetTags(ctx, &input)
+	if err != nil {
+		if c.IsNotFoundError(err) {
+			return nil
+		}
+		return err
+	}
+
+	resource.Item = &ohaws.GlueTrigger{
+		Trigger: *dc.Trigger,
+		Tags:    tagsResp.Tags,
+	}
+
 	return nil
 }
 
 func resolveGlueTriggerArn(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	cl := meta.(*client.Client)
-	return resource.Set(c.Name, triggerARN(cl, aws.ToString(resource.Item.(types.Trigger).Name)))
-}
-
-func resolveGlueTriggerTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	cl := meta.(*client.Client)
-	svc := cl.Services().Glue
-	result, err := svc.GetTags(ctx, &glue.GetTagsInput{
-		ResourceArn: aws.String(triggerARN(cl, aws.ToString(resource.Item.(types.Trigger).Name))),
-	})
-	if err != nil {
-		if cl.IsNotFoundError(err) {
-			return nil
-		}
-		return err
-	}
-	return resource.Set(c.Name, result.Tags)
+	return resource.Set(c.Name, triggerARN(cl, aws.ToString(resource.Item.(*ohaws.GlueTrigger).Name)))
 }
 
 func triggerARN(cl *client.Client, name string) string {

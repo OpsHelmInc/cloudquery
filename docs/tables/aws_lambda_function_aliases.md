@@ -19,9 +19,5 @@ This table depends on [aws_lambda_functions](aws_lambda_functions.md).
 |region|String|
 |function_arn|String|
 |arn (PK)|String|
-|description|String|
-|function_version|String|
-|name|String|
-|revision_id|String|
-|routing_config|JSON|
+|alias_configuration|JSON|
 |url_config|JSON|

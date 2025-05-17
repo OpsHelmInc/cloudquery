@@ -5,6 +5,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func CognitoResources() []*Resource {
@@ -41,11 +43,12 @@ func CognitoResources() []*Resource {
 			},
 		},
 		{
-			SubService:          "user_pools",
-			Struct:              &types.UserPoolType{},
-			Description:         "https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_UserPoolType.html",
-			SkipFields:          []string{"Id"},
-			PreResourceResolver: "getUserPool",
+			SubService:            "user_pools",
+			Struct:                &ohaws.CognitoUserPool{},
+			Description:           "https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_UserPoolType.html",
+			SkipFields:            []string{"Id"},
+			PreResourceResolver:   "getUserPool",
+			UnwrapEmbeddedStructs: true,
 			ExtraColumns: []codegen.ColumnDefinition{
 				{
 					Name:     "account_id",

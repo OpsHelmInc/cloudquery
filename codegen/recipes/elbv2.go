@@ -7,15 +7,41 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/elasticloadbalancingv2/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func ELBv2Resources() []*Resource {
 	resources := []*Resource{
 		{
-			SubService:  "load_balancers",
-			Struct:      &types.LoadBalancer{},
-			Description: "https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_LoadBalancer.html",
-			SkipFields:  []string{"LoadBalancerArn"},
+			SubService:          "load_balancers",
+			Struct:              &ohaws.LoadBalancerV2{},
+			PreResourceResolver: "getLoadBalancer",
+			Description:         "https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_LoadBalancer.html",
+			SkipFields: []string{
+				"LoadBalancerArn",
+				"DeletionProtectionEnabled",
+				"CrossZoneLoadBalancingEnabled",
+				"AccessLogsEnabled",
+				"AccessLogsS3Bucket",
+				"AccessLogsS3Prefix",
+				"IPv6DenyAllIGWTraffic",
+				"IdleTimeoutSeconds",
+				"ClientKeepAliveSeconds",
+				"ConnectionLogsEnabled",
+				"ConnectionLogsS3Bucket",
+				"ConnectionLogsS3Prefix",
+				"DesyncMitigationMode",
+				"DropInvalidHeaderFields",
+				"PreserveHostHeader",
+				"XAmznTLSVersionAndCipherSuiteEnabled",
+				"XffClientPortEnabled",
+				"XffHeaderProcessingMode",
+				"HTTP2Enabled",
+				"WafFailOpen",
+				"ClientRoutingPolicy",
+			},
+			UnwrapEmbeddedStructs: false,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
@@ -24,11 +50,6 @@ func ELBv2Resources() []*Resource {
 						Type:          schema.TypeString,
 						Resolver:      `resolveElbv2loadBalancerWebACLArn`,
 						IgnoreInTests: true,
-					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveElbv2loadBalancerTags`,
 					},
 					{
 						Name:     "arn",
@@ -44,14 +65,15 @@ func ELBv2Resources() []*Resource {
 				}...),
 			Relations: []string{
 				"Listeners()",
-				"LoadBalancerAttributes()",
 			},
 		},
 		{
-			SubService:  "listeners",
-			Struct:      &types.Listener{},
-			Description: "https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_Listener.html",
-			SkipFields:  []string{"ListenerArn"},
+			SubService:            "listeners",
+			Struct:                &ohaws.LoadBalancerV2Listener{},
+			PreResourceResolver:   "getLoadBalancerListener",
+			Description:           "https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_Listener.html",
+			SkipFields:            []string{"ListenerArn"},
+			UnwrapEmbeddedStructs: false,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
@@ -60,11 +82,6 @@ func ELBv2Resources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("ListenerArn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveElbv2listenerTags`,
 					},
 					{
 						Name:     ohResourceTypeColumn,
@@ -92,33 +109,39 @@ func ELBv2Resources() []*Resource {
 				}...),
 		},
 		{
-			SubService:  "load_balancer_attributes",
-			Struct:      &types.LoadBalancerAttribute{},
-			Description: "https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_LoadBalancerAttribute.html",
-			SkipFields:  []string{},
+			SubService:          "target_groups",
+			Struct:              &ohaws.TargetGroup{},
+			PreResourceResolver: "getTargetGroup",
+			Description:         "https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_TargetGroup.html",
+			SkipFields: []string{
+				"TargetGroupArn",
+				"DeregistrationDelaySeconds",
+				"StickinessEnabled",
+				"StickinessType",
+				"CrossZoneLoadBalancingEnabled",
+				"DNSFailOverMinimumHealthyTargetCount",
+				"DNSFailOverMinimumHealthyTargetPercentage",
+				"RoutingFailoverMinimumHealthyTargetCount",
+				"RoutingFailoverMinimumHealthyTargetPercentage",
+				"LoadBalancingAlgorithm",
+				"AnomalyMitigation",
+				"SlowStartSeconds",
+				"AppStickinessCookieName",
+				"AppStickinessDurationSeconds",
+				"LoadBalancerStickinessDurationSeconds",
+				"LambdaMultiValueHeadersEnabled",
+				"DeregistrationConnectionTerminationEnabled",
+				"PreserveClientIP",
+				"ProxyProtocolV2Enabled",
+				"UnhealthyConnectionTerminatationEnabled",
+				"UnhealthyConnectionDrainingIntervalSeconds",
+				"TargetFailOverOnDeregistration",
+				"TargetFailOverOnUnhealthy",
+			},
+			UnwrapEmbeddedStructs: false,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
-					{
-						Name:     "load_balancer_arn",
-						Type:     schema.TypeString,
-						Resolver: `schema.ParentColumnResolver("arn")`,
-					},
-				}...),
-		},
-		{
-			SubService:  "target_groups",
-			Struct:      &types.TargetGroup{},
-			Description: "https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_TargetGroup.html",
-			SkipFields:  []string{"TargetGroupArn"},
-			ExtraColumns: append(
-				defaultRegionalColumns,
-				[]codegen.ColumnDefinition{
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveElbv2targetGroupTags`,
-					},
 					{
 						Name:     "arn",
 						Type:     schema.TypeString,

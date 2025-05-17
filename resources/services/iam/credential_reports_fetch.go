@@ -5,13 +5,14 @@ import (
 	"errors"
 	"time"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/resources/services/iam/models"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	"github.com/aws/smithy-go"
 	"github.com/cloudquery/plugin-sdk/schema"
 	"github.com/gocarina/gocsv"
 	"github.com/thoas/go-funk"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchIamCredentialReports(ctx context.Context, meta schema.ClientMeta, _ *schema.Resource, res chan<- any) error {
@@ -22,7 +23,7 @@ func fetchIamCredentialReports(ctx context.Context, meta schema.ClientMeta, _ *s
 	for {
 		reportOutput, err = svc.GetCredentialReport(ctx, &iam.GetCredentialReportInput{})
 		if err == nil && reportOutput != nil {
-			var users []*models.CredentialReportEntry
+			var users []*ohaws.CredentialReportEntry
 			err = gocsv.UnmarshalBytes(reportOutput.Content, &users)
 			if err != nil {
 				return err
@@ -60,10 +61,11 @@ func fetchIamCredentialReports(ctx context.Context, meta schema.ClientMeta, _ *s
 		}
 	}
 }
+
 func timestampPathResolver(path string) schema.ColumnResolver {
 	return func(_ context.Context, meta schema.ClientMeta, r *schema.Resource, c schema.Column) error {
 		t := funk.Get(r.Item, path, funk.WithAllowZero())
-		dt := t.(models.DateTime)
+		dt := t.(ohaws.OptionalTime)
 		return r.Set(c.Name, dt.Time)
 	}
 }

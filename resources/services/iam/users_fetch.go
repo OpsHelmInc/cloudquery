@@ -15,7 +15,6 @@ import (
 
 	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/OpsHelmInc/cloudquery/client/services"
-	"github.com/OpsHelmInc/cloudquery/resources/services/iam/models"
 	"github.com/OpsHelmInc/ohaws"
 )
 
@@ -116,7 +115,7 @@ func getUser(ctx context.Context, meta schema.ClientMeta, resource *schema.Resou
 		return err
 	}
 
-	var accessKeys = make([]ohaws.AccessKey, 0, len(keysResp.AccessKeyMetadata))
+	accessKeys := make([]ohaws.AccessKey, 0, len(keysResp.AccessKeyMetadata))
 	for _, md := range keysResp.AccessKeyMetadata {
 		k, err := getUserAccessKey(ctx, svc, *userName, *md.AccessKeyId)
 		if err != nil {
@@ -152,38 +151,43 @@ func fetchIamUserGroups(ctx context.Context, meta schema.ClientMeta, parent *sch
 }
 
 func fetchIamUserAccessKeys(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
-	var config iam.ListAccessKeysInput
 	p := parent.Item.(*ohaws.User)
-	svc := meta.(*client.Client).Services().Iam
-	config.UserName = p.UserName
-	for {
-		output, err := svc.ListAccessKeys(ctx, &config)
-		if err != nil {
-			return err
-		}
+	// keys are fetched as part of the user, so no need for this anymore
+	/*
+		var config iam.ListAccessKeysInput
+			svc := meta.(*client.Client).Services().Iam
+			config.UserName = p.UserName
+			for {
+				output, err := svc.ListAccessKeys(ctx, &config)
+				if err != nil {
+					return err
+				}
 
-		keys := make([]models.AccessKeyWrapper, len(output.AccessKeyMetadata))
-		for i, key := range output.AccessKeyMetadata {
-			switch i {
-			case 0:
-				keys[i] = models.AccessKeyWrapper{AccessKeyMetadata: key, LastRotated: *key.CreateDate}
-			case 1:
-				keys[i] = models.AccessKeyWrapper{AccessKeyMetadata: key, LastRotated: *key.CreateDate}
-			default:
-				keys[i] = models.AccessKeyWrapper{AccessKeyMetadata: key}
+				keys := make([]ohaws.AccessKey, len(output.AccessKeyMetadata))
+				for i, key := range output.AccessKeyMetadata {
+					switch i {
+					case 0:
+						keys[i] = ohaws.AccessKey{AccessKeyMetadata: key}
+					case 1:
+						keys[i] = ohaws.AccessKey{AccessKeyMetadata: key}
+					default:
+						keys[i] = ohaws.AccessKey{AccessKeyMetadata: key}
+					}
+				}
+				res <- keys
+				if output.Marker == nil {
+					break
+				}
+				config.Marker = output.Marker
 			}
-		}
-		res <- keys
-		if output.Marker == nil {
-			break
-		}
-		config.Marker = output.Marker
-	}
+	*/
+	res <- p.AccessKeys
 	return nil
 }
 
+/*
 func postIamUserAccessKeyResolver(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
-	r := resource.Item.(models.AccessKeyWrapper)
+	r := resource.Item.(ohaws.AccessKey)
 	if r.AccessKeyId == nil {
 		return nil
 	}
@@ -202,6 +206,7 @@ func postIamUserAccessKeyResolver(ctx context.Context, meta schema.ClientMeta, r
 	}
 	return nil
 }
+*/
 
 func fetchIamUserAttachedPolicies(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	var config iam.ListAttachedUserPoliciesInput
@@ -224,7 +229,7 @@ func fetchIamUserAttachedPolicies(ctx context.Context, meta schema.ClientMeta, p
 
 func resolveAccessKeyArn(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	cl := meta.(*client.Client)
-	key := resource.Item.(models.AccessKeyWrapper)
+	key := resource.Item.(ohaws.AccessKey)
 
 	a := arn.ARN{
 		Partition: cl.Partition,

@@ -335,6 +335,26 @@ func (mr *MockCognitoidentityproviderClientMockRecorder) GetSigningCertificate(a
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSigningCertificate", reflect.TypeOf((*MockCognitoidentityproviderClient)(nil).GetSigningCertificate), varargs...)
 }
 
+// GetTokensFromRefreshToken mocks base method.
+func (m *MockCognitoidentityproviderClient) GetTokensFromRefreshToken(arg0 context.Context, arg1 *cognitoidentityprovider.GetTokensFromRefreshTokenInput, arg2 ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.GetTokensFromRefreshTokenOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetTokensFromRefreshToken", varargs...)
+	ret0, _ := ret[0].(*cognitoidentityprovider.GetTokensFromRefreshTokenOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetTokensFromRefreshToken indicates an expected call of GetTokensFromRefreshToken.
+func (mr *MockCognitoidentityproviderClientMockRecorder) GetTokensFromRefreshToken(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTokensFromRefreshToken", reflect.TypeOf((*MockCognitoidentityproviderClient)(nil).GetTokensFromRefreshToken), varargs...)
+}
+
 // GetUICustomization mocks base method.
 func (m *MockCognitoidentityproviderClient) GetUICustomization(arg0 context.Context, arg1 *cognitoidentityprovider.GetUICustomizationInput, arg2 ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.GetUICustomizationOutput, error) {
 	m.ctrl.T.Helper()

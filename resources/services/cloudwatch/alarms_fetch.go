@@ -3,11 +3,12 @@ package cloudwatch
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/cloudwatch"
-	"github.com/aws/aws-sdk-go-v2/service/cloudwatch/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchCloudwatchAlarms(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -16,11 +17,18 @@ func fetchCloudwatchAlarms(ctx context.Context, meta schema.ClientMeta, parent *
 	svc := c.Services().Cloudwatch
 	for {
 		response, err := svc.DescribeAlarms(ctx, &config)
-
 		if err != nil {
 			return err
 		}
-		res <- response.MetricAlarms
+
+		alarms := make([]*ohaws.Alarm, len(response.MetricAlarms))
+		for idx, a := range response.MetricAlarms {
+			alarms[idx] = &ohaws.Alarm{
+				MetricAlarm: &a,
+			}
+		}
+
+		res <- alarms
 		if aws.ToString(response.NextToken) == "" {
 			break
 		}
@@ -28,8 +36,9 @@ func fetchCloudwatchAlarms(ctx context.Context, meta schema.ClientMeta, parent *
 	}
 	return nil
 }
+
 func resolveCloudwatchAlarmDimensions(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	alarm := resource.Item.(types.MetricAlarm)
+	alarm := resource.Item.(*ohaws.Alarm)
 	dimensions := make(map[string]*string)
 	for _, d := range alarm.Dimensions {
 		dimensions[*d.Name] = d.Value
@@ -37,17 +46,24 @@ func resolveCloudwatchAlarmDimensions(ctx context.Context, meta schema.ClientMet
 	return resource.Set("dimensions", dimensions)
 }
 
-func resolveCloudwatchAlarmTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
+func getAlarm(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
 	cl := meta.(*client.Client)
 	svc := cl.Services().Cloudwatch
-	alarm := resource.Item.(types.MetricAlarm)
+	alarm := resource.Item.(*ohaws.Alarm)
 
 	input := cloudwatch.ListTagsForResourceInput{
-		ResourceARN: alarm.AlarmArn,
+		ResourceARN: alarm.MetricAlarm.AlarmArn,
 	}
 	output, err := svc.ListTagsForResource(ctx, &input)
 	if err != nil {
 		return err
 	}
-	return resource.Set(c.Name, client.TagsToMap(output.Tags))
+
+	alarm.Tags = make([]ohaws.Tag, len(output.Tags))
+	for i := range output.Tags {
+		alarm.Tags[i].Key = output.Tags[i].Key
+		alarm.Tags[i].Value = output.Tags[i].Value
+	}
+
+	return nil
 }

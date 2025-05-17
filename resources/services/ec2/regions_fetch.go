@@ -10,7 +10,7 @@ import (
 	"github.com/cloudquery/plugin-sdk/schema"
 
 	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/resources/services/ec2/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchEc2Regions(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -21,13 +21,13 @@ func fetchEc2Regions(ctx context.Context, meta schema.ClientMeta, parent *schema
 	}
 
 	for _, r := range output.Regions {
-		res <- &models.Region{Region: r}
+		res <- &ohaws.Region{Region: r}
 	}
 	return nil
 }
 
 func resolveRegionEnabled(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	region := resource.Item.(*models.Region)
+	region := resource.Item.(*ohaws.Region)
 	switch *region.OptInStatus {
 	case "opt-in-not-required", "opted-in":
 		return resource.Set(c.Name, true)
@@ -44,10 +44,11 @@ func resolveRegionPartition(ctx context.Context, meta schema.ClientMeta, resourc
 
 func resolveRegionArn(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	cl := meta.(*client.Client)
+	region := resource.Item.(*ohaws.Region)
 	a := arn.ARN{
 		Partition: cl.Partition,
 		Service:   "ec2",
-		Region:    cl.Region,
+		Region:    aws.ToString(region.RegionName),
 		AccountID: cl.AccountID,
 		Resource:  "region",
 	}
@@ -59,7 +60,7 @@ func resolveEc2RegionConfig(ctx context.Context, meta schema.ClientMeta, resourc
 	svc := cl.Services().Ec2
 
 	var (
-		regionalConfig models.RegionalConfig
+		regionalConfig ohaws.RegionalConfig
 		errs           error
 	)
 
@@ -81,7 +82,7 @@ func resolveEc2RegionConfig(ctx context.Context, meta schema.ClientMeta, resourc
 		regionalConfig.EbsEncryptionEnabledByDefault = *ebsResp.EbsEncryptionByDefault
 	}
 
-	conf := resource.Item.(*models.Region)
+	conf := resource.Item.(*ohaws.Region)
 	conf.EC2Config = regionalConfig
 
 	err = resource.Set(c.Name, regionalConfig)

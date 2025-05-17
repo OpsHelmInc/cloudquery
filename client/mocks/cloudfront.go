@@ -175,6 +175,46 @@ func (mr *MockCloudfrontClientMockRecorder) GetCloudFrontOriginAccessIdentityCon
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetCloudFrontOriginAccessIdentityConfig", reflect.TypeOf((*MockCloudfrontClient)(nil).GetCloudFrontOriginAccessIdentityConfig), varargs...)
 }
 
+// GetConnectionGroup mocks base method.
+func (m *MockCloudfrontClient) GetConnectionGroup(arg0 context.Context, arg1 *cloudfront.GetConnectionGroupInput, arg2 ...func(*cloudfront.Options)) (*cloudfront.GetConnectionGroupOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetConnectionGroup", varargs...)
+	ret0, _ := ret[0].(*cloudfront.GetConnectionGroupOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetConnectionGroup indicates an expected call of GetConnectionGroup.
+func (mr *MockCloudfrontClientMockRecorder) GetConnectionGroup(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetConnectionGroup", reflect.TypeOf((*MockCloudfrontClient)(nil).GetConnectionGroup), varargs...)
+}
+
+// GetConnectionGroupByRoutingEndpoint mocks base method.
+func (m *MockCloudfrontClient) GetConnectionGroupByRoutingEndpoint(arg0 context.Context, arg1 *cloudfront.GetConnectionGroupByRoutingEndpointInput, arg2 ...func(*cloudfront.Options)) (*cloudfront.GetConnectionGroupByRoutingEndpointOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetConnectionGroupByRoutingEndpoint", varargs...)
+	ret0, _ := ret[0].(*cloudfront.GetConnectionGroupByRoutingEndpointOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetConnectionGroupByRoutingEndpoint indicates an expected call of GetConnectionGroupByRoutingEndpoint.
+func (mr *MockCloudfrontClientMockRecorder) GetConnectionGroupByRoutingEndpoint(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetConnectionGroupByRoutingEndpoint", reflect.TypeOf((*MockCloudfrontClient)(nil).GetConnectionGroupByRoutingEndpoint), varargs...)
+}
+
 // GetContinuousDeploymentPolicy mocks base method.
 func (m *MockCloudfrontClient) GetContinuousDeploymentPolicy(arg0 context.Context, arg1 *cloudfront.GetContinuousDeploymentPolicyInput, arg2 ...func(*cloudfront.Options)) (*cloudfront.GetContinuousDeploymentPolicyOutput, error) {
 	m.ctrl.T.Helper()
@@ -253,6 +293,46 @@ func (mr *MockCloudfrontClientMockRecorder) GetDistributionConfig(arg0, arg1 int
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDistributionConfig", reflect.TypeOf((*MockCloudfrontClient)(nil).GetDistributionConfig), varargs...)
+}
+
+// GetDistributionTenant mocks base method.
+func (m *MockCloudfrontClient) GetDistributionTenant(arg0 context.Context, arg1 *cloudfront.GetDistributionTenantInput, arg2 ...func(*cloudfront.Options)) (*cloudfront.GetDistributionTenantOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetDistributionTenant", varargs...)
+	ret0, _ := ret[0].(*cloudfront.GetDistributionTenantOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetDistributionTenant indicates an expected call of GetDistributionTenant.
+func (mr *MockCloudfrontClientMockRecorder) GetDistributionTenant(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDistributionTenant", reflect.TypeOf((*MockCloudfrontClient)(nil).GetDistributionTenant), varargs...)
+}
+
+// GetDistributionTenantByDomain mocks base method.
+func (m *MockCloudfrontClient) GetDistributionTenantByDomain(arg0 context.Context, arg1 *cloudfront.GetDistributionTenantByDomainInput, arg2 ...func(*cloudfront.Options)) (*cloudfront.GetDistributionTenantByDomainOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetDistributionTenantByDomain", varargs...)
+	ret0, _ := ret[0].(*cloudfront.GetDistributionTenantByDomainOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetDistributionTenantByDomain indicates an expected call of GetDistributionTenantByDomain.
+func (mr *MockCloudfrontClientMockRecorder) GetDistributionTenantByDomain(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDistributionTenantByDomain", reflect.TypeOf((*MockCloudfrontClient)(nil).GetDistributionTenantByDomain), varargs...)
 }
 
 // GetFieldLevelEncryption mocks base method.
@@ -375,6 +455,26 @@ func (mr *MockCloudfrontClientMockRecorder) GetInvalidation(arg0, arg1 interface
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetInvalidation", reflect.TypeOf((*MockCloudfrontClient)(nil).GetInvalidation), varargs...)
 }
 
+// GetInvalidationForDistributionTenant mocks base method.
+func (m *MockCloudfrontClient) GetInvalidationForDistributionTenant(arg0 context.Context, arg1 *cloudfront.GetInvalidationForDistributionTenantInput, arg2 ...func(*cloudfront.Options)) (*cloudfront.GetInvalidationForDistributionTenantOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetInvalidationForDistributionTenant", varargs...)
+	ret0, _ := ret[0].(*cloudfront.GetInvalidationForDistributionTenantOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetInvalidationForDistributionTenant indicates an expected call of GetInvalidationForDistributionTenant.
+func (mr *MockCloudfrontClientMockRecorder) GetInvalidationForDistributionTenant(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetInvalidationForDistributionTenant", reflect.TypeOf((*MockCloudfrontClient)(nil).GetInvalidationForDistributionTenant), varargs...)
+}
+
 // GetKeyGroup mocks base method.
 func (m *MockCloudfrontClient) GetKeyGroup(arg0 context.Context, arg1 *cloudfront.GetKeyGroupInput, arg2 ...func(*cloudfront.Options)) (*cloudfront.GetKeyGroupOutput, error) {
 	m.ctrl.T.Helper()
@@ -413,6 +513,26 @@ func (mr *MockCloudfrontClientMockRecorder) GetKeyGroupConfig(arg0, arg1 interfa
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetKeyGroupConfig", reflect.TypeOf((*MockCloudfrontClient)(nil).GetKeyGroupConfig), varargs...)
+}
+
+// GetManagedCertificateDetails mocks base method.
+func (m *MockCloudfrontClient) GetManagedCertificateDetails(arg0 context.Context, arg1 *cloudfront.GetManagedCertificateDetailsInput, arg2 ...func(*cloudfront.Options)) (*cloudfront.GetManagedCertificateDetailsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetManagedCertificateDetails", varargs...)
+	ret0, _ := ret[0].(*cloudfront.GetManagedCertificateDetailsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetManagedCertificateDetails indicates an expected call of GetManagedCertificateDetails.
+func (mr *MockCloudfrontClientMockRecorder) GetManagedCertificateDetails(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetManagedCertificateDetails", reflect.TypeOf((*MockCloudfrontClient)(nil).GetManagedCertificateDetails), varargs...)
 }
 
 // GetMonitoringSubscription mocks base method.
@@ -755,6 +875,26 @@ func (mr *MockCloudfrontClientMockRecorder) ListConflictingAliases(arg0, arg1 in
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListConflictingAliases", reflect.TypeOf((*MockCloudfrontClient)(nil).ListConflictingAliases), varargs...)
 }
 
+// ListConnectionGroups mocks base method.
+func (m *MockCloudfrontClient) ListConnectionGroups(arg0 context.Context, arg1 *cloudfront.ListConnectionGroupsInput, arg2 ...func(*cloudfront.Options)) (*cloudfront.ListConnectionGroupsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListConnectionGroups", varargs...)
+	ret0, _ := ret[0].(*cloudfront.ListConnectionGroupsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListConnectionGroups indicates an expected call of ListConnectionGroups.
+func (mr *MockCloudfrontClientMockRecorder) ListConnectionGroups(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListConnectionGroups", reflect.TypeOf((*MockCloudfrontClient)(nil).ListConnectionGroups), varargs...)
+}
+
 // ListContinuousDeploymentPolicies mocks base method.
 func (m *MockCloudfrontClient) ListContinuousDeploymentPolicies(arg0 context.Context, arg1 *cloudfront.ListContinuousDeploymentPoliciesInput, arg2 ...func(*cloudfront.Options)) (*cloudfront.ListContinuousDeploymentPoliciesOutput, error) {
 	m.ctrl.T.Helper()
@@ -773,6 +913,46 @@ func (mr *MockCloudfrontClientMockRecorder) ListContinuousDeploymentPolicies(arg
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListContinuousDeploymentPolicies", reflect.TypeOf((*MockCloudfrontClient)(nil).ListContinuousDeploymentPolicies), varargs...)
+}
+
+// ListDistributionTenants mocks base method.
+func (m *MockCloudfrontClient) ListDistributionTenants(arg0 context.Context, arg1 *cloudfront.ListDistributionTenantsInput, arg2 ...func(*cloudfront.Options)) (*cloudfront.ListDistributionTenantsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListDistributionTenants", varargs...)
+	ret0, _ := ret[0].(*cloudfront.ListDistributionTenantsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListDistributionTenants indicates an expected call of ListDistributionTenants.
+func (mr *MockCloudfrontClientMockRecorder) ListDistributionTenants(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListDistributionTenants", reflect.TypeOf((*MockCloudfrontClient)(nil).ListDistributionTenants), varargs...)
+}
+
+// ListDistributionTenantsByCustomization mocks base method.
+func (m *MockCloudfrontClient) ListDistributionTenantsByCustomization(arg0 context.Context, arg1 *cloudfront.ListDistributionTenantsByCustomizationInput, arg2 ...func(*cloudfront.Options)) (*cloudfront.ListDistributionTenantsByCustomizationOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListDistributionTenantsByCustomization", varargs...)
+	ret0, _ := ret[0].(*cloudfront.ListDistributionTenantsByCustomizationOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListDistributionTenantsByCustomization indicates an expected call of ListDistributionTenantsByCustomization.
+func (mr *MockCloudfrontClientMockRecorder) ListDistributionTenantsByCustomization(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListDistributionTenantsByCustomization", reflect.TypeOf((*MockCloudfrontClient)(nil).ListDistributionTenantsByCustomization), varargs...)
 }
 
 // ListDistributions mocks base method.
@@ -833,6 +1013,26 @@ func (mr *MockCloudfrontClientMockRecorder) ListDistributionsByCachePolicyId(arg
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListDistributionsByCachePolicyId", reflect.TypeOf((*MockCloudfrontClient)(nil).ListDistributionsByCachePolicyId), varargs...)
+}
+
+// ListDistributionsByConnectionMode mocks base method.
+func (m *MockCloudfrontClient) ListDistributionsByConnectionMode(arg0 context.Context, arg1 *cloudfront.ListDistributionsByConnectionModeInput, arg2 ...func(*cloudfront.Options)) (*cloudfront.ListDistributionsByConnectionModeOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListDistributionsByConnectionMode", varargs...)
+	ret0, _ := ret[0].(*cloudfront.ListDistributionsByConnectionModeOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListDistributionsByConnectionMode indicates an expected call of ListDistributionsByConnectionMode.
+func (mr *MockCloudfrontClientMockRecorder) ListDistributionsByConnectionMode(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListDistributionsByConnectionMode", reflect.TypeOf((*MockCloudfrontClient)(nil).ListDistributionsByConnectionMode), varargs...)
 }
 
 // ListDistributionsByKeyGroup mocks base method.
@@ -955,6 +1155,26 @@ func (mr *MockCloudfrontClientMockRecorder) ListDistributionsByWebACLId(arg0, ar
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListDistributionsByWebACLId", reflect.TypeOf((*MockCloudfrontClient)(nil).ListDistributionsByWebACLId), varargs...)
 }
 
+// ListDomainConflicts mocks base method.
+func (m *MockCloudfrontClient) ListDomainConflicts(arg0 context.Context, arg1 *cloudfront.ListDomainConflictsInput, arg2 ...func(*cloudfront.Options)) (*cloudfront.ListDomainConflictsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListDomainConflicts", varargs...)
+	ret0, _ := ret[0].(*cloudfront.ListDomainConflictsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListDomainConflicts indicates an expected call of ListDomainConflicts.
+func (mr *MockCloudfrontClientMockRecorder) ListDomainConflicts(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListDomainConflicts", reflect.TypeOf((*MockCloudfrontClient)(nil).ListDomainConflicts), varargs...)
+}
+
 // ListFieldLevelEncryptionConfigs mocks base method.
 func (m *MockCloudfrontClient) ListFieldLevelEncryptionConfigs(arg0 context.Context, arg1 *cloudfront.ListFieldLevelEncryptionConfigsInput, arg2 ...func(*cloudfront.Options)) (*cloudfront.ListFieldLevelEncryptionConfigsOutput, error) {
 	m.ctrl.T.Helper()
@@ -1033,6 +1253,26 @@ func (mr *MockCloudfrontClientMockRecorder) ListInvalidations(arg0, arg1 interfa
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListInvalidations", reflect.TypeOf((*MockCloudfrontClient)(nil).ListInvalidations), varargs...)
+}
+
+// ListInvalidationsForDistributionTenant mocks base method.
+func (m *MockCloudfrontClient) ListInvalidationsForDistributionTenant(arg0 context.Context, arg1 *cloudfront.ListInvalidationsForDistributionTenantInput, arg2 ...func(*cloudfront.Options)) (*cloudfront.ListInvalidationsForDistributionTenantOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListInvalidationsForDistributionTenant", varargs...)
+	ret0, _ := ret[0].(*cloudfront.ListInvalidationsForDistributionTenantOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListInvalidationsForDistributionTenant indicates an expected call of ListInvalidationsForDistributionTenant.
+func (mr *MockCloudfrontClientMockRecorder) ListInvalidationsForDistributionTenant(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListInvalidationsForDistributionTenant", reflect.TypeOf((*MockCloudfrontClient)(nil).ListInvalidationsForDistributionTenant), varargs...)
 }
 
 // ListKeyGroups mocks base method.

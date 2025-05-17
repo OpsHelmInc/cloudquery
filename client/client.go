@@ -212,10 +212,8 @@ func isAllRegions(regions []string) bool {
 		return false
 	}
 
-	wildcardAllRegions := false
-	if (len(regions) == 1 && regions[0] == "*") || (len(regions) == 0) {
-		wildcardAllRegions = true
-	}
+	wildcardAllRegions := (len(regions) == 1 && regions[0] == "*") || (len(regions) == 0)
+
 	return wildcardAllRegions
 }
 

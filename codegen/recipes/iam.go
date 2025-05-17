@@ -30,7 +30,7 @@ func IAMResources() []*Resource {
 		},
 		{
 			SubService: "credential_reports",
-			Struct:     &models.CredentialReportEntry{},
+			Struct:     &ohaws.CredentialReportEntry{},
 			SkipFields: []string{
 				"Arn",
 				"UserCreationTime",
@@ -185,7 +185,7 @@ func IAMResources() []*Resource {
 		},
 		{
 			SubService: "password_policies",
-			Struct:     &models.PasswordPolicyWrapper{},
+			Struct:     &ohaws.PasswordPolicy{},
 			SkipFields: []string{},
 			ExtraColumns: []codegen.ColumnDefinition{
 				{
@@ -374,10 +374,11 @@ func IAMResources() []*Resource {
 			},
 		},
 		{
-			SubService:           "user_access_keys",
-			Struct:               &models.AccessKeyWrapper{},
-			SkipFields:           []string{},
-			PostResourceResolver: `postIamUserAccessKeyResolver`,
+			SubService: "user_access_keys",
+			Struct:     &ohaws.AccessKey{},
+			SkipFields: []string{},
+			// PostResourceResolver: `postIamUserAccessKeyResolver`,
+			UnwrapEmbeddedStructs: true,
 			ExtraColumns: append(
 				defaultAccountColumns,
 				[]codegen.ColumnDefinition{
@@ -395,14 +396,6 @@ func IAMResources() []*Resource {
 						Name:     "user_id",
 						Type:     schema.TypeString,
 						Resolver: `schema.ParentColumnResolver("id")`,
-					},
-					{
-						Name: "last_used",
-						Type: schema.TypeTimestamp,
-					},
-					{
-						Name: "last_used_service_name",
-						Type: schema.TypeString,
 					},
 					{
 						Name:     ohResourceTypeColumn,

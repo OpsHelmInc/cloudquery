@@ -5,6 +5,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/iot/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func IOTResources() []*Resource {
@@ -56,10 +58,12 @@ func IOTResources() []*Resource {
 				}...),
 		},
 		{
-			SubService:  "certificates",
-			Struct:      &types.CertificateDescription{},
-			Description: "https://docs.aws.amazon.com/iot/latest/apireference/API_CertificateDescription.html",
-			SkipFields:  []string{"CertificateArn"},
+			SubService:            "certificates",
+			Struct:                &ohaws.IoTCertificate{},
+			PreResourceResolver:   "getIotCertificate",
+			Description:           "https://docs.aws.amazon.com/iot/latest/apireference/API_CertificateDescription.html",
+			SkipFields:            []string{"CertificateArn"},
+			UnwrapEmbeddedStructs: true,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
@@ -98,18 +102,15 @@ func IOTResources() []*Resource {
 				}...),
 		},
 		{
-			SubService:  "policies",
-			Struct:      &types.Policy{},
-			Description: "https://docs.aws.amazon.com/iot/latest/apireference/API_Policy.html",
-			SkipFields:  []string{"PolicyArn"},
+			SubService:            "policies",
+			Struct:                &ohaws.IoTPolicy{},
+			PreResourceResolver:   "getIotPolicy",
+			Description:           "https://docs.aws.amazon.com/iot/latest/apireference/API_Policy.html",
+			SkipFields:            []string{"PolicyArn"},
+			UnwrapEmbeddedStructs: true,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `ResolveIotPolicyTags`,
-					},
 					{
 						Name:     "arn",
 						Type:     schema.TypeString,
@@ -160,9 +161,11 @@ func IOTResources() []*Resource {
 				}...),
 		},
 		{
-			SubService: "thing_groups",
-			Struct:     &iot.DescribeThingGroupOutput{},
-			SkipFields: []string{"ThingGroupArn"},
+			SubService:            "thing_groups",
+			Struct:                &ohaws.IoTThingGroup{},
+			PreResourceResolver:   "getIotThingGroup",
+			SkipFields:            []string{"ThingGroupArn"},
+			UnwrapEmbeddedStructs: true,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
@@ -176,11 +179,6 @@ func IOTResources() []*Resource {
 						Type:          schema.TypeStringArray,
 						Resolver:      `ResolveIotThingGroupPolicies`,
 						IgnoreInTests: true,
-					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `ResolveIotThingGroupTags`,
 					},
 					{
 						Name:     "arn",
@@ -212,10 +210,12 @@ func IOTResources() []*Resource {
 				}...),
 		},
 		{
-			SubService:  "things",
-			Struct:      &types.ThingAttribute{},
-			Description: "https://docs.aws.amazon.com/iot/latest/apireference/API_ThingAttribute.html",
-			SkipFields:  []string{"ThingArn"},
+			SubService:            "things",
+			Struct:                &ohaws.IoTThing{},
+			PreResourceResolver:   "getIotThing",
+			Description:           "https://docs.aws.amazon.com/iot/latest/apireference/API_ThingAttribute.html",
+			SkipFields:            []string{"ThingArn"},
+			UnwrapEmbeddedStructs: true,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{

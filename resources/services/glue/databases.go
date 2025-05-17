@@ -9,9 +9,10 @@ import (
 
 func Databases() *schema.Table {
 	return &schema.Table{
-		Name:      "aws_glue_databases",
-		Resolver:  fetchGlueDatabases,
-		Multiplex: client.ServiceAccountRegionMultiplexer("glue"),
+		Name:                "aws_glue_databases",
+		Resolver:            fetchGlueDatabases,
+		PreResourceResolver: getGlueDatabase,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("glue"),
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -30,11 +31,6 @@ func Databases() *schema.Table {
 				CreationOptions: schema.ColumnCreationOptions{
 					PrimaryKey: true,
 				},
-			},
-			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveGlueDatabaseTags,
 			},
 			{
 				Name:     "name",
@@ -80,6 +76,11 @@ func Databases() *schema.Table {
 				Name:     "target_database",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("TargetDatabase"),
+			},
+			{
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Tags"),
 			},
 		},
 

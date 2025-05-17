@@ -21,3 +21,4 @@ The primary key for this table is **arn**.
 |subnets|JSON|
 |supported_network_types|StringArray|
 |vpc_id|String|
+|tags|JSON|

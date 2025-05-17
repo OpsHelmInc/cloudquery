@@ -17,6 +17,7 @@ The primary key for this table is **arn**.
 |region|String|
 |arn (PK)|String|
 |availability_zone|String|
+|availability_zone_id|String|
 |currency_code|String|
 |duration|Int|
 |end|Timestamp|

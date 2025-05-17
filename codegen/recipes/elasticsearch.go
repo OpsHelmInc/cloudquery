@@ -1,16 +1,17 @@
 package recipes
 
 import (
-	"github.com/aws/aws-sdk-go-v2/service/elasticsearchservice/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func ElasticsearchResources() []*Resource {
 	resources := []*Resource{
 		{
 			SubService:          "domains",
-			Struct:              &types.ElasticsearchDomainStatus{},
+			Struct:              &ohaws.ElasticsearchDomain{},
 			SkipFields:          []string{"DomainId"},
 			PreResourceResolver: "getDomain",
 			ExtraColumns: []codegen.ColumnDefinition{
@@ -25,11 +26,6 @@ func ElasticsearchResources() []*Resource {
 					Type:     schema.TypeString,
 					Resolver: `client.ResolveAWSRegion`,
 					Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-				},
-				{
-					Name:     "tags",
-					Type:     schema.TypeJSON,
-					Resolver: `resolveElasticsearchDomainTags`,
 				},
 				{
 					Name:     "id",

@@ -3,11 +3,15 @@ package backup
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/backup"
 	"github.com/aws/aws-sdk-go-v2/service/backup/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+	"github.com/mitchellh/mapstructure"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/services"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchBackupPlans(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -41,37 +45,41 @@ func getPlan(ctx context.Context, meta schema.ClientMeta, resource *schema.Resou
 	if err != nil {
 		return err
 	}
-	resource.Item = plan
+
+	var b ohaws.BackupPlan
+	// convert response struct to BackupVaultListMember struct
+	if err := mapstructure.Decode(plan, &b.GetBackupPlanOutput); err != nil {
+		return err
+	}
+
+	tags, err := getPlanTags(ctx, svc, *b.BackupPlanArn)
+	if err != nil {
+		return err
+	}
+	b.Tags = tags
+
+	resource.Item = &b
 	return nil
 }
 
-func resolvePlanTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	plan := resource.Item.(*backup.GetBackupPlanOutput)
-	cl := meta.(*client.Client)
-	svc := cl.Services().Backup
-	params := backup.ListTagsInput{ResourceArn: plan.BackupPlanArn}
-	tags := make(map[string]string)
-	for {
-		result, err := svc.ListTags(ctx, &params)
-		if result == nil {
-			break
-		}
+func getPlanTags(ctx context.Context, svc services.BackupClient, planArn string) (map[string]string, error) {
+	params := backup.ListTagsInput{ResourceArn: &planArn}
+	paginator := backup.NewListTagsPaginator(svc, &params)
+	tags := map[string]string{}
+	for paginator.HasMorePages() {
+		result, err := paginator.NextPage(ctx)
 		if err != nil {
-			return err
+			return nil, err
 		}
 		for k, v := range result.Tags {
 			tags[k] = v
 		}
-		if aws.ToString(result.NextToken) == "" {
-			break
-		}
-		params.NextToken = result.NextToken
 	}
-	return resource.Set(c.Name, tags)
+	return tags, nil
 }
 
 func fetchBackupPlanSelections(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
-	plan := parent.Item.(*backup.GetBackupPlanOutput)
+	plan := parent.Item.(*ohaws.BackupPlan)
 	cl := meta.(*client.Client)
 	svc := cl.Services().Backup
 	params := backup.ListBackupSelectionsInput{

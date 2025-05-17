@@ -1855,6 +1855,26 @@ func (mr *MockEc2ClientMockRecorder) DescribeNetworkInterfaces(arg0, arg1 interf
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeNetworkInterfaces", reflect.TypeOf((*MockEc2Client)(nil).DescribeNetworkInterfaces), varargs...)
 }
 
+// DescribeOutpostLags mocks base method.
+func (m *MockEc2Client) DescribeOutpostLags(arg0 context.Context, arg1 *ec2.DescribeOutpostLagsInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeOutpostLagsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeOutpostLags", varargs...)
+	ret0, _ := ret[0].(*ec2.DescribeOutpostLagsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeOutpostLags indicates an expected call of DescribeOutpostLags.
+func (mr *MockEc2ClientMockRecorder) DescribeOutpostLags(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeOutpostLags", reflect.TypeOf((*MockEc2Client)(nil).DescribeOutpostLags), varargs...)
+}
+
 // DescribePlacementGroups mocks base method.
 func (m *MockEc2Client) DescribePlacementGroups(arg0 context.Context, arg1 *ec2.DescribePlacementGroupsInput, arg2 ...func(*ec2.Options)) (*ec2.DescribePlacementGroupsOutput, error) {
 	m.ctrl.T.Helper()
@@ -2055,6 +2075,66 @@ func (mr *MockEc2ClientMockRecorder) DescribeReservedInstancesOfferings(arg0, ar
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeReservedInstancesOfferings", reflect.TypeOf((*MockEc2Client)(nil).DescribeReservedInstancesOfferings), varargs...)
 }
 
+// DescribeRouteServerEndpoints mocks base method.
+func (m *MockEc2Client) DescribeRouteServerEndpoints(arg0 context.Context, arg1 *ec2.DescribeRouteServerEndpointsInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeRouteServerEndpointsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeRouteServerEndpoints", varargs...)
+	ret0, _ := ret[0].(*ec2.DescribeRouteServerEndpointsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeRouteServerEndpoints indicates an expected call of DescribeRouteServerEndpoints.
+func (mr *MockEc2ClientMockRecorder) DescribeRouteServerEndpoints(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeRouteServerEndpoints", reflect.TypeOf((*MockEc2Client)(nil).DescribeRouteServerEndpoints), varargs...)
+}
+
+// DescribeRouteServerPeers mocks base method.
+func (m *MockEc2Client) DescribeRouteServerPeers(arg0 context.Context, arg1 *ec2.DescribeRouteServerPeersInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeRouteServerPeersOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeRouteServerPeers", varargs...)
+	ret0, _ := ret[0].(*ec2.DescribeRouteServerPeersOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeRouteServerPeers indicates an expected call of DescribeRouteServerPeers.
+func (mr *MockEc2ClientMockRecorder) DescribeRouteServerPeers(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeRouteServerPeers", reflect.TypeOf((*MockEc2Client)(nil).DescribeRouteServerPeers), varargs...)
+}
+
+// DescribeRouteServers mocks base method.
+func (m *MockEc2Client) DescribeRouteServers(arg0 context.Context, arg1 *ec2.DescribeRouteServersInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeRouteServersOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeRouteServers", varargs...)
+	ret0, _ := ret[0].(*ec2.DescribeRouteServersOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeRouteServers indicates an expected call of DescribeRouteServers.
+func (mr *MockEc2ClientMockRecorder) DescribeRouteServers(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeRouteServers", reflect.TypeOf((*MockEc2Client)(nil).DescribeRouteServers), varargs...)
+}
+
 // DescribeRouteTables mocks base method.
 func (m *MockEc2Client) DescribeRouteTables(arg0 context.Context, arg1 *ec2.DescribeRouteTablesInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeRouteTablesOutput, error) {
 	m.ctrl.T.Helper()
@@ -2193,6 +2273,26 @@ func (mr *MockEc2ClientMockRecorder) DescribeSecurityGroups(arg0, arg1 interface
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeSecurityGroups", reflect.TypeOf((*MockEc2Client)(nil).DescribeSecurityGroups), varargs...)
+}
+
+// DescribeServiceLinkVirtualInterfaces mocks base method.
+func (m *MockEc2Client) DescribeServiceLinkVirtualInterfaces(arg0 context.Context, arg1 *ec2.DescribeServiceLinkVirtualInterfacesInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeServiceLinkVirtualInterfacesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeServiceLinkVirtualInterfaces", varargs...)
+	ret0, _ := ret[0].(*ec2.DescribeServiceLinkVirtualInterfacesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeServiceLinkVirtualInterfaces indicates an expected call of DescribeServiceLinkVirtualInterfaces.
+func (mr *MockEc2ClientMockRecorder) DescribeServiceLinkVirtualInterfaces(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeServiceLinkVirtualInterfaces", reflect.TypeOf((*MockEc2Client)(nil).DescribeServiceLinkVirtualInterfaces), varargs...)
 }
 
 // DescribeSnapshotAttribute mocks base method.
@@ -3933,6 +4033,66 @@ func (mr *MockEc2ClientMockRecorder) GetReservedInstancesExchangeQuote(arg0, arg
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetReservedInstancesExchangeQuote", reflect.TypeOf((*MockEc2Client)(nil).GetReservedInstancesExchangeQuote), varargs...)
+}
+
+// GetRouteServerAssociations mocks base method.
+func (m *MockEc2Client) GetRouteServerAssociations(arg0 context.Context, arg1 *ec2.GetRouteServerAssociationsInput, arg2 ...func(*ec2.Options)) (*ec2.GetRouteServerAssociationsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetRouteServerAssociations", varargs...)
+	ret0, _ := ret[0].(*ec2.GetRouteServerAssociationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetRouteServerAssociations indicates an expected call of GetRouteServerAssociations.
+func (mr *MockEc2ClientMockRecorder) GetRouteServerAssociations(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetRouteServerAssociations", reflect.TypeOf((*MockEc2Client)(nil).GetRouteServerAssociations), varargs...)
+}
+
+// GetRouteServerPropagations mocks base method.
+func (m *MockEc2Client) GetRouteServerPropagations(arg0 context.Context, arg1 *ec2.GetRouteServerPropagationsInput, arg2 ...func(*ec2.Options)) (*ec2.GetRouteServerPropagationsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetRouteServerPropagations", varargs...)
+	ret0, _ := ret[0].(*ec2.GetRouteServerPropagationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetRouteServerPropagations indicates an expected call of GetRouteServerPropagations.
+func (mr *MockEc2ClientMockRecorder) GetRouteServerPropagations(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetRouteServerPropagations", reflect.TypeOf((*MockEc2Client)(nil).GetRouteServerPropagations), varargs...)
+}
+
+// GetRouteServerRoutingDatabase mocks base method.
+func (m *MockEc2Client) GetRouteServerRoutingDatabase(arg0 context.Context, arg1 *ec2.GetRouteServerRoutingDatabaseInput, arg2 ...func(*ec2.Options)) (*ec2.GetRouteServerRoutingDatabaseOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetRouteServerRoutingDatabase", varargs...)
+	ret0, _ := ret[0].(*ec2.GetRouteServerRoutingDatabaseOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetRouteServerRoutingDatabase indicates an expected call of GetRouteServerRoutingDatabase.
+func (mr *MockEc2ClientMockRecorder) GetRouteServerRoutingDatabase(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetRouteServerRoutingDatabase", reflect.TypeOf((*MockEc2Client)(nil).GetRouteServerRoutingDatabase), varargs...)
 }
 
 // GetSecurityGroupsForVpc mocks base method.

@@ -17,7 +17,6 @@ The primary key for this table is **arn**.
 |region|String|
 |things_in_group|StringArray|
 |policies|StringArray|
-|tags|JSON|
 |arn (PK)|String|
 |index_name|String|
 |query_string|String|
@@ -29,3 +28,4 @@ The primary key for this table is **arn**.
 |thing_group_properties|JSON|
 |version|Int|
 |result_metadata|JSON|
+|tags|JSON|

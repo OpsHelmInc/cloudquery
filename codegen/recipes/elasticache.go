@@ -4,15 +4,19 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/elasticache/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func ElastiCacheResources() []*Resource {
 	resources := []*Resource{
 		{
-			SubService:  "clusters",
-			Struct:      &types.CacheCluster{},
-			Description: "https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CacheCluster.html",
-			SkipFields:  []string{"ARN"},
+			SubService:            "clusters",
+			Struct:                &ohaws.CacheCluster{},
+			Description:           "https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CacheCluster.html",
+			SkipFields:            []string{"ARN"},
+			PreResourceResolver:   "getCluster",
+			UnwrapEmbeddedStructs: true,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
@@ -96,10 +100,12 @@ func ElastiCacheResources() []*Resource {
 				}...),
 		},
 		{
-			SubService:  "replication_groups",
-			Struct:      &types.ReplicationGroup{},
-			Description: "https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ReplicationGroup.html",
-			SkipFields:  []string{"ARN"},
+			SubService:            "replication_groups",
+			Struct:                &ohaws.ReplicationGroup{},
+			PreResourceResolver:   "getReplicationGroup",
+			Description:           "https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ReplicationGroup.html",
+			SkipFields:            []string{"ARN"},
+			UnwrapEmbeddedStructs: true,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
@@ -207,10 +213,12 @@ func ElastiCacheResources() []*Resource {
 				}...),
 		},
 		{
-			SubService:  "subnet_groups",
-			Struct:      &types.CacheSubnetGroup{},
-			Description: "https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CacheSubnetGroup.html",
-			SkipFields:  []string{"ARN"},
+			SubService:            "subnet_groups",
+			Struct:                &ohaws.CacheSubnetGroup{},
+			PreResourceResolver:   "getCacheSubnetGroup",
+			Description:           "https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CacheSubnetGroup.html",
+			SkipFields:            []string{"ARN"},
+			UnwrapEmbeddedStructs: true,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{

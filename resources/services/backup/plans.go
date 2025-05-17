@@ -34,54 +34,14 @@ func Plans() *schema.Table {
 				},
 			},
 			{
+				Name:     "get_backup_plan_output",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("GetBackupPlanOutput"),
+			},
+			{
 				Name:     "tags",
 				Type:     schema.TypeJSON,
-				Resolver: resolvePlanTags,
-			},
-			{
-				Name:     "advanced_backup_settings",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("AdvancedBackupSettings"),
-			},
-			{
-				Name:     "backup_plan",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("BackupPlan"),
-			},
-			{
-				Name:     "backup_plan_id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("BackupPlanId"),
-			},
-			{
-				Name:     "creation_date",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("CreationDate"),
-			},
-			{
-				Name:     "creator_request_id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("CreatorRequestId"),
-			},
-			{
-				Name:     "deletion_date",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("DeletionDate"),
-			},
-			{
-				Name:     "last_execution_date",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("LastExecutionDate"),
-			},
-			{
-				Name:     "version_id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("VersionId"),
-			},
-			{
-				Name:     "result_metadata",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("ResultMetadata"),
+				Resolver: schema.PathResolver("Tags"),
 			},
 		},
 

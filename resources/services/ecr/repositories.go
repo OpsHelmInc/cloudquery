@@ -9,10 +9,11 @@ import (
 
 func Repositories() *schema.Table {
 	return &schema.Table{
-		Name:        "aws_ecr_repositories",
-		Description: `https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_Repository.html`,
-		Resolver:    fetchEcrRepositories,
-		Multiplex:   client.ServiceAccountRegionMultiplexer("api.ecr"),
+		Name:                "aws_ecr_repositories",
+		Description:         `https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_Repository.html`,
+		Resolver:            fetchEcrRepositories,
+		PreResourceResolver: getRepository,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("api.ecr"),
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -33,11 +34,6 @@ func Repositories() *schema.Table {
 				},
 			},
 			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveRepositoryTags,
-			},
-			{
 				Name:     "policy_text",
 				Type:     schema.TypeJSON,
 				Resolver: resolveRepositoryPolicy,
@@ -48,39 +44,14 @@ func Repositories() *schema.Table {
 				Resolver: client.StaticValueResolver("AWS::ECR::Repository"),
 			},
 			{
-				Name:     "created_at",
-				Type:     schema.TypeTimestamp,
-				Resolver: schema.PathResolver("CreatedAt"),
-			},
-			{
-				Name:     "encryption_configuration",
+				Name:     "repository",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("EncryptionConfiguration"),
+				Resolver: schema.PathResolver("Repository"),
 			},
 			{
-				Name:     "image_scanning_configuration",
+				Name:     "tags",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("ImageScanningConfiguration"),
-			},
-			{
-				Name:     "image_tag_mutability",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("ImageTagMutability"),
-			},
-			{
-				Name:     "registry_id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("RegistryId"),
-			},
-			{
-				Name:     "repository_name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("RepositoryName"),
-			},
-			{
-				Name:     "repository_uri",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("RepositoryUri"),
+				Resolver: schema.PathResolver("Tags"),
 			},
 		},
 

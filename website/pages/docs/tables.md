@@ -198,7 +198,6 @@
 - [aws_elbv2_load_balancers](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_elbv2_load_balancers.md)
   - [aws_elbv2_listeners](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_elbv2_listeners.md)
     - [aws_elbv2_listener_certificates](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_elbv2_listener_certificates.md)
-  - [aws_elbv2_load_balancer_attributes](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_elbv2_load_balancer_attributes.md)
 - [aws_elbv2_target_groups](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_elbv2_target_groups.md)
   - [aws_elbv2_target_group_target_health_descriptions](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_elbv2_target_group_target_health_descriptions.md)
 - [aws_emr_block_public_access_configs](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_emr_block_public_access_configs.md)

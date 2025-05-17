@@ -10,6 +10,7 @@ import (
 	"github.com/cloudquery/plugin-sdk/schema"
 
 	"github.com/OpsHelmInc/cloudquery/resources/services/lambda/models"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func LambdaResources() []*Resource {
@@ -76,7 +77,7 @@ func LambdaResources() []*Resource {
 		},
 		{
 			SubService:          "function_aliases",
-			Struct:              &models.AliasWrapper{},
+			Struct:              &ohaws.Alias{},
 			SkipFields:          []string{"AliasArn"},
 			PreResourceResolver: "getFunctionAliasURLConfig",
 			ExtraColumns: append(

@@ -5,12 +5,14 @@ import (
 	"encoding/json"
 	"strings"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/backup"
 	"github.com/aws/aws-sdk-go-v2/service/backup/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 )
 
 func fetchBackupVaults(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -22,7 +24,15 @@ func fetchBackupVaults(ctx context.Context, meta schema.ClientMeta, parent *sche
 		if err != nil {
 			return err
 		}
-		res <- result.BackupVaultList
+
+		vaults := make([]*ohaws.BackupVault, len(result.BackupVaultList))
+		for idx, v := range result.BackupVaultList {
+			vaults[idx] = &ohaws.BackupVault{
+				BackupVaultListMember: v,
+			}
+		}
+
+		res <- vaults
 		if aws.ToString(result.NextToken) == "" {
 			break
 		}
@@ -31,35 +41,32 @@ func fetchBackupVaults(ctx context.Context, meta schema.ClientMeta, parent *sche
 	return nil
 }
 
-func resolveVaultTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	vault := resource.Item.(types.BackupVaultListMember)
+func getBackupVault(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
 	cl := meta.(*client.Client)
 	svc := cl.Services().Backup
+	vault := resource.Item.(*ohaws.BackupVault)
+
 	params := backup.ListTagsInput{ResourceArn: vault.BackupVaultArn}
-	tags := make(map[string]string)
-	for {
-		result, err := svc.ListTags(ctx, &params, func(o *backup.Options) {
-			o.Region = cl.Region
-		})
-		if result == nil {
-			break
-		}
+	paginator := backup.NewListTagsPaginator(svc, &params)
+
+	vault.Tags = map[string]string{}
+	for paginator.HasMorePages() {
+		result, err := paginator.NextPage(ctx)
 		if err != nil {
 			return err
 		}
 		for k, v := range result.Tags {
-			tags[k] = v
+			vault.Tags[k] = v
 		}
-		if aws.ToString(result.NextToken) == "" {
-			break
-		}
-		params.NextToken = result.NextToken
 	}
-	return resource.Set(c.Name, tags)
+
+	resource.Item = vault
+
+	return nil
 }
 
 func resolveVaultAccessPolicy(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	vault := resource.Item.(types.BackupVaultListMember)
+	vault := resource.Item.(*ohaws.BackupVault)
 	cl := meta.(*client.Client)
 	svc := cl.Services().Backup
 	result, err := svc.GetBackupVaultAccessPolicy(
@@ -88,7 +95,7 @@ func resolveVaultAccessPolicy(ctx context.Context, meta schema.ClientMeta, resou
 }
 
 func resolveVaultNotifications(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, col schema.Column) error {
-	vault := resource.Item.(types.BackupVaultListMember)
+	vault := resource.Item.(*ohaws.BackupVault)
 	cl := meta.(*client.Client)
 	svc := cl.Services().Backup
 	result, err := svc.GetBackupVaultNotifications(
@@ -107,7 +114,7 @@ func resolveVaultNotifications(ctx context.Context, meta schema.ClientMeta, reso
 func fetchBackupVaultRecoveryPoints(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	cl := meta.(*client.Client)
 	svc := cl.Services().Backup
-	vault := parent.Item.(types.BackupVaultListMember)
+	vault := parent.Item.(*ohaws.BackupVault)
 	params := backup.ListRecoveryPointsByBackupVaultInput{BackupVaultName: vault.BackupVaultName, MaxResults: aws.Int32(100)}
 	for {
 		result, err := svc.ListRecoveryPointsByBackupVault(ctx, &params)

@@ -9,10 +9,11 @@ import (
 
 func Listeners() *schema.Table {
 	return &schema.Table{
-		Name:        "aws_elbv2_listeners",
-		Description: `https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_Listener.html`,
-		Resolver:    fetchElbv2Listeners,
-		Multiplex:   client.ServiceAccountRegionMultiplexer("elasticloadbalancing"),
+		Name:                "aws_elbv2_listeners",
+		Description:         `https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_Listener.html`,
+		Resolver:            fetchElbv2Listeners,
+		PreResourceResolver: getLoadBalancerListener,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("elasticloadbalancing"),
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -33,54 +34,19 @@ func Listeners() *schema.Table {
 				},
 			},
 			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveElbv2listenerTags,
-			},
-			{
 				Name:     "oh_resource_type",
 				Type:     schema.TypeString,
 				Resolver: client.StaticValueResolver("AWS::ElasticLoadBalancingV2::Listener"),
 			},
 			{
-				Name:     "alpn_policy",
-				Type:     schema.TypeStringArray,
-				Resolver: schema.PathResolver("AlpnPolicy"),
-			},
-			{
-				Name:     "certificates",
+				Name:     "listener",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("Certificates"),
+				Resolver: schema.PathResolver("Listener"),
 			},
 			{
-				Name:     "default_actions",
+				Name:     "tags",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("DefaultActions"),
-			},
-			{
-				Name:     "load_balancer_arn",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("LoadBalancerArn"),
-			},
-			{
-				Name:     "mutual_authentication",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("MutualAuthentication"),
-			},
-			{
-				Name:     "port",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("Port"),
-			},
-			{
-				Name:     "protocol",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Protocol"),
-			},
-			{
-				Name:     "ssl_policy",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("SslPolicy"),
+				Resolver: schema.PathResolver("Tags"),
 			},
 		},
 

@@ -9,10 +9,11 @@ import (
 
 func Certificates() *schema.Table {
 	return &schema.Table{
-		Name:        "aws_iot_certificates",
-		Description: `https://docs.aws.amazon.com/iot/latest/apireference/API_CertificateDescription.html`,
-		Resolver:    fetchIotCertificates,
-		Multiplex:   client.ServiceAccountRegionMultiplexer("iot"),
+		Name:                "aws_iot_certificates",
+		Description:         `https://docs.aws.amazon.com/iot/latest/apireference/API_CertificateDescription.html`,
+		Resolver:            fetchIotCertificates,
+		PreResourceResolver: getIotCertificate,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("iot"),
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -101,6 +102,11 @@ func Certificates() *schema.Table {
 				Name:     "validity",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Validity"),
+			},
+			{
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: client.ResolveTags,
 			},
 		},
 	}
