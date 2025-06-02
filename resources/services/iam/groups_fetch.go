@@ -2,14 +2,13 @@ package iam
 
 import (
 	"context"
-	"fmt"
+
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/iam"
+	"github.com/cloudquery/plugin-sdk/schema"
 
 	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/OpsHelmInc/ohaws"
-	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/aws/arn"
-	"github.com/aws/aws-sdk-go-v2/service/iam"
-	"github.com/cloudquery/plugin-sdk/schema"
 )
 
 func fetchIamGroups(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
@@ -45,13 +44,9 @@ func getGroup(ctx context.Context, meta schema.ClientMeta, resource *schema.Reso
 
 	wrappedGroup := &ohaws.Group{Group: *groupDetail.Group}
 
-	userARNs := []arn.ARN{}
-	for _, u := range groupDetail.Users {
-		userARN, err := arn.Parse(*u.Arn)
-		if err != nil {
-			return fmt.Errorf("failed to parse user ARN: %w, %v", err, *u.Arn)
-		}
-		userARNs = append(userARNs, userARN)
+	userARNs := make([]string, len(groupDetail.Users))
+	for idx, u := range groupDetail.Users {
+		userARNs[idx] = aws.ToString(u.Arn)
 	}
 
 	wrappedGroup.Users = userARNs
@@ -61,9 +56,9 @@ func getGroup(ctx context.Context, meta schema.ClientMeta, resource *schema.Reso
 		return err
 	}
 
-	policyMap := map[string]*string{}
+	policyMap := map[string]string{}
 	for _, p := range policies.AttachedPolicies {
-		policyMap[*p.PolicyArn] = p.PolicyName
+		policyMap[*p.PolicyArn] = aws.ToString(p.PolicyName)
 	}
 
 	wrappedGroup.Policies = policyMap

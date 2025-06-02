@@ -16,6 +16,7 @@ type CodepipelineClient interface {
 	GetThirdPartyJobDetails(context.Context, *codepipeline.GetThirdPartyJobDetailsInput, ...func(*codepipeline.Options)) (*codepipeline.GetThirdPartyJobDetailsOutput, error)
 	ListActionExecutions(context.Context, *codepipeline.ListActionExecutionsInput, ...func(*codepipeline.Options)) (*codepipeline.ListActionExecutionsOutput, error)
 	ListActionTypes(context.Context, *codepipeline.ListActionTypesInput, ...func(*codepipeline.Options)) (*codepipeline.ListActionTypesOutput, error)
+	ListDeployActionExecutionTargets(context.Context, *codepipeline.ListDeployActionExecutionTargetsInput, ...func(*codepipeline.Options)) (*codepipeline.ListDeployActionExecutionTargetsOutput, error)
 	ListPipelineExecutions(context.Context, *codepipeline.ListPipelineExecutionsInput, ...func(*codepipeline.Options)) (*codepipeline.ListPipelineExecutionsOutput, error)
 	ListPipelines(context.Context, *codepipeline.ListPipelinesInput, ...func(*codepipeline.Options)) (*codepipeline.ListPipelinesOutput, error)
 	ListRuleExecutions(context.Context, *codepipeline.ListRuleExecutionsInput, ...func(*codepipeline.Options)) (*codepipeline.ListRuleExecutionsOutput, error)

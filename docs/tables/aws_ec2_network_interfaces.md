@@ -39,6 +39,8 @@ The primary key for this table is **arn**.
 |private_dns_name|String|
 |private_ip_address|String|
 |private_ip_addresses|JSON|
+|public_dns_name|String|
+|public_ip_dns_name_options|JSON|
 |requester_id|String|
 |requester_managed|Bool|
 |source_dest_check|Bool|

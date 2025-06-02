@@ -195,6 +195,26 @@ func (mr *MockCodepipelineClientMockRecorder) ListActionTypes(arg0, arg1 interfa
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListActionTypes", reflect.TypeOf((*MockCodepipelineClient)(nil).ListActionTypes), varargs...)
 }
 
+// ListDeployActionExecutionTargets mocks base method.
+func (m *MockCodepipelineClient) ListDeployActionExecutionTargets(arg0 context.Context, arg1 *codepipeline.ListDeployActionExecutionTargetsInput, arg2 ...func(*codepipeline.Options)) (*codepipeline.ListDeployActionExecutionTargetsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListDeployActionExecutionTargets", varargs...)
+	ret0, _ := ret[0].(*codepipeline.ListDeployActionExecutionTargetsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListDeployActionExecutionTargets indicates an expected call of ListDeployActionExecutionTargets.
+func (mr *MockCodepipelineClientMockRecorder) ListDeployActionExecutionTargets(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListDeployActionExecutionTargets", reflect.TypeOf((*MockCodepipelineClient)(nil).ListDeployActionExecutionTargets), varargs...)
+}
+
 // ListPipelineExecutions mocks base method.
 func (m *MockCodepipelineClient) ListPipelineExecutions(arg0 context.Context, arg1 *codepipeline.ListPipelineExecutionsInput, arg2 ...func(*codepipeline.Options)) (*codepipeline.ListPipelineExecutionsOutput, error) {
 	m.ctrl.T.Helper()

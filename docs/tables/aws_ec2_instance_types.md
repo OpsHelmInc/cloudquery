@@ -41,6 +41,7 @@ The primary key for this table is **arn**.
 |phc_support|String|
 |placement_group_info|JSON|
 |processor_info|JSON|
+|reboot_migration_support|String|
 |supported_boot_modes|StringArray|
 |supported_root_device_types|StringArray|
 |supported_usage_classes|StringArray|

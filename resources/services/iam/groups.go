@@ -48,7 +48,7 @@ func Groups() *schema.Table {
 			},
 			{
 				Name:     "users",
-				Type:     schema.TypeJSON,
+				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("Users"),
 			},
 			{

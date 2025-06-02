@@ -23,6 +23,7 @@ type RdsClient interface {
 	DescribeDBInstanceAutomatedBackups(context.Context, *rds.DescribeDBInstanceAutomatedBackupsInput, ...func(*rds.Options)) (*rds.DescribeDBInstanceAutomatedBackupsOutput, error)
 	DescribeDBInstances(context.Context, *rds.DescribeDBInstancesInput, ...func(*rds.Options)) (*rds.DescribeDBInstancesOutput, error)
 	DescribeDBLogFiles(context.Context, *rds.DescribeDBLogFilesInput, ...func(*rds.Options)) (*rds.DescribeDBLogFilesOutput, error)
+	DescribeDBMajorEngineVersions(context.Context, *rds.DescribeDBMajorEngineVersionsInput, ...func(*rds.Options)) (*rds.DescribeDBMajorEngineVersionsOutput, error)
 	DescribeDBParameterGroups(context.Context, *rds.DescribeDBParameterGroupsInput, ...func(*rds.Options)) (*rds.DescribeDBParameterGroupsOutput, error)
 	DescribeDBParameters(context.Context, *rds.DescribeDBParametersInput, ...func(*rds.Options)) (*rds.DescribeDBParametersOutput, error)
 	DescribeDBProxies(context.Context, *rds.DescribeDBProxiesInput, ...func(*rds.Options)) (*rds.DescribeDBProxiesOutput, error)

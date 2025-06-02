@@ -88,6 +88,7 @@ type Ec2Client interface {
 	DescribeLocalGateways(context.Context, *ec2.DescribeLocalGatewaysInput, ...func(*ec2.Options)) (*ec2.DescribeLocalGatewaysOutput, error)
 	DescribeLockedSnapshots(context.Context, *ec2.DescribeLockedSnapshotsInput, ...func(*ec2.Options)) (*ec2.DescribeLockedSnapshotsOutput, error)
 	DescribeMacHosts(context.Context, *ec2.DescribeMacHostsInput, ...func(*ec2.Options)) (*ec2.DescribeMacHostsOutput, error)
+	DescribeMacModificationTasks(context.Context, *ec2.DescribeMacModificationTasksInput, ...func(*ec2.Options)) (*ec2.DescribeMacModificationTasksOutput, error)
 	DescribeManagedPrefixLists(context.Context, *ec2.DescribeManagedPrefixListsInput, ...func(*ec2.Options)) (*ec2.DescribeManagedPrefixListsOutput, error)
 	DescribeMovingAddresses(context.Context, *ec2.DescribeMovingAddressesInput, ...func(*ec2.Options)) (*ec2.DescribeMovingAddressesOutput, error)
 	DescribeNatGateways(context.Context, *ec2.DescribeNatGatewaysInput, ...func(*ec2.Options)) (*ec2.DescribeNatGatewaysOutput, error)
