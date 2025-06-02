@@ -22,4 +22,4 @@ The following tables depend on aws_iam_roles:
 |assume_role_policy_document|JSON|
 |oh_resource_type|String|
 |role|JSON|
-|policies|JSON|
+|policies|StringArray|

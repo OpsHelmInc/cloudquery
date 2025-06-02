@@ -53,7 +53,7 @@ func Roles() *schema.Table {
 			},
 			{
 				Name:     "policies",
-				Type:     schema.TypeJSON,
+				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("Policies"),
 			},
 		},

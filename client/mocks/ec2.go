@@ -3375,6 +3375,26 @@ func (mr *MockEc2ClientMockRecorder) DescribeVpnGateways(arg0, arg1 interface{},
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeVpnGateways", reflect.TypeOf((*MockEc2Client)(nil).DescribeVpnGateways), varargs...)
 }
 
+// GetActiveVpnTunnelStatus mocks base method.
+func (m *MockEc2Client) GetActiveVpnTunnelStatus(arg0 context.Context, arg1 *ec2.GetActiveVpnTunnelStatusInput, arg2 ...func(*ec2.Options)) (*ec2.GetActiveVpnTunnelStatusOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetActiveVpnTunnelStatus", varargs...)
+	ret0, _ := ret[0].(*ec2.GetActiveVpnTunnelStatusOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetActiveVpnTunnelStatus indicates an expected call of GetActiveVpnTunnelStatus.
+func (mr *MockEc2ClientMockRecorder) GetActiveVpnTunnelStatus(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetActiveVpnTunnelStatus", reflect.TypeOf((*MockEc2Client)(nil).GetActiveVpnTunnelStatus), varargs...)
+}
+
 // GetAllowedImagesSettings mocks base method.
 func (m *MockEc2Client) GetAllowedImagesSettings(arg0 context.Context, arg1 *ec2.GetAllowedImagesSettingsInput, arg2 ...func(*ec2.Options)) (*ec2.GetAllowedImagesSettingsOutput, error) {
 	m.ctrl.T.Helper()
