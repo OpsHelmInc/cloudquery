@@ -21,5 +21,5 @@ The following tables depend on aws_iam_groups:
 |id (PK)|String|
 |oh_resource_type|String|
 |group|JSON|
-|users|JSON|
+|users|StringArray|
 |policies|JSON|

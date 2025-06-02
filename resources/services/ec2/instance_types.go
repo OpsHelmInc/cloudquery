@@ -158,6 +158,11 @@ func InstanceTypes() *schema.Table {
 				Resolver: schema.PathResolver("ProcessorInfo"),
 			},
 			{
+				Name:     "reboot_migration_support",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("RebootMigrationSupport"),
+			},
+			{
 				Name:     "supported_boot_modes",
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("SupportedBootModes"),

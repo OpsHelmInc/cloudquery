@@ -148,6 +148,16 @@ func NetworkInterfaces() *schema.Table {
 				Resolver: schema.PathResolver("PrivateIpAddresses"),
 			},
 			{
+				Name:     "public_dns_name",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("PublicDnsName"),
+			},
+			{
+				Name:     "public_ip_dns_name_options",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("PublicIpDnsNameOptions"),
+			},
+			{
 				Name:     "requester_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("RequesterId"),
