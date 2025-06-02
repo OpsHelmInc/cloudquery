@@ -22,4 +22,4 @@ The following tables depend on aws_iam_groups:
 |oh_resource_type|String|
 |group|JSON|
 |users|StringArray|
-|policies|JSON|
+|policies|StringArray|

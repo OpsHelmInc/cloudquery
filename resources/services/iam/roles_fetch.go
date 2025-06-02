@@ -3,12 +3,15 @@ package iam
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"net/url"
+	"sort"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 
 	"github.com/OpsHelmInc/ohaws"
 )
@@ -47,26 +50,25 @@ func getRole(ctx context.Context, meta schema.ClientMeta, resource *schema.Resou
 
 	wrappedRole := &ohaws.Role{Role: *roleDetails.Role}
 
+	var policies []string
 	input := iam.ListAttachedRolePoliciesInput{
 		RoleName: role.RoleName,
 	}
-	policies := map[string]*string{}
-	for {
-		response, err := svc.ListAttachedRolePolicies(ctx, &input)
+
+	paginator := iam.NewListAttachedRolePoliciesPaginator(svc, &input)
+	for paginator.HasMorePages() {
+		response, err := paginator.NextPage(ctx)
 		if err != nil {
 			if cl.IsNotFoundError(err) {
 				return nil
 			}
-			return err
+			return fmt.Errorf("failed to list attached role policies: %w", err)
 		}
 		for _, p := range response.AttachedPolicies {
-			policies[*p.PolicyArn] = p.PolicyName
+			policies = append(policies, aws.ToString(p.PolicyArn))
 		}
-		if response.Marker == nil {
-			break
-		}
-		input.Marker = response.Marker
 	}
+	sort.Strings(policies)
 
 	wrappedRole.Policies = policies
 	resource.Item = wrappedRole

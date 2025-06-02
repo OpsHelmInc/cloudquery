@@ -175,6 +175,7 @@ type Ec2Client interface {
 	DescribeVpcs(context.Context, *ec2.DescribeVpcsInput, ...func(*ec2.Options)) (*ec2.DescribeVpcsOutput, error)
 	DescribeVpnConnections(context.Context, *ec2.DescribeVpnConnectionsInput, ...func(*ec2.Options)) (*ec2.DescribeVpnConnectionsOutput, error)
 	DescribeVpnGateways(context.Context, *ec2.DescribeVpnGatewaysInput, ...func(*ec2.Options)) (*ec2.DescribeVpnGatewaysOutput, error)
+	GetActiveVpnTunnelStatus(context.Context, *ec2.GetActiveVpnTunnelStatusInput, ...func(*ec2.Options)) (*ec2.GetActiveVpnTunnelStatusOutput, error)
 	GetAllowedImagesSettings(context.Context, *ec2.GetAllowedImagesSettingsInput, ...func(*ec2.Options)) (*ec2.GetAllowedImagesSettingsOutput, error)
 	GetAssociatedEnclaveCertificateIamRoles(context.Context, *ec2.GetAssociatedEnclaveCertificateIamRolesInput, ...func(*ec2.Options)) (*ec2.GetAssociatedEnclaveCertificateIamRolesOutput, error)
 	GetAssociatedIpv6PoolCidrs(context.Context, *ec2.GetAssociatedIpv6PoolCidrsInput, ...func(*ec2.Options)) (*ec2.GetAssociatedIpv6PoolCidrsOutput, error)

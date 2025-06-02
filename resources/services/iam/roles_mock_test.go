@@ -3,12 +3,13 @@ package iam
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	iamTypes "github.com/aws/aws-sdk-go-v2/service/iam/types"
 	"github.com/cloudquery/plugin-sdk/faker"
 	"github.com/golang/mock/gomock"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/cloudquery/client/mocks"
 )
 
 func buildRoles(t *testing.T, ctrl *gomock.Controller) client.Services {
@@ -38,7 +39,7 @@ func buildRoles(t *testing.T, ctrl *gomock.Controller) client.Services {
 		&iam.ListRolesOutput{
 			Roles: []iamTypes.Role{r},
 		}, nil)
-	m.EXPECT().ListAttachedRolePolicies(gomock.Any(), gomock.Any()).Return(
+	m.EXPECT().ListAttachedRolePolicies(gomock.Any(), gomock.Any(), gomock.Any()).Return(
 		&iam.ListAttachedRolePoliciesOutput{
 			AttachedPolicies: []iamTypes.AttachedPolicy{p},
 		}, nil)

@@ -2,6 +2,8 @@ package iam
 
 import (
 	"context"
+	"fmt"
+	"sort"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
@@ -33,6 +35,7 @@ func fetchIamGroups(ctx context.Context, meta schema.ClientMeta, parent *schema.
 }
 
 func getGroup(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
+	cl := meta.(*client.Client)
 	group := resource.Item.(*ohaws.Group)
 	svc := meta.(*client.Client).Services().Iam
 	groupDetail, err := svc.GetGroup(ctx, &iam.GetGroupInput{
@@ -48,20 +51,27 @@ func getGroup(ctx context.Context, meta schema.ClientMeta, resource *schema.Reso
 	for idx, u := range groupDetail.Users {
 		userARNs[idx] = aws.ToString(u.Arn)
 	}
-
+	sort.Strings(userARNs)
 	wrappedGroup.Users = userARNs
 
-	policies, err := svc.ListAttachedGroupPolicies(ctx, &iam.ListAttachedGroupPoliciesInput{GroupName: wrappedGroup.GroupName})
-	if err != nil {
-		return err
+	var policies []string
+	input := iam.ListAttachedGroupPoliciesInput{GroupName: group.GroupName}
+	paginator := iam.NewListAttachedGroupPoliciesPaginator(svc, &input)
+	for paginator.HasMorePages() {
+		response, err := paginator.NextPage(ctx)
+		if err != nil {
+			if cl.IsNotFoundError(err) {
+				return nil
+			}
+			return fmt.Errorf("failed to list attached group policies: %w", err)
+		}
+		for _, p := range response.AttachedPolicies {
+			policies = append(policies, aws.ToString(p.PolicyArn))
+		}
 	}
+	sort.Strings(policies)
 
-	policyMap := map[string]string{}
-	for _, p := range policies.AttachedPolicies {
-		policyMap[*p.PolicyArn] = aws.ToString(p.PolicyName)
-	}
-
-	wrappedGroup.Policies = policyMap
+	wrappedGroup.Policies = policies
 
 	resource.Item = wrappedGroup
 	return nil

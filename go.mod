@@ -3,7 +3,7 @@ module github.com/OpsHelmInc/cloudquery
 go 1.24
 
 require (
-	github.com/OpsHelmInc/ohaws v0.10.1
+	github.com/OpsHelmInc/ohaws v0.10.2
 	github.com/aws/aws-sdk-go-v2 v1.36.3
 	github.com/aws/aws-sdk-go-v2/config v1.29.14
 	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.17.61
@@ -16,11 +16,11 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/apprunner v1.32.15
 	github.com/aws/aws-sdk-go-v2/service/appstream v1.43.2
 	github.com/aws/aws-sdk-go-v2/service/appsync v1.43.0
-	github.com/aws/aws-sdk-go-v2/service/autoscaling v1.52.4
+	github.com/aws/aws-sdk-go-v2/service/autoscaling v1.53.0
 	github.com/aws/aws-sdk-go-v2/service/cloudformation v1.59.2
 	github.com/aws/aws-sdk-go-v2/service/cloudfront v1.46.1
 	github.com/aws/aws-sdk-go-v2/service/cloudhsmv2 v1.29.7
-	github.com/aws/aws-sdk-go-v2/service/cloudtrail v1.48.4
+	github.com/aws/aws-sdk-go-v2/service/cloudtrail v1.49.0
 	github.com/aws/aws-sdk-go-v2/service/cloudwatch v1.45.0
 	github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs v1.45.12
 	github.com/aws/aws-sdk-go-v2/service/codebuild v1.61.0
@@ -33,7 +33,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/directconnect v1.30.12
 	github.com/aws/aws-sdk-go-v2/service/docdb v1.40.10
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.43.1
-	github.com/aws/aws-sdk-go-v2/service/ec2 v1.221.0
+	github.com/aws/aws-sdk-go-v2/service/ec2 v1.224.0
 	github.com/aws/aws-sdk-go-v2/service/ecr v1.44.0
 	github.com/aws/aws-sdk-go-v2/service/ecrpublic v1.33.0
 	github.com/aws/aws-sdk-go-v2/service/ecs v1.57.1
@@ -73,10 +73,10 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/resourcegroups v1.27.18
 	github.com/aws/aws-sdk-go-v2/service/route53 v1.51.1
 	github.com/aws/aws-sdk-go-v2/service/route53domains v1.29.2
-	github.com/aws/aws-sdk-go-v2/service/s3 v1.79.3
+	github.com/aws/aws-sdk-go-v2/service/s3 v1.80.0
 	github.com/aws/aws-sdk-go-v2/service/s3control v1.58.0
-	github.com/aws/aws-sdk-go-v2/service/sagemaker v1.192.0
-	github.com/aws/aws-sdk-go-v2/service/scheduler v1.13.4
+	github.com/aws/aws-sdk-go-v2/service/sagemaker v1.194.0
+	github.com/aws/aws-sdk-go-v2/service/scheduler v1.13.5
 	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.35.4
 	github.com/aws/aws-sdk-go-v2/service/servicecatalog v1.32.15
 	github.com/aws/aws-sdk-go-v2/service/servicecatalogappregistry v1.30.15
@@ -111,14 +111,14 @@ require (
 	github.com/aws/aws-sdk-go-v2/credentials v1.17.67 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/v4a v1.3.34 // indirect
 	github.com/aws/aws-sdk-go-v2/service/acmpca v1.40.2 // indirect
-	github.com/aws/aws-sdk-go-v2/service/amplify v1.32.1 // indirect
+	github.com/aws/aws-sdk-go-v2/service/amplify v1.33.0 // indirect
 	github.com/aws/aws-sdk-go-v2/service/batch v1.52.3 // indirect
 	github.com/aws/aws-sdk-go-v2/service/comprehend v1.36.4 // indirect
 	github.com/aws/aws-sdk-go-v2/service/evidently v1.24.2 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/checksum v1.7.1 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/checksum v1.7.2 // indirect
 	github.com/aws/aws-sdk-go-v2/service/kafkaconnect v1.23.3 // indirect
 	github.com/aws/aws-sdk-go-v2/service/keyspaces v1.18.1 // indirect
-	github.com/aws/aws-sdk-go-v2/service/networkfirewall v1.47.2 // indirect
+	github.com/aws/aws-sdk-go-v2/service/networkfirewall v1.48.0 // indirect
 	github.com/aws/aws-sdk-go-v2/service/opensearch v1.46.3 // indirect
 	github.com/aws/aws-sdk-go-v2/service/personalize v1.41.0 // indirect
 	github.com/aws/aws-sdk-go-v2/service/schemas v1.29.2 // indirect
@@ -149,7 +149,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/internal/ini v1.8.3 // indirect
 	github.com/aws/aws-sdk-go-v2/service/athena v1.50.5
 	github.com/aws/aws-sdk-go-v2/service/backup v1.41.2
-	github.com/aws/aws-sdk-go-v2/service/glue v1.112.0
+	github.com/aws/aws-sdk-go-v2/service/glue v1.113.0
 	github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.12.3 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/endpoint-discovery v1.10.15 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.12.15 // indirect
