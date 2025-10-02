@@ -14,6 +14,19 @@ func Users() *schema.Table {
 		Multiplex: client.ServiceAccountRegionMultiplexer("identitystore"),
 		Columns: []schema.Column{
 			{
+				Name:     "arn",
+				Type:     schema.TypeString,
+				Resolver: resolveIdentityStoreUserArn,
+				CreationOptions: schema.ColumnCreationOptions{
+					PrimaryKey: true,
+				},
+			},
+			{
+				Name:     "oh_resource_type",
+				Type:     schema.TypeString,
+				Resolver: client.StaticValueResolver("AWS::IdentityStore::User"),
+			},
+			{
 				Name:     "identity_store_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("IdentityStoreId"),

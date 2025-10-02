@@ -2,7 +2,7 @@
 
 
 
-The primary key for this table is **_cq_id**.
+The primary key for this table is **arn**.
 
 
 
@@ -11,8 +11,10 @@ The primary key for this table is **_cq_id**.
 | ------------- | ------------- |
 |_cq_source_name|String|
 |_cq_sync_time|Timestamp|
-|_cq_id (PK)|UUID|
+|_cq_id|UUID|
 |_cq_parent_id|UUID|
+|arn (PK)|String|
+|oh_resource_type|String|
 |identity_store_id|String|
 |user_id|String|
 |addresses|JSON|
