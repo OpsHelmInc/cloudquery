@@ -18,6 +18,7 @@ The primary key for this table is **arn**.
 |arn (PK)|String|
 |tags|JSON|
 |oh_resource_type|String|
+|associated_subnets|StringArray|
 |association|JSON|
 |attachment|JSON|
 |availability_zone|String|

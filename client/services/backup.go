@@ -52,6 +52,7 @@ type BackupClient interface {
 	ListRecoveryPointsByResource(context.Context, *backup.ListRecoveryPointsByResourceInput, ...func(*backup.Options)) (*backup.ListRecoveryPointsByResourceOutput, error)
 	ListReportJobs(context.Context, *backup.ListReportJobsInput, ...func(*backup.Options)) (*backup.ListReportJobsOutput, error)
 	ListReportPlans(context.Context, *backup.ListReportPlansInput, ...func(*backup.Options)) (*backup.ListReportPlansOutput, error)
+	ListRestoreAccessBackupVaults(context.Context, *backup.ListRestoreAccessBackupVaultsInput, ...func(*backup.Options)) (*backup.ListRestoreAccessBackupVaultsOutput, error)
 	ListRestoreJobSummaries(context.Context, *backup.ListRestoreJobSummariesInput, ...func(*backup.Options)) (*backup.ListRestoreJobSummariesOutput, error)
 	ListRestoreJobs(context.Context, *backup.ListRestoreJobsInput, ...func(*backup.Options)) (*backup.ListRestoreJobsOutput, error)
 	ListRestoreJobsByProtectedResource(context.Context, *backup.ListRestoreJobsByProtectedResourceInput, ...func(*backup.Options)) (*backup.ListRestoreJobsByProtectedResourceOutput, error)

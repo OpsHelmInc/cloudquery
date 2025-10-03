@@ -43,6 +43,11 @@ func NetworkInterfaces() *schema.Table {
 				Resolver: client.StaticValueResolver("AWS::EC2::NetworkInterface"),
 			},
 			{
+				Name:     "associated_subnets",
+				Type:     schema.TypeStringArray,
+				Resolver: schema.PathResolver("AssociatedSubnets"),
+			},
+			{
 				Name:     "association",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Association"),

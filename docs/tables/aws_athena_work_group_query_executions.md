@@ -20,6 +20,7 @@ This table depends on [aws_athena_work_groups](aws_athena_work_groups.md).
 |work_group_arn|String|
 |engine_version|JSON|
 |execution_parameters|StringArray|
+|managed_query_results_configuration|JSON|
 |query|String|
 |query_execution_context|JSON|
 |query_execution_id|String|

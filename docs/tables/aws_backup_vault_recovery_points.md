@@ -32,6 +32,7 @@ This table depends on [aws_backup_vaults](aws_backup_vaults.md).
 |iam_role_arn|String|
 |index_status|String|
 |index_status_message|String|
+|initiation_date|Timestamp|
 |is_encrypted|Bool|
 |is_parent|Bool|
 |last_restore_time|Timestamp|

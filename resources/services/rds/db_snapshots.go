@@ -153,6 +153,11 @@ func DbSnapshots() *schema.Table {
 				Resolver: schema.PathResolver("ProcessorFeatures"),
 			},
 			{
+				Name:     "snapshot_availability_zone",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("SnapshotAvailabilityZone"),
+			},
+			{
 				Name:     "snapshot_create_time",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("SnapshotCreateTime"),

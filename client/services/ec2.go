@@ -20,6 +20,8 @@ type Ec2Client interface {
 	DescribeCapacityBlockExtensionHistory(context.Context, *ec2.DescribeCapacityBlockExtensionHistoryInput, ...func(*ec2.Options)) (*ec2.DescribeCapacityBlockExtensionHistoryOutput, error)
 	DescribeCapacityBlockExtensionOfferings(context.Context, *ec2.DescribeCapacityBlockExtensionOfferingsInput, ...func(*ec2.Options)) (*ec2.DescribeCapacityBlockExtensionOfferingsOutput, error)
 	DescribeCapacityBlockOfferings(context.Context, *ec2.DescribeCapacityBlockOfferingsInput, ...func(*ec2.Options)) (*ec2.DescribeCapacityBlockOfferingsOutput, error)
+	DescribeCapacityBlockStatus(context.Context, *ec2.DescribeCapacityBlockStatusInput, ...func(*ec2.Options)) (*ec2.DescribeCapacityBlockStatusOutput, error)
+	DescribeCapacityBlocks(context.Context, *ec2.DescribeCapacityBlocksInput, ...func(*ec2.Options)) (*ec2.DescribeCapacityBlocksOutput, error)
 	DescribeCapacityReservationBillingRequests(context.Context, *ec2.DescribeCapacityReservationBillingRequestsInput, ...func(*ec2.Options)) (*ec2.DescribeCapacityReservationBillingRequestsOutput, error)
 	DescribeCapacityReservationFleets(context.Context, *ec2.DescribeCapacityReservationFleetsInput, ...func(*ec2.Options)) (*ec2.DescribeCapacityReservationFleetsOutput, error)
 	DescribeCapacityReservations(context.Context, *ec2.DescribeCapacityReservationsInput, ...func(*ec2.Options)) (*ec2.DescribeCapacityReservationsOutput, error)

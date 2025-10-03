@@ -28,6 +28,7 @@ The following tables depend on aws_dynamodb_tables:
 |deletion_protection_enabled|Bool|
 |global_secondary_indexes|JSON|
 |global_table_version|String|
+|global_table_witnesses|JSON|
 |item_count|Int|
 |key_schema|JSON|
 |latest_stream_arn|String|

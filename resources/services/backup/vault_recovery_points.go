@@ -103,6 +103,11 @@ func VaultRecoveryPoints() *schema.Table {
 				Resolver: schema.PathResolver("IndexStatusMessage"),
 			},
 			{
+				Name:     "initiation_date",
+				Type:     schema.TypeTimestamp,
+				Resolver: schema.PathResolver("InitiationDate"),
+			},
+			{
 				Name:     "is_encrypted",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("IsEncrypted"),

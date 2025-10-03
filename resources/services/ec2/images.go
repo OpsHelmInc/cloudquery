@@ -78,6 +78,11 @@ func Images() *schema.Table {
 				Resolver: schema.PathResolver("EnaSupport"),
 			},
 			{
+				Name:     "free_tier_eligible",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("FreeTierEligible"),
+			},
+			{
 				Name:     "hypervisor",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Hypervisor"),

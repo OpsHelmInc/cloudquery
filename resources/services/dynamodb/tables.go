@@ -74,6 +74,11 @@ func Tables() *schema.Table {
 				Resolver: schema.PathResolver("GlobalTableVersion"),
 			},
 			{
+				Name:     "global_table_witnesses",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("GlobalTableWitnesses"),
+			},
+			{
 				Name:     "item_count",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("ItemCount"),

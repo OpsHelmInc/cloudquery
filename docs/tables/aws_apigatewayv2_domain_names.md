@@ -21,6 +21,8 @@ The following tables depend on aws_apigatewayv2_domain_names:
 |arn|String|
 |domain_name|String|
 |api_mapping_selection_expression|String|
+|domain_name_arn|String|
 |domain_name_configurations|JSON|
 |mutual_tls_authentication|JSON|
+|routing_mode|String|
 |tags|JSON|

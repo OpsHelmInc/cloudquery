@@ -40,6 +40,7 @@ The primary key for this table is **arn**.
 |percent_progress|Int|
 |port|Int|
 |processor_features|JSON|
+|snapshot_availability_zone|String|
 |snapshot_create_time|Timestamp|
 |snapshot_database_time|Timestamp|
 |snapshot_target|String|

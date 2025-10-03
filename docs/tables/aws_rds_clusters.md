@@ -60,6 +60,7 @@ The primary key for this table is **arn**.
 |engine_lifecycle_support|String|
 |engine_mode|String|
 |engine_version|String|
+|global_cluster_identifier|String|
 |global_write_forwarding_requested|Bool|
 |global_write_forwarding_status|String|
 |hosted_zone_id|String|

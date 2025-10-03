@@ -58,6 +58,11 @@ func EventBuses() *schema.Table {
 				Resolver: schema.PathResolver("LastModifiedTime"),
 			},
 			{
+				Name:     "log_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("LogConfig"),
+			},
+			{
 				Name:     "name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Name"),

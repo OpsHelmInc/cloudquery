@@ -2755,6 +2755,26 @@ func (mr *MockSagemakerClientMockRecorder) ListPipelineParametersForExecution(ar
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListPipelineParametersForExecution", reflect.TypeOf((*MockSagemakerClient)(nil).ListPipelineParametersForExecution), varargs...)
 }
 
+// ListPipelineVersions mocks base method.
+func (m *MockSagemakerClient) ListPipelineVersions(arg0 context.Context, arg1 *sagemaker.ListPipelineVersionsInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.ListPipelineVersionsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListPipelineVersions", varargs...)
+	ret0, _ := ret[0].(*sagemaker.ListPipelineVersionsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListPipelineVersions indicates an expected call of ListPipelineVersions.
+func (mr *MockSagemakerClientMockRecorder) ListPipelineVersions(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListPipelineVersions", reflect.TypeOf((*MockSagemakerClient)(nil).ListPipelineVersions), varargs...)
+}
+
 // ListPipelines mocks base method.
 func (m *MockSagemakerClient) ListPipelines(arg0 context.Context, arg1 *sagemaker.ListPipelinesInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.ListPipelinesOutput, error) {
 	m.ctrl.T.Helper()

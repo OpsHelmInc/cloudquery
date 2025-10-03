@@ -22,6 +22,7 @@ The primary key for this table is **arn**.
 |architecture|String|
 |block_device_mappings|JSON|
 |boot_mode|String|
+|capacity_block_id|String|
 |capacity_reservation_id|String|
 |capacity_reservation_specification|JSON|
 |client_token|String|

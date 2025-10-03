@@ -105,6 +105,11 @@ func Eips() *schema.Table {
 				Resolver: schema.PathResolver("ServiceManaged"),
 			},
 			{
+				Name:     "subnet_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("SubnetId"),
+			},
+			{
 				Name:     "tags",
 				Type:     schema.TypeJSON,
 				Resolver: client.ResolveTags,

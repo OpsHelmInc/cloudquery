@@ -38,4 +38,5 @@ The primary key for this table is **arn**.
 |subnet_arn|String|
 |subnet_id|String|
 |tags|JSON|
+|type|String|
 |vpc_id|String|
