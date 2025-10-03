@@ -29,9 +29,11 @@ type Apigatewayv2Client interface {
 	GetRouteResponse(context.Context, *apigatewayv2.GetRouteResponseInput, ...func(*apigatewayv2.Options)) (*apigatewayv2.GetRouteResponseOutput, error)
 	GetRouteResponses(context.Context, *apigatewayv2.GetRouteResponsesInput, ...func(*apigatewayv2.Options)) (*apigatewayv2.GetRouteResponsesOutput, error)
 	GetRoutes(context.Context, *apigatewayv2.GetRoutesInput, ...func(*apigatewayv2.Options)) (*apigatewayv2.GetRoutesOutput, error)
+	GetRoutingRule(context.Context, *apigatewayv2.GetRoutingRuleInput, ...func(*apigatewayv2.Options)) (*apigatewayv2.GetRoutingRuleOutput, error)
 	GetStage(context.Context, *apigatewayv2.GetStageInput, ...func(*apigatewayv2.Options)) (*apigatewayv2.GetStageOutput, error)
 	GetStages(context.Context, *apigatewayv2.GetStagesInput, ...func(*apigatewayv2.Options)) (*apigatewayv2.GetStagesOutput, error)
 	GetTags(context.Context, *apigatewayv2.GetTagsInput, ...func(*apigatewayv2.Options)) (*apigatewayv2.GetTagsOutput, error)
 	GetVpcLink(context.Context, *apigatewayv2.GetVpcLinkInput, ...func(*apigatewayv2.Options)) (*apigatewayv2.GetVpcLinkOutput, error)
 	GetVpcLinks(context.Context, *apigatewayv2.GetVpcLinksInput, ...func(*apigatewayv2.Options)) (*apigatewayv2.GetVpcLinksOutput, error)
+	ListRoutingRules(context.Context, *apigatewayv2.ListRoutingRulesInput, ...func(*apigatewayv2.Options)) (*apigatewayv2.ListRoutingRulesOutput, error)
 }

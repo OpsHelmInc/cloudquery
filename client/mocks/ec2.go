@@ -275,6 +275,46 @@ func (mr *MockEc2ClientMockRecorder) DescribeCapacityBlockOfferings(arg0, arg1 i
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeCapacityBlockOfferings", reflect.TypeOf((*MockEc2Client)(nil).DescribeCapacityBlockOfferings), varargs...)
 }
 
+// DescribeCapacityBlockStatus mocks base method.
+func (m *MockEc2Client) DescribeCapacityBlockStatus(arg0 context.Context, arg1 *ec2.DescribeCapacityBlockStatusInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeCapacityBlockStatusOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeCapacityBlockStatus", varargs...)
+	ret0, _ := ret[0].(*ec2.DescribeCapacityBlockStatusOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeCapacityBlockStatus indicates an expected call of DescribeCapacityBlockStatus.
+func (mr *MockEc2ClientMockRecorder) DescribeCapacityBlockStatus(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeCapacityBlockStatus", reflect.TypeOf((*MockEc2Client)(nil).DescribeCapacityBlockStatus), varargs...)
+}
+
+// DescribeCapacityBlocks mocks base method.
+func (m *MockEc2Client) DescribeCapacityBlocks(arg0 context.Context, arg1 *ec2.DescribeCapacityBlocksInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeCapacityBlocksOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeCapacityBlocks", varargs...)
+	ret0, _ := ret[0].(*ec2.DescribeCapacityBlocksOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeCapacityBlocks indicates an expected call of DescribeCapacityBlocks.
+func (mr *MockEc2ClientMockRecorder) DescribeCapacityBlocks(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeCapacityBlocks", reflect.TypeOf((*MockEc2Client)(nil).DescribeCapacityBlocks), varargs...)
+}
+
 // DescribeCapacityReservationBillingRequests mocks base method.
 func (m *MockEc2Client) DescribeCapacityReservationBillingRequests(arg0 context.Context, arg1 *ec2.DescribeCapacityReservationBillingRequestsInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeCapacityReservationBillingRequestsOutput, error) {
 	m.ctrl.T.Helper()

@@ -144,6 +144,7 @@ type SagemakerClient interface {
 	ListPipelineExecutionSteps(context.Context, *sagemaker.ListPipelineExecutionStepsInput, ...func(*sagemaker.Options)) (*sagemaker.ListPipelineExecutionStepsOutput, error)
 	ListPipelineExecutions(context.Context, *sagemaker.ListPipelineExecutionsInput, ...func(*sagemaker.Options)) (*sagemaker.ListPipelineExecutionsOutput, error)
 	ListPipelineParametersForExecution(context.Context, *sagemaker.ListPipelineParametersForExecutionInput, ...func(*sagemaker.Options)) (*sagemaker.ListPipelineParametersForExecutionOutput, error)
+	ListPipelineVersions(context.Context, *sagemaker.ListPipelineVersionsInput, ...func(*sagemaker.Options)) (*sagemaker.ListPipelineVersionsOutput, error)
 	ListPipelines(context.Context, *sagemaker.ListPipelinesInput, ...func(*sagemaker.Options)) (*sagemaker.ListPipelinesOutput, error)
 	ListProcessingJobs(context.Context, *sagemaker.ListProcessingJobsInput, ...func(*sagemaker.Options)) (*sagemaker.ListProcessingJobsOutput, error)
 	ListProjects(context.Context, *sagemaker.ListProjectsInput, ...func(*sagemaker.Options)) (*sagemaker.ListProjectsOutput, error)

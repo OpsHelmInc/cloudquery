@@ -25,6 +25,7 @@ This table depends on [aws_glue_jobs](aws_glue_jobs.md).
 |dpu_seconds|Float|
 |error_message|String|
 |execution_class|String|
+|execution_role_session_policy|String|
 |execution_time|Int|
 |glue_version|String|
 |id|String|

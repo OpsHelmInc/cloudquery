@@ -25,6 +25,7 @@ The primary key for this table is **arn**.
 |deregistration_protection|String|
 |description|String|
 |ena_support|Bool|
+|free_tier_eligible|Bool|
 |hypervisor|String|
 |image_allowed|Bool|
 |image_id|String|

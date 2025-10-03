@@ -455,6 +455,26 @@ func (mr *MockApigatewayv2ClientMockRecorder) GetRoutes(arg0, arg1 interface{}, 
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetRoutes", reflect.TypeOf((*MockApigatewayv2Client)(nil).GetRoutes), varargs...)
 }
 
+// GetRoutingRule mocks base method.
+func (m *MockApigatewayv2Client) GetRoutingRule(arg0 context.Context, arg1 *apigatewayv2.GetRoutingRuleInput, arg2 ...func(*apigatewayv2.Options)) (*apigatewayv2.GetRoutingRuleOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetRoutingRule", varargs...)
+	ret0, _ := ret[0].(*apigatewayv2.GetRoutingRuleOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetRoutingRule indicates an expected call of GetRoutingRule.
+func (mr *MockApigatewayv2ClientMockRecorder) GetRoutingRule(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetRoutingRule", reflect.TypeOf((*MockApigatewayv2Client)(nil).GetRoutingRule), varargs...)
+}
+
 // GetStage mocks base method.
 func (m *MockApigatewayv2Client) GetStage(arg0 context.Context, arg1 *apigatewayv2.GetStageInput, arg2 ...func(*apigatewayv2.Options)) (*apigatewayv2.GetStageOutput, error) {
 	m.ctrl.T.Helper()
@@ -553,4 +573,24 @@ func (mr *MockApigatewayv2ClientMockRecorder) GetVpcLinks(arg0, arg1 interface{}
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetVpcLinks", reflect.TypeOf((*MockApigatewayv2Client)(nil).GetVpcLinks), varargs...)
+}
+
+// ListRoutingRules mocks base method.
+func (m *MockApigatewayv2Client) ListRoutingRules(arg0 context.Context, arg1 *apigatewayv2.ListRoutingRulesInput, arg2 ...func(*apigatewayv2.Options)) (*apigatewayv2.ListRoutingRulesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListRoutingRules", varargs...)
+	ret0, _ := ret[0].(*apigatewayv2.ListRoutingRulesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListRoutingRules indicates an expected call of ListRoutingRules.
+func (mr *MockApigatewayv2ClientMockRecorder) ListRoutingRules(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListRoutingRules", reflect.TypeOf((*MockApigatewayv2Client)(nil).ListRoutingRules), varargs...)
 }

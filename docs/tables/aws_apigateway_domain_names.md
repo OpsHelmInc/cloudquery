@@ -38,5 +38,6 @@ The following tables depend on aws_apigateway_domain_names:
 |regional_certificate_name|String|
 |regional_domain_name|String|
 |regional_hosted_zone_id|String|
+|routing_mode|String|
 |security_policy|String|
 |tags|JSON|

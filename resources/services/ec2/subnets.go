@@ -143,6 +143,11 @@ func Subnets() *schema.Table {
 				Resolver: client.ResolveTags,
 			},
 			{
+				Name:     "type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("Type"),
+			},
+			{
 				Name:     "vpc_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("VpcId"),

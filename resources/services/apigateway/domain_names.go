@@ -128,6 +128,11 @@ func DomainNames() *schema.Table {
 				Resolver: schema.PathResolver("RegionalHostedZoneId"),
 			},
 			{
+				Name:     "routing_mode",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("RoutingMode"),
+			},
+			{
 				Name:     "security_policy",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("SecurityPolicy"),

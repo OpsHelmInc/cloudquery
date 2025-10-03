@@ -285,6 +285,7 @@ func tables() []*schema.Table {
 		iam.VirtualMfaDevices(),
 		identitystore.Groups(),
 		identitystore.Users(),
+		identitystore.GroupMemberships(),
 		inspector2.Findings(),
 		inspector.Findings(),
 		iot.BillingGroups(),

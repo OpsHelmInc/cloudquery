@@ -24,6 +24,7 @@ The following tables depend on aws_eventbridge_event_buses:
 |description|String|
 |kms_key_identifier|String|
 |last_modified_time|Timestamp|
+|log_config|JSON|
 |name|String|
 |policy|String|
 |result_metadata|JSON|

@@ -253,6 +253,11 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("EngineVersion"),
 			},
 			{
+				Name:     "global_cluster_identifier",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("GlobalClusterIdentifier"),
+			},
+			{
 				Name:     "global_write_forwarding_requested",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("GlobalWriteForwardingRequested"),

@@ -64,6 +64,11 @@ func Instances() *schema.Table {
 				Resolver: schema.PathResolver("BootMode"),
 			},
 			{
+				Name:     "capacity_block_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("CapacityBlockId"),
+			},
+			{
 				Name:     "capacity_reservation_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("CapacityReservationId"),

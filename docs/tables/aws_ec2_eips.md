@@ -31,4 +31,5 @@ The primary key for this table is **_cq_id**.
 |public_ip|String|
 |public_ipv4_pool|String|
 |service_managed|String|
+|subnet_id|String|
 |tags|JSON|

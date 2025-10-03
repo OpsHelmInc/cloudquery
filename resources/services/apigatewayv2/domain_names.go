@@ -40,6 +40,11 @@ func DomainNames() *schema.Table {
 				Resolver: schema.PathResolver("ApiMappingSelectionExpression"),
 			},
 			{
+				Name:     "domain_name_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("DomainNameArn"),
+			},
+			{
 				Name:     "domain_name_configurations",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("DomainNameConfigurations"),
@@ -48,6 +53,11 @@ func DomainNames() *schema.Table {
 				Name:     "mutual_tls_authentication",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("MutualTlsAuthentication"),
+			},
+			{
+				Name:     "routing_mode",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("RoutingMode"),
 			},
 			{
 				Name:     "tags",

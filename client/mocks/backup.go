@@ -915,6 +915,26 @@ func (mr *MockBackupClientMockRecorder) ListReportPlans(arg0, arg1 interface{}, 
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListReportPlans", reflect.TypeOf((*MockBackupClient)(nil).ListReportPlans), varargs...)
 }
 
+// ListRestoreAccessBackupVaults mocks base method.
+func (m *MockBackupClient) ListRestoreAccessBackupVaults(arg0 context.Context, arg1 *backup.ListRestoreAccessBackupVaultsInput, arg2 ...func(*backup.Options)) (*backup.ListRestoreAccessBackupVaultsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListRestoreAccessBackupVaults", varargs...)
+	ret0, _ := ret[0].(*backup.ListRestoreAccessBackupVaultsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListRestoreAccessBackupVaults indicates an expected call of ListRestoreAccessBackupVaults.
+func (mr *MockBackupClientMockRecorder) ListRestoreAccessBackupVaults(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListRestoreAccessBackupVaults", reflect.TypeOf((*MockBackupClient)(nil).ListRestoreAccessBackupVaults), varargs...)
+}
+
 // ListRestoreJobSummaries mocks base method.
 func (m *MockBackupClient) ListRestoreJobSummaries(arg0 context.Context, arg1 *backup.ListRestoreJobSummariesInput, arg2 ...func(*backup.Options)) (*backup.ListRestoreJobSummariesOutput, error) {
 	m.ctrl.T.Helper()

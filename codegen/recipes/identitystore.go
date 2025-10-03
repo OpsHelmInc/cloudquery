@@ -11,7 +11,8 @@ func IdentitystoreResources() []*Resource {
 		{
 			SubService: "groups",
 			Struct:     &types.Group{},
-			Relations:  []string{"GroupMemberships()"},
+			// Relations:  []string{"GroupMemberships()"},
+			PreResourceResolver: "getGroup",
 			ExtraColumns: []codegen.ColumnDefinition{
 				{
 					Name:     "arn",

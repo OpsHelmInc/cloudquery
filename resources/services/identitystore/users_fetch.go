@@ -18,19 +18,17 @@ func fetchIdentitystoreUsers(ctx context.Context, meta schema.ClientMeta, parent
 		return err
 	}
 	svc := meta.(*client.Client).Services().Identitystore
-	config := identitystore.ListUsersInput{}
-	config.IdentityStoreId = instance.IdentityStoreId
-	for {
-		response, err := svc.ListUsers(ctx, &config)
+	config := identitystore.ListUsersInput{
+		IdentityStoreId: instance.IdentityStoreId,
+		MaxResults:      aws.Int32(100),
+	}
+	paginator := identitystore.NewListUsersPaginator(svc, &config)
+	for paginator.HasMorePages() {
+		response, err := paginator.NextPage(ctx)
 		if err != nil {
 			return err
 		}
 		res <- response.Users
-
-		if aws.ToString(response.NextToken) == "" {
-			break
-		}
-		config.NextToken = response.NextToken
 	}
 	return nil
 }

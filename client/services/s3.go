@@ -18,6 +18,7 @@ type S3Client interface {
 	GetBucketLifecycleConfiguration(context.Context, *s3.GetBucketLifecycleConfigurationInput, ...func(*s3.Options)) (*s3.GetBucketLifecycleConfigurationOutput, error)
 	GetBucketLocation(context.Context, *s3.GetBucketLocationInput, ...func(*s3.Options)) (*s3.GetBucketLocationOutput, error)
 	GetBucketLogging(context.Context, *s3.GetBucketLoggingInput, ...func(*s3.Options)) (*s3.GetBucketLoggingOutput, error)
+	GetBucketMetadataConfiguration(context.Context, *s3.GetBucketMetadataConfigurationInput, ...func(*s3.Options)) (*s3.GetBucketMetadataConfigurationOutput, error)
 	GetBucketMetadataTableConfiguration(context.Context, *s3.GetBucketMetadataTableConfigurationInput, ...func(*s3.Options)) (*s3.GetBucketMetadataTableConfigurationOutput, error)
 	GetBucketMetricsConfiguration(context.Context, *s3.GetBucketMetricsConfigurationInput, ...func(*s3.Options)) (*s3.GetBucketMetricsConfigurationOutput, error)
 	GetBucketNotificationConfiguration(context.Context, *s3.GetBucketNotificationConfigurationInput, ...func(*s3.Options)) (*s3.GetBucketNotificationConfigurationOutput, error)

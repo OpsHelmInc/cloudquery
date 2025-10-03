@@ -41,6 +41,11 @@ func WorkGroupQueryExecutions() *schema.Table {
 				Resolver: schema.PathResolver("ExecutionParameters"),
 			},
 			{
+				Name:     "managed_query_results_configuration",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ManagedQueryResultsConfiguration"),
+			},
+			{
 				Name:     "query",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Query"),

@@ -64,6 +64,11 @@ func JobRuns() *schema.Table {
 				Resolver: schema.PathResolver("ExecutionClass"),
 			},
 			{
+				Name:     "execution_role_session_policy",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ExecutionRoleSessionPolicy"),
+			},
+			{
 				Name:     "execution_time",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("ExecutionTime"),

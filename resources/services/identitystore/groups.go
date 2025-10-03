@@ -9,9 +9,10 @@ import (
 
 func Groups() *schema.Table {
 	return &schema.Table{
-		Name:      "aws_identitystore_groups",
-		Resolver:  fetchIdentitystoreGroups,
-		Multiplex: client.ServiceAccountRegionMultiplexer("identitystore"),
+		Name:                "aws_identitystore_groups",
+		Resolver:            fetchIdentitystoreGroups,
+		PreResourceResolver: getGroup,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("identitystore"),
 		Columns: []schema.Column{
 			{
 				Name:     "arn",
@@ -51,10 +52,6 @@ func Groups() *schema.Table {
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ExternalIds"),
 			},
-		},
-
-		Relations: []*schema.Table{
-			GroupMemberships(),
 		},
 	}
 }
