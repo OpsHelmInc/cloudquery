@@ -8,6 +8,7 @@ import (
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
 
+	"github.com/OpsHelmInc/cloudquery/resources/services/wafv2"
 	"github.com/OpsHelmInc/ohaws"
 )
 
@@ -106,7 +107,7 @@ func WAFv2Resources() []*Resource {
 		},
 		{
 			SubService:          "rule_groups",
-			Struct:              &types.RuleGroup{},
+			Struct:              &wafv2.WAFv2RuleGroupWithTags{},
 			Description:         "https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html",
 			SkipFields:          []string{"ARN"},
 			PreResourceResolver: "getRuleGroup",
@@ -121,11 +122,13 @@ func WAFv2Resources() []*Resource {
 					Type:     schema.TypeString,
 					Resolver: "client.ResolveAWSRegion",
 				},
-				{
-					Name:     "tags",
-					Type:     schema.TypeJSON,
-					Resolver: "resolveRuleGroupTags",
-				},
+				/*
+					{
+						Name:     "tags",
+						Type:     schema.TypeJSON,
+						Resolver: "resolveRuleGroupTags",
+					},
+				*/
 				{
 					Name:     "arn",
 					Type:     schema.TypeString,

@@ -33,6 +33,11 @@ func fetchWafv2RuleGroups(ctx context.Context, meta schema.ClientMeta, parent *s
 	return nil
 }
 
+type WAFv2RuleGroupWithTags struct {
+	types.RuleGroup
+	Tags []types.Tag
+}
+
 func getRuleGroup(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
 	c := meta.(*client.Client)
 	svc := c.Services().Wafv2
@@ -48,36 +53,29 @@ func getRuleGroup(ctx context.Context, meta schema.ClientMeta, resource *schema.
 		return err
 	}
 
-	resource.Item = ruleGroup.RuleGroup
-	return nil
-}
+	resourceWithTags := &WAFv2RuleGroupWithTags{
+		RuleGroup: *ruleGroup.RuleGroup,
+	}
 
-func resolveRuleGroupTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	ruleGroup := resource.Item.(*types.RuleGroup)
-
-	cl := meta.(*client.Client)
-	service := cl.Services().Wafv2
-
-	// Resolve tags
-	outputTags := make(map[string]*string)
-	tagsConfig := wafv2.ListTagsForResourceInput{ResourceARN: ruleGroup.ARN}
+	tagParams := wafv2.ListTagsForResourceInput{ResourceARN: ruleGroup.RuleGroup.ARN}
 	for {
-		tags, err := service.ListTagsForResource(ctx, &tagsConfig)
+		result, err := svc.ListTagsForResource(ctx, &tagParams)
 		if err != nil {
 			return err
 		}
-		for _, t := range tags.TagInfoForResource.TagList {
-			outputTags[*t.Key] = t.Value
-		}
-		if aws.ToString(tags.NextMarker) == "" {
+		resourceWithTags.Tags = append(resourceWithTags.Tags, result.TagInfoForResource.TagList...)
+		if aws.ToString(result.NextMarker) == "" {
 			break
 		}
-		tagsConfig.NextMarker = tags.NextMarker
+		tagParams.NextMarker = result.NextMarker
 	}
-	return resource.Set(c.Name, outputTags)
+
+	resource.SetItem(resourceWithTags)
+	return nil
 }
+
 func resolveWafv2ruleGroupPolicy(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
-	ruleGroup := resource.Item.(*types.RuleGroup)
+	ruleGroup := resource.Item.(*WAFv2RuleGroupWithTags)
 
 	cl := meta.(*client.Client)
 	service := cl.Services().Wafv2
