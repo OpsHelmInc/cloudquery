@@ -122,13 +122,6 @@ func WAFv2Resources() []*Resource {
 					Type:     schema.TypeString,
 					Resolver: "client.ResolveAWSRegion",
 				},
-				/*
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: "resolveRuleGroupTags",
-					},
-				*/
 				{
 					Name:     "arn",
 					Type:     schema.TypeString,
