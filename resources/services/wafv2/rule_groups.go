@@ -26,11 +26,6 @@ func RuleGroups() *schema.Table {
 				Resolver: client.ResolveAWSRegion,
 			},
 			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveRuleGroupTags,
-			},
-			{
 				Name:     "arn",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("ARN"),
@@ -44,54 +39,14 @@ func RuleGroups() *schema.Table {
 				Resolver: resolveWafv2ruleGroupPolicy,
 			},
 			{
-				Name:     "capacity",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("Capacity"),
-			},
-			{
-				Name:     "id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Id"),
-			},
-			{
-				Name:     "name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Name"),
-			},
-			{
-				Name:     "visibility_config",
+				Name:     "rule_group",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("VisibilityConfig"),
+				Resolver: schema.PathResolver("RuleGroup"),
 			},
 			{
-				Name:     "available_labels",
+				Name:     "tags",
 				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("AvailableLabels"),
-			},
-			{
-				Name:     "consumed_labels",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("ConsumedLabels"),
-			},
-			{
-				Name:     "custom_response_bodies",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("CustomResponseBodies"),
-			},
-			{
-				Name:     "description",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("Description"),
-			},
-			{
-				Name:     "label_namespace",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("LabelNamespace"),
-			},
-			{
-				Name:     "rules",
-				Type:     schema.TypeJSON,
-				Resolver: schema.PathResolver("Rules"),
+				Resolver: client.ResolveTags,
 			},
 		},
 	}
