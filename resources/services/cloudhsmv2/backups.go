@@ -3,8 +3,9 @@
 package cloudhsmv2
 
 import (
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func Backups() *schema.Table {

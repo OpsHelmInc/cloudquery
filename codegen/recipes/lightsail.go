@@ -1,10 +1,11 @@
 package recipes
 
 import (
-	"github.com/OpsHelmInc/cloudquery/resources/services/lightsail/models"
 	"github.com/aws/aws-sdk-go-v2/service/lightsail/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/resources/services/lightsail/models"
 )
 
 func LightsailResources() []*Resource {

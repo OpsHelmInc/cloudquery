@@ -75,6 +75,7 @@
 - [aws_backup_region_settings](aws_backup_region_settings.md)
 - [aws_backup_vaults](aws_backup_vaults.md)
   - [aws_backup_vault_recovery_points](aws_backup_vault_recovery_points.md)
+- [aws_budgets_budgets](aws_budgets_budgets.md)
 - [aws_cloudformation_stacks](aws_cloudformation_stacks.md)
   - [aws_cloudformation_stack_resources](aws_cloudformation_stack_resources.md)
 - [aws_cloudfront_cache_policies](aws_cloudfront_cache_policies.md)

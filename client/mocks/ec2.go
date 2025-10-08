@@ -995,6 +995,66 @@ func (mr *MockEc2ClientMockRecorder) DescribeImageAttribute(arg0, arg1 interface
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeImageAttribute", reflect.TypeOf((*MockEc2Client)(nil).DescribeImageAttribute), varargs...)
 }
 
+// DescribeImageReferences mocks base method.
+func (m *MockEc2Client) DescribeImageReferences(arg0 context.Context, arg1 *ec2.DescribeImageReferencesInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeImageReferencesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeImageReferences", varargs...)
+	ret0, _ := ret[0].(*ec2.DescribeImageReferencesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeImageReferences indicates an expected call of DescribeImageReferences.
+func (mr *MockEc2ClientMockRecorder) DescribeImageReferences(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeImageReferences", reflect.TypeOf((*MockEc2Client)(nil).DescribeImageReferences), varargs...)
+}
+
+// DescribeImageUsageReportEntries mocks base method.
+func (m *MockEc2Client) DescribeImageUsageReportEntries(arg0 context.Context, arg1 *ec2.DescribeImageUsageReportEntriesInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeImageUsageReportEntriesOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeImageUsageReportEntries", varargs...)
+	ret0, _ := ret[0].(*ec2.DescribeImageUsageReportEntriesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeImageUsageReportEntries indicates an expected call of DescribeImageUsageReportEntries.
+func (mr *MockEc2ClientMockRecorder) DescribeImageUsageReportEntries(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeImageUsageReportEntries", reflect.TypeOf((*MockEc2Client)(nil).DescribeImageUsageReportEntries), varargs...)
+}
+
+// DescribeImageUsageReports mocks base method.
+func (m *MockEc2Client) DescribeImageUsageReports(arg0 context.Context, arg1 *ec2.DescribeImageUsageReportsInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeImageUsageReportsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeImageUsageReports", varargs...)
+	ret0, _ := ret[0].(*ec2.DescribeImageUsageReportsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeImageUsageReports indicates an expected call of DescribeImageUsageReports.
+func (mr *MockEc2ClientMockRecorder) DescribeImageUsageReports(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeImageUsageReports", reflect.TypeOf((*MockEc2Client)(nil).DescribeImageUsageReports), varargs...)
+}
+
 // DescribeImages mocks base method.
 func (m *MockEc2Client) DescribeImages(arg0 context.Context, arg1 *ec2.DescribeImagesInput, arg2 ...func(*ec2.Options)) (*ec2.DescribeImagesOutput, error) {
 	m.ctrl.T.Helper()

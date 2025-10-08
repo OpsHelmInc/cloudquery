@@ -1,11 +1,12 @@
 package recipes
 
 import (
-	"github.com/OpsHelmInc/cloudquery/resources/services/ses/models"
 	"github.com/aws/aws-sdk-go-v2/service/sesv2"
 	"github.com/aws/aws-sdk-go-v2/service/sesv2/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/resources/services/ses/models"
 )
 
 func SESResources() []*Resource {

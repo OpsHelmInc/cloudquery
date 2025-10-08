@@ -17,6 +17,7 @@ The primary key for this table is **arn**.
 |region|String|
 |arn (PK)|String|
 |acceptance_required|Bool|
+|availability_zone_ids|StringArray|
 |availability_zones|StringArray|
 |base_endpoint_dns_names|StringArray|
 |manages_vpc_endpoints|Bool|

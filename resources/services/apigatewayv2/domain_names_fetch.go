@@ -3,12 +3,13 @@ package apigatewayv2
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
-	apigatewayv2fix "github.com/OpsHelmInc/cloudquery/resources/forks/apigatewayv2"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/apigatewayv2"
 	"github.com/aws/aws-sdk-go-v2/service/apigatewayv2/types"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
+	apigatewayv2fix "github.com/OpsHelmInc/cloudquery/resources/forks/apigatewayv2"
 )
 
 const domainNamesIDPart = "domainnames"

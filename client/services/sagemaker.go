@@ -3,6 +3,7 @@ package services
 
 import (
 	"context"
+
 	"github.com/aws/aws-sdk-go-v2/service/sagemaker"
 )
 
@@ -16,6 +17,7 @@ type SagemakerClient interface {
 	DescribeAutoMLJob(context.Context, *sagemaker.DescribeAutoMLJobInput, ...func(*sagemaker.Options)) (*sagemaker.DescribeAutoMLJobOutput, error)
 	DescribeAutoMLJobV2(context.Context, *sagemaker.DescribeAutoMLJobV2Input, ...func(*sagemaker.Options)) (*sagemaker.DescribeAutoMLJobV2Output, error)
 	DescribeCluster(context.Context, *sagemaker.DescribeClusterInput, ...func(*sagemaker.Options)) (*sagemaker.DescribeClusterOutput, error)
+	DescribeClusterEvent(context.Context, *sagemaker.DescribeClusterEventInput, ...func(*sagemaker.Options)) (*sagemaker.DescribeClusterEventOutput, error)
 	DescribeClusterNode(context.Context, *sagemaker.DescribeClusterNodeInput, ...func(*sagemaker.Options)) (*sagemaker.DescribeClusterNodeOutput, error)
 	DescribeClusterSchedulerConfig(context.Context, *sagemaker.DescribeClusterSchedulerConfigInput, ...func(*sagemaker.Options)) (*sagemaker.DescribeClusterSchedulerConfigOutput, error)
 	DescribeCodeRepository(context.Context, *sagemaker.DescribeCodeRepositoryInput, ...func(*sagemaker.Options)) (*sagemaker.DescribeCodeRepositoryOutput, error)
@@ -64,6 +66,7 @@ type SagemakerClient interface {
 	DescribePipelineExecution(context.Context, *sagemaker.DescribePipelineExecutionInput, ...func(*sagemaker.Options)) (*sagemaker.DescribePipelineExecutionOutput, error)
 	DescribeProcessingJob(context.Context, *sagemaker.DescribeProcessingJobInput, ...func(*sagemaker.Options)) (*sagemaker.DescribeProcessingJobOutput, error)
 	DescribeProject(context.Context, *sagemaker.DescribeProjectInput, ...func(*sagemaker.Options)) (*sagemaker.DescribeProjectOutput, error)
+	DescribeReservedCapacity(context.Context, *sagemaker.DescribeReservedCapacityInput, ...func(*sagemaker.Options)) (*sagemaker.DescribeReservedCapacityOutput, error)
 	DescribeSpace(context.Context, *sagemaker.DescribeSpaceInput, ...func(*sagemaker.Options)) (*sagemaker.DescribeSpaceOutput, error)
 	DescribeStudioLifecycleConfig(context.Context, *sagemaker.DescribeStudioLifecycleConfigInput, ...func(*sagemaker.Options)) (*sagemaker.DescribeStudioLifecycleConfigOutput, error)
 	DescribeSubscribedWorkteam(context.Context, *sagemaker.DescribeSubscribedWorkteamInput, ...func(*sagemaker.Options)) (*sagemaker.DescribeSubscribedWorkteamOutput, error)
@@ -90,6 +93,7 @@ type SagemakerClient interface {
 	ListAssociations(context.Context, *sagemaker.ListAssociationsInput, ...func(*sagemaker.Options)) (*sagemaker.ListAssociationsOutput, error)
 	ListAutoMLJobs(context.Context, *sagemaker.ListAutoMLJobsInput, ...func(*sagemaker.Options)) (*sagemaker.ListAutoMLJobsOutput, error)
 	ListCandidatesForAutoMLJob(context.Context, *sagemaker.ListCandidatesForAutoMLJobInput, ...func(*sagemaker.Options)) (*sagemaker.ListCandidatesForAutoMLJobOutput, error)
+	ListClusterEvents(context.Context, *sagemaker.ListClusterEventsInput, ...func(*sagemaker.Options)) (*sagemaker.ListClusterEventsOutput, error)
 	ListClusterNodes(context.Context, *sagemaker.ListClusterNodesInput, ...func(*sagemaker.Options)) (*sagemaker.ListClusterNodesOutput, error)
 	ListClusterSchedulerConfigs(context.Context, *sagemaker.ListClusterSchedulerConfigsInput, ...func(*sagemaker.Options)) (*sagemaker.ListClusterSchedulerConfigsOutput, error)
 	ListClusters(context.Context, *sagemaker.ListClustersInput, ...func(*sagemaker.Options)) (*sagemaker.ListClustersOutput, error)
@@ -160,6 +164,7 @@ type SagemakerClient interface {
 	ListTransformJobs(context.Context, *sagemaker.ListTransformJobsInput, ...func(*sagemaker.Options)) (*sagemaker.ListTransformJobsOutput, error)
 	ListTrialComponents(context.Context, *sagemaker.ListTrialComponentsInput, ...func(*sagemaker.Options)) (*sagemaker.ListTrialComponentsOutput, error)
 	ListTrials(context.Context, *sagemaker.ListTrialsInput, ...func(*sagemaker.Options)) (*sagemaker.ListTrialsOutput, error)
+	ListUltraServersByReservedCapacity(context.Context, *sagemaker.ListUltraServersByReservedCapacityInput, ...func(*sagemaker.Options)) (*sagemaker.ListUltraServersByReservedCapacityOutput, error)
 	ListUserProfiles(context.Context, *sagemaker.ListUserProfilesInput, ...func(*sagemaker.Options)) (*sagemaker.ListUserProfilesOutput, error)
 	ListWorkforces(context.Context, *sagemaker.ListWorkforcesInput, ...func(*sagemaker.Options)) (*sagemaker.ListWorkforcesOutput, error)
 	ListWorkteams(context.Context, *sagemaker.ListWorkteamsInput, ...func(*sagemaker.Options)) (*sagemaker.ListWorkteamsOutput, error)

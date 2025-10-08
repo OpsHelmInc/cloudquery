@@ -3,8 +3,9 @@
 package apigateway
 
 import (
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func RestApiAuthorizers() *schema.Table {

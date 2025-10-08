@@ -13,6 +13,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/athena"
 	"github.com/aws/aws-sdk-go-v2/service/autoscaling"
 	"github.com/aws/aws-sdk-go-v2/service/backup"
+	awsBudgets "github.com/aws/aws-sdk-go-v2/service/budgets"
 	"github.com/aws/aws-sdk-go-v2/service/cloudformation"
 	"github.com/aws/aws-sdk-go-v2/service/cloudfront"
 	"github.com/aws/aws-sdk-go-v2/service/cloudhsmv2"
@@ -107,6 +108,7 @@ var clients = []any{
 	&athena.Client{},
 	&autoscaling.Client{},
 	&backup.Client{},
+	&awsBudgets.Client{},
 	&cloudformation.Client{},
 	&cloudfront.Client{},
 	&cloudhsmv2.Client{},
