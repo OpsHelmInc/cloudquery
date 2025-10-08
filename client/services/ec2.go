@@ -3,6 +3,7 @@ package services
 
 import (
 	"context"
+
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
 )
 
@@ -56,6 +57,9 @@ type Ec2Client interface {
 	DescribeIdFormat(context.Context, *ec2.DescribeIdFormatInput, ...func(*ec2.Options)) (*ec2.DescribeIdFormatOutput, error)
 	DescribeIdentityIdFormat(context.Context, *ec2.DescribeIdentityIdFormatInput, ...func(*ec2.Options)) (*ec2.DescribeIdentityIdFormatOutput, error)
 	DescribeImageAttribute(context.Context, *ec2.DescribeImageAttributeInput, ...func(*ec2.Options)) (*ec2.DescribeImageAttributeOutput, error)
+	DescribeImageReferences(context.Context, *ec2.DescribeImageReferencesInput, ...func(*ec2.Options)) (*ec2.DescribeImageReferencesOutput, error)
+	DescribeImageUsageReportEntries(context.Context, *ec2.DescribeImageUsageReportEntriesInput, ...func(*ec2.Options)) (*ec2.DescribeImageUsageReportEntriesOutput, error)
+	DescribeImageUsageReports(context.Context, *ec2.DescribeImageUsageReportsInput, ...func(*ec2.Options)) (*ec2.DescribeImageUsageReportsOutput, error)
 	DescribeImages(context.Context, *ec2.DescribeImagesInput, ...func(*ec2.Options)) (*ec2.DescribeImagesOutput, error)
 	DescribeImportImageTasks(context.Context, *ec2.DescribeImportImageTasksInput, ...func(*ec2.Options)) (*ec2.DescribeImportImageTasksOutput, error)
 	DescribeImportSnapshotTasks(context.Context, *ec2.DescribeImportSnapshotTasksInput, ...func(*ec2.Options)) (*ec2.DescribeImportSnapshotTasksOutput, error)

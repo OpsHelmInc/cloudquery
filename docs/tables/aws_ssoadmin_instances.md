@@ -22,3 +22,4 @@ The following tables depend on aws_ssoadmin_instances:
 |name|String|
 |owner_account_id|String|
 |status|String|
+|status_reason|String|

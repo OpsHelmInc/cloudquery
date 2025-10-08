@@ -3,10 +3,11 @@ package quicksight
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/service/quicksight"
 	"github.com/cloudquery/plugin-sdk/schema"
 	"github.com/thoas/go-funk"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func resolveTags() schema.ColumnResolver {

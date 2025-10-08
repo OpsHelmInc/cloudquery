@@ -3,8 +3,9 @@
 package backup
 
 import (
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func VaultRecoveryPoints() *schema.Table {

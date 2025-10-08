@@ -3,8 +3,9 @@
 package eks
 
 import (
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func Clusters() *schema.Table {
@@ -67,6 +68,11 @@ func Clusters() *schema.Table {
 				Name:     "created_at",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreatedAt"),
+			},
+			{
+				Name:     "deletion_protection",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("DeletionProtection"),
 			},
 			{
 				Name:     "encryption_config",

@@ -3,8 +3,9 @@
 package ssoadmin
 
 import (
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func Instances() *schema.Table {
@@ -43,6 +44,11 @@ func Instances() *schema.Table {
 				Name:     "status",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Status"),
+			},
+			{
+				Name:     "status_reason",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("StatusReason"),
 			},
 		},
 

@@ -21,4 +21,5 @@ The primary key for this table is **arn**.
 |joined_method|String|
 |joined_timestamp|Timestamp|
 |name|String|
+|state|String|
 |status|String|

@@ -3,6 +3,7 @@ package services
 
 import (
 	"context"
+
 	"github.com/aws/aws-sdk-go-v2/service/iot"
 )
 
@@ -23,6 +24,7 @@ type IotClient interface {
 	DescribeDetectMitigationActionsTask(context.Context, *iot.DescribeDetectMitigationActionsTaskInput, ...func(*iot.Options)) (*iot.DescribeDetectMitigationActionsTaskOutput, error)
 	DescribeDimension(context.Context, *iot.DescribeDimensionInput, ...func(*iot.Options)) (*iot.DescribeDimensionOutput, error)
 	DescribeDomainConfiguration(context.Context, *iot.DescribeDomainConfigurationInput, ...func(*iot.Options)) (*iot.DescribeDomainConfigurationOutput, error)
+	DescribeEncryptionConfiguration(context.Context, *iot.DescribeEncryptionConfigurationInput, ...func(*iot.Options)) (*iot.DescribeEncryptionConfigurationOutput, error)
 	DescribeEndpoint(context.Context, *iot.DescribeEndpointInput, ...func(*iot.Options)) (*iot.DescribeEndpointOutput, error)
 	DescribeEventConfigurations(context.Context, *iot.DescribeEventConfigurationsInput, ...func(*iot.Options)) (*iot.DescribeEventConfigurationsOutput, error)
 	DescribeFleetMetric(context.Context, *iot.DescribeFleetMetricInput, ...func(*iot.Options)) (*iot.DescribeFleetMetricOutput, error)

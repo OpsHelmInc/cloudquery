@@ -23,6 +23,7 @@ The primary key for this table is **arn**.
 |compute_config|JSON|
 |connector_config|JSON|
 |created_at|Timestamp|
+|deletion_protection|Bool|
 |encryption_config|JSON|
 |endpoint|String|
 |health|JSON|

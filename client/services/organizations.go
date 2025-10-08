@@ -3,6 +3,7 @@ package services
 
 import (
 	"context"
+
 	"github.com/aws/aws-sdk-go-v2/service/organizations"
 )
 
@@ -19,10 +20,12 @@ type OrganizationsClient interface {
 	ListAWSServiceAccessForOrganization(context.Context, *organizations.ListAWSServiceAccessForOrganizationInput, ...func(*organizations.Options)) (*organizations.ListAWSServiceAccessForOrganizationOutput, error)
 	ListAccounts(context.Context, *organizations.ListAccountsInput, ...func(*organizations.Options)) (*organizations.ListAccountsOutput, error)
 	ListAccountsForParent(context.Context, *organizations.ListAccountsForParentInput, ...func(*organizations.Options)) (*organizations.ListAccountsForParentOutput, error)
+	ListAccountsWithInvalidEffectivePolicy(context.Context, *organizations.ListAccountsWithInvalidEffectivePolicyInput, ...func(*organizations.Options)) (*organizations.ListAccountsWithInvalidEffectivePolicyOutput, error)
 	ListChildren(context.Context, *organizations.ListChildrenInput, ...func(*organizations.Options)) (*organizations.ListChildrenOutput, error)
 	ListCreateAccountStatus(context.Context, *organizations.ListCreateAccountStatusInput, ...func(*organizations.Options)) (*organizations.ListCreateAccountStatusOutput, error)
 	ListDelegatedAdministrators(context.Context, *organizations.ListDelegatedAdministratorsInput, ...func(*organizations.Options)) (*organizations.ListDelegatedAdministratorsOutput, error)
 	ListDelegatedServicesForAccount(context.Context, *organizations.ListDelegatedServicesForAccountInput, ...func(*organizations.Options)) (*organizations.ListDelegatedServicesForAccountOutput, error)
+	ListEffectivePolicyValidationErrors(context.Context, *organizations.ListEffectivePolicyValidationErrorsInput, ...func(*organizations.Options)) (*organizations.ListEffectivePolicyValidationErrorsOutput, error)
 	ListHandshakesForAccount(context.Context, *organizations.ListHandshakesForAccountInput, ...func(*organizations.Options)) (*organizations.ListHandshakesForAccountOutput, error)
 	ListHandshakesForOrganization(context.Context, *organizations.ListHandshakesForOrganizationInput, ...func(*organizations.Options)) (*organizations.ListHandshakesForOrganizationOutput, error)
 	ListOrganizationalUnitsForParent(context.Context, *organizations.ListOrganizationalUnitsForParentInput, ...func(*organizations.Options)) (*organizations.ListOrganizationalUnitsForParentOutput, error)

@@ -75,6 +75,7 @@
 - [aws_backup_region_settings](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_backup_region_settings.md)
 - [aws_backup_vaults](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_backup_vaults.md)
   - [aws_backup_vault_recovery_points](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_backup_vault_recovery_points.md)
+- [aws_budgets_budgets](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_budgets_budgets.md)
 - [aws_cloudformation_stacks](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_cloudformation_stacks.md)
   - [aws_cloudformation_stack_resources](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_cloudformation_stack_resources.md)
 - [aws_cloudfront_cache_policies](https://github.com/OpsHelmInc/cloudquery/blob/main/docs/tables/aws_cloudfront_cache_policies.md)

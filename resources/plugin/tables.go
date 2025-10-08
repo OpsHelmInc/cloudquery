@@ -3,6 +3,8 @@
 package plugin
 
 import (
+	"github.com/cloudquery/plugin-sdk/schema"
+
 	"github.com/OpsHelmInc/cloudquery/resources/services/accessanalyzer"
 	"github.com/OpsHelmInc/cloudquery/resources/services/account"
 	"github.com/OpsHelmInc/cloudquery/resources/services/acm"
@@ -15,6 +17,7 @@ import (
 	"github.com/OpsHelmInc/cloudquery/resources/services/athena"
 	"github.com/OpsHelmInc/cloudquery/resources/services/autoscaling"
 	"github.com/OpsHelmInc/cloudquery/resources/services/backup"
+	"github.com/OpsHelmInc/cloudquery/resources/services/budgets"
 	"github.com/OpsHelmInc/cloudquery/resources/services/cloudformation"
 	"github.com/OpsHelmInc/cloudquery/resources/services/cloudfront"
 	"github.com/OpsHelmInc/cloudquery/resources/services/cloudhsmv2"
@@ -90,7 +93,6 @@ import (
 	"github.com/OpsHelmInc/cloudquery/resources/services/wafv2"
 	"github.com/OpsHelmInc/cloudquery/resources/services/workspaces"
 	"github.com/OpsHelmInc/cloudquery/resources/services/xray"
-	"github.com/cloudquery/plugin-sdk/schema"
 )
 
 func tables() []*schema.Table {
@@ -134,6 +136,7 @@ func tables() []*schema.Table {
 		backup.Plans(),
 		backup.RegionSettings(),
 		backup.Vaults(),
+		budgets.Budgets(),
 		cloudformation.Stacks(),
 		cloudfront.CachePolicies(),
 		cloudfront.Distributions(),

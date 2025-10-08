@@ -3,10 +3,11 @@ package apprunner
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/service/apprunner"
 	"github.com/cloudquery/plugin-sdk/schema"
 	"github.com/thoas/go-funk"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func resolveApprunnerTags(path string) schema.ColumnResolver {

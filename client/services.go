@@ -2,8 +2,6 @@
 package client
 
 import (
-	"github.com/OpsHelmInc/cloudquery/client/models/s3manager"
-	"github.com/OpsHelmInc/cloudquery/client/services"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/accessanalyzer"
 	"github.com/aws/aws-sdk-go-v2/service/account"
@@ -17,6 +15,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/athena"
 	"github.com/aws/aws-sdk-go-v2/service/autoscaling"
 	"github.com/aws/aws-sdk-go-v2/service/backup"
+	"github.com/aws/aws-sdk-go-v2/service/budgets"
 	"github.com/aws/aws-sdk-go-v2/service/cloudformation"
 	"github.com/aws/aws-sdk-go-v2/service/cloudfront"
 	"github.com/aws/aws-sdk-go-v2/service/cloudhsmv2"
@@ -96,6 +95,9 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/wafv2"
 	"github.com/aws/aws-sdk-go-v2/service/workspaces"
 	"github.com/aws/aws-sdk-go-v2/service/xray"
+
+	"github.com/OpsHelmInc/cloudquery/client/models/s3manager"
+	"github.com/OpsHelmInc/cloudquery/client/services"
 )
 
 func initServices(region string, c aws.Config) Services {
@@ -114,6 +116,7 @@ func initServices(region string, c aws.Config) Services {
 		Athena:                    athena.NewFromConfig(awsCfg),
 		Autoscaling:               autoscaling.NewFromConfig(awsCfg),
 		Backup:                    backup.NewFromConfig(awsCfg),
+		Budgets:                   budgets.NewFromConfig(awsCfg),
 		Cloudformation:            cloudformation.NewFromConfig(awsCfg),
 		Cloudfront:                cloudfront.NewFromConfig(awsCfg),
 		Cloudhsmv2:                cloudhsmv2.NewFromConfig(awsCfg),
@@ -210,6 +213,7 @@ type Services struct {
 	Athena                    services.AthenaClient
 	Autoscaling               services.AutoscalingClient
 	Backup                    services.BackupClient
+	Budgets                   services.BudgetsClient
 	Cloudformation            services.CloudformationClient
 	Cloudfront                services.CloudfrontClient
 	Cloudhsmv2                services.Cloudhsmv2Client
