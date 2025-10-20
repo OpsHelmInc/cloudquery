@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/OpsHelmInc/cloudquery/client"
+	"github.com/OpsHelmInc/ohaws"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/glue"
@@ -32,20 +33,31 @@ func fetchGlueCrawlers(ctx context.Context, meta schema.ClientMeta, parent *sche
 }
 func resolveGlueCrawlerArn(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
 	cl := meta.(*client.Client)
-	return resource.Set(c.Name, crawlerARN(cl, aws.ToString(resource.Item.(types.Crawler).Name)))
+	return resource.Set(c.Name, crawlerARN(cl, aws.ToString(resource.Item.(*ohaws.GlueCrawler).Name)))
 }
-func resolveGlueCrawlerTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, c schema.Column) error {
+
+func getGlueCrawler(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource) error {
 	cl := meta.(*client.Client)
 	svc := cl.Services().Glue
+	c := resource.Item.(types.Crawler)
 	input := glue.GetTagsInput{
-		ResourceArn: aws.String(crawlerARN(cl, aws.ToString(resource.Item.(types.Crawler).Name))),
+		ResourceArn: aws.String(crawlerARN(cl, aws.ToString(c.Name))),
 	}
 
 	response, err := svc.GetTags(ctx, &input)
 	if err != nil {
+		if cl.IsNotFoundError(err) {
+			return nil
+		}
 		return err
 	}
-	return resource.Set(c.Name, response.Tags)
+
+	resource.Item = &ohaws.GlueCrawler{
+		Crawler: c,
+		Tags:    response.Tags,
+	}
+
+	return nil
 }
 
 // ====================================================================================================================

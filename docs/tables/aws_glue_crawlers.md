@@ -1,6 +1,8 @@
 # Table: aws_glue_crawlers
 
+This table shows data for Glue Crawlers.
 
+https://docs.aws.amazon.com/glue/latest/webapi/API_Crawler.html
 
 The primary key for this table is **arn**.
 
@@ -16,7 +18,6 @@ The primary key for this table is **arn**.
 |account_id|String|
 |region|String|
 |arn (PK)|String|
-|tags|JSON|
 |classifiers|StringArray|
 |configuration|String|
 |crawl_elapsed_time|Int|
@@ -37,3 +38,4 @@ The primary key for this table is **arn**.
 |table_prefix|String|
 |targets|JSON|
 |version|Int|
+|tags|JSON|
