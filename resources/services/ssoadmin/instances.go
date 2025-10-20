@@ -44,6 +44,11 @@ func Instances() *schema.Table {
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Status"),
 			},
+			{
+				Name:     "status_reason",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("StatusReason"),
+			},
 		},
 
 		Relations: []*schema.Table{

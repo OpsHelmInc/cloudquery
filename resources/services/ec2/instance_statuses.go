@@ -43,6 +43,11 @@ func InstanceStatuses() *schema.Table {
 				Resolver: schema.PathResolver("AvailabilityZone"),
 			},
 			{
+				Name:     "availability_zone_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("AvailabilityZoneId"),
+			},
+			{
 				Name:     "events",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("Events"),

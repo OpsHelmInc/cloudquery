@@ -1,6 +1,7 @@
 package recipes
 
 import (
+	"github.com/OpsHelmInc/ohaws"
 	"github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs/types"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
@@ -40,7 +41,7 @@ func CloudWatchLogsResources() []*Resource {
 		},
 		{
 			SubService:  "log_groups",
-			Struct:      &types.LogGroup{},
+			Struct:      &ohaws.LogGroup{},
 			Description: "https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_LogGroup.html",
 			SkipFields:  []string{"Arn"},
 			ExtraColumns: append(
@@ -51,11 +52,6 @@ func CloudWatchLogsResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `schema.PathResolver("Arn")`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveLogGroupTags`,
 					},
 				}...),
 		},

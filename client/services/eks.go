@@ -18,6 +18,7 @@ type EksClient interface {
 	DescribeFargateProfile(context.Context, *eks.DescribeFargateProfileInput, ...func(*eks.Options)) (*eks.DescribeFargateProfileOutput, error)
 	DescribeIdentityProviderConfig(context.Context, *eks.DescribeIdentityProviderConfigInput, ...func(*eks.Options)) (*eks.DescribeIdentityProviderConfigOutput, error)
 	DescribeInsight(context.Context, *eks.DescribeInsightInput, ...func(*eks.Options)) (*eks.DescribeInsightOutput, error)
+	DescribeInsightsRefresh(context.Context, *eks.DescribeInsightsRefreshInput, ...func(*eks.Options)) (*eks.DescribeInsightsRefreshOutput, error)
 	DescribeNodegroup(context.Context, *eks.DescribeNodegroupInput, ...func(*eks.Options)) (*eks.DescribeNodegroupOutput, error)
 	DescribePodIdentityAssociation(context.Context, *eks.DescribePodIdentityAssociationInput, ...func(*eks.Options)) (*eks.DescribePodIdentityAssociationOutput, error)
 	DescribeUpdate(context.Context, *eks.DescribeUpdateInput, ...func(*eks.Options)) (*eks.DescribeUpdateOutput, error)

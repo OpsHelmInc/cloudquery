@@ -48,6 +48,21 @@ func ResourcePolicies() *schema.Table {
 					PrimaryKey: true,
 				},
 			},
+			{
+				Name:     "policy_scope",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("PolicyScope"),
+			},
+			{
+				Name:     "resource_arn",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ResourceArn"),
+			},
+			{
+				Name:     "revision_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("RevisionId"),
+			},
 		},
 	}
 }

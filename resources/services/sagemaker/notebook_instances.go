@@ -79,6 +79,11 @@ func NotebookInstances() *schema.Table {
 				Resolver: schema.PathResolver("InstanceType"),
 			},
 			{
+				Name:     "ip_address_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("IpAddressType"),
+			},
+			{
 				Name:     "kms_key_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("KmsKeyId"),
