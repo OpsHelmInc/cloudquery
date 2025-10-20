@@ -1,8 +1,6 @@
 # Table: aws_glue_crawlers
 
-This table shows data for Glue Crawlers.
 
-https://docs.aws.amazon.com/glue/latest/webapi/API_Crawler.html
 
 The primary key for this table is **arn**.
 
