@@ -48,6 +48,11 @@ func EbsVolumes() *schema.Table {
 				Resolver: schema.PathResolver("AvailabilityZone"),
 			},
 			{
+				Name:     "availability_zone_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("AvailabilityZoneId"),
+			},
+			{
 				Name:     "create_time",
 				Type:     schema.TypeTimestamp,
 				Resolver: schema.PathResolver("CreateTime"),
@@ -96,6 +101,11 @@ func EbsVolumes() *schema.Table {
 				Name:     "snapshot_id",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("SnapshotId"),
+			},
+			{
+				Name:     "source_volume_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("SourceVolumeId"),
 			},
 			{
 				Name:     "sse_type",

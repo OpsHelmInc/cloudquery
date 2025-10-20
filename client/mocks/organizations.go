@@ -255,6 +255,26 @@ func (mr *MockOrganizationsClientMockRecorder) ListAccountsForParent(arg0, arg1 
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAccountsForParent", reflect.TypeOf((*MockOrganizationsClient)(nil).ListAccountsForParent), varargs...)
 }
 
+// ListAccountsWithInvalidEffectivePolicy mocks base method.
+func (m *MockOrganizationsClient) ListAccountsWithInvalidEffectivePolicy(arg0 context.Context, arg1 *organizations.ListAccountsWithInvalidEffectivePolicyInput, arg2 ...func(*organizations.Options)) (*organizations.ListAccountsWithInvalidEffectivePolicyOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListAccountsWithInvalidEffectivePolicy", varargs...)
+	ret0, _ := ret[0].(*organizations.ListAccountsWithInvalidEffectivePolicyOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListAccountsWithInvalidEffectivePolicy indicates an expected call of ListAccountsWithInvalidEffectivePolicy.
+func (mr *MockOrganizationsClientMockRecorder) ListAccountsWithInvalidEffectivePolicy(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListAccountsWithInvalidEffectivePolicy", reflect.TypeOf((*MockOrganizationsClient)(nil).ListAccountsWithInvalidEffectivePolicy), varargs...)
+}
+
 // ListChildren mocks base method.
 func (m *MockOrganizationsClient) ListChildren(arg0 context.Context, arg1 *organizations.ListChildrenInput, arg2 ...func(*organizations.Options)) (*organizations.ListChildrenOutput, error) {
 	m.ctrl.T.Helper()
@@ -333,6 +353,26 @@ func (mr *MockOrganizationsClientMockRecorder) ListDelegatedServicesForAccount(a
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListDelegatedServicesForAccount", reflect.TypeOf((*MockOrganizationsClient)(nil).ListDelegatedServicesForAccount), varargs...)
+}
+
+// ListEffectivePolicyValidationErrors mocks base method.
+func (m *MockOrganizationsClient) ListEffectivePolicyValidationErrors(arg0 context.Context, arg1 *organizations.ListEffectivePolicyValidationErrorsInput, arg2 ...func(*organizations.Options)) (*organizations.ListEffectivePolicyValidationErrorsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListEffectivePolicyValidationErrors", varargs...)
+	ret0, _ := ret[0].(*organizations.ListEffectivePolicyValidationErrorsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListEffectivePolicyValidationErrors indicates an expected call of ListEffectivePolicyValidationErrors.
+func (mr *MockOrganizationsClientMockRecorder) ListEffectivePolicyValidationErrors(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListEffectivePolicyValidationErrors", reflect.TypeOf((*MockOrganizationsClient)(nil).ListEffectivePolicyValidationErrors), varargs...)
 }
 
 // ListHandshakesForAccount mocks base method.

@@ -58,6 +58,11 @@ func Accounts() *schema.Table {
 				Resolver: schema.PathResolver("Name"),
 			},
 			{
+				Name:     "state",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("State"),
+			},
+			{
 				Name:     "status",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Status"),

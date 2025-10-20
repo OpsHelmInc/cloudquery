@@ -69,6 +69,11 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("CreatedAt"),
 			},
 			{
+				Name:     "deletion_protection",
+				Type:     schema.TypeBool,
+				Resolver: schema.PathResolver("DeletionProtection"),
+			},
+			{
 				Name:     "encryption_config",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("EncryptionConfig"),

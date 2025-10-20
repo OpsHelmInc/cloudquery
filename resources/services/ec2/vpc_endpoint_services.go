@@ -38,6 +38,11 @@ func VpcEndpointServices() *schema.Table {
 				Resolver: schema.PathResolver("AcceptanceRequired"),
 			},
 			{
+				Name:     "availability_zone_ids",
+				Type:     schema.TypeStringArray,
+				Resolver: schema.PathResolver("AvailabilityZoneIds"),
+			},
+			{
 				Name:     "availability_zones",
 				Type:     schema.TypeStringArray,
 				Resolver: schema.PathResolver("AvailabilityZones"),
