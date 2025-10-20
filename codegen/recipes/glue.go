@@ -52,9 +52,11 @@ func GlueResources() []*Resource {
 				}...),
 		},
 		{
-			SubService: "crawlers",
-			Struct:     &types.Crawler{},
-			SkipFields: []string{},
+			SubService:            "crawlers",
+			Struct:                &ohaws.GlueCrawler{},
+			PreResourceResolver:   "getGlueCrawler",
+			SkipFields:            []string{},
+			UnwrapEmbeddedStructs: true,
 			ExtraColumns: append(
 				defaultRegionalColumns,
 				[]codegen.ColumnDefinition{
@@ -63,11 +65,6 @@ func GlueResources() []*Resource {
 						Type:     schema.TypeString,
 						Resolver: `resolveGlueCrawlerArn`,
 						Options:  schema.ColumnCreationOptions{PrimaryKey: true},
-					},
-					{
-						Name:     "tags",
-						Type:     schema.TypeJSON,
-						Resolver: `resolveGlueCrawlerTags`,
 					},
 				}...),
 		},
