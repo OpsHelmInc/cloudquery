@@ -3,11 +3,12 @@ package frauddetector
 import (
 	"testing"
 
-	"github.com/OpsHelmInc/cloudquery/client/mocks"
 	"github.com/aws/aws-sdk-go-v2/service/frauddetector"
 	"github.com/aws/aws-sdk-go-v2/service/frauddetector/types"
 	"github.com/cloudquery/plugin-sdk/faker"
 	"github.com/golang/mock/gomock"
+
+	"github.com/OpsHelmInc/cloudquery/client/mocks"
 )
 
 func buildModelVersions(t *testing.T, client *mocks.MockFrauddetectorClient) {

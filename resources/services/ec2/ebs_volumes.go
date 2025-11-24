@@ -3,8 +3,9 @@
 package ec2
 
 import (
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func EbsVolumes() *schema.Table {
@@ -46,6 +47,11 @@ func EbsVolumes() *schema.Table {
 				Name:     "availability_zone",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("AvailabilityZone"),
+			},
+			{
+				Name:     "availability_zone_id",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("AvailabilityZoneId"),
 			},
 			{
 				Name:     "create_time",

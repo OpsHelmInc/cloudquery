@@ -195,6 +195,26 @@ func (mr *MockSagemakerClientMockRecorder) DescribeCluster(arg0, arg1 interface{
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeCluster", reflect.TypeOf((*MockSagemakerClient)(nil).DescribeCluster), varargs...)
 }
 
+// DescribeClusterEvent mocks base method.
+func (m *MockSagemakerClient) DescribeClusterEvent(arg0 context.Context, arg1 *sagemaker.DescribeClusterEventInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.DescribeClusterEventOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeClusterEvent", varargs...)
+	ret0, _ := ret[0].(*sagemaker.DescribeClusterEventOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeClusterEvent indicates an expected call of DescribeClusterEvent.
+func (mr *MockSagemakerClientMockRecorder) DescribeClusterEvent(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeClusterEvent", reflect.TypeOf((*MockSagemakerClient)(nil).DescribeClusterEvent), varargs...)
+}
+
 // DescribeClusterNode mocks base method.
 func (m *MockSagemakerClient) DescribeClusterNode(arg0 context.Context, arg1 *sagemaker.DescribeClusterNodeInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.DescribeClusterNodeOutput, error) {
 	m.ctrl.T.Helper()
@@ -1155,6 +1175,26 @@ func (mr *MockSagemakerClientMockRecorder) DescribeProject(arg0, arg1 interface{
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeProject", reflect.TypeOf((*MockSagemakerClient)(nil).DescribeProject), varargs...)
 }
 
+// DescribeReservedCapacity mocks base method.
+func (m *MockSagemakerClient) DescribeReservedCapacity(arg0 context.Context, arg1 *sagemaker.DescribeReservedCapacityInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.DescribeReservedCapacityOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeReservedCapacity", varargs...)
+	ret0, _ := ret[0].(*sagemaker.DescribeReservedCapacityOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeReservedCapacity indicates an expected call of DescribeReservedCapacity.
+func (mr *MockSagemakerClientMockRecorder) DescribeReservedCapacity(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeReservedCapacity", reflect.TypeOf((*MockSagemakerClient)(nil).DescribeReservedCapacity), varargs...)
+}
+
 // DescribeSpace mocks base method.
 func (m *MockSagemakerClient) DescribeSpace(arg0 context.Context, arg1 *sagemaker.DescribeSpaceInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.DescribeSpaceOutput, error) {
 	m.ctrl.T.Helper()
@@ -1673,6 +1713,26 @@ func (mr *MockSagemakerClientMockRecorder) ListCandidatesForAutoMLJob(arg0, arg1
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListCandidatesForAutoMLJob", reflect.TypeOf((*MockSagemakerClient)(nil).ListCandidatesForAutoMLJob), varargs...)
+}
+
+// ListClusterEvents mocks base method.
+func (m *MockSagemakerClient) ListClusterEvents(arg0 context.Context, arg1 *sagemaker.ListClusterEventsInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.ListClusterEventsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListClusterEvents", varargs...)
+	ret0, _ := ret[0].(*sagemaker.ListClusterEventsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListClusterEvents indicates an expected call of ListClusterEvents.
+func (mr *MockSagemakerClientMockRecorder) ListClusterEvents(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListClusterEvents", reflect.TypeOf((*MockSagemakerClient)(nil).ListClusterEvents), varargs...)
 }
 
 // ListClusterNodes mocks base method.
@@ -3073,6 +3133,26 @@ func (mr *MockSagemakerClientMockRecorder) ListTrials(arg0, arg1 interface{}, ar
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListTrials", reflect.TypeOf((*MockSagemakerClient)(nil).ListTrials), varargs...)
+}
+
+// ListUltraServersByReservedCapacity mocks base method.
+func (m *MockSagemakerClient) ListUltraServersByReservedCapacity(arg0 context.Context, arg1 *sagemaker.ListUltraServersByReservedCapacityInput, arg2 ...func(*sagemaker.Options)) (*sagemaker.ListUltraServersByReservedCapacityOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListUltraServersByReservedCapacity", varargs...)
+	ret0, _ := ret[0].(*sagemaker.ListUltraServersByReservedCapacityOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListUltraServersByReservedCapacity indicates an expected call of ListUltraServersByReservedCapacity.
+func (mr *MockSagemakerClientMockRecorder) ListUltraServersByReservedCapacity(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListUltraServersByReservedCapacity", reflect.TypeOf((*MockSagemakerClient)(nil).ListUltraServersByReservedCapacity), varargs...)
 }
 
 // ListUserProfiles mocks base method.

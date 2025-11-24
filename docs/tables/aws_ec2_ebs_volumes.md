@@ -19,6 +19,7 @@ The primary key for this table is **arn**.
 |oh_resource_type|String|
 |attachments|JSON|
 |availability_zone|String|
+|availability_zone_id|String|
 |create_time|Timestamp|
 |encrypted|Bool|
 |fast_restored|Bool|

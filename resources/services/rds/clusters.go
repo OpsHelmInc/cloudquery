@@ -3,8 +3,9 @@
 package rds
 
 import (
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func Clusters() *schema.Table {
@@ -411,6 +412,11 @@ func Clusters() *schema.Table {
 				Name:     "scaling_configuration_info",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ScalingConfigurationInfo"),
+			},
+			{
+				Name:     "serverless_v2_platform_version",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ServerlessV2PlatformVersion"),
 			},
 			{
 				Name:     "serverless_v2_scaling_configuration",

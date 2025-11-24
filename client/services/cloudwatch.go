@@ -3,11 +3,13 @@ package services
 
 import (
 	"context"
+
 	"github.com/aws/aws-sdk-go-v2/service/cloudwatch"
 )
 
 //go:generate mockgen -package=mocks -destination=../mocks/cloudwatch.go -source=cloudwatch.go CloudwatchClient
 type CloudwatchClient interface {
+	DescribeAlarmContributors(context.Context, *cloudwatch.DescribeAlarmContributorsInput, ...func(*cloudwatch.Options)) (*cloudwatch.DescribeAlarmContributorsOutput, error)
 	DescribeAlarmHistory(context.Context, *cloudwatch.DescribeAlarmHistoryInput, ...func(*cloudwatch.Options)) (*cloudwatch.DescribeAlarmHistoryOutput, error)
 	DescribeAlarms(context.Context, *cloudwatch.DescribeAlarmsInput, ...func(*cloudwatch.Options)) (*cloudwatch.DescribeAlarmsOutput, error)
 	DescribeAlarmsForMetric(context.Context, *cloudwatch.DescribeAlarmsForMetricInput, ...func(*cloudwatch.Options)) (*cloudwatch.DescribeAlarmsForMetricOutput, error)

@@ -315,6 +315,26 @@ func (mr *MockSsoadminClientMockRecorder) GetApplicationGrant(arg0, arg1 interfa
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetApplicationGrant", reflect.TypeOf((*MockSsoadminClient)(nil).GetApplicationGrant), varargs...)
 }
 
+// GetApplicationSessionConfiguration mocks base method.
+func (m *MockSsoadminClient) GetApplicationSessionConfiguration(arg0 context.Context, arg1 *ssoadmin.GetApplicationSessionConfigurationInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.GetApplicationSessionConfigurationOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetApplicationSessionConfiguration", varargs...)
+	ret0, _ := ret[0].(*ssoadmin.GetApplicationSessionConfigurationOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetApplicationSessionConfiguration indicates an expected call of GetApplicationSessionConfiguration.
+func (mr *MockSsoadminClientMockRecorder) GetApplicationSessionConfiguration(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetApplicationSessionConfiguration", reflect.TypeOf((*MockSsoadminClient)(nil).GetApplicationSessionConfiguration), varargs...)
+}
+
 // GetInlinePolicyForPermissionSet mocks base method.
 func (m *MockSsoadminClient) GetInlinePolicyForPermissionSet(arg0 context.Context, arg1 *ssoadmin.GetInlinePolicyForPermissionSetInput, arg2 ...func(*ssoadmin.Options)) (*ssoadmin.GetInlinePolicyForPermissionSetOutput, error) {
 	m.ctrl.T.Helper()

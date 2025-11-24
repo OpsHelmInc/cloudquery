@@ -3,9 +3,10 @@ package lambda
 import (
 	"testing"
 
+	"github.com/golang/mock/gomock"
+
 	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/OpsHelmInc/cloudquery/client/mocks"
-	"github.com/golang/mock/gomock"
 )
 
 func buildLambdaRuntimesMock(t *testing.T, ctrl *gomock.Controller) client.Services {

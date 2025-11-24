@@ -3,8 +3,9 @@
 package sagemaker
 
 import (
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func NotebookInstances() *schema.Table {
@@ -77,6 +78,11 @@ func NotebookInstances() *schema.Table {
 				Name:     "instance_type",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("InstanceType"),
+			},
+			{
+				Name:     "ip_address_type",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("IpAddressType"),
 			},
 			{
 				Name:     "kms_key_id",

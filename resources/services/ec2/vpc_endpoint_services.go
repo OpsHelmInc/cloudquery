@@ -3,8 +3,9 @@
 package ec2
 
 import (
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func VpcEndpointServices() *schema.Table {
@@ -36,6 +37,11 @@ func VpcEndpointServices() *schema.Table {
 				Name:     "acceptance_required",
 				Type:     schema.TypeBool,
 				Resolver: schema.PathResolver("AcceptanceRequired"),
+			},
+			{
+				Name:     "availability_zone_ids",
+				Type:     schema.TypeStringArray,
+				Resolver: schema.PathResolver("AvailabilityZoneIds"),
 			},
 			{
 				Name:     "availability_zones",

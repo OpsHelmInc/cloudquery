@@ -3,8 +3,9 @@
 package xray
 
 import (
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func EncryptionConfigs() *schema.Table {
