@@ -33,59 +33,14 @@ func LogGroups() *schema.Table {
 				},
 			},
 			{
+				Name:     "log_group",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("LogGroup"),
+			},
+			{
 				Name:     "tags",
 				Type:     schema.TypeJSON,
-				Resolver: resolveLogGroupTags,
-			},
-			{
-				Name:     "creation_time",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("CreationTime"),
-			},
-			{
-				Name:     "data_protection_status",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("DataProtectionStatus"),
-			},
-			{
-				Name:     "inherited_properties",
-				Type:     schema.TypeStringArray,
-				Resolver: schema.PathResolver("InheritedProperties"),
-			},
-			{
-				Name:     "kms_key_id",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("KmsKeyId"),
-			},
-			{
-				Name:     "log_group_arn",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("LogGroupArn"),
-			},
-			{
-				Name:     "log_group_class",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("LogGroupClass"),
-			},
-			{
-				Name:     "log_group_name",
-				Type:     schema.TypeString,
-				Resolver: schema.PathResolver("LogGroupName"),
-			},
-			{
-				Name:     "metric_filter_count",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("MetricFilterCount"),
-			},
-			{
-				Name:     "retention_in_days",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("RetentionInDays"),
-			},
-			{
-				Name:     "stored_bytes",
-				Type:     schema.TypeInt,
-				Resolver: schema.PathResolver("StoredBytes"),
+				Resolver: client.ResolveTags,
 			},
 		},
 	}

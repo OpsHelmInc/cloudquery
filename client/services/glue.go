@@ -54,6 +54,7 @@ type GlueClient interface {
 	GetDevEndpoint(context.Context, *glue.GetDevEndpointInput, ...func(*glue.Options)) (*glue.GetDevEndpointOutput, error)
 	GetDevEndpoints(context.Context, *glue.GetDevEndpointsInput, ...func(*glue.Options)) (*glue.GetDevEndpointsOutput, error)
 	GetEntityRecords(context.Context, *glue.GetEntityRecordsInput, ...func(*glue.Options)) (*glue.GetEntityRecordsOutput, error)
+	GetGlueIdentityCenterConfiguration(context.Context, *glue.GetGlueIdentityCenterConfigurationInput, ...func(*glue.Options)) (*glue.GetGlueIdentityCenterConfigurationOutput, error)
 	GetIntegrationResourceProperty(context.Context, *glue.GetIntegrationResourcePropertyInput, ...func(*glue.Options)) (*glue.GetIntegrationResourcePropertyOutput, error)
 	GetIntegrationTableProperties(context.Context, *glue.GetIntegrationTablePropertiesInput, ...func(*glue.Options)) (*glue.GetIntegrationTablePropertiesOutput, error)
 	GetJob(context.Context, *glue.GetJobInput, ...func(*glue.Options)) (*glue.GetJobOutput, error)

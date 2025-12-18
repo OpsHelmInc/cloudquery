@@ -413,6 +413,11 @@ func Clusters() *schema.Table {
 				Resolver: schema.PathResolver("ScalingConfigurationInfo"),
 			},
 			{
+				Name:     "serverless_v2_platform_version",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("ServerlessV2PlatformVersion"),
+			},
+			{
 				Name:     "serverless_v2_scaling_configuration",
 				Type:     schema.TypeJSON,
 				Resolver: schema.PathResolver("ServerlessV2ScalingConfiguration"),

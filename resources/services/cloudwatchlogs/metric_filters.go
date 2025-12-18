@@ -43,6 +43,16 @@ func MetricFilters() *schema.Table {
 				Resolver: schema.PathResolver("CreationTime"),
 			},
 			{
+				Name:     "emit_system_field_dimensions",
+				Type:     schema.TypeStringArray,
+				Resolver: schema.PathResolver("EmitSystemFieldDimensions"),
+			},
+			{
+				Name:     "field_selection_criteria",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("FieldSelectionCriteria"),
+			},
+			{
 				Name:     "filter_name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("FilterName"),
