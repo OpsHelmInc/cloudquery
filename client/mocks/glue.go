@@ -955,6 +955,26 @@ func (mr *MockGlueClientMockRecorder) GetEntityRecords(arg0, arg1 interface{}, a
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEntityRecords", reflect.TypeOf((*MockGlueClient)(nil).GetEntityRecords), varargs...)
 }
 
+// GetGlueIdentityCenterConfiguration mocks base method.
+func (m *MockGlueClient) GetGlueIdentityCenterConfiguration(arg0 context.Context, arg1 *glue.GetGlueIdentityCenterConfigurationInput, arg2 ...func(*glue.Options)) (*glue.GetGlueIdentityCenterConfigurationOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetGlueIdentityCenterConfiguration", varargs...)
+	ret0, _ := ret[0].(*glue.GetGlueIdentityCenterConfigurationOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetGlueIdentityCenterConfiguration indicates an expected call of GetGlueIdentityCenterConfiguration.
+func (mr *MockGlueClientMockRecorder) GetGlueIdentityCenterConfiguration(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetGlueIdentityCenterConfiguration", reflect.TypeOf((*MockGlueClient)(nil).GetGlueIdentityCenterConfiguration), varargs...)
+}
+
 // GetIntegrationResourceProperty mocks base method.
 func (m *MockGlueClient) GetIntegrationResourceProperty(arg0 context.Context, arg1 *glue.GetIntegrationResourcePropertyInput, arg2 ...func(*glue.Options)) (*glue.GetIntegrationResourcePropertyOutput, error) {
 	m.ctrl.T.Helper()

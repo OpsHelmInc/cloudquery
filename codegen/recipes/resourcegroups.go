@@ -4,9 +4,10 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/OpsHelmInc/cloudquery/resources/services/resourcegroups/models"
 	"github.com/cloudquery/plugin-sdk/codegen"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/resources/services/resourcegroups/models"
 )
 
 func ResourceGroupsResources() []*Resource {

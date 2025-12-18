@@ -3,6 +3,7 @@ package services
 
 import (
 	"context"
+
 	"github.com/aws/aws-sdk-go-v2/service/ssoadmin"
 )
 
@@ -22,6 +23,7 @@ type SsoadminClient interface {
 	GetApplicationAssignmentConfiguration(context.Context, *ssoadmin.GetApplicationAssignmentConfigurationInput, ...func(*ssoadmin.Options)) (*ssoadmin.GetApplicationAssignmentConfigurationOutput, error)
 	GetApplicationAuthenticationMethod(context.Context, *ssoadmin.GetApplicationAuthenticationMethodInput, ...func(*ssoadmin.Options)) (*ssoadmin.GetApplicationAuthenticationMethodOutput, error)
 	GetApplicationGrant(context.Context, *ssoadmin.GetApplicationGrantInput, ...func(*ssoadmin.Options)) (*ssoadmin.GetApplicationGrantOutput, error)
+	GetApplicationSessionConfiguration(context.Context, *ssoadmin.GetApplicationSessionConfigurationInput, ...func(*ssoadmin.Options)) (*ssoadmin.GetApplicationSessionConfigurationOutput, error)
 	GetInlinePolicyForPermissionSet(context.Context, *ssoadmin.GetInlinePolicyForPermissionSetInput, ...func(*ssoadmin.Options)) (*ssoadmin.GetInlinePolicyForPermissionSetOutput, error)
 	GetPermissionsBoundaryForPermissionSet(context.Context, *ssoadmin.GetPermissionsBoundaryForPermissionSetInput, ...func(*ssoadmin.Options)) (*ssoadmin.GetPermissionsBoundaryForPermissionSetOutput, error)
 	ListAccountAssignmentCreationStatus(context.Context, *ssoadmin.ListAccountAssignmentCreationStatusInput, ...func(*ssoadmin.Options)) (*ssoadmin.ListAccountAssignmentCreationStatusOutput, error)

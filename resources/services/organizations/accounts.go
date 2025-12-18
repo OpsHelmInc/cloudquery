@@ -3,8 +3,9 @@
 package organizations
 
 import (
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func Accounts() *schema.Table {
@@ -56,6 +57,11 @@ func Accounts() *schema.Table {
 				Name:     "name",
 				Type:     schema.TypeString,
 				Resolver: schema.PathResolver("Name"),
+			},
+			{
+				Name:     "state",
+				Type:     schema.TypeString,
+				Resolver: schema.PathResolver("State"),
 			},
 			{
 				Name:     "status",

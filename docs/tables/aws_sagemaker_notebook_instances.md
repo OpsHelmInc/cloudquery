@@ -25,6 +25,7 @@ The primary key for this table is **arn**.
 |failure_reason|String|
 |instance_metadata_service_configuration|JSON|
 |instance_type|String|
+|ip_address_type|String|
 |kms_key_id|String|
 |last_modified_time|Timestamp|
 |network_interface_id|String|

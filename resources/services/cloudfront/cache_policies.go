@@ -3,8 +3,9 @@
 package cloudfront
 
 import (
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func CachePolicies() *schema.Table {

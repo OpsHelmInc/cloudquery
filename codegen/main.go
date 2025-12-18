@@ -23,6 +23,7 @@ func generateResources() ([]*recipes.Resource, error) {
 	resources = append(resources, recipes.AthenaResources()...)
 	resources = append(resources, recipes.AutoscalingResources()...)
 	resources = append(resources, recipes.BackupResources()...)
+	resources = append(resources, recipes.BudgetResources()...)
 	resources = append(resources, recipes.CloudformationResources()...)
 	resources = append(resources, recipes.CloudfrontResources()...)
 	resources = append(resources, recipes.CloudHSMV2()...)

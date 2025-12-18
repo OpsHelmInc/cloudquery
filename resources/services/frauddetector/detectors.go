@@ -3,8 +3,9 @@
 package frauddetector
 
 import (
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func Detectors() *schema.Table {

@@ -18,6 +18,7 @@ The primary key for this table is **arn**.
 |arn (PK)|String|
 |attached_ebs_status|JSON|
 |availability_zone|String|
+|availability_zone_id|String|
 |events|JSON|
 |instance_id|String|
 |instance_state|JSON|

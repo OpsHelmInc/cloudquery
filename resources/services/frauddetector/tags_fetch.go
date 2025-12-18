@@ -3,10 +3,11 @@ package frauddetector
 import (
 	"context"
 
-	"github.com/OpsHelmInc/cloudquery/client"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/frauddetector"
 	"github.com/cloudquery/plugin-sdk/schema"
+
+	"github.com/OpsHelmInc/cloudquery/client"
 )
 
 func resolveResourceTags(ctx context.Context, meta schema.ClientMeta, resource *schema.Resource, column schema.Column) error {

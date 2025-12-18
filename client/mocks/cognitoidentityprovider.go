@@ -135,6 +135,26 @@ func (mr *MockCognitoidentityproviderClientMockRecorder) DescribeRiskConfigurati
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeRiskConfiguration", reflect.TypeOf((*MockCognitoidentityproviderClient)(nil).DescribeRiskConfiguration), varargs...)
 }
 
+// DescribeTerms mocks base method.
+func (m *MockCognitoidentityproviderClient) DescribeTerms(arg0 context.Context, arg1 *cognitoidentityprovider.DescribeTermsInput, arg2 ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.DescribeTermsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeTerms", varargs...)
+	ret0, _ := ret[0].(*cognitoidentityprovider.DescribeTermsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeTerms indicates an expected call of DescribeTerms.
+func (mr *MockCognitoidentityproviderClientMockRecorder) DescribeTerms(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeTerms", reflect.TypeOf((*MockCognitoidentityproviderClient)(nil).DescribeTerms), varargs...)
+}
+
 // DescribeUserImportJob mocks base method.
 func (m *MockCognitoidentityproviderClient) DescribeUserImportJob(arg0 context.Context, arg1 *cognitoidentityprovider.DescribeUserImportJobInput, arg2 ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.DescribeUserImportJobOutput, error) {
 	m.ctrl.T.Helper()
@@ -553,6 +573,26 @@ func (mr *MockCognitoidentityproviderClientMockRecorder) ListTagsForResource(arg
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListTagsForResource", reflect.TypeOf((*MockCognitoidentityproviderClient)(nil).ListTagsForResource), varargs...)
+}
+
+// ListTerms mocks base method.
+func (m *MockCognitoidentityproviderClient) ListTerms(arg0 context.Context, arg1 *cognitoidentityprovider.ListTermsInput, arg2 ...func(*cognitoidentityprovider.Options)) (*cognitoidentityprovider.ListTermsOutput, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ListTerms", varargs...)
+	ret0, _ := ret[0].(*cognitoidentityprovider.ListTermsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ListTerms indicates an expected call of ListTerms.
+func (mr *MockCognitoidentityproviderClientMockRecorder) ListTerms(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListTerms", reflect.TypeOf((*MockCognitoidentityproviderClient)(nil).ListTerms), varargs...)
 }
 
 // ListUserImportJobs mocks base method.

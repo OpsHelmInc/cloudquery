@@ -92,6 +92,7 @@ The primary key for this table is **arn**.
 |reader_endpoint|String|
 |replication_source_identifier|String|
 |scaling_configuration_info|JSON|
+|serverless_v2_platform_version|String|
 |serverless_v2_scaling_configuration|JSON|
 |status|String|
 |status_infos|JSON|
