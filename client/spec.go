@@ -8,9 +8,10 @@ type Account struct {
 }
 
 type Spec struct {
-	Regions    []string  `json:"regions,omitempty"`
-	Accounts   []Account `json:"accounts"`
-	AWSDebug   bool      `json:"aws_debug,omitempty"`
-	MaxRetries *int      `json:"max_retries,omitempty"`
-	MaxBackoff *int      `json:"max_backoff,omitempty"`
+	Regions           []string           `json:"regions,omitempty"`
+	Accounts          []Account          `json:"accounts"`
+	AWSDebug          bool               `json:"aws_debug,omitempty"`
+	MaxRetries        *int               `json:"max_retries,omitempty"`
+	MaxBackoff        *int               `json:"max_backoff,omitempty"`
+	ServiceRateLimits map[string]float64 `json:"service_rate_limits,omitempty"`
 }

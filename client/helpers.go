@@ -406,3 +406,30 @@ func Sleep(ctx context.Context, dur time.Duration) error {
 		return nil
 	}
 }
+
+// WaitForRateLimit blocks until the rate limiter for the given service allows a request.
+// If operation is provided, it first checks for a rate limiter for "service.operation",
+// then falls back to "service" if not found.
+// If no rate limiter is configured, this returns immediately.
+func (c *Client) WaitForRateLimit(ctx context.Context, serviceName string, operation ...string) error {
+	services := c.Services()
+	if services == nil || services.RateLimiters == nil {
+		return nil
+	}
+
+	// Try operation-specific rate limiter first (e.g., "route53.ListHostedZones")
+	if len(operation) > 0 && operation[0] != "" {
+		operationKey := serviceName + "." + operation[0]
+		if limiter, exists := services.RateLimiters[operationKey]; exists && limiter != nil {
+			return limiter.Wait(ctx)
+		}
+	}
+
+	// Fall back to service-level rate limiter (e.g., "route53")
+	limiter, exists := services.RateLimiters[serviceName]
+	if !exists || limiter == nil {
+		return nil
+	}
+
+	return limiter.Wait(ctx)
+}

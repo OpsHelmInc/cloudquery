@@ -1,6 +1,6 @@
 module github.com/OpsHelmInc/cloudquery
 
-go 1.24
+go 1.24.0
 
 require (
 	github.com/OpsHelmInc/ohaws v0.11.1
@@ -139,6 +139,7 @@ require (
 	github.com/tidwall/pretty v1.2.1 // indirect
 	github.com/tidwall/sjson v1.2.5 // indirect
 	golang.org/x/exp v0.0.0-20240719175910-8a7402abbf56 // indirect
+	golang.org/x/time v0.14.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250728155136-f173205681a0 // indirect
 )
 

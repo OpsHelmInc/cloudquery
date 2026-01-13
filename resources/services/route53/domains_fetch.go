@@ -21,6 +21,9 @@ func fetchRoute53Domains(ctx context.Context, meta schema.ClientMeta, parent *sc
 	var input route53domains.ListDomainsInput
 
 	for {
+		if err := c.WaitForRateLimit(ctx, serviceName); err != nil {
+			return err
+		}
 		output, err := svc.ListDomains(ctx, &input, domainClientOpts)
 		if err != nil {
 			return err
@@ -40,6 +43,9 @@ func getDomain(ctx context.Context, meta schema.ClientMeta, resource *schema.Res
 	svc := c.Services().Route53domains
 	v := resource.Item.(types.DomainSummary)
 
+	if err := c.WaitForRateLimit(ctx, serviceName); err != nil {
+		return err
+	}
 	d, err := svc.GetDomainDetail(ctx, &route53domains.GetDomainDetailInput{DomainName: v.DomainName}, domainClientOpts)
 	if err != nil {
 		return err
@@ -53,6 +59,9 @@ func resolveRoute53DomainTags(ctx context.Context, meta schema.ClientMeta, resou
 	c := meta.(*client.Client)
 	svc := c.Services().Route53domains
 	d := resource.Item.(*route53domains.GetDomainDetailOutput)
+	if err := c.WaitForRateLimit(ctx, serviceName); err != nil {
+		return err
+	}
 	out, err := svc.ListTagsForDomain(ctx, &route53domains.ListTagsForDomainInput{DomainName: d.DomainName}, domainClientOpts)
 	if err != nil {
 		return err

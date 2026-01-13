@@ -16,6 +16,9 @@ func fetchRoute53TrafficPolicies(ctx context.Context, meta schema.ClientMeta, pa
 	svc := c.Services().Route53
 
 	for {
+		if err := c.WaitForRateLimit(ctx, serviceName); err != nil {
+			return err
+		}
 		response, err := svc.ListTrafficPolicies(ctx, &config)
 		if err != nil {
 			return err
@@ -31,9 +34,13 @@ func fetchRoute53TrafficPolicies(ctx context.Context, meta schema.ClientMeta, pa
 }
 func fetchRoute53TrafficPolicyVersions(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	r := parent.Item.(types.TrafficPolicySummary)
+	c := meta.(*client.Client)
 	config := route53.ListTrafficPolicyVersionsInput{Id: r.Id}
-	svc := meta.(*client.Client).Services().Route53
+	svc := c.Services().Route53
 	for {
+		if err := c.WaitForRateLimit(ctx, serviceName); err != nil {
+			return err
+		}
 		response, err := svc.ListTrafficPolicyVersions(ctx, &config)
 		if err != nil {
 			return err

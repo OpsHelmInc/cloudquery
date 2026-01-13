@@ -2,6 +2,8 @@
 package client
 
 import (
+    "golang.org/x/time/rate"
+
     "github.com/aws/aws-sdk-go-v2/aws"
     "github.com/OpsHelmInc/cloudquery/client/services"
     {{- range $service := . }}
@@ -9,13 +11,25 @@ import (
     {{- end }}
 )
 
-func initServices(region string, c aws.Config) Services {
+func initServices(region string, c aws.Config, rateLimits map[string]float64) Services {
 	awsCfg := c.Copy()
 	awsCfg.Region = region
+
+	// Initialize rate limiters based on configuration
+	rateLimiters := make(map[string]*rate.Limiter)
+	for serviceName, rateLimit := range rateLimits {
+		if rateLimit > 0 {
+			// rate.Limit is requests per second
+			// Burst is set to 1 to ensure strict rate limiting
+			rateLimiters[serviceName] = rate.NewLimiter(rate.Limit(rateLimit), 1)
+		}
+	}
+
 	return Services{
 	{{- range $service := . }}
 		{{$service.Name}}: {{$service.PackageName}}.NewFromConfig(awsCfg),
     {{- end }}
+		RateLimiters: rateLimiters,
 	}
 }
 
@@ -23,4 +37,5 @@ type Services struct {
 	{{- range $service := . }}
 		{{$service.Name}} services.{{$service.ClientName}}
     {{- end }}
+	RateLimiters map[string]*rate.Limiter
 }

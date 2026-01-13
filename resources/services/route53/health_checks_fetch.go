@@ -25,6 +25,9 @@ func fetchRoute53HealthChecks(ctx context.Context, meta schema.ClientMeta, paren
 		for _, h := range healthChecks {
 			tagsCfg.ResourceIds = append(tagsCfg.ResourceIds, *h.Id)
 		}
+		if err := c.WaitForRateLimit(ctx, serviceName); err != nil {
+			return err
+		}
 		tagsResponse, err := svc.ListTagsForResources(ctx, tagsCfg)
 		if err != nil {
 			return err
@@ -40,6 +43,9 @@ func fetchRoute53HealthChecks(ctx context.Context, meta schema.ClientMeta, paren
 	}
 
 	for {
+		if err := c.WaitForRateLimit(ctx, serviceName); err != nil {
+			return err
+		}
 		response, err := svc.ListHealthChecks(ctx, &config)
 		if err != nil {
 			return err
