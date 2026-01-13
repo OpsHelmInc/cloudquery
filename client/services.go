@@ -2,6 +2,8 @@
 package client
 
 import (
+	"golang.org/x/time/rate"
+
 	"github.com/OpsHelmInc/cloudquery/client/models/s3manager"
 	"github.com/OpsHelmInc/cloudquery/client/services"
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -98,9 +100,20 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/xray"
 )
 
-func initServices(region string, c aws.Config) Services {
+func initServices(region string, c aws.Config, rateLimits map[string]float64) Services {
 	awsCfg := c.Copy()
 	awsCfg.Region = region
+
+	// Initialize rate limiters based on configuration
+	rateLimiters := make(map[string]*rate.Limiter)
+	for serviceName, rateLimit := range rateLimits {
+		if rateLimit > 0 {
+			// rate.Limit is requests per second
+			// Burst is set to 1 to ensure strict rate limiting
+			rateLimiters[serviceName] = rate.NewLimiter(rate.Limit(rateLimit), 1)
+		}
+	}
+
 	return Services{
 		Accessanalyzer:            accessanalyzer.NewFromConfig(awsCfg),
 		Account:                   account.NewFromConfig(awsCfg),
@@ -194,6 +207,7 @@ func initServices(region string, c aws.Config) Services {
 		Workspaces:                workspaces.NewFromConfig(awsCfg),
 		Xray:                      xray.NewFromConfig(awsCfg),
 		S3manager:                 s3manager.NewFromConfig(awsCfg),
+		RateLimiters:              rateLimiters,
 	}
 }
 
@@ -290,4 +304,5 @@ type Services struct {
 	Workspaces                services.WorkspacesClient
 	Xray                      services.XrayClient
 	S3manager                 services.S3managerClient
+	RateLimiters              map[string]*rate.Limiter
 }
