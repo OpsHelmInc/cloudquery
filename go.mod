@@ -3,7 +3,7 @@ module github.com/OpsHelmInc/cloudquery
 go 1.24.0
 
 require (
-	github.com/OpsHelmInc/ohaws v0.11.1
+	github.com/OpsHelmInc/ohaws v0.11.3-0.20251020143521-3a46f4c79769
 	github.com/aws/aws-sdk-go-v2 v1.37.2
 	github.com/aws/aws-sdk-go-v2/config v1.30.3
 	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.17.61

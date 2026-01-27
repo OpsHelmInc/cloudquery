@@ -9,9 +9,10 @@ import (
 
 func Crawlers() *schema.Table {
 	return &schema.Table{
-		Name:      "aws_glue_crawlers",
-		Resolver:  fetchGlueCrawlers,
-		Multiplex: client.ServiceAccountRegionMultiplexer("glue"),
+		Name:                "aws_glue_crawlers",
+		Resolver:            fetchGlueCrawlers,
+		PreResourceResolver: getGlueCrawler,
+		Multiplex:           client.ServiceAccountRegionMultiplexer("glue"),
 		Columns: []schema.Column{
 			{
 				Name:     "account_id",
@@ -30,11 +31,6 @@ func Crawlers() *schema.Table {
 				CreationOptions: schema.ColumnCreationOptions{
 					PrimaryKey: true,
 				},
-			},
-			{
-				Name:     "tags",
-				Type:     schema.TypeJSON,
-				Resolver: resolveGlueCrawlerTags,
 			},
 			{
 				Name:     "classifiers",
@@ -135,6 +131,11 @@ func Crawlers() *schema.Table {
 				Name:     "version",
 				Type:     schema.TypeInt,
 				Resolver: schema.PathResolver("Version"),
+			},
+			{
+				Name:     "tags",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Tags"),
 			},
 		},
 	}
