@@ -27,11 +27,17 @@ func fetchRoute53HostedZones(ctx context.Context, meta schema.ClientMeta, parent
 			hostedZones[i].Id = &parsedId
 			tagsCfg.ResourceIds = append(tagsCfg.ResourceIds, parsedId)
 		}
+		if err := c.WaitForRateLimit(ctx, serviceName); err != nil {
+			return err
+		}
 		tagsResponse, err := svc.ListTagsForResources(ctx, tagsCfg)
 		if err != nil {
 			return err
 		}
 		for _, h := range hostedZones {
+			if err := c.WaitForRateLimit(ctx, serviceName); err != nil {
+				return err
+			}
 			gotHostedZone, err := svc.GetHostedZone(ctx, &route53.GetHostedZoneInput{Id: h.Id})
 			if err != nil {
 				return err
@@ -52,6 +58,9 @@ func fetchRoute53HostedZones(ctx context.Context, meta schema.ClientMeta, parent
 	}
 
 	for {
+		if err := c.WaitForRateLimit(ctx, serviceName); err != nil {
+			return err
+		}
 		response, err := svc.ListHostedZones(ctx, &config)
 		if err != nil {
 			return err
@@ -80,9 +89,13 @@ func fetchRoute53HostedZones(ctx context.Context, meta schema.ClientMeta, parent
 
 func fetchRoute53HostedZoneQueryLoggingConfigs(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	r := parent.Item.(*ohaws.Route53HostedZone)
-	svc := meta.(*client.Client).Services().Route53
+	c := meta.(*client.Client)
+	svc := c.Services().Route53
 	config := route53.ListQueryLoggingConfigsInput{HostedZoneId: r.Id}
 	for {
+		if err := c.WaitForRateLimit(ctx, serviceName); err != nil {
+			return err
+		}
 		response, err := svc.ListQueryLoggingConfigs(ctx, &config, func(options *route53.Options) {})
 		if err != nil {
 			return err
@@ -98,9 +111,13 @@ func fetchRoute53HostedZoneQueryLoggingConfigs(ctx context.Context, meta schema.
 
 func fetchRoute53HostedZoneResourceRecordSets(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	r := parent.Item.(*ohaws.Route53HostedZone)
-	svc := meta.(*client.Client).Services().Route53
+	c := meta.(*client.Client)
+	svc := c.Services().Route53
 	config := route53.ListResourceRecordSetsInput{HostedZoneId: r.Id}
 	for {
+		if err := c.WaitForRateLimit(ctx, serviceName); err != nil {
+			return err
+		}
 		response, err := svc.ListResourceRecordSets(ctx, &config, func(options *route53.Options) {})
 		if err != nil {
 			return err
@@ -121,9 +138,13 @@ func fetchRoute53HostedZoneResourceRecordSets(ctx context.Context, meta schema.C
 
 func fetchRoute53HostedZoneTrafficPolicyInstances(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- any) error {
 	r := parent.Item.(*ohaws.Route53HostedZone)
+	c := meta.(*client.Client)
 	config := route53.ListTrafficPolicyInstancesByHostedZoneInput{HostedZoneId: r.Id}
-	svc := meta.(*client.Client).Services().Route53
+	svc := c.Services().Route53
 	for {
+		if err := c.WaitForRateLimit(ctx, serviceName); err != nil {
+			return err
+		}
 		response, err := svc.ListTrafficPolicyInstancesByHostedZone(ctx, &config)
 		if err != nil {
 			return err

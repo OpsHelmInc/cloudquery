@@ -16,6 +16,9 @@ func fetchRoute53DelegationSets(ctx context.Context, meta schema.ClientMeta, par
 	svc := c.Services().Route53
 
 	for {
+		if err := c.WaitForRateLimit(ctx, serviceName); err != nil {
+			return err
+		}
 		response, err := svc.ListReusableDelegationSets(ctx, &config)
 		if err != nil {
 			return err

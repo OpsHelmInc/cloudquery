@@ -340,9 +340,9 @@ func Configure(ctx context.Context, logger zerolog.Logger, spec specs.Source, ba
 		}
 
 		for _, region := range account.Regions {
-			client.ServicesManager.InitServicesForPartitionAccountAndRegion(iamArn.Partition, *output.Account, region, initServices(region, awsCfg))
+			client.ServicesManager.InitServicesForPartitionAccountAndRegion(iamArn.Partition, *output.Account, region, initServices(region, awsCfg, specConfig.ServiceRateLimits))
 		}
-		client.ServicesManager.InitServicesForPartitionAccountAndScope(iamArn.Partition, *output.Account, initServices(cloudfrontScopeRegion, awsCfg))
+		client.ServicesManager.InitServicesForPartitionAccountAndScope(iamArn.Partition, *output.Account, initServices(cloudfrontScopeRegion, awsCfg, specConfig.ServiceRateLimits))
 	}
 	if len(client.ServicesManager.services) == 0 {
 		return nil, fmt.Errorf("no enabled accounts instantiated")
